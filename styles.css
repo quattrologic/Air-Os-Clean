@@ -687,3 +687,6 @@ button{ -webkit-tap-highlight-color:transparent}
 
 /* Air-OS pear: exact silhouette traced from supplied artwork; no PNG or black tile. */
 .air-mark svg{display:block;width:23px;height:24px;overflow:visible;filter:none}
+
+/* Minimal download icon: blue arrow only, no tile or tray. */
+.dock .downloads-icon{background:transparent!important;box-shadow:none!important}
