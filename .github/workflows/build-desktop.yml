@@ -26,6 +26,9 @@ jobs:
           node --check air-os-enhancements.js
           node --check aircard-lite.js
           node --check login.js
+          node --check air-music.js
+          node --check air-arcade-games.js
+          node scripts/check-catalina.cjs
           node -e "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8'))"
 
   build-windows:

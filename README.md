@@ -159,3 +159,9 @@ Diese Daten liegen weiterhin lokal. Kalender-Synchronisierung, ein nativer E-Mai
 ## Air Music
 
 Air Music verwendet [AmplitudeJS](https://github.com/serversideup/amplitudejs) (MIT-Lizenz) als Audio-Engine. Musikdateien werden lokal per Dateiauswahl geladen und nicht hochgeladen. Wiedergabe, Titelsprung, Lautstärke, Shuffle, Repeat sowie lokal gespeicherte Playlist-Namen und Titelzuordnungen werden unterstützt. Die Audiodateien müssen nach dem Neustart erneut ausgewählt werden; Playlist-Daten enthalten keine Audiodateien. Der Quellcode und die MIT-Lizenz von AmplitudeJS werden über die npm-Abhängigkeit `amplitudejs@5.3.2` eingebunden.
+
+## macOS Catalina 10.15.8 (Kompatibilitäts-Build)
+
+Air-OS verwendet für Catalina **Electron 32.3.3** (Electron 33+ unterstützt macOS 10.15 nicht mehr). Der Installer ist für **macOS 10.15.0 oder neuer** konfiguriert und wird weiterhin als universeller Intel-/Apple-Silicon-Test-Build erstellt. macOS Catalina selbst läuft auf Intel-Macs; Apple-Silicon-Macs verwenden neuere macOS-Versionen.
+
+**Hinweis:** Electron 32 ist nicht mehr aktuell und erhält keine regulären Sicherheitsupdates. Nutze die Catalina-Ausgabe nur zum Testen, öffne keine unbekannten externen Inhalte und aktualisiere macOS, wenn möglich. Die Kompatibilität muss auf einem echten Mac mit 10.15.8 getestet werden; GitHub Actions erstellt die Installer auf einem neueren macOS-Runner. Alle Apps bleiben enthalten, einzelne Web-Dienste können jedoch eigene Mindestanforderungen haben.
