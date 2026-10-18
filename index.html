@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#dce9fb">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://s3.tradingview.com https://*.tradingview.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; connect-src 'self' https://www.tagesschau.de https://*.tagesschau.de https://*.tradingview.com wss://*.tradingview.com; font-src 'self' data: https:; frame-src https://*.tradingview.com https://www.tradingview.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://s3.tradingview.com https://*.tradingview.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; connect-src 'self' https://api.mymemory.translated.net http://127.0.0.1:11434 https://www.tagesschau.de https://*.tagesschau.de https://*.tradingview.com wss://*.tradingview.com; font-src 'self' data: https:; frame-src https://*.tradingview.com https://www.tradingview.com;">
   <title>Air-OS — Schreibtisch</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="air-os-enhancements.css">
+  <link rel="stylesheet" href="air-extra-apps.css">
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
@@ -62,6 +63,9 @@
     <button class="dock-app" data-app="music" title="Musik"><span class="dock-icon music-icon"></span></button>
     <button class="dock-app" data-app="spotify" title="Spotify"><span class="dock-icon spotify-icon"></span></button>
     <button class="dock-app" data-app="arcade" title="Air Arcade"><span class="dock-icon arcade-icon">★</span></button>
+    <button class="dock-app" data-app="calculator" title="Air-Rechner"><span class="dock-icon calc-icon"></span></button>
+    <button class="dock-app" data-app="translator" title="Air-Übersetzer"><span class="dock-icon translator-icon"></span></button>
+    <button class="dock-app" data-app="ai" title="Air-KI"><span class="dock-icon ai-icon"></span></button>
     <button class="dock-app" data-app="aircard" title="AirCard Lite"><span class="dock-icon aircard-icon"></span></button>
     <button class="dock-app" data-app="settings" title="Einstellungen"><span class="dock-icon settings-icon"></span></button>
     <button class="dock-app" data-app="downloads" title="Downloads"><span class="dock-icon downloads-icon"></span></button>
@@ -72,5 +76,6 @@
   <script src="app.js"></script>
   <script src="air-os-enhancements.js"></script>
   <script src="aircard-lite.js"></script>
+  <script src="air-extra-apps.js"></script>
 </body>
 </html>
