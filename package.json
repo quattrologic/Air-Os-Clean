@@ -46,7 +46,9 @@
       "air-arcade-games.js",
       "air-arcade-games.css",
       "air-music.js",
-      "air-music.css"
+      "air-music.css",
+      "tiny-strike.cjs",
+      "games/tiny-strike/**/*"
     ],
     "mac": {
       "target": [
