@@ -40,7 +40,7 @@ jobs:
       - run: npm run pack:win
       - name: Publish Windows installer to GitHub Release
         if: github.event_name != 'pull_request'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: air-os-build-${{ github.run_number }}
           name: Air-OS Build ${{ github.run_number }}
@@ -60,7 +60,7 @@ jobs:
       - run: npm run pack:mac
       - name: Publish macOS installer to GitHub Release
         if: github.event_name != 'pull_request'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: air-os-build-${{ github.run_number }}
           name: Air-OS Build ${{ github.run_number }}
