@@ -155,3 +155,7 @@ Diese Daten liegen weiterhin lokal. Kalender-Synchronisierung, ein nativer E-Mai
 - Keep local secrets in environment variables or GitHub Actions secrets, never in source files.
 - `.gitignore` excludes common local configuration, credential, log, and build-output files.
 - Air-OS is a local desktop application; review dependencies and Electron permissions before publishing a release.
+
+## Air Music
+
+Air Music verwendet [AmplitudeJS](https://github.com/serversideup/amplitudejs) (MIT-Lizenz) als Audio-Engine. Musikdateien werden lokal per Dateiauswahl geladen und nicht hochgeladen. Wiedergabe, Titelsprung, Lautstärke, Shuffle, Repeat sowie lokal gespeicherte Playlist-Namen und Titelzuordnungen werden unterstützt. Die Audiodateien müssen nach dem Neustart erneut ausgewählt werden; Playlist-Daten enthalten keine Audiodateien. Der Quellcode und die MIT-Lizenz von AmplitudeJS werden über die npm-Abhängigkeit `amplitudejs@5.3.2` eingebunden.

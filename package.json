@@ -43,7 +43,9 @@
       "air-extra-apps.js",
       "air-extra-apps.css",
       "air-arcade-games.js",
-      "air-arcade-games.css"
+      "air-arcade-games.css",
+      "air-music.js",
+      "air-music.css"
     ],
     "mac": {
       "target": [
@@ -83,5 +85,8 @@
       }
     ]
   },
-  "author": "Air-OS"
+  "author": "Air-OS",
+  "dependencies": {
+    "amplitudejs": "5.3.2"
+  }
 }

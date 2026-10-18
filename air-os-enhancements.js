@@ -140,6 +140,7 @@
     return '<div class="air-downloads-app"><span class="air-downloads-icon">↓</span><h2>Downloads</h2><p>Öffne deinen echten Downloads-Ordner, um Dateien anzusehen. Air-OS erfindet keine Beispiel-Downloads.</p><button type="button" class="air-photos-import" data-air-open-downloads>Downloads-Ordner im Finder öffnen</button><small>Wähle im Finder deinen Downloads-Ordner aus, wenn er nicht automatisch geöffnet wird.</small></div>';
   }
   function musicBody() {
+    if(window.airMusic)return window.airMusic.body();
     return '<div class="air-music-app"><div class="air-music-orb">♫</div><h2>Musik</h2><p>Spiele lokale Audiodateien auf diesem Computer ab.</p><label class="air-photos-import">Audiodatei auswählen<input id="air-music-file" type="file" accept="audio/*" hidden></label><audio id="air-music-audio" controls preload="metadata"></audio><div class="air-music-note">Die Wiedergabe erfolgt lokal im Air-OS-Fenster. Dateien werden nicht hochgeladen.</div></div>';
   }
   window.appBody = function (id) {
@@ -188,7 +189,7 @@
       if(empty)empty.hidden=files.length>0;
       if(status)status.textContent=files.length+' Bild(er) geladen · lokal auf diesem Gerät';
     }
-    if (input && input.id === 'air-music-file') {
+    if (input && input.id === 'air-music-file' && !input.closest('.airmusic')) {
       const win=input.closest('.app-window'), audio=win&&win.querySelector('#air-music-audio'), file=input.files&&input.files[0];
       if(audio&&file){if(audio.dataset.objectUrl)URL.revokeObjectURL(audio.dataset.objectUrl);const url=URL.createObjectURL(file);audio.dataset.objectUrl=url;audio.src=url;audio.load();audio.play().catch(()=>{});}
     }
@@ -615,6 +616,7 @@
 
   function initializeWindow(win) {
     if (!(win instanceof HTMLElement)) return;
+    if (win.querySelector('.airmusic')) window.airMusic?.mount(win);
     if (win.querySelector('.air-files-app')) mountFiles(win);
     if (win.querySelector('.arcade-library')) window.airArcadeGames?.mount(win);
     else if (win.querySelector('.air-arcade-app')) mountArcade(win);
