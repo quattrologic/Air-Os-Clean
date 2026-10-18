@@ -41,10 +41,24 @@ function gridSnake(api){
 }
 function winActive(w){return w.isConnected&&w.style.display!=='none'}
 function game2048(api){
- let board=Array(16).fill(0),score=0;function add(){const e=board.map((v,i)=>v?-1:i).filter(i=>i>=0);if(e.length)board[e[rand(e.length)]]=Math.random()<.9?2:4}add();add();
- const box=document.createElement('div');box.className='arcade-2048';api.host.append(box);
- function draw(){box.replaceChildren();board.forEach(n=>{const b=document.createElement('div');b.className='arcade-tile';b.textContent=n||'';b.style.background=colors[Math.min(7,n?Math.log2(n):0)];box.append(b)});message(api,'2048 · Punkte: '+score+' · Pfeiltasten')}
- function move(k){if(!/^Arrow/.test(k))return;const before=board.join(',');for(let a=0;a<4;a++){const ids=Array.from({length:4},(_,b)=>k==='ArrowLeft'?a*4+b:k==='ArrowRight'?a*4+3-b:k==='ArrowUp'?b*4+a:(3-b)*4+a);const vals=ids.map(i=>board[i]).filter(Boolean),out=[];for(let j=0;j<vals.length;j++){if(vals[j]===vals[j+1]){out.push(vals[j]*2);score+=vals[j]*2;j++}else out.push(vals[j])}ids.forEach((i,j)=>board[i]=out[j]||0)}if(board.join(',')!==before)add();draw()}api.listen(move);draw()
+ const highKey='air-os-arcade-2048-highscore-v1';
+ let high=0;try{high=Math.max(0,Number(localStorage.getItem(highKey))||0)}catch{}
+ let board=Array(16).fill(0),score=0;
+ function add(){const e=board.map((v,i)=>v?-1:i).filter(i=>i>=0);if(e.length)board[e[rand(e.length)]]=Math.random()<.9?2:4}
+ add();add();
+ const wrap=document.createElement('div');wrap.className='arcade-2048-wrap';
+ const stats=document.createElement('div');stats.className='arcade-2048-stats';
+ function stat(label){const card=document.createElement('div');card.className='arcade-2048-stat';const heading=document.createElement('span');heading.textContent=label;const value=document.createElement('strong');value.textContent='0';card.append(heading,value);stats.append(card);return value}
+ const scoreValue=stat('PUNKTE'),highValue=stat('HIGHSCORE');
+ const box=document.createElement('div');box.className='arcade-2048';wrap.append(stats,box);api.host.append(wrap);
+ function draw(){
+  box.replaceChildren();board.forEach(n=>{const b=document.createElement('div');b.className='arcade-tile';b.textContent=n||'';b.style.background=colors[Math.min(7,n?Math.log2(n):0)];box.append(b)});
+  if(score>high){high=score;try{localStorage.setItem(highKey,String(high))}catch{}}
+  scoreValue.textContent=score.toLocaleString('de-DE');highValue.textContent=high.toLocaleString('de-DE');
+  message(api,'2048 · Pfeiltasten zum Spielen · Highscore bleibt gespeichert')
+ }
+ function move(k){if(!/^Arrow/.test(k))return;const before=board.join(',');for(let a=0;a<4;a++){const ids=Array.from({length:4},(_,b)=>k==='ArrowLeft'?a*4+b:k==='ArrowRight'?a*4+3-b:k==='ArrowUp'?b*4+a:(3-b)*4+a);const vals=ids.map(i=>board[i]).filter(Boolean),out=[];for(let j=0;j<vals.length;j++){if(vals[j]===vals[j+1]){out.push(vals[j]*2);score+=vals[j]*2;j++}else out.push(vals[j])}ids.forEach((i,j)=>board[i]=out[j]||0)}if(board.join(',')!==before)add();draw()}
+ api.listen(move);draw()
 }
 function mines(api){
  const n=10,total=15,board=Array.from({length:n*n},()=>({mine:false,open:false,flag:false,num:0}));let ended=false,flags=0;
