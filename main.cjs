@@ -7,6 +7,8 @@ const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
 
+const tinyStrike = require('./tiny-strike.cjs');
+
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
@@ -52,6 +54,7 @@ function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
 function openLogin() {
+  tinyStrike.close();
   activeUser = null;
   fileWorkspaceRoot = null;
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -89,9 +92,15 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.on('closed', () => { mainWindow = null; });
+  mainWindow.on('closed', () => { tinyStrike.close(); mainWindow = null; });
   openLogin();
 }
+ipcMain.handle('air-os:tiny-strike:open', async event => {
+  requireTrusted(event);
+  if (!activeUser) throw new Error('Bitte melde dich zuerst bei Air-OS an.');
+  await tinyStrike.open(activeUser.username);
+  return { ok: true };
+});
 ipcMain.handle('air-os:accounts', event => {
   requireTrusted(event);
   return readAccounts().map(publicAccount);

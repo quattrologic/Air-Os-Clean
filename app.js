@@ -6,7 +6,7 @@ let toastTimer;
 function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
 function updateClock(){const d=new Date();$("#clock").textContent=d.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}
 updateClock();setInterval(updateClock,15000);
-const appNames={airwrite:"AirWrite",finder:"Finder",browser:"Safari",tagesschau:"tagesschau",mail:"Mail",calendar:"Kalender",photos:"Fotos",music:"Air Music",spotify:"Spotify",aircard:"AirCard Lite",notes:"Notizen",weather:"Wetter",football:"Fußball",stocks:"Aktien",calculator:"Air-Rechner",translator:"Air-Übersetzer",ai:"Air-KI",settings:"Einstellungen",downloads:"Downloads",trash:"Papierkorb",about:"Über Air-OS"};
+const appNames={tinystrike:"Tiny Strike",airwrite:"AirWrite",finder:"Finder",browser:"Safari",tagesschau:"tagesschau",mail:"Mail",calendar:"Kalender",photos:"Fotos",music:"Air Music",spotify:"Spotify",aircard:"AirCard Lite",notes:"Notizen",weather:"Wetter",football:"Fußball",stocks:"Aktien",calculator:"Air-Rechner",translator:"Air-Übersetzer",ai:"Air-KI",settings:"Einstellungen",downloads:"Downloads",trash:"Papierkorb",about:"Über Air-OS"};
 const iconClasses={airwrite:"airwrite-icon",finder:"finder-icon",browser:"browser-icon",tagesschau:"tagesschau-icon",mail:"mail-icon",calendar:"calendar-icon",photos:"photos-icon",music:"music-icon",spotify:"spotify-icon",aircard:"aircard-icon",notes:"notes-icon",weather:"weather-icon",football:"football-icon",stocks:"stocks-icon",calculator:"calc-icon",translator:"translator-icon",ai:"ai-icon",settings:"settings-icon",downloads:"downloads-icon",trash:"trash-icon"};
 const iconGlyphs={airwrite:"✎",finder:"◧",browser:"◎",tagesschau:"ts",mail:"✉",calendar:"31",photos:"✿",music:"♫",spotify:"●",aircard:"▤",notes:"≡",weather:"☀",football:"⚽",stocks:"⌁",calculator:"＋",settings:"⚙",downloads:"↓",trash:"▤"};
 
@@ -354,6 +354,11 @@ function clampAppWindow(win){
 }
 
 function openApp(id){
+ if(id==='tinystrike'){
+  if(!window.airOS?.openTinyStrike){toast('Tiny Strike ist in der Air-OS-Desktop-App verfügbar.');return}
+  window.airOS.openTinyStrike().catch(()=>toast('Tiny Strike konnte nicht gestartet werden.'));
+  return;
+ }
  if(!appNames[id])return;
  if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;$("#active-app").textContent=appNames[id];return}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;

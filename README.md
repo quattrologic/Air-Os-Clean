@@ -45,7 +45,7 @@ Installer lokal erstellen: `npm run pack:win`, `npm run pack:mac` oder `npm run 
 | Desktop | Dock, Menüleiste, Wallpaper, Fenster und lokale Einstellungen |
 | Lokale Profile | Anlegen und Anmelden; Passwörter mit scrypt und Salt gehasht |
 | Finder | Nach ausdrücklicher Ordnerauswahl Dateien anzeigen und unterstützte Texte bearbeiten |
-| Air Arcade | Snake mit lokalem Bestwert |
+| Air Arcade | Offline-Minispiele und Tiny Strike als eigene App: 3D-Shooter ausschließlich gegen Bots |
 | Fotos / Musik | Lokale Bilder und Audiodateien öffnen |
 | Kalender | Lokale Termine und ICS-Export |
 | Mail / Spotify | Links zu den jeweiligen externen Diensten |
@@ -165,3 +165,15 @@ Air Music verwendet [AmplitudeJS](https://github.com/serversideup/amplitudejs) (
 Air-OS verwendet für Catalina **Electron 32.3.3** (Electron 33+ unterstützt macOS 10.15 nicht mehr). Der Installer ist für **macOS 10.15.0 oder neuer** konfiguriert und wird weiterhin als universeller Intel-/Apple-Silicon-Test-Build erstellt. macOS Catalina selbst läuft auf Intel-Macs; Apple-Silicon-Macs verwenden neuere macOS-Versionen.
 
 **Hinweis:** Electron 32 ist nicht mehr aktuell und erhält keine regulären Sicherheitsupdates. Nutze die Catalina-Ausgabe nur zum Testen, öffne keine unbekannten externen Inhalte und aktualisiere macOS, wenn möglich. Die Kompatibilität muss auf einem echten Mac mit 10.15.8 getestet werden; GitHub Actions erstellt die Installer auf einem neueren macOS-Runner. Alle Apps bleiben enthalten, einzelne Web-Dienste können jedoch eigene Mindestanforderungen haben.
+
+## Tiny Strike — offline gegen Bots
+
+Tiny Strike startet aus dem Dock oder über **Air Arcade → App starten** in einem
+eigenen Spielfenster. Alle Spieldateien und Three.js werden mitinstalliert;
+Internet, Anmeldung bei einem Spieldienst und ein Multiplayer-Server sind nicht
+erforderlich. Online-Räume und Ranglisten sind entfernt; Netzwerkzugriffe des
+Spielfensters sind gesperrt. Esc pausiert und gibt die Maus frei. Abmelden
+schließt das Spiel. Einstellungen werden lokal je Air-OS-Profil gespeichert.
+
+WASD: bewegen · Maus: zielen · Linksklick: schießen · B: kaufen · R: nachladen
+· E: Bombe entschärfen. Quellstand und Lizenzhinweise: [UPSTREAM.md](games/tiny-strike/UPSTREAM.md).
