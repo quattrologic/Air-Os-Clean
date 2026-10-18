@@ -1,0 +1,11 @@
+'use strict';
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { DEFAULTS, normalizeSelection, canSync, normalizeRelativeFile } = require('../cloud-sync/selection.cjs');
+const chosen = { enabled: true, categories: { settings: true, 'app-data': true, airwrite: true, finder: true }, appIds: ['airwrite', 'notes'], finderItems: ['Documents/example.txt'] };
+test('cloud sync defaults to off', () => assert.equal(canSync(DEFAULTS, 'settings'), false));
+test('explicitly selected file only', () => { assert.equal(canSync(chosen, 'finder', 'Documents/example.txt'), true); assert.equal(canSync(chosen, 'finder', 'Documents/private.txt'), false); });
+test('only selected apps', () => { assert.equal(canSync(chosen, 'app-data', 'notes'), true); assert.equal(canSync(chosen, 'app-data', 'mail'), false); });
+test('AirWrite opt-in', () => assert.equal(canSync(chosen, 'airwrite', 'airwrite'), true));
+test('no traversal', () => { for (const p of ['../secrets', '/etc/passwd', 'a/../b', 'a\\b', '.env']) assert.throws(() => normalizeRelativeFile(p)); });
+test('no silent default consent', () => assert.throws(() => normalizeSelection({ enabled: true, categories: { settings: true } })));
