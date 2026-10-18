@@ -690,3 +690,6 @@ button{ -webkit-tap-highlight-color:transparent}
 
 /* Minimal download icon: blue arrow only, no tile or tray. */
 .dock .downloads-icon{background:transparent!important;box-shadow:none!important}
+
+/* The menu pear is black; Arcade uses a light minimalist tile. */
+.air-mark svg path{fill:#101820;stroke:none}
