@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dce9fb">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://s3.tradingview.com https://*.tradingview.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; connect-src 'self' https://www.tagesschau.de https://*.tagesschau.de https://*.tradingview.com wss://*.tradingview.com; font-src 'self' data: https:; frame-src https://*.tradingview.com https://www.tradingview.com;">
+  <title>Air-OS — Schreibtisch</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="air-os-enhancements.css">
+</head>
+<body>
+  <div class="wallpaper" aria-hidden="true"></div>
+  <header class="menubar">
+    <div class="menu-left">
+      <span class="air-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path fill="currentColor" d="M37 6C26 11 17 25 17 38c0 12 7 20 17 20 6 0 10-3 15-3 4 0 7 2 11 2-6-7-9-15-7-23 2-7 7-12 12-16-8 1-13 0-18-5-4-4-6-6-10-7Z"/><path fill="currentColor" d="M40 4c3-3 8-4 12-3-1 6-5 10-12 11-1-3-1-5 0-8Z"/></svg></span><strong>Air-OS</strong><span id="active-app">Finder</span>
+      <button class="menu-item" id="file-menu">Ablage</button>
+      <button class="menu-item" id="edit-menu">Bearbeiten</button>
+      <button class="menu-item" id="view-menu">Darstellung</button>
+      <button class="menu-item" id="go-menu">Gehe zu</button>
+      <button class="menu-item" id="window-menu">Fenster</button>
+      <button class="menu-item" id="help-menu">Hilfe</button>
+    </div>
+    <div class="menu-right">
+      <span class="system-symbol" aria-label="WLAN">⌁</span><span class="system-symbol" aria-label="Ton">◖</span><span class="battery"><i></i></span>
+      <span id="clock">Di. 13. Mai 16:24</span>
+      <div class="account-menu-wrap" id="account-menu-wrap" hidden>
+        <button id="account-toggle" class="account-pill" type="button" aria-expanded="false" aria-controls="account-dropdown">
+          <span class="account-avatar" id="account-avatar">A</span><span id="account-label">Benutzer</span><span class="account-chevron">⌄</span>
+        </button>
+        <div id="account-dropdown" class="account-dropdown" hidden>
+          <div class="account-card-info"><strong id="account-fullname">Benutzer</strong><small id="account-username">@benutzer</small><span>Lokales Air-OS-Konto</span></div>
+          <button id="sign-out-button" type="button">Abmelden <span>↗</span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="desktop" class="desktop" aria-label="Schreibtisch">
+    <div class="desktop-icons">
+      <button class="desktop-icon" data-app="finder"><span class="desktop-art" data-art="computer"></span><span>Dieser PC</span></button>
+      <button class="desktop-icon" data-app="finder" data-folder-shortcut="Dokumente"><span class="desktop-art folder-art" data-art="folder"></span><span>Dokumente</span></button>
+      <button class="desktop-icon" data-app="photos"><span class="desktop-art folder-art" data-art="pictures"></span><span>Bilder</span></button>
+      <button class="desktop-icon" data-app="trash"><span class="desktop-art" data-art="trash"></span><span>Papierkorb</span></button>
+    </div>
+    <section class="welcome-card" hidden>
+      <div class="welcome-eyebrow">WILLKOMMEN BEI AIR-OS</div>
+      <h1>Dein Desktop.<br><span>Dein Flow.</span></h1>
+      <p>Ein vertrauter Desktop mit klaren Fenstern und sanften Glaseffekten.</p>
+      <button id="welcome-open" class="primary-button">Finder öffnen <span>↗</span></button>
+    </section>
+    <div id="windows" class="windows"></div>
+  </main>
+  <nav class="dock" aria-label="App-Dock">
+    <button class="dock-app" data-app="finder" title="Finder"><span class="dock-icon finder-icon"></span></button>
+    <button class="dock-app" data-app="browser" title="Safari"><span class="dock-icon browser-icon"></span></button>
+    <button class="dock-app" data-app="tagesschau" title="tagesschau"><span class="dock-icon tagesschau-icon"></span></button>
+    <button class="dock-app" data-app="stocks" title="Aktien"><span class="dock-icon stocks-icon"></span></button>
+    <button class="dock-app" data-app="mail" title="Mail"><span class="dock-icon mail-icon"></span></button>
+    <button class="dock-app" data-app="calendar" title="Kalender"><span class="dock-icon calendar-icon"></span></button>
+    <button class="dock-app" data-app="notes" title="Notizen"><span class="dock-icon notes-icon"></span></button>
+    <button class="dock-app" data-app="photos" title="Fotos"><span class="dock-icon photos-icon"></span></button>
+    <button class="dock-app" data-app="music" title="Musik"><span class="dock-icon music-icon"></span></button>
+    <button class="dock-app" data-app="spotify" title="Spotify"><span class="dock-icon spotify-icon"></span></button>
+    <button class="dock-app" data-app="arcade" title="Air Arcade"><span class="dock-icon arcade-icon">★</span></button>
+    <button class="dock-app" data-app="aircard" title="AirCard Lite"><span class="dock-icon aircard-icon"></span></button>
+    <button class="dock-app" data-app="settings" title="Einstellungen"><span class="dock-icon settings-icon"></span></button>
+    <button class="dock-app" data-app="downloads" title="Downloads"><span class="dock-icon downloads-icon"></span></button>
+    <span class="dock-divider"></span>
+    <button class="dock-app" data-app="trash" title="Papierkorb"><span class="dock-icon trash-icon"></span></button>
+  </nav>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+  <script src="air-os-enhancements.js"></script>
+  <script src="aircard-lite.js"></script>
+</body>
+</html>

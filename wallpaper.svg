@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#568fd1"/><stop offset=".25" stop-color="#9db4df"/><stop offset=".39" stop-color="#ef9eb3"/><stop offset=".54" stop-color="#ffbc9c"/><stop offset=".7" stop-color="#6e85b1"/><stop offset="1" stop-color="#192e50"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fff2ce" stop-opacity=".9"/><stop offset=".4" stop-color="#ffb7a9" stop-opacity=".5"/><stop offset="1" stop-color="#ffabc4" stop-opacity="0"/></radialGradient>
+ <linearGradient id="granite" x2="1" y2="1"><stop stop-color="#8da1b9"/><stop offset=".22" stop-color="#e0a28d"/><stop offset=".43" stop-color="#7c8eaa"/><stop offset=".67" stop-color="#354d71"/><stop offset="1" stop-color="#172c4e"/></linearGradient>
+ <linearGradient id="snow" x2=".4" y2="1"><stop stop-color="#f6d6d4"/><stop offset=".35" stop-color="#c5d6e8"/><stop offset="1" stop-color="#526b94"/></linearGradient>
+ <linearGradient id="pine" x2="0" y2="1"><stop stop-color="#345274"/><stop offset="1" stop-color="#102541"/></linearGradient>
+ <pattern id="needles" width="30" height="44" patternUnits="userSpaceOnUse"><path d="M15 1 4 29h7L1 39h12v5h4v-5h12L20 29h7Z" fill="#0b203a" opacity=".66"/><path d="M15 5 9 25h12Z" fill="#456082" opacity=".48"/></pattern>
+ <pattern id="rockLines" width="120" height="90" patternUnits="userSpaceOnUse" patternTransform="rotate(-19)"><path d="M0 13 48 3 81 29 120 23M9 60 44 41 72 64 104 54" fill="none" stroke="#d7d9dc" stroke-opacity=".22" stroke-width="2"/><path d="M0 34 32 25 56 40 92 36" fill="none" stroke="#1a3151" stroke-opacity=".34" stroke-width="4"/></pattern>
+ <filter id="soft"><feGaussianBlur stdDeviation="25"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<ellipse cx="390" cy="384" rx="650" ry="300" fill="url(#glow)"/>
+<g fill="#ffbbc0" opacity=".35" filter="url(#soft)"><path d="M0 283Q110 244 220 279t240-3 245 2 270 3 240-8 260 4 240 12v80H0Z"/></g>
+<g fill="#f8c0c9" opacity=".45"><path d="M0 344q82-17 158-3t147-11 185 5 179-6 194 7 187-6 178 3 180-1 212 8v13H0Z"/><path d="M0 418q112-16 227 1t205-4 178 9 235-6 196 2 211-3 223 8 245-2v11H0Z" opacity=".34"/></g>
+<path d="M0 603 110 540 206 570 306 493 402 552 505 462 612 551 732 427 824 547 934 468 1048 557 1168 423 1273 556 1391 374 1490 538 1615 421 1746 550 1834 465 1920 515V1080H0Z" fill="#8497bb"/>
+<path d="m0 650 110-80 96 18 100-88 96 52 103-89 107 89 120-120 92 120 110-79 114 90 120-134 105 133 118-160 99 124 125-116 131 124 88-82 88 48V1080H0Z" fill="#607ba6"/>
+<path d="m1040 1080 102-315 76-87 42-123 56-39 32-99 61-80 59-43 55-10 50 14 50 42 43 62 42 35 50 53 54 31 58 60V1080Z" fill="url(#granite)"/>
+<path d="m1040 1080 102-315 76-87 42-123 56-39 32-99 61-80 59-43 55-10 50 14 50 42 43 62 42 35 50 53 54 31 58 60V1080Z" fill="url(#rockLines)" opacity=".72"/>
+<path d="m1240 555 39-34 30-76 58-76 59-30 63 4 43 24 31 38 49 30 42 44-32-8-34-31-27-13-27-10-36 10-33-13-42 28-26 39-36 37-21-3Z" fill="#c4d0de" opacity=".62"/>
+<path d="m1122 765 80-94 41-42 46-31-22 63-42 44-25 65-27 55-39 40Z" fill="#edb1a0" opacity=".54"/>
+<path d="m1442 442 48 12 50 37 30 42-32-12-21-18-21 5-25-22-25-4-27-23Z" fill="#eac0b3" opacity=".68"/>
+<path d="M0 712 144 596 255 651 364 582 466 706 576 570 681 691 796 509 903 678 1009 567 1121 682 1216 558 1334 690 1442 538 1558 692 1667 567 1763 682 1864 595 1920 626V1080H0Z" fill="url(#snow)"/>
+<path d="m0 712 144-116 111 55 109-69 102 124 110-136 105 121 115-182 107 169 106-111 112 115 95-124 118 132 108-152 116 154 109-125 96 115 101-87 56 31V1080H0Z" fill="url(#pine)" opacity=".85"/>
+<path d="M0 756 143 648 257 716 363 649 483 762 575 666 690 769 801 621 905 773 1026 660 1142 770 1243 654 1358 784 1465 641 1583 783 1690 663 1791 772 1885 688 1920 712V1080H0Z" fill="#213d63"/>
+<path d="M0 817 129 733 262 804 382 723 492 851 615 743 735 853 846 719 973 854 1091 733 1211 859 1326 739 1455 870 1579 744 1685 848 1812 747 1920 800V1080H0Z" fill="url(#needles)"/>
+<path d="M0 903 168 835 313 897 459 823 594 929 737 841 880 932 1025 838 1168 942 1309 840 1448 938 1592 836 1737 928 1877 851 1920 866V1080H0Z" fill="#172e50"/>
+<path d="M0 992 194 921 364 989 533 916 701 1004 872 923 1041 1008 1216 927 1383 1004 1567 923 1745 996 1920 936V1080H0Z" fill="#102541"/>
+</svg>

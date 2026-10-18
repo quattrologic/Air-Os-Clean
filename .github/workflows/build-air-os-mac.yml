@@ -1,0 +1,38 @@
+name: Build Air-OS macOS Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**'
+      - '.github/workflows/build-air-os-mac.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build universal macOS installer
+        run: npx electron-builder --mac dmg zip --universal --publish never
+      - name: Upload installer files
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-macOS-universal
+          path: |
+            dist/*.dmg
+            dist/*.zip
+          if-no-files-found: error
+          retention-days: 14

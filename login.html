@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#172844">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com;">
+  <title>Air-OS – Anmelden</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-wallpaper" aria-hidden="true"></div>
+  <div class="login-vignette" aria-hidden="true"></div>
+
+  <header class="login-status" aria-label="Systemstatus">
+    <span class="status-battery">100% <span class="battery-glyph"><i></i></span></span>
+    <svg class="status-wifi" viewBox="0 0 20 16" aria-label="WLAN"><path d="M1 4.5a13 13 0 0 1 18 0M4 7.5a8.5 8.5 0 0 1 12 0M7 10.5a4 4 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="13.5" r="1" fill="currentColor"/></svg>
+    <span id="login-clock">12:02 PM</span>
+  </header>
+
+  <main class="login-stage" id="login-stage">
+    <section class="login-profile" id="login-profile" aria-label="Ausgewähltes Benutzerkonto">
+      <div class="profile-picture" aria-hidden="true">
+        <svg viewBox="0 0 80 80" role="img">
+          <defs>
+            <clipPath id="profileCircle"><circle cx="40" cy="40" r="38"/></clipPath>
+            <linearGradient id="profileSky" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#e5d8c3"/><stop offset=".58" stop-color="#a9c0c4"/><stop offset="1" stop-color="#243d4d"/></linearGradient>
+          </defs>
+          <g clip-path="url(#profileCircle)">
+            <rect width="80" height="80" fill="url(#profileSky)"/>
+            <circle cx="58" cy="18" r="12" fill="#ffdf9b" opacity=".78"/>
+            <path d="M0 47 18 31 29 42 46 25 80 49V80H0Z" fill="#4c6466"/>
+            <path d="M0 59 25 46 39 53 55 42 80 58V80H0Z" fill="#1c3443"/>
+            <path d="M15 24Q20 15 31 19L38 27 47 31 52 43 46 53 38 56 33 52 25 55 20 49 16 39 10 34Z" fill="#f4eee0"/>
+            <path d="M28 22 40 26 48 33 43 40 38 40 34 32 27 31Z" fill="#d2a663"/>
+            <path d="m47 33 16 4-13 7-6-1Z" fill="#bf8a37"/>
+            <path d="m33 52 1 11 7 2-2-14" fill="#e1d2b5"/>
+            <path d="M14 6Q35-4 56 7" fill="none" stroke="#fff" stroke-opacity=".42" stroke-width="3"/>
+          </g>
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="login-profile-name" id="login-profile-name">Air-OS</div>
+      <div class="login-profile-subtitle" id="login-profile-subtitle">Dein persönlicher Desktop</div>
+    </section>
+
+    <form id="login-form" class="auth-form login-form" autocomplete="on">
+      <input id="login-username" name="username" type="hidden" autocomplete="username">
+      <div class="saved-accounts" id="saved-accounts" aria-label="Benutzerkonto wählen"></div>
+      <div class="password-row">
+        <span class="password-arrow" aria-hidden="true">›</span>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Passwort eingeben" required aria-label="Passwort">
+        <button id="login-submit" class="password-submit" type="submit" aria-label="Anmelden" title="Anmelden"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div id="login-error" class="auth-error" role="alert" hidden></div>
+      <button id="switch-create" class="text-link" type="button">Anderen Account erstellen</button>
+    </form>
+
+    <form id="create-form" class="auth-form create-form" autocomplete="on" hidden>
+      <div class="create-heading"><span class="create-logo">A</span><div><h1>Air-OS einrichten</h1><p>Erstelle dein persönliches Benutzerkonto.</p></div></div>
+      <div class="create-fields">
+        <label for="create-display-name">Dein Name</label>
+        <input id="create-display-name" name="name" type="text" autocomplete="name" maxlength="40" placeholder="Wie sollen wir dich nennen?" required>
+        <label for="create-username">Benutzername</label>
+        <input id="create-username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" minlength="3" maxlength="24" pattern="[A-Za-z0-9._-]{3,24}" placeholder="z. B. alex" required>
+        <small>3–24 Zeichen: Buchstaben, Zahlen, Punkt, _ oder -</small>
+        <label for="create-password">Passwort</label>
+        <input id="create-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="Mindestens 8 Zeichen" required>
+        <label for="create-confirm">Passwort wiederholen</label>
+        <input id="create-confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" placeholder="Passwort erneut eingeben" required>
+      </div>
+      <div id="create-error" class="auth-error" role="alert" hidden></div>
+      <button id="create-submit" class="create-submit" type="submit"><span>Konto erstellen</span><b>↗</b></button>
+      <button id="switch-login" class="text-link" type="button">Zurück zur Anmeldung</button>
+      <p class="create-privacy">Das Konto wird lokal auf diesem Gerät gespeichert.</p>
+    </form>
+  </main>
+
+  <div class="login-signature" aria-hidden="true">
+    <div>airos.app</div>
+    <span></span>
+  </div>
+
+  <nav class="power-controls" aria-label="Energieoptionen">
+    <button type="button" id="sleep-button" class="power-button">
+      <span class="power-icon sleep-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10.5"/><path d="M6 16h20"/></svg></span><span>Ruhezustand</span>
+    </button>
+    <button type="button" id="restart-button" class="power-button">
+      <span class="power-icon restart-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 11a10 10 0 1 1-2.4-3.2"/><path d="M21 3v7h7"/></svg></span><span>Neustart</span>
+    </button>
+    <button type="button" id="shutdown-button" class="power-button">
+      <span class="power-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v12"/><path d="M8.2 7.7a11 11 0 1 0 15.6 0"/></svg></span><span>Ausschalten</span>
+    </button>
+  </nav>
+
+  <div id="sleep-overlay" class="sleep-overlay" hidden role="button" tabindex="0" aria-label="Air-OS aufwecken">
+    <div class="sleep-wordmark"><span class="brand-mark"><i></i><i></i><i></i></span> Air-OS</div>
+    <div class="sleep-message">Zum Aufwecken klicken oder eine Taste drücken</div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>

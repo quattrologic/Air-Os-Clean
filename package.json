@@ -1,0 +1,81 @@
+{
+  "name": "air-os-desktop",
+  "version": "1.0.3",
+  "description": "Air-OS cross-platform desktop environment",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "pack:win": "electron-builder --publish never --win --x64 --arm64",
+    "pack:mac": "electron-builder --publish never --mac dmg zip --universal",
+    "pack:linux": "electron-builder --publish never --linux AppImage deb",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.quattrologic.airos",
+    "productName": "Air-OS",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "index.html",
+      "styles.css",
+      "app.js",
+      "air-os-enhancements.js",
+      "air-os-enhancements.css",
+      "wallpaper.svg",
+      "wallpaper.jpg",
+      "login.html",
+      "login.css",
+      "login.js",
+      "README.md",
+      "package.json",
+      "aircard-lite.js",
+      "aircard/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "minimumSystemVersion": "10.15.0"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "${productName}-${version}-Windows-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "extraResources": [
+      {
+        "from": "aircard",
+        "to": "aircard",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "author": "Air-OS"
+}

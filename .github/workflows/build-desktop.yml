@@ -1,0 +1,71 @@
+name: Build Air-OS desktop installers
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax and package metadata
+        run: |
+          node --check main.cjs
+          node --check preload.cjs
+          node --check app.js
+          node --check air-os-enhancements.js
+          node --check aircard-lite.js
+          node --check login.js
+          node -e "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8'))"
+
+  build-windows:
+    needs: validate-source
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run pack:win
+      - name: Publish Windows installer to GitHub Release
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: air-os-build-${{ github.run_number }}
+          name: Air-OS Build ${{ github.run_number }}
+          draft: false
+          prerelease: true
+          files: dist/*.exe
+
+  build-macos:
+    needs: validate-source
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run pack:mac
+      - name: Publish macOS installer to GitHub Release
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: air-os-build-${{ github.run_number }}
+          name: Air-OS Build ${{ github.run_number }}
+          draft: false
+          prerelease: true
+          files: |
+            dist/*.dmg
+            dist/*.zip
