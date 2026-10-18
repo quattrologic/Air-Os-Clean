@@ -41,7 +41,9 @@
       "aircard-lite.js",
       "aircard/**/*",
       "air-extra-apps.js",
-      "air-extra-apps.css"
+      "air-extra-apps.css",
+      "air-arcade-games.js",
+      "air-arcade-games.css"
     ],
     "mac": {
       "target": [

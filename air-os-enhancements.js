@@ -9,7 +9,7 @@
   appNames.arcade = 'Air Arcade';
   iconClasses.arcade = 'arcade-icon';
   iconGlyphs.arcade = '★';
-  vectorIcon.arcade = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="arcade-bg" x2="0" y2="1"><stop stop-color="#b7e9ff"/><stop offset="1" stop-color="#287ed3"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="15" fill="url(#arcade-bg)"/><path d="M18 21h28a10 10 0 0 1 9 14l-4 12a5 5 0 0 1-8 2l-7-6H28l-7 6a5 5 0 0 1-8-2L9 35a10 10 0 0 1 9-14Z" fill="#f7fbff" stroke="#2365a9" stroke-width="2"/><path d="M20 28v12m-6-6h12" stroke="#2678c9" stroke-width="3" stroke-linecap="round"/><circle cx="43" cy="31" r="2.5" fill="#ee597b"/><circle cx="48" cy="37" r="2.5" fill="#6d69e8"/></svg>';
+  vectorIcon.arcade = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="airjoy" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#21c0ef"/><stop offset="1" stop-color="#167df2"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="#f8f9fc"/><path d="M10 37 29 28V18a5 5 0 1 1 6 0v10l19 9c3 2 3 5 0 7L36 54c-3 2-6 2-9 0L10 44c-3-2-3-5 0-7Z" fill="url(#airjoy)"/><path d="M10 46 27 56q5 3 10 0l17-10v5L37 61q-5 3-10 0L10 51Z" fill="#1988f4"/><ellipse cx="20" cy="39" rx="4" ry="2.5" fill="#fff"/></svg>';
 
   const textExtensions = new Set([
     '.txt', '.md', '.markdown', '.json', '.js', '.cjs', '.mjs', '.css',
@@ -85,6 +85,7 @@
       </div>`;
   }
   function arcadeBody() {
+    if (window.airArcadeGames) return window.airArcadeGames.body();
     return `
       <div class="air-arcade-app">
         <div class="air-arcade-top">
@@ -615,7 +616,8 @@
   function initializeWindow(win) {
     if (!(win instanceof HTMLElement)) return;
     if (win.querySelector('.air-files-app')) mountFiles(win);
-    if (win.querySelector('.air-arcade-app')) mountArcade(win);
+    if (win.querySelector('.arcade-library')) window.airArcadeGames?.mount(win);
+    else if (win.querySelector('.air-arcade-app')) mountArcade(win);
   }
   function patchDockIcon() {
     document.querySelectorAll('.arcade-icon').forEach(icon => {
