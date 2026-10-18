@@ -677,3 +677,10 @@ button{ -webkit-tap-highlight-color:transparent}
   width:100%;
   height:100%;
 }
+
+/* Compact desktop shortcuts; dock icon size remains controlled by Air-OS settings. */
+.desktop-icons{top:15px;left:12px;width:78px;gap:12px}
+.desktop-icon{width:76px;min-height:79px;gap:3px;padding:3px 2px 4px;font-size:11px}
+.desktop-art{width:49px;height:47px}
+.air-mark{width:24px;height:24px;flex-basis:24px}
+.air-mark img{display:block;width:23px;height:23px;object-fit:contain;border-radius:3px}
