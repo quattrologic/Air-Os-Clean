@@ -1,0 +1,10 @@
+'use strict';
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { validateDocument, compare } = require('../cloud-sync/core.cjs');
+const a = { kind: 'settings', id: 'default', updatedAt: '2026-10-18T00:00:00Z', data: { theme: 'dark' } };
+test('accepts safe settings', () => assert.deepEqual(validateDocument(a), a));
+test('rejects credentials recursively', () => assert.throws(() => validateDocument({ ...a, data: { nested: { passwordHash: 'x' } } }), /Sensitive/));
+test('rejects accounts', () => assert.throws(() => validateDocument({ ...a, kind: 'accounts' }), /Unsupported/));
+test('detects conflicts without overwriting', () => assert.equal(compare(a, { ...a, data: { theme: 'light' } }).status, 'conflict'));
+test('recognizes equal documents', () => assert.equal(compare(a, a).status, 'equal'));
