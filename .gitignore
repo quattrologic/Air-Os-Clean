@@ -7,3 +7,22 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Local account data, credentials and signing material
+accounts.json
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa
+id_ed25519
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.crt
+*.sqlite
+*.sqlite3
+*.db
+coverage/
+.nyc_output/
+npm-debug.log*
