@@ -19,9 +19,17 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Check JavaScript syntax
+        run: |
+          node --check main.cjs
+          node --check preload.cjs
+          node --check app.js
+          node --check air-os-enhancements.js
+          node --check aircard-lite.js
       - name: Audit production and development dependencies
         run: npm audit --audit-level=high
       - name: Check for accidentally tracked private files
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
