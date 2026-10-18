@@ -6,6 +6,6 @@
 
 `cloud-sync/airwrite-profile.cjs` stellt eine strikte Upload-Datengrenze bereit: ausschließlich `version`, `id`, `name`, `glyphs`. Glyphen bestehen aus normalisierten Strichpunkten. Unbekannte Felder werden abgewiesen; Zustimmung und ausgewählte Profil-ID sind Pflicht. Der Baustein sendet **keine** Netzwerkdaten.
 
-**Noch zu implementieren:** Das bisherige `airwrite.js` ist ein einfacher Zeichenblock und noch **kein** Handschrift-Schriftprofil-Editor oder Text-zu-Handschrift-Renderer. Als Nächstes benötigt AirWrite Buchstaben-Erfassung, lokale Profilverwaltung, Glyphenlayout für eingegebenen Text und PNG-Export. Erst danach sichere Supabase-Authentifizierung, RLS und einen expliziten Upload/Download nur der ausgewählten Profile. Profile sind biometrieähnliche persönliche Daten; Datenschutz und ggf. Verschlüsselung vor Aktivierung prüfen.
+**Aktueller Stand:** AirWrite bietet jetzt eine lokale Handschrift-Erfassung, die Darstellung eingegebener Texte mit erfassten Glyphen und einen PNG-Export. Diese Funktionen arbeiten ohne Cloud. Sichere Supabase-Authentifizierung, RLS sowie ein ausdrücklicher Upload/Download nur ausgewählter Profile sind weiterhin nicht implementiert. Profile sind biometrieähnliche persönliche Daten; Datenschutz und ggf. Verschlüsselung vor Aktivierung prüfen.
 
 Test: `node --test tests/airwrite-profile.test.cjs`.

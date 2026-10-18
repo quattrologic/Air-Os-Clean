@@ -50,7 +50,7 @@ Installer lokal erstellen: `npm run pack:win`, `npm run pack:mac` oder `npm run 
 | Kalender | Lokale Termine und ICS-Export |
 | Mail / Spotify | Links zu den jeweiligen externen Diensten |
 | AirCard Lite | Lokale Artwork-Verwaltung; Wallet-Funktionen benötigen ein **separates, nicht mitgeliefertes** macOS-Backend |
-| AirWrite | Einfacher Zeichenblock; vollständige Handschriftprofile und PNG-Textausgabe sind noch nicht fertig |
+| AirWrite | Persönliche Buchstaben erfassen, lokal speichern, Texte in eigener Handschrift darstellen und als PNG exportieren; Cloud-Sync ist noch nicht aktiv |
 | Cloud-Sync | Nicht allgemein aktiv; vorhandene Module sind vorbereitende, lokal getestete Bausteine |
 
 ## Dokumentation und Mitarbeit
