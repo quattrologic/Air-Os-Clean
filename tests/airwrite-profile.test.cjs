@@ -1,0 +1,11 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const {validateProfile,prepareProfileUpload}=require('../cloud-sync/airwrite-profile.cjs');
+const p={version:1,id:'personal',name:'Meine Handschrift',glyphs:{A:[[{x:0,y:0},{x:1,y:1}]]}};
+test('accepts glyph-only profile',()=>assert.deepEqual(validateProfile(p),p));
+test('rejects text content',()=>assert.throws(()=>validateProfile({...p,text:'private text'}),/Unexpected/));
+test('rejects PNG data',()=>assert.throws(()=>validateProfile({...p,png:'data:image/png;base64,...'}),/Unexpected/));
+test('requires explicit consent',()=>assert.throws(()=>prepareProfileUpload(p),/not approved/));
+test('requires selection of profile',()=>assert.throws(()=>prepareProfileUpload(p,{enabled:true,profileIds:['other']}),/not approved/));
+test('allows selected profile',()=>assert.deepEqual(prepareProfileUpload(p,{enabled:true,profileIds:['personal']}),p));
+test('rejects invalid glyph points',()=>assert.throws(()=>validateProfile({...p,glyphs:{A:[[{x:3,y:0}]]}}),/Invalid point/));
