@@ -43,4 +43,6 @@ function mount(id,win){
  }
 }
 window.airExtraApps={body,mount,icons};
+if(typeof vectorIcon!=="undefined"){Object.assign(vectorIcon,icons);if(typeof paintAppIcons==="function")paintAppIcons();}
+document.querySelectorAll(".arcade-icon").forEach(el=>el.innerHTML=icons.arcade);
 })();
