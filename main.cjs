@@ -77,7 +77,13 @@ function createWindow() {
   });
   mainWindow.once('ready-to-show', () => mainWindow.show());
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('https://')) shell.openExternal(url);
+    // Only open well-formed HTTPS URLs. Reject embedded credentials and deceptive schemes.
+    try {
+      const target = new URL(url);
+      if (target.protocol === 'https:' && !target.username && !target.password && target.hostname && !target.hostname.endsWith('.')) {
+        void shell.openExternal(target.href).catch(error => console.error('External link failed:', error));
+      }
+    } catch { /* Ignore malformed external URLs. */ }
     return { action: 'deny' };
   });
   mainWindow.webContents.on('will-navigate', (event, url) => {
