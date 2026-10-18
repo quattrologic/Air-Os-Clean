@@ -37,6 +37,8 @@
       "README.md",
       "package.json",
       "aircard-lite.js",
+      "air-extra-apps.js",
+      "air-extra-apps.css",
       "aircard/**/*"
     ],
     "mac": {
