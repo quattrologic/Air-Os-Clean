@@ -12,8 +12,8 @@
     "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron": "22.3.27",
-    "electron-builder": "24.13.3"
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
   },
   "build": {
     "appId": "com.quattrologic.airos",
@@ -45,7 +45,7 @@
         "zip"
       ],
       "category": "public.app-category.productivity",
-      "minimumSystemVersion": "10.15.0"
+      "minimumSystemVersion": "12.0.0"
     },
     "win": {
       "target": [
