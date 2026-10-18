@@ -8,18 +8,13 @@
 
 > **Hinweis:** Air-OS ist eine Desktop-Anwendung, **kein bootfähiges Betriebssystem**. Die veröffentlichten Installer sind derzeit nicht mit einem eigenen Code-Signing-Zertifikat signiert. Builds sind Vorabversionen.
 
-## Herunterladen
+## Entwicklungsstatus – noch keine öffentliche Veröffentlichung
 
-**[Neueste Versionen für Windows und macOS](https://github.com/quattrologic/Air-Os-Clean/releases)**
+> **Air-OS befindet sich in aktiver Entwicklung.** Es gibt derzeit **keinen offiziell freigegebenen Download**. Funktionen können fehlen oder sich ändern; die Installer sind noch nicht signiert.
 
-| System | Datei | Hinweis |
-| --- | --- | --- |
-| Windows (Intel/AMD, 64 Bit) | `Air-OS-*-Windows-x64.exe` | Normaler Windows-Installer |
-| Windows (ARM64) | `Air-OS-*-Windows-arm64.exe` | Für ARM-basierte Geräte |
-| macOS | `Air-OS-*-mac-universal.dmg` | Universal-Build |
-| macOS (ZIP) | `Air-OS-*-mac-universal.zip` | Alternative zum DMG |
+Die veröffentlichten Quelltexte dienen der transparenten Entwicklung. GitHub Actions erzeugt Test-Installer für die interne Erprobung. **Achtung:** Bei einem öffentlichen Repository sind Actions-Artefakte nicht privat und der Quellcode kann selbst gebaut werden. Ältere GitHub-Releases können weiterhin herunterladbar sein, solange sie nicht separat entfernt werden.
 
-Die neuesten Builds stehen unter **Releases**; die Dateinamen enthalten derzeit die App-Version 1.0.3. GitHub Actions erstellt nach Änderungen neue Vorab-Builds.
+Projektstatus: [Roadmap](ROADMAP.md) · [Änderungen](CHANGELOG.md) · [Build-Prüfungen](https://github.com/quattrologic/Air-Os-Clean/actions)
 
 ## Schnellstart für Entwickler
 

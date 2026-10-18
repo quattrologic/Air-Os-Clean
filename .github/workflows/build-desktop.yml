@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate-source:
@@ -38,15 +38,14 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm run pack:win
-      - name: Publish Windows installer to GitHub Release
+      - name: Upload Windows test installers (not a public release)
         if: github.event_name != 'pull_request'
-        uses: softprops/action-gh-release@v2
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: air-os-build-${{ github.run_number }}
-          name: Air-OS Build ${{ github.run_number }}
-          draft: false
-          prerelease: true
-          files: dist/*.exe
+          name: Air-OS-Windows-test
+          path: dist/*.exe
+          if-no-files-found: error
+          retention-days: 7
 
   build-macos:
     needs: validate-source
@@ -58,14 +57,13 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm run pack:mac
-      - name: Publish macOS installer to GitHub Release
+      - name: Upload macOS test installers (not a public release)
         if: github.event_name != 'pull_request'
-        uses: softprops/action-gh-release@v2
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: air-os-build-${{ github.run_number }}
-          name: Air-OS Build ${{ github.run_number }}
-          draft: false
-          prerelease: true
-          files: |
+          name: Air-OS-macOS-test
+          path: |
             dist/*.dmg
             dist/*.zip
+          if-no-files-found: error
+          retention-days: 7
