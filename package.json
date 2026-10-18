@@ -37,7 +37,9 @@
       "README.md",
       "package.json",
       "aircard-lite.js",
-      "aircard/**/*"
+      "aircard/**/*",
+      "airwrite.js",
+      "airwrite.css"
     ],
     "mac": {
       "target": [
