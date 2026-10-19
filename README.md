@@ -14,7 +14,7 @@
 
 Die veröffentlichten Quelltexte dienen der transparenten Entwicklung. GitHub Actions erzeugt Test-Installer für die interne Erprobung. **Achtung:** Bei einem öffentlichen Repository sind Actions-Artefakte nicht privat und der Quellcode kann selbst gebaut werden. Ältere GitHub-Releases können weiterhin herunterladbar sein, solange sie nicht separat entfernt werden.
 
-Projektstatus: [Roadmap](ROADMAP.md) · [Änderungen](CHANGELOG.md) · [Build-Prüfungen](https://github.com/quattrologic/Air-Os-Clean/actions)
+Projektstatus: [Architektur](docs/ARCHITECTURE.md) · [Roadmap](ROADMAP.md) · [Änderungen](CHANGELOG.md) · [Build-Prüfungen](https://github.com/quattrologic/Air-Os-Clean/actions)
 
 ## Schnellstart für Entwickler
 
