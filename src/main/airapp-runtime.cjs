@@ -4,7 +4,7 @@ const CSP="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inlin
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp'};
 function createRuntime({BrowserWindow,protocol,session,manager}){
  protocol.registerSchemesAsPrivileged([{scheme:'airapp',privileges:{standard:true,secure:true,supportFetchAPI:true,corsEnabled:true}}]);
- const windows=new Map();
+ const windows=new Map(),configured=new WeakSet();
  function key(user,id){return crypto.createHash('sha256').update(user.toLowerCase()).digest('hex')+'/'+id}
  function isAllowed(url,id){
   try{const p=new URL(url);return p.protocol==='airapp:'&&p.hostname===id&&!p.port&&!p.username&&!p.password&&!p.search&&!p.hash}
@@ -18,6 +18,7 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   const installedManifest=JSON.parse(await fs.readFile(path.join(folder,'manifest.airapp.json'),'utf8'));
   const allowed=new Set(installedManifest.files.map(item=>item.path));
   const partition=session.fromPartition('persist:airapp-'+k.replace('/','-'));
+  if(!configured.has(partition)){
   partition.protocol.handle('airapp',async request=>{
    if(request.method!=='GET'||!isAllowed(request.url,id))return new Response('Forbidden',{status:403});
    let name;try{name=decodeURIComponent(new URL(request.url).pathname).replace(/^\/+/,'')}catch{return new Response('Forbidden',{status:403})}
@@ -33,6 +34,8 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   partition.setPermissionRequestHandler((wc,permission,callback)=>callback(false));
   partition.setPermissionCheckHandler(()=>false);
   partition.on('will-download',e=>e.preventDefault());
+  configured.add(partition);
+  }
   const win=new BrowserWindow({width:660,height:540,minWidth:440,minHeight:400,title:record.name,show:false,backgroundColor:'#d9edfc',autoHideMenuBar:true,webPreferences:{session:partition,nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,webviewTag:false}});
   windows.set(k,win);
   win.webContents.setWindowOpenHandler(()=>({action:'deny'}));

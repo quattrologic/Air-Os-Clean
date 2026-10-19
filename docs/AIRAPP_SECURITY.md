@@ -26,3 +26,7 @@ Der Demo-Signierschlüssel darf **nicht** ins Repository eingecheckt werden. `np
 `src/main/airapp-runtime.cjs` registriert vor Electron-Start das sichere `airapp:`-Schema. Für installierte Pakete wird pro Benutzer und App eine eigene Session-Partition verwendet. Berechtigungsanfragen, externe Netzwerke, Downloads, Popups, Webviews und unbekannte Navigationsziele werden blockiert. Der Dateidienst erlaubt nur im installierten Manifest benannte, reguläre Dateien und setzt CSP-Header. Der Renderer bekommt weder Preload noch Node-Zugriff.
 
 Ein lokaler Katalog mit signiertem `Air Timer`-Demo-Paket ist vorhanden. Sein öffentlicher Demo-Schlüssel ist im Repository, der private Schlüssel **nicht**. Die GUI wird separat ergänzt; der Signatur- und Sandbox-Code muss noch gegen eine echte Electron-Laufzeit getestet werden.
+
+## Lokaler Demo-Katalog
+
+Air Timer liegt als unterschriebenes UTF-8-Paket in `store/catalog/demo-timer.airapp`. SHA256-Dateiprüfung und Ed25519-Signatur werden vor dem Kopieren geprüft. Der private Demo-Signierschlüssel wurde **nicht** im Repository hinterlegt. Die neue `Air App Store`-Ansicht installiert und deinstalliert diese konkrete App pro Benutzer und startet sie über den isolierten Electron-Runtime-Adapter. Es gibt **keinen** freien Download fremder Pakete, keine Zahlungen und keine anwendungsspezifischen Berechtigungen.

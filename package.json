@@ -64,7 +64,9 @@
       "src/main/airapp-manager.cjs",
       "src/main/airapp-runtime.cjs",
       "store/catalog/**/*",
-      "store/keys/**/*"
+      "store/keys/**/*",
+      "air-app-store.js",
+      "air-app-store.css"
     ],
     "mac": {
       "target": [
