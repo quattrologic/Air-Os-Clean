@@ -16,6 +16,8 @@ test('bundled demo signature and file hashes pass and install survives restart',
   assert.equal(manager.installed('alice').length,1);
   const installedPath=manager.installedFolder('alice',app.id);
   assert.ok(fs.readFileSync(path.join(installedPath,'index.html'),'utf8').includes('Air Timer'));
+  fs.appendFileSync(path.join(installedPath,'timer.js'),'// tampered');
+  assert.throws(()=>manager.installedFolder('alice',app.id),/integrity/);
   assert.equal(manager.remove('alice',app.id).ok,true);
   assert.equal(manager.installed('alice').length,0);
  }finally{fs.rmSync(dir,{recursive:true,force:true})}

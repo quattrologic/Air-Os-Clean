@@ -68,8 +68,26 @@ function createManager({root,appPath,publicKeys}){
   persist(user,current.filter(a=>a.id!==id));return{ok:true};
  }
  function installedFolder(user,id){
-  if(!Object.prototype.hasOwnProperty.call(CATALOG,id)||!installed(user).some(a=>a.id===id))throw new Error('App not installed.');
-  return path.join(profile(user),id);
+  if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');
+  const record=installed(user).find(a=>a.id===id);if(!record)throw new Error('App not installed.');
+  // Verify the original signed manifest AND every installed asset again on launch.
+  // User-writable files must not silently become unsigned executable content.
+  const signed=manifestFor(id),m=signed.manifest;
+  if(record.entry!==m.entry||record.version!==m.version||record.name!==m.name)throw new Error('Installed metadata mismatch.');
+  const folder=path.join(profile(user),id);
+  const realFolder=fs.realpathSync(folder);
+  if(!fs.lstatSync(folder).isDirectory()||fs.lstatSync(folder).isSymbolicLink())throw new Error('Invalid installation directory.');
+  const copy=JSON.parse(fs.readFileSync(path.join(folder,'manifest.airapp.json'),'utf8'));
+  if(JSON.stringify(copy)!==JSON.stringify(m))throw new Error('Installed manifest integrity check failed.');
+  for(const {path:name,sha256} of m.files){
+   const local=path.join(folder,name);
+   const stat=fs.lstatSync(local);
+   if(!stat.isFile()||stat.isSymbolicLink())throw new Error('Invalid installed asset.');
+   const canonical=fs.realpathSync(local),relative=path.relative(realFolder,canonical);
+   if(relative==='..'||relative.startsWith('..'+path.sep)||path.isAbsolute(relative))throw new Error('Installed asset escapes application folder.');
+   if(crypto.createHash('sha256').update(fs.readFileSync(local)).digest('hex')!==sha256)throw new Error('Installed file integrity check failed.');
+  }
+  return folder;
  }
  return Object.freeze({catalog,installed,install,remove,installedFolder});
 }
