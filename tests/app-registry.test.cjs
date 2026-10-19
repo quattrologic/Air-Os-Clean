@@ -16,7 +16,7 @@ test('lookups are safe and snapshots immutable',()=>{
   assert.ok(Object.isFrozen(all[0]));
 });
 test('trusted extensions can register once',()=>{
-  assert.deepEqual(registry.register('sample-demo',{name:'Sample Demo',iconClass:'demo-icon',glyph:'D'}),{id:'sample-demo',name:'Sample Demo',iconClass:'demo-icon',glyph:'D'});
+  assert.deepEqual(registry.register('sample-demo',{name:'Sample Demo',iconClass:'demo-icon',glyph:'D'}),{id:'sample-demo',name:'Sample Demo',iconClass:'demo-icon',glyph:'D',origin:'builtin'});
   assert.equal(registry.get('sample-demo').name,'Sample Demo');
   assert.throws(()=>registry.register('sample-demo',{name:'Duplicate'}),/bereits registriert/);
 });
