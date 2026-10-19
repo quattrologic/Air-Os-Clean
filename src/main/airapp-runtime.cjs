@@ -23,9 +23,17 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
    if(request.method!=='GET'||!isAllowed(request.url,id))return new Response('Forbidden',{status:403});
    let name;try{name=decodeURIComponent(new URL(request.url).pathname).replace(/^\/+/,'')}catch{return new Response('Forbidden',{status:403})}
    if(!allowed.has(name))return new Response('Forbidden',{status:403});
-   const file=path.join(folder,name);
+   const file=path.resolve(folder,name);
+   // A signed manifest lists valid relative names; resolve and canonicalize
+   // again on every request to detect symlinked parent directories.
    try{
-    const stat=await fs.lstat(file);if(!stat.isFile()||stat.isSymbolicLink())return new Response('Forbidden',{status:403});
+    const verified=manager.installedFolder(user,id);
+    const canonicalRoot=await fs.realpath(verified);
+    const canonicalFile=await fs.realpath(file);
+    const relative=path.relative(canonicalRoot,canonicalFile);
+    if(relative==='..'||relative.startsWith('..'+path.sep)||path.isAbsolute(relative))return new Response('Forbidden',{status:403});
+    const stat=await fs.lstat(file);
+    if(!stat.isFile()||stat.isSymbolicLink())return new Response('Forbidden',{status:403});
     const data=await fs.readFile(file);
     return new Response(data,{headers:{'Content-Type':MIME[path.extname(file)]||'application/octet-stream','Content-Security-Policy':CSP,'X-Content-Type-Options':'nosniff'}});
    }catch{return new Response('Not found',{status:404})}
