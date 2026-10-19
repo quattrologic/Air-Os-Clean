@@ -48,3 +48,9 @@ GitHub Actions führt die Tests aus. Ein grüner Build ersetzt keinen manuellen 
 ## Lifecycle und Launchpad
 
 `src/core/app-lifecycle.js` verfolgt Ereignisse bei Fokus, Minimieren, Maximieren und Schließen und ist per Listener beobachtbar. `air-launchpad.js` ist eine suchbare Kategorienansicht der tatsächlich gebündelten Apps. Starts gehen durch den vorhandenen Fenstermanager. Beide Module führen weder neue Systemberechtigungen ein noch installieren sie Drittanbieter-Code.
+
+## Sichere benutzerspezifische Darstellungseinstellungen
+
+`src/main/preferences.cjs` speichert Wallpaper-Auswahl, Akzent, Dock-Größe, Uhrformat und visuelle Schalter unter `userData/profiles/<SHA256(username)>/appearance-v1.json`. Validierte, atomare Schreibvorgänge finden ausschließlich im Electron-Hauptprozess statt; IPC erlaubt Lesen/Ändern/Zurücksetzen nur für authentifizierte lokale Seiten mit aktivem Air-OS-Benutzer. Unbekannte Felder und potenziell gefährliche Daten-URLs sind verboten. 
+
+**Datenmigration:** Die früheren globalen `localStorage`-Einstellungen werden aus Datenschutzgründen nicht automatisch einem beliebigen angemeldeten Profil zugeordnet. Alte Profileinstellungen können manuell neu gewählt werden. Andere gespeicherte App-Daten (Notizen, Musikplaylists) müssen in einer Folgestufe separat pro Benutzer isoliert werden.

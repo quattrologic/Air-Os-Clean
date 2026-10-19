@@ -486,21 +486,29 @@ function calcEvaluate(expression){
  return result;
 }
 
-const AIR_SETTINGS_KEY="air-os-desktop-settings-v2";
+// Appearance settings are now persisted in an authenticated host-side profile.
+let airSettingsCache={};
+let airSettingsWrites=Promise.resolve();
+const AIR_SETTINGS_KEY="air-os-desktop-settings-v2"; // legacy single-profile key (not read for authenticated profiles)
 const AIR_WALLPAPERS={
  yosemite:'linear-gradient(180deg,#8bb6dc33,#152c5033),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2560&q=85")',
  coast:'url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2560&q=85")',
  aurora:'url("https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=2560&q=85")',
  midnight:'linear-gradient(135deg,#11182e,#273f68 50%,#070b17)'
 };
-function readAirSettings(){
- try{return {...JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||"{}")}}catch{return {}}
-}
+function readAirSettings(){return {...airSettingsCache}}
 function persistAirSettings(patch){
- const next={...readAirSettings(),...patch};
- try{localStorage.setItem(AIR_SETTINGS_KEY,JSON.stringify(next))}catch{toast("Einstellung konnte nicht gespeichert werden. Benutzerdefiniertes Bild eventuell zu groß.");}
- applyAirSettings(next);return next;
+ const next={...readAirSettings(),...patch};airSettingsCache=next;applyAirSettings(next);
+ if(window.airOS?.preferences){
+  airSettingsWrites=airSettingsWrites.then(()=>airSettingsLoad).then(()=>window.airOS.preferences.update(patch)).then(saved=>{airSettingsCache={...airSettingsCache,...saved};}).catch(error=>{console.error('Einstellungen konnten nicht gespeichert werden:',error);toast('Einstellung konnte nicht gespeichert werden.')});
+ }else{
+  try{localStorage.setItem(AIR_SETTINGS_KEY,JSON.stringify(next))}catch{toast('Einstellungen konnten nicht gespeichert werden.')}
+ }
+ return next;
 }
+const airSettingsLoad=window.airOS?.preferences?
+ window.airOS.preferences.get().then(saved=>{airSettingsCache=saved;applyAirSettings(saved)}).catch(error=>{console.error('Einstellungen konnten nicht geladen werden:',error)}):
+ Promise.resolve().then(()=>{try{airSettingsCache=JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||'{}')}catch{};applyAirSettings(airSettingsCache)});
 function applyAirSettings(settings=readAirSettings()){
  const root=document.documentElement,wallpaper=document.querySelector(".wallpaper"),dock=document.querySelector(".dock");
  if(settings.accent)root.style.setProperty("--accent",settings.accent);else root.style.removeProperty("--accent");
@@ -542,8 +550,12 @@ function initAirSettings(win){
   const reader=new FileReader();reader.onload=()=>{persistAirSettings({customWallpaper:reader.result,wallpaper:""});announce("Eigenes Hintergrundbild gespeichert.")};reader.onerror=()=>announce("Bild konnte nicht gelesen werden.");reader.readAsDataURL(file);
  });
  win.querySelector("#reset-settings")?.addEventListener("click",()=>{
-  try{localStorage.removeItem(AIR_SETTINGS_KEY)}catch{}
-  applyAirSettings({});initAirSettingsValuesReset(win);announce("Alle Einstellungen wurden zurückgesetzt.");toast("Darstellung zurückgesetzt");
+  if(window.airOS?.preferences){
+    airSettingsWrites=airSettingsWrites.then(()=>airSettingsLoad).then(()=>window.airOS.preferences.reset()).then(settings=>{airSettingsCache=settings;applyAirSettings(settings);initAirSettingsValuesReset(win);announce('Einstellungen zurückgesetzt.');toast('Darstellung zurückgesetzt')}).catch(()=>announce('Zurücksetzen fehlgeschlagen.'));
+  }else{
+    try{localStorage.removeItem(AIR_SETTINGS_KEY)}catch{}
+    airSettingsCache={};applyAirSettings({});initAirSettingsValuesReset(win);announce('Einstellungen zurückgesetzt.');
+  }
  });
  applyAirSettings(s);
 }

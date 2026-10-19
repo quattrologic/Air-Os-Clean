@@ -51,7 +51,8 @@
       "air-music.css",
       "src/core/app-lifecycle.js",
       "air-launchpad.js",
-      "air-launchpad.css"
+      "air-launchpad.css",
+      "src/main/preferences.cjs"
     ],
     "mac": {
       "target": [

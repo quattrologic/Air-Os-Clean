@@ -9,6 +9,11 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  preferences: Object.freeze({
+    get: () => ipcRenderer.invoke('air-os:preferences:get'),
+    update: patch => ipcRenderer.invoke('air-os:preferences:update',patch),
+    reset: () => ipcRenderer.invoke('air-os:preferences:reset')
+  }),
   files: Object.freeze({
     selectFolder: () => ipcRenderer.invoke('air-os:files:select-folder'),
     currentFolder: () => ipcRenderer.invoke('air-os:files:current-folder'),

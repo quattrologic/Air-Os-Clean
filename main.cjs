@@ -10,6 +10,7 @@ const { execFileSync } = require('node:child_process');
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
+const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -92,6 +93,10 @@ function createWindow() {
   mainWindow.on('closed', () => { mainWindow = null; });
   openLogin();
 }
+function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
+ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
+ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
+ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
 ipcMain.handle('air-os:accounts', event => {
   requireTrusted(event);
   return readAccounts().map(publicAccount);
