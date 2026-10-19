@@ -51,3 +51,33 @@ test('runtime refuses assets modified after initial verification',async()=>{
   assert.equal(result.status,403);
  }finally{c.close()}
 });
+
+test('reopened persistent session loads newly verified manifest and rejects removed assets',async()=>{
+ const c=setup();
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  const old=await c.route()({url:'airapp://com.airos.demo.timer/app.js',method:'GET'});
+  assert.equal(old.status,200);
+  c.runtime.close('Alice','com.airos.demo.timer');
+  // Simulate a signed replacement with a different asset listing.
+  const revised=Buffer.from('<h1>New signed version</h1>');
+  fs.writeFileSync(path.join(c.root,'index.html'),revised);
+  const digest=crypto.createHash('sha256').update(revised).digest('hex');
+  fs.writeFileSync(path.join(c.root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html',sha256:digest}]}));
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  const updated=await c.route()({url:'airapp://com.airos.demo.timer/index.html',method:'GET'});
+  assert.equal(updated.status,200);
+  assert.equal(await updated.text(),revised.toString('utf8'));
+  const removed=await c.route()({url:'airapp://com.airos.demo.timer/app.js',method:'GET'});
+  assert.equal(removed.status,403);
+ }finally{c.close()}
+});
+test('open protocol handler refuses assets when installation is missing',async()=>{
+ const c=setup();
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  c.manager.installedFolder=()=>{throw new Error('App uninstalled')};
+  const response=await c.route()({url:'airapp://com.airos.demo.timer/index.html',method:'GET'});
+  assert.notEqual(response.status,200);
+ }finally{c.close()}
+});
