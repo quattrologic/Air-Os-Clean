@@ -15,7 +15,7 @@
   }
   function list() { return Object.freeze(Object.keys(names).sort().map(get)); }
   function register(id, meta) {
-    if (typeof id !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(id)) throw new TypeError('Ungültige App-ID.');
+    if (typeof id !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(id) || ['constructor','prototype','toString','__proto__'].includes(id)) throw new TypeError('Ungültige App-ID.');
     if (!meta || typeof meta !== 'object' || Array.isArray(meta)) throw new TypeError('Ungültige App-Metadaten.');
     if (has(names,id)) throw new Error('App-ID bereits registriert.');
     if (typeof meta.name !== 'string' || !meta.name.trim() || meta.name.length > 80) throw new TypeError('Ungültiger App-Name.');
