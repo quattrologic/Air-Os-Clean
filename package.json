@@ -49,7 +49,9 @@
       "air-arcade-games.css",
       "air-music.js",
       "air-music.css",
-      "src/core/app-lifecycle.js"
+      "src/core/app-lifecycle.js",
+      "air-launchpad.js",
+      "air-launchpad.css"
     ],
     "mac": {
       "target": [

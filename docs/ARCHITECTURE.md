@@ -44,3 +44,7 @@ node --check app.js
 npm run check:catalina
 ```
 GitHub Actions führt die Tests aus. Ein grüner Build ersetzt keinen manuellen Funktionstest auf macOS 10.15.8.
+
+## Lifecycle und Launchpad
+
+`src/core/app-lifecycle.js` verfolgt Ereignisse bei Fokus, Minimieren, Maximieren und Schließen und ist per Listener beobachtbar. `air-launchpad.js` ist eine suchbare Kategorienansicht der tatsächlich gebündelten Apps. Starts gehen durch den vorhandenen Fenstermanager. Beide Module führen weder neue Systemberechtigungen ein noch installieren sie Drittanbieter-Code.

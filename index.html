@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="air-extra-apps.css">
   <link rel="stylesheet" href="airwrite.css">
   <link rel="stylesheet" href="air-music.css">
+  <link rel="stylesheet" href="air-launchpad.css">
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
@@ -55,6 +56,7 @@
     <div id="windows" class="windows"></div>
   </main>
   <nav class="dock" aria-label="App-Dock">
+    <button class="dock-app" data-app="launchpad" title="Launchpad"><span class="dock-icon launchpad-icon"></span></button>
     <button class="dock-app" data-app="finder" title="Finder"><span class="dock-icon finder-icon"></span></button>
     <button class="dock-app" data-app="browser" title="Safari"><span class="dock-icon browser-icon"></span></button>
     <button class="dock-app" data-app="tagesschau" title="tagesschau"><span class="dock-icon tagesschau-icon"></span></button>
@@ -81,6 +83,7 @@
   <script src="src/core/app-registry.js"></script>
   <script src="src/core/app-lifecycle.js"></script>
   <script src="app.js"></script>
+  <script src="air-launchpad.js"></script>
   <script src="air-arcade-games.js"></script>
   <script src="node_modules/amplitudejs/dist/amplitude.min.js"></script>
   <script src="air-music.js"></script>
