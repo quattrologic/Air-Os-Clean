@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="airwrite.css">
   <link rel="stylesheet" href="air-music.css">
   <link rel="stylesheet" href="air-launchpad.css">
+  <link rel="stylesheet" href="air-spotlight.css">
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
@@ -27,6 +28,7 @@
       <button class="menu-item" id="help-menu">Hilfe</button>
     </div>
     <div class="menu-right">
+      <button type="button" id="air-search-open" aria-label="Air-OS Suche öffnen" title="App-Suche (⌘/Ctrl+K)">⌕</button>
       <span class="system-symbol" aria-label="WLAN">⌁</span><span class="system-symbol" aria-label="Ton">◖</span><span class="battery"><i></i></span>
       <span id="clock">Di. 13. Mai 16:24</span>
       <div class="account-menu-wrap" id="account-menu-wrap" hidden>
@@ -84,6 +86,8 @@
   <script src="src/core/app-lifecycle.js"></script>
   <script src="app.js"></script>
   <script src="air-launchpad.js"></script>
+  <script src="src/core/search-service.js"></script>
+  <script src="air-spotlight.js"></script>
   <script src="air-arcade-games.js"></script>
   <script src="node_modules/amplitudejs/dist/amplitude.min.js"></script>
   <script src="air-music.js"></script>

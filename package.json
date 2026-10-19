@@ -52,7 +52,10 @@
       "src/core/app-lifecycle.js",
       "air-launchpad.js",
       "air-launchpad.css",
-      "src/main/preferences.cjs"
+      "src/main/preferences.cjs",
+      "src/core/search-service.js",
+      "air-spotlight.js",
+      "air-spotlight.css"
     ],
     "mac": {
       "target": [
