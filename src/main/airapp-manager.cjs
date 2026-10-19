@@ -42,7 +42,7 @@ function createManager({root,appPath,publicKeys}){
   try{transaction=JSON.parse(fs.readFileSync(journal,'utf8'))}
   catch(error){if(error.code==='ENOENT')return;throw new Error('App removal journal is corrupt; manual recovery required.')}
   if(!transaction||transaction.version!==1||!Object.prototype.hasOwnProperty.call(CATALOG,transaction.id)||
-     typeof transaction.staged!=='string'||!/^\\.uninstall-[0-9a-f]{24}$/.test(transaction.staged))
+     typeof transaction.staged!=='string'||!/^\.uninstall-[0-9a-f]{24}$/.test(transaction.staged))
     throw new Error('Invalid removal journal; manual recovery required.');
   const base=profile(user),target=path.join(base,transaction.id),staged=path.join(base,transaction.staged);
   const inIndex=readIndex(user).some(a=>a.id===transaction.id);
