@@ -14,6 +14,7 @@
   async function refresh(){
    try{
     const [catalog,installed]=await Promise.all([api.catalog(),api.installed()]);
+    registry.syncInstalled(installed);
     list.replaceChildren();
     for(const entry of catalog){
      const isInstalled=installed.some(a=>a.id===entry.id);

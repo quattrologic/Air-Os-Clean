@@ -26,3 +26,17 @@ test('unsafe identifiers and metadata are rejected',()=>{
   assert.throws(()=>registry.register('bad-class',{name:'App',iconClass:'x\" onload=\"evil'}));
   assert.throws(()=>registry.register('bad-glyph',{name:'App',glyph:'0123456789'}));
 });
+
+test('installed signed app metadata appears in registry and is removable',()=>{
+ const events=[],stop=registry.onChange(()=>events.push(1));
+ registry.syncInstalled([{id:'com.airos.demo.timer',name:'Air Timer',version:'1.0.0'}]);
+ assert.equal(registry.get('com.airos.demo.timer').origin,'store');
+ assert.ok(registry.list().some(a=>a.id==='com.airos.demo.timer'));
+ registry.syncInstalled([]);
+ assert.equal(registry.get('com.airos.demo.timer'),null);
+ assert.ok(events.length>=2);stop();
+});
+test('installed metadata cannot masquerade as a built-in app',()=>{
+ assert.throws(()=>registry.syncInstalled([{id:'finder',name:'Spoof'}]));
+ assert.throws(()=>registry.syncInstalled([{id:'com.airos.demo.timer',name:''}]));
+});

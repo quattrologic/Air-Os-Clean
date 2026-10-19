@@ -30,3 +30,7 @@ Ein lokaler Katalog mit signiertem `Air Timer`-Demo-Paket ist vorhanden. Sein ö
 ## Lokaler Demo-Katalog
 
 Air Timer liegt als unterschriebenes UTF-8-Paket in `store/catalog/demo-timer.airapp`. SHA256-Dateiprüfung und Ed25519-Signatur werden vor dem Kopieren geprüft. Der private Demo-Signierschlüssel wurde **nicht** im Repository hinterlegt. Die neue `Air App Store`-Ansicht installiert und deinstalliert diese konkrete App pro Benutzer und startet sie über den isolierten Electron-Runtime-Adapter. Es gibt **keinen** freien Download fremder Pakete, keine Zahlungen und keine anwendungsspezifischen Berechtigungen.
+
+## App-Verwaltung und Launchpad
+
+Nach Anmeldung liest `air-app-bootstrap.js` über die bereits authentifizierte IPC-Schnittstelle die tatsächlich installierten Air-OS-Apps. `airAppRegistry.syncInstalled()` legt reine Metadaten mit `origin: 'store'` an; installierte Apps erscheinen damit in Launchpad und Spotlight. Eine solche Registrierung erteilt selbst **keine** Rechte: `openApp()` delegiert den Start an den Hauptprozess, der Installation, Profil und Signatur erneut verifiziert.

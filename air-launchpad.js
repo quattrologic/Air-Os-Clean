@@ -24,7 +24,8 @@
   }
   search.addEventListener('input',render);
   const off=window.airAppLifecycle?.onChange(()=>{if(win.isConnected)render()});
-  const host=document.querySelector('#windows');if(host){const observer=new MutationObserver(()=>{if(!win.isConnected){off?.();observer.disconnect()}});observer.observe(host,{childList:true})}
+  const offRegistry=registry.onChange(()=>{if(win.isConnected)render()});
+  const host=document.querySelector('#windows');if(host){const observer=new MutationObserver(()=>{if(!win.isConnected){off?.();offRegistry?.();observer.disconnect()}});observer.observe(host,{childList:true})}
   render();
  }
  vectorIcon.launchpad='<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#b8dffa"/>'+Array.from({length:9},(_,i)=>'<rect x="'+(13+i%3*15)+'" y="'+(13+Math.floor(i/3)*15)+'" width="10" height="10" rx="3" fill="'+(i===4?'#248ed7':'#f9fcff')+'"/>').join('')+'</svg>';

@@ -357,6 +357,12 @@ function clampAppWindow(win){
 }
 
 function openApp(id){
+ const registered=window.airAppRegistry?.get(id);
+ if(registered?.origin==='store'){
+  if(!window.airOS?.appStore?.launch){toast('Diese App kann nur in Air-OS geöffnet werden.');return}
+  window.airOS.appStore.launch(id).catch(error=>toast(error.message||'App konnte nicht geöffnet werden.'));
+  return;
+ }
  if(!appNames[id])return;
  if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;
@@ -650,7 +656,7 @@ for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-
     event.preventDefault();
     event.stopPropagation();
     const id = launcher.dataset.app;
-    if (id && appNames[id]) openApp(id);
+    if (id && window.airAppRegistry?.get(id)) openApp(id);
     else if (id) toast("Diese App ist noch nicht verfügbar.");
   }, true);
 }
