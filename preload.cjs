@@ -9,6 +9,13 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  appStore: Object.freeze({
+    catalog: () => ipcRenderer.invoke('air-os:store:catalog'),
+    installed: () => ipcRenderer.invoke('air-os:store:installed'),
+    install: id => ipcRenderer.invoke('air-os:store:install',id),
+    remove: id => ipcRenderer.invoke('air-os:store:remove',id),
+    launch: id => ipcRenderer.invoke('air-os:store:launch',id)
+  }),
   notes: Object.freeze({
     list: () => ipcRenderer.invoke('air-os:notes:list'),
     save: note => ipcRenderer.invoke('air-os:notes:save',note),

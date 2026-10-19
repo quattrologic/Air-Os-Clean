@@ -59,7 +59,12 @@
       "air-spotlight.js",
       "air-spotlight.css",
       "src/main/notes-store.cjs",
-      "air-notes.js"
+      "air-notes.js",
+      "src/main/airapp-package.cjs",
+      "src/main/airapp-manager.cjs",
+      "src/main/airapp-runtime.cjs",
+      "store/catalog/**/*",
+      "store/keys/**/*"
     ],
     "mac": {
       "target": [

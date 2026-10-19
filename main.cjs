@@ -12,6 +12,11 @@ let activeUser = null;
 let fileWorkspaceRoot = null;
 const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
 const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
+const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
+ root:()=>app.getPath('userData'),appPath:()=>app.getAppPath(),
+ publicKeys:{demo:fs.readFileSync(path.join(__dirname,'store','keys','demo-publisher-public.txt'),'utf8')}
+});
+const airAppRuntime=require('./src/main/airapp-runtime.cjs').createRuntime({BrowserWindow,protocol:require('electron').protocol,session,manager:airAppManager});
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -54,6 +59,7 @@ function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
 function openLogin() {
+  airAppRuntime.closeAll();
   activeUser = null;
   fileWorkspaceRoot = null;
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -91,7 +97,7 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.on('closed', () => { mainWindow = null; });
+  mainWindow.on('closed', () => { airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
@@ -101,6 +107,11 @@ ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePr
 ipcMain.handle('air-os:notes:list',event=>notesStore.list(requirePreferenceUser(event)));
 ipcMain.handle('air-os:notes:save',(event,note)=>notesStore.save(requirePreferenceUser(event),note));
 ipcMain.handle('air-os:notes:remove',(event,id)=>notesStore.remove(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:store:catalog',event=>{requirePreferenceUser(event);return airAppManager.catalog()});
+ipcMain.handle('air-os:store:installed',event=>airAppManager.installed(requirePreferenceUser(event)));
+ipcMain.handle('air-os:store:install',(event,id)=>airAppManager.install(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:store:remove',(event,id)=>{const user=requirePreferenceUser(event);airAppRuntime.close(user,id);return airAppManager.remove(user,id)});
+ipcMain.handle('air-os:store:launch',(event,id)=>airAppRuntime.open(requirePreferenceUser(event),id));
 ipcMain.handle('air-os:accounts', event => {
   requireTrusted(event);
   return readAccounts().map(publicAccount);

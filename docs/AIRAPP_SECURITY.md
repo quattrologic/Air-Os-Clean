@@ -20,3 +20,9 @@ Ein UTF-8-JSON-Dokument mit `manifest`, `assets`, `signer` und `signature`. Sign
 Ed25519-Prüfung bietet Herkunftsschutz nur solange der private Signierschlüssel geheim bleibt. Ein Demo-Schlüssel ist keine Produktions-Trust-Root. Später erforderlich: kanonische Signaturserialisierung (z.B. RFC 8785), Schlüsselrotation/Widerruf, Version-Rollback-Schutz, Plattformprüfungen, Größenlimits, konsistente Deinstallations-Transaktionen, CSP, Berechtigungsdialoge, unabhängige Penetrationstests und Code Signing der Host-Anwendung.
 
 Der Demo-Signierschlüssel darf **nicht** ins Repository eingecheckt werden. `npm audit` bleibt unabhängig davon ein Release-Blocker.
+
+## Sandbox-Runtime und Integration
+
+`src/main/airapp-runtime.cjs` registriert vor Electron-Start das sichere `airapp:`-Schema. Für installierte Pakete wird pro Benutzer und App eine eigene Session-Partition verwendet. Berechtigungsanfragen, externe Netzwerke, Downloads, Popups, Webviews und unbekannte Navigationsziele werden blockiert. Der Dateidienst erlaubt nur im installierten Manifest benannte, reguläre Dateien und setzt CSP-Header. Der Renderer bekommt weder Preload noch Node-Zugriff.
+
+Ein lokaler Katalog mit signiertem `Air Timer`-Demo-Paket ist vorhanden. Sein öffentlicher Demo-Schlüssel ist im Repository, der private Schlüssel **nicht**. Die GUI wird separat ergänzt; der Signatur- und Sandbox-Code muss noch gegen eine echte Electron-Laufzeit getestet werden.
