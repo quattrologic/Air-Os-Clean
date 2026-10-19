@@ -15,20 +15,19 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   if(!record)throw new Error('App not installed.');
   const k=key(user,id),existing=windows.get(k);
   if(existing&&!existing.isDestroyed()){existing.show();existing.focus();return{ok:true,alreadyOpen:true}}
-  const installedManifest=JSON.parse(await fs.readFile(path.join(folder,'manifest.airapp.json'),'utf8'));
-  const expected=new Map(installedManifest.files.map(item=>[item.path,item.sha256]));
-  const allowed=new Set(expected.keys());
   const partition=session.fromPartition('persist:airapp-'+k.replace('/','-'));
   if(!configured.has(partition)){
   partition.protocol.handle('airapp',async request=>{
    if(request.method!=='GET'||!isAllowed(request.url,id))return new Response('Forbidden',{status:403});
    let name;try{name=decodeURIComponent(new URL(request.url).pathname).replace(/^\/+/,'')}catch{return new Response('Forbidden',{status:403})}
-   if(!allowed.has(name))return new Response('Forbidden',{status:403});
-   const file=path.resolve(folder,name);
-   // A signed manifest lists valid relative names; resolve and canonicalize
-   // again on every request to detect symlinked parent directories.
    try{
+    // A partition can outlive its BrowserWindow. On every request, verify the
+    // *currently installed* signed package, not a stale first-launch manifest.
     const verified=manager.installedFolder(user,id);
+    const current=JSON.parse(await fs.readFile(path.join(verified,'manifest.airapp.json'),'utf8'));
+    const asset=Array.isArray(current.files)?current.files.find(item=>item.path===name):null;
+    if(!asset||typeof asset.sha256!=='string')return new Response('Forbidden',{status:403});
+    const file=path.resolve(verified,name);
     const canonicalRoot=await fs.realpath(verified);
     const canonicalFile=await fs.realpath(file);
     const relative=path.relative(canonicalRoot,canonicalFile);
@@ -36,8 +35,7 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
     const stat=await fs.lstat(file);
     if(!stat.isFile()||stat.isSymbolicLink())return new Response('Forbidden',{status:403});
     const data=await fs.readFile(file);
-    // Check bytes actually served, not merely those inspected before read.
-    if(crypto.createHash('sha256').update(data).digest('hex')!==expected.get(name))return new Response('Integrity check failed',{status:403});
+    if(crypto.createHash('sha256').update(data).digest('hex')!==asset.sha256)return new Response('Integrity check failed',{status:403});
     return new Response(data,{headers:{'Content-Type':MIME[path.extname(file)]||'application/octet-stream','Content-Security-Policy':CSP,'X-Content-Type-Options':'nosniff'}});
    }catch{return new Response('Not found',{status:404})}
   });
