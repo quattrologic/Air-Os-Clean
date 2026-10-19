@@ -72,3 +72,53 @@ test('removal rejects replaced symlink app folders',()=>{
   assert.ok(fs.statSync(dir).isDirectory());
  }finally{fs.rmSync(dir,{recursive:true,force:true})}
 });
+
+function installedDemoFixture(prefix){
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),prefix));
+ const key=fs.readFileSync(path.join(appPath,'store','keys','demo-publisher-public.txt'),'utf8');
+ const manager=()=>createManager({root:()=>dir,appPath:()=>appPath,publicKeys:{demo:key}});
+ const app=manager().catalog().find(a=>a.id==='com.airos.demo.timer');
+ return {dir,manager,id:app.id,compatible:app.compatible,cleanup:()=>fs.rmSync(dir,{recursive:true,force:true})};
+}
+test('journal recovers interrupted uninstall before index commit without losing assets',()=>{
+ const f=installedDemoFixture('airapp-interrupted-');
+ try{
+  if(!f.compatible)return;
+  const manager=f.manager();manager.install('Alice',f.id);
+  const folder=manager.installedFolder('Alice',f.id),base=path.dirname(folder);
+  const staged='.uninstall-'+'a'.repeat(24);
+  fs.writeFileSync(path.join(base,'uninstall-transaction-v1.json'),JSON.stringify({version:1,id:f.id,staged}));
+  fs.renameSync(folder,path.join(base,staged));
+  const recovered=f.manager();
+  assert.equal(recovered.installed('Alice').length,1);
+  assert.equal(recovered.installedFolder('Alice',f.id),folder);
+  assert.equal(fs.existsSync(path.join(base,staged)),false);
+  assert.equal(fs.existsSync(path.join(base,'uninstall-transaction-v1.json')),false);
+ }finally{f.cleanup()}
+});
+test('journal completes interrupted uninstall after index commit',()=>{
+ const f=installedDemoFixture('airapp-interrupted-after-');
+ try{
+  if(!f.compatible)return;
+  const manager=f.manager();manager.install('Alice',f.id);
+  const folder=manager.installedFolder('Alice',f.id),base=path.dirname(folder);
+  const staged='.uninstall-'+'b'.repeat(24);
+  fs.writeFileSync(path.join(base,'uninstall-transaction-v1.json'),JSON.stringify({version:1,id:f.id,staged}));
+  fs.renameSync(folder,path.join(base,staged));
+  fs.writeFileSync(path.join(base,'installed-v1.json'),JSON.stringify({schemaVersion:1,apps:[]}));
+  assert.deepEqual(f.manager().installed('Alice'),[]);
+  assert.equal(fs.existsSync(path.join(base,staged)),false);
+  assert.equal(fs.existsSync(path.join(base,'uninstall-transaction-v1.json')),false);
+ }finally{f.cleanup()}
+});
+test('invalid recovery journal fails closed without changing installed files',()=>{
+ const f=installedDemoFixture('airapp-corrupt-journal-');
+ try{
+  if(!f.compatible)return;
+  const manager=f.manager();manager.install('Alice',f.id);
+  const folder=manager.installedFolder('Alice',f.id),base=path.dirname(folder);
+  fs.writeFileSync(path.join(base,'uninstall-transaction-v1.json'),JSON.stringify({version:1,id:f.id,staged:'../../outside'}));
+  assert.throws(()=>f.manager().installed('Alice'),/Invalid removal journal/);
+  assert.ok(fs.statSync(folder).isDirectory());
+ }finally{f.cleanup()}
+});
