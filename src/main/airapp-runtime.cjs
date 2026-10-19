@@ -16,7 +16,8 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   const k=key(user,id),existing=windows.get(k);
   if(existing&&!existing.isDestroyed()){existing.show();existing.focus();return{ok:true,alreadyOpen:true}}
   const installedManifest=JSON.parse(await fs.readFile(path.join(folder,'manifest.airapp.json'),'utf8'));
-  const allowed=new Set(installedManifest.files.map(item=>item.path));
+  const expected=new Map(installedManifest.files.map(item=>[item.path,item.sha256]));
+  const allowed=new Set(expected.keys());
   const partition=session.fromPartition('persist:airapp-'+k.replace('/','-'));
   if(!configured.has(partition)){
   partition.protocol.handle('airapp',async request=>{
@@ -35,6 +36,8 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
     const stat=await fs.lstat(file);
     if(!stat.isFile()||stat.isSymbolicLink())return new Response('Forbidden',{status:403});
     const data=await fs.readFile(file);
+    // Check bytes actually served, not merely those inspected before read.
+    if(crypto.createHash('sha256').update(data).digest('hex')!==expected.get(name))return new Response('Integrity check failed',{status:403});
     return new Response(data,{headers:{'Content-Type':MIME[path.extname(file)]||'application/octet-stream','Content-Security-Policy':CSP,'X-Content-Type-Options':'nosniff'}});
    }catch{return new Response('Not found',{status:404})}
   });

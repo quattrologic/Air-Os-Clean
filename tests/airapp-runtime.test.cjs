@@ -1,14 +1,15 @@
 'use strict';
 const test=require('node:test');
 const assert=require('node:assert/strict');
-const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),crypto=require('node:crypto');
 const {EventEmitter}=require('node:events');
 const {createRuntime}=require('../src/main/airapp-runtime.cjs');
 function setup(){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'airos-runtime-'));
  fs.writeFileSync(path.join(root,'index.html'),'<h1>Safe app</h1>');
  fs.writeFileSync(path.join(root,'app.js'),'console.log("safe")');
- fs.writeFileSync(path.join(root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html'},{path:'app.js'}]}));
+ const digest=name=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,name))).digest('hex');
+ fs.writeFileSync(path.join(root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html',sha256:digest('index.html')},{path:'app.js',sha256:digest('app.js')}]}));
  let route;
  const partition={protocol:{handle(_scheme,fn){route=fn}},webRequest:{onBeforeRequest(){}},setPermissionRequestHandler(){},setPermissionCheckHandler(){},on(){}};
  class Window extends EventEmitter{
@@ -38,5 +39,15 @@ test('runtime refuses symlinked assets and parent directory escape',async()=>{
   catch(error){if(process.platform==='win32'&&error.code==='EPERM')return;throw error}
   const r=await c.route()({url:'airapp://com.airos.demo.timer/app.js',method:'GET'});
   assert.equal(r.status,403);
+ }finally{c.close()}
+});
+
+test('runtime refuses assets modified after initial verification',async()=>{
+ const c=setup();
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  fs.writeFileSync(path.join(c.root,'app.js'),'console.log("tampered")');
+  const result=await c.route()({url:'airapp://com.airos.demo.timer/app.js',method:'GET'});
+  assert.equal(result.status,403);
  }finally{c.close()}
 });
