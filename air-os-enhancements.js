@@ -57,7 +57,7 @@
             <button type="button" class="air-files-tool" data-air-action="refresh" title="Aktualisieren" disabled>↻</button>
             <div class="air-files-location" id="air-files-location">Kein Ordner ausgewählt</div>
             <input id="air-files-search" class="air-files-search" type="search" placeholder="Suchen" aria-label="Dateien suchen" disabled>
-            <button type="button" class="air-files-new" data-air-action="new-file" disabled>＋ Neu</button>
+            <button type="button" class="air-files-new" data-air-action="new-file" disabled>＋ Datei</button><button type="button" class="air-files-new" data-air-action="new-folder" disabled>＋ Ordner</button>
           </div>
           <div class="air-files-workspace">
             <div class="air-files-empty" id="air-files-empty">
@@ -388,6 +388,14 @@
           await openFileEntry(win, control);
         } else if (action === 'new-file') {
           await createTextFile(win);
+        } else if (action === 'new-folder') {
+          const folderName=window.prompt('Name des neuen Ordners:');
+          if(folderName===null)return;
+          if(!folderName.trim())throw new Error('Bitte einen Ordnernamen angeben.');
+          const relative=[state.currentPath,folderName.trim()].filter(Boolean).join('/');
+          await window.airOS.files.createFolder(relative);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Ordner erstellt.');
         } else if (action === 'save-file') {
           await saveTextFile(win);
         } else if (action === 'close-editor') {

@@ -1,0 +1,25 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const {createFolder}=require('../src/main/file-ops.cjs');
+test('creates a folder only beneath the selected workspace',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-folder-'));
+ try{
+  fs.mkdirSync(path.join(root,'approved'));
+  assert.deepEqual(createFolder(root,'approved/New Folder'),{ok:true,path:'approved/New Folder'});
+  assert.ok(fs.statSync(path.join(root,'approved','New Folder')).isDirectory());
+  assert.throws(()=>createFolder(root,'approved/New Folder'),{code:'EEXIST'});
+  for(const bad of ['','../outside','approved/../../outside','/tmp/out','approved//double','approved/./bad','C:/escape','approved\\escape','approved/bad\0name'])
+   assert.throws(()=>createFolder(root,bad),bad);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+test('refuses symlink parent folders and files',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-folder-link-'));
+ const outside=fs.mkdtempSync(path.join(os.tmpdir(),'air-folder-external-'));
+ try{
+  try{fs.symlinkSync(outside,path.join(root,'link'),'dir')}
+  catch(error){if(process.platform==='win32'&&error.code==='EPERM')return;throw error}
+  assert.throws(()=>createFolder(root,'link/evil'),/Invalid parent directory/);
+  assert.equal(fs.existsSync(path.join(outside,'evil')),false);
+ }finally{fs.rmSync(root,{recursive:true,force:true});fs.rmSync(outside,{recursive:true,force:true})}
+});

@@ -67,7 +67,8 @@
       "store/keys/**/*",
       "air-app-store.js",
       "air-app-store.css",
-      "air-app-bootstrap.js"
+      "air-app-bootstrap.js",
+      "src/main/file-ops.cjs"
     ],
     "mac": {
       "target": [

@@ -19,6 +19,11 @@
 - `tests/airapp-installed.test.cjs`: neue Rollback- und Symlink-Tests nach dem letzten Commit über CI prüfen.
 - Anschließend Profil-Isolation, App-Runtime-Pfadauflösung und sichere Wiederherstellung nach Stromausfall testen.
 
+## Neuer Finder-Schritt
+
+- Prüfe CI für `tests/file-ops.test.cjs` und echte UI-Interaktion „＋ Ordner“; die IPC-Authentifizierung nutzt `requireFileAccess`.
+- Danach Rename/Copy mit strengem Verbot ungewollten Überschreibens, Unicode-/Case-Folding-Verhalten (macOS) und atomarem Rollback prüfen.
+
 ## Konkrete nächste Implementierung
 
 **A – Sichere App-Runtime als eigene Electron-Sandbox:**

@@ -6,6 +6,7 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
+const { createFolder } = require('./src/main/file-ops.cjs');
 
 let mainWindow = null;
 let activeUser = null;
@@ -453,6 +454,11 @@ ipcMain.handle('air-os:files:write-text', (event, relativeValue, textValue) => {
     try { if (fs.existsSync(temp)) fs.unlinkSync(temp); } catch {}
   }
   return { ok: true, path: relative.split(path.sep).join('/') };
+});
+ipcMain.handle('air-os:files:create-folder', (event, relativeValue) => {
+  requireFileAccess(event);
+  const root=ensureFileWorkspace();
+  return createFolder(root,relativeValue);
 });
 ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
   requireFileAccess(event);
