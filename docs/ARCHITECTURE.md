@@ -58,3 +58,7 @@ GitHub Actions führt die Tests aus. Ein grüner Build ersetzt keinen manuellen 
 ## Spotlight-artige App-Suche
 
 `src/core/search-service.js` stellt deterministische, begrenzte Suchergebnisse aus der internen Registry bereit. `air-spotlight.js` ergänzt das Menü-Suchsymbol und eine per Ctrl/⌘+K erreichbare, tastaturbedienbare Suchoberfläche. Treffer öffnen bestehende, registrierte Apps. Datei-, Cloud- und externe Inhalte werden bewusst noch nicht indiziert; das wäre ohne Benutzerberechtigungen und Suchdienst ein Datenschutzrisiko.
+
+## Modern- und Catalina-Kompatibilitätskanäle
+
+Die Catalina Edition bleibt bei Electron 32.3.3. Der manuell auslösbare Modern-Workflow testet Electron 44.9.0 und macOS >=13.0 beziehungsweise Windows. Diese Kanäle werden als separate Test-Artefakte erzeugt. Vollständiger Audit und verbleibende Sicherheitsblocker stehen in `docs/SECURITY_AUDIT.md`. Weder Audit noch Code-Signing werden übersprungen.

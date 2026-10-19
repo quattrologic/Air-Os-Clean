@@ -11,7 +11,9 @@
     "pack:linux": "electron-builder --publish never --linux AppImage deb",
     "dist": "electron-builder",
     "check:catalina": "node scripts/check-catalina.cjs",
-    "test": "node --test tests/*.test.cjs"
+    "test": "node --test tests/*.test.cjs",
+    "check:modern": "node scripts/check-modern.cjs",
+    "pack:mac:modern": "npm run check:modern && electron-builder --publish never --mac dmg zip --universal --config.mac.minimumSystemVersion=13.0.0"
   },
   "devDependencies": {
     "electron": "32.3.3",
