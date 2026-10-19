@@ -24,6 +24,10 @@
 - Prüfe CI für `tests/file-ops.test.cjs` und echte UI-Interaktion „＋ Ordner“; die IPC-Authentifizierung nutzt `requireFileAccess`.
 - Danach Rename/Copy mit strengem Verbot ungewollten Überschreibens, Unicode-/Case-Folding-Verhalten (macOS) und atomarem Rollback prüfen.
 
+## Finder nach Duplizieren
+
+- `src/main/file-ops.cjs` und `tests/file-ops.test.cjs` enthalten Ordnererstellung und Datei-Duplikation ohne Überschreiben. Als Nächstes sichere Umbenennung (vor allem auf case-insensitive macOS-Volumes), Move mit Rollback und native Papierkorb-Integration entwickeln.
+
 ## Konkrete nächste Implementierung
 
 **A – Sichere App-Runtime als eigene Electron-Sandbox:**

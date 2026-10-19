@@ -73,3 +73,8 @@
 - Neue authentifizierte IPC `air-os:files:create-folder` und Finder-Schaltfläche „＋ Ordner“.
 - `tests/file-ops.test.cjs` deckt reguläre Erstellung, Namenskonflikt und Symlink-Angriffe ab.
 - Keine Lösch- und Move-Operationen ohne Wiederherstellungs-/Konfliktstrategie implementiert.
+
+## Finder-Dateien duplizieren
+- `src/main/file-ops.cjs`: neue `duplicateFile`-Operation mit Begrenzung auf den gewählten Arbeitsordner, Symlink-Verbot und atomarem `COPYFILE_EXCL`-Konfliktschutz.
+- `preload.cjs`/Electron-IPC authentifizieren die Aktion; Finder-Zeilen bieten „Duplizieren“ direkt an.
+- Tests für Datenintegrität, Namenskonflikte, Traversal und Symlinks.

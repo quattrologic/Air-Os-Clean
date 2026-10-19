@@ -22,4 +22,29 @@ function createFolder(root,relative){
  fs.mkdirSync(target,{recursive:false,mode:0o700});
  return {ok:true,path:relative};
 }
-module.exports={createFolder};
+function duplicateFile(root,source,destination){
+ if(typeof source!=='string'||typeof destination!=='string')throw new TypeError('Invalid file names.');
+ function checked(relative,exists){
+  if(!relative||relative.includes('\\')||relative.includes('\0')||path.isAbsolute(relative)||/^[A-Za-z]:/.test(relative))throw new TypeError('Invalid relative path.');
+  const parts=relative.split('/');
+  if(parts.some(p=>!p||p==='.'||p==='..'||p.includes(':')))throw new TypeError('Unsafe path.');
+  const canonicalRoot=fs.realpathSync(root);
+  let current=canonicalRoot;
+  for(const [i,segment] of parts.entries()){
+   current=path.join(current,segment);
+   if(i<parts.length-1||exists){
+    const st=fs.lstatSync(current);
+    if(st.isSymbolicLink()||(i<parts.length-1&&!st.isDirectory()))throw new Error('Symlinks are not allowed.');
+    if(i===parts.length-1&&!st.isFile())throw new Error('Source must be a regular file.');
+   }
+  }
+  return current;
+ }
+ const from=checked(source,true),to=checked(destination,false);
+ if(from===to)throw new Error('Source and destination cannot match.');
+ const stats=fs.statSync(from);
+ if(stats.size>512*1024*1024)throw new Error('Files above 512 MB must be copied externally.');
+ fs.copyFileSync(from,to,fs.constants.COPYFILE_EXCL);
+ return{ok:true,path:destination};
+}
+module.exports={createFolder,duplicateFile};

@@ -252,12 +252,12 @@
     const query = (win.querySelector('#air-files-search')?.value || '').trim().toLocaleLowerCase('de-DE');
     const items = state.items.filter(item => !query || item.name.toLocaleLowerCase('de-DE').includes(query));
     container.innerHTML = items.map(item => `
-      <button type="button" class="air-file-entry" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
+      <div class="air-file-row"><button type="button" class="air-file-entry" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
         <span class="air-file-name"><span class="air-file-icon">${fileIcon(item)}</span><span class="air-file-name-copy"><strong>${escapeHTML(item.name)}</strong><small>${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() + '-Datei' : 'Datei')}</small></span></span>
         <span class="air-file-type">${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() : 'Datei')}</span>
         <span class="air-file-size">${item.kind === 'folder' ? '—' : formatBytes(item.size)}</span>
         <span class="air-file-date">${formatDate(item.modifiedAt)}</span>
-      </button>`).join('');
+      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button>` : ''}</div>`).join('');
     if (noResults) noResults.hidden = items.length > 0;
     container.hidden = false;
   }
@@ -388,6 +388,16 @@
           await openFileEntry(win, control);
         } else if (action === 'new-file') {
           await createTextFile(win);
+        } else if (action === 'duplicate-item') {
+          const source=control.dataset.path;
+          const name=source.split('/').pop();
+          const requested=window.prompt('Name der Dateikopie:', 'Kopie von '+name);
+          if(requested===null)return;
+          if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
+          const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
+          await window.airOS.files.duplicateFile(source,destination);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Datei kopiert.');
         } else if (action === 'new-folder') {
           const folderName=window.prompt('Name des neuen Ordners:');
           if(folderName===null)return;

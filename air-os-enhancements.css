@@ -166,3 +166,6 @@
 .air-mail-links{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:8px}
 .air-mail-links button{padding:10px 14px;border:1px solid #c9dbee;border-radius:8px;background:linear-gradient(#fff,#edf5ff);color:#326b9f;font-size:11px;font-weight:650;cursor:pointer}
 @media(max-width:650px){#air-calendar-form{grid-template-columns:1fr 1fr}.air-calendar-event{grid-template-columns:1fr auto}.air-calendar-event time{grid-column:1/-1}.air-calendar-app,.air-mail-app{padding:14px}}
+
+/* Secure Finder duplicate action beside each file row */
+.air-file-row{display:flex;align-items:center;gap:4px}.air-file-row>.air-file-entry{flex:1;min-width:0}.air-file-duplicate{flex:none;border:1px solid #bad4eb;border-radius:8px;padding:6px 9px;background:#f4faff;color:#3573ad;cursor:pointer}.air-file-duplicate:hover,.air-file-duplicate:focus-visible{background:#d7edff}
