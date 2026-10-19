@@ -1,6 +1,7 @@
 const $ = (s, root=document) => root.querySelector(s);
 const windows = $("#windows");
 const openApps = new Map();
+const lifecycle=window.airAppLifecycle;
 let zIndex = 2;
 let toastTimer;
 function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
@@ -355,7 +356,7 @@ function clampAppWindow(win){
 
 function openApp(id){
  if(!appNames[id])return;
- if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;$("#active-app").textContent=appNames[id];return}
+ if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
@@ -365,17 +366,17 @@ function openApp(id){
   return;
  }
  win.innerHTML=`<div class="window-titlebar"><div class="traffic"><button class="close" aria-label="Fenster schließen"></button><button class="minimize" aria-label="Minimieren"></button><button class="maximize" aria-label="Maximieren"></button></div><div class="window-title">${id==="finder"?"Dokumente":appNames[id]}</div></div><div class="window-content">${body}</div>`; paintAppIcons(win); const resizeHandle=document.createElement("div");resizeHandle.className="window-resize-handle";resizeHandle.setAttribute("role","separator");resizeHandle.setAttribute("aria-label","Fenstergröße ändern");win.appendChild(resizeHandle);
- windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);normalizeAppWindow(win);openApps.set(id,win);$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
- win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;$("#active-app").textContent=appNames[id]});
- $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
- $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);toast(appNames[id]+" ins Dock minimiert")};
+ windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);normalizeAppWindow(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
+ win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id]});
+ $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);lifecycle?.transition(id,'closed');$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
+ $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);lifecycle?.transition(id,'minimized');toast(appNames[id]+" ins Dock minimiert")};
  $(".maximize",win).onclick=()=>{
   if(!win.classList.contains("maximized")){
     win._airOSRestoreBounds={left:win.style.left,top:win.style.top,width:win.style.width,height:win.style.height};
-    win.classList.add("maximized");win.style.left="0px";win.style.top="0px";
+    win.classList.add("maximized");lifecycle?.transition(id,'maximized');win.style.left="0px";win.style.top="0px";
     win.style.width="100%";win.style.height="100%";win.style.resize="none";
   }else{
-    win.classList.remove("maximized");win.style.removeProperty("transform");const b=win._airOSRestoreBounds||{};
+    win.classList.remove("maximized");lifecycle?.transition(id,'focused');win.style.removeProperty("transform");const b=win._airOSRestoreBounds||{};
     win.style.left=b.left||"0px";win.style.top=b.top||"0px";win.style.width=b.width||"min(870px, calc(100% - 24px))";
     win.style.height=b.height||"min(480px, calc(100% - 24px))";win.style.resize="";
     delete win._airOSRestoreBounds;clampAppWindow(win);

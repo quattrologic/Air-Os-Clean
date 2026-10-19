@@ -8,6 +8,7 @@
   const names = Object.assign(Object.create(null), {airwrite:"AirWrite",finder:"Finder",browser:"Safari",tagesschau:"tagesschau",mail:"Mail",calendar:"Kalender",photos:"Fotos",music:"Air Music",spotify:"Spotify",aircard:"AirCard Lite",notes:"Notizen",weather:"Wetter",football:"Fußball",stocks:"Aktien",calculator:"Air-Rechner",translator:"Air-Übersetzer",ai:"Air-KI",settings:"Einstellungen",downloads:"Downloads",trash:"Papierkorb",about:"Über Air-OS"});
   const iconClasses = Object.assign(Object.create(null), {airwrite:"airwrite-icon",finder:"finder-icon",browser:"browser-icon",tagesschau:"tagesschau-icon",mail:"mail-icon",calendar:"calendar-icon",photos:"photos-icon",music:"music-icon",spotify:"spotify-icon",aircard:"aircard-icon",notes:"notes-icon",weather:"weather-icon",football:"football-icon",stocks:"stocks-icon",calculator:"calc-icon",translator:"translator-icon",ai:"ai-icon",settings:"settings-icon",downloads:"downloads-icon",trash:"trash-icon"});
   const iconGlyphs = Object.assign(Object.create(null), {airwrite:"✎",finder:"◧",browser:"◎",tagesschau:"ts",mail:"✉",calendar:"31",photos:"✿",music:"♫",spotify:"●",aircard:"▤",notes:"≡",weather:"☀",football:"⚽",stocks:"⌁",calculator:"＋",settings:"⚙",downloads:"↓",trash:"▤"});
+  const reserved=new Set(['constructor','prototype','toString','__proto__','valueOf','hasOwnProperty','isPrototypeOf','propertyIsEnumerable','toLocaleString','__defineGetter__','__defineSetter__','__lookupGetter__','__lookupSetter__']);
   const has = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
   function get(id) {
     if (typeof id !== 'string' || !has(names, id)) return null;
@@ -15,7 +16,7 @@
   }
   function list() { return Object.freeze(Object.keys(names).sort().map(get)); }
   function register(id, meta) {
-    if (typeof id !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(id) || ['constructor','prototype','toString','__proto__'].includes(id)) throw new TypeError('Ungültige App-ID.');
+    if (typeof id !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(id) || reserved.has(id)) throw new TypeError('Ungültige App-ID.');
     if (!meta || typeof meta !== 'object' || Array.isArray(meta)) throw new TypeError('Ungültige App-Metadaten.');
     if (has(names,id)) throw new Error('App-ID bereits registriert.');
     if (typeof meta.name !== 'string' || !meta.name.trim() || meta.name.length > 80) throw new TypeError('Ungültiger App-Name.');

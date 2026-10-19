@@ -6,9 +6,7 @@
     return;
   }
 
-  appNames.arcade = 'Air Arcade';
-  iconClasses.arcade = 'arcade-icon';
-  iconGlyphs.arcade = '★';
+  window.airAppRegistry.register('arcade',{name:'Air Arcade',iconClass:'arcade-icon',glyph:'★'});
   vectorIcon.arcade = '<svg viewBox="0 0 301 280" aria-hidden="true"><defs><linearGradient id="airarcadeblue" x2="0.8" y2="1"><stop stop-color="#1dbaf0"/><stop offset="1" stop-color="#2085f4"/></linearGradient></defs><path d="M144 6 L127 13 L118 22 L111 38 L111 54 L116 67 L126 78 L140 85 L156 86 L172 80 L183 70 L190 54 L190 38 L185 25 L174 13 L157 6Z" fill="#1eb8ef"/><path d="M295 160 L287 149 L190 104 L166 97 L166 164 L164 169 L157 174 L144 174 L136 167 L136 98 L116 102 L14 149 L8 155 L6 162 L8 168 L16 175 L112 219 L138 226 L164 226 L189 219 L285 175 L293 168Z" fill="url(#airarcadeblue)"/><path d="M6 196 L7 213 L22 225 L118 268 L143 273 L168 272 L193 264 L279 225 L290 218 L295 209 L295 196 L291 192 L185 240 L166 245 L145 246 L111 238 L9 192Z" fill="#208af5"/><path d="M41 158 L47 152 L55 149 L69 149 L77 152 L83 158 L83 164 L74 172 L58 174 L45 169 L41 164Z" fill="#f9f9fc"/></svg>';
 
   const textExtensions = new Set([
