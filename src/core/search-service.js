@@ -18,5 +18,13 @@
   });
   return Object.freeze(matches.slice(0,limit).map(app=>Object.freeze({id:app.id,name:app.name,iconClass:app.iconClass})));
  }
- return Object.freeze({findApps});
+ function findNotes(entries,input,limit=12){
+  if(!Array.isArray(entries))throw new TypeError('Ungültige Notizen.');
+  if(!Number.isInteger(limit)||limit<1||limit>50)throw new TypeError('Ungültiges Limit.');
+  const needle=normalize(input);
+  if(needle.length<2)return Object.freeze([]);
+  return Object.freeze(entries.filter(entry=>entry&&typeof entry.id==='string'&&typeof entry.title==='string'&&normalize(entry.title).includes(needle))
+   .slice(0,limit).map(entry=>Object.freeze({id:entry.id,title:entry.title||'Ohne Titel',type:'note'})));
+ }
+ return Object.freeze({findApps,findNotes});
 });

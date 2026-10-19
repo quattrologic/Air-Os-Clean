@@ -32,6 +32,11 @@
 
 - Derzeit nur **reguläre Dateien**. Ordner-Rename oder Cross-Volume-Move erfordern ein geeignetes No-Overwrite-/Rollback-Konzept; Linux-/macOS-Dateisystemvarianten prüfen. Der sichere Link/Unlink-Ablauf schützt gegen unbeabsichtigtes Überschreiben, aber nicht gegen Absturz zwischen Link und Unlink (dann liegen zwei Namen vor).
 
+## Spotlight-Weiterentwicklung
+
+- Manuelle UI-Prüfung: Notiz anlegen, Spotlight ⌘/Ctrl+K öffnen, Titel suchen, Treffer auswählen, Air Notes fokussieren. Besonders Neuladen und bereits offenes Notizfenster testen.
+- Später Finder-Namen **ausschließlich im freigegebenen Workspace** asynchron durchsuchen; keine globale Suche oder Indexierung ungefragter Host-Dateien.
+
 ## Konkrete nächste Implementierung
 
 **A – Sichere App-Runtime als eigene Electron-Sandbox:**

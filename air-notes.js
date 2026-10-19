@@ -2,6 +2,13 @@
 // Air Notes: local, authenticated, per-profile CRUD. The renderer has no file paths.
 (() => {
  const api=window.airOS?.notes;
+ let pendingNote=null,activeNote=null;
+ function focusNote(id){
+  if(typeof id!=='string')return;
+  pendingNote=id;
+  if(activeNote&&activeNote.win.isConnected){activeNote.select(id);pendingNote=null}
+ }
+
  function mount(win){
   const root=win.querySelector('.air-notes');if(!root||root.dataset.ready)return;root.dataset.ready='1';
   const q=s=>root.querySelector(s),title=q('#note-title'),body=q('#note-body'),list=q('#air-note-list'),status=q('#note-status');
@@ -43,7 +50,8 @@
    try{await api.remove(selected);selected=null;await refresh();announce('Notiz gelöscht.')}
    catch(error){announce('Löschen fehlgeschlagen.');console.error(error)}
   });
-  refresh();
+  activeNote={win,select:id=>refresh(id)};
+  refresh(pendingNote);pendingNote=null;
  }
- window.airNotes={mount};
+ window.airNotes={mount,focusNote};
 })();
