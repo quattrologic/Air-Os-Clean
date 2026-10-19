@@ -215,7 +215,7 @@
     if (empty) empty.hidden = ready;
     if (list) list.hidden = !ready;
     if (search) search.disabled = !ready;
-    win.querySelectorAll('[data-air-action="up"], [data-air-action="refresh"], [data-air-action="new-file"]').forEach(button => button.disabled = !ready);
+    win.querySelectorAll('[data-air-action="up"], [data-air-action="refresh"], [data-air-action="new-file"], [data-air-action="new-folder"]').forEach(button => button.disabled = !ready);
     chooseButtons.forEach(button => button.classList.toggle('active', !ready));
   }
   async function loadDirectory(win, relativePath) {
