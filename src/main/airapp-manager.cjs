@@ -63,9 +63,19 @@ function createManager({root,appPath,publicKeys}){
   if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');
   const current=installed(user);if(!current.some(a=>a.id===id))throw new Error('Not installed.');
   const target=path.join(profile(user),id);
-  // The installation root is exclusively managed by Air-OS.
-  fs.rmSync(target,{recursive:true,force:true});
-  persist(user,current.filter(a=>a.id!==id));return{ok:true};
+  // Stage removal by renaming on the same filesystem. Persist the index
+  // before deleting the staged app; a failed index write restores the app.
+  const base=profile(user);
+  if(!fs.existsSync(target))throw new Error('Installed app directory is missing.');
+  const stat=fs.lstatSync(target);
+  if(!stat.isDirectory()||stat.isSymbolicLink())throw new Error('Invalid installation directory.');
+  const staged=path.join(base,'.uninstall-'+crypto.randomBytes(12).toString('hex'));
+  fs.renameSync(target,staged);
+  try{persist(user,current.filter(a=>a.id!==id))}
+  catch(error){fs.renameSync(staged,target);throw error}
+  // If deletion fails, keep the quarantined directory for manual recovery.
+  // Do not claim app data was fully removed unless deletion succeeds.
+  fs.rmSync(staged,{recursive:true,force:true});return{ok:true};
  }
  function installedFolder(user,id){
   if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');

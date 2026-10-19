@@ -13,6 +13,12 @@
 3. GitHub Actions `Security checks` prüfen; `npm audit --audit-level=high` meldet weiterhin bekannte Legacy-Probleme. Ursache und Bewertung: `docs/SECURITY_AUDIT.md`.
 4. Beim **neuesten** Commit den Build des Electron-Testinstallers prüfen. Nicht allein aufgrund grüner Syntaxprüfungen die GUI als getestet ausgeben.
 
+## Neu geprüft: Deinstallationssicherheit
+
+- `src/main/airapp-manager.cjs`: Deinstallation verwendet Quarantäne/Rollback; Crash-Recovery für unterbrochene Deinstallationen sowie parallele Install-/Uninstall-Aufrufe fehlen.
+- `tests/airapp-installed.test.cjs`: neue Rollback- und Symlink-Tests nach dem letzten Commit über CI prüfen.
+- Anschließend Profil-Isolation, App-Runtime-Pfadauflösung und sichere Wiederherstellung nach Stromausfall testen.
+
 ## Konkrete nächste Implementierung
 
 **A – Sichere App-Runtime als eigene Electron-Sandbox:**

@@ -30,3 +30,45 @@ test('catalog rejects corrupt signatures instead of installing',()=>{
   assert.throws(()=>manager.install('Alice','../../escape'),/trusted local catalog/);
  }finally{fs.rmSync(dir,{recursive:true,force:true})}
 });
+
+test('removal rolls back when the installed index cannot be written',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'airapp-rollback-'));
+ try{
+  const key=fs.readFileSync(path.join(appPath,'store','keys','demo-publisher-public.txt'),'utf8');
+  const manager=createManager({root:()=>dir,appPath:()=>appPath,publicKeys:{demo:key}});
+  const app=manager.catalog().find(a=>a.id==='com.airos.demo.timer');
+  if(!app.compatible)return;
+  manager.install('Alice',app.id);
+  const original=manager.installedFolder('Alice',app.id);
+  const index=path.join(path.dirname(original),'installed-v1.json');
+  // Force a legitimate filesystem write error: replace index parent permissions
+  // using an injected rename failure so the test also works under root.
+  const originalRename=fs.renameSync;
+  fs.renameSync=(source,destination)=>{
+   if(source.includes('installed-v1.json.')&&destination===index)throw new Error('Simulated storage failure');
+   return originalRename(source,destination);
+  };
+  try{assert.throws(()=>manager.remove('Alice',app.id),/Simulated storage failure/)}
+  finally{fs.renameSync=originalRename}
+  assert.equal(manager.installed('Alice').length,1);
+  assert.equal(manager.installedFolder('Alice',app.id),original);
+  assert.equal(fs.readdirSync(path.dirname(original)).some(n=>n.startsWith('.uninstall-')),false);
+ }finally{fs.rmSync(dir,{recursive:true,force:true})}
+});
+test('removal rejects replaced symlink app folders',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'airapp-uninstall-link-'));
+ try{
+  const key=fs.readFileSync(path.join(appPath,'store','keys','demo-publisher-public.txt'),'utf8');
+  const manager=createManager({root:()=>dir,appPath:()=>appPath,publicKeys:{demo:key}});
+  const app=manager.catalog().find(a=>a.id==='com.airos.demo.timer');
+  if(!app.compatible)return;
+  manager.install('Alice',app.id);
+  const folder=manager.installedFolder('Alice',app.id);
+  fs.renameSync(folder,folder+'.saved');
+  try{fs.symlinkSync(dir,folder,'dir')}
+  catch(error){if(process.platform==='win32'&&error.code==='EPERM')return;throw error}
+  assert.throws(()=>manager.remove('Alice',app.id),/Invalid installation directory/);
+  assert.equal(manager.installed('Alice').length,1);
+  assert.ok(fs.statSync(dir).isDirectory());
+ }finally{fs.rmSync(dir,{recursive:true,force:true})}
+});
