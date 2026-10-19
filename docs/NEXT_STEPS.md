@@ -28,6 +28,10 @@
 
 - `src/main/file-ops.cjs` und `tests/file-ops.test.cjs` enthalten Ordnererstellung und Datei-Duplikation ohne Überschreiben. Als Nächstes sichere Umbenennung (vor allem auf case-insensitive macOS-Volumes), Move mit Rollback und native Papierkorb-Integration entwickeln.
 
+## Rename-Einschränkung
+
+- Derzeit nur **reguläre Dateien**. Ordner-Rename oder Cross-Volume-Move erfordern ein geeignetes No-Overwrite-/Rollback-Konzept; Linux-/macOS-Dateisystemvarianten prüfen. Der sichere Link/Unlink-Ablauf schützt gegen unbeabsichtigtes Überschreiben, aber nicht gegen Absturz zwischen Link und Unlink (dann liegen zwei Namen vor).
+
 ## Konkrete nächste Implementierung
 
 **A – Sichere App-Runtime als eigene Electron-Sandbox:**

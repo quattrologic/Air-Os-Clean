@@ -47,4 +47,30 @@ function duplicateFile(root,source,destination){
  fs.copyFileSync(from,to,fs.constants.COPYFILE_EXCL);
  return{ok:true,path:destination};
 }
-module.exports={createFolder,duplicateFile};
+// File-only rename: hard-link new name with exclusive creation, then
+// unlink old name. Never overwrite an existing target on macOS/Windows.
+// If unlink fails, leave both names intact instead of risking data loss.
+function renameFile(root,source,destination){
+ if(typeof source!=='string'||typeof destination!=='string')throw new TypeError('Invalid file names.');
+ function resolveFile(relative,sourceExists){
+  if(!relative||relative.includes('\\')||relative.includes('\0')||path.isAbsolute(relative)||/^[A-Za-z]:/.test(relative))throw new TypeError('Invalid relative path.');
+  const parts=relative.split('/');
+  if(parts.some(p=>!p||p==='.'||p==='..'||p.includes(':')))throw new TypeError('Unsafe path.');
+  let current=fs.realpathSync(root);
+  for(const [i,segment] of parts.entries()){
+   current=path.join(current,segment);
+   if(i<parts.length-1||sourceExists){
+    const st=fs.lstatSync(current);
+    if(st.isSymbolicLink()||(i<parts.length-1&&!st.isDirectory()))throw new Error('Symlinks are not allowed.');
+    if(i===parts.length-1&&!st.isFile())throw new Error('Source must be a regular file.');
+   }
+  }
+  return current;
+ }
+ const from=resolveFile(source,true),to=resolveFile(destination,false);
+ if(from===to)throw new Error('Source and destination cannot match.');
+ fs.linkSync(from,to);
+ fs.unlinkSync(from);
+ return{ok:true,path:destination};
+}
+module.exports={createFolder,duplicateFile,renameFile};

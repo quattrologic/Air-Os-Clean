@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
-const {createFolder,duplicateFile}=require('../src/main/file-ops.cjs');
+const {createFolder,duplicateFile,renameFile}=require('../src/main/file-ops.cjs');
 test('creates a folder only beneath the selected workspace',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-folder-'));
  try{
@@ -43,5 +43,21 @@ test('rejects symlink sources for copy',()=>{
   try{fs.symlinkSync(path.join(root,'valid.txt'),path.join(root,'link.txt'))}
   catch(error){if(process.platform==='win32'&&error.code==='EPERM')return;throw error}
   assert.throws(()=>duplicateFile(root,'link.txt','evil.txt'),/Symlinks/);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+
+test('file rename refuses replacement and preserves the original',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-rename-'));
+ try{
+  fs.mkdirSync(path.join(root,'Docs'));
+  fs.writeFileSync(path.join(root,'Docs','old.txt'),'important');
+  fs.writeFileSync(path.join(root,'Docs','taken.txt'),'keep');
+  assert.throws(()=>renameFile(root,'Docs/old.txt','Docs/taken.txt'),{code:'EEXIST'});
+  assert.equal(fs.readFileSync(path.join(root,'Docs','taken.txt'),'utf8'),'keep');
+  assert.equal(fs.readFileSync(path.join(root,'Docs','old.txt'),'utf8'),'important');
+  assert.deepEqual(renameFile(root,'Docs/old.txt','Docs/new.txt'),{ok:true,path:'Docs/new.txt'});
+  assert.equal(fs.existsSync(path.join(root,'Docs','old.txt')),false);
+  assert.equal(fs.readFileSync(path.join(root,'Docs','new.txt'),'utf8'),'important');
+  assert.throws(()=>renameFile(root,'Docs/new.txt','../outside'));
  }finally{fs.rmSync(root,{recursive:true,force:true})}
 });

@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
-const { createFolder, duplicateFile } = require('./src/main/file-ops.cjs');
+const { createFolder, duplicateFile, renameFile } = require('./src/main/file-ops.cjs');
 
 let mainWindow = null;
 let activeUser = null;
@@ -463,6 +463,10 @@ ipcMain.handle('air-os:files:create-folder', (event, relativeValue) => {
 ipcMain.handle('air-os:files:duplicate', (event, from, to) => {
   requireFileAccess(event);
   return duplicateFile(ensureFileWorkspace(),from,to);
+});
+ipcMain.handle('air-os:files:rename', (event, from, to) => {
+  requireFileAccess(event);
+  return renameFile(ensureFileWorkspace(),from,to);
 });
 ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
   requireFileAccess(event);

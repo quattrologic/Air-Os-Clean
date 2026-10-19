@@ -257,7 +257,7 @@
         <span class="air-file-type">${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() : 'Datei')}</span>
         <span class="air-file-size">${item.kind === 'folder' ? '—' : formatBytes(item.size)}</span>
         <span class="air-file-date">${formatDate(item.modifiedAt)}</span>
-      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button>` : ''}</div>`).join('');
+      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button><button type="button" class="air-file-duplicate" data-air-action="rename-item" data-path="${escapeHTML(item.path)}" title="Datei umbenennen" aria-label="${escapeHTML(item.name)} umbenennen">✎</button>` : ''}</div>`).join('');
     if (noResults) noResults.hidden = items.length > 0;
     container.hidden = false;
   }
@@ -388,6 +388,16 @@
           await openFileEntry(win, control);
         } else if (action === 'new-file') {
           await createTextFile(win);
+        } else if (action === 'rename-item') {
+          const source=control.dataset.path;
+          const name=source.split('/').pop();
+          const requested=window.prompt('Neuer Dateiname:',name);
+          if(requested===null)return;
+          if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
+          const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
+          await window.airOS.files.renameFile(source,destination);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Datei umbenannt.');
         } else if (action === 'duplicate-item') {
           const source=control.dataset.path;
           const name=source.split('/').pop();
