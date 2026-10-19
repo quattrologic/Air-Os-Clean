@@ -28,13 +28,41 @@ function createManager({root,appPath,publicKeys}){
   });
  }
  function indexFile(user){return path.join(profile(user),'installed-v1.json')}
- function installed(user){
+ function readIndex(user){
   try{
    const data=JSON.parse(fs.readFileSync(indexFile(user),'utf8'));
-   if(!Array.isArray(data.apps))throw new Error('Installed apps index corrupt.');
+   if(data.schemaVersion!==1||!Array.isArray(data.apps))throw new Error('Installed apps index corrupt.');
    return data.apps.map(a=>({...a}));
   }catch(error){if(error.code==='ENOENT')return [];throw error}
  }
+ function journalFile(user){return path.join(profile(user),'uninstall-transaction-v1.json')}
+ function recover(user){
+  const journal=journalFile(user);
+  let transaction;
+  try{transaction=JSON.parse(fs.readFileSync(journal,'utf8'))}
+  catch(error){if(error.code==='ENOENT')return;throw new Error('App removal journal is corrupt; manual recovery required.')}
+  if(!transaction||transaction.version!==1||!Object.prototype.hasOwnProperty.call(CATALOG,transaction.id)||
+     typeof transaction.staged!=='string'||!/^\\.uninstall-[0-9a-f]{24}$/.test(transaction.staged))
+    throw new Error('Invalid removal journal; manual recovery required.');
+  const base=profile(user),target=path.join(base,transaction.id),staged=path.join(base,transaction.staged);
+  const inIndex=readIndex(user).some(a=>a.id===transaction.id);
+  // Use lstat rather than existsSync, which follows and can miss dangling links.
+  const statOrNull=loc=>{try{return fs.lstatSync(loc)}catch(error){if(error.code==='ENOENT')return null;throw error}};
+  const targetStat=statOrNull(target),stagedStat=statOrNull(staged);
+  if(targetStat&&(!targetStat.isDirectory()||targetStat.isSymbolicLink()))throw new Error('Invalid app directory during recovery.');
+  if(stagedStat&&(!stagedStat.isDirectory()||stagedStat.isSymbolicLink()))throw new Error('Invalid staged directory during recovery.');
+  if(targetStat&&stagedStat)throw new Error('Conflicting app directories during recovery.');
+  if(inIndex){
+   if(stagedStat)fs.renameSync(staged,target);
+   else if(!targetStat)throw new Error('Installed application missing during recovery.');
+  }else{
+   if(targetStat)throw new Error('Untracked application directory during recovery.');
+   if(stagedStat)fs.rmSync(staged,{recursive:true,force:true});
+  }
+  fs.unlinkSync(journal);
+ }
+ function installed(user){recover(user);return readIndex(user)}
+
  function persist(user,apps){
   const file=indexFile(user);fs.mkdirSync(path.dirname(file),{recursive:true});
   const tmp=file+'.'+crypto.randomBytes(6).toString('hex')+'.tmp';
@@ -47,7 +75,8 @@ function createManager({root,appPath,publicKeys}){
   if(existing.some(a=>a.id===id))return{id,alreadyInstalled:true};
   const base=profile(user);fs.mkdirSync(base,{recursive:true});
   const target=path.join(base,id);
-  if(fs.existsSync(target))throw new Error('Installed package directory already exists. Manual recovery needed.');
+  try{fs.lstatSync(target);throw new Error('Installed package directory already exists. Manual recovery needed.')}
+  catch(error){if(error.code!=='ENOENT')throw error}
   const tmp=path.join(base,'.install-'+crypto.randomBytes(8).toString('hex'));
   fs.mkdirSync(tmp,{recursive:true,mode:0o700});
   try{
@@ -69,13 +98,22 @@ function createManager({root,appPath,publicKeys}){
   if(!fs.existsSync(target))throw new Error('Installed app directory is missing.');
   const stat=fs.lstatSync(target);
   if(!stat.isDirectory()||stat.isSymbolicLink())throw new Error('Invalid installation directory.');
-  const staged=path.join(base,'.uninstall-'+crypto.randomBytes(12).toString('hex'));
-  fs.renameSync(target,staged);
-  try{persist(user,current.filter(a=>a.id!==id))}
-  catch(error){fs.renameSync(staged,target);throw error}
-  // If deletion fails, keep the quarantined directory for manual recovery.
-  // Do not claim app data was fully removed unless deletion succeeds.
-  fs.rmSync(staged,{recursive:true,force:true});return{ok:true};
+  const stageName='.uninstall-'+crypto.randomBytes(12).toString('hex');
+  const staged=path.join(base,stageName),journal=journalFile(user);
+  // Write the durable intent *before* touching the installed directory.
+  // If the process is interrupted, installed() resolves the transaction.
+  fs.writeFileSync(journal,JSON.stringify({version:1,id,staged:stageName}),{mode:0o600,flag:'wx'});
+  try{
+   fs.renameSync(target,staged);
+   persist(user,current.filter(a=>a.id!==id));
+  }catch(error){
+   // The on-disk index determines whether to restore or finish removal.
+   try{recover(user)}catch(recoveryError){error.recoveryError=recoveryError.message}
+   throw error;
+  }
+  // If this fails, leave the journal and staged folder intact for recovery.
+  recover(user);
+  return{ok:true};
  }
  function installedFolder(user,id){
   if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');
