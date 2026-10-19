@@ -8,6 +8,7 @@ function setup(){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'airos-runtime-'));
  fs.writeFileSync(path.join(root,'index.html'),'<h1>Safe app</h1>');
  fs.writeFileSync(path.join(root,'app.js'),'console.log("safe")');
+ fs.writeFileSync(path.join(root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html'},{path:'app.js'}]}));
  let route;
  const partition={protocol:{handle(_scheme,fn){route=fn}},webRequest:{onBeforeRequest(){}},setPermissionRequestHandler(){},setPermissionCheckHandler(){},on(){}};
  class Window extends EventEmitter{
