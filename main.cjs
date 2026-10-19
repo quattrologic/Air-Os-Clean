@@ -11,6 +11,7 @@ let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
 const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
+const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -97,6 +98,9 @@ function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
 ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
+ipcMain.handle('air-os:notes:list',event=>notesStore.list(requirePreferenceUser(event)));
+ipcMain.handle('air-os:notes:save',(event,note)=>notesStore.save(requirePreferenceUser(event),note));
+ipcMain.handle('air-os:notes:remove',(event,id)=>notesStore.remove(requirePreferenceUser(event),id));
 ipcMain.handle('air-os:accounts', event => {
   requireTrusted(event);
   return readAccounts().map(publicAccount);

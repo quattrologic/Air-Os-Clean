@@ -57,7 +57,9 @@
       "src/main/preferences.cjs",
       "src/core/search-service.js",
       "air-spotlight.js",
-      "air-spotlight.css"
+      "air-spotlight.css",
+      "src/main/notes-store.cjs",
+      "air-notes.js"
     ],
     "mac": {
       "target": [

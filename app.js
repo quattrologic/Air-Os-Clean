@@ -443,8 +443,7 @@ function openApp(id){
  $("#finder-search",win)?.addEventListener("input",e=>{const q=e.target.value.toLowerCase();Array.from($("tr[data-file]",win)).forEach(row=>row.style.display=row.dataset.file.toLowerCase().includes(q)?"":"none")});
  $("#music-play",win)?.addEventListener("click",()=>toast("Demo-Modus: Keine Audioquelle verbunden"));
  $("#browser-form",win)?.addEventListener("submit",e=>{e.preventDefault();let q=$("#browser-query",win).value.trim();if(!q)return;let url=/^https?:\/\//i.test(q)?q:/^[\w-]+\.[a-z]{2,}/i.test(q)?"https://"+q:"https://www.google.com/search?q="+encodeURIComponent(q);window.open(url,"_blank","noopener,noreferrer")});
- $("#save-note",win)?.addEventListener("click",()=>{localStorage.setItem("air-os-note-title",$("#note-title",win).value);localStorage.setItem("air-os-note-body",$("#note-body",win).value);$("#note-status",win).textContent="Auf diesem Gerät gesichert";toast("Notiz lokal gesichert")});
- if(id==="notes"){$("#note-title",win).value=localStorage.getItem("air-os-note-title")||"";$("#note-body",win).value=localStorage.getItem("air-os-note-body")||""}
+ if(id==="notes")window.airNotes?.mount(win);
  if(id==="settings") initAirSettings(win);
  $("#music-play",win)?.addEventListener("click",()=>{const audio=$("#air-music-audio",win);if(audio&&audio.src){audio.paused?audio.play().catch(()=>toast("Audiodatei konnte nicht abgespielt werden.")):audio.pause()}else toast("Wähle zuerst eine Musikdatei aus.")});
  if(id==="tagesschau")tsLoadNews(win,"homepage");

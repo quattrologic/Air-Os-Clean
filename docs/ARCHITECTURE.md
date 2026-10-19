@@ -62,3 +62,7 @@ GitHub Actions führt die Tests aus. Ein grüner Build ersetzt keinen manuellen 
 ## Modern- und Catalina-Kompatibilitätskanäle
 
 Die Catalina Edition bleibt bei Electron 32.3.3. Der manuell auslösbare Modern-Workflow testet Electron 44.9.0 und macOS >=13.0 beziehungsweise Windows. Diese Kanäle werden als separate Test-Artefakte erzeugt. Vollständiger Audit und verbleibende Sicherheitsblocker stehen in `docs/SECURITY_AUDIT.md`. Weder Audit noch Code-Signing werden übersprungen.
+
+## Air Notes – echte lokale CRUD-Verwaltung
+
+`src/main/notes-store.cjs` speichert maximal 200 Notizen je angemeldetem Konto mit atomaren Schreibvorgängen, ID-Prüfung und Größenlimit. `air-notes.js` bietet Erstellen, Auswählen, Bearbeiten, explizites Speichern und bestätigtes Löschen. Die bisherige global gespeicherte Einzelnotiz wird nicht automatisch einem anderen Benutzer zugeordnet; Datenmigration muss bewusst und datenschutzkonform erfolgen. Noch kein Rich Text, Cloud Sync oder Autosave.
