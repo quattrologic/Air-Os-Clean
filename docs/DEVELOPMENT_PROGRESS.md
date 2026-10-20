@@ -11,7 +11,7 @@
 - `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`: CI prüft Syntax der neu hinzugefügten UI- und Speichermodule.
 
 **Letzte bestätigte Unit-/Syntaxprüfung:** `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`, [CI 39371216725](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371216725): Syntax und alle Node-Tests erfolgreich. Gesamtrun weiterhin ROT wegen bekanntem npm audit (2 High / 8 Moderate).
-**Zuletzt verifizierter Installer-Build für das Reminders-Backend:** `9a947dbce57f381730a4671f48f4a2174c1aa0dc`, [CI 39370960256](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39370960256). UI-Build von `217a91` und `c0e6ac` muss vor Installer-Freigabe separat geprüft werden.
+**Zuletzt verifizierter Installer-Build einschließlich Reminders-GUI:** `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`, [CI 39371216813](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371216813), **Desktop-Build erfolgreich**. Das bestätigt Installer-Erzeugung, nicht macOS-Catalina-Hardware-Kompatibilität oder Code-Signing.
 **Offen:** keine manuellen GUI-/macOS-Catalina-Hardwaretests, keine Reminders-Benachrichtigungsalarme oder Cloud-Sync, keine Code-Signierung/Notarisierung. Der Alt-Electron-Catalina-Kanal bleibt ein Sicherheits-Release-Blocker.
 
 **Fortsetzung:** aktuelle Branch-SHA und letzte Runs prüfen, anschließend Air Erinnerungen mit Benutzer A/B, Fälligkeitsdaten, Markierungen und Löschen manuell testen; Finder-Dokumentkonflikt und Dateinamensuche testen. Danach Finder-Papierkorb-/Restore-Konzept oder sichere Benachrichtigungen als nächste kleine Entwicklungseinheit. Siehe `docs/NEXT_STEPS.md`.
