@@ -1,3 +1,5 @@
+**CI-Nachtrag zum Micro-Commit `f673d7c3a8c175ca9a9d2fee811d1f2c4d8c6499`:** [Security run 39463414865](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414865) — JavaScript-Syntax **bestanden**, Node.js-Unit-Tests **bestanden**, Dependency-Audit **weiterhin fehlgeschlagen** (bekannter Legacy-Release-Blocker). [Desktop-Build 39463414802](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414802) zum Checkpoint noch nicht abgeschlossen. Manuelle GUI-Tests fehlen.
+
 # Unmittelbare nächste Schritte – Micro-Development Handoff
 
 **Aktuelle Einheit:** Parallelstarts derselben signierten Air-App auf ein Fenster begrenzen. Relevanter Code: `src/main/airapp-runtime.cjs`; Regressionstest: `tests/airapp-runtime.test.cjs`.
