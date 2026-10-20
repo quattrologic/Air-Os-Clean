@@ -1,6 +1,6 @@
 # Air-OS – Dependency Audit und Release-Risiken
 
-Stand: 19. Oktober 2026. Quelle: GitHub Actions Security Check auf PR #11, zuletzt Run 39290158577. Meldung: **10 Einträge, 2 High, 8 Moderate**. Das sind gemeldete betroffene Abhängigkeiten im npm-Abhängigkeitsbaum, keine gezählten Exploits.
+Stand: 20. Oktober 2026. Quelle: GitHub Actions Security Check auf PR #11, zuletzt Run [39370066571](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39370066571). Meldung: **10 Einträge, 2 High, 8 Moderate**. Das sind gemeldete betroffene Abhängigkeiten im npm-Abhängigkeitsbaum, keine gezählten Exploits.
 
 ## Konkrete Ergebnisse
 
@@ -36,3 +36,10 @@ Ein erfolgreiches GitHub-Actions-Paket ist kein Security-Freigabezertifikat. Sec
 2. Audit der **tatsächlich installierten** Modern-Abhängigkeiten separat durchführen.
 3. Prüfen, ob aktuelle gepatchte `electron-builder`-/`@electron/get`-Versionen die betroffenen Abhängigkeiten beseitigen, ohne Builder-Breakage.
 4. Vor einem regulären Release Catalina-Legacy und modernen Kanal getrennt freigeben; Legacy bleibt unter Security-Vorbehalt.
+
+## Verifizierung 20. Oktober 2026
+
+- [CI 39370066571](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39370066571), Commit `739f4d1730c9f7988525e62e3cdcebf203ff8bbd`: Syntax und Node-Unit-Tests erfolgreich; `npm audit --audit-level=high` bleibt fehlgeschlagen.
+- Audit bei [CI 39314548557](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39314548557), Commit `a26c88933d`: 10 gemeldete Pakete, 2 High (`electron`, `extract-zip`), 8 Moderate (`sprintf-js`, `roarr`, `global-agent`, `@electron/get`, `app-builder-lib`, `dmg-builder`, `electron-builder-squirrel-windows`, `electron-builder`).
+- Ursache: Transitive Abhängigkeitsketten des Legacy-Electron-Downloads und der Installer-Toolchain; ein erzwungenes `electron@44.9.0` bräche die Unterstützung für macOS 10.15.8. **Der Security-Workflow wurde nicht deaktiviert.**
+- Nächste verantwortliche Maßnahme: separate Modern-Toolchain in eigenem CI-Job vollständig auditieren und auf tatsächlicher Hardware installieren; Legacy wegen der High-Advisories **nicht als sicher oder freigegeben deklarieren**.
