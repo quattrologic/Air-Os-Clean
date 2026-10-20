@@ -73,4 +73,10 @@ function renameFile(root,source,destination){
  fs.unlinkSync(from);
  return{ok:true,path:destination};
 }
-module.exports={createFolder,duplicateFile,renameFile};
+// Called only after the main-process workspace resolver validates the target.
+// Exclusive creation prevents accidental truncation, including symlink targets.
+function createEmptyTextExclusive(target){
+ fs.writeFileSync(target,'',{flag:'wx',mode:0o600});
+ return {ok:true};
+}
+module.exports={createFolder,duplicateFile,renameFile,createEmptyTextExclusive};

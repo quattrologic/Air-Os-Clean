@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
-const {createFolder,duplicateFile,renameFile}=require('../src/main/file-ops.cjs');
+const {createFolder,duplicateFile,renameFile,createEmptyTextExclusive}=require('../src/main/file-ops.cjs');
 test('creates a folder only beneath the selected workspace',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-folder-'));
  try{
@@ -59,5 +59,19 @@ test('file rename refuses replacement and preserves the original',()=>{
   assert.equal(fs.existsSync(path.join(root,'Docs','old.txt')),false);
   assert.equal(fs.readFileSync(path.join(root,'Docs','new.txt'),'utf8'),'important');
   assert.throws(()=>renameFile(root,'Docs/new.txt','../outside'));
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+
+test('creating a new text document never overwrites an existing file',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-newtext-'));
+ try{
+  const target=path.join(root,'important.txt');
+  fs.writeFileSync(target,'KEEP USER DATA');
+  assert.throws(()=>createEmptyTextExclusive(target),{code:'EEXIST'});
+  assert.equal(fs.readFileSync(target,'utf8'),'KEEP USER DATA');
+  const fresh=path.join(root,'new.txt');
+  assert.deepEqual(createEmptyTextExclusive(fresh),{ok:true});
+  assert.equal(fs.readFileSync(fresh,'utf8'),'');
+  assert.throws(()=>createEmptyTextExclusive(fresh),{code:'EEXIST'});
  }finally{fs.rmSync(root,{recursive:true,force:true})}
 });

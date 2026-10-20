@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
-const { createFolder, duplicateFile, renameFile } = require('./src/main/file-ops.cjs');
+const { createFolder, duplicateFile, renameFile, createEmptyTextExclusive } = require('./src/main/file-ops.cjs');
 const { findFileNames } = require('./src/main/file-search.cjs');
 
 let mainWindow = null;
@@ -434,6 +434,16 @@ ipcMain.handle('air-os:files:read-text', (event, relativeValue) => {
   const bytes = fs.readFileSync(filePath);
   if (bytes.includes(0)) throw new Error('Die Datei sieht wie eine Binärdatei aus und wird nicht im Texteditor geöffnet.');
   return { path: normalizeFileRelative(relativeValue).split(path.sep).join('/'), content: bytes.toString('utf8') };
+});
+ipcMain.handle('air-os:files:create-text', (event, relativeValue) => {
+  requireFileAccess(event);
+  const relative=normalizeFileRelative(relativeValue);
+  if(!relative)throw new Error('Bitte gib einen Dateinamen an.');
+  if(!AIR_OS_TEXT_EXTENSIONS.has(path.extname(relative).toLowerCase()))
+    throw new Error('Zum Erstellen sind nur unterstützte Textdateien erlaubt.');
+  const target=resolveWorkspacePath(relative,{allowMissingFinal:true});
+  createEmptyTextExclusive(target);
+  return {ok:true,path:relative.split(path.sep).join('/')};
 });
 ipcMain.handle('air-os:files:write-text', (event, relativeValue, textValue) => {
   requireFileAccess(event);

@@ -331,11 +331,12 @@
     }
     const relativePath = [state.currentPath, name].filter(Boolean).join('/');
     if (state.items.some(item => item.name.toLocaleLowerCase('de-DE') === name.toLocaleLowerCase('de-DE'))) {
-      const overwrite = window.confirm('Diese Datei existiert bereits. Soll ihr Inhalt geleert werden?');
-      if (!overwrite) return;
+      setFileStatus(win, 'Diese Datei existiert bereits. Bitte wähle einen neuen Dateinamen.');
+      return;
     }
     try {
-      await window.airOS.files.writeTextFile(relativePath, '');
+      // Creation must never truncate an existing file, even after a race.
+      await window.airOS.files.createTextFile(relativePath);
       await loadDirectory(win, state.currentPath);
       openTextEditor(win, { path: relativePath, content: '' });
       setEditorStatus(win, 'Neue Datei · noch nicht mit Inhalt gespeichert.');

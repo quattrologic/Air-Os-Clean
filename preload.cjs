@@ -35,6 +35,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     duplicateFile: (source,destination) => ipcRenderer.invoke('air-os:files:duplicate', source,destination),
     renameFile: (source,destination) => ipcRenderer.invoke('air-os:files:rename', source,destination),
     readTextFile: relativePath => ipcRenderer.invoke('air-os:files:read-text', relativePath),
+    createTextFile: relativePath => ipcRenderer.invoke('air-os:files:create-text', relativePath),
     writeTextFile: (relativePath, content) => ipcRenderer.invoke('air-os:files:write-text', relativePath, content),
     openNative: relativePath => ipcRenderer.invoke('air-os:files:open-native', relativePath)
   }),
