@@ -647,6 +647,23 @@
     if (win.querySelector('.arcade-library')) window.airArcadeGames?.mount(win);
     else if (win.querySelector('.air-arcade-app')) mountArcade(win);
   }
+  // Reveal only relative paths returned by the authenticated Finder search.
+  // Opening a result never grants access to additional host folders.
+  window.airFinder=Object.freeze({
+    async revealFile(relative,kind='file'){
+      if(typeof relative!=='string'||!relative||relative.startsWith('/')||relative.split('/').some(part=>!part||part==='..'||part==='.'))return false;
+      const win=openApps.get('finder');
+      if(!win)return false;
+      await mountFiles(win);
+      const folder=kind==='folder'?relative:relative.includes('/')?relative.slice(0,relative.lastIndexOf('/')):'';
+      await loadDirectory(win,folder);
+      if(kind!=='folder'){
+        const item=Array.from(win.querySelectorAll('.air-file-entry')).find(button=>button.dataset.path===relative);
+        if(item){item.focus();item.scrollIntoView({block:'nearest'});}
+      }
+      return true;
+    }
+  });
   function patchDockIcon() {
     document.querySelectorAll('.arcade-icon').forEach(icon => {
       icon.innerHTML = vectorIcon.arcade;
