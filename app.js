@@ -35,13 +35,14 @@ vectorIcon.football = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linear
 vectorIcon.calculator = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="calc-bg" x2="0" y2="1"><stop stop-color="#5a6577"/><stop offset="1" stop-color="#27354b"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="13" fill="url(#calc-bg)"/><rect x="11" y="8" width="42" height="15" rx="3" fill="#d8f4f1"/><text x="48" y="19" text-anchor="end" font-size="10" font-family="Arial,sans-serif" fill="#214b51">123</text><g fill="#f2f5fa"><rect x="11" y="29" width="8" height="8" rx="2"/><rect x="23" y="29" width="8" height="8" rx="2"/><rect x="35" y="29" width="8" height="8" rx="2"/><rect x="11" y="41" width="8" height="8" rx="2"/><rect x="23" y="41" width="8" height="8" rx="2"/><rect x="35" y="41" width="8" height="8" rx="2"/></g><rect x="45" y="29" width="8" height="20" rx="2" fill="#ffb84d"/><rect x="11" y="53" width="32" height="4" rx="2" fill="#f2f5fa"/></svg>';
 vectorIcon.stocks = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="stockbg" x2="0" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#dce8f8"/></linearGradient><linearGradient id="stockline" x2="0" y2="1"><stop stop-color="#35c997"/><stop offset="1" stop-color="#128567"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#stockbg)" stroke="#c7d6e8"/><path d="M11 50H53" stroke="#aec2d8" stroke-width="2" stroke-linecap="round"/><rect x="12" y="35" width="7" height="15" rx="2" fill="#7eaae5"/><rect x="24" y="27" width="7" height="23" rx="2" fill="#578edb"/><rect x="36" y="19" width="7" height="31" rx="2" fill="#3f7ccd"/><path d="m11 31 11-8 9 3 10-13 11 3" fill="none" stroke="url(#stockline)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="m45 16 7 0-1 7" fill="none" stroke="#128567" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function paintAppIcons(root=document){
-  const lookup={"translator-icon":"translator","ai-icon":"ai", "finder-icon":"finder","browser-icon":"browser","tagesschau-icon":"tagesschau","mail-icon":"mail","calendar-icon":"calendar","notes-icon":"notes","photos-icon":"photos","music-icon":"music","spotify-icon":"spotify","aircard-icon":"aircard","settings-icon":"settings","downloads-icon":"downloads","trash-icon":"trash","weather-icon":"weather","football-icon":"football","stocks-icon":"stocks","calc-icon":"calculator","airwrite-icon":"airwrite","launchpad-icon":"launchpad","store-icon":"store" };
+  const lookup={"translator-icon":"translator","ai-icon":"ai", "finder-icon":"finder","browser-icon":"browser","tagesschau-icon":"tagesschau","mail-icon":"mail","calendar-icon":"calendar","notes-icon":"notes","reminders-icon":"reminders","photos-icon":"photos","music-icon":"music","spotify-icon":"spotify","aircard-icon":"aircard","settings-icon":"settings","downloads-icon":"downloads","trash-icon":"trash","weather-icon":"weather","football-icon":"football","stocks-icon":"stocks","calc-icon":"calculator","airwrite-icon":"airwrite","launchpad-icon":"launchpad","store-icon":"store" };
   Object.entries(lookup).forEach(([cls,id])=>root.querySelectorAll("."+cls).forEach(el=>{el.innerHTML=vectorIcon[id]||vectorIcon.folder;}));
   root.querySelectorAll("[data-art]").forEach(el=>{const art=vectorIcon[el.dataset.art];if(art)el.innerHTML=art;});
 }
 paintAppIcons();
 
 function appBody(id){
+ if(id==='reminders')return window.airReminders?.body()||'<p>Erinnerungen laden …</p>';
  if(id==='store')return window.airAppStore?.body()||'<p>App Store lädt …</p>';
  if(id==='launchpad')return window.airLaunchpad?.body()||'<p>Launchpad lädt …</p>';
  if((id==="translator"||id==="ai") && window.airExtraApps)return window.airExtraApps.body(id);
@@ -451,6 +452,7 @@ function openApp(id){
  $("#music-play",win)?.addEventListener("click",()=>toast("Demo-Modus: Keine Audioquelle verbunden"));
  $("#browser-form",win)?.addEventListener("submit",e=>{e.preventDefault();let q=$("#browser-query",win).value.trim();if(!q)return;let url=/^https?:\/\//i.test(q)?q:/^[\w-]+\.[a-z]{2,}/i.test(q)?"https://"+q:"https://www.google.com/search?q="+encodeURIComponent(q);window.open(url,"_blank","noopener,noreferrer")});
  if(id==="notes")window.airNotes?.mount(win);
+ if(id==='reminders')window.airReminders?.mount(win);
  if(id==="settings") initAirSettings(win);
  $("#music-play",win)?.addEventListener("click",()=>{const audio=$("#air-music-audio",win);if(audio&&audio.src){audio.paused?audio.play().catch(()=>toast("Audiodatei konnte nicht abgespielt werden.")):audio.pause()}else toast("Wähle zuerst eine Musikdatei aus.")});
  if(id==="tagesschau")tsLoadNews(win,"homepage");

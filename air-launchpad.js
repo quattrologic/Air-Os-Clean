@@ -3,7 +3,7 @@
  const registry=window.airAppRegistry;if(!registry)return;
  registry.register('launchpad',{name:'Launchpad',iconClass:'launchpad-icon',glyph:'▦'});
  const kinds=['Alle','System','Produktivität','Medien & Web','Spiele'];
- const category=id=>['finder','downloads','trash','settings','about','launchpad'].includes(id)?'System':id==='arcade'?'Spiele':['airwrite','notes','calendar','mail','calculator','translator','ai','aircard'].includes(id)?'Produktivität':'Medien & Web';
+ const category=id=>['finder','downloads','trash','settings','about','launchpad'].includes(id)?'System':id==='arcade'?'Spiele':['airwrite','notes','reminders','calendar','mail','calculator','translator','ai','aircard'].includes(id)?'Produktivität':'Medien & Web';
  function body(){return '<section class="air-launchpad"><header><div><small>AIR-OS · APPS</small><h2>Launchpad</h2><p>Deine Anwendungen an einem Ort.</p></div><input type="search" class="alp-search" aria-label="Apps durchsuchen" placeholder="App suchen …"></header><div class="alp-categories" role="group" aria-label="Kategorien"></div><p class="alp-count" aria-live="polite"></p><div class="alp-grid" aria-label="Installierte Anwendungen"></div></section>'}
  function mount(win){
   const root=win.querySelector('.air-launchpad');if(!root||root.dataset.mounted)return;root.dataset.mounted='true';
