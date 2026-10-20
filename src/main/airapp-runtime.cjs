@@ -4,16 +4,30 @@ const CSP="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'sel
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp'};
 function createRuntime({BrowserWindow,protocol,session,manager}){
  protocol.registerSchemesAsPrivileged([{scheme:'airapp',privileges:{standard:true,secure:true,supportFetchAPI:true,corsEnabled:true}}]);
- const windows=new Map(),configured=new WeakSet();
+ const windows=new Map(),configured=new WeakSet(),opening=new Map();
  function key(user,id){return crypto.createHash('sha256').update(user.toLowerCase()).digest('hex')+'/'+id}
  function isAllowed(url,id){
   try{const p=new URL(url);return p.protocol==='airapp:'&&p.hostname===id&&!p.port&&!p.username&&!p.password&&!p.search&&!p.hash}
   catch{return false}
  }
  async function open(user,id){
+  const k=key(user,id);
+  const pending=opening.get(k);
+  if(pending){
+   await pending;
+   const ready=windows.get(k);
+   if(!ready||ready.isDestroyed())throw new Error('App window closed during startup.');
+   ready.show();ready.focus();return{ok:true,alreadyOpen:true};
+  }
+  const task=launch(user,id,k);
+  opening.set(k,task);
+  try{return await task}
+  finally{if(opening.get(k)===task)opening.delete(k)}
+ }
+ async function launch(user,id,k){
   const folder=manager.installedFolder(user,id),record=manager.installed(user).find(a=>a.id===id);
   if(!record)throw new Error('App not installed.');
-  const k=key(user,id),existing=windows.get(k);
+  const existing=windows.get(k);
   if(existing&&!existing.isDestroyed()){existing.show();existing.focus();return{ok:true,alreadyOpen:true}}
   const partition=session.fromPartition('persist:airapp-'+k.replace('/','-'));
   if(!configured.has(partition)){
@@ -52,7 +66,7 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   win.webContents.on('will-navigate',(event,url)=>{if(url!==entry)event.preventDefault()});
   win.webContents.on('will-attach-webview',event=>event.preventDefault());
   win.once('ready-to-show',()=>{if(!win.isDestroyed())win.show()});
-  win.on('closed',()=>windows.delete(k));
+  win.on('closed',()=>{if(windows.get(k)===win)windows.delete(k)});
   try{await win.loadURL(entry)}catch(error){if(!win.isDestroyed())win.close();throw error}
   return{ok:true,alreadyOpen:false};
  }

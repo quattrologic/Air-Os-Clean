@@ -4,20 +4,20 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),crypto=require('node:crypto');
 const {EventEmitter}=require('node:events');
 const {createRuntime}=require('../src/main/airapp-runtime.cjs');
-function setup(){
+function setup({delayLoad=false}={}){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'airos-runtime-'));
  fs.writeFileSync(path.join(root,'index.html'),'<h1>Safe app</h1>');
  fs.writeFileSync(path.join(root,'app.js'),'console.log("safe")');
  const digest=name=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,name))).digest('hex');
  fs.writeFileSync(path.join(root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html',sha256:digest('index.html')},{path:'app.js',sha256:digest('app.js')}]}));
- let route;
+ let route,resumeLoad,created=0;
  const partition={protocol:{handle(_scheme,fn){route=fn}},webRequest:{onBeforeRequest(){}},setPermissionRequestHandler(){},setPermissionCheckHandler(){},on(){}};
  class Window extends EventEmitter{
-  constructor(options){super();this.options=options;this.webContents=new EventEmitter();this.webContents.setWindowOpenHandler=()=>{};this.show=()=>{};this.focus=()=>{};this.isDestroyed=()=>false;this.loadURL=async url=>{this.url=url};this.close=()=>this.emit('closed')}
+  constructor(options){super();created++;this.options=options;this.webContents=new EventEmitter();this.webContents.setWindowOpenHandler=()=>{};this.show=()=>{};this.focus=()=>{};this.isDestroyed=()=>false;this.loadURL=async url=>{this.url=url;if(delayLoad)await new Promise(resolve=>{resumeLoad=resolve})};this.close=()=>this.emit('closed')}
  }
  const manager={installedFolder(){return root},installed(){return [{id:'com.airos.demo.timer',name:'Air Timer',entry:'index.html'}]}};
  const runtime=createRuntime({BrowserWindow:Window,protocol:{registerSchemesAsPrivileged(){}},session:{fromPartition:()=>partition},manager});
- return {root,runtime,manager,route:()=>route,close:()=>fs.rmSync(root,{recursive:true,force:true})};
+ return {root,runtime,manager,route:()=>route,created:()=>created,release:()=>resumeLoad?.(),close:()=>fs.rmSync(root,{recursive:true,force:true})};
 }
 test('signed runtime serves bundled files but refuses foreign origins and unlisted files',async()=>{
  const c=setup();
@@ -79,5 +79,19 @@ test('open protocol handler refuses assets when installation is missing',async()
   c.manager.installedFolder=()=>{throw new Error('App uninstalled')};
   const response=await c.route()({url:'airapp://com.airos.demo.timer/index.html',method:'GET'});
   assert.notEqual(response.status,200);
+ }finally{c.close()}
+});
+
+test('concurrent launches share one signed app window',async()=>{
+ const c=setup({delayLoad:true});
+ try{
+  const first=c.runtime.open('Alice','com.airos.demo.timer');
+  const second=c.runtime.open('Alice','com.airos.demo.timer');
+  assert.equal(c.created(),1,'only one BrowserWindow should be created while loading');
+  c.release();
+  const [initial,reused]=await Promise.all([first,second]);
+  assert.deepEqual(initial,{ok:true,alreadyOpen:false});
+  assert.deepEqual(reused,{ok:true,alreadyOpen:true});
+  assert.equal(c.created(),1);
  }finally{c.close()}
 });

@@ -1,3 +1,20 @@
+# Unmittelbare nächste Schritte – Micro-Development Handoff
+
+**Aktuelle Einheit:** Parallelstarts derselben signierten Air-App auf ein Fenster begrenzen. Relevanter Code: `src/main/airapp-runtime.cjs`; Regressionstest: `tests/airapp-runtime.test.cjs`.
+
+**Vorheriger bestätigter Commit:** `b1f91186b61cc3cfb6b48bea145c0b7a9b5fc001`; [Build 39371615066](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371615066) grün, [Security 39371615105](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371615105) nur wegen `npm audit` rot (Unit-/Syntaxchecks grün). Neuer Commit und CI müssen nach Push geprüft werden.
+
+**Drei kleine Folgeaufgaben:**
+1. Erfolgs-/Fehlerpfad für konkurrierendes `open()` inklusive LoadURL-Rejection testen; erneuter Aufruf darf nicht blockieren.
+2. Isolation von App-Partitionen über abgemeldete Benutzer hinweg mit Node-Regressionstest absichern.
+3. Reminders-Datum-/Persistenz-Randfälle ergänzen; keine ungesicherten Alarm-Features.
+
+**Dauerhafte Blocker:** Legacy Electron 32.3.3 und `extract-zip` High, acht Moderate-Transitivpakete; fehlendes Code Signing/Notarisierung; keine E2E-Catalina-GUI-Tests. Sicherheitsworkflow nicht abschalten.
+
+**Arbeitsregel:** Nur einen Micro-Schritt pro Sitzung; PR #11 bleibt Entwurf; Commit auf `feat/air-os-architecture-foundation` ausschließlich mit `expected_sha`; Branch vor Änderungen erneut lesen. `main` und Tiny Strike PR #10 nicht überschreiben.
+
+---
+
 # Air-OS Ultimate – Development Handoff
 
 ## WICHTIG: neuester Arbeitsstand (20. Oktober 2026)

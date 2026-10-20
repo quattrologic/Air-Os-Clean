@@ -1,3 +1,18 @@
+## Micro-Development – 20. Oktober 2026: doppelte Air-App-Fenster beim gleichzeitigen Start verhindern
+
+**Ausgangs-HEAD:** `b1f91186b61cc3cfb6b48bea145c0b7a9b5fc001` (neuere Arbeit seit `a26c88933d` vollständig erhalten). Der letzte Build auf [CI 39371615066](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371615066) war erfolgreich; Syntax und Node-Tests auf [CI 39371615105](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371615105) bestanden. `npm audit` blieb rot (Legacy Electron/extract-zip).
+
+**Genau eine Implementierung:** `src/main/airapp-runtime.cjs` verwendet ein In-Flight-Register pro Profil und App-ID, damit parallele Startanforderungen nicht mehrere BrowserWindows öffnen. Der `closed`-Handler entfernt nur sein eigenes Fenster aus der Map. `tests/airapp-runtime.test.cjs` enthält einen deterministischen Test mit verzögerter Fensterladung.
+
+**Teststatus dieser Änderung:** CI `Security checks` und `Build Air-OS desktop installers` müssen am neuen Commit überprüft werden. Keine manuelle Catalina-/Windows-GUI-Prüfung. Sicherheitsadvisories bleiben Release-Blocker.
+
+**Nächste drei Micro-Aufgaben:**
+1. Separater Runtime-Test: Ladefehler und unmittelbarer erneuter Start räumen das In-Flight-Register zuverlässig auf.
+2. Verifizieren, dass nach Abmelden keine alten App-Partitionen über ein zweites Benutzerprofil zugänglich sind; zielgerichteten Regressionstest hinzufügen.
+3. `src/main/reminders-store.cjs` auf Fälligkeiten-Grenzfälle testen, ohne Benachrichtigungen vorzutäuschen.
+
+**Fortsetzung:** Aktuelle Branch-SHA und CI-Status abfragen; dieser Checkpoint ist ausschließlich auf PR #11. `main` und Tiny Strike PR #10 bleiben unberührt.
+
 # Air-OS Ultimate – dauerhafter Entwicklungsfortschritt
 
 ## Weiterentwicklung vom 20. Oktober 2026 – Air Erinnerungen und Finder-Datensicherheit
