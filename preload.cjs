@@ -16,6 +16,11 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     remove: id => ipcRenderer.invoke('air-os:store:remove',id),
     launch: id => ipcRenderer.invoke('air-os:store:launch',id)
   }),
+  reminders: Object.freeze({
+    list: () => ipcRenderer.invoke('air-os:reminders:list'),
+    save: item => ipcRenderer.invoke('air-os:reminders:save',item),
+    remove: id => ipcRenderer.invoke('air-os:reminders:remove',id)
+  }),
   notes: Object.freeze({
     list: () => ipcRenderer.invoke('air-os:notes:list'),
     save: note => ipcRenderer.invoke('air-os:notes:save',note),

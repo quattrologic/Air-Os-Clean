@@ -14,6 +14,7 @@ let activeUser = null;
 let fileWorkspaceRoot = null;
 const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
 const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
+const reminderStore=require('./src/main/reminders-store.cjs').createStore({root:()=>app.getPath('userData')});
 const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
  root:()=>app.getPath('userData'),appPath:()=>app.getAppPath(),
  publicKeys:{demo:fs.readFileSync(path.join(__dirname,'store','keys','demo-publisher-public.txt'),'utf8')}
@@ -106,6 +107,9 @@ function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
 ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
+ipcMain.handle('air-os:reminders:list',event=>reminderStore.list(requirePreferenceUser(event)));
+ipcMain.handle('air-os:reminders:save',(event,item)=>reminderStore.save(requirePreferenceUser(event),item));
+ipcMain.handle('air-os:reminders:remove',(event,id)=>reminderStore.remove(requirePreferenceUser(event),id));
 ipcMain.handle('air-os:notes:list',event=>notesStore.list(requirePreferenceUser(event)));
 ipcMain.handle('air-os:notes:save',(event,note)=>notesStore.save(requirePreferenceUser(event),note));
 ipcMain.handle('air-os:notes:remove',(event,id)=>notesStore.remove(requirePreferenceUser(event),id));
