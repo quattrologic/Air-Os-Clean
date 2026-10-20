@@ -30,6 +30,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     selectFolder: () => ipcRenderer.invoke('air-os:files:select-folder'),
     currentFolder: () => ipcRenderer.invoke('air-os:files:current-folder'),
     listDirectory: relativePath => ipcRenderer.invoke('air-os:files:list-directory', relativePath),
+    searchNames: query => ipcRenderer.invoke('air-os:files:search',query),
     createFolder: relativePath => ipcRenderer.invoke('air-os:files:create-folder', relativePath),
     duplicateFile: (source,destination) => ipcRenderer.invoke('air-os:files:duplicate', source,destination),
     renameFile: (source,destination) => ipcRenderer.invoke('air-os:files:rename', source,destination),

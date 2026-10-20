@@ -7,6 +7,7 @@ const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
 const { createFolder, duplicateFile, renameFile } = require('./src/main/file-ops.cjs');
+const { findFileNames } = require('./src/main/file-search.cjs');
 
 let mainWindow = null;
 let activeUser = null;
@@ -383,6 +384,11 @@ ipcMain.handle('air-os:files:current-folder', event => {
   } catch {
     return null;
   }
+});
+ipcMain.handle('air-os:files:search', async (event, query) => {
+  requireFileAccess(event);
+  const root=ensureFileWorkspace();
+  return findFileNames(root,query);
 });
 ipcMain.handle('air-os:files:list-directory', (event, relativeValue = '') => {
   requireFileAccess(event);
