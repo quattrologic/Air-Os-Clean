@@ -70,3 +70,8 @@ Die Catalina Edition bleibt bei Electron 32.3.3. Der manuell auslösbare Modern-
 ## Spotlight-Dateinamen-Suche (20. Oktober 2026)
 
 `src/main/file-search.cjs` durchsucht ausschließlich die durch `ensureFileWorkspace()` und die authentifizierte `air-os:files:search`-IPC freigegebenen Dateinamen. Kein Dateiinhaltsindex, kein heimlicher systemweiter Host-Scan. Die Suche wird pro Eingabe gestartet, asynchron ausgeführt und ist auf 3.000 Einträge, 30 Treffer und fünf Verzeichnisebenen begrenzt. Symlink-Knoten werden übersprungen. `air-spotlight.js` verwirft veraltete Antworten und öffnet einen Treffer über `window.airFinder.revealFile` im selben Finder-Workspace. Automatisierte Tests: `tests/file-search.test.cjs`; vollständiger manueller GUI-Regressionstest steht aus.
+
+
+## Air Erinnerungen (20. Oktober 2026)
+
+`src/main/reminders-store.cjs` speichert bis zu 300 Aufgaben pro Air-OS-Benutzerprofil atomar und versioniert. Datenfelder: Titel, Beschreibung, ISO-Fälligkeitsdatum, Priorität, Erledigt-Status. Authentifizierte schmale IPC in `main.cjs`/`preload.cjs`; `air-reminders.js`/`.css` stellen eine eigene Dock-/Launchpad-App bereit. Die Node-Tests von `tests/reminders-store.test.cjs` sind erfolgreich. Noch keine Host-OS-Wecker, Hintergrundbenachrichtigungen, Cloud oder Sync.

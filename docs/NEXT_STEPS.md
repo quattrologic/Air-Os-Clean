@@ -1,5 +1,16 @@
 # Air-OS Ultimate – Development Handoff
 
+## WICHTIG: neuester Arbeitsstand (20. Oktober 2026)
+
+Vorhandene Funktionen nicht noch einmal programmieren: Finder-Dateinamensuche, Spotlight-Dateitreffer, exklusive Textdateierstellung, profilbezogener Reminders-Store und Air-Erinnerungen-GUI sind bereits im PR #11.
+
+**Zuletzt bestätigte Syntax- und Unit-Tests:** Commit `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`, [CI 39371216725](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371216725) (Tests bestanden, npm audit rot).
+**Vorhandene neue Implementierungen:** `src/main/file-search.cjs`, `tests/file-search.test.cjs`, `air-spotlight.js`, `air-os-enhancements.js`, `src/main/file-ops.cjs`, `src/main/reminders-store.cjs`, `tests/reminders-store.test.cjs`, `air-reminders.js`, `air-reminders.css`, `main.cjs`, `preload.cjs`, `app.js`, `index.html`, `package.json`.
+**Noch offene CI/Tests:** Desktop-Build-Status nach Commit `c0e6ac90` kontrollieren; neue GUI auf Windows und echter macOS-Catalina-10.15.8-Hardware testen; profilübergreifende Datenisolation und Abmelden prüfen.
+**Nächster Entwicklungsschritt:** sichere Finder-Papierkorb-/Restore-Architektur oder Reminder-Benachrichtigungen mit echten Auslösebedingungen. Keine fiktiven Benachrichtigungen, keine destruktiven Dateioperationen ohne bestätigte Wiederherstellung. Danach Architekturservices und weitere Standardapps.
+**Sicherheitsblocker:** 10 npm-Advisory-Pakete, darunter Legacy Electron und extract-zip (High), bleiben rot. Kein automatisches force-Upgrade, kein Umgehen der Sicherheitsprüfung.
+**Git-Regel:** nur mit `expected_sha` auf `feat/air-os-architecture-foundation` schreiben, PR #10 und main nicht ändern.
+
 **Stand:** 20. Oktober 2026  
 **Branch:** `feat/air-os-architecture-foundation` · [PR #11](https://github.com/quattrologic/Air-Os-Clean/pull/11) (Entwurf)  
 **Ausgangs-HEAD dieser Sitzung:** `a26c88933db91a098f14210e2384a2e566139984`  

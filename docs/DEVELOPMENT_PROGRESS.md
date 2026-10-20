@@ -1,5 +1,21 @@
 # Air-OS Ultimate – dauerhafter Entwicklungsfortschritt
 
+## Weiterentwicklung vom 20. Oktober 2026 – Air Erinnerungen und Finder-Datensicherheit
+
+**Ausgangs-HEAD:** `a26c88933db91a098f14210e2384a2e566139984`, PR #11 weiterhin ein Entwurf. Tiny Strike PR #10 und `main` unangetastet.
+
+- `795f50d7c67245b3cafb94325bf24f2bf474a885` und `739f4d1730c9f7988525e62e3cdcebf203ff8bbd`: sichere, begrenzte Finder-Dateinamensuche (maximal 3.000 Einträge, 30 Treffer, fünf Ebenen) samt authentifizierter IPC, Tests und Spotlight-Anzeige mit Finder-Navigation. Nur explizit freigegebene Ordner, keine Inhaltsindizierung.
+- `524768a77e445171ad33b6b87cbbad68a42f0f37`: Neue Textdatei im Finder wird exklusiv erstellt; ein bestehendes Dokument wird bei Namenskonflikt niemals geleert. Regressionstest.
+- `9a947dbce57f381730a4671f48f4a2174c1aa0dc`: profilbezogener, atomarer Reminders-Speicherdienst mit CRUD, Datum, Priorität, Erledigt-Status; Tests prüfen Profiltrennung, Validierung und Recovery bei Schreibfehler.
+- `217a91ced9d70172aeaa4cece852c8af597415ec`: eigenständige App Air Erinnerungen mit Editor, Dock-Icon und Launchpad-Eintrag.
+- `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`: CI prüft Syntax der neu hinzugefügten UI- und Speichermodule.
+
+**Letzte bestätigte Unit-/Syntaxprüfung:** `c0e6ac90e42c07cebd6784858baccb3c85e4b78a`, [CI 39371216725](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39371216725): Syntax und alle Node-Tests erfolgreich. Gesamtrun weiterhin ROT wegen bekanntem npm audit (2 High / 8 Moderate).
+**Zuletzt verifizierter Installer-Build für das Reminders-Backend:** `9a947dbce57f381730a4671f48f4a2174c1aa0dc`, [CI 39370960256](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39370960256). UI-Build von `217a91` und `c0e6ac` muss vor Installer-Freigabe separat geprüft werden.
+**Offen:** keine manuellen GUI-/macOS-Catalina-Hardwaretests, keine Reminders-Benachrichtigungsalarme oder Cloud-Sync, keine Code-Signierung/Notarisierung. Der Alt-Electron-Catalina-Kanal bleibt ein Sicherheits-Release-Blocker.
+
+**Fortsetzung:** aktuelle Branch-SHA und letzte Runs prüfen, anschließend Air Erinnerungen mit Benutzer A/B, Fälligkeitsdaten, Markierungen und Löschen manuell testen; Finder-Dokumentkonflikt und Dateinamensuche testen. Danach Finder-Papierkorb-/Restore-Konzept oder sichere Benachrichtigungen als nächste kleine Entwicklungseinheit. Siehe `docs/NEXT_STEPS.md`.
+
 ## Checkpoint – 20. Oktober 2026 (Fortsetzung nach Commit a26c88933d)
 
 **Aktueller Branch:** `feat/air-os-architecture-foundation` · [Entwurfs-PR #11](https://github.com/quattrologic/Air-Os-Clean/pull/11) · keine Änderung an `main` oder Tiny-Strike-PR #10.  
