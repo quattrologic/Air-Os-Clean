@@ -68,6 +68,8 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   win.once('ready-to-show',()=>{if(!win.isDestroyed())win.show()});
   win.on('closed',()=>{if(windows.get(k)===win)windows.delete(k)});
   try{await win.loadURL(entry)}catch(error){if(!win.isDestroyed())win.close();throw error}
+  // Closing (including logout) while loadURL settles is not a successful launch.
+  if(win.isDestroyed()||windows.get(k)!==win)throw new Error('App window closed during startup.');
   return{ok:true,alreadyOpen:false};
  }
  function close(user,id){const win=windows.get(key(user,id));if(win&&!win.isDestroyed())win.close()}

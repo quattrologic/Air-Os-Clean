@@ -1,3 +1,20 @@
+# Aktuelle Übergabe – Teil 1 abgeschlossen, 21. Oktober 2026
+
+Maßgeblich ist der aktuelle Checkpoint in DEVELOPMENT_PROGRESS.md; ältere Abschnitte unten sind Historie.
+
+Branch `feat/air-os-architecture-foundation`, PR #11 bleibt Draft. Gesicherte Ausgangsbasis `d4fde6e3116ddec3359b792f79482878d2e3f4d1`; diese Einheit trägt die Commit-Nachricht `Fix Air App startup result after window closure`. Lokal 65/65 Tests bestanden. Audit weiterhin rot, macOS am Ausgangs-HEAD abgebrochen. Keine Freigabe für main oder Release.
+
+Vor Teil 2 aktuellen GitHub-HEAD, neue CI und aktive Arbeit prüfen. Keine Wiederholung bereits implementierter Registry-/Runtime-/Store-Funktionen. Pro Sitzung eine kleine, getestete und gesicherte Änderung.
+
+Nächste drei Einheiten:
+1. macOS-CI-Abbruch diagnostizieren; Infrastrukturproblem von Quellcodefehler unterscheiden.
+2. Profilwechsel und Logout-Isolation der Runtime gezielt testen.
+3. Installations-Crash zwischen Rename und Index-Schreiben reproduzieren, datenbewahrende Recovery ergänzen.
+
+Der Startup-Abbruch ist korrigiert und für Schließen, closeAll und Ladefehler einschließlich Retry getestet. Keine Sicherheitsprüfung deaktiviert. Detaillierte Nachweise, Parallel-PRs und Einschränkungen stehen in DEVELOPMENT_PROGRESS.md.
+
+---
+
 **CI-Nachtrag zum Micro-Commit `f673d7c3a8c175ca9a9d2fee811d1f2c4d8c6499`:** [Security run 39463414865](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414865) — JavaScript-Syntax **bestanden**, Node.js-Unit-Tests **bestanden**, Dependency-Audit **weiterhin fehlgeschlagen** (bekannter Legacy-Release-Blocker). [Desktop-Build 39463414802](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414802) zum Checkpoint noch nicht abgeschlossen. Manuelle GUI-Tests fehlen.
 
 # Unmittelbare nächste Schritte – Micro-Development Handoff

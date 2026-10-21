@@ -1,3 +1,42 @@
+# Aktueller Checkpoint – Teil 1, 21. Oktober 2026
+
+Dieser Abschnitt ersetzt ältere Statusangaben weiter unten; diese bleiben als Historie erhalten.
+
+- Branch: `feat/air-os-architecture-foundation`; PR #11 offen, Draft, nicht gemergt.
+- Letzter vor dieser Einheit auf GitHub gesicherter Commit: `d4fde6e3116ddec3359b792f79482878d2e3f4d1`.
+- Diese Einheit: Commit `Fix Air App startup result after window closure`; exakten SHA mit `git log -1 --format=%H -- src/main/airapp-runtime.cjs` ermitteln. Alle 43 bisherigen Branch-Commits und 52 geänderten Dateien bleiben erhalten.
+- `main` unverändert bei `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`.
+- Frischer Checkout war sauber. Kein früherer Projekt-Checkout im verfügbaren Workspace; ungespeicherte Arbeit und aktive Ausführungen anderer Sitzungen sind nicht einsehbar. Prozessliste hier nicht verfügbar. GitHub meldete keine laufenden oder wartenden Actions; Branch-HEAD blieb während der Prüfung stabil. Keine parallele Bearbeitung gestartet.
+
+## Genau eine Stabilisierungseinheit
+
+Runtime meldete beim ersten Aufrufer Erfolg, wenn das Fenster während `loadURL()` geschlossen wurde. Nach dem Laden werden jetzt Fensterzustand und Zuordnung geprüft. Alle wartenden Aufrufer erhalten einen Fehler; erneuter Start bleibt möglich. Test-Double bildet Zerstörung nun korrekt ab. Drei Regressionstests decken `close`, `closeAll` und Ladefehler jeweils mit zwei Startanfragen und anschließendem Retry ab. Vor Korrektur: 2 neue Tests rot, nach Korrektur alle grün.
+
+## Verifikation
+
+- Lokal: **65/65 Node-Tests bestanden**, keine übersprungen; Syntax der geänderten Runtime und Tests, `check:catalina`, `git diff --check` bestanden. Wegen fehlendem `/tmp` wurde TMPDIR auf ein beschreibbares Workspace-Verzeichnis gesetzt; keine Testabschwächung.
+- Ausgangs-HEAD, Security [39463594214](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463594214): 62/62 Tests, Syntax und Private-File-Check grün; Audit rot: **10 Befunde, 2 High / 8 Moderate**, insbesondere Electron/extract-zip. Audit unverändert aktiv, kein Force-Upgrade.
+- Desktop [39463593983](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463593983): validate-source und Windows erfolgreich, macOS abgebrochen; Gesamtstatus failure. Letzter kompletter erfolgreicher Vorgänger-Build: [39463414802](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414802).
+- Neue Commit-CI nach Sicherung separat prüfen; lokale Node-Tests ersetzen keine Electron-GUI-/Installer-Tests.
+
+## Geprüfter Bestand und Grenzen
+
+Registry: validierte Registrierung, unveränderliche Snapshots, atomarer Austausch installierter Metadaten; kein Berechtigungsmechanismus. Runtime: profilbezogene Partitionen, Sandbox ohne Node/Preload, CSP, blockierte externe Zugriffe und erneute Hash-/Pfadprüfung je Anfrage. Store: Ed25519-signierter lokaler Demo-Katalog, temporäre Installation mit Index-Rollback, Deinstallations-Journal und Recovery. Vorhandene Tests prüfen Manipulation, Symlinks, fehlgeschlagene Operationen und Recovery. Kein vollständiger Sicherheitsnachweis oder öffentlicher Store.
+
+Weitere vorhandene Funktionen: Lifecycle, Launchpad, Spotlight einschließlich berechtigter Dateinamensuche, Preferences, Notes, Reminders und sichere Finder-Grundoperationen. Nicht neu entwickelt.
+
+Offene PRs: #10 Tiny Strike, #9 Air-Apps, #8/#1 AirWrite sowie #5/#3/#2 Actions-Updates. Feature-PRs überschneiden sich in app.js/index.html/package.json, #10 zusätzlich main.cjs/preload.cjs/README.md. Keine Übernahme oder Änderung dieser PRs; Runtime-Fix berührt diese Integrationsdateien nicht.
+
+Offen bleiben Dependency-Audit/Legacy-Electron, reale GUI-/Profilwechseltests, macOS-Abbruchdiagnose, Code Signing/Notarisierung sowie weitergehende Installations-Crash-/Pfad-Race-Absicherung. Ältere Architektur-/Security-Abschnitte enthalten inzwischen überholte Aussagen zum Implementierungsstand.
+
+## Nächste drei kleine Einheiten
+
+1. macOS-Job-Abbruch am Ausgangs-HEAD anhand Annotations/Logs eingrenzen; gezielten Wiederholungslauf nur bei begründetem Infrastrukturfehler.
+2. Profilwechsel/Abmelden: Partitionstrennung und verweigerte Zugriffe alter Sitzungen gezielt testen, nur nachgewiesenen Fehler beheben.
+3. Installationsabbruch zwischen Verzeichnis-Rename und Index-Persistenz reproduzieren und datenbewahrende Recovery separat absichern.
+
+---
+
 **CI-Nachtrag zum Micro-Commit `f673d7c3a8c175ca9a9d2fee811d1f2c4d8c6499`:** [Security run 39463414865](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414865) — JavaScript-Syntax **bestanden**, Node.js-Unit-Tests **bestanden**, Dependency-Audit **weiterhin fehlgeschlagen** (bekannter Legacy-Release-Blocker). [Desktop-Build 39463414802](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39463414802) zum Checkpoint noch nicht abgeschlossen. Manuelle GUI-Tests fehlen.
 
 ## Micro-Development – 20. Oktober 2026: doppelte Air-App-Fenster beim gleichzeitigen Start verhindern
