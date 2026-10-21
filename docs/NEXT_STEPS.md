@@ -1,3 +1,20 @@
+# Aktuelle Übergabe – Recovery-Integration getestet, 21. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11 Draft. Gesicherte Ausgangsbasis `3751d15d47a5edf2c6c6c45b2630d963bc55be3f`; neue Einheit `Test recovery integration through Store Registry and Launchpad`. SHA im Abschlussbericht/Git-Log.
+
+Abgeschlossen: echter Store-Installieren-Handler → App-Manager-Recovery → Store-Refresh → gemeinsame Registry → bereits geöffnetes Launchpad. Erfolg erzeugt genau einen korrekten Eintrag; manipuliertes Paket und Index-Schreibfehler erzeugen keinen falschen Eintrag. Bestehende Kacheln, Registry-Metadaten und Dateiinhalte einschließlich anderer Nutzer bleiben unverändert.
+
+Gezielter Testlauf: 15/15 grün, keine übersprungen; drei neue Integrationsfälle. Syntax/Diff-Prüfung grün. Nur Tests/Dokumentation geändert. DOM/IPC-Transport als Testadapter, kein echter Electron-GUI-Nachweis; neue CI separat prüfen.
+
+Nächste drei kleine Aufgaben:
+1. Datenbewahrende Behandlung temporärer .install-Reste vor Rename spezifizieren/testen.
+2. Windows/macOS-Smoke-Test der Store-/Launchpad-Recovery mit echter Electron-Laufzeit.
+3. Separater Modern-Channel-Audit ohne unkontrolliertes Legacy-Upgrade.
+
+AGENTS.md befolgen: HEAD/PR/CI/Arbeitsbaum vor nächster Änderung prüfen, genau eine kleine Aufgabe, testen, sichern und stoppen. main und andere PRs unverändert lassen. Audit-/GUI-Blocker bleiben offen.
+
+---
+
 # Aktuelle Übergabe – Teil 4: Installations-Retry abgeschlossen
 
 Stand 21. Oktober 2026. Branch `feat/air-os-architecture-foundation`, PR #11 Draft. Gesicherte Ausgangsbasis `f1a0e775347c7619d2c8565c1418ca150588522d`. Neue Einheit: `Recover verified orphan Air App installations on retry`; SHA im Git-Log/Abschlussbericht. AGENTS.md weiterhin verbindlich: genau eine kleine Aufgabe pro Sitzung.

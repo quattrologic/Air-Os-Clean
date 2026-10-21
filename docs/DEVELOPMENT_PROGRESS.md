@@ -1,3 +1,35 @@
+# Aktueller Checkpoint – Recovery/Registry/Launchpad-Integration, 21. Oktober 2026
+
+- Gesicherte Ausgangsbasis: `3751d15d47a5edf2c6c6c45b2630d963bc55be3f`; Branch `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Arbeitsbaum vor Änderung sauber, GitHub-HEAD bestätigt; vor Remote-Aktualisierung erneut prüfen und expected_sha verwenden.
+- Diese Einheit: `Test recovery integration through Store Registry and Launchpad`; SHA im Abschlussbericht bzw. `git log -1 --format=%H -- tests/airapp-install-recovery.test.cjs`.
+- Geändert ausschließlich `tests/airapp-install-recovery.test.cjs` und beide Fortschrittsdokumente. Kein Produktivcode geändert, keine zweite Registry, kein Store-Umbau, keine neuen Abhängigkeiten. main und andere PRs bleiben unverändert.
+
+Ausgangs-CI: Desktop-Build [39654049942](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39654049942) erfolgreich; Security [39654050082](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39654050082) fehlgeschlagen. Keine erneute Auditdiagnose in dieser Testeinheit.
+
+## Geprüfte Integration
+
+Drei gezielte Fälle nutzen den echten App-Manager und unveränderte Produktionsquellen von Store, App Registry und Launchpad in einer isolierten Node-VM. Ein kleiner DOM-Adapter und eine asynchrone AppStore-API verbinden sie ohne Electron. Die vorhandene signierte Recovery-Testfixture wird wiederverwendet; kein separater Installer oder Registry-Nachbau.
+
+Der Test öffnet zuerst Launchpad und Store, betätigt den tatsächlich gerenderten Installieren-Button und wartet auf dessen Produktions-Handler einschließlich finally/refresh. Der Test ruft weder registry.syncInstalled noch Launchpad-render selbst auf.
+
+1. Erfolgreiche Recovery: Installationsindex enthält die App, Registry führt origin=store, das bereits geöffnete Launchpad zeigt genau einen Eintrag mit korrektem Namen, der Store bietet Starten an.
+2. Manipuliertes Paket sowie Index-Schreibfehler: kein installierter Index-/Registry-/Launchpad-Eintrag, konkrete Fehlermeldung und weiterhin Installieren verfügbar.
+3. In allen drei Fällen bleiben vorhandene Registry-Einträge und Launchpad-Kacheln unverändert. Vollständige Byte-Snapshots des Alice-App-Ordners einschließlich zusätzlicher Nutzerdaten sowie der bereits installierten Bob-App einschließlich Profilindex/Nutzerdaten bleiben identisch.
+
+## Tests und Grenzen
+
+`TMPDIR=<Workspace-Verzeichnis> node --test tests/airapp-install-recovery.test.cjs tests/app-registry.test.cjs tests/launchpad.test.cjs`: **15/15 bestanden**, keine übersprungen (davon drei neue Integrationsfälle). Syntaxprüfung der Testdatei und git diff --check bestanden. Keine Produktivfehler in diesem Umfang gefunden.
+
+Dieser Nachweis umfasst Komponenten und echte Dateipersistenz, nicht grafisches Layout, Browser-DOM-Vollständigkeit, echte IPC-Authentifizierung oder Installer. Keine Behauptung eines vollständigen Electron-End-to-End-Tests. Neue Commit-CI nach Sicherung separat prüfen. Dependency-Audit/Legacy-Electron und echte Windows/macOS-GUI-Prüfungen bleiben externe Release-Blocker.
+
+## Nächste drei kleine Aufgaben
+
+1. Sicheren, datenbewahrenden Umgang mit .install-Resten vor dem Rename festlegen und gezielt testen.
+2. Windows/macOS-Electron-Smoke-Test: Store-Recovery, Anzeige im Launchpad, Starten und Deinstallieren.
+3. Modern-Channel-Dependency-Audit separat prüfen; Legacy-Kompatibilität erhalten und keine Security-Gates deaktivieren.
+
+---
+
 # Aktueller Checkpoint – Teil 4: Installations-Retry, 21. Oktober 2026
 
 - Gesicherte Ausgangsbasis: `f1a0e775347c7619d2c8565c1418ca150588522d`; Branch `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Arbeitsbaum vor Änderung sauber, GitHub-HEAD unverändert.
