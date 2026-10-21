@@ -1,3 +1,20 @@
+# Aktuelle Übergabe – Teil 4: Installations-Retry abgeschlossen
+
+Stand 21. Oktober 2026. Branch `feat/air-os-architecture-foundation`, PR #11 Draft. Gesicherte Ausgangsbasis `f1a0e775347c7619d2c8565c1418ca150588522d`. Neue Einheit: `Recover verified orphan Air App installations on retry`; SHA im Git-Log/Abschlussbericht. AGENTS.md weiterhin verbindlich: genau eine kleine Aufgabe pro Sitzung.
+
+Abgeschlossen: erneutes Installieren übernimmt nach Crash verbliebene App-Dateien nur nach vollständiger signierter Integritätsprüfung und erfolgreicher Index-Speicherung. Beschädigte/unvollständige/Symlink-Ordner werden ohne Löschen abgewiesen. Bestehender Store synchronisiert danach wie zuvor die Registry.
+
+Fünf neue Recovery-Tests vollständig grün; gezielter Paket-/Manager-Lauf 15 grün mit dokumentierten Plattformgrenzen älterer Tests. Syntax und Diff-Prüfung grün. Neue CI prüfen; Ausgangs-Installer erfolgreich, Security rot. Kein GUI-Nachweis.
+
+Nächste drei kleine Aufgaben:
+1. Store-Integrationstest für Registry/Launchpad nach erfolgreichem bzw. fehlgeschlagenem Installations-Retry.
+2. Sicheren Umgang mit .install-Resten vor dem Rename festlegen und testen; nichts pauschal löschen.
+3. Echter Windows/macOS-Store-Smoke-Test nach Recovery.
+
+Offen: Dependency-Audit/Legacy-Electron, GUI-Tests, Power-Loss-/Race-Grenzen. Vor nächster Änderung GitHub-HEAD/PR/CI und Arbeitsbaum prüfen; main und andere PRs erhalten.
+
+---
+
 # Aktuelle Übergabe – Teil 3 abgeschlossen, 21. Oktober 2026
 
 Dauerhafter Einstieg für „Air-OS weiterentwickeln“: `AGENTS.md` befolgen, aktuellen GitHub-HEAD/Branch/PR/CI und Arbeitsbaum prüfen, diesen und DEVELOPMENT_PROGRESS-Checkpoint lesen. Genau eine kleine Einheit abschließen; keine Gesamt-Neuplanung.

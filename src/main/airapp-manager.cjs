@@ -75,8 +75,15 @@ function createManager({root,appPath,publicKeys}){
   if(existing.some(a=>a.id===id))return{id,alreadyInstalled:true};
   const base=profile(user);fs.mkdirSync(base,{recursive:true});
   const target=path.join(base,id);
-  try{fs.lstatSync(target);throw new Error('Installed package directory already exists. Manual recovery needed.')}
-  catch(error){if(error.code!=='ENOENT')throw error}
+  let targetExists=false;
+  try{fs.lstatSync(target);targetExists=true}catch(error){if(error.code!=='ENOENT')throw error}
+  if(targetExists){
+   // Retry after a crash between package rename and index commit. Never
+   // overwrite or delete an orphan; adopt only after full signed verification.
+   verifyFolder(target,manifest);
+   persist(user,[...existing,{id,name:manifest.name,version:manifest.version,entry:manifest.entry}]);
+   return{id,alreadyInstalled:false};
+  }
   const tmp=path.join(base,'.install-'+crypto.randomBytes(8).toString('hex'));
   fs.mkdirSync(tmp,{recursive:true,mode:0o700});
   try{
@@ -122,7 +129,9 @@ function createManager({root,appPath,publicKeys}){
   // User-writable files must not silently become unsigned executable content.
   const signed=manifestFor(id),m=signed.manifest;
   if(record.entry!==m.entry||record.version!==m.version||record.name!==m.name)throw new Error('Installed metadata mismatch.');
-  const folder=path.join(profile(user),id);
+  return verifyFolder(path.join(profile(user),id),m);
+ }
+ function verifyFolder(folder,m){
   const realFolder=fs.realpathSync(folder);
   if(!fs.lstatSync(folder).isDirectory()||fs.lstatSync(folder).isSymbolicLink())throw new Error('Invalid installation directory.');
   const copy=JSON.parse(fs.readFileSync(path.join(folder,'manifest.airapp.json'),'utf8'));

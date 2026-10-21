@@ -1,3 +1,36 @@
+# Aktueller Checkpoint – Teil 4: Installations-Retry, 21. Oktober 2026
+
+- Gesicherte Ausgangsbasis: `f1a0e775347c7619d2c8565c1418ca150588522d`; Branch `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Arbeitsbaum vor Änderung sauber, GitHub-HEAD unverändert.
+- Diese Einheit: `Recover verified orphan Air App installations on retry`; SHA über `git log -1 --format=%H -- src/main/airapp-manager.cjs` oder Abschlussbericht.
+- Aktueller Ausgangs-Build [39651495641](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39651495641) erfolgreich. Security [39651495636](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39651495636) rot; neue Commit-CI gesondert prüfen.
+- Offene PRs #10/#9/#8/#1 (Features) sowie #5/#3/#2 (Actions) geprüft; keine Integration oder Änderung. main unverändert, keine parallele Bearbeitung.
+
+## Genau eine kleine Funktion
+
+Der Store besitzt bereits Katalog, Installieren/Starten/Deinstallieren und Registry-Synchronisation. Der wichtigste kleine offene Integrationsfall war eine nach Prozessabbruch vorhandene App ohne Indexeintrag: bisher scheiterte jeder erneute Installationsversuch am vorhandenen Ordner.
+
+Der vorhandene Installieren-Aufruf übernimmt jetzt einen solchen Ordner ausschließlich nach vollständiger Prüfung gegen das signierte lokale Katalogpaket. Dafür nutzt Recovery dieselbe extrahierte verifyFolder-Prüfung wie der App-Start: Manifestvergleich, regulärer Ordner/Dateien, Symlink-/Pfadgrenzen und Hashprüfung. Erst nach erfolgreicher atomarer Index-Speicherung wird Erfolg gemeldet; die bestehende Store-Aktualisierung übernimmt anschließend den Index in die Registry. Keine zweite App-Liste, neue IPC oder UI erforderlich.
+
+Der Recovery-Pfad überschreibt/löscht keine vorhandenen App-Dateien. Fehlende/manipulierte Assets und Symlink-Ordner werden abgewiesen. Bei Index-Schreibfehler bleiben die Daten für einen erneuten Versuch erhalten. Zusätzliche Dateien bleiben erhalten, werden aber nicht dadurch zur signierten Runtime-Dateiliste hinzugefügt.
+
+## Dateien und Tests
+
+Geändert: `src/main/airapp-manager.cjs`, neu `tests/airapp-install-recovery.test.cjs`, beide Fortschrittsdokumente.
+
+Fünf neue Tests mit frisch signiertem Testpaket für die tatsächliche Testplattform: Recovery nach Neustart, Manipulation, fehlendes Asset, fehlgeschlagene Index-Persistenz mit Retry, Symlink-Ordner. Vor Fix scheiterten Erfolgs-/Index-Retry-Fälle; nach Fix alle fünf bestanden, einschließlich Symlink-Test. Testschlüssel entstehen nur temporär im Speicher; Produktionspaket und Plattformfreigaben unverändert.
+
+Gezielter Lauf: `node --test tests/airapp-install-recovery.test.cjs tests/airapp-installed.test.cjs tests/airapp-package.test.cjs` meldet **15 bestanden**. Transparente Einschränkung: vorhandene Demo-Installationstests kehren unter Linux wegen der Windows/macOS-Freigabe teilweise früh zurück; die fünf neuen Recovery-Tests laufen tatsächlich vollständig unter Linux. Syntaxprüfungen beider geänderten JS-Dateien und git diff --check bestanden. Kein kompletter Testlauf oder Electron-GUI-Test in dieser bewusst kleinen Einheit.
+
+## Grenzen und nächste drei Einheiten
+
+Diese Recovery geschieht beim expliziten erneuten Installieren, nicht automatisch bei Anmeldung. Der Zustand nach Rename/vor Index wird im Test nachgestellt; kein echter Prozess-Kill/Power-Loss-Test. Abbrüche vor dem Rename und verwaiste .install-Verzeichnisse bleiben gesondert zu behandeln. Kein Schutzversprechen gegen sämtliche konkurrierenden lokalen Dateisystemänderungen. Audit-/Legacy-Electron-Blocker und reale GUI-Tests bleiben offen.
+
+1. Store-Integrationstest: erfolgreiche Recovery erscheint nach Refresh in Registry/Launchpad; fehlgeschlagene Recovery nicht.
+2. Temporäre .install-Reste vor Rename: sichere, datenbewahrende Strategie separat festlegen und testen.
+3. Windows/macOS-Electron-Smoke-Test für Store-Installieren, Starten und Deinstallieren nach Recovery.
+
+---
+
 # Aktueller Checkpoint – Teil 3, 21. Oktober 2026
 
 Dieser Checkpoint ist maßgeblich; ältere Einträge bleiben Historie.
