@@ -33,6 +33,11 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   if(!configured.has(partition)){
   partition.protocol.handle('airapp',async request=>{
    if(request.method!=='GET'||!isAllowed(request.url,id))return new Response('Forbidden',{status:403});
+   // Persistent sessions outlive windows. Authorize this request only for
+   // the current window instance, including after asynchronous file reads.
+   const owner=windows.get(k);
+   const active=()=>owner&&!owner.isDestroyed()&&windows.get(k)===owner;
+   if(!active())return new Response('Forbidden',{status:403});
    let name;try{name=decodeURIComponent(new URL(request.url).pathname).replace(/^\/+/,'')}catch{return new Response('Forbidden',{status:403})}
    try{
     // A partition can outlive its BrowserWindow. On every request, verify the
@@ -50,6 +55,7 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
     if(!stat.isFile()||stat.isSymbolicLink())return new Response('Forbidden',{status:403});
     const data=await fs.readFile(file);
     if(crypto.createHash('sha256').update(data).digest('hex')!==asset.sha256)return new Response('Integrity check failed',{status:403});
+    if(!active())return new Response('Forbidden',{status:403});
     return new Response(data,{headers:{'Content-Type':MIME[path.extname(file)]||'application/octet-stream','Content-Security-Policy':CSP,'X-Content-Type-Options':'nosniff'}});
    }catch{return new Response('Not found',{status:404})}
   });

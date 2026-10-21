@@ -1,3 +1,32 @@
+# Aktueller Checkpoint – Teil 3, 21. Oktober 2026
+
+Dieser Checkpoint ist maßgeblich; ältere Einträge bleiben Historie.
+
+- Ausgangs- und gesicherter Teil-2-Commit: `bd881fa2c570f57b7652f76935c5c11e5d4f1ea3`.
+- Branch `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Lokaler Arbeitsbaum vor Beginn sauber; GitHub-HEAD unverändert. main und andere PRs nicht geändert.
+- Diese Einheit: `Revoke Air App protocol access after window closure`; genauen Checkpoint-SHA mit `git log -1 --format=%H -- src/main/airapp-runtime.cjs` ermitteln.
+- Teil-2-CI [39650995471](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39650995471): Syntax, Node-Tests und Private-File-Prüfung bestanden; Dependency-Audit weiterhin fehlgeschlagen. Installer [39650995571](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39650995571) bei Eingangsprüfung queued; kein Erfolg behauptet. Letzter bestätigter kompletter Build weiterhin Teil 1 / 39650508444.
+
+## Genau eine Funktion: Protokollzugriff an lebendes App-Fenster binden
+
+Persistente Session-Handler konnten nach dem Schließen weiterhin signierte Dateien ausliefern. Jede airapp-Anfrage erfasst jetzt die aktuelle Fensterinstanz ihres Profil-/App-Schlüssels. Ohne lebendes Fenster wird sie mit 403 verweigert. Direkt vor Rückgabe der geprüften Bytes wird dieselbe Instanz erneut geprüft: Schließen, Logout oder ein zwischenzeitlicher Neustart dürfen eine bereits laufende alte Anfrage nicht autorisieren. Ein frischer Start darf neue Anfragen wieder bedienen. Signatur-, Hash-, Pfad- und CSP-Prüfungen bleiben unverändert aktiv; keine Profildaten werden gelöscht.
+
+Das Test-Double bildet persistente Sessions jetzt je Partitionsname statt als eine globale Session ab. Vier Regressionstests prüfen close, closeAll, anderes Profil und eine während des Lesens geschlossene/neu gestartete App. Alle vier schlugen vor dem Fix mit 200 statt 403 fehl. Danach **72/72 Node-Tests bestanden**, keine übersprungen. Syntaxprüfungen der Runtime und Tests, Catalina-Konfiguration und git diff --check bestanden (Workspace-TMPDIR wie zuvor).
+
+Grenzen: Prüfung des eigenen Protokoll-Handlers mit Node-Doubles, kein vollständiger Chromium-Cache-/Storage-/Electron-GUI-Sicherheitsnachweis. Bereits ausgelieferte Bytes werden nicht zurückgerufen. Profil-Authentifizierung bleibt Aufgabe der vorhandenen Main-IPC. Die neue Commit-CI ist nach Sicherung gesondert zu prüfen. Legacy-Audit, Code Signing und reale GUI-/Installer-Tests bleiben offen; letzter detaillierter Auditbefund 2 High/8 Moderate.
+
+## Dauerhafter Ablauf
+
+`AGENTS.md` hält den vom Nutzer gewünschten Anti-Freeze-Modus fest: Statusprüfung, genau eine kleine Aufgabe, relevante Tests, zeitnaher Git-Checkpoint, aktualisierte Übergabe, kurzer Abschluss. Richtwerte 5–10 Minuten je Einheit und möglichst 10–15 Minuten je Sitzung; keine Laufzeitgarantie. „Air-OS weiterentwickeln“ verwendet diesen Ablauf ohne erneute Gesamtplanung.
+
+## Nächste drei kleine Einheiten
+
+1. Installations-Crash zwischen Verzeichnis-Rename und Index-Persistenz reproduzieren; datenbewahrende Recovery gezielt absichern.
+2. Echte Electron-Prüfung für Logout, beforeunload-Veto, alte Protokollanfragen und Profilwechsel auf Windows/macOS.
+3. Separater Modern-Channel-Audit: kleinsten kompatiblen Dependency-Fix ermitteln/testen; Catalina-Legacy nicht blind upgraden.
+
+---
+
 # Aktueller Checkpoint – Teil 2, 21. Oktober 2026
 
 Dieser Abschnitt ist maßgeblich; frühere Checkpoints bleiben als Historie erhalten.

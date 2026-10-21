@@ -1,3 +1,20 @@
+# Aktuelle Übergabe – Teil 3 abgeschlossen, 21. Oktober 2026
+
+Dauerhafter Einstieg für „Air-OS weiterentwickeln“: `AGENTS.md` befolgen, aktuellen GitHub-HEAD/Branch/PR/CI und Arbeitsbaum prüfen, diesen und DEVELOPMENT_PROGRESS-Checkpoint lesen. Genau eine kleine Einheit abschließen; keine Gesamt-Neuplanung.
+
+Branch `feat/air-os-architecture-foundation`, PR #11 Draft. Ausgangs-Checkpoint `bd881fa2c570f57b7652f76935c5c11e5d4f1ea3`; neue Einheit `Revoke Air App protocol access after window closure` (SHA im Git-Log/Abschlussbericht). Lokal 72/72 Tests grün. Audit weiter rot; neue CI gesondert prüfen.
+
+Abgeschlossen: Protokollanfragen benötigen eine lebende Profil-/App-Fensterinstanz. Nach Logout/Schließen 403; alte laufende Anfragen bleiben auch nach Neustart gesperrt. Neue Anfragen nach frischem Start funktionieren. Kein Löschen persistenter Daten, kein vollständiger Chromium-Storage-Isolationsnachweis.
+
+Nächste drei kleine Einheiten:
+1. Installationsabbruch zwischen Rename und Index-Schreiben reproduzieren und datenbewahrende Recovery implementieren.
+2. Echte Electron-GUI-Prüfung der Logout-/beforeunload-/Protokoll- und Profilwechselgrenzen.
+3. Gezielte Modern-Channel-Dependency-Stabilisierung mit Audit; Legacy-Kompatibilität erhalten.
+
+main unverändert lassen; andere PRs berücksichtigen. Sicherheitschecks bleiben aktiv. Nach Tests, Commit und Dokumentation kontrolliert stoppen.
+
+---
+
 # Aktuelle Übergabe – Teil 2 abgeschlossen, 21. Oktober 2026
 
 Branch `feat/air-os-architecture-foundation`, PR #11 weiterhin Draft. Ausgangs-Checkpoint `ea51c6f083bfb300355d731d2b4a9b37808abe77`; neue Einheit `Enforce Air App termination on logout and removal`. Exakten SHA im Git-Log prüfen. Lokal 68/68 Tests grün; Teil-1-Installer für Windows/macOS inzwischen erfolgreich, Audit weiter rot.
