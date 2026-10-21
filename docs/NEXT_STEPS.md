@@ -1,3 +1,18 @@
+# Aktuelle Übergabe – Teil 2 abgeschlossen, 21. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11 weiterhin Draft. Ausgangs-Checkpoint `ea51c6f083bfb300355d731d2b4a9b37808abe77`; neue Einheit `Enforce Air App termination on logout and removal`. Exakten SHA im Git-Log prüfen. Lokal 68/68 Tests grün; Teil-1-Installer für Windows/macOS inzwischen erfolgreich, Audit weiter rot.
+
+Abgeschlossen: Host-Cleanup der isolierten Air-Apps ist bei Logout, Deinstallation und Ladefehler nicht mehr durch beforeunload blockierbar. Drei Regressionstests prüfen Veto, Profilfenster-Auswahl, wiederholtes Beenden und Neustart. Kein Autosave und kein vollständiger Session-Isolationsnachweis.
+
+Vor Teil 3 HEAD, Arbeitsbaum und neue CI prüfen. Danach genau eine kleine Einheit:
+1. Persistente Session-Partitionen und alte Protokollzugriffe nach Logout prüfen/absichern.
+2. Danach Installations-Crash-Recovery zwischen Rename und Index-Persistenz.
+3. Danach echter GUI-Test der Logout-/beforeunload-Grenze auf Windows/macOS.
+
+Audit/Legacy-Electron, Code Signing und weitere GUI-Prüfungen bleiben Release-Blocker. main nicht ändern, andere PRs nicht ungeprüft integrieren. Vollständiger Nachweis im aktuellen DEVELOPMENT_PROGRESS-Abschnitt. Keine weitere Einheit vor Teil 3 beginnen.
+
+---
+
 # Aktuelle Übergabe – Teil 1 abgeschlossen, 21. Oktober 2026
 
 Maßgeblich ist der aktuelle Checkpoint in DEVELOPMENT_PROGRESS.md; ältere Abschnitte unten sind Historie.

@@ -4,20 +4,21 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),crypto=require('node:crypto');
 const {EventEmitter}=require('node:events');
 const {createRuntime}=require('../src/main/airapp-runtime.cjs');
-function setup({delayLoad=false}={}){
+function setup({delayLoad=false,vetoClose=false}={}){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'airos-runtime-'));
  fs.writeFileSync(path.join(root,'index.html'),'<h1>Safe app</h1>');
  fs.writeFileSync(path.join(root,'app.js'),'console.log("safe")');
  const digest=name=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,name))).digest('hex');
  fs.writeFileSync(path.join(root,'manifest.airapp.json'),JSON.stringify({files:[{path:'index.html',sha256:digest('index.html')},{path:'app.js',sha256:digest('app.js')}]}));
  let route,resumeLoad,rejectLoad,created=0;
+ const instances=[];
  const partition={protocol:{handle(_scheme,fn){route=fn}},webRequest:{onBeforeRequest(){}},setPermissionRequestHandler(){},setPermissionCheckHandler(){},on(){}};
  class Window extends EventEmitter{
-  constructor(options){super();created++;this.options=options;this.webContents=new EventEmitter();this.webContents.setWindowOpenHandler=()=>{};this.show=()=>{};this.focus=()=>{};this.destroyed=false;this.isDestroyed=()=>this.destroyed;this.loadURL=async url=>{this.url=url;if(delayLoad)await new Promise((resolve,reject)=>{resumeLoad=resolve;rejectLoad=reject})};this.close=()=>{this.destroyed=true;this.emit('closed')}}
+  constructor(options){super();created++;instances.push(this);this.options=options;this.webContents=new EventEmitter();this.webContents.setWindowOpenHandler=()=>{};this.show=()=>{};this.focus=()=>{};this.destroyed=false;this.isDestroyed=()=>this.destroyed;this.loadURL=async url=>{this.url=url;if(delayLoad)await new Promise((resolve,reject)=>{resumeLoad=resolve;rejectLoad=reject})};this.destroy=()=>{if(!this.destroyed){this.destroyed=true;this.emit('closed')}};this.close=()=>{if(!vetoClose)this.destroy()}}
  }
  const manager={installedFolder(){return root},installed(){return [{id:'com.airos.demo.timer',name:'Air Timer',entry:'index.html'}]}};
  const runtime=createRuntime({BrowserWindow:Window,protocol:{registerSchemesAsPrivileged(){}},session:{fromPartition:()=>partition},manager});
- return {root,runtime,manager,route:()=>route,created:()=>created,release:()=>resumeLoad?.(),fail:()=>rejectLoad?.(new Error('Load failed')),close:()=>fs.rmSync(root,{recursive:true,force:true})};
+ return {root,runtime,manager,instances,route:()=>route,created:()=>created,release:()=>resumeLoad?.(),fail:()=>rejectLoad?.(new Error('Load failed')),close:()=>fs.rmSync(root,{recursive:true,force:true})};
 }
 test('signed runtime serves bundled files but refuses foreign origins and unlisted files',async()=>{
  const c=setup();
@@ -120,3 +121,43 @@ for(const action of ['close','closeAll','loadFailure']){
   }finally{c.close()}
  });
 }
+
+test('host removal terminates a vetoing app without closing another profile',async()=>{
+ const c=setup({vetoClose:true});
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  await c.runtime.open('Bob','com.airos.demo.timer');
+  c.runtime.close('Alice','com.airos.demo.timer');
+  assert.equal(c.instances[0].isDestroyed(),true);
+  assert.equal(c.instances[1].isDestroyed(),false);
+  c.runtime.close('Alice','com.airos.demo.timer'); // idempotent
+  assert.deepEqual(await c.runtime.open('Alice','com.airos.demo.timer'),{ok:true,alreadyOpen:false});
+  assert.equal(c.created(),3);
+ }finally{c.runtime.closeAll();c.close()}
+});
+
+test('logout terminates every vetoing app and allows a fresh launch',async()=>{
+ const c=setup({vetoClose:true});
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  await c.runtime.open('Bob','com.airos.demo.timer');
+  c.runtime.closeAll();
+  assert.ok(c.instances.every(win=>win.isDestroyed()));
+  c.runtime.closeAll(); // idempotent
+  assert.deepEqual(await c.runtime.open('Bob','com.airos.demo.timer'),{ok:true,alreadyOpen:false});
+  assert.equal(c.created(),3);
+ }finally{c.runtime.closeAll();c.close()}
+});
+
+test('failed startup destroys a vetoing window before retry',async()=>{
+ const c=setup({delayLoad:true,vetoClose:true});
+ try{
+  const launch=c.runtime.open('Alice','com.airos.demo.timer');
+  const failed=assert.rejects(launch,/Load failed/);
+  c.fail();await failed;
+  assert.equal(c.instances[0].isDestroyed(),true);
+  const retry=c.runtime.open('Alice','com.airos.demo.timer');
+  assert.equal(c.created(),2);
+  c.release();await retry;
+ }finally{c.runtime.closeAll();c.close()}
+});

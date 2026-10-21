@@ -67,13 +67,15 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   win.webContents.on('will-attach-webview',event=>event.preventDefault());
   win.once('ready-to-show',()=>{if(!win.isDestroyed())win.show()});
   win.on('closed',()=>{if(windows.get(k)===win)windows.delete(k)});
-  try{await win.loadURL(entry)}catch(error){if(!win.isDestroyed())win.close();throw error}
+  try{await win.loadURL(entry)}catch(error){if(!win.isDestroyed())win.destroy();throw error}
   // Closing (including logout) while loadURL settles is not a successful launch.
   if(win.isDestroyed()||windows.get(k)!==win)throw new Error('App window closed during startup.');
   return{ok:true,alreadyOpen:false};
  }
- function close(user,id){const win=windows.get(key(user,id));if(win&&!win.isDestroyed())win.close()}
- function closeAll(){for(const win of windows.values())if(!win.isDestroyed())win.close();windows.clear()}
+ // Host-enforced removal/logout must not be vetoed by untrusted beforeunload.
+ // Normal window-chrome closing retains Electron's usual close behavior.
+ function close(user,id){const win=windows.get(key(user,id));if(win&&!win.isDestroyed())win.destroy()}
+ function closeAll(){for(const win of windows.values())if(!win.isDestroyed())win.destroy();windows.clear()}
  return Object.freeze({open,close,closeAll,isAllowed});
 }
 module.exports={createRuntime,CSP};

@@ -1,3 +1,33 @@
+# Aktueller Checkpoint – Teil 2, 21. Oktober 2026
+
+Dieser Abschnitt ist maßgeblich; frühere Checkpoints bleiben als Historie erhalten.
+
+- Branch: `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Ausgangs- und gesicherter Teil-1-Commit: `ea51c6f083bfb300355d731d2b4a9b37808abe77`. Lokaler Checkout vor Arbeit sauber, GitHub-HEAD unverändert.
+- Diese Einheit: `Enforce Air App termination on logout and removal`; SHA über `git log -1 --format=%H -- src/main/airapp-runtime.cjs`. main und andere PRs unverändert; keine neuen Abhängigkeiten oder parallelen Entwickler gestartet.
+- CI Teil 1: [Security 39650508176](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39650508176) bestätigt Syntax, Node-Tests und Private-File-Prüfung; Audit weiterhin fehlgeschlagen. [Desktop 39650508444](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39650508444) inzwischen **erfolgreich** für Windows/macOS. Der laufende Build war CI, keine parallele Quellcodebearbeitung. Früherer macOS-Abbruch damit nicht mehr der jüngste Buildstatus; Ursache des alten Abbruchs nicht bestimmt.
+
+## Implementiert: nicht blockierbares Beenden isolierter Air-Apps
+
+Vorhandenes `main.cjs` ruft Runtime.closeAll beim Abmelden/Hauptfenster-Schließen und Runtime.close vor Deinstallation auf. Bisher verwendeten beide BrowserWindow.close(), das eine App über beforeunload verhindern kann. closeAll verlor dabei sogar die Referenzen auf überlebende Fenster. Auch ein fehlgeschlagener Start konnte ein solches Fenster zurücklassen.
+
+Die Runtime erzwingt an diesen drei Host-Cleanup-Stellen nun BrowserWindow.destroy(). Der closed-Handler bereinigt weiterhin die Fensterzuordnung. Normales Schließen über die Fensterleiste wird nicht verändert. Keine zweite Runtime oder neue IPC eingeführt.
+
+Bewusster Lifecycle-Vertrag: Abmelden, Entfernen und fehlgeschlagener Start führen keine unload/beforeunload-Speicher-Hooks aus. Apps müssen Daten vor diesen Vorgängen dauerhaft sichern; diese Einheit bietet kein Autosave. Persistente Profildaten werden durch destroy() nicht gelöscht. API-Grundlage: https://www.electronjs.org/docs/latest/api/browser-window/#windestroy .
+
+## Tests
+
+Drei neue Node-Regressionstests mit einem Close-Veto im BrowserWindow-Double: gezieltes Beenden lässt anderes Profilfenster intakt, Logout beendet alle Fenster, fehlgeschlagener Start lässt keinen Renderer zurück. Wiederholtes Beenden und Neustart werden ebenfalls geprüft. Vor Fix 3 neue Tests fehlgeschlagen, nach Fix **68/68 gesamte Node-Tests bestanden**, keine übersprungen. Syntaxprüfungen beider JS-Dateien, Catalina-Konfiguration und git diff --check bestanden. TMPDIR wie in Teil 1 auf Workspace gesetzt.
+
+Grenzen: Node-Doubles ersetzen keinen echten Electron-beforeunload-Test; Profilfenster-Auswahl ist geprüft, vollständige Session-/Storage-Isolation nicht. CI für den neuen Commit nach Sicherung separat prüfen. Audit unverändert aktiv; letzter ausgewerteter Befund 2 High/8 Moderate. Keine Release-Freigabe.
+
+## Nächste drei kleine Einheiten
+
+1. Persistente App-Partitionen nach Logout: getrennte Benutzer-Sessions und verbliebene Protokollzugriffe gezielt testen und nötigenfalls widerrufen.
+2. Installationsabbruch zwischen Verzeichnis-Rename und Index-Schreiben reproduzieren und datenbewahrende Recovery absichern.
+3. Echten Electron-GUI-Test für beforeunload-Veto, Abmelden und erneute Anmeldung auf Windows/macOS durchführen.
+
+---
+
 # Aktueller Checkpoint – Teil 1, 21. Oktober 2026
 
 Dieser Abschnitt ersetzt ältere Statusangaben weiter unten; diese bleiben als Historie erhalten.
