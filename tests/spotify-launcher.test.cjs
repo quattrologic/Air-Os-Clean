@@ -48,3 +48,64 @@ test('IPC requires trusted authenticated access before native launch',async()=>{
  vm.runInNewContext(fs.readFileSync(require.resolve('../preload.cjs'),'utf8'),{process:{platform:'win32'},require:()=>({contextBridge:{exposeInMainWorld:(_name,value)=>{api=value}},ipcRenderer:{invoke:(...args)=>ipc.push(args)}})});
  api.launchSpotify('https://evil.example');assert.deepEqual(ipc,[['air-os:spotify:launch']]);
 });
+
+// Synthetic OS responses: these contract tests do not prove native compatibility.
+test('native path matrix: regular Windows, packaged Windows path and macOS user bundle',async()=>{
+ for(const [platform,file] of [
+  ['win32','C:\\Users\\Alice\\AppData\\Roaming\\Spotify\\Spotify.exe'],
+  ['win32','C:\\Program Files\\WindowsApps\\SpotifyAB.SpotifyMusic_fixture_x64__fixture\\Spotify.exe'],
+  ['darwin','/Users/Alice/Applications/Spotify.app']
+ ]){
+  const c=setup(platform,file,{stat:async()=>({isFile:()=>platform==='win32',isDirectory:()=>platform==='darwin'})});
+  assert.deepEqual(await c.launcher.launch(),{ok:true,launchRequested:true});
+  assert.deepEqual(await c.launcher.launch(),{ok:true,launchRequested:true});
+  assert.deepEqual(c.calls,[file,file]); // A second OS request, not a claim of window activation.
+ }
+});
+test('unsupported Store activation identifiers fail without browser fallback',async()=>{
+ for(const file of ['shell:AppsFolder\\SpotifyAB.SpotifyMusic_fixture!Spotify','SpotifyAB.SpotifyMusic_fixture!Spotify','C:\\Windows\\System32\\ApplicationFrameHost.exe']){
+  const c=setup('win32',file);
+  await assert.rejects(c.launcher.launch(),/kein unterstützter Spotify/);
+  assert.deepEqual(c.calls,[]);
+ }
+});
+test('unreadable Store path fails closed and a later request can retry',async()=>{
+ let unavailable=true;
+ const c=setup('win32','C:\\Program Files\\WindowsApps\\Spotify_fixture\\Spotify.exe',{
+  realpath:async p=>{if(unavailable)throw Object.assign(Error('Access denied'),{code:'EACCES'});return p}
+ });
+ await assert.rejects(c.launcher.launch(),{code:'EACCES'});assert.deepEqual(c.calls,[]);
+ unavailable=false;assert.deepEqual(await c.launcher.launch(),{ok:true,launchRequested:true});assert.equal(c.calls.length,1);
+});
+test('Dock and Launchpad routing reach native bridge and surface missing-client errors',async()=>{
+ const source=fs.readFileSync(require.resolve('../app.js'),'utf8');
+ const start=source.indexOf('function openApp(id){');
+ const nativeBranch=source.slice(start,source.indexOf(' const registered=',start))+'}';
+ const registry=require('../src/core/app-registry.js');assert.equal(registry.get('spotify').name,'Spotify');
+ const messages=[],listeners=new Map(),button={dataset:{app:'spotify'},addEventListener:(type,fn)=>listeners.set(type,fn)};
+ const native=setup('win32','',{app:{getApplicationInfoForProtocol:async()=>{throw Error('not installed')}}});
+ const context=vm.createContext({window:{airAppRegistry:registry,airOS:{launchSpotify:()=>native.launcher.launch()}},
+  toast:message=>messages.push(message),document:{querySelectorAll:()=>[button]}});
+ vm.runInContext(nativeBranch,context);
+ const dockHandlers=source.slice(source.indexOf('for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-icon[data-app]"))'));
+ vm.runInContext(dockHandlers,context);
+ listeners.get('click')({preventDefault(){},stopPropagation(){}});
+ await new Promise(r=>setImmediate(r));assert.match(messages.pop(),/Spotify-Desktop-App nicht gefunden.*installieren/);
+ // Execute the existing delegated Launchpad/window route with its data-app entry.
+ const route=source.split('\n').find(line=>line.includes('const app=e.target.closest("[data-app]")'));
+ vm.runInContext('function click(e){'+route+'}',context);
+ context.click({target:{closest:selector=>{assert.equal(selector,'[data-app]');return button}}});
+ await new Promise(r=>setImmediate(r));assert.match(messages.pop(),/Spotify-Desktop-App nicht gefunden.*installieren/);
+ assert.deepEqual(native.calls,[]);
+ const installed=setup('win32','C:\\Users\\Alice\\Spotify\\Spotify.exe');
+ context.window.airOS.launchSpotify=()=>installed.launcher.launch();
+ listeners.get('click')({preventDefault(){},stopPropagation(){}});
+ await new Promise(r=>setImmediate(r));assert.match(messages.pop(),/Betriebssystem/);
+ context.click({target:{closest:()=>button}});
+ await new Promise(r=>setImmediate(r));assert.match(messages.pop(),/Betriebssystem/);
+ assert.equal(installed.calls.length,2);
+ const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
+ assert.match(html, /class="dock-app[^"\n]*"[^>]*data-app="spotify"/);
+ assert.ok(html.includes('air-modern-dock.css'));
+ assert.ok(fs.readFileSync(require.resolve('../air-launchpad.js'),'utf8').includes('b.dataset.app=app.id'));
+});

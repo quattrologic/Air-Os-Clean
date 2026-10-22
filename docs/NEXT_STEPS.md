@@ -1,3 +1,18 @@
+# Aktuelle Übergabe – Spotify-Testeinheit, 22. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11 (offen/Draft). Letzter bestätigter GitHub-Checkpoint `05d132df03da2990dc91897d4a57938db9f9bc50`; sauberer Arbeitsbaum vor Beginn. Neuer Checkpoint: `Test Spotify desktop launch contracts and UI routing` (SHA im Abschlussbericht/Git-Log). main und andere PRs unverändert.
+
+Abgeschlossen: vier zusätzliche automatisierte Tests für native Pfadvarianten/Store-Grenzen, Retry und vorhandene Dock-/Launchpad-Routen. 17/17 gezielte Tests sowie Syntax/Diff grün. Ausschließlich Linux/Node mit simulierten OS-APIs; keine erfolgreiche native Windows/macOS-/Store-Kompatibilität behauptet. Kein Launcher-Umbau.
+
+Nächste drei Micro-Aufgaben:
+1. Auf Nutzerwunsch als Nächstes: offizielle installierte ChatGPT-App über sicheren nativen Launcher mit Registry-, Launchpad- und Dock-Eintrag integrieren; Mechanismen vorher prüfen, kein Browserfallback. Noch nicht implementiert.
+2. Spotify: technische Dateisystemfehler (z.B. EACCES) verständlich melden, Sicherheitsgrenzen erhalten.
+3. Spotify: echte Windows-Standard-/Store- und macOS-Tests, Wiederaktivierung und Air-Modern-Dock visuell prüfen.
+
+Grenzen: Store-Handler ohne validierbaren lokalen Spotify-Pfad bleiben nicht unterstützt; Aktivierung laufender Fenster nicht nachgewiesen. Ausgangs-CI Installer grün, Security rot; neue CI prüfen. Frühere Dock-/Dynamic-Island-Aufgaben bleiben erhalten und sind nachgeordnet. main/andere PRs unangetastet; AGENTS.md/Micro-Modus beibehalten.
+
+---
+
 # Aktuelle Übergabe – Air Modern Dock, 22. Oktober 2026
 
 Branch `feat/air-os-architecture-foundation`, PR #11. Letzte bestätigte Basis `3d3c5759c0200d12e2cc717f71cc6e6734245d5b`; neuer Checkpoint `Add opt-in Air Modern floating dock theme` (SHA im Git-Log/Abschlussbericht).

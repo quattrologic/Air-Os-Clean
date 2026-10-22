@@ -1,3 +1,26 @@
+# Aktueller Checkpoint – Spotify-Startmechanismen getestet, 22. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11 (offen/Draft). Letzter bestätigter GitHub-Checkpoint `05d132df03da2990dc91897d4a57938db9f9bc50`; sauberer Arbeitsbaum vor Beginn. Neuer Checkpoint: `Test Spotify desktop launch contracts and UI routing` (SHA im Abschlussbericht/Git-Log). main und andere PRs unverändert.
+
+Genau eine Testeinheit; keine Änderung des Launchers oder Designs. Geändert: tests/spotify-launcher.test.cjs und beide Fortschrittsdateien. Vier neue Regressionstests mit synthetischen OS-Antworten: regulärer Windows-Pfad, WindowsApps-Pfad, macOS-Benutzerbundle; wiederholte Startanforderung; Ablehnung nicht unterstützter Store-Aktivierungskennungen; Zugriffsfehler ohne Start und anschließender Retry; vorhandene Dock-/Launchpad-Klickpfade bis zur nativen Bridge mit Erfolg und verständlicher Nicht-installiert-Meldung. Registry und moderne CSS-Einbindung bleiben vorhanden. Die UI-Routen werden im Node-VM-Harness ausgeführt, nicht in einem gerenderten Electron-Fenster.
+
+Tests: `node --test tests/spotify-launcher.test.cjs tests/app-registry.test.cjs tests/launchpad.test.cjs` → 17/17 bestanden, 0 fehlgeschlagen/übersprungen. Syntaxprüfung des Tests und git diff --check bestanden. Bestehende Tests decken Parallelklicks, IPC-Authentifizierung, parameterlose Bridge und Ablehnung gefährlicher Pfade ab.
+
+Tatsächliche Umgebung: Linux/Node. Keine echte Windows-, Microsoft-Store- oder macOS-Installation getestet; keine native Spotify-Sitzung vorhanden. Die WindowsApps-Pfade sind bewusst synthetische Fixtures, keine beobachteten Handler-Pfade. Ein zweiter erfolgreicher Aufruf beweist nur eine weitere OS-Übergabe, keine Aktivierung oder Prozess-/Fenstererkennung. Dock-Theme-Darstellung wurde nicht visuell geprüft.
+
+Mechanismen unverändert: getApplicationInfoForProtocol('spotify://') zur lokalen Handler-Auflösung, anschließend shell.openPath für den validierten lokalen Pfad. Offizielle API-Referenzen: https://www.electronjs.org/docs/latest/api/app#getapplicationinfoforprotocolurl und https://www.electronjs.org/docs/latest/api/shell#shellopenpathpath . Keine Browserweiterleitung, Web-Einbettung oder neue Prozessabfrage. Diese APIs liefern keinen Nachweis, dass jeder Spotify-Store-Handler unterstützt wird.
+
+Offen: echte Plattformtests für alle sieben Nutzerszenarien; Store-Handler ohne unterstützten Dateipfad werden kontrolliert abgewiesen. Dateisystemfehler (z.B. EACCES beim Auflösen eines Store-Pfads) werden derzeit unverändert weitergereicht und können technisch statt benutzerfreundlich wirken; separat normalisieren. Kein Hersteller-Signaturnachweis; OS-Zuordnung bleibt Vertrauensbasis.
+
+CI der Ausgangsbasis: Installer 39812878973 erfolgreich, Security 39812878872 fehlgeschlagen; Ursache in dieser Testeinheit nicht neu untersucht. Kein grüner Gesamt-CI-Status behauptet; neue CI nach Checkpoint separat prüfen.
+
+Nächste drei kleine Einheiten:
+1. ChatGPT-Desktop-Launcher: offizielle lokale Startmechanismen prüfen, vorhandene Registry/Launchpad/Dock verwenden; kein Browserfallback. Erst nächste Sitzung implementieren.
+2. Spotify-Dateisystemfehler in verständliche Fehlermeldungen übersetzen und gezielt testen.
+3. Echter Spotify-Smoke-Test auf Windows (Standard/Store) und macOS, einschließlich bereits laufender App und Air-Modern-Dock.
+
+---
+
 # Aktueller Checkpoint – Air Modern Dock, 22. Oktober 2026
 
 Gesicherte Ausgangsbasis: `3d3c5759c0200d12e2cc717f71cc6e6734245d5b`. Branch `feat/air-os-architecture-foundation`, PR #11. Neuer Checkpoint: `Add opt-in Air Modern floating dock theme` (SHA im Git-Log/Abschlussbericht). main und andere PRs unverändert.
