@@ -63,6 +63,7 @@
       "src/main/airapp-package.cjs",
       "src/main/airapp-manager.cjs",
       "src/main/airapp-runtime.cjs",
+      "src/main/spotify-launcher.cjs",
       "store/catalog/**/*",
       "store/keys/**/*",
       "air-app-store.js",

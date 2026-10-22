@@ -1,3 +1,39 @@
+# Aktueller Checkpoint – nativer Spotify-Launcher, 22. Oktober 2026
+
+Ausgangs-Commit `3a6d12a8cbb817fa0a8ecacd858ff15dba7c9652`, Branch `feat/air-os-architecture-foundation`, PR #11. Arbeitsbaum sauber und GitHub-HEAD bestätigt. Einheit: `Launch installed Spotify desktop client without browser fallback`; SHA im Abschlussbericht/Git-Log. Ausgangs-Installer 39810291064 erfolgreich; Security 39810291093 fehlgeschlagen. Neue CI gesondert prüfen. main und andere PRs unverändert.
+
+## Genau eine Teilaufgabe
+
+Vorhandene Spotify-Registry, Icon, Launchpad und statischer Dock-Eintrag wiederverwendet. openApp('spotify') ruft jetzt eine parameterlose Preload-Bridge auf. Main prüft bestehende requirePreferenceUser-Authentifizierung/vertrauenswürdigen IPC-Absender und startet den nativen Launcher. Keine URL/Pfadübergabe vom Renderer.
+
+Der Launcher ermittelt über Electron getApplicationInfoForProtocol('spotify://') ausschließlich den registrierten lokalen App-Pfad, prüft absoluten/normalisierten Pfad und kanonisches Ziel, erwartet Spotify.exe als Datei unter Windows bzw. Spotify.app als Verzeichnis unter macOS und übergibt diesen lokalen Pfad an shell.openPath. Keine HTTP-URL, kein openExternal, keine Shell-Kommandointerpretation. Fehlende/fremde Zuordnung schlägt mit Hinweis fehl. Gleichzeitige Starts teilen eine laufende Anfrage; späterer Retry ist möglich. Das OS bzw. der Client entscheidet über Aktivierung/Wiederverwendung eines vorhandenen Fensters.
+
+Der alte Web-Player-Button und Demo-Tracks wurden entfernt. Es wird kein Air-OS-Scheinfenster erzeugt und kein Prozessstatus behauptet. launchRequested bedeutet nur erfolgreiche OS-Übergabe. Spotify verwaltet Anmeldung, Musik und sein eigenes Fenster. Die native App wird nicht mitgeliefert.
+
+## Recherche und Entscheidung
+
+- Spotify Web Playback SDK: https://developer.spotify.com/documentation/web-playback-sdk — Browser-/Encrypted-Media-Anforderungen; zuverlässige Unterstützung der offiziellen Oberfläche im vorhandenen Electron-32-Build nicht belegt. Daher keine Einbettung oder DRM-Manipulation.
+- Spotify Web Player: https://support.spotify.com/us/article/web-player-help/ — Browser-/Widevine-Anforderungen.
+- Bedingungen: https://www.spotify.com/legal — Nutzung/Account bleibt beim offiziellen Client; keine Lizenz zur Wiederverteilung oder Markenfreigabe daraus ableiten. Bestehendes Projekt-Icon wurde nicht neu gestaltet; Marken-/Veröffentlichungsprüfung bleibt vor öffentlichem Release offen. Dies ist keine pauschale rechtliche Freigabe einer Spotify-Integration.
+- Electron API: https://www.electronjs.org/docs/latest/api/app#getapplicationinfoforprotocolurl und https://www.electronjs.org/docs/latest/api/shell — OS-App-Auflösung und lokales Öffnen.
+- ChatGPT: https://learn.chatgpt.com/docs/app — offizielle Desktop-App dokumentiert. Keine verifizierte Zusage zur Drittanbieter-Electron-Einbettung gefunden; nächste Integration bevorzugt installierten Client. Keine API-Nutzung, Schlüssel oder Login-Eingriffe in dieser Einheit.
+
+## Tests und Grenzen
+
+13/13 gezielte Tests (spotify-launcher, app-registry, launchpad) bestanden, keine übersprungen. Abgedeckt: Windows/macOS-Pfadübergabe, Parallelklicks, Retry, URL-/Browser-/UNC-/Traversal-/Nullbyte-Ablehnung, fehlender Client, kanonisch abweichendes Ziel, OS-/Startfehler, Renderer-Routing, authentifizierte IPC und parameterlose Preload-Bridge, Installer-Dateiliste. Syntaxchecks von Main, Preload, App, Enhancements und Launcher; check:catalina und git diff --check bestanden.
+
+Native APIs werden in Tests nachgebildet; kein tatsächlicher Windows/macOS-Start oder Login nachgewiesen. OS-Protokollzuordnung ist Vertrauensbasis, Dateiname/Pfad ist kein Herausgeber-Signaturnachweis. Unbekannte Windows-Store-Alias-Pfade oder anders benannte Bundles werden abgewiesen; Kompatibilität real prüfen. Keine Prozess-/Fenstererkennung, kein externes Minimieren/Schließen, kein dynamisches Anheften in dieser Einheit. Spotify ist bereits statisch im Dock. Benutzeranpassbares Pinning ist noch offen. Bestehender Audit-/Legacy-Blocker bleibt.
+
+Geändert: main.cjs, preload.cjs, app.js, air-os-enhancements.js, package.json; neu src/main/spotify-launcher.cjs und tests/spotify-launcher.test.cjs; beide Fortschrittsdokumente.
+
+## Nächste drei kleine Einheiten
+
+1. Spotify-Desktop-Smoke-Test auf Windows (Installer/Store) und macOS; tatsächliche Handler-Pfade, bereits laufenden Client und Fehlerzustände prüfen.
+2. Persistentes profilbezogenes Dock-Pinning über bestehende Registry/Preferences gezielt ergänzen; externe Laufstatus-Erkennung separat spezifizieren.
+3. Offizielle ChatGPT-Desktop-Installation/Startmechanismen prüfen und parameterlosen nativen Launcher mit Registry-Eintrag implementieren; keine Anmeldung einbetten. API-Alternative später nur mit eigenem sicher gespeichertem Benutzerschlüssel, kein ChatGPT-Abo als API-Zugang.
+
+---
+
 # Aktueller Checkpoint – Teil 6: temporäre Installationsreste, 22. Oktober 2026
 
 - Gesicherte Ausgangsbasis: `2c5c72b3ded7863ef231bc2133f6c499d9d7d5c2`; Branch `feat/air-os-architecture-foundation`, PR #11 offen. GitHub-HEAD und sauberer Arbeitsbaum bestätigt; vor Push erneut abgleichen und expected_sha verwenden.

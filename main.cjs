@@ -9,6 +9,8 @@ const { execFileSync } = require('node:child_process');
 const { createFolder, duplicateFile, renameFile, createEmptyTextExclusive } = require('./src/main/file-ops.cjs');
 const { findFileNames } = require('./src/main/file-search.cjs');
 
+const spotifyLauncher=require('./src/main/spotify-launcher.cjs').createSpotifyLauncher({app,shell});
+
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
@@ -104,6 +106,7 @@ function createWindow() {
   openLogin();
 }
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
+ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);return spotifyLauncher.launch()});
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
 ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));

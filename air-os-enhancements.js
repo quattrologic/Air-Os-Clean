@@ -97,7 +97,7 @@
   }
 
   function spotifyBody() {
-    return '<div class="air-spotify-app"><div class="air-spotify-logo">● <strong>Spotify</strong></div><h2>Deine Musik wartet.</h2><p>Melde dich mit deinem Spotify-Konto im offiziellen Web Player an. Die Anmeldung und Wiedergabe laufen direkt bei Spotify in deinem Standardbrowser.</p><button type="button" class="air-spotify-open" data-url="https://open.spotify.com/">Spotify Web Player öffnen <span>↗</span></button><div class="air-spotify-note">Air-OS speichert keine Spotify-Zugangsdaten. Premium-Funktionen und Wiedergabe hängen von deinem Spotify-Konto ab.</div></div>';
+    return '<div class="air-spotify-app"><h2>Spotify Desktop</h2><p>Spotify wird über seinen Launchpad- oder Dock-Eintrag als installierte Desktop-App geöffnet. Fenster und Anmeldung werden von Spotify verwaltet.</p></div>';
   }
 
   function calendarBody() {

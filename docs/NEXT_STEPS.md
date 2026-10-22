@@ -1,3 +1,18 @@
+# Aktuelle Übergabe – Spotify-Desktop-Launcher, 22. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11. Gesicherte Basis `3a6d12a8cbb817fa0a8ecacd858ff15dba7c9652`; neue Einheit `Launch installed Spotify desktop client without browser fallback`. SHA im Abschlussbericht/Git-Log.
+
+Abgeschlossen: bestehender Spotify-Eintrag in Registry/Launchpad/statischem Dock startet über authentifizierte parameterlose IPC den validierten lokalen OS-Handler. Browser-Weiterleitung und Demo-Inhalte entfernt. 13/13 Tests sowie Syntax/Catalina-Konfiguration grün. Neue CI prüfen. Kein nativer GUI-Nachweis; OS-Zuordnung ersetzt keine Herausgeber-Signaturprüfung.
+
+Nächste drei kleine Aufgaben:
+1. Windows/macOS-Smoke-Test: installierter/laufender/fehlender Spotify-Client, Microsoft-Store-Handler-Kompatibilität; bekannte Einschränkungen dokumentieren.
+2. Profilbezogenes Dock-Pinning über vorhandene Registry/Preferences ergänzen. Prozessstatus und externe Fenstersteuerung erst nach separater Plattformprüfung.
+3. ChatGPT-Desktop-Launcher mit eigenem Registry-Eintrag nach Prüfung offizieller Startmechanismen; keine unsichere Web-Einbettung. API-Alternative separat, eigener Benutzer-Key und sichere Speicherung, Abonnement ist kein API-Zugang.
+
+Grenzen: Spotify läuft im OS-Fenster; Air-OS kontrolliert dessen Minimieren/Schließen noch nicht und meldet keinen erfundenen Laufstatus. ChatGPT noch nicht implementiert. Audit, Marken-/Release-Prüfung und echte Plattformtests offen. AGENTS.md/Micro-Modus einhalten; main und andere PRs erhalten.
+
+---
+
 # Aktuelle Übergabe – Teil 6 abgeschlossen, 22. Oktober 2026
 
 Branch `feat/air-os-architecture-foundation`, PR #11. Gesicherte Ausgangsbasis `2c5c72b3ded7863ef231bc2133f6c499d9d7d5c2`; neuer Checkpoint `Protect existing Air App staging paths from reuse and cleanup` (SHA im Abschlussbericht/Git-Log).

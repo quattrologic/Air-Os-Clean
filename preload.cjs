@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  launchSpotify: () => ipcRenderer.invoke('air-os:spotify:launch'),
   appStore: Object.freeze({
     catalog: () => ipcRenderer.invoke('air-os:store:catalog'),
     installed: () => ipcRenderer.invoke('air-os:store:installed'),
