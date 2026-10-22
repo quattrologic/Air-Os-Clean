@@ -22,3 +22,16 @@ test('unexpected keys, invalid colors, dangerous payloads and size limits fail',
  assert.throws(()=>validate({dockSize:999}),/Dock/);
  assert.deepEqual(validate({reduceMotion:true}),{reduceMotion:true});
 });
+test('dock theme is validated, persisted per profile and resets to classic',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-dock-theme-'));
+ try{
+  const store=createStore({root:()=>root});
+  assert.equal(store.load('Alice').dockTheme,'classic');
+  store.update('Alice',{dockTheme:'modern'});
+  assert.equal(createStore({root:()=>root}).load('alice').dockTheme,'modern');
+  assert.equal(store.load('Bob').dockTheme,'classic');
+  assert.throws(()=>store.update('Alice',{dockTheme:'unknown'}),/Dock-Theme/);
+  assert.equal(store.load('Alice').dockTheme,'modern');
+  assert.equal(store.reset('Alice').dockTheme,'classic');
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});

@@ -30,6 +30,7 @@
       "preload.cjs",
       "index.html",
       "styles.css",
+      "air-modern-dock.css",
       "app.js",
       "src/core/app-registry.js",
       "airwrite.js",

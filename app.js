@@ -2,6 +2,12 @@ const $ = (s, root=document) => root.querySelector(s);
 const windows = $("#windows");
 const openApps = new Map();
 const lifecycle=window.airAppLifecycle;
+// Reflect focus without replacing dock buttons or their existing launch handlers.
+lifecycle?.onChange(({id,state})=>{
+ const buttons=document.querySelectorAll('.dock-app[data-app]');
+ if(state==='focused'||state==='maximized')buttons.forEach(button=>button.classList.toggle('is-active',button.dataset.app===id));
+ else if(state==='closed'||state==='minimized')buttons.forEach(button=>{if(button.dataset.app===id)button.classList.remove('is-active')});
+});
 let zIndex = 2;
 let toastTimer;
 function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
@@ -84,7 +90,7 @@ function appBody(id){
   <div class="stocks-disclaimer">Marktdaten und Charts von TradingView. Kurse können je nach Börse zeitverzögert sein. Nur zu Informationszwecken – keine Anlageberatung.</div>
 </div>`;
   if(id==="calculator")return `<div class="calc-layout"><div class="app-heading" style="padding:0 0 15px"><h2>Rechner</h2><p>Ein einfacher Desktop-Rechner.</p></div><div class="calc-display" id="calc-display">0</div><div class="calc-keys">${["7","8","9","÷","4","5","6","×","1","2","3","−","C","0","=","+"].map(k=>`<button class="${["÷","×","−","+","="].includes(k)?"operator":""}" data-key="${k}">${k}</button>`).join("")}</div></div>`;
-  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
+  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><label for="air-dock-theme"><strong>Dock-Design</strong></label><select id="air-dock-theme"><option value="classic">Air Classic</option><option value="modern">Air Modern</option></select></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
   if(id==="spotify")return `<p>Spotify wird als installierte Desktop-App geöffnet.</p>`;
   if(id==="downloads")return `<div class="app-heading"><h2>Downloads</h2><p>Zuletzt geladene Dateien.</p></div><table class="file-table"><thead><tr><th>Name</th><th>Art</th><th>Datum</th></tr></thead><tbody><tr><td>Air-OS-Design.zip</td><td>Archiv</td><td>Heute</td></tr><tr><td>Hintergrundbild.jpg</td><td>Bild</td><td>Gestern</td></tr></tbody></table><div class="app-notice">Demo-Dateien – keine echten Downloads.</div>`;
   if(id==="trash")return `<div class="app-heading"><h2>Papierkorb</h2><p>Der Papierkorb ist leer.</p></div><div class="empty-trash"><span class="desktop-art" data-art="trash"></span><p>Keine Objekte im Papierkorb.</p></div>`;
@@ -526,6 +532,7 @@ function applyAirSettings(settings=readAirSettings()){
  const root=document.documentElement,wallpaper=document.querySelector(".wallpaper"),dock=document.querySelector(".dock");
  if(settings.accent)root.style.setProperty("--accent",settings.accent);else root.style.removeProperty("--accent");
  if(dock){
+  dock.dataset.theme=settings.dockTheme==='modern'?'modern':'classic';
   dock.style.setProperty("--air-dock-icon-size",(Number(settings.dockSize)||48)+"px");
   dock.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  }
@@ -540,6 +547,7 @@ function applyAirSettings(settings=readAirSettings()){
 }
 function initAirSettings(win){
  const s=readAirSettings();
+ const theme=win.querySelector("#air-dock-theme");if(theme)theme.value=s.dockTheme==='modern'?'modern':'classic';
  const accent=win.querySelector("#accent-color"),dockSize=win.querySelector("#air-dock-size"),glass=win.querySelector("#reduce-glass"),motion=win.querySelector("#air-reduce-motion"),clock=win.querySelector("#air-clock-24"),status=win.querySelector("#air-settings-status");
  if(accent)accent.value=s.accent||"#75aeea";
  if(dockSize)dockSize.value=String(s.dockSize||48);
@@ -552,6 +560,7 @@ function initAirSettings(win){
   announce("Hintergrund gespeichert.");toast("Hintergrund geändert");
  }));
  accent?.addEventListener("input",e=>{persistAirSettings({accent:e.target.value});announce("Akzentfarbe gespeichert.")});
+ theme?.addEventListener("change",e=>{persistAirSettings({dockTheme:e.target.value});announce("Dock-Design ausgewählt.")});
  dockSize?.addEventListener("input",e=>{persistAirSettings({dockSize:Number(e.target.value)});announce("Dock-Größe gespeichert.")});
  glass?.addEventListener("change",e=>{persistAirSettings({reduceGlass:e.target.checked});announce("Darstellung gespeichert.")});
  motion?.addEventListener("change",e=>{persistAirSettings({reduceMotion:e.target.checked});announce("Animationseinstellung gespeichert.")});
@@ -574,6 +583,7 @@ function initAirSettings(win){
 }
 function initAirSettingsValuesReset(win){
  const s=readAirSettings();
+ const theme=win.querySelector("#air-dock-theme");if(theme)theme.value=s.dockTheme==='modern'?'modern':'classic';
  const accent=win.querySelector("#accent-color"),dockSize=win.querySelector("#air-dock-size"),glass=win.querySelector("#reduce-glass"),motion=win.querySelector("#air-reduce-motion"),clock=win.querySelector("#air-clock-24");
  if(accent)accent.value=s.accent||"#75aeea";if(dockSize)dockSize.value="48";if(glass)glass.checked=false;if(motion)motion.checked=false;if(clock)clock.checked=true;
 }

@@ -1,3 +1,18 @@
+# Aktuelle Übergabe – Air Modern Dock, 22. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11. Letzte bestätigte Basis `3d3c5759c0200d12e2cc717f71cc6e6734245d5b`; neuer Checkpoint `Add opt-in Air Modern floating dock theme` (SHA im Git-Log/Abschlussbericht).
+
+Abgeschlossen: opt-in Floating-Dock-Theme über Einstellungen → Dock-Design, vorhandene Start-/Lifecycle-Funktionen wiederverwendet. Classic bleibt Standard. Profilbezogene Persistenz, Reset und Validierung getestet. 6/6 gezielte Tests grün; Syntax/Diff grün. GUI-Prüfung blockiert durch fehlendes Chromium; echte Windows/macOS-Prüfung und CI-Status offen. Keine Dynamic Island oder Host-Steuerung in dieser Einheit.
+
+Nächste drei Micro-Aufgaben:
+1. Dock visuell in Electron prüfen: Desktop/schmaler Bildschirm, Scrollen, Fokus, Theme-Wechsel, Start/Minimieren/Wiederherstellen, reduzierte Bewegung.
+2. Dynamic Island separat: echte Uhrzeit, Öffnen/Schließen per Tastatur, Platzierung ohne Fensterkollisionen.
+3. Quick Settings an vorhandene Einstellungen anbinden; nicht unterstützte Host-Funktionen kennzeichnen. Mediensteuerung erst nach Prüfung echter APIs.
+
+Frühere Spotify-/ChatGPT- und Pinning-Aufgaben bleiben erhalten, sind durch diesen Designauftrag nur nachgeordnet. Audit-/Release-/Plattformtest-Blocker bleiben offen. AGENTS.md und Micro-Modus beibehalten; main und andere PRs unverändert lassen.
+
+---
+
 # Aktuelle Übergabe – Spotify-Desktop-Launcher, 22. Oktober 2026
 
 Branch `feat/air-os-architecture-foundation`, PR #11. Gesicherte Basis `3a6d12a8cbb817fa0a8ecacd858ff15dba7c9652`; neue Einheit `Launch installed Spotify desktop client without browser fallback`. SHA im Abschlussbericht/Git-Log.

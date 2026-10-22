@@ -1,3 +1,22 @@
+# Aktueller Checkpoint – Air Modern Dock, 22. Oktober 2026
+
+Gesicherte Ausgangsbasis: `3d3c5759c0200d12e2cc717f71cc6e6734245d5b`. Branch `feat/air-os-architecture-foundation`, PR #11. Neuer Checkpoint: `Add opt-in Air Modern floating dock theme` (SHA im Git-Log/Abschlussbericht). main und andere PRs unverändert.
+
+Genau eine Aufgabe: zusätzliches Floating-Dock-Theme. Unter Einstellungen → Dock-Design zwischen Air Classic (Standard) und Air Modern wechseln. Die vorhandene Preferences-Verwaltung speichert die Auswahl profilbezogen; Reset setzt Classic zurück. Modern verwendet dieselben Dock-Buttons und Start-Handler, zeigt vorhandene Laufstatus-Markierungen und ergänzt eine aktive Markierung aus dem vorhandenen Lifecycle. Kompakte dunkle Glasoberfläche, begrenzte Breite, horizontales Scrollen bei vielen Apps, Tastatur-Fokus und reduzierte Bewegung/Glaseffekte. Keine zweite Registry, keine neuen App-Integrationen.
+
+Geändert: app.js, index.html, package.json, src/main/preferences.cjs, tests/preferences.test.cjs; neu air-modern-dock.css; beide Fortschrittsdateien. Stylesheet in Electron-Paketdateiliste aufgenommen.
+
+Tests: 6/6 Preferences-/Lifecycle-/Launchpad-Tests bestanden, keine übersprungen. Neuer Regressionstest prüft Theme-Standard, Persistenz nach Neustart, Benutzertrennung, ungültige Werte und Reset. Syntaxprüfung und git diff --check bestanden. Keine visuelle oder native Windows/macOS-Prüfung: Playwright installiert, Chromium-Binärdatei fehlt. Kein Browserdownload im Micro-Schritt. Responsives Layout, Scrollen und Fokus müssen noch visuell geprüft werden. Die erwähnten Screenshots waren hier nicht verfügbar; Umsetzung basiert auf der Textbeschreibung.
+
+GitHub meldete für die Ausgangsbasis keine PR-Workflow-Runs über die verfügbare Abfrage; daraus folgt kein grüner CI-Status. Bekannter vorheriger Security-/Audit-Blocker bleibt offen. Spotify behält seinen nativen Launcher ohne erfundenen Laufstatus; ChatGPT und dynamisches Dock-Pinning bleiben offen.
+
+Nächste drei kleine Einheiten:
+1. Visueller Dock-Smoke-Test unter Electron: Classic/Modern, schmale Displays, Tastatur, App-Start, Minimieren/Wiederherstellen und reduzierte Bewegung.
+2. Separate Dynamic-Island-Komponente mit echter Uhrzeit, Tastaturbedienung und kollisionsarmer Positionierung.
+3. Kontrollzentrum mit vorhandenen persistenten Air-OS-Einstellungen verbinden; Host-Funktionen ohne Schnittstelle ausdrücklich nicht verfügbar anzeigen. Medienansicht später nur mit unterstützter API.
+
+---
+
 # Aktueller Checkpoint – nativer Spotify-Launcher, 22. Oktober 2026
 
 Ausgangs-Commit `3a6d12a8cbb817fa0a8ecacd858ff15dba7c9652`, Branch `feat/air-os-architecture-foundation`, PR #11. Arbeitsbaum sauber und GitHub-HEAD bestätigt. Einheit: `Launch installed Spotify desktop client without browser fallback`; SHA im Abschlussbericht/Git-Log. Ausgangs-Installer 39810291064 erfolgreich; Security 39810291093 fehlgeschlagen. Neue CI gesondert prüfen. main und andere PRs unverändert.
