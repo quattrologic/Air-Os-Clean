@@ -1,3 +1,22 @@
+# Aktuelle Übergabe – Floating Dock: GUI-Checkpoint mit offenem Fokusmarker
+
+22. Oktober 2026. Ausgangsbasis `b45003159fa2607be177289c0959e8b4d6ce11e4`, PR-11-Funktionsbasis `eecab2a`; eigener Branch `test/air-modern-dock-gui-20261022`. main und PR #11 unverändert. Genau eine Einheit: vorhandenes Dock in echtem Linux-Electron/Xvfb prüfen und **eine** CSS-Korrektur an der aktiven Modern-Hintergrundfläche. Keine neuen Dock-Funktionen, kein GPL-Code, keine Dynamic Island.
+
+`node scripts/check-dock-gui.cjs [port]` ist ein neuer manueller GUI-Regressionstest ohne zusätzliche Abhängigkeit; benötigt Node >=22 und eine laufende, lokal per CDP erreichbare Electron-App mit angemeldetem **Wegwerfprofil**. Er schließt Notes-/Rechner-Testfenster und stellt Preferences am Ende wieder her. Vollständiger Startablauf, Nachweise und Grenzen: neuester Abschnitt in DEVELOPMENT_PROGRESS.md.
+
+Ergebnis: 96/96 Node-Tests grün, Syntax/Catalina/Diff grün. Echter GUI-Test: **9 Prüfgruppen erfolgreich, 1 offener Fehler → Exit 1**. Position/Glasdarstellung, Theme-Wechsel/Persistenz, App-Start, tatsächliche Fensterreihenfolge, Minimieren/Wiederherstellen, Tastaturaktivierung und Overflow bei emulierten 1440/1024/760/600/390px geprüft. Keine echten Windows-/macOS-/DPI-/Mehrmonitorprüfungen; CI-Gesamtstatus unbekannt.
+
+**Nicht als erledigt markieren:** Notes→Rechner→Notes kann eine veraltete aktive Dock-Markierung hinterlassen, obwohl Notes korrekt oben liegt. Der GUI-Test enthält eine weiterhin fehlschlagende Prüfung dafür. Zweiter nachgewiesener Fehler wurde wegen der Grenze „höchstens ein Fehler“ nicht zusätzlich korrigiert. Bekannte Audit-/Release-Blocker bleiben.
+
+Nächste drei kleine Dock-Einheiten (jeweils eigener Prompt):
+1. **Pinning-Datenvertrag (P1):** profilbezogene, begrenzte Registry-ID-Liste validieren/persistieren; Isolation/ungültige IDs/Reset testen. Keine Drag-and-drop-UI in derselben Einheit.
+2. **Pinning-Anbindung (P2):** vorhandenes Dock aus dem Vertrag rendern; Pin/Unpin und deinstallierte Einträge testen, Classic erhalten. Offenen Fokusmarker separat vor Freigabe korrigieren.
+3. **Drag-and-drop:** nach P1/P2 zunächst genau eine sichere Reihenfolgeänderung inklusive Persistenz testen; Tastaturalternative getrennt absichern.
+
+Commit `Check Air Modern dock in Electron and fix active background`; exakter SHA im Abschlussbericht/Git-Log. Kein automatischer Beginn der nächsten Einheit.
+
+---
+
 # Aktuelle Übergabe – Roadmap dokumentiert, Implementierung pausiert
 
 Stand 22. Oktober 2026. **Genau eine Dokumentationseinheit**, keine Produktimplementierung. Ausgangs-HEAD von PR #11 und `feat/air-os-architecture-foundation`: `eecab2a043fc62ab0802312aa09ce29dfd96c280`; GitHub `main`: `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`. Eigener Branch `docs/air-os-ultimate-roadmap-20261022`; PR #11 weiterhin Draft laut öffentlicher GitHub-Seite. Keine neueren Commits auf den abgefragten Entwicklungsrefs. main, PR #11 und andere PRs unverändert.

@@ -1,3 +1,31 @@
+# Aktueller Checkpoint – Floating-Dock-GUI geprüft, eine CSS-Korrektur
+
+Stand 22. Oktober 2026. Micro-Einheit U1, Ausgangscommit `b45003159fa2607be177289c0959e8b4d6ce11e4` (Roadmap), darunter Entwicklungsbasis PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Zu Sitzungsbeginn und vor Sicherung Remote-HEAD prüfen; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 unverändert. Eigener Branch `test/air-modern-dock-gui-20261022`; keine andere Entwicklung beschrieben oder überschrieben. Kein Dock-Neubau, kein Pinning, keine Dynamic Island, keine Bloom-Quellen/Assets übernommen.
+
+## Echte Electron-GUI statt DOM-Simulation
+
+Electron 32.3.3 auf Linux/Xvfb, aktiver Namespace-/Renderer-Sandbox, separates nichtproduktives Profil außerhalb des Checkouts. Start über `/workspace/.air-os-onboarding/start-desktop.sh` mit `AIR_OS_CONFIG_HOME=/workspace/.air-os-onboarding/dock-gui-profile`, CDP ausschließlich lokal auf Port 9223. Start benötigt `exec_command` mit `sandbox_permissions=require_escalated`, da die Dateisystem-Sandbox User-Namespaces blockiert; kein `--no-sandbox`. Vorhandene Linux-D-Bus-Diagnostik verhinderte den Test nicht. Anmeldung mit temporär generiertem Testpasswort; keine Zugangsdaten im Test/Repository gespeichert.
+
+Reproduzierbarer Opt-in-Test: `node scripts/check-dock-gui.cjs [port]`, Node >=22 und bereits angemeldetes **Wegwerfprofil** erforderlich. Keine neue Abhängigkeit. Der Test schließt bestehende Notes-/Rechner-Testfenster, verändert nur Testansichten und Darstellungseinstellungen und stellt ursprüngliche Preferences/Viewport am Ende wieder her. Er verwendet reale gerenderte CSS-Werte, CDP-Maus-/Tastaturereignisse und echte Preferences-IPC; keine nachgebildete Renderer-Implementierung. Screenshots unter dem ignorierten `dist/dock-gui/`.
+
+Geprüft: Classic→Modern→Classic→Modern über den gerenderten Einstellungs-Handler, Start von Notes/Rechner, tatsächliche Z-Reihenfolge, Minimieren und Dock-Wiederherstellen, laufende Markierung, Enter-Aktivierung und automatisches Fokusscrollen bis zum letzten Dock-Eintrag, gespeichertes Theme. Modern liegt unten mittig mit 12px Abstand und horizontalem Overflow bei Rendererbreiten 1440/1024/760/600/390. **Alle Breiten wurden per CDP emuliert**, kein Nachweis physischer Bildschirm-/DPI-/Mehrmonitorgrößen; das native Hauptfenster hat weiterhin mindestens 760px Breite. Screenshots von Classic und Modern, insbesondere Modern/760px mit sichtbarer aktiver Notes-Markierung, wurden visuell betrachtet.
+
+## Genau ein behobener Fehler
+
+`styles.css` setzt `.dock-app` auf `background: transparent !important`. Dadurch verlor die Modern-Regel `.dock-app.is-active` ihren vorgesehenen Hintergrund trotz korrekter Klasse. `air-modern-dock.css` setzt nun **nur für diese aktive Modern-Regel** die bestehende Hintergrundfarbe ebenfalls mit `!important`. Kein Wert-/Layoutumbau; Classic bleibt unverändert. Der neue GUI-Test schlug vor dem Fix an der transparenten aktiven Fläche fehl; nach Reload bestand genau diese Prüfung.
+
+## Testergebnis und offener zweiter Befund
+
+- `TMPDIR=/workspace/scratch npm test`: **96 bestanden, 0 fehlgeschlagen/übersprungen**.
+- `node --check scripts/check-dock-gui.cjs`, `npm run check:catalina`, `git diff --check`: bestanden.
+- Finaler echter GUI-Lauf: **9 erfolgreiche Prüfgruppen, 1 offener Befund, Exitcode 1**. Kein vollständig grüner GUI-Lauf behauptet.
+- Offener Befund: Notes öffnen → Rechner öffnen → vorhandene Notes über Dock fokussieren. Notes liegt korrekt oben, die aktive Dock-Klasse kann jedoch beim Rechner bleiben. Der Lifecycle unterdrückt identische `focused`-Übergänge pro App, obwohl ein anderer App-Fokus die UI-Markierung inzwischen verändert hat. Der Test meldet dies vor Minimieren/Wiederherstellen ausdrücklich. Diese zweite Fehlerkorrektur wurde wegen der Nutzergrenze **höchstens ein Fehler** nicht begonnen; keine Assertion entfernt/übersprungen.
+- Keine native Windows-/macOS-/DPI-/Installerprüfung, kein neuer Audit, kein kompletter Accessibility-/Performance-Nachweis. Aktueller CI-Gesamtstatus nicht bestätigt; bekannter Audit-/Release-Blocker bleibt offen.
+
+Nächste Dock-Einheit gemäß Nutzerwunsch: **P1, profilbezogenen Pinning-Datenvertrag mit Registry-IDs und Store-Tests ergänzen**, noch keine Sortieroberfläche. Danach **P2**, bestehendes Dock damit rendern/Pin-Unpin anbieten; danach Drag-and-drop-Reihenfolge als eigene Einheit. Den offenen Fokusmarker-Defekt vor einer Dock-Freigabe separat beheben. Commit `Check Air Modern dock in Electron and fix active background`; SHA im Git-Log/Abschlussbericht. Nach Sicherung stoppen.
+
+---
+
 # Aktueller Checkpoint – Air-OS Ultimate Bestandsaufnahme und Roadmap
 
 Stand 22. Oktober 2026. **Genau eine Dokumentationseinheit**, keine Produktimplementierung. Ausgangs-HEAD von PR #11 und `feat/air-os-architecture-foundation`: `eecab2a043fc62ab0802312aa09ce29dfd96c280`; GitHub `main`: `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`. Eigener Branch `docs/air-os-ultimate-roadmap-20261022`; PR #11 weiterhin Draft laut öffentlicher GitHub-Seite. Keine neueren Commits auf den abgefragten Entwicklungsrefs. main, PR #11 und andere PRs unverändert.

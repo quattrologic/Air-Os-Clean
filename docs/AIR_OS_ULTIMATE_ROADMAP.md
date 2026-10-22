@@ -149,6 +149,12 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
 
+## Dock-Checkpoint U1 – 22. Oktober 2026
+
+Auf Branch `test/air-modern-dock-gui-20261022` nach Basis `b450031` in echtem Linux-Electron geprüft: Position/Classic↔Modern, Start, tatsächlicher Fensterfokus, Minimieren/Wiederherstellen, Enter und schmale emulierte Rendererbreiten. Eine CSS-Korrektur macht die aktive Modern-Hintergrundfläche sichtbar. `scripts/check-dock-gui.cjs` hält den Nachweis wiederholbar. **U1 bleibt teilweise offen:** erneuter Fokuswechsel kann die aktive Dock-Markierung veralten lassen. Finaler GUI-Test: neun erfolgreiche Prüfgruppen, ein expliziter Fehler (Exit 1); Node-Tests 96/96 grün. Keine Windows-/macOS-Abnahme. Details und Reproduktion im neuesten DEVELOPMENT_PROGRESS-Checkpoint.
+
+Der Phase-2-Nutzerauftrag priorisiert als nächste Dock-Einheit **P1 (Pinning-Datenvertrag)**, danach P2 und erst anschließend Drag-and-drop. Der offene Fokusmarker bleibt vor Freigabe zu beheben; diese Sitzung korrigierte entsprechend Nutzergrenze genau einen Fehler.
+
 ## 9. Nächste drei mögliche Sitzungen und Abschlussregel
 
 Empfohlene Reihenfolge: **S1** (Audit reproduzieren), **D1** (Kalender-Profilgrenze prüfen), **U1** (vorhandenes Dock real validieren). Der bestehende ChatGPT-Wunsch wird als C1/C2 erhalten; wenn der nächste Nutzerprompt diese Integration ausdrücklich priorisiert, zuerst C1 durchführen. Diese Roadmap startet keine dieser Aufgaben automatisch.

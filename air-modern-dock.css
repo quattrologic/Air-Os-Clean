@@ -39,7 +39,7 @@
 }
 .dock[data-theme="modern"] .dock-app:hover { background: rgba(255,255,255,.1); }
 .dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: translateY(-2px) !important; }
-.dock[data-theme="modern"] .dock-app.is-active { background: rgba(255,255,255,.17); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+.dock[data-theme="modern"] .dock-app.is-active { background: rgba(255,255,255,.17) !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
 .dock[data-theme="modern"] .dock-app.is-open::after { bottom: -5px !important; background: #e0edff !important; }
 .dock[data-theme="modern"] .dock-app:focus-visible { outline: 2px solid #b8d9ff; outline-offset: -2px; }
 .dock[data-theme="modern"] .dock-divider { height: 28px !important; background: rgba(255,255,255,.18) !important; }
