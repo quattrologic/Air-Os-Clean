@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="air-extra-apps.css">
   <link rel="stylesheet" href="airwrite.css">
   <link rel="stylesheet" href="air-music.css">
+  <link rel="stylesheet" href="air-reminders.css">
+  <link rel="stylesheet" href="air-launchpad.css">
+  <link rel="stylesheet" href="air-spotlight.css">
+  <link rel="stylesheet" href="air-app-store.css">
+  <link rel="stylesheet" href="air-modern-dock.css">
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
@@ -26,6 +31,7 @@
       <button class="menu-item" id="help-menu">Hilfe</button>
     </div>
     <div class="menu-right">
+      <button type="button" id="air-search-open" aria-label="Air-OS Suche öffnen" title="App-Suche (⌘/Ctrl+K)">⌕</button>
       <span class="system-symbol" aria-label="WLAN">⌁</span><span class="system-symbol" aria-label="Ton">◖</span><span class="battery"><i></i></span>
       <span id="clock">Di. 13. Mai 16:24</span>
       <div class="account-menu-wrap" id="account-menu-wrap" hidden>
@@ -55,6 +61,8 @@
     <div id="windows" class="windows"></div>
   </main>
   <nav class="dock" aria-label="App-Dock">
+    <button class="dock-app" data-app="store" title="Air App Store"><span class="dock-icon store-icon"></span></button>
+    <button class="dock-app" data-app="launchpad" title="Launchpad"><span class="dock-icon launchpad-icon"></span></button>
     <button class="dock-app" data-app="finder" title="Finder"><span class="dock-icon finder-icon"></span></button>
     <button class="dock-app" data-app="browser" title="Safari"><span class="dock-icon browser-icon"></span></button>
     <button class="dock-app" data-app="tagesschau" title="tagesschau"><span class="dock-icon tagesschau-icon"></span></button>
@@ -63,6 +71,7 @@
     <button class="dock-app" data-app="calendar" title="Kalender"><span class="dock-icon calendar-icon"></span></button>
     <button class="dock-app" data-app="airwrite" title="AirWrite"><span class="dock-icon airwrite-icon">✍</span></button>
     <button class="dock-app" data-app="notes" title="Notizen"><span class="dock-icon notes-icon"></span></button>
+    <button class="dock-app" data-app="reminders" title="Air Erinnerungen"><span class="dock-icon reminders-icon"></span></button>
     <button class="dock-app" data-app="photos" title="Fotos"><span class="dock-icon photos-icon"></span></button>
     <button class="dock-app" data-app="music" title="Air Music"><span class="dock-icon music-icon"></span></button>
     <button class="dock-app" data-app="spotify" title="Spotify"><span class="dock-icon spotify-icon"></span></button>
@@ -78,7 +87,16 @@
   </nav>
   <div id="toast" class="toast" role="status"></div>
   <script src="airwrite.js"></script>
+  <script src="src/core/app-registry.js"></script>
+  <script src="src/core/app-lifecycle.js"></script>
   <script src="app.js"></script>
+  <script src="air-launchpad.js"></script>
+  <script src="air-notes.js"></script>
+  <script src="air-reminders.js"></script>
+  <script src="air-app-store.js"></script>
+  <script src="air-app-bootstrap.js"></script>
+  <script src="src/core/search-service.js"></script>
+  <script src="air-spotlight.js"></script>
   <script src="air-arcade-games.js"></script>
   <script src="node_modules/amplitudejs/dist/amplitude.min.js"></script>
   <script src="air-music.js"></script>

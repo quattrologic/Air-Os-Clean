@@ -6,10 +6,22 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
+const { createFolder, duplicateFile, renameFile, createEmptyTextExclusive } = require('./src/main/file-ops.cjs');
+const { findFileNames } = require('./src/main/file-search.cjs');
+
+const spotifyLauncher=require('./src/main/spotify-launcher.cjs').createSpotifyLauncher({app,shell});
 
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
+const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
+const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
+const reminderStore=require('./src/main/reminders-store.cjs').createStore({root:()=>app.getPath('userData')});
+const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
+ root:()=>app.getPath('userData'),appPath:()=>app.getAppPath(),
+ publicKeys:{demo:fs.readFileSync(path.join(__dirname,'store','keys','demo-publisher-public.txt'),'utf8')}
+});
+const airAppRuntime=require('./src/main/airapp-runtime.cjs').createRuntime({BrowserWindow,protocol:require('electron').protocol,session,manager:airAppManager});
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -52,6 +64,7 @@ function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
 function openLogin() {
+  airAppRuntime.closeAll();
   activeUser = null;
   fileWorkspaceRoot = null;
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -89,9 +102,25 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.on('closed', () => { mainWindow = null; });
+  mainWindow.on('closed', () => { airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
+function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
+ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);return spotifyLauncher.launch()});
+ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
+ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
+ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
+ipcMain.handle('air-os:reminders:list',event=>reminderStore.list(requirePreferenceUser(event)));
+ipcMain.handle('air-os:reminders:save',(event,item)=>reminderStore.save(requirePreferenceUser(event),item));
+ipcMain.handle('air-os:reminders:remove',(event,id)=>reminderStore.remove(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:notes:list',event=>notesStore.list(requirePreferenceUser(event)));
+ipcMain.handle('air-os:notes:save',(event,note)=>notesStore.save(requirePreferenceUser(event),note));
+ipcMain.handle('air-os:notes:remove',(event,id)=>notesStore.remove(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:store:catalog',event=>{requirePreferenceUser(event);return airAppManager.catalog()});
+ipcMain.handle('air-os:store:installed',event=>airAppManager.installed(requirePreferenceUser(event)));
+ipcMain.handle('air-os:store:install',(event,id)=>airAppManager.install(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:store:remove',(event,id)=>{const user=requirePreferenceUser(event);airAppRuntime.close(user,id);return airAppManager.remove(user,id)});
+ipcMain.handle('air-os:store:launch',(event,id)=>airAppRuntime.open(requirePreferenceUser(event),id));
 ipcMain.handle('air-os:accounts', event => {
   requireTrusted(event);
   return readAccounts().map(publicAccount);
@@ -363,6 +392,11 @@ ipcMain.handle('air-os:files:current-folder', event => {
     return null;
   }
 });
+ipcMain.handle('air-os:files:search', async (event, query) => {
+  requireFileAccess(event);
+  const root=ensureFileWorkspace();
+  return findFileNames(root,query);
+});
 ipcMain.handle('air-os:files:list-directory', (event, relativeValue = '') => {
   requireFileAccess(event);
   const directory = resolveWorkspacePath(relativeValue, { allowRoot: true });
@@ -408,6 +442,16 @@ ipcMain.handle('air-os:files:read-text', (event, relativeValue) => {
   if (bytes.includes(0)) throw new Error('Die Datei sieht wie eine Binärdatei aus und wird nicht im Texteditor geöffnet.');
   return { path: normalizeFileRelative(relativeValue).split(path.sep).join('/'), content: bytes.toString('utf8') };
 });
+ipcMain.handle('air-os:files:create-text', (event, relativeValue) => {
+  requireFileAccess(event);
+  const relative=normalizeFileRelative(relativeValue);
+  if(!relative)throw new Error('Bitte gib einen Dateinamen an.');
+  if(!AIR_OS_TEXT_EXTENSIONS.has(path.extname(relative).toLowerCase()))
+    throw new Error('Zum Erstellen sind nur unterstützte Textdateien erlaubt.');
+  const target=resolveWorkspacePath(relative,{allowMissingFinal:true});
+  createEmptyTextExclusive(target);
+  return {ok:true,path:relative.split(path.sep).join('/')};
+});
 ipcMain.handle('air-os:files:write-text', (event, relativeValue, textValue) => {
   requireFileAccess(event);
   const relative = normalizeFileRelative(relativeValue);
@@ -433,6 +477,19 @@ ipcMain.handle('air-os:files:write-text', (event, relativeValue, textValue) => {
     try { if (fs.existsSync(temp)) fs.unlinkSync(temp); } catch {}
   }
   return { ok: true, path: relative.split(path.sep).join('/') };
+});
+ipcMain.handle('air-os:files:create-folder', (event, relativeValue) => {
+  requireFileAccess(event);
+  const root=ensureFileWorkspace();
+  return createFolder(root,relativeValue);
+});
+ipcMain.handle('air-os:files:duplicate', (event, from, to) => {
+  requireFileAccess(event);
+  return duplicateFile(ensureFileWorkspace(),from,to);
+});
+ipcMain.handle('air-os:files:rename', (event, from, to) => {
+  requireFileAccess(event);
+  return renameFile(ensureFileWorkspace(),from,to);
 });
 ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
   requireFileAccess(event);

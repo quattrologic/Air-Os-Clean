@@ -10,7 +10,10 @@
     "pack:mac": "npm run check:catalina && electron-builder --publish never --mac dmg zip --universal",
     "pack:linux": "electron-builder --publish never --linux AppImage deb",
     "dist": "electron-builder",
-    "check:catalina": "node scripts/check-catalina.cjs"
+    "check:catalina": "node scripts/check-catalina.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "check:modern": "node scripts/check-modern.cjs",
+    "pack:mac:modern": "npm run check:modern && electron-builder --publish never --mac dmg zip --universal --config.mac.minimumSystemVersion=13.0.0"
   },
   "devDependencies": {
     "electron": "32.3.3",
@@ -27,7 +30,9 @@
       "preload.cjs",
       "index.html",
       "styles.css",
+      "air-modern-dock.css",
       "app.js",
+      "src/core/app-registry.js",
       "airwrite.js",
       "airwrite.css",
       "air-os-enhancements.js",
@@ -46,7 +51,30 @@
       "air-arcade-games.js",
       "air-arcade-games.css",
       "air-music.js",
-      "air-music.css"
+      "air-music.css",
+      "src/core/app-lifecycle.js",
+      "air-launchpad.js",
+      "air-launchpad.css",
+      "src/main/preferences.cjs",
+      "src/core/search-service.js",
+      "air-spotlight.js",
+      "air-spotlight.css",
+      "src/main/notes-store.cjs",
+      "air-notes.js",
+      "src/main/airapp-package.cjs",
+      "src/main/airapp-manager.cjs",
+      "src/main/airapp-runtime.cjs",
+      "src/main/spotify-launcher.cjs",
+      "store/catalog/**/*",
+      "store/keys/**/*",
+      "air-app-store.js",
+      "air-app-store.css",
+      "air-app-bootstrap.js",
+      "src/main/file-ops.cjs",
+      "src/main/file-search.cjs",
+      "src/main/reminders-store.cjs",
+      "air-reminders.js",
+      "air-reminders.css"
     ],
     "mac": {
       "target": [

@@ -1,14 +1,21 @@
 const $ = (s, root=document) => root.querySelector(s);
 const windows = $("#windows");
 const openApps = new Map();
+const lifecycle=window.airAppLifecycle;
+// Reflect focus without replacing dock buttons or their existing launch handlers.
+lifecycle?.onChange(({id,state})=>{
+ const buttons=document.querySelectorAll('.dock-app[data-app]');
+ if(state==='focused'||state==='maximized')buttons.forEach(button=>button.classList.toggle('is-active',button.dataset.app===id));
+ else if(state==='closed'||state==='minimized')buttons.forEach(button=>{if(button.dataset.app===id)button.classList.remove('is-active')});
+});
 let zIndex = 2;
 let toastTimer;
 function toast(message){const el=$("#toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
 function updateClock(){const d=new Date();$("#clock").textContent=d.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}
 updateClock();setInterval(updateClock,15000);
-const appNames={airwrite:"AirWrite",finder:"Finder",browser:"Safari",tagesschau:"tagesschau",mail:"Mail",calendar:"Kalender",photos:"Fotos",music:"Air Music",spotify:"Spotify",aircard:"AirCard Lite",notes:"Notizen",weather:"Wetter",football:"Fußball",stocks:"Aktien",calculator:"Air-Rechner",translator:"Air-Übersetzer",ai:"Air-KI",settings:"Einstellungen",downloads:"Downloads",trash:"Papierkorb",about:"Über Air-OS"};
-const iconClasses={airwrite:"airwrite-icon",finder:"finder-icon",browser:"browser-icon",tagesschau:"tagesschau-icon",mail:"mail-icon",calendar:"calendar-icon",photos:"photos-icon",music:"music-icon",spotify:"spotify-icon",aircard:"aircard-icon",notes:"notes-icon",weather:"weather-icon",football:"football-icon",stocks:"stocks-icon",calculator:"calc-icon",translator:"translator-icon",ai:"ai-icon",settings:"settings-icon",downloads:"downloads-icon",trash:"trash-icon"};
-const iconGlyphs={airwrite:"✎",finder:"◧",browser:"◎",tagesschau:"ts",mail:"✉",calendar:"31",photos:"✿",music:"♫",spotify:"●",aircard:"▤",notes:"≡",weather:"☀",football:"⚽",stocks:"⌁",calculator:"＋",settings:"⚙",downloads:"↓",trash:"▤"};
+const appNames=window.airAppRegistry.names;
+const iconClasses=window.airAppRegistry.iconClasses;
+const iconGlyphs=window.airAppRegistry.iconGlyphs;
 
 const vectorIcon = {
  airwrite: `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="awSoft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7f9ff"/><stop offset=".58" stop-color="#c4e2ff"/><stop offset="1" stop-color="#a9c9fa"/></linearGradient><linearGradient id="awPaper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#eaf3ff"/></linearGradient><linearGradient id="awBluePen" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a3d7ff"/><stop offset=".5" stop-color="#5eacfb"/><stop offset="1" stop-color="#438deb"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#awSoft)"/><rect x="12" y="12" width="39" height="41" rx="9" fill="url(#awPaper)" stroke="#d4e8fc" stroke-width=".8"/><path d="M19 23h23M19 30h20M19 37h16" stroke="#b7d3f2" stroke-width="2.6" stroke-linecap="round"/><g transform="rotate(35 41 35)"><rect x="37.2" y="13" width="8.4" height="33" rx="4.2" fill="url(#awBluePen)"/><rect x="37.2" y="13" width="8.4" height="5" rx="3" fill="#659ff4"/><rect x="43" y="20" width="2.3" height="16" rx="1.15" fill="#edf5ff"/><path d="M37.2 45h8.4l-4.2 9Z" fill="#c4cbd6"/><path d="m39.9 51 1.5 3 1.5-3Z" fill="#39465b"/></g></svg>`,
@@ -34,13 +41,16 @@ vectorIcon.football = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linear
 vectorIcon.calculator = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="calc-bg" x2="0" y2="1"><stop stop-color="#5a6577"/><stop offset="1" stop-color="#27354b"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="13" fill="url(#calc-bg)"/><rect x="11" y="8" width="42" height="15" rx="3" fill="#d8f4f1"/><text x="48" y="19" text-anchor="end" font-size="10" font-family="Arial,sans-serif" fill="#214b51">123</text><g fill="#f2f5fa"><rect x="11" y="29" width="8" height="8" rx="2"/><rect x="23" y="29" width="8" height="8" rx="2"/><rect x="35" y="29" width="8" height="8" rx="2"/><rect x="11" y="41" width="8" height="8" rx="2"/><rect x="23" y="41" width="8" height="8" rx="2"/><rect x="35" y="41" width="8" height="8" rx="2"/></g><rect x="45" y="29" width="8" height="20" rx="2" fill="#ffb84d"/><rect x="11" y="53" width="32" height="4" rx="2" fill="#f2f5fa"/></svg>';
 vectorIcon.stocks = '<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="stockbg" x2="0" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#dce8f8"/></linearGradient><linearGradient id="stockline" x2="0" y2="1"><stop stop-color="#35c997"/><stop offset="1" stop-color="#128567"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#stockbg)" stroke="#c7d6e8"/><path d="M11 50H53" stroke="#aec2d8" stroke-width="2" stroke-linecap="round"/><rect x="12" y="35" width="7" height="15" rx="2" fill="#7eaae5"/><rect x="24" y="27" width="7" height="23" rx="2" fill="#578edb"/><rect x="36" y="19" width="7" height="31" rx="2" fill="#3f7ccd"/><path d="m11 31 11-8 9 3 10-13 11 3" fill="none" stroke="url(#stockline)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="m45 16 7 0-1 7" fill="none" stroke="#128567" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function paintAppIcons(root=document){
-  const lookup={"translator-icon":"translator","ai-icon":"ai", "finder-icon":"finder","browser-icon":"browser","tagesschau-icon":"tagesschau","mail-icon":"mail","calendar-icon":"calendar","notes-icon":"notes","photos-icon":"photos","music-icon":"music","spotify-icon":"spotify","aircard-icon":"aircard","settings-icon":"settings","downloads-icon":"downloads","trash-icon":"trash","weather-icon":"weather","football-icon":"football","stocks-icon":"stocks","calc-icon":"calculator","airwrite-icon":"airwrite" };
+  const lookup={"translator-icon":"translator","ai-icon":"ai", "finder-icon":"finder","browser-icon":"browser","tagesschau-icon":"tagesschau","mail-icon":"mail","calendar-icon":"calendar","notes-icon":"notes","reminders-icon":"reminders","photos-icon":"photos","music-icon":"music","spotify-icon":"spotify","aircard-icon":"aircard","settings-icon":"settings","downloads-icon":"downloads","trash-icon":"trash","weather-icon":"weather","football-icon":"football","stocks-icon":"stocks","calc-icon":"calculator","airwrite-icon":"airwrite","launchpad-icon":"launchpad","store-icon":"store" };
   Object.entries(lookup).forEach(([cls,id])=>root.querySelectorAll("."+cls).forEach(el=>{el.innerHTML=vectorIcon[id]||vectorIcon.folder;}));
   root.querySelectorAll("[data-art]").forEach(el=>{const art=vectorIcon[el.dataset.art];if(art)el.innerHTML=art;});
 }
 paintAppIcons();
 
 function appBody(id){
+ if(id==='reminders')return window.airReminders?.body()||'<p>Erinnerungen laden …</p>';
+ if(id==='store')return window.airAppStore?.body()||'<p>App Store lädt …</p>';
+ if(id==='launchpad')return window.airLaunchpad?.body()||'<p>Launchpad lädt …</p>';
  if((id==="translator"||id==="ai") && window.airExtraApps)return window.airExtraApps.body(id);
   if(id==="airwrite" && window.airWriteApp) return window.airWriteApp.body();
   if(id==="aircard" && window.airCardLiteApp) return window.airCardLiteApp.body();
@@ -80,8 +90,8 @@ function appBody(id){
   <div class="stocks-disclaimer">Marktdaten und Charts von TradingView. Kurse können je nach Börse zeitverzögert sein. Nur zu Informationszwecken – keine Anlageberatung.</div>
 </div>`;
   if(id==="calculator")return `<div class="calc-layout"><div class="app-heading" style="padding:0 0 15px"><h2>Rechner</h2><p>Ein einfacher Desktop-Rechner.</p></div><div class="calc-display" id="calc-display">0</div><div class="calc-keys">${["7","8","9","÷","4","5","6","×","1","2","3","−","C","0","=","+"].map(k=>`<button class="${["÷","×","−","+","="].includes(k)?"operator":""}" data-key="${k}">${k}</button>`).join("")}</div></div>`;
-  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
-  if(id==="spotify")return `<div class="spotify-head"><div class="spotify-brand">● Spotify</div><h2>Gute Musik. Guter Moment.</h2><p>Deine Air-OS Musik-Demo.</p></div><div class="track-row"><span class="track-cover">♫</span><span class="track-main"><strong>Morning Light</strong><small>Air-OS Sessions · Demo</small></span><span>2:48</span></div><div class="track-row"><span class="track-cover">♪</span><span class="track-main"><strong>Blue Horizon</strong><small>Air-OS Sessions · Demo</small></span><span>3:21</span></div><div class="app-notice">Keine Wiedergabequelle verbunden.</div>`;
+  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><label for="air-dock-theme"><strong>Dock-Design</strong></label><select id="air-dock-theme"><option value="classic">Air Classic</option><option value="modern">Air Modern</option></select></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
+  if(id==="spotify")return `<p>Spotify wird als installierte Desktop-App geöffnet.</p>`;
   if(id==="downloads")return `<div class="app-heading"><h2>Downloads</h2><p>Zuletzt geladene Dateien.</p></div><table class="file-table"><thead><tr><th>Name</th><th>Art</th><th>Datum</th></tr></thead><tbody><tr><td>Air-OS-Design.zip</td><td>Archiv</td><td>Heute</td></tr><tr><td>Hintergrundbild.jpg</td><td>Bild</td><td>Gestern</td></tr></tbody></table><div class="app-notice">Demo-Dateien – keine echten Downloads.</div>`;
   if(id==="trash")return `<div class="app-heading"><h2>Papierkorb</h2><p>Der Papierkorb ist leer.</p></div><div class="empty-trash"><span class="desktop-art" data-art="trash"></span><p>Keine Objekte im Papierkorb.</p></div>`;
   return `<h2>About Air-OS</h2><p>A fresh desktop concept inspired by the clarity of classic Mac desktops and modern glass UI.</p><div class="app-grid"><button class="app-tile" data-app="finder"><span class="app-icon finder-icon">▰</span><strong>Finder</strong><small>Browse sample folders</small></button><button class="app-tile" data-app="notes"><span class="app-icon notes-icon">▤</span><strong>Notes</strong><small>Write an idea</small></button><button class="app-tile" data-app="weather"><span class="app-icon weather-icon">☀</span><strong>Weather</strong><small>Sample forecast</small></button><button class="app-tile" data-app="settings"><span class="app-icon settings-icon">⚙</span><strong>Settings</strong><small>Personalize</small></button></div>`;
@@ -354,8 +364,19 @@ function clampAppWindow(win){
 }
 
 function openApp(id){
+ if(id==='spotify'){
+  if(!window.airOS?.launchSpotify){toast('Spotify-Desktop-Start ist nur in der Air-OS Desktop-App verfügbar.');return}
+  window.airOS.launchSpotify().then(()=>toast('Start an Spotify übergeben. Das Spotify-Fenster wird vom Betriebssystem verwaltet.')).catch(error=>toast(error.message||'Spotify konnte nicht gestartet werden.'));
+  return;
+ }
+ const registered=window.airAppRegistry?.get(id);
+ if(registered?.origin==='store'){
+  if(!window.airOS?.appStore?.launch){toast('Diese App kann nur in Air-OS geöffnet werden.');return}
+  window.airOS.appStore.launch(id).catch(error=>toast(error.message||'App konnte nicht geöffnet werden.'));
+  return;
+ }
  if(!appNames[id])return;
- if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;$("#active-app").textContent=appNames[id];return}
+ if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
@@ -365,17 +386,17 @@ function openApp(id){
   return;
  }
  win.innerHTML=`<div class="window-titlebar"><div class="traffic"><button class="close" aria-label="Fenster schließen"></button><button class="minimize" aria-label="Minimieren"></button><button class="maximize" aria-label="Maximieren"></button></div><div class="window-title">${id==="finder"?"Dokumente":appNames[id]}</div></div><div class="window-content">${body}</div>`; paintAppIcons(win); const resizeHandle=document.createElement("div");resizeHandle.className="window-resize-handle";resizeHandle.setAttribute("role","separator");resizeHandle.setAttribute("aria-label","Fenstergröße ändern");win.appendChild(resizeHandle);
- windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);normalizeAppWindow(win);openApps.set(id,win);$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
- win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;$("#active-app").textContent=appNames[id]});
- $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
- $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);toast(appNames[id]+" ins Dock minimiert")};
+ windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);if(id==="launchpad")window.airLaunchpad?.mount(win);if(id==="store")window.airAppStore?.mount(win);normalizeAppWindow(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
+ win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id]});
+ $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);lifecycle?.transition(id,'closed');$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
+ $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);lifecycle?.transition(id,'minimized');toast(appNames[id]+" ins Dock minimiert")};
  $(".maximize",win).onclick=()=>{
   if(!win.classList.contains("maximized")){
     win._airOSRestoreBounds={left:win.style.left,top:win.style.top,width:win.style.width,height:win.style.height};
-    win.classList.add("maximized");win.style.left="0px";win.style.top="0px";
+    win.classList.add("maximized");lifecycle?.transition(id,'maximized');win.style.left="0px";win.style.top="0px";
     win.style.width="100%";win.style.height="100%";win.style.resize="none";
   }else{
-    win.classList.remove("maximized");win.style.removeProperty("transform");const b=win._airOSRestoreBounds||{};
+    win.classList.remove("maximized");lifecycle?.transition(id,'focused');win.style.removeProperty("transform");const b=win._airOSRestoreBounds||{};
     win.style.left=b.left||"0px";win.style.top=b.top||"0px";win.style.width=b.width||"min(870px, calc(100% - 24px))";
     win.style.height=b.height||"min(480px, calc(100% - 24px))";win.style.resize="";
     delete win._airOSRestoreBounds;clampAppWindow(win);
@@ -441,8 +462,8 @@ function openApp(id){
  $("#finder-search",win)?.addEventListener("input",e=>{const q=e.target.value.toLowerCase();Array.from($("tr[data-file]",win)).forEach(row=>row.style.display=row.dataset.file.toLowerCase().includes(q)?"":"none")});
  $("#music-play",win)?.addEventListener("click",()=>toast("Demo-Modus: Keine Audioquelle verbunden"));
  $("#browser-form",win)?.addEventListener("submit",e=>{e.preventDefault();let q=$("#browser-query",win).value.trim();if(!q)return;let url=/^https?:\/\//i.test(q)?q:/^[\w-]+\.[a-z]{2,}/i.test(q)?"https://"+q:"https://www.google.com/search?q="+encodeURIComponent(q);window.open(url,"_blank","noopener,noreferrer")});
- $("#save-note",win)?.addEventListener("click",()=>{localStorage.setItem("air-os-note-title",$("#note-title",win).value);localStorage.setItem("air-os-note-body",$("#note-body",win).value);$("#note-status",win).textContent="Auf diesem Gerät gesichert";toast("Notiz lokal gesichert")});
- if(id==="notes"){$("#note-title",win).value=localStorage.getItem("air-os-note-title")||"";$("#note-body",win).value=localStorage.getItem("air-os-note-body")||""}
+ if(id==="notes")window.airNotes?.mount(win);
+ if(id==='reminders')window.airReminders?.mount(win);
  if(id==="settings") initAirSettings(win);
  $("#music-play",win)?.addEventListener("click",()=>{const audio=$("#air-music-audio",win);if(audio&&audio.src){audio.paused?audio.play().catch(()=>toast("Audiodatei konnte nicht abgespielt werden.")):audio.pause()}else toast("Wähle zuerst eine Musikdatei aus.")});
  if(id==="tagesschau")tsLoadNews(win,"homepage");
@@ -484,25 +505,34 @@ function calcEvaluate(expression){
  return result;
 }
 
-const AIR_SETTINGS_KEY="air-os-desktop-settings-v2";
+// Appearance settings are now persisted in an authenticated host-side profile.
+let airSettingsCache={};
+let airSettingsWrites=Promise.resolve();
+const AIR_SETTINGS_KEY="air-os-desktop-settings-v2"; // legacy single-profile key (not read for authenticated profiles)
 const AIR_WALLPAPERS={
  yosemite:'linear-gradient(180deg,#8bb6dc33,#152c5033),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2560&q=85")',
  coast:'url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2560&q=85")',
  aurora:'url("https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=2560&q=85")',
  midnight:'linear-gradient(135deg,#11182e,#273f68 50%,#070b17)'
 };
-function readAirSettings(){
- try{return {...JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||"{}")}}catch{return {}}
-}
+function readAirSettings(){return {...airSettingsCache}}
 function persistAirSettings(patch){
- const next={...readAirSettings(),...patch};
- try{localStorage.setItem(AIR_SETTINGS_KEY,JSON.stringify(next))}catch{toast("Einstellung konnte nicht gespeichert werden. Benutzerdefiniertes Bild eventuell zu groß.");}
- applyAirSettings(next);return next;
+ const next={...readAirSettings(),...patch};airSettingsCache=next;applyAirSettings(next);
+ if(window.airOS?.preferences){
+  airSettingsWrites=airSettingsWrites.then(()=>airSettingsLoad).then(()=>window.airOS.preferences.update(patch)).then(saved=>{airSettingsCache={...airSettingsCache,...saved};}).catch(error=>{console.error('Einstellungen konnten nicht gespeichert werden:',error);toast('Einstellung konnte nicht gespeichert werden.')});
+ }else{
+  try{localStorage.setItem(AIR_SETTINGS_KEY,JSON.stringify(next))}catch{toast('Einstellungen konnten nicht gespeichert werden.')}
+ }
+ return next;
 }
+const airSettingsLoad=window.airOS?.preferences?
+ window.airOS.preferences.get().then(saved=>{airSettingsCache=saved;applyAirSettings(saved)}).catch(error=>{console.error('Einstellungen konnten nicht geladen werden:',error)}):
+ Promise.resolve().then(()=>{try{airSettingsCache=JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||'{}')}catch{};applyAirSettings(airSettingsCache)});
 function applyAirSettings(settings=readAirSettings()){
  const root=document.documentElement,wallpaper=document.querySelector(".wallpaper"),dock=document.querySelector(".dock");
  if(settings.accent)root.style.setProperty("--accent",settings.accent);else root.style.removeProperty("--accent");
  if(dock){
+  dock.dataset.theme=settings.dockTheme==='modern'?'modern':'classic';
   dock.style.setProperty("--air-dock-icon-size",(Number(settings.dockSize)||48)+"px");
   dock.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  }
@@ -517,6 +547,7 @@ function applyAirSettings(settings=readAirSettings()){
 }
 function initAirSettings(win){
  const s=readAirSettings();
+ const theme=win.querySelector("#air-dock-theme");if(theme)theme.value=s.dockTheme==='modern'?'modern':'classic';
  const accent=win.querySelector("#accent-color"),dockSize=win.querySelector("#air-dock-size"),glass=win.querySelector("#reduce-glass"),motion=win.querySelector("#air-reduce-motion"),clock=win.querySelector("#air-clock-24"),status=win.querySelector("#air-settings-status");
  if(accent)accent.value=s.accent||"#75aeea";
  if(dockSize)dockSize.value=String(s.dockSize||48);
@@ -529,6 +560,7 @@ function initAirSettings(win){
   announce("Hintergrund gespeichert.");toast("Hintergrund geändert");
  }));
  accent?.addEventListener("input",e=>{persistAirSettings({accent:e.target.value});announce("Akzentfarbe gespeichert.")});
+ theme?.addEventListener("change",e=>{persistAirSettings({dockTheme:e.target.value});announce("Dock-Design ausgewählt.")});
  dockSize?.addEventListener("input",e=>{persistAirSettings({dockSize:Number(e.target.value)});announce("Dock-Größe gespeichert.")});
  glass?.addEventListener("change",e=>{persistAirSettings({reduceGlass:e.target.checked});announce("Darstellung gespeichert.")});
  motion?.addEventListener("change",e=>{persistAirSettings({reduceMotion:e.target.checked});announce("Animationseinstellung gespeichert.")});
@@ -540,13 +572,18 @@ function initAirSettings(win){
   const reader=new FileReader();reader.onload=()=>{persistAirSettings({customWallpaper:reader.result,wallpaper:""});announce("Eigenes Hintergrundbild gespeichert.")};reader.onerror=()=>announce("Bild konnte nicht gelesen werden.");reader.readAsDataURL(file);
  });
  win.querySelector("#reset-settings")?.addEventListener("click",()=>{
-  try{localStorage.removeItem(AIR_SETTINGS_KEY)}catch{}
-  applyAirSettings({});initAirSettingsValuesReset(win);announce("Alle Einstellungen wurden zurückgesetzt.");toast("Darstellung zurückgesetzt");
+  if(window.airOS?.preferences){
+    airSettingsWrites=airSettingsWrites.then(()=>airSettingsLoad).then(()=>window.airOS.preferences.reset()).then(settings=>{airSettingsCache=settings;applyAirSettings(settings);initAirSettingsValuesReset(win);announce('Einstellungen zurückgesetzt.');toast('Darstellung zurückgesetzt')}).catch(()=>announce('Zurücksetzen fehlgeschlagen.'));
+  }else{
+    try{localStorage.removeItem(AIR_SETTINGS_KEY)}catch{}
+    airSettingsCache={};applyAirSettings({});initAirSettingsValuesReset(win);announce('Einstellungen zurückgesetzt.');
+  }
  });
  applyAirSettings(s);
 }
 function initAirSettingsValuesReset(win){
  const s=readAirSettings();
+ const theme=win.querySelector("#air-dock-theme");if(theme)theme.value=s.dockTheme==='modern'?'modern':'classic';
  const accent=win.querySelector("#accent-color"),dockSize=win.querySelector("#air-dock-size"),glass=win.querySelector("#reduce-glass"),motion=win.querySelector("#air-reduce-motion"),clock=win.querySelector("#air-clock-24");
  if(accent)accent.value=s.accent||"#75aeea";if(dockSize)dockSize.value="48";if(glass)glass.checked=false;if(motion)motion.checked=false;if(clock)clock.checked=true;
 }
@@ -636,7 +673,7 @@ for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-
     event.preventDefault();
     event.stopPropagation();
     const id = launcher.dataset.app;
-    if (id && appNames[id]) openApp(id);
+    if (id && window.airAppRegistry?.get(id)) openApp(id);
     else if (id) toast("Diese App ist noch nicht verfügbar.");
   }, true);
 }
