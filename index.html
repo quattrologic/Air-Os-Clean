@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="air-spotlight.css">
   <link rel="stylesheet" href="air-app-store.css">
   <link rel="stylesheet" href="air-modern-dock.css">
+  <link rel="stylesheet" href="air-island.css">
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
@@ -46,6 +47,15 @@
     </div>
   </header>
   <main id="desktop" class="desktop" aria-label="Schreibtisch">
+    <div id="air-island" class="air-island">
+      <button id="air-island-toggle" class="air-island-toggle" type="button" aria-expanded="false" aria-controls="air-island-panel" aria-label="Air Island öffnen oder schließen">
+        <time id="air-island-clock" class="air-island-clock"></time><span aria-hidden="true">⌄</span>
+      </button>
+      <section id="air-island-panel" class="air-island-panel" role="region" aria-labelledby="air-island-title" hidden>
+        <header><h2 id="air-island-title">Air Island</h2><button id="air-island-close" class="air-island-close" type="button" aria-label="Air Island schließen">×</button></header>
+        <p>Dein Überblick im Air-OS-Desktop.</p>
+      </section>
+    </div>
     <div class="desktop-icons">
       <button class="desktop-icon" data-app="finder"><span class="desktop-art" data-art="computer"></span><span>Dieser PC</span></button>
       <button class="desktop-icon" data-app="finder" data-folder-shortcut="Dokumente"><span class="desktop-art folder-art" data-art="folder"></span><span>Dokumente</span></button>
@@ -90,6 +100,7 @@
   <script src="src/core/app-registry.js"></script>
   <script src="src/core/app-lifecycle.js"></script>
   <script src="app.js"></script>
+  <script src="air-island.js"></script>
   <script src="air-launchpad.js"></script>
   <script src="air-notes.js"></script>
   <script src="air-reminders.js"></script>

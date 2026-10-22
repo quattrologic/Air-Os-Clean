@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **22. Oktober 2026**. Diese Sitzung umfasst ausschließlich Bestandsaufnahme und Dokumentation. Keine Produktfunktion, Abhängigkeit oder bestehende Sicherheitsprüfung wurde geändert.
+Stand: **22. Oktober 2026**, fortgeschrieben um Dock- und Island-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -54,7 +54,7 @@ Die spätere native iPadOS-App benötigt eine eigene Laufzeit. Gemeinsame Datenm
 
 - **Datenisolation:** Preferences, Notes und Reminders haben Profil-Stores. Kalender, AirWrite, Musikplaylists und Scores besitzen weiter globale Renderer-Schlüssel. AirCard-Artwork liegt ebenfalls nicht offensichtlich in derselben profilbezogenen Store-Struktur. Vor einem Mehrbenutzer-Freigabeversprechen tatsächlichen Zugriff nach Profilwechsel prüfen. Datenmigration benötigt explizite Zuordnung, Backup und Fehlerbehandlung.
 - **Statusanzeigen:** `login.html` zeigt statisch „100%“, die Desktop-Menüleiste enthält dekorative WLAN-/Ton-/Batteriesymbole. Das sind keine verifizierten Host-Messwerte. Uhrzeit funktioniert, ein allgemeiner Status-/Capability-Service fehlt.
-- **Island / Kontrollzentrum:** Keine eigenständige Dynamic-Island-Komponente oder vollständig angebundene Quick Settings gefunden. Zuerst Air-OS-Einstellungen und lokale Medien verwenden; Host-Funktionen nur mit belegter Schnittstelle.
+- **Island / Kontrollzentrum:** Das eigenständige Island-Grundelement ist im unten beschriebenen Phase-3-Checkpoint implementiert: Uhrzeit, einfaches Panel und Fokusverwaltung. Ein angebundenes Kontrollzentrum und weitere Inhalte fehlen weiterhin. Zuerst vorhandene Air-OS-Einstellungen und lokale Medien verwenden; Host-Funktionen nur mit belegter Schnittstelle.
 - **Fensterkomfort:** Persistente Fenstergeometrie, konsistente App-/Fensteridentitäten, koordinierte Fokusregeln, Mehrmonitor-/DPI-/Zoom-Verhalten, Snap/Mission Control und Tastatur-Navigation fehlen teilweise oder sind nicht abgesichert. Kein externer Fensterzugriff als Nebenwirkung einer Designaufgabe.
 - **Alltagsapps:** Browser-/Mail-/Übersetzer-/KI-Einträge und externe Dienste sind keine vollständigen eigenständigen Clients. Provider-APIs, OAuth und Einbettungsbedingungen jeweils separat prüfen. ChatGPT-Desktop-Integration ist noch offen; früherer Nutzerwunsch bleibt erhalten.
 - **AirCard:** iPhone-/Wallet-Funktionen benötigen ein separates macOS-Backend; nicht enthalten, unter Windows keine Parität. Lokales Artwork ist davon zu unterscheiden.
@@ -148,6 +148,14 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Island-Checkpoint I1/I2 – 22. Oktober 2026
+
+Auf `feat/air-dynamic-island-base-20261022`, ausgehend von `335e0ac`, ist die erste kleine Island-Einheit implementiert: schwarze zentrierte Pille unter der Menüleiste, echte lokal formatierte Uhrzeit mit vorhandener 12-/24h-Einstellung, nicht modales Panel, Maus-/Tastaturbedienung und Fokusverwaltung. Reservierter Platz für die kompakte Island, begrenzte Ebenen für Fenster/Symbole, responsive Panelbreite/-höhe und reduzierte Animationen. Keine Host-Steuerung oder weiteren Panel-Inhalte. Eigenständige Lösung ohne Bloom-Code/Assets.
+
+99 Node-Tests einschließlich drei neuer Island-Tests bestanden; echter Linux-Electron-GUI-Lauf mit acht Prüfgruppen grün. Emulierte 1440×900/760×540/390×600-Ansichten, Fokus, Bedienbarkeit maximierter Fensterleisten, bestehende Clock-/Reduced-Motion-Preferences und OS-Reduced-Motion geprüft. Native Windows/macOS und Release-Gates bleiben offen; Details/Reproduktion in den neuesten Fortschrittsdokumenten. I1/I2 sind für dieses Grundelement abgedeckt; dies ersetzt keine vollständige Desktop-/Barrierefreiheitsabnahme.
+
+Nächste Island-Einheit auf Nutzerwunsch: **Q1**, kleines Kontrollzentrum mit bestehenden Air-OS-Darstellungseinstellungen und echter Persistenz. Medien, Notifications, Kalender, Timer und Host-Status bleiben eigene spätere Einheiten. Dock-Pinning/Drag-and-drop und der bekannte Dock-Fokusmarker bleiben offen.
 
 ## Dock-Checkpoint U1 – 22. Oktober 2026
 

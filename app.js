@@ -537,6 +537,7 @@ function applyAirSettings(settings=readAirSettings()){
   dock.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  }
  root.classList.toggle("air-reduced-motion",!!settings.reduceMotion);
+ document.dispatchEvent(new Event("air-settings-changed"));
  const clock=document.querySelector("#clock");
  if(clock){const now=new Date();clock.textContent=now.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+now.toLocaleTimeString("de-DE",settings.clock24===false?{hour:"numeric",minute:"2-digit",hour12:true}:{hour:"2-digit",minute:"2-digit",hour12:false});}
  if(wallpaper){

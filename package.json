@@ -31,6 +31,8 @@
       "index.html",
       "styles.css",
       "air-modern-dock.css",
+      "air-island.css",
+      "air-island.js",
       "app.js",
       "src/core/app-registry.js",
       "airwrite.js",

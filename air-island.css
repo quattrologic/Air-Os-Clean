@@ -1,0 +1,70 @@
+/* The compact island gets its own strip; maximized internal windows start below it. */
+.desktop.has-air-island .windows { top: 62px; z-index: 4; }
+.desktop.has-air-island .desktop-icons { top: 62px; }
+.air-island {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(340px, calc(100% - 24px));
+  z-index: 200;
+  pointer-events: none;
+  color: #f6f7fb;
+  font-size: 13px;
+}
+.air-island-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: max-content;
+  min-width: 156px;
+  max-width: 100%;
+  min-height: 38px;
+  margin: 0 auto;
+  padding: 6px 18px;
+  border: 1px solid #ffffff24;
+  border-radius: 999px;
+  background: #08090c;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 14px #0004;
+  transition: background-color 140ms ease;
+}
+.air-island-toggle:hover { background: #202128; }
+.air-island-clock { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.air-island-toggle:focus-visible, .air-island-close:focus-visible {
+  outline: 2px solid var(--accent, #75aeea);
+  outline-offset: 3px;
+}
+.air-island-panel[hidden] { display: none !important; }
+.air-island-panel {
+  margin-top: 8px;
+  padding: 18px;
+  border: 1px solid #ffffff24;
+  border-radius: 22px;
+  background: #101116;
+  box-shadow: 0 14px 36px #0006;
+  max-height: max(80px, calc(100dvh - 200px));
+  overflow: auto;
+  pointer-events: auto;
+  animation: air-island-open 140ms ease-out;
+}
+.air-island-panel header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.air-island-panel h2 { font-size: 16px; margin: 0; }
+.air-island-panel p { line-height: 1.5; margin-bottom: 0; color: #c2c5d0; }
+.air-island-close {
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid #ffffff30;
+  border-radius: 10px;
+  background: #ffffff12;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+@keyframes air-island-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.air-reduced-motion .air-island *, .air-reduced-motion .air-island { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .air-island, .air-island * { animation: none !important; transition: none !important; } }
