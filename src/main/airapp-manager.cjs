@@ -85,7 +85,13 @@ function createManager({root,appPath,publicKeys}){
    return{id,alreadyInstalled:false};
   }
   const tmp=path.join(base,'.install-'+crypto.randomBytes(8).toString('hex'));
-  fs.mkdirSync(tmp,{recursive:true,mode:0o700});
+  // Only a directory created exclusively by this attempt may be cleaned up.
+  // A crash leftover, existing file or symlink must never enter the finally block.
+  try{fs.mkdirSync(tmp,{mode:0o700})}
+  catch(error){
+   if(error.code==='EEXIST')throw new Error('Temporärer Installationspfad bereits vorhanden. Dateien bleiben erhalten. Bitte Installation erneut versuchen.');
+   throw error;
+  }
   try{
    for(const [name,bytes]of files){const dst=path.join(tmp,name);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.writeFileSync(dst,bytes,{flag:'wx',mode:0o600})}
    fs.writeFileSync(path.join(tmp,'manifest.airapp.json'),JSON.stringify(manifest),{flag:'wx',mode:0o600});

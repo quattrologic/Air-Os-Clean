@@ -1,3 +1,20 @@
+# Aktuelle Übergabe – Teil 6 abgeschlossen, 22. Oktober 2026
+
+Branch `feat/air-os-architecture-foundation`, PR #11. Gesicherte Ausgangsbasis `2c5c72b3ded7863ef231bc2133f6c499d9d7d5c2`; neuer Checkpoint `Protect existing Air App staging paths from reuse and cleanup` (SHA im Abschlussbericht/Git-Log).
+
+Abgeschlossen: exklusive Anlage temporärer .install-Ordner. Bestehende Ordner/Dateien/Symlinks am gewählten Ziel führen vor Schreiben/Cleanup zu kontrolliertem Fehler mit Retry-Hinweis. Alte beschädigte/unvollständige Reste bleiben erhalten; ein neuer Versuch installiert aus dem geprüften Katalog in einen frischen Ordner. Kein automatisches Löschen oder Registrieren von Resten.
+
+Tests: 23/23 im gezielten Recovery-/Paket-/Registry-/Launchpad-Lauf bestanden; fünf neue Regressionstests, keine übersprungen. Syntax/Diff grün. Neue CI prüfen. Ausgangs-Installer grün, Security rot; GUI-/Audit-Blocker bleiben.
+
+Nächste drei kleine Aufgaben:
+1. Store-Integrationstest für Namenskonflikt des temporären Pfades samt Meldung, Registry-Abwesenheit und Retry.
+2. Windows/macOS-Smoke-Test für Installation nach Abbruch.
+3. Sichere Diagnose alter .install-Reste spezifizieren, ohne pauschale Bereinigung.
+
+AGENTS.md befolgen: HEAD/PR/CI/Arbeitsbaum prüfen, genau eine kleine Aufgabe, testen und sichern. main und andere PRs erhalten. Race nach erfolgreicher Ordneranlage bleibt gesondert zu prüfen.
+
+---
+
 # Aktuelle Übergabe – Recovery-Integration getestet, 21. Oktober 2026
 
 Branch `feat/air-os-architecture-foundation`, PR #11 Draft. Gesicherte Ausgangsbasis `3751d15d47a5edf2c6c6c45b2630d963bc55be3f`; neue Einheit `Test recovery integration through Store Registry and Launchpad`. SHA im Abschlussbericht/Git-Log.

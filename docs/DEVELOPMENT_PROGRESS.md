@@ -1,3 +1,33 @@
+# Aktueller Checkpoint – Teil 6: temporäre Installationsreste, 22. Oktober 2026
+
+- Gesicherte Ausgangsbasis: `2c5c72b3ded7863ef231bc2133f6c499d9d7d5c2`; Branch `feat/air-os-architecture-foundation`, PR #11 offen. GitHub-HEAD und sauberer Arbeitsbaum bestätigt; vor Push erneut abgleichen und expected_sha verwenden.
+- Diese Einheit: `Protect existing Air App staging paths from reuse and cleanup`; SHA im Abschlussbericht/Git-Log.
+- Ausgangs-CI: Desktop [39654876570](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39654876570) erfolgreich; Security [39654876790](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39654876790) fehlgeschlagen. Keine erneute Auditdiagnose; neue Commit-CI separat prüfen.
+
+## Genau eine Absicherung
+
+Die bisherige rekursive Anlage von .install-<Zufallswert> konnte einen bestehenden Ordner oder Ordner-Symlink wiederverwenden. Ein späterer Schreibfehler führte in den finally-Cleanup dieses fremden Pfades. Die Anlage erfolgt nun exklusiv, ohne recursive. Bei EEXIST wird vor Eintritt in die Schreib-/Cleanup-Logik eine verständliche Meldung ausgegeben: Dateien bleiben erhalten, erneuten Versuch starten. Andere Dateisystemfehler werden weitergereicht.
+
+Zurückgebliebene .install-Verzeichnisse werden weder pauschal gelöscht noch als installierte Apps übernommen. Ein späterer Versuch verwendet einen neuen zufälligen Pfad und das vollständig signatur-/hashgeprüfte Katalogpaket. Bestehende Recovery nach dem finalen Rename bleibt erhalten. Keine Änderung von Registry, Store, Runtime, Signaturprüfung oder Plattformfreigaben.
+
+## Tests
+
+Fünf neue Fälle in der bestehenden signierten Recovery-Fixture: unvollständiger Rest, beschädigter Rest, Kollision mit Ordner, Datei und Symlink. Byte-Snapshots prüfen erhaltene Dateien; Wiederholungsversuche und bereits funktionierende Installation werden geprüft. Vor Fix drei Kollisionsfälle rot, danach alle grün. Keine unvollständigen Einträge im Installationsindex; bestehende Registry-/Launchpad-Integrationstests ebenfalls grün.
+
+Gezielter Lauf: `node --test tests/airapp-install-recovery.test.cjs tests/airapp-package.test.cjs tests/app-registry.test.cjs tests/launchpad.test.cjs` mit Workspace-TMPDIR: **23/23 bestanden**, keine übersprungen. Syntaxprüfungen von Manager und Testdatei sowie git diff --check bestanden.
+
+Geändert: `src/main/airapp-manager.cjs`, `tests/airapp-install-recovery.test.cjs`, beide Fortschrittsdokumente. main und andere PRs unverändert; keine parallele Entwicklung.
+
+## Grenzen und nächste drei kleine Aufgaben
+
+Keine automatische Rettung/Bereinigung alter temporärer Verzeichnisse, kein Power-Loss-/GUI-Test. Die Änderung schützt gegen bereits vorhandene Zielpfade; konkurrierender Austausch nach erfolgreicher Ordneranlage bleibt eine separate Race-Grenze. Audit/Legacy-Electron sowie echte Windows/macOS-Tests bleiben offen.
+
+1. Store-Integrationstest für temporären Namenskonflikt: Meldung sichtbar, keine Registry-Kachel, Retry erfolgreich.
+2. Echten Windows/macOS-Smoke-Test für abgebrochene Installation und Wiederholungsversuch durchführen.
+3. Datenbewahrende Diagnose vorhandener Installationsreste spezifizieren; keine automatische Löschung ohne sichere Zuordnung.
+
+---
+
 # Aktueller Checkpoint – Recovery/Registry/Launchpad-Integration, 21. Oktober 2026
 
 - Gesicherte Ausgangsbasis: `3751d15d47a5edf2c6c6c45b2630d963bc55be3f`; Branch `feat/air-os-architecture-foundation`, PR #11 offen/Draft. Arbeitsbaum vor Änderung sauber, GitHub-HEAD bestätigt; vor Remote-Aktualisierung erneut prüfen und expected_sha verwenden.

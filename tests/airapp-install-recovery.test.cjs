@@ -175,3 +175,53 @@ for(const outcome of ['success','tampered','index-failure']){
   }finally{t.mock.restoreAll();f.cleanup()}
  });
 }
+
+for(const leftover of ['partial','corrupt']){
+ test(`fresh retry preserves ${leftover} pre-rename staging files`,()=>{
+  const f=fixture();try{
+   const stage=path.join(path.dirname(f.folder),'.install-'+'a'.repeat(16));
+   fs.renameSync(f.folder,stage);
+   if(leftover==='partial')fs.unlinkSync(path.join(stage,'timer.js'));
+   else fs.appendFileSync(path.join(stage,'timer.js'),'// damaged');
+   fs.writeFileSync(path.join(stage,'user-data.txt'),'keep this data');
+   const before=fileSnapshot(stage);
+   assert.deepEqual(f.manager().installed('Alice'),[]);
+   f.manager().install('Alice',f.id);
+   assert.equal(f.manager().installedFolder('Alice',f.id),f.folder);
+   assert.deepEqual(fileSnapshot(stage),before);
+   assert.equal(fs.existsSync(path.join(f.folder,'user-data.txt')),false);
+   const installedBefore=fileSnapshot(f.folder);
+   assert.equal(f.manager().install('Alice',f.id).alreadyInstalled,true);
+   assert.deepEqual(fileSnapshot(f.folder),installedBefore);
+  }finally{f.cleanup()}
+ });
+}
+for(const collision of ['directory','file','symlink']){
+ test(`staging ${collision} collision fails safely and permits later retry`,t=>{
+  const f=fixture();try{
+   const saved=f.folder+'.saved';fs.renameSync(f.folder,saved);
+   const stage=path.join(path.dirname(f.folder),'.install-'+'b'.repeat(16));
+   if(collision==='directory'){
+    fs.mkdirSync(stage);fs.writeFileSync(path.join(stage,'index.html'),'existing user file');
+   }else if(collision==='file')fs.writeFileSync(stage,'existing user file');
+   else{
+    try{fs.symlinkSync(saved,stage,process.platform==='win32'?'junction':'dir')}
+    catch(error){if(error.code==='EPERM'){t.skip('Symlinks unavailable');return}throw error}
+   }
+   const savedBefore=fileSnapshot(saved);
+   const stageBefore=collision==='directory'?fileSnapshot(stage):collision==='file'?fs.readFileSync(stage):fs.readlinkSync(stage);
+   const random=crypto.randomBytes;
+   t.mock.method(crypto,'randomBytes',size=>size===8?Buffer.from('b'.repeat(16),'hex'):random(size));
+   assert.throws(()=>f.manager().install('Alice',f.id),/Temporärer Installationspfad.*vorhanden/);
+   assert.deepEqual(f.manager().installed('Alice'),[]);
+   assert.equal(fs.existsSync(f.folder),false);
+   assert.deepEqual(fileSnapshot(saved),savedBefore);
+   const stageAfter=collision==='directory'?fileSnapshot(stage):collision==='file'?fs.readFileSync(stage):fs.readlinkSync(stage);
+   assert.deepEqual(stageAfter,stageBefore);
+   t.mock.restoreAll();
+   f.manager().install('Alice',f.id);
+   assert.equal(f.manager().installedFolder('Alice',f.id),f.folder);
+   assert.deepEqual(fileSnapshot(saved),savedBefore);
+  }finally{t.mock.restoreAll();f.cleanup()}
+ });
+}
