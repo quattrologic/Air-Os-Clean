@@ -24,6 +24,7 @@
   }
   let savingDock = false;
   let timer = null;
+  let closingAnimation = null;
 
   function syncDockTheme() {
     const settings = typeof readAirSettings === 'function' ? readAirSettings() : {};
@@ -35,6 +36,7 @@
     if (!available) dockStatus.textContent = 'Dock-Einstellungen sind nur in der angemeldeten Air-OS-App verfügbar.';
   }
   function settingsChanged() {
+    if(closingAnimation)finishClose();
     updateClock();
     syncDockTheme();
     if (!savingDock && dockTile.getAttribute('aria-disabled') !== 'true')
@@ -68,15 +70,35 @@
     });
     trigger.setAttribute('aria-label', 'Air Island, ' + clock.textContent + ', öffnen oder schließen');
   }
-  function close(restoreFocus = false) {
+  function finishClose() {
+    const motion=closingAnimation;closingAnimation=null;
+    if(motion){motion.onfinish=null;motion.cancel()}
+    panel.hidden=true;panel.inert=false;panel.classList.remove('is-closing');
+  }
+  function close(restoreFocus = false, immediate = false) {
     if (panel.hidden) return;
-    panel.hidden = true;
     trigger.setAttribute('aria-expanded', 'false');
+    const settings=typeof readAirSettings==='function'?readAirSettings():{};
+    const modern=settings.desktopTheme==='modern';
+    const reduced=settings.reduceMotion||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if(immediate||!modern||reduced||typeof panel.animate!=='function')finishClose();
+    else if(!closingAnimation){
+      // Stop interaction at once; WAAPI owns only the short visual exit.
+      panel.inert=true;panel.classList.add('is-closing');
+      const style=window.getComputedStyle?.(panel);
+      closingAnimation=panel.animate([{opacity:style?.opacity||1,transform:style?.transform||'translateY(0)'},{opacity:0,transform:'translateY(-4px)'}],{duration:120,easing:'ease-in'});
+      const motion=closingAnimation;
+      motion.onfinish=()=>{if(closingAnimation===motion)finishClose()};
+    }
     if (restoreFocus) trigger.focus();
   }
   function toggle() {
-    if (!panel.hidden) { close(true); return; }
-    panel.hidden = false;
+    if(closingAnimation)finishClose();
+    else if (!panel.hidden) { close(true); return; }
+    // Dismiss the existing start menu before taking focus, without changing it.
+    const startMenu=document.querySelector('#air-start-menu');
+    if(startMenu&&!startMenu.hidden)window.airStartMenu?.toggle();
+    panel.hidden = false;panel.inert=false;
     trigger.setAttribute('aria-expanded', 'true');
     closeButton.focus();
   }
@@ -92,12 +114,13 @@
   }
   function visibility() {
     if (timer !== null) { clearInterval(timer); timer = null; }
-    if (document.hidden) { close(); return; }
+    if (document.hidden) { close(false,true); return; }
     updateClock();
     timer = setInterval(updateClock, 15000);
   }
   function dismiss() { close(true); }
   function dispose() {
+    close(false,true);
     if (timer !== null) clearInterval(timer);
     trigger.removeEventListener('click', toggle);
     closeButton.removeEventListener('click', dismiss);

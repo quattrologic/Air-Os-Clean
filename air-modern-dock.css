@@ -54,3 +54,10 @@
 @media (max-width: 600px) {
   .dock[data-theme="modern"] { border-radius: 18px !important; }
 }
+
+/* Attached lower edge; Classic desktop/dock choices retain their original layout. */
+html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
+  bottom:0 !important;
+  border-radius:18px 18px 0 0 !important;
+  box-shadow:0 -4px 16px #0003 !important;
+}

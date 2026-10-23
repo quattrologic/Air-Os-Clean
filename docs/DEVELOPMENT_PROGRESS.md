@@ -1,3 +1,25 @@
+# Zwischenstand – C1/C2-Visuelle Korrektur: Randanbindung gesichert, Bildreferenzen fehlen
+
+23. Oktober 2026. Explizit gewünschte Basis **`ceae6ba438f552edc32845369f2c6a31aa0473b4`** / B2.2; neuer separater Branch **`fix/air-modern-edge-attachment-c12-20261023`**. Kein Merge oder Schreiben auf C1, main, PRs oder Installer-Branches. Die bereits eigenständig implementierten Island-Viewport-/Animations-/Cleanup-Änderungen aus C1 `8c550c2` wurden als geprüfte Dateigrundlage wiederverwendet, ohne Branches zusammenzuführen. C1/C2-Gesamtauftrag ausdrücklich **noch nicht abgeschlossen**.
+
+Abgeschlossen: ausschließlich Modern-Randanbindung und zugehörige Funktionserhaltung. `desktopTheme=modern` setzt Island viewportfest auf **y=0**, obere Ecken gerade, untere gerundet. `desktopTheme=modern` zusammen mit `dockTheme=modern` setzt kompaktes Dock auf **bottom=0**, unten gerade Ecken und zurückhaltenden Schatten nach oben. Keine Desktop-/Fensterhost-Verschiebung. Classic-Desktop und Classic-Dock behalten ihre bisherige Darstellung; beide Preferences bleiben unabhängig. Originalicons, Registry, Pins und Startmenü unverändert.
+
+| Viewport | Island x/y, Breite×Höhe | Dock x/y, Breite×Höhe | Oberer / unterer Abstand | Bisheriges Panel x/y, Breite×Höhe |
+| --- | --- | --- | --- | --- |
+| 1920×1080 | 835/0, 250×45 | 781/1012, 358×68 | 0 / 0px | 790/53, 340×210 |
+| 1650×930 | 717,58/0, 214,84×38,67 | 646/862, 358×68 | 0 / 0px | 655/46,67, 340×210 |
+| 390×600 | 117/0, 156×36 | 16/532, 358×68 | 0 / 0px | 25/44, 340×210 |
+
+Echter Linux/Electron-32.3.3-/Xvfb-Test erfolgreich: neun Screenshots und rohe getBoundingClientRect-Messwerte unter docs/visual; beide Abstände wirklich 0, Zentrierung, 358×68px, kein Dock-Scrollen, Fensterhost unverändert, Fenster-Schließen-Hit-Test bei maximiertem Fenster, Kontrollzentrum/Enter/Escape/Fokusrückgabe, Startmenü-Suche/Notizen-Start, Anheften/Lösen und identische originale SVG-Inhalte geprüft. Classic-Island bleibt 156×38px bei y39/y37; Modern-Dock unter Classic-Desktop behält 6px Abstand. **179/179 automatisierte Tests, 0 Fehler/Skips** inklusive vier wiederverwendeter C1-Animations-/Cleanup-Regressionen und aller bisherigen Profil-/Pin-/Sicherheitsprüfungen. Syntax, Catalina-Konfiguration und Diff-Whitespace geprüft. Keine neue Windows-/macOS-Hardware-/CI-Abnahme. Actions-Abruf weiterhin Forbidden; keine Installer-Builds ausgelöst.
+
+**Konkrete Blockade:** In der aktuellen Nachricht sind die angekündigten Bilder 3 (gewünschtes Air-OS-Logo) und 5 (verbindliches neues Kontrollzentrum) nicht als Anhänge verfügbar. Erneute Bereitstellung frühzeitig erbeten. Im Repository existiert lediglich ein älteres weißes Birnenlogo `assets/air-logo.png` aus b063352; es kann nicht als identisch mit dem angeforderten neuen Bild 3 bestätigt werden und wurde deshalb nicht als Ersatz eingebaut. **Launchpad-Icon bleibt vorerst das bestehende Grid.** Das Kontrollzentrum bleibt das bestehende funktionierende Panel mit Dock-Kachel und Notes-Mitteilung; **kein behaupteter Umbau nach Bild 5**, keine neuen Tiles/Slider oder erfundenen Hardwarezustände. Die fehlenden Referenzen werden nicht durch geratenes Design ersetzt.
+
+Nächster exakter Schritt: Bilder 3 und 5 erneut bereitstellen, dann auf diesem gesicherten Branch Referenzmaße/Farben/Logo prüfen und den noch offenen Icon-/Kontrollzentrum-Teil dieser Phase umsetzen. Mögliche ehrliche Controls aus bestehender Architektur: Dock-Design, Desktop-Design, Bewegungsreduktion, 24h-Uhr; Apps/Notizen/Suche/Settings als Aktionen. Volume/Brightness nur mit klarer echter interner Wirkung oder explizitem Nicht-verfügbar-/Demo-Status, keine native Steuerung behaupten. Danach erst die drei Folgeeinheiten: (1) **D1** Air Home, (2) **E1** ein echtes Widget, (3) **F1** einzelne App optisch integrieren. Nicht vor Abschluss der ausstehenden Referenzkorrektur beginnen.
+
+Main a1f3e12, PR #11 eecab2a, PR #12 eb3f3bc, Installer-Branch d6a2cc0 und C1-Branch 8c550c2 erhalten. Keine Dependencies, IPC-/Preferences-/Registry-/Installer-Dateien oder fremde Assets geändert. Bestehende Audit-/Signing-/Notarisierungs-/Release-Blocker bleiben offen. Commit `Attach Modern dock and Island to viewport edges; document missing visual references`; SHA im Abschlussbericht. Sicherer Zwischenstand, Sitzung nach Sicherung kontrolliert beenden und fehlende Anhänge anfordern.
+
+---
+
 # Aktueller Checkpoint – B2.2: Apps im Startmenü anheften und lösen
 
 23. Oktober 2026. Bestätigter B2-Ausgangs-HEAD **`f21441703c833fa9d3a7e0c6922badc0fca0fca8`**; eigener Branch **`theme/air-modern-start-pins-b22-20261023`**. Genau B2.2: getrennte native App-Start- und Anheften-/Lösen-Buttons in einer kompakten Startmenü-Liste. App-Suche, Originalicons und Startpfad bleiben erhalten. Kein Drag-and-drop, Kontextmenü, neues Dock, Island oder Air Home.

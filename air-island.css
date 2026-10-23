@@ -89,3 +89,45 @@
 .air-island-notice h3 { margin: 0; font-size: 13px; color: #f6f7fb; }
 .air-island-panel .air-island-notice p { margin: 8px 0; font-size: 13px; }
 .air-island-notice time { display: block; color: #c2c5d0; font-size: 12px; }
+
+/* C1: viewport geometry for Modern only; preserve desktop/window host coordinates. */
+html[data-desktop-theme="modern"] .air-island {
+  position:fixed;
+  top:0;
+  width:min(340px,calc(100vw - 24px));
+  color:#f8f7f3;
+}
+html[data-desktop-theme="modern"] .air-island-toggle {
+  display:grid;
+  grid-template-columns:24px minmax(0,1fr) 24px;
+  gap:0;
+  width:clamp(156px,13.020833vw,250px);
+  min-width:0;
+  height:clamp(36px,2.34375vw,45px);
+  min-height:0;
+  padding:4px 12px;
+  background:#090b0c;
+  border-color:#ffffff1c;
+  font-size:clamp(12px,.729167vw,14px);
+  font-weight:600;
+  box-shadow:0 4px 14px #0003;
+}
+html[data-desktop-theme="modern"] .air-island-toggle:hover {background:#111416}
+html[data-desktop-theme="modern"] .air-island-clock {grid-column:2}
+html[data-desktop-theme="modern"] .air-island-toggle>span {grid-column:3;font-size:11px;color:#c3ccc7}
+html[data-desktop-theme="modern"] .air-island-toggle:focus-visible {outline-offset:-3px}
+html[data-desktop-theme="modern"] .air-island-panel {
+  max-height:min(420px,calc(100dvh - 150px));
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  border-radius:18px;
+  background:#101517;
+}
+.air-island-panel.is-closing {pointer-events:none}
+
+/* Connected upper edge, exclusively for the Modern desktop. */
+html[data-desktop-theme="modern"] .air-island-toggle {
+  border-radius:0 0 22px 22px;
+  box-shadow:0 3px 10px #0003;
+}
