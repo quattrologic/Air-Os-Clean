@@ -52,8 +52,13 @@
         <time id="air-island-clock" class="air-island-clock"></time><span aria-hidden="true">⌄</span>
       </button>
       <section id="air-island-panel" class="air-island-panel" role="region" aria-labelledby="air-island-title" hidden>
-        <header><h2 id="air-island-title">Air Island</h2><button id="air-island-close" class="air-island-close" type="button" aria-label="Air Island schließen">×</button></header>
-        <p>Dein Überblick im Air-OS-Desktop.</p>
+        <header><h2 id="air-island-title">Kontrollzentrum</h2><button id="air-island-close" class="air-island-close" type="button" aria-label="Air Island schließen">×</button></header>
+        <div class="air-control-grid">
+          <button id="air-control-dock-theme" class="air-control-tile" type="button" aria-pressed="false" aria-describedby="air-control-dock-status">
+            <span aria-hidden="true">▰</span><strong>Modernes Dock</strong><span id="air-control-dock-value">Air Classic</span>
+          </button>
+        </div>
+        <p id="air-control-dock-status" class="air-control-status" role="status">Dock-Design für dein Air-OS-Profil.</p>
       </section>
     </div>
     <div class="desktop-icons">

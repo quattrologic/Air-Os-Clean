@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **22. Oktober 2026**, fortgeschrieben um Dock- und Island-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island- und Kontrollzentrum-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -54,7 +54,7 @@ Die spätere native iPadOS-App benötigt eine eigene Laufzeit. Gemeinsame Datenm
 
 - **Datenisolation:** Preferences, Notes und Reminders haben Profil-Stores. Kalender, AirWrite, Musikplaylists und Scores besitzen weiter globale Renderer-Schlüssel. AirCard-Artwork liegt ebenfalls nicht offensichtlich in derselben profilbezogenen Store-Struktur. Vor einem Mehrbenutzer-Freigabeversprechen tatsächlichen Zugriff nach Profilwechsel prüfen. Datenmigration benötigt explizite Zuordnung, Backup und Fehlerbehandlung.
 - **Statusanzeigen:** `login.html` zeigt statisch „100%“, die Desktop-Menüleiste enthält dekorative WLAN-/Ton-/Batteriesymbole. Das sind keine verifizierten Host-Messwerte. Uhrzeit funktioniert, ein allgemeiner Status-/Capability-Service fehlt.
-- **Island / Kontrollzentrum:** Das eigenständige Island-Grundelement ist im unten beschriebenen Phase-3-Checkpoint implementiert: Uhrzeit, einfaches Panel und Fokusverwaltung. Ein angebundenes Kontrollzentrum und weitere Inhalte fehlen weiterhin. Zuerst vorhandene Air-OS-Einstellungen und lokale Medien verwenden; Host-Funktionen nur mit belegter Schnittstelle.
+- **Island / Kontrollzentrum:** Das eigenständige Island-Grundelement ist im unten beschriebenen Phase-3-Checkpoint implementiert: Uhrzeit, einfaches Panel und Fokusverwaltung. Eine erste echte Dock-Theme-Kachel im Kontrollzentrum ist seit Phase 4 angebunden; weitere Inhalte fehlen weiterhin. Zuerst vorhandene Air-OS-Einstellungen und lokale Medien verwenden; Host-Funktionen nur mit belegter Schnittstelle.
 - **Fensterkomfort:** Persistente Fenstergeometrie, konsistente App-/Fensteridentitäten, koordinierte Fokusregeln, Mehrmonitor-/DPI-/Zoom-Verhalten, Snap/Mission Control und Tastatur-Navigation fehlen teilweise oder sind nicht abgesichert. Kein externer Fensterzugriff als Nebenwirkung einer Designaufgabe.
 - **Alltagsapps:** Browser-/Mail-/Übersetzer-/KI-Einträge und externe Dienste sind keine vollständigen eigenständigen Clients. Provider-APIs, OAuth und Einbettungsbedingungen jeweils separat prüfen. ChatGPT-Desktop-Integration ist noch offen; früherer Nutzerwunsch bleibt erhalten.
 - **AirCard:** iPhone-/Wallet-Funktionen benötigen ein separates macOS-Backend; nicht enthalten, unter Windows keine Parität. Lokales Artwork ist davon zu unterscheiden.
@@ -148,6 +148,12 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Kontrollzentrum-Checkpoint Q1 – 23. Oktober 2026
+
+Auf `feat/air-control-center-dock-theme-20261023`, ausgehend von `f5cdcac`, ist **genau eine** Kachel angebunden: „Modernes Dock“ schaltet Classic/Modern im bestehenden Air-OS-Dock. Vorhandene Preferences-IPC, profilbezogener Store und Schreibwarteschlange werden verwendet; Anwendung und Erfolgshinweis erst nach bestätigtem Save, Fehler/Retry/Busy/Unavailable explizit behandelt. Kachel und vorhandenes Settings-Select spiegeln Änderungen in beide Richtungen. Kein Host-Systemzustand wird verändert oder vorgetäuscht, keine weiteren Kacheln und kein Bloom-Code.
+
+102 Node-Tests grün, einschließlich drei neuer Kontrollzentrum-/Saveadapter-Tests. Echter Linux-Electron-GUI-Lauf: sechs Prüfgruppen grün, Profildatei und Renderer-Reload sowie Maus/Tastatur/Fokus und emulierte 760/390px geprüft. Details, Grenzen und Reproduktion in den neuesten Übergabedokumenten. Q1 ist nur für diese erste Einstellung umgesetzt; weitere Kacheln werden einzeln in späteren Sitzungen entwickelt. Native Plattform-/Release-Gates und der bekannte Dock-Marker bleiben offen.
 
 ## Island-Checkpoint I1/I2 – 22. Oktober 2026
 

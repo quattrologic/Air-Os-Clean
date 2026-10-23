@@ -68,3 +68,18 @@
 @keyframes air-island-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 .air-reduced-motion .air-island *, .air-reduced-motion .air-island { animation: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) { .air-island, .air-island * { animation: none !important; transition: none !important; } }
+
+/* One real preference tile; the grid leaves room for separately developed controls. */
+.air-control-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.air-control-tile {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  min-width: 0; padding: 14px; border: 1px solid #ffffff24; border-radius: 16px;
+  background: #ffffff0d; color: #f6f7fb; font: inherit; text-align: left; cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.air-control-tile[aria-pressed="true"] { background: #75aeea30; border-color: var(--accent, #75aeea); }
+.air-control-tile[aria-disabled="true"] { opacity: .65; cursor: default; }
+.air-control-tile:focus-visible { outline: 2px solid var(--accent, #75aeea); outline-offset: 3px; }
+.air-control-tile strong { font-size: 13px; overflow-wrap: anywhere; }
+.air-control-tile > span:last-child { color: #d3d6df; font-size: 12px; }
+.air-island-panel .air-control-status { font-size: 12px; }

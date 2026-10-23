@@ -525,6 +525,19 @@ function persistAirSettings(patch){
  }
  return next;
 }
+// Confirm this Control Center setting before applying it; share the existing write queue.
+function persistAirDockTheme(dockTheme){
+ const save=airSettingsWrites.then(()=>airSettingsLoad).then(()=>{
+  if(!window.airOS?.preferences)throw new Error('Darstellungseinstellungen sind hier nicht verfügbar.');
+  return window.airOS.preferences.update({dockTheme});
+ }).then(saved=>{
+  airSettingsCache={...readAirSettings(),dockTheme:saved.dockTheme};
+  applyAirSettings(airSettingsCache);
+  return saved;
+ });
+ airSettingsWrites=save.catch(()=>{}); // A failed request must not block a later retry.
+ return save;
+}
 const airSettingsLoad=window.airOS?.preferences?
  window.airOS.preferences.get().then(saved=>{airSettingsCache=saved;applyAirSettings(saved)}).catch(error=>{console.error('Einstellungen konnten nicht geladen werden:',error)}):
  Promise.resolve().then(()=>{try{airSettingsCache=JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||'{}')}catch{};applyAirSettings(airSettingsCache)});
@@ -537,6 +550,7 @@ function applyAirSettings(settings=readAirSettings()){
   dock.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  }
  root.classList.toggle("air-reduced-motion",!!settings.reduceMotion);
+ document.querySelectorAll("#air-dock-theme").forEach(select=>{select.value=settings.dockTheme==='modern'?'modern':'classic'});
  document.dispatchEvent(new Event("air-settings-changed"));
  const clock=document.querySelector("#clock");
  if(clock){const now=new Date();clock.textContent=now.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+now.toLocaleTimeString("de-DE",settings.clock24===false?{hour:"numeric",minute:"2-digit",hour12:true}:{hour:"2-digit",minute:"2-digit",hour12:false});}

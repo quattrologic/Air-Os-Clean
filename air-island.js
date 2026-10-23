@@ -8,7 +8,45 @@
   const closeButton = document.querySelector('#air-island-close');
   const clock = document.querySelector('#air-island-clock');
   const desktop = document.querySelector('#desktop');
+  const dockTile = document.querySelector('#air-control-dock-theme');
+  const dockValue = document.querySelector('#air-control-dock-value');
+  const dockStatus = document.querySelector('#air-control-dock-status');
+  let savingDock = false;
   let timer = null;
+
+  function syncDockTheme() {
+    const settings = typeof readAirSettings === 'function' ? readAirSettings() : {};
+    const modern = settings.dockTheme === 'modern';
+    const available = !!window.airOS?.preferences && typeof persistAirDockTheme === 'function';
+    dockTile.setAttribute('aria-pressed', String(modern));
+    dockTile.setAttribute('aria-disabled', String(!available || savingDock));
+    dockValue.textContent = modern ? 'Air Modern' : 'Air Classic';
+    if (!available) dockStatus.textContent = 'Dock-Einstellungen sind nur in der angemeldeten Air-OS-App verfügbar.';
+  }
+  function settingsChanged() {
+    updateClock();
+    syncDockTheme();
+    if (!savingDock && dockTile.getAttribute('aria-disabled') !== 'true')
+      dockStatus.textContent = 'Dock-Design für dein Air-OS-Profil.';
+  }
+  async function changeDockTheme() {
+    if (savingDock || dockTile.getAttribute('aria-disabled') === 'true') return;
+    const next = readAirSettings().dockTheme === 'modern' ? 'classic' : 'modern';
+    savingDock = true;
+    dockTile.setAttribute('aria-busy', 'true');
+    syncDockTheme();
+    dockStatus.textContent = 'Dock-Design wird gespeichert …';
+    try {
+      await persistAirDockTheme(next);
+      dockStatus.textContent = (next === 'modern' ? 'Air Modern' : 'Air Classic') + ' gespeichert.';
+    } catch {
+      dockStatus.textContent = 'Dock-Design konnte nicht gespeichert werden. Bitte erneut versuchen.';
+    } finally {
+      savingDock = false;
+      dockTile.setAttribute('aria-busy', 'false');
+      syncDockTheme();
+    }
+  }
 
   function updateClock() {
     const settings = typeof readAirSettings === 'function' ? readAirSettings() : {};
@@ -56,7 +94,8 @@
     document.removeEventListener('pointerdown', outside, true);
     document.removeEventListener('focusin', outside);
     document.removeEventListener('visibilitychange', visibility);
-    document.removeEventListener('air-settings-changed', updateClock);
+    document.removeEventListener('air-settings-changed', settingsChanged);
+    dockTile.removeEventListener('click', changeDockTheme);
     desktop.classList.remove('has-air-island');
   }
   trigger.addEventListener('click', toggle);
@@ -65,9 +104,10 @@
   document.addEventListener('pointerdown', outside, true);
   document.addEventListener('focusin', outside);
   document.addEventListener('visibilitychange', visibility);
-  document.addEventListener('air-settings-changed', updateClock);
+  document.addEventListener('air-settings-changed', settingsChanged);
+  dockTile.addEventListener('click', changeDockTheme);
   window.addEventListener('pagehide', dispose, {once: true});
   desktop.classList.add('has-air-island');
-  updateClock();
+  settingsChanged();
   visibility();
 })();
