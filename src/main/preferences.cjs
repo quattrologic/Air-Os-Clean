@@ -52,7 +52,14 @@ function createStore({root}){
  function write(username,settings){
   const file=filename(username);fs.mkdirSync(path.dirname(file),{recursive:true});
   const temp=file+'.'+crypto.randomBytes(8).toString('hex')+'.tmp';
-  try{fs.writeFileSync(temp,JSON.stringify(settings,null,2),{encoding:'utf8',mode:0o600});fs.renameSync(temp,file)}
+  // Reserve before entering cleanup: a collision belongs to someone else.
+  // Write through the exclusive descriptor so an existing symlink is not followed.
+  const descriptor=fs.openSync(temp,'wx',0o600);
+  try{
+   try{fs.writeFileSync(descriptor,JSON.stringify(settings,null,2),{encoding:'utf8'})}
+   finally{fs.closeSync(descriptor)}
+   fs.renameSync(temp,file);
+  }
   finally{try{fs.unlinkSync(temp)}catch(error){if(error.code!=='ENOENT')throw error}}
   return settings;
  }
