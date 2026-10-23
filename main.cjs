@@ -470,8 +470,14 @@ ipcMain.handle('air-os:files:write-text', (event, relativeValue, textValue) => {
     if (error.code !== 'ENOENT') throw error;
   }
   const temp = path.join(parent, '.airos-save-' + crypto.randomBytes(8).toString('hex') + '.tmp');
+  // Reserve exclusively before entering cleanup: an EEXIST path is not ours.
+  const descriptor = fs.openSync(temp, 'wx', 0o600);
   try {
-    fs.writeFileSync(temp, content, { encoding: 'utf8', mode: 0o600, flag: 'wx' });
+    try {
+      fs.writeFileSync(descriptor, content, { encoding: 'utf8' });
+    } finally {
+      fs.closeSync(descriptor);
+    }
     fs.renameSync(temp, target);
   } finally {
     try { if (fs.existsSync(temp)) fs.unlinkSync(temp); } catch {}

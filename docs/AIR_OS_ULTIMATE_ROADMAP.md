@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus- und Pinning-Speicher-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus- und Pinning-Speicher- sowie Finder-Save-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -148,6 +148,14 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Finder-Save-Checkpoint F2 – 23. Oktober 2026
+
+Auf `fix/air-finder-save-temp-cleanup-20261023`, ausgehend von `764ac84`, ist genau ein reproduzierbarer Datenverlust-Randfall behoben: bei Kollision mit einem bereits vorhandenen temporären Speichernamen darf der Finder dessen Datei/Symlink nicht im Fehler-Cleanup löschen. Der vorhandene Text-Save reserviert seinen temporären Pfad nun exklusiv vor dem Cleanup-Block, schreibt über den Deskriptor und schließt ihn vor der bestehenden Ersetzung. Workspace-/Auth-/Pfadgrenzen und reguläres explizites Überschreiben beim Speichern bleiben bestehen; keine neue Löschfunktion.
+
+Zwei neue Kollisionsfälle vor Fix rot, danach gezielte Finder-Suite 12/12 und Gesamtsuite 117/117 grün. Neue Tests verwenden Produktionshandler/-Resolver im Node-Adapter mit echtem Dateisystem, aber nachgebildeter Vertrauensprüfung und injizierten Fehlern; keine neue GUI-/Native-Abnahme. Erfolg, vorhandene Dateien, EEXIST, Link-Erhalt, partieller Schreibfehler, Rename-Fehler und Zugriffs-/Pfadablehnungen geprüft. Details/Grenzen in der neuesten Übergabe.
+
+Nächste kleine Aufgaben: externer Änderungskonflikt beim Speichern, datenbewahrender Unlink-Fehler beim vorhandenen Umbenennen und separat Papierkorb-/Restore-Vertrag. Bösartiger gleichzeitiger Pfadaustausch und Power-Loss benötigen weitergehende eigene Architektur-/Plattformprüfungen.
 
 ## Pinning-Speicher-Checkpoint P1 – 23. Oktober 2026
 
