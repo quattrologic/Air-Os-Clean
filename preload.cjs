@@ -29,7 +29,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   }),
   preferences: Object.freeze({
     get: () => ipcRenderer.invoke('air-os:preferences:get'),
-    update: patch => ipcRenderer.invoke('air-os:preferences:update',patch),
+    update: (patch,expectedSession) => ipcRenderer.invoke('air-os:preferences:update',patch,expectedSession),
     reset: () => ipcRenderer.invoke('air-os:preferences:reset')
   }),
   files: Object.freeze({

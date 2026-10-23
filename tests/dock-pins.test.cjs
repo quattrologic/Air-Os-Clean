@@ -59,17 +59,19 @@ test('existing preferences IPC binds pin updates to authenticated user rather th
  try{
   const source=fs.readFileSync(path.join(__dirname,'../main.cjs'),'utf8'),handlers=new Map();
   const auth=source.slice(source.indexOf('function requirePreferenceUser('),source.indexOf("ipcMain.handle('air-os:spotify:launch'"));
-  const registrations=source.split('\n').filter(line=>line.startsWith("ipcMain.handle('air-os:preferences:")).join('\n');
+  const registrations=source.slice(source.indexOf("ipcMain.handle('air-os:preferences:get'"),source.indexOf("ipcMain.handle('air-os:preferences:reset'"))+source.split('\n').find(line=>line.startsWith("ipcMain.handle('air-os:preferences:reset'"));
   const context={activeUser:null,preferenceStore:h.store,requireTrusted(event){if(!event.trusted)throw Error('Untrusted');},ipcMain:{handle:(channel,fn)=>handlers.set(channel,fn)}};
   vm.runInNewContext(auth+registrations,context);
   const update=handlers.get('air-os:preferences:update'),get=handlers.get('air-os:preferences:get'),reset=handlers.get('air-os:preferences:reset');
   assert.throws(()=>update({trusted:true},{dockPins:['notes']}),/anmelden/);
-  context.activeUser={username:'alice'};
+  context.activeUser={username:'alice',preferenceSession:'alice-1'};
+  assert.throws(()=>update({trusted:true},{dockPins:['notes']},'bob-1'),/Anmeldung/);
   assert.throws(()=>update({trusted:false},{dockPins:['notes']}),/Untrusted/);
-  update({trusted:true},{dockPins:['notes']});
+  update({trusted:true},{dockPins:['notes']},'alice-1');
   assert.throws(()=>update({trusted:true},{username:'bob',dockPins:[]}),/Unbekannte Einstellung/);
   assert.deepEqual(get({trusted:true}).dockPins,['notes']);
-  context.activeUser={username:'bob'};assert.equal(get({trusted:true}).dockPins,null);
+  context.activeUser={username:'bob',preferenceSession:'bob-1'};
+  assert.throws(()=>update({trusted:true},{dockPins:['finder']},'alice-1'),/Anmeldung/);assert.equal(get({trusted:true}).dockPins,null);
   update({trusted:true},{dockPins:[]});reset({trusted:true});
   assert.deepEqual(h.store.load('alice').dockPins,['notes']);
  }finally{h.close();}

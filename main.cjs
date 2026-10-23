@@ -76,7 +76,7 @@ function openLogin() {
   }
 }
 function openDesktop(account) {
-  activeUser = publicAccount(account);
+  activeUser = {...publicAccount(account),preferenceSession:crypto.randomBytes(16).toString('hex')};
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.loadFile(path.join(app.getAppPath(), 'index.html'));
     mainWindow.setTitle('Air-OS');
@@ -111,7 +111,11 @@ function createWindow() {
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
 ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);return spotifyLauncher.launch()});
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
-ipcMain.handle('air-os:preferences:update',(event,patch)=>preferenceStore.update(requirePreferenceUser(event),patch));
+ipcMain.handle('air-os:preferences:update',(event,patch,expectedSession)=>{
+ const user=requirePreferenceUser(event);
+ if(expectedSession!==undefined&&(typeof expectedSession!=='string'||expectedSession!==activeUser.preferenceSession))throw new Error('Die Anmeldung hat sich geändert.');
+ return preferenceStore.update(user,patch);
+});
 ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
 ipcMain.handle('air-os:reminders:list',event=>reminderStore.list(requirePreferenceUser(event)));
 ipcMain.handle('air-os:reminders:save',(event,item)=>reminderStore.save(requirePreferenceUser(event),item));

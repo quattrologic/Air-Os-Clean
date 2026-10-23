@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const registry=require('../src/core/app-registry.js');
 if(!registry.get('launchpad'))registry.register('launchpad',{name:'Launchpad',iconClass:'launchpad-icon'});
 const source=fs.readFileSync(require.resolve('../app.js'),'utf8');
-const context={};vm.runInNewContext(source.slice(source.indexOf('function airDockSelection('),source.indexOf('function initAirDockLayout(')),context);
+const context={};vm.runInNewContext(source.slice(source.indexOf('function airDockReferences('),source.indexOf('function initAirDockLayout(')),context);
 const select=(pins,width=1920,size=48)=>JSON.parse(JSON.stringify(context.airDockSelection(registry,pins,width,size)));
 test('compact default is six registered apps, with existing Launchpad access and no unsupported ChatGPT entry',()=>{
  assert.deepEqual(select(null).visible,['launchpad','finder','browser','notes','music','settings']);

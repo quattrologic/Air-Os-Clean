@@ -570,6 +570,27 @@ function persistAirDesktopTheme(desktopTheme){
  airSettingsWrites=save.catch(()=>{});
  return save;
 }
+// Confirmed-only, serialized pin changes, bound to the authenticated Main session.
+function persistAirDockPin(id,pinned){
+ const owner=window.airOS?.currentUser?.().catch(()=>null);
+ const save=airSettingsWrites.then(()=>airSettingsLoad).then(async()=>{
+  const session=(await owner)?.preferenceSession;
+  const check=async()=>{
+   if(!session||(await window.airOS?.currentUser?.())?.preferenceSession!==session)throw Object.assign(new Error('Die Anmeldung hat sich geändert.'),{code:'AIR_PROFILE_CHANGED'});
+  };
+  await check();
+  const latest=await window.airOS.preferences.get();
+  const dockPins=airDockPinUpdate(window.airAppRegistry,latest.dockPins,id,pinned,airDockCanPin);
+  await check();
+  let saved;
+  try{saved=await window.airOS.preferences.update({dockPins},session)}catch(error){await check();throw error}
+  await check();
+  airSettingsCache={...readAirSettings(),dockPins:saved.dockPins};applyAirSettings(airSettingsCache);
+  return saved;
+ });
+ airSettingsWrites=save.catch(()=>{});
+ return save;
+}
 const airSettingsLoad=window.airOS?.preferences?
  window.airOS.preferences.get().then(saved=>{airSettingsCache=saved;applyAirSettings(saved)}).catch(error=>{console.error('Einstellungen konnten nicht geladen werden:',error)}):
  Promise.resolve().then(()=>{try{airSettingsCache=JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||'{}')}catch{};applyAirSettings(airSettingsCache)});
@@ -729,9 +750,22 @@ if (window.airOS) {
 }
 
 // Choose references from the existing Registry; never truncate or rewrite saved pins.
+function airDockReferences(pins){return Array.isArray(pins)?pins.slice():['finder','browser','notes','music','settings']}
+function airDockCanPin(id){
+ const app=window.airAppRegistry.get(id);
+ return id!=='launchpad'&&!!app?.iconClass&&!!(vectorIcon[id]||document.querySelector('.dock-icon.'+app.iconClass+' svg'));
+}
+function airDockPinUpdate(registry,pins,id,pinned,canPin){
+ if(typeof id!=='string'||!registry.get(id)||id==='launchpad'||typeof pinned!=='boolean')throw new Error('Ungültige Dock-App.');
+ if(pinned&&!canPin(id))throw new Error('Für diese App ist kein unterstütztes Dock-Icon verfügbar.');
+ const next=airDockReferences(pins);
+ if(!pinned)return next.filter(item=>item!==id);
+ if(next.includes(id))return next;
+ if(next.length>=64)throw new Error('Maximal 64 Dock-Pins möglich. Bitte zuerst eine App lösen.');
+ return [...next,id];
+}
 function airDockSelection(registry,pins,width,iconSize){
- const defaults=['finder','browser','notes','music','settings'];
- const candidates=[...new Set(['launchpad',...(Array.isArray(pins)?pins:defaults)])].filter(id=>registry.get(id)?.iconClass);
+ const candidates=[...new Set(['launchpad',...airDockReferences(pins)])].filter(id=>registry.get(id)?.iconClass);
  const icon=Math.max(30,Math.min(42,(Number(iconSize)||48)-6));
  const capacity=Math.max(1,Math.floor((Math.min(440,Math.max(0,width-24))-22)/(icon+14)));
  return {visible:candidates.slice(0,capacity),overflow:Math.max(0,candidates.length-capacity)};

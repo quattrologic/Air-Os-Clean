@@ -35,7 +35,7 @@
  const menu=document.querySelector('#air-start-menu'),trigger=document.querySelector('.dock [data-app="launchpad"]');
  if(!menu||!trigger)return;
  const input=menu.querySelector('#air-start-search'),results=menu.querySelector('#air-start-results'),status=menu.querySelector('#air-start-status');
- let busy=false,version=0;
+ let busy=false,pinBusy=false,version=0;
  const enabled=()=>readAirSettings().dockTheme==='modern';
  function position(){
   const dock=document.querySelector('.dock').getBoundingClientRect();
@@ -59,6 +59,22 @@
    close();
   }catch(error){if(request===version){status.textContent=String(error.message||'Die App konnte nicht gestartet werden.').replace(/^Error invoking remote method '[^']+': (?:Error: )?/,'');busy=false;input.disabled=false;render(false);input.focus()}}
  }
+ async function pin(id,pinned){
+  if(pinBusy||busy)return;
+  pinBusy=true;const request=version;status.textContent='Dock-Pins werden gespeichert …';render(false);
+  try{
+   await persistAirDockPin(id,pinned);
+   if(request!==version)return;
+   status.textContent=pinned?'App angeheftet.':'App vom Dock gelöst.';
+  }catch(error){
+   if(request!==version)return;
+   if(error.code==='AIR_PROFILE_CHANGED'){close(false);return}
+   status.textContent='Dock-Pins konnten nicht gespeichert werden. '+String(error.message||'').replace(/^Error invoking remote method '[^']+': (?:Error: )?/,'');
+  }finally{
+   pinBusy=false;
+   if(!menu.hidden){render(false);if(request===version){const action=Array.from(results.querySelectorAll('[data-pin-app]')).find(button=>button.dataset.pinApp===id);(action&&!action.disabled?action:input).focus()}}
+  }
+ }
  function render(clearStatus=true){
   const query=input.value.trim().toLocaleLowerCase('de-DE');
   const apps=registry.list().filter(app=>app.name.toLocaleLowerCase('de-DE').includes(query)||app.id.toLocaleLowerCase('de-DE').includes(query));
@@ -72,7 +88,22 @@
    if(original)art.append(original.cloneNode(true));
    else if(vectorIcon[app.id])art.innerHTML=vectorIcon[app.id]; // trusted, existing static icon data only
    else art.textContent=app.glyph||'';
-   button.append(art,name);button.addEventListener('click',()=>launch(app.id));results.append(button);
+   const entry=document.createElement('div'),label=document.createElement('span'),badge=document.createElement('small');
+   entry.className='air-start-entry';label.className='air-start-label';
+   const settings=readAirSettings(),pinned=app.id==='launchpad'||airDockReferences(settings.dockPins).includes(app.id);
+   const visible=airDockSelection(registry,settings.dockPins,window.innerWidth,settings.dockSize).visible.includes(app.id);
+   badge.textContent=app.id==='launchpad'?'Startmenü · immer sichtbar':pinned?(visible?'Angeheftet · im Dock':'Angeheftet · unter Alle Apps'):'';
+   label.append(name,badge);button.append(art,label);button.addEventListener('click',()=>launch(app.id));entry.append(button);
+   if(app.id!=='launchpad'){
+    const action=document.createElement('button');action.type='button';action.dataset.pinApp=app.id;
+    const supported=airDockCanPin(app.id);
+    action.textContent=pinned?'Vom Dock lösen':supported?'Anheften':'Kein Dock-Icon';
+    action.setAttribute('aria-label',app.name+(pinned?' von Dock lösen':' an Dock anheften'));
+    action.disabled=busy||pinBusy||(!supported&&!pinned);
+    if(!supported&&!pinned)action.title='Für diese App ist kein unterstütztes Dock-Icon verfügbar.';
+    action.addEventListener('click',()=>pin(app.id,!pinned));entry.append(action);
+   }
+   results.append(entry);
   }
  }
  function toggle(){
@@ -85,14 +116,14 @@
  input.addEventListener('input',()=>render());
  menu.addEventListener('keydown',event=>{
   if(event.key==='Escape'){event.preventDefault();event.stopPropagation();close();return}
-  const buttons=Array.from(results.querySelectorAll('button:not([disabled])'));
+  const buttons=Array.from(results.querySelectorAll('[data-start-app]:not([disabled])'));
   if(event.target===input&&event.key==='Enter'){event.preventDefault();if(buttons[0])buttons[0].click()}
   if(['ArrowDown','ArrowUp'].includes(event.key)&&buttons.length){event.preventDefault();const index=buttons.indexOf(document.activeElement);buttons[index<0?(event.key==='ArrowDown'?0:buttons.length-1):(index+(event.key==='ArrowDown'?1:buttons.length-1))%buttons.length].focus()}
  });
  document.addEventListener('keydown',event=>{if(!menu.hidden&&event.key==='Escape'){event.preventDefault();close()}});
- document.addEventListener('click',event=>{if(!menu.hidden&&!menu.contains(event.target)&&!trigger.contains(event.target))close()});
- document.addEventListener('air-settings-changed',()=>{if(!enabled())close();if(!menu.hidden)position();trigger.setAttribute('aria-expanded',String(!menu.hidden))});
- window.addEventListener('resize',()=>{if(!menu.hidden)position()});
+ document.addEventListener('click',event=>{if(!menu.hidden&&!menu.contains(event.target)&&!event.composedPath?.().includes(menu)&&!trigger.contains(event.target))close()});
+ document.addEventListener('air-settings-changed',()=>{if(!enabled())close();if(!menu.hidden){position();render(false)}trigger.setAttribute('aria-expanded',String(!menu.hidden))});
+ window.addEventListener('resize',()=>{if(!menu.hidden){position();render(false)}});
  registry.onChange(()=>{if(!menu.hidden)render()});
  trigger.setAttribute('aria-controls','air-start-menu');trigger.setAttribute('aria-expanded','false');
  window.airStartMenu={enabled,toggle};
