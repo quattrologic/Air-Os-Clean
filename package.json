@@ -67,6 +67,7 @@
       "src/main/airapp-manager.cjs",
       "src/main/airapp-runtime.cjs",
       "src/main/spotify-launcher.cjs",
+      "src/main/chatgpt-installation.cjs",
       "store/catalog/**/*",
       "store/keys/**/*",
       "air-app-store.js",
