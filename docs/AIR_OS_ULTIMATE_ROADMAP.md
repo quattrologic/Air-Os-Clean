@@ -2,6 +2,20 @@
 
 Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus- und Pinning-Speicher- sowie Finder-Save-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
+## Testinstaller-Checkpoint – echte Windows-/macOS-Testinstaller hochgeladen
+
+23. Oktober 2026. Erfolgreicher gemeinsamer [Run #99 / 39990292082](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39990292082), **Build-Commit `668f636e63a16f78fa5c5bae2e042ec65259d743`**, Vorabversion `1.0.3-dev.99.sha668f636e63a1`. Beide nativen Regressionstestschritte, Windows x64/ARM64- und macOS-Universal-Paketierung, tatsächliche Paket-/CPU-/Hash-Prüfung und vier Uploads erfolgreich. Kein behaupteter Hardware-/Installations-/Starttest. Lokale Suite 144/144 ohne Fehler/Skips; native genaue Log-Zählungen nicht erneut abrufbar.
+
+[Downloadliste, Artefakt-IDs, Größen, Prüfsummenhinweise, Reparaturbelege und Einschränkungen](AIR_OS_TEST_BUILD_20261023.md). Tatsächlich sichtbare Artefakte: Windows x64 `12517013177` (75.1 MB), ARM64 `12517627118` (72.7 MB), macOS Universal DMG `12516579305` (170 MB), ZIP `12516798653` (170 MB). Alle tragen denselben vollständigen Build-SHA; nicht mit den früheren #98-macOS-Artefakten mischen. Je Download Installer, BUILD-INFO.json und SHA256SUMS.txt. GitHub-Anmeldung erforderlich, 14 Tage Retention; kein Stable-Release. GitHub-Artefakt-ZIP-Digests öffentlich geprüft, Installer-Dateihashes in den Artefakten/Job-Summaries. Anonymer Download endet erwartungsgemäß ohne passende Anmeldung mit 404; ein berechtigter Download wurde hier wegen gesperrter API nicht selbst ausgeführt.
+
+PR #12 zeigte auf main; Historie bestätigt Entwicklungsbase eecab2a als Vorfahr (13 Folgecommits bis eb3f3bc). API-Basisänderung versucht und Forbidden; keine erfolgreiche Umstellung behauptet. Main `a1f3e12`, PR #11 `eecab2a`, PR #12 `eb3f3bc` bleiben unverändert; nur eigener Testbranch gepusht. Windows-Fehler anhand Benutzerlogs repariert, keine Tests deaktiviert. Neue Folgelogs zu #98 bestätigen genau den korrigierten ASAR-Pfadfehler. Aktueller Run danach vollständig grün.
+
+Offen: zwei High-Dependency-Befunde bei isolierter frischer Auflösung (Electron/extract-zip), fehlendes vertrauenswürdiges Signing/Notarisierung, native Hardware-/Installerabnahme, Profil-/Pfad-Races, Produktions-Store-Trust, Updates/Rollback. Öffentlicher Demo-Verifikationsschlüssel bleibt für vorhandene Signaturprüfung nötig; keine privaten Testschlüssel eingebaut. ChatGPT nur Kandidatenprüfung, Cloud-Sync unverfügbar. Catalina nur als konfigurierte Intel-Mindestversion 10.15.0 erhalten, keine Catalina-ARM- oder Hardware-Abnahme behauptet.
+
+Nächste drei kleine Einheiten, erst auf neuen Prompt: (1) genau einen Installer auf echter OS-/CPU-Hardware mit Profilpersistenz/Grundfunktionen abnehmen; (2) nächste OS-/CPU-Kombination separat prüfen; (3) PR-#12-Basis/Integration der neuen Fixes bei funktionierendem Zugriff korrigieren und Audit-/Release-Supportstrategie weiter bewerten. Dieser reine Dokumentations-Checkpoint löst keinen weiteren Build aus; Build-SHA bleibt ausdrücklich 668f636. Nach Sicherung Sitzung beenden.
+
+---
+
 ## Phase 13 – Checkpoint – Desktop-CI: Plattformtests vor Windows-/macOS-Paketierung
 
 23. Oktober 2026. Genau eine Micro-Einheit: **vorhandene Node-Regressionstests auf beiden nativen Desktop-CI-Runnern vor der Paketierung verbindlich ausführen**. Ausgangs-Commit `827d1ef0203b61e01c3d600ff7398f3da3c2bc9d` auf `fix/air-preferences-exclusive-temp-20261023` per GitHub bestätigt; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Remote-Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/air-desktop-platform-test-gates-20261023`; main/PR #11/fremde Branches unverändert.
