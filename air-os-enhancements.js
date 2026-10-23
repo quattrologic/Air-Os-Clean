@@ -6,9 +6,7 @@
     return;
   }
 
-  appNames.arcade = 'Air Arcade';
-  iconClasses.arcade = 'arcade-icon';
-  iconGlyphs.arcade = '★';
+  window.airAppRegistry.register('arcade',{name:'Air Arcade',iconClass:'arcade-icon',glyph:'★'});
   vectorIcon.arcade = '<svg viewBox="0 0 301 280" aria-hidden="true"><defs><linearGradient id="airarcadeblue" x2="0.8" y2="1"><stop stop-color="#1dbaf0"/><stop offset="1" stop-color="#2085f4"/></linearGradient></defs><path d="M144 6 L127 13 L118 22 L111 38 L111 54 L116 67 L126 78 L140 85 L156 86 L172 80 L183 70 L190 54 L190 38 L185 25 L174 13 L157 6Z" fill="#1eb8ef"/><path d="M295 160 L287 149 L190 104 L166 97 L166 164 L164 169 L157 174 L144 174 L136 167 L136 98 L116 102 L14 149 L8 155 L6 162 L8 168 L16 175 L112 219 L138 226 L164 226 L189 219 L285 175 L293 168Z" fill="url(#airarcadeblue)"/><path d="M6 196 L7 213 L22 225 L118 268 L143 273 L168 272 L193 264 L279 225 L290 218 L295 209 L295 196 L291 192 L185 240 L166 245 L145 246 L111 238 L9 192Z" fill="#208af5"/><path d="M41 158 L47 152 L55 149 L69 149 L77 152 L83 158 L83 164 L74 172 L58 174 L45 169 L41 164Z" fill="#f9f9fc"/></svg>';
 
   const textExtensions = new Set([
@@ -59,7 +57,7 @@
             <button type="button" class="air-files-tool" data-air-action="refresh" title="Aktualisieren" disabled>↻</button>
             <div class="air-files-location" id="air-files-location">Kein Ordner ausgewählt</div>
             <input id="air-files-search" class="air-files-search" type="search" placeholder="Suchen" aria-label="Dateien suchen" disabled>
-            <button type="button" class="air-files-new" data-air-action="new-file" disabled>＋ Neu</button>
+            <button type="button" class="air-files-new" data-air-action="new-file" disabled>＋ Datei</button><button type="button" class="air-files-new" data-air-action="new-folder" disabled>＋ Ordner</button>
           </div>
           <div class="air-files-workspace">
             <div class="air-files-empty" id="air-files-empty">
@@ -99,7 +97,7 @@
   }
 
   function spotifyBody() {
-    return '<div class="air-spotify-app"><div class="air-spotify-logo">● <strong>Spotify</strong></div><h2>Deine Musik wartet.</h2><p>Melde dich mit deinem Spotify-Konto im offiziellen Web Player an. Die Anmeldung und Wiedergabe laufen direkt bei Spotify in deinem Standardbrowser.</p><button type="button" class="air-spotify-open" data-url="https://open.spotify.com/">Spotify Web Player öffnen <span>↗</span></button><div class="air-spotify-note">Air-OS speichert keine Spotify-Zugangsdaten. Premium-Funktionen und Wiedergabe hängen von deinem Spotify-Konto ab.</div></div>';
+    return '<div class="air-spotify-app"><h2>Spotify Desktop</h2><p>Spotify wird über seinen Launchpad- oder Dock-Eintrag als installierte Desktop-App geöffnet. Fenster und Anmeldung werden von Spotify verwaltet.</p></div>';
   }
 
   function calendarBody() {
@@ -217,7 +215,7 @@
     if (empty) empty.hidden = ready;
     if (list) list.hidden = !ready;
     if (search) search.disabled = !ready;
-    win.querySelectorAll('[data-air-action="up"], [data-air-action="refresh"], [data-air-action="new-file"]').forEach(button => button.disabled = !ready);
+    win.querySelectorAll('[data-air-action="up"], [data-air-action="refresh"], [data-air-action="new-file"], [data-air-action="new-folder"]').forEach(button => button.disabled = !ready);
     chooseButtons.forEach(button => button.classList.toggle('active', !ready));
   }
   async function loadDirectory(win, relativePath) {
@@ -254,12 +252,12 @@
     const query = (win.querySelector('#air-files-search')?.value || '').trim().toLocaleLowerCase('de-DE');
     const items = state.items.filter(item => !query || item.name.toLocaleLowerCase('de-DE').includes(query));
     container.innerHTML = items.map(item => `
-      <button type="button" class="air-file-entry" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
+      <div class="air-file-row"><button type="button" class="air-file-entry" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
         <span class="air-file-name"><span class="air-file-icon">${fileIcon(item)}</span><span class="air-file-name-copy"><strong>${escapeHTML(item.name)}</strong><small>${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() + '-Datei' : 'Datei')}</small></span></span>
         <span class="air-file-type">${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() : 'Datei')}</span>
         <span class="air-file-size">${item.kind === 'folder' ? '—' : formatBytes(item.size)}</span>
         <span class="air-file-date">${formatDate(item.modifiedAt)}</span>
-      </button>`).join('');
+      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button><button type="button" class="air-file-duplicate" data-air-action="rename-item" data-path="${escapeHTML(item.path)}" title="Datei umbenennen" aria-label="${escapeHTML(item.name)} umbenennen">✎</button>` : ''}</div>`).join('');
     if (noResults) noResults.hidden = items.length > 0;
     container.hidden = false;
   }
@@ -333,11 +331,12 @@
     }
     const relativePath = [state.currentPath, name].filter(Boolean).join('/');
     if (state.items.some(item => item.name.toLocaleLowerCase('de-DE') === name.toLocaleLowerCase('de-DE'))) {
-      const overwrite = window.confirm('Diese Datei existiert bereits. Soll ihr Inhalt geleert werden?');
-      if (!overwrite) return;
+      setFileStatus(win, 'Diese Datei existiert bereits. Bitte wähle einen neuen Dateinamen.');
+      return;
     }
     try {
-      await window.airOS.files.writeTextFile(relativePath, '');
+      // Creation must never truncate an existing file, even after a race.
+      await window.airOS.files.createTextFile(relativePath);
       await loadDirectory(win, state.currentPath);
       openTextEditor(win, { path: relativePath, content: '' });
       setEditorStatus(win, 'Neue Datei · noch nicht mit Inhalt gespeichert.');
@@ -390,6 +389,34 @@
           await openFileEntry(win, control);
         } else if (action === 'new-file') {
           await createTextFile(win);
+        } else if (action === 'rename-item') {
+          const source=control.dataset.path;
+          const name=source.split('/').pop();
+          const requested=window.prompt('Neuer Dateiname:',name);
+          if(requested===null)return;
+          if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
+          const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
+          await window.airOS.files.renameFile(source,destination);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Datei umbenannt.');
+        } else if (action === 'duplicate-item') {
+          const source=control.dataset.path;
+          const name=source.split('/').pop();
+          const requested=window.prompt('Name der Dateikopie:', 'Kopie von '+name);
+          if(requested===null)return;
+          if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
+          const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
+          await window.airOS.files.duplicateFile(source,destination);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Datei kopiert.');
+        } else if (action === 'new-folder') {
+          const folderName=window.prompt('Name des neuen Ordners:');
+          if(folderName===null)return;
+          if(!folderName.trim())throw new Error('Bitte einen Ordnernamen angeben.');
+          const relative=[state.currentPath,folderName.trim()].filter(Boolean).join('/');
+          await window.airOS.files.createFolder(relative);
+          await loadDirectory(win,state.currentPath);
+          setFileStatus(win,'Ordner erstellt.');
         } else if (action === 'save-file') {
           await saveTextFile(win);
         } else if (action === 'close-editor') {
@@ -621,6 +648,23 @@
     if (win.querySelector('.arcade-library')) window.airArcadeGames?.mount(win);
     else if (win.querySelector('.air-arcade-app')) mountArcade(win);
   }
+  // Reveal only relative paths returned by the authenticated Finder search.
+  // Opening a result never grants access to additional host folders.
+  window.airFinder=Object.freeze({
+    async revealFile(relative,kind='file'){
+      if(typeof relative!=='string'||!relative||relative.startsWith('/')||relative.split('/').some(part=>!part||part==='..'||part==='.'))return false;
+      const win=openApps.get('finder');
+      if(!win)return false;
+      await mountFiles(win);
+      const folder=kind==='folder'?relative:relative.includes('/')?relative.slice(0,relative.lastIndexOf('/')):'';
+      await loadDirectory(win,folder);
+      if(kind!=='folder'){
+        const item=Array.from(win.querySelectorAll('.air-file-entry')).find(button=>button.dataset.path===relative);
+        if(item){item.focus();item.scrollIntoView({block:'nearest'});}
+      }
+      return true;
+    }
+  });
   function patchDockIcon() {
     document.querySelectorAll('.arcade-icon').forEach(icon => {
       icon.innerHTML = vectorIcon.arcade;

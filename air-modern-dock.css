@@ -1,0 +1,55 @@
+/* Opt-in Air Modern: the same dock, app buttons and lifecycle. */
+.dock[data-theme="modern"] {
+  --modern-icon: clamp(30px, calc(var(--air-dock-icon-size, 48px) - 10px), 48px);
+  left: 50% !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  width: max-content !important;
+  max-width: min(760px, calc(100vw - 24px)) !important;
+  min-height: 0 !important;
+  padding: 8px 12px 11px !important;
+  gap: 3px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  background: rgba(20,23,31,.9) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.06) !important;
+  backdrop-filter: blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #687080 transparent;
+}
+.dock[data-theme="modern"]::-webkit-scrollbar { display: block !important; height: 3px; }
+.dock[data-theme="modern"]::-webkit-scrollbar-thumb { background: #687080; border-radius: 4px; }
+.dock[data-theme="modern"] .dock-app {
+  flex: 0 0 calc(var(--modern-icon) + 10px) !important;
+  width: calc(var(--modern-icon) + 10px) !important;
+  height: calc(var(--modern-icon) + 10px) !important;
+  min-width: 0 !important; min-height: 0 !important;
+  border-radius: 13px;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+.dock[data-theme="modern"] .dock-icon {
+  width: var(--modern-icon) !important; height: var(--modern-icon) !important;
+  min-width: 0 !important; min-height: 0 !important;
+  flex: 0 0 var(--modern-icon) !important;
+  transition: transform 160ms ease !important;
+}
+.dock[data-theme="modern"] .dock-app:hover { background: rgba(255,255,255,.1); }
+.dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: translateY(-2px) !important; }
+.dock[data-theme="modern"] .dock-app.is-active { background: rgba(255,255,255,.17) !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+.dock[data-theme="modern"] .dock-app.is-open::after { bottom: -5px !important; background: #e0edff !important; }
+.dock[data-theme="modern"] .dock-app:focus-visible { outline: 2px solid #b8d9ff; outline-offset: -2px; }
+.dock[data-theme="modern"] .dock-divider { height: 28px !important; background: rgba(255,255,255,.18) !important; }
+.dock[data-theme="modern"].air-reduced-glass { background: #171b24 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.air-reduced-motion .dock[data-theme="modern"] .dock-icon { transition: none !important; transform: none !important; }
+.air-reduced-motion .dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .dock[data-theme="modern"] .dock-app, .dock[data-theme="modern"] .dock-icon { transition: none !important; }
+  .dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: none !important; }
+}
+@media (max-width: 600px) {
+  .dock[data-theme="modern"] { --modern-icon: 32px; padding: 7px 9px 10px !important; border-radius: 20px !important; }
+}

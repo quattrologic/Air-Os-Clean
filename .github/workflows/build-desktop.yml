@@ -28,6 +28,10 @@ jobs:
           node --check login.js
           node --check air-music.js
           node --check air-arcade-games.js
+          node --check air-reminders.js
+          node --check air-spotlight.js
+          node --check src/main/reminders-store.cjs
+          node --check src/main/file-search.cjs
           node scripts/check-catalina.cjs
           node -e "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8'))"
 
@@ -40,6 +44,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - name: Run Windows regression tests before packaging
+        run: npm test
       - run: npm run pack:win
       - name: Upload Windows test installers (not a public release)
         if: github.event_name != 'pull_request'
@@ -59,6 +65,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - name: Run macOS regression tests before packaging
+        run: npm test
       - run: npm run pack:mac
       - name: Upload macOS test installers (not a public release)
         if: github.event_name != 'pull_request'

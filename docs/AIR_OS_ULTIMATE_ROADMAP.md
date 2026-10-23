@@ -1,0 +1,332 @@
+# Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
+
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus- und Pinning-Speicher- sowie Finder-Save-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+
+## Phase 13 – Checkpoint – Desktop-CI: Plattformtests vor Windows-/macOS-Paketierung
+
+23. Oktober 2026. Genau eine Micro-Einheit: **vorhandene Node-Regressionstests auf beiden nativen Desktop-CI-Runnern vor der Paketierung verbindlich ausführen**. Ausgangs-Commit `827d1ef0203b61e01c3d600ff7398f3da3c2bc9d` auf `fix/air-preferences-exclusive-temp-20261023` per GitHub bestätigt; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Remote-Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/air-desktop-platform-test-gates-20261023`; main/PR #11/fremde Branches unverändert.
+
+Aktuelle Actions geprüft: `gh run list` über API liefert Forbidden. Die öffentliche [Actions-Seite](https://github.com/quattrologic/Air-Os-Clean/actions) und einzelne Run-Seiten waren erreichbar. Neueste dort sichtbare Einträge am Abruf: [Security #89 / Run 39813992511](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39813992511) **failure**, [Desktop-Build #96 / Run 39813992467](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39813992467) **success**, beide vom 22.10.2026 16:25:49 UTC, Seitenkopf jeweils `eecab2a`/PR #11. Das sind frühere Runs und **keine Abnahme der nachfolgenden Micro-Branches oder dieses Commits**. Ohne vollständige aktuelle Logs wird die genaue Ursache des roten Security-Runs nicht behauptet. Release-Listenabfrage über `gh release list` ebenfalls Forbidden; aktueller veröffentlichter Releasebestand nicht bestätigt.
+
+Pipeline-Bestand geprüft: `build-desktop.yml` validiert Quellsyntax/Catalina-Konfiguration auf Ubuntu und paketiert nachfolgend auf `windows-latest` und `macos-latest`. Beide checken standardmäßig denselben Workflow-Commit aus. `pack:win` fordert x64/ARM64 an, `pack:mac` DMG/ZIP universal; beide mit `--publish never`. Artefakte sind zeitlich begrenzte Test-Uploads und werden in diesem Workflow bei PRs nicht hochgeladen. Daneben existieren ein separater macOS-Workflow, manuelles Modern-Channel-Building mit Electron 44.9.0 und ein unveränderter separater Security-Workflow mit Unit-Tests/High-Audit. Keine automatisierte freigegebene Produktions-Release-Kette nachgewiesen.
+
+Konkreter Mangel: Im Desktop-Workflow führte vor dieser Änderung **keiner der beiden Plattform-Buildjobs `npm test` aus**. Der separate Ubuntu-Security-Job ersetzt keine nativen Dateisystem-/Plattformtests und ist keine Job-Abhängigkeit der Paketierung. Fix ausschließlich in `.github/workflows/build-desktop.yml`: je ein unbedingter `npm test`-Schritt nach Dependency-Installation und vor `pack:win` bzw. `pack:mac`, ohne `continue-on-error`. Ein roter Plattformtest verhindert so die nachfolgende Paketierung in diesem Job. Keine Tests gelöscht, kein Audit deaktiviert, keine neuen Abhängigkeiten, Versions-/Electron-/Signing-/Release-Änderungen. Der separate macOS- und der Modern-Workflow werden in dieser Einheit nicht umgebaut; der generelle Security-Gesamtstatus ist weiterhin separat zu bewerten.
+
+Tatsächliche lokale Prüfungen: Linux x86_64, Node 24.19.0/npm 11.9.0; `TMPDIR=/workspace/scratch npm test` **134 bestanden, 0 fehlgeschlagen/übersprungen**. Vorher-/Nachher-YAML mit bereits installiertem Python/PyYAML BaseLoader geprüft: zuvor kein Testschritt in beiden Jobs; nun Reihenfolge Installation → unbedingter Test → jeweilige Paketierung, vorhandenes `needs: validate-source`, keine abweichenden Checkout-Refs, weiterhin `contents: read` und `--publish never` in beiden Paketbefehlen. Das ist eine lokale Strukturprüfung, kein ausgeführter GitHub-Runner. Syntax Main/Preload, `npm run check:catalina` und `git diff --check` bestanden. `package.json`, Security- und Modern-Workflow per Diff unverändert bestätigt. Keine zusätzliche Testdatei für diese vierzeilige Workflow-Anbindung; die bestehende vollständige Regressionssuite ist die Testschranke.
+
+**Neue Windows-/macOS-Builds blockiert:** `gh workflow run build-desktop.yml --repo quattrologic/Air-Os-Clean --ref fix/air-desktop-platform-test-gates-20261023` scheitert bereits beim GET der Workflow-Metadaten unter `api.github.com/.../actions/workflows/build-desktop.yml` mit Forbidden, vor einem Dispatch. Kein neuer Runner/Build gestartet oder erfolgreich behauptet. Diese Cloud ist Linux, keine native Windows-/macOS-Ausführungsumgebung; kein Cross-Build als Ersatz für Installations-/Starttests ausgegeben. Nach Verfügbarkeit der Dispatch-Rechte den gepushten Branch verwenden, beide Jobs auf identischen `head_sha` prüfen und tatsächliche x64/ARM64-/Universal-Artefakte und Testresultate abnehmen. Ein Branch-Push allein löst diesen auf main/PR/Dispatch begrenzten Workflow nicht aus.
+
+**Release-/Supportgrenzen bleiben offen:** Legacy ist weiterhin Electron 32.3.3 mit konfiguriertem macOS-Minimum 10.15.0, nur risikobehafteter Testkanal; Modern ist separat manuell mit Electron 44.9.0 und Ziel macOS >=13 konfiguriert. Catalina-Konfigurationsprüfung ist kein echter Catalina-Starttest; tatsächliche OS-/CPU-Unterstützung/Installergrenzen je Architektur prüfen. Kein unkontrolliertes Major-Upgrade. Historischer Audit vom 20.10.: zehn betroffene Pakete, zwei High (Electron/extract-zip), acht Moderate; heute kein neuer Dependency-Audit und kein Nachweis ihrer Behebung. Modern benötigt eigenen aktuellen Audit. Außerdem offen: reproduzierbarer Lockfile-Vertrag, native Installer-/Smoke-/GUI-/Performance-/Accessibility-Abnahme, Profil-/Dateisystem-Races, Produktions-Store-Trust, Signing/Notarisierung, Prüfsummen und sichere Update-/Rollback-Kette. Keine öffentliche Veröffentlichung vorgenommen oder freigegeben. Spätere iPadOS-Version bleibt eine eigene Laufzeit; Electron ist kein iPadOS-Ziel.
+
+Nächste drei kleine Qualitätseinheiten, erst auf weiteren Prompt: (1) Desktop-Workflow mit funktionierendem GitHub-Zugriff für denselben gepushten SHA auf Windows/macOS starten und Resultate/Architekturen belegen; (2) Modern-Kanal isoliert auditieren und einen konkreten transitive-/Runtime-Befund bewerten, Legacy/Catalina nicht still aktualisieren; (3) genau einen erzeugten Installer auf einer echten OS-/CPU-Kombination installieren/starten/deinstallieren und Profilpersistenz prüfen. Commit `Run native platform regression tests before desktop packaging`; SHA im Git-Log/Abschlussbericht. Nach GitHub-Sicherung stoppen.
+
+---
+
+## Phase 12 – Checkpoint – Preferences: temporäre Schreibpfade exklusiv reservieren
+
+23. Oktober 2026. Genau eine Micro-Einheit: **Datenintegrität beim vorhandenen Preferences-Update/Reset sichern**. Ausgangs-Commit `0be04bafefd7dbd3c3f0812907ca36b6e5d8551c` auf `fix/air-notes-pending-save-edits-20261023` per GitHub bestätigt. main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`; alle Remote-Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/air-preferences-exclusive-temp-20261023`. Aktuelle CI-/PR-API-Abfragen liefern Forbidden; kein aktueller CI-/PR-Gesamtstatus bestätigt. Main und andere Branches bleiben unverändert.
+
+Bestand geprüft: `src/main/preferences.cjs`, Notes-/Reminders-Stores, Profil-/Anmelde-/Preferences-IPC in `main.cjs`, bestehende Preferences-/Dock-Pins-Tests sowie `cloud-sync/core.cjs` und `selection.cjs`. Darstellung liegt bereits in `profiles/<Benutzerhash>/appearance-v1.json`; IPC bestimmt den Benutzer anhand der angemeldeten Sitzung, nicht anhand eines Renderer-Profilpfads. Notes/Reminders haben eigene Profil-Stores. Konten speichern Salt/scrypt-Hash statt Klartextpasswort; das ist eine Quellprüfung, kein neuer Auth-Audit. Kalender/AirWrite/Musik besitzen weiterhin bekannte globale Datenbereiche; diese Sitzung migriert sie nicht.
+
+Nachgewiesene Lücke im Preferences-Writer: `writeFileSync(temp, ..., mode:0o600)` reservierte den Zufallspfad nicht exklusiv. Eine bereits vorhandene Datei wurde überschrieben und per Rename verschoben; ein vorhandener Symlink wurde verfolgt und konnte dadurch die Einstellungen eines anderen Profils verändern. Das anschließende Cleanup konnte außerdem einen fremden Temp-Pfad löschen. Reproduktion ausschließlich in temporären Testprofilen mit deterministischer Namenskollision. Vor Fix **2/6 neue Tests bestanden, 4 fehlgeschlagen** (Kollisionen/Symlinks sowie der neue Deskriptor-Vertrag).
+
+Fix nur im bestehenden Preferences-Writer: `openSync(temp,'wx',0o600)` **vor** dem Cleanup-Block. Bestehende Dateien/Symlinks einschließlich dangling Links führen zu EEXIST, ohne Schreibzugriff/Cleanup an diesem Namen. Schreiben über den exklusiv geöffneten Dateideskriptor; diesen im inneren `finally` schließen, anschließend per bestehendem Rename die Preferences ersetzen. Fehler-Cleanup nur nach erfolgreichem Reservieren. Bestehendes Schema, validierte Felder einschließlich Dock-Pins, Profilpfade und authentifizierte IPC unverändert; keine neue Datenbank, Abhängigkeit, Cloud-Anbindung oder Profilmigration.
+
+Sechs neue `tests/preferences-write.test.cjs`: Produktionsmodul im Node-VM-Adapter, echte temporäre Dateien/Profilpfade, deterministische Zufallsnamen und gezielt injizierte I/O-Fehler ohne globale fs-Monkeypatches. Update/Reset und frische Store-Instanz, private 0600-Dateimodi auf POSIX, Datei-Kollision bei vorhandenem/fehlendem Ziel, Symlink auf Bobs Preferences, dangling Symlink, partieller ENOSPC mit geschlossenem Deskriptor und Rename-EACCES geprüft. Fremde Pfade/Ziele und alte Einstellungen bleiben bytegenau erhalten; nur eigene Fehler-Tempdatei wird entfernt; Retry und Profiltrennung bestätigt. Windows-Symlink-Tests dürfen bei fehlender EPERM-Berechtigung ausdrücklich skippen, aktueller Linux-Lauf ohne Skip.
+
+Nach Fix: `node --test tests/preferences-write.test.cjs tests/preferences.test.cjs tests/dock-pins.test.cjs` **13/13 grün**. `TMPDIR=/workspace/scratch npm test` **134 bestanden, 0 fehlgeschlagen/übersprungen**. Syntax des Stores und neuen Tests, `npm run check:catalina`, `git diff --check` bestanden. Keine neue GUI-/echte Electron-IPC-/Windows-/macOS-/Installerprüfung oder Audit; reine Store-/Dateisystem-Einheit. Kein Schutz gegen bösartigen konkurrierenden Austausch nach Reservierung, Symlinks in sämtlichen Elternpfaden oder Power-Loss garantiert; Rename allein ist keine vollständige Durability-Garantie.
+
+Cloud-Status unverändert **nicht verfügbar**: `cloud-sync/` bietet lokale Auswahl-/Validierungs-/Konfliktbausteine, standardmäßig deaktiviert. Keine produktive Authentifizierung, kein Transport-/Sync-Dienst und keine angebundene Cloud-Verfügbarkeitsanzeige im Desktop gefunden; keine Aktivierung oder neue Erfolgsanzeige ergänzt. Backup/Restore, sichere Cloud-Authentifizierung und E2EE bleiben gesonderte offene Aufgaben. Bestehende Legacy-Electron-/historischen Audit-, Profilisolations-, Store-Trust-/Update-, Signing-/Notarisierungs- und CI-Blocker bleiben sichtbar; kein öffentlicher Release freigegeben.
+
+Nächste drei kleine Integritätseinheiten, jeweils erst auf neuen Prompt: (1) temporären Notes-Store-Schreibpfad separat auf exklusive Reservierung/Eigentum beim Cleanup absichern; (2) denselben Kollisionsfall beim Reminders-Store prüfen, dessen exklusiver Write derzeit innerhalb des Cleanup-Blocks liegt; (3) beschädigte `accounts.json` beim Kontoanlegen reproduzieren und fail-closed behandeln, statt Lesefehler als leere Kontenliste zu überschreiben. Keine dieser Änderungen in dieser Sitzung umgesetzt. Commit `Reserve preferences temporary files exclusively before cleanup`; SHA im Git-Log/Abschlussbericht. Nach Sicherung stoppen.
+
+---
+
+## Phase 11 – Checkpoint – Notizen: neuere Eingaben während des Speicherns erhalten
+
+23. Oktober 2026. Genau eine Micro-Einheit: **den bestehenden Notizen-Speichervorgang gegen das Überschreiben neuerer Editor-Eingaben absichern**. Ausgangs-Commit `96dd9908865c9eca8e0f035e0375f57784df6de2` auf `fix/airapp-renderer-crash-recovery-20261023` per GitHub bestätigt. main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`; alle Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/air-notes-pending-save-edits-20261023`. PR-/CI-API-Abfragen dieser Sitzung liefern Forbidden; aktueller Gesamtstatus unbekannt. Main und fremde Branches bleiben erhalten.
+
+Kurze Standard-App-Bestandsaufnahme aus Registry, `app.js`, Enhancements, Notes/Reminders-Stores/-UI, AirWrite, Air Music und Extra-Apps steht im **Phase-11-Checkpoint der Ultimate-Roadmap**. Notizen/Erinnerungen besitzen bereits profilbezogene CRUD/Persistenz; Kalender/AirWrite/Musik sind teilweise funktional mit globalen Speichergrenzen, Finder enthält bereits einen Texteditor. Browser/Mail sind keine vollwertigen integrierten Clients. Priorisiert: Notizen als grundlegende Produktivitäts-App, weil ein konkret reproduzierbarer Eingabeverlust vorliegt. Kein zweites App-System und keine Migration anderer Apps in dieser Sitzung.
+
+Reproduktion im Node-/DOM-Adapter mit Produktions-UI und echtem Notes-Store: Text eingeben → Speichern verzögert bestätigen → weiter tippen → die bisherige `refresh(selected)`-Antwort ersetzt die neueren Eingaben durch den vorher gespeicherten Stand. Vor Fix **zwei neue Tests rot, ein Fehler-/Retry-Test bereits grün**. Fix: bestätigten kanonischen Save-Datensatz direkt in die lokale Listenansicht übernehmen; kein erneuter List-Aufruf und kein Überschreiben von Titel/Text. Bei abweichenden Editorwerten ausdrücklich „Stand gespeichert. Neuere Änderungen sind noch nicht gespeichert.“ melden. Erneutes Speichern verwendet die bestätigte ID und erzeugt keine doppelte Notiz. Nur bestätigte Saves lösen weiterhin die bestehende inhaltsfreie Island-Mitteilung aus.
+
+Während Laden/Speichern keine Auswahländerung über Notizliste/Neu/Spotlight und keine Löschung zulassen, damit die Antwort nicht einer zwischenzeitlich anderen Auswahl zugeordnet wird; während Speichern bleibt der Editor beschreibbar. Solche Navigationsaktionen werden in dieser kurzen Busy-Phase ignoriert und müssen anschließend erneut ausgelöst werden, nicht automatisch nachgeholt. Nach Abschluss normale Auswahl/Neu wieder möglich. Kein Autosave: neuere Eingaben sind bis zum nächsten ausdrücklichen erfolgreichen Save nur im Editor und überstehen einen Neustart nicht. Schutz vor Verwerfen beim normalen Notizwechsel/Fensterschließen/Abmelden, konkurrierende Löschvorgänge und allgemeine Load-Races bleiben eigene offene Einheiten.
+
+Tests: `node --test tests/notes-save-ui.test.cjs tests/notes-notification.test.cjs tests/notes-store.test.cjs` **7/7 grün**, davon drei neue Integrationstests. Produktions-Renderer läuft unverändert im Node-VM-/minimalen DOM-Adapter mit verzögerter API-Antwort; tatsächlicher profilbezogener Notes-Store und temporäres Dateisystem. Geprüft: spätere Titel-/Textänderungen bleiben erhalten, kein erneuter List-Aufruf beim Save, paralleler Save dedupliziert, bestätigter Snapshot gespeichert, erneuter Save gleiche ID, Wiederladen über frische Store-Instanz, Bobs Daten unverändert, Busy-Navigation/-Löschen verweigert und später wieder möglich, fehlgeschlagener Save erhält Entwurf und gespeicherte Daten ohne Erfolgssignal, Retry erfolgreich. Bestehendes Benachrichtigungs-Test-Double liefert jetzt wie Produktion kanonische Notizfelder statt nur einer ID; keine Assertion deaktiviert.
+
+`TMPDIR=/workspace/scratch npm test`: **128 bestanden, 0 fehlgeschlagen/übersprungen**. Syntax der drei JS-/Testdateien, `npm run check:catalina`, `git diff --check` bestanden. Keine neue echte Electron-/GUI-/IPC-/Windows-/macOS-/Installerprüfung und kein Audit; VM-/Store-Integration ist kein solcher Nachweis. Bestehende Legacy-Electron-/Audit-, globale App-Daten-, Store-Trust-/Update-, Signing-/Notarisierungs- und CI-Blocker bleiben offen; keine Release-Freigabe behauptet.
+
+Nächste drei kleine Einheiten, jeweils nur auf weiteren Prompt: (1) Schutz eines ungespeicherten Notizentwurfs beim normalen Notizwechsel spezifizieren und testen; (2) denselben Schutz separat für internes Fensterschließen anbinden, Speichern/Verwerfen/Abbrechen klar behandeln; (3) Kalender-Profilgrenze entsprechend Roadmap D1 reproduzieren und einen datenerhaltenden Migrationsvertrag festlegen, keine stille Zuordnung alter globaler Termine. Commit `Preserve newer Notes edits across pending save acknowledgement`; SHA im Git-Log/Abschlussbericht. Danach stoppen.
+
+### Kurze Standard-App-Bestandsaufnahme (Quellprüfung, keine vollständige GUI-Abnahme)
+
+| Anwendungen | Tatsächlicher Bestand | Wesentliche Grenze |
+| --- | --- | --- |
+| Notizen, Erinnerungen | Profilbezogene Main-Stores, CRUD, Persistenz, UI; Notizen-Save in dieser Einheit abgesichert | Kein allgemeiner Entwurfsschutz/Autosave; Erinnerungen sind noch kein zuverlässiger Hintergrundalarm. |
+| Kalender | Lokale Termine anlegen/entfernen, sortieren und ICS exportieren in `air-os-enhancements.js` | Globaler localStorage-Schlüssel trotz profilbezogener UI-Aussage; keine gesicherte Profiltrennung/Cloud-Anbindung. Bestehende Daten erhalten, Migration separat planen. |
+| Rechner, Texteditor | Rechner mit geprüftem Ausdruckspfad; Finder bietet Textdateien lesen/bearbeiten/speichern über begrenzte Main-IPC | Keine eigene neue Editor-App nötig; externe Änderungskonflikte und Entwurfsschutz noch offen. |
+| AirWrite | Handschriftvarianten erfassen, Vorschau, PNG-/Profilexport und Profilimport | Globales localStorage-Zeichenprofil; der Schreibtext wird nicht zuverlässig dauerhaft gesichert. Keine vollständige Profildatenmigration. |
+| Musik, Fotos | Lokale Audiodateien/Playlists und Wiedergabe; lokale Bildauswahl mit Vergrößerung | Audiodateien nach Neustart erneut wählen, Playlist-Metadaten global; Bilder nur für die Sitzung. Kein registrierter eigenständiger Video-/PDF-Viewer gefunden; PDF-Dateisymbol ist keine PDF-Anzeige. |
+| Mail, Browser, ChatGPT | Mail-Providerlinks, Browser-Such-/URL-Weiterleitung; ChatGPT lediglich unverbundene Installationskandidaten-Prüfung | Kein eingebauter Posteingang/Browser-/ChatGPT-Client; ChatGPT-Identität/Startvertrag weiter offen. Air-KI/Ollama ist eine getrennte vorhandene Integration. |
+| Finder, Store, Einstellungen, Informationen | Freigegebene Dateivorgänge, lokaler signierter Demo-Store, profilbezogene Darstellungseinstellungen, einfache About-Ansicht | Kein vollständiger Dateimanager/öffentlicher Store; keine verifizierte Host-Systemsteuerung. Keine eigenständige registrierte Aktivitätsübersicht/Hilfe gefunden. |
+
+---
+
+## Phase 10 – Checkpoint – Air-App-Runtime: Renderer-Absturz kontrolliert beenden
+
+23. Oktober 2026. Genau eine Micro-Einheit aus dem offenen Runtime-/Recovery-Bereich der Ultimate-Roadmap (§7.3, Lifecycle-/Fenstergrenzen): **abgestürzte Air-App-Fenster aus der bestehenden Runtime entfernen und einen frisch geprüften Neustart ermöglichen**. Ausgangs-Commit `e745357d4b46b0c032c4543561a1359a591205ad` auf `feat/air-chatgpt-installation-probe-20261023` per GitHub bestätigt; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Remote-Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/airapp-renderer-crash-recovery-20261023`; keine fremden Branches/main ändern. PR-/CI-API-Abfragen dieser Sitzung liefern Forbidden; aktuellen PR-Gesamtstatus/CI-Erfolg deshalb nicht behaupten.
+
+Bestand geprüft: Paketprüfer, Manager, Runtime, Store/Bootstrap, Registry-Anbindung und vorhandene Installations-Recovery-/Runtime-Tests. Bereits vorhanden: Ed25519-/SHA256-Prüfung, fester lokaler Demo-Katalog, Profilinstallation, verifizierte Orphan-Adoption, staging-sicherer Retry, journalisierte Entfernung, Store→Registry→Launchpad-Synchronisierung, isolierte Session-Partitionen und widerrufener Asset-Zugriff nach Fensterende. Diese Dienste werden nicht neu gebaut. Kein öffentliches Store-/SDK-System und keine zusätzlichen App-Berechtigungen in dieser Einheit.
+
+**Reproduziert im bestehenden Node-/Electron-Adapter:** `render-process-gone` beendet bisher nicht das Runtime-Fenster. Beide neuen Regressionstests schlugen vor Änderung fehl (**16 vorhandene Runtime-Tests grün, 2 neue rot**). Ein existierendes Fenster kann so als wiederverwendbar gelten, obwohl sein Renderer ausgefallen ist. Fix ausschließlich im vorhandenen Runtime-Fensteraufbau: Ereignis an genau dieses Fenster binden und es bei Renderer-Ende per `destroy()` beenden. Der vorhandene `closed`-Cleanup entfernt die Fensterreferenz; bestehende Protocol-Autorisierung verweigert dann weitere Assets. Kein automatischer Neustart oder Abschalten von Sandbox/Signatur-/Hashprüfungen. Der nächste ausdrückliche Start durchläuft wieder die vorhandene Installationsprüfung.
+
+Zwei neue Tests: (1) Absturz nach Start beendet nur Alices Fenster, Bob bleibt nutzbar, Alices Asset-Zugriff wird verweigert; fehlgeschlagene aktuelle Integritätsprüfung verhindert Neustart, nach Wiederherstellung entsteht ein neues Fenster; spätes doppeltes Absturzereignis am alten Fenster schließt den Ersatz nicht. (2) Absturz während gemeinsamem Start beendet das Fenster; nach Auflösen des simulierten `loadURL` werden beide wartenden Startanforderungen abgelehnt, Protokoll bleibt gesperrt und späterer Retry funktioniert. Kein neuer Timeout-Vertrag für ein nie endendes `loadURL` behauptet.
+
+Nach Fix: `node --test tests/airapp-runtime.test.cjs tests/airapp-install-recovery.test.cjs tests/airapp-installed.test.cjs tests/airapp-package.test.cjs` **41/41 grün**. `TMPDIR=/workspace/scratch npm test` **125 bestanden, 0 fehlgeschlagen/übersprungen**. Syntax beider geänderten CJS-Dateien, `npm run check:catalina` und `git diff --check` bestanden. Neue Runtime-Tests verwenden wie bisher Electron-/Manager-Test-Doubles mit echten temporären Asset-Dateien; keine echte Electron-Crash-/GUI-/Windows-/macOS-/Installerabnahme. Die Manager-/Paket-/Recovery-Tests laufen zusätzlich mit tatsächlich signierten Testpaketen. Kein neuer Audit, keine erfundenen nativen Ergebnisse.
+
+**Offene Release-Blocker:** Legacy-Electron 32 und historischer Audit-Befund (20.10.: zehn betroffene Pakete, zwei High, acht Moderate; heute nicht neu erhoben), fehlende native Plattform-/Crash-/Storage-Abnahme, Dateisystem-Races/Power-Loss, fehlendes reproduzierbares Dependency-Lockfile sowie Signing/Notarisierung. Öffentlicher Store weiterhin gesperrt durch Demo-Trust-Root statt Produktions-Schlüsselverwaltung, fehlende Herausgeberprüfung/Veröffentlichungsstrategie, Schlüsselrotation/Widerruf, Update-/Rollback-Vertrag und Berechtigungsmodell. Bestehende Signatur-/Hash-/IPC-/Netzwerkgrenzen unverändert; eine Signatur allein ersetzt keine Inhaltsprüfung. SDK und öffentliche Verteilung werden nicht als fertig dargestellt.
+
+Nächste drei kleine Einheiten, jeweils nur auf neuen Prompt: (1) diesen Crash-/Retry-Pfad mit signiertem Demo-Paket in einer echten Electron-Laufzeit prüfen, z.B. kontrolliertem `forcefullyCrashRenderer()` in separatem Testprofil; (2) Store-Startfehler und anschließenden ausdrücklichen Retry über bestehenden Runtime-/Registry-Weg als kleine UI-Integration testen, keinen falschen Aktivitätszustand anzeigen; (3) genau eine minimale SDK-Projektvorlage gegen den bestehenden Manifest-/Paketprüfer testen, ohne neue Rechte oder öffentliche Installation. Commit `Retire crashed Air App renderers before verified restart`; SHA im Abschlussbericht/Git-Log. Nach GitHub-Sicherung stoppen.
+
+---
+
+## Phase 9 – Checkpoint – ChatGPT: sichere Installationsprüfung als Launcher-Vorbereitung
+
+23. Oktober 2026. Genau eine Micro-Einheit: **systemweiten macOS-Installationskandidaten prüfen, ohne ihn voreilig zu starten**. Ausgangs-HEAD `552282ffa71ffd465ff4a3067977f1c770d9e7fe` auf `fix/air-finder-save-temp-cleanup-20261023` per GitHub bestätigt; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Alle Branch-Refs geprüft, eigener Branch `feat/air-chatgpt-installation-probe-20261023`; sauberer Ausgangsarbeitsbaum. Main und fremde Branches bleiben unverändert.
+
+Bestand: Spotify besitzt bereits nativen Launcher, authentifizierte parameterlose IPC/Preload, Dock-/Launchpad-Routing sowie Fehler-/Retry-Tests. Unverändert erhalten. Kein ChatGPT-Eintrag/-Launcher in Registry/Main/Preload/Tests gefunden. `ai` ist Air-KI/Ollama und wird nicht als ChatGPT umbenannt.
+
+**Konkrete Rechercheblockade:** Die offiziellen Seiten https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app, https://chatgpt.com/download und https://openai.com/chatgpt/desktop/ lieferten am 23.10.2026 über den Umgebungsproxy `CONNECT tunnel failed, response 403`. Direkter Zugriff auf die Hilfeseite scheiterte an DNS. Eine erreichbare aktuelle Homebrew-Cask-Datei ist eine Drittquelle und kein ausreichender Beleg für offizielle App-Identität oder einen unterstützten Startvertrag. Deshalb keine geratenen URL-Schemes, Bundle-IDs, Store-IDs, Zertifikat-Teams oder Startbefehle übernehmen. Sicherer Zwischenstand statt unbestätigter nativer Startintegration.
+
+Neu: `src/main/chatgpt-installation.cjs` exportiert eine ausschließlich Main-seitige `createChatGPTInstallationProbe().inspect()`-Vorstufe, in der Builder-Dateiliste enthalten. Auf macOS ausschließlich `/Applications/ChatGPT.app` mit `lstat` und `realpath` prüfen. Reguläres Verzeichnis ohne Symlink/kanonische Umleitung ergibt **`candidate-found`, `identityVerified:false`**, ausdrücklich keinen Nachweis einer offiziellen oder kompatiblen installierten App. `ENOENT` ergibt `not-found` mit Scope `system-applications`, keine globale Nichtinstalliert-Behauptung; Benutzer-/andere Installationsorte werden nicht durchsucht. Datei, Symlink oder umgeleiteter Pfad werden abgelehnt; Zugriffs-/I/O-/Verschwinden-beim-Prüfen-Fehler führen zu nachvollziehbarem Fehler und erlauben erneuten Versuch. Windows/andere Plattformen melden `unavailable/platform-not-implemented`, ohne Dateisystemzugriff.
+
+**Grenzen:** Noch kein Launcher, keine IPC-/Renderer-Anbindung, kein ChatGPT-Icon/Registry-/Dock-Eintrag und keine Aussage über laufende externe Fenster. Kein Prozessstart, kein Browser-Fallback, keine Downloads, kein Audio-/Credential-Zugriff, keine Schlüssel. Pfadprüfung ersetzt keine Signatur-/Herausgeberprüfung und garantiert keinen Schutz gegen konkurrierenden Pfadaustausch; ihr Ergebnis darf nicht als Startfreigabe verwendet werden. Der Baustein wird bislang nur von Tests aufgerufen, nicht automatisch im Desktop.
+
+**Plattformvertrag noch offen:** Aktuelle offizielle ChatGPT-Mindestversionen und CPU-Unterstützung für Windows/macOS konnten nicht verifiziert werden. Keine alten Annahmen als heutigen Support ausgeben. Air-OS unterstützt weiterhin seine eigene Legacy-Konfiguration; daraus folgt keine ChatGPT-Unterstützung. Windows ist in dieser Vorstufe nicht implementiert; auch für macOS ist der native Start nicht freigegeben. Vor Aktivierung offizielle aktuelle Anforderungen und signierte App-Identität prüfen; für dann nachweislich nicht unterstützte OS-/CPU-Versionen einen konkreten erklärten Status ausgeben. Keine offizielle Nichtunterstützung einer bestimmten Version ohne Quellenbeleg behauptet. Eine spätere OpenAI-API-App bleibt eine getrennte Aufgabe mit eigenem Benutzer-API-Zugang; ein ChatGPT-Abonnement ist kein API-Schlüssel.
+
+Tests: `node --test tests/chatgpt-installation.test.cjs tests/spotify-launcher.test.cjs` **16/16 grün**, davon sechs neue Kandidaten-/Fehler-/Plattformtests und zehn unveränderte Spotify-Tests. Neue Tests verwenden ausdrücklich **Linux-seitig ausgeführte macOS-/Dateisystem-Test-Doubles**, keine native Windows-/macOS-Abnahme. Kandidat vorhanden/fehlend, ungeeignete Datei/Symlink, kanonische Umleitung, Zugriffs-/I/O-Fehler, Retry und nicht implementierte Plattformen geprüft. `TMPDIR=/workspace/scratch npm test`: **123 bestanden, 0 fehlgeschlagen/übersprungen**. Syntax beider neuen Dateien, `npm run check:catalina`, `git diff --check` bestanden. Keine GUI nötig für diese nicht angebundene reine Dateisystemvorstufe; keine Installer-/neuen Audit-/Signaturtests. Aktueller CI-Gesamtstatus unbestätigt: auch die heutige `gh api`-Statusabfrage für den Ausgangs-Commit liefert Forbidden. Bestehende Electron-/Audit-/Signing-/Release-Blocker bleiben offen.
+
+Nächste drei kleine Einheiten, nur nach weiterem Prompt: (1) aktuelle offizielle Plattformanforderungen, App-Identität und nativen Startvertrag quellenbasiert verifizieren und dokumentieren; ohne Belege weiter gesperrt lassen; (2) einen verifizierten Plattform-Launcher mit Identitätsprüfung sowie installierten/fehlenden/abgelehnten Zuständen testen, nur OS-Übergabe bestätigen; (3) parameterlose authentifizierte Bridge und anschließend separat die vorhandene Registry-/Launchpad-/Dock-Route anbinden, ohne zweite App-Liste oder erfundenen Laufstatus. Commit `Add bounded ChatGPT installation candidate probe`; SHA im Git-Log/Abschlussbericht. Danach stoppen.
+
+---
+
+## 1. Ausgangspunkt und belastbare Nachweise
+
+| Quelle | Tatsächlich geprüfter Stand |
+| --- | --- |
+| GitHub `main` / Repository-HEAD | `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e` |
+| Entwicklungsbranch `feat/air-os-architecture-foundation` und PR #11 | `eecab2a043fc62ab0802312aa09ce29dfd96c280`; entspricht dem Nutzer-Handoff, keine neueren Commits auf diesen abgefragten Refs |
+| PR-Status | GitHub-Webseite meldet **DRAFT**; PR #11 bleibt unangetastet |
+| Dokumentationsbranch | `docs/air-os-ultimate-roadmap-20261022`, unmittelbar von diesem PR-HEAD abgezweigt; `main` ist dessen Vorfahr |
+| Bloom | `8b3d5dcdcbadc1490c2824ccec01e818b7a0233c`, Version 3.10.0; öffentliche Quellen separat unter `/tmp` untersucht |
+| Lokale Prüfungen dieser Sitzung | Linux x64, Node.js 24.19.0; `TMPDIR=/workspace/scratch npm test`: **96 bestanden, 0 fehlgeschlagen, 0 übersprungen** |
+| Weitere ausgeführte Prüfungen | `node --check` für Main/Preload, alle JS-Dateien im Projektwurzelverzeichnis, `src/core/*.js`, `src/main/*.cjs`, `scripts/*.cjs`; `npm run check:catalina`: bestanden |
+| Aktuelle CI | GitHub-REST-/GraphQL-Abfragen liefern `Forbidden`; kein aktueller grüner Gesamtstatus nachgewiesen. Die öffentliche PR-Seite erlaubt die Statusprüfung des PR, ersetzt aber keinen vollständigen CI-Nachweis. |
+
+Gelesen: `AGENTS.md`, die Fortschritts-/Übergabedokumente mit ihren neuesten Checkpoints, `docs/ARCHITECTURE.md`, `ROADMAP.md`, `package.json`, Security-Dokumentation und relevante Implementierungen/Tests. Ältere Abschnitte sind historische Planungen: `ROADMAP.md` beschreibt Spotify noch als Web-Weiterleitung, und frühe Architekturabschnitte nennen inzwischen implementierte Dienste als fehlend. Maßgeblich sind hier der oben genannte Quellstand und die tatsächlich ausgeführten Prüfungen.
+
+**Nachweisgrenze:** Die 96 Tests prüfen Node-Module und teils Produktions-Renderer in VM-/DOM-Adaptern bzw. simulierte Electron-/OS-APIs. In dieser Dokumentationseinheit wurden keine neuen GUI-, Windows-, macOS-, Installer-, Audit- oder Performance-Tests durchgeführt. Frühere GUI-Checks des `main`-Checkouts sind kein Nachweis für den erweiterten PR-Stand. „Vorhanden“ bedeutet deshalb unten eine konkret identifizierte Implementierung, keine plattformübergreifende Release-Freigabe.
+
+## 2. Produktgrenze und Architekturentscheidung
+
+Air-OS bleibt eine **Electron-Desktop-Anwendung innerhalb von Windows und macOS**. Dock, Island, Kontrollzentrum und interne Fenster gehören zunächst zum Air-OS-Desktop. Keine Ersetzung der Host-Taskleiste, keine globalen Eingabe-Hooks, kein Kernel/Bootloader und keine Linux-Distribution.
+
+Vorhandene Registry, Lifecycle, profilbezogene Stores, Preload und App-Runtime werden erweitert. Kein paralleles App-Verzeichnis, zweiter Fenstermanager oder Framework-/Tauri-Umbau. Drei Fenstertypen müssen getrennt behandelt werden:
+
+1. Mitgelieferte Apps: interne DOM-Fenster in `app.js` mit bestehendem Lifecycle.
+2. Installierte Air-Apps: eigene isolierte Electron-`BrowserWindow`s über `airapp-runtime.cjs`.
+3. Externe Apps wie Spotify: Startanforderung an das Host-OS; daraus folgt weder ein kontrollierbares Fenster noch ein bekannter Prozessstatus.
+
+Die spätere native iPadOS-App benötigt eine eigene Laufzeit. Gemeinsame Datenmodelle, Validierungen und Zustandsverträge sind geeignete gemeinsame Komponenten; Electron-/Node-/Desktop-IPC und native OS-Steuerung sind nicht direkt übertragbar.
+
+## 3. Was bereits implementiert und prüfbar ist
+
+| Bereich | Konkreter Bestand | Grenze / noch erforderlicher Nachweis |
+| --- | --- | --- |
+| Lokale Konten | `main.cjs`, `preload.cjs`: scrypt/Salt, lokale Anmeldung, vertrauenswürdige Absender, begrenzte IPC; Renderer ohne Node, mit Isolation/Sandbox | Kein Cloud-Konto oder OS-Login; lokale Administratoren bleiben außerhalb des Schutzmodells. Kein vollständiger Auth-Sicherheitsaudit dieser Sitzung. |
+| App Registry | `src/core/app-registry.js`: gemeinsame Metadaten, validierte Einträge, installierte Apps mit `origin: store`, Änderungsbeobachter; Unit-Tests | Metadaten verleihen keine Berechtigungen. Bestehende Erweiterungen/Legacy-Metadaten nicht als vollständig entkoppelte Architektur ausgeben. |
+| Lifecycle / Fenster | `src/core/app-lifecycle.js`, `app.js`: Fokus, Minimieren, Maximieren, Schließen; interne Fenster verschieben/vergrößern; Tests für Zustandsbeobachtung | Kein vereinheitlichter Window-Service für alle drei Fenstertypen, keine Mission-Control-/Workspace-Verwaltung. Visuelle/funktionale Plattformregression fehlt. |
+| Air Modern Dock | `air-modern-dock.css`, `app.js`, Preferences: opt-in Theme, Classic als Standard, persistentes Theme pro Profil, bestehende Start-/Lifecycle-Routen | Kein neu zu entwickelndes Grund-Dock. Dynamisches Pinning/Reihenfolge und echte visuelle Prüfung fehlen; Spotify hat keinen erfundenen Laufstatus. |
+| Launchpad | `air-launchpad.js/.css`: registrierte Apps, Suche/Kategorien, bestehende Startwege, installierte Air-Apps; Paket-/Routingtests | Kein eigenständiger Installer; Screenreader, Fokus und Darstellung real prüfen. |
+| Spotlight | `src/core/search-service.js`, `air-spotlight.js`: Apps, bereitgestellte Notiztitel, Dateinamen; veraltete Antworten werden verworfen | Kein Volltext-/Cloud-/systemweiter Index. GUI-Auswahl, Fokus und Abmeldung real prüfen. |
+| Finder | `main.cjs`, `src/main/file-ops.cjs`, `file-search.cjs`, Enhancements: gewählter Workspace, Verzeichnisliste, Text lesen/speichern/erstellen, Ordneranlage, exklusive Kopie/Umbenennung, begrenzte Dateinamensuche | Kein vollständiger Dateimanager. Kein sicherer Papierkorb/Restore, allgemeines Verschieben, umfangreiche Vorschauen oder robuster Operationsfortschritt. Symlink-/Race-Grenzen nicht als abschließend gelöst deklarieren. |
+| Einstellungen | `src/main/preferences.cjs`: atomare, validierte profilbezogene Darstellung, Dock-Theme, Reset; Persistenz-/Isolationstests | Kein umfassendes Host-Einstellungszentrum. Alte globale Daten werden nicht willkürlich einem Profil zugeordnet. |
+| Notizen / Erinnerungen | Eigene Main-Stores und Oberflächen; profilbezogene CRUD/Persistenz, Größen-/ID-Prüfungen; Reminder-Priorität/Fälligkeit/Erledigt | Kein Notes-Rich-Text/Cloud/Autosave; keine zuverlässig terminierten Host-Benachrichtigungen oder Hintergrundalarme. |
+| Air-App-Pakete | `airapp-package.cjs`, `airapp-manager.cjs`: Ed25519, SHA256, fester lokaler Katalog, Profilinstallation, Journal-Deinstallation, verifizierter Retry nach Rename/Index-Abbruch, Schutz fremder Staging-Pfade; Tests | Demo-Trust-Root, kein Produktions-SDK/öffentlicher Paketkanal/Update-/Widerrufssystem. Power-Loss und konkurrierender Pfadaustausch gesondert prüfen. |
+| App Runtime | `airapp-runtime.cjs`: eigenes Schema, App-/Profilpartition, CSP, blockierte Rechte/Netzwerke/Popups, Hashprüfung, parallele Starts koordiniert, Host-Cleanup und Protokollwiderruf nach Schließen | Isolierte Air-Apps sind zusätzliche native Fenster. Tests simulieren Electron; echte Chromium-Storage-/Logout-/Navigationstests stehen aus. |
+| Air App Store | `air-app-store.js`, `air-app-bootstrap.js`, `store/catalog`: signierten Demo-Timer installieren/öffnen/entfernen; Registry/Launchpad/Spotlight synchronisieren; Recovery-Integrationstests | Lokaler Demo-Store, kein öffentliches Ökosystem, keine Zahlungen oder freie Installation beliebiger URLs. |
+| Spotify | `src/main/spotify-launcher.cjs`: authentifizierte parameterlose Bridge, lokaler validierter OS-Handler, Parallelklick-/Retry-/UI-Tests; keine Web-Weiterleitung | OS-Übergabe ist kein Start-/Fensternachweis. Standard-/Store-Installation und macOS nicht nativ geprüft; manche Store-Handler unsupported, technische Dateifehler noch unfreundlich. |
+| Bestehende lokale Apps | AirWrite, Musikdateiauswahl/-wiedergabe, Fotoauswahl, lokaler Kalender/ICS, Rechner und Arcade sind im Quelltext vorhanden | Nicht durch die 96 Tests vollständig GUI-geprüft. Kalender, Handschrift, Musikplaylists und Spiele nutzen weiterhin globale `localStorage`-Daten. Audiodateien müssen nach Neustart erneut gewählt werden. |
+
+## 4. Teilimplementierungen und fehlende Desktop-Funktionen
+
+- **Datenisolation:** Preferences, Notes und Reminders haben Profil-Stores. Kalender, AirWrite, Musikplaylists und Scores besitzen weiter globale Renderer-Schlüssel. AirCard-Artwork liegt ebenfalls nicht offensichtlich in derselben profilbezogenen Store-Struktur. Vor einem Mehrbenutzer-Freigabeversprechen tatsächlichen Zugriff nach Profilwechsel prüfen. Datenmigration benötigt explizite Zuordnung, Backup und Fehlerbehandlung.
+- **Statusanzeigen:** `login.html` zeigt statisch „100%“, die Desktop-Menüleiste enthält dekorative WLAN-/Ton-/Batteriesymbole. Das sind keine verifizierten Host-Messwerte. Uhrzeit funktioniert, ein allgemeiner Status-/Capability-Service fehlt.
+- **Island / Kontrollzentrum:** Das eigenständige Island-Grundelement ist im unten beschriebenen Phase-3-Checkpoint implementiert: Uhrzeit, einfaches Panel und Fokusverwaltung. Eine erste echte Dock-Theme-Kachel im Kontrollzentrum ist seit Phase 4 angebunden; weitere Inhalte fehlen weiterhin. Zuerst vorhandene Air-OS-Einstellungen und lokale Medien verwenden; Host-Funktionen nur mit belegter Schnittstelle.
+- **Fensterkomfort:** Persistente Fenstergeometrie, konsistente App-/Fensteridentitäten, koordinierte Fokusregeln, Mehrmonitor-/DPI-/Zoom-Verhalten, Snap/Mission Control und Tastatur-Navigation fehlen teilweise oder sind nicht abgesichert. Kein externer Fensterzugriff als Nebenwirkung einer Designaufgabe.
+- **Alltagsapps:** Browser-/Mail-/Übersetzer-/KI-Einträge und externe Dienste sind keine vollständigen eigenständigen Clients. Provider-APIs, OAuth und Einbettungsbedingungen jeweils separat prüfen. ChatGPT-Desktop-Integration ist noch offen; früherer Nutzerwunsch bleibt erhalten.
+- **AirCard:** iPhone-/Wallet-Funktionen benötigen ein separates macOS-Backend; nicht enthalten, unter Windows keine Parität. Lokales Artwork ist davon zu unterscheiden.
+- **Cloud / Backup:** `cloud-sync/` enthält getestete Auswahl-/Validierungsbausteine, keinen produktiven Auth-/Sync-Dienst. Versionierte Exporte, getestete Wiederherstellung, Konfliktbehandlung und optionale sichere Kontoverknüpfung fehlen.
+- **Betriebsqualität:** Noch keine belegte vollständige Barrierefreiheit, dauerhafte GUI-Teststrecke, Leistungsmessung oder verlässliche signierte Update-/Rollback-Kette.
+
+## 5. Bloom: geeignete Prinzipien und bewusste Grenzen
+
+Referenzstand und Lizenz sind in Abschnitt 1 festgehalten. `package.json` und `src-tauri/Cargo.toml` nennen **GPL-3.0-only**; Air-OS steht unter **MIT**. Es wurden keine Bloom-Quellen, Assets, Icons, Fonts oder Ausschnitte in Air-OS übernommen. Diese Roadmap beschreibt eigenständig formulierte allgemeine Prinzipien. Jede spätere Übernahme geschützter Bestandteile benötigt zuvor ausdrückliche Klärung der konkreten Rechte und Lizenzfolgen; GPL-Code darf nicht einfach als MIT-Code umetikettiert werden.
+
+Bloom ist ein React-/Tauri-/Rust-Projekt mit direkter Windows-Shell-Integration. Es wurde hier gelesen, nicht gebaut oder auf Windows ausgeführt. Aussagen zu dessen Verhalten sind Quellbefunde, keine eigenen Benchmarks.
+
+| Untersuchter Bereich / Bloom-Quelle | Geeignetes Prinzip für Air-OS | Abgrenzung der Umsetzung |
+| --- | --- | --- |
+| Dock: `src/Dock.tsx`, `src/dockApps.ts` | Eine Datenquelle für angeheftete/laufende Apps, klare aktive Zustände, verzögerte Vorschau erst bei Bedarf | Vorhandene Air-OS-Registry/Lifecycle nutzen; Pinning separat ergänzen. Keine Windows-Taskleistenersetzung, HWND-Übernahme oder Bloom-Assets. |
+| Island/Notch: `src/App.tsx`, `src/settings/NotchTab.tsx` | Kompakte/expandierte Zustände, kontextabhängige Inhalte und klare Moduswechsel | Eigenständige Komponente innerhalb des Air-OS-Fensters. Zunächst Uhrzeit und Tastaturbedienung; kein globales Always-on-top-/Click-through-Fenster. |
+| Kontrollzentrum: `src/App.tsx`, `src/components/WifiPanel.tsx`, `BluetoothPanel.tsx` | Gruppierte Aktionen mit echten Zuständen, Lade-/Fehler-/Unavailable-Anzeige | Zuerst vorhandene Air-OS-Preferences. WLAN/Bluetooth/Host-Helligkeit erhalten keine Schein-Schalter. |
+| Medien: `src/CompactMediaPlayer.tsx`, `src/App.tsx`, Rust-Mediendienste | Ein Medienmodell für Titel, Wiedergabe, Seek und Fehler; Anzeige folgt wirklicher Quelle | Zuerst eigenes Air-Music-Audio. Spotify-Start ist keine Wiedergabe-API. Keine WASAPI-/COM-/DRM-Portierung oder Systemaudioaufnahme als Design-Nebenaufgabe. |
+| Fensterintegration: `src-tauri/tauri.conf.json`, `src/Dock.tsx` | Definierte Fokus-/Sichtbarkeitsübergänge, begrenzte Vorschauen, sauberes Aufräumen | Blooms mehrere transparente native Fenster passen nicht direkt zum Air-OS-DOM-Desktop. Interne Fenster zuerst integrieren; externe Prozesse separat spezifizieren. |
+| Animationen: `src/App.tsx`, `src/Dock.tsx`, Styles | Kontinuierliche Übergänge, stabile Größen, respektierte Bewegungseinstellungen | Eigene CSS-/Web-Animations-Lösung mit `transform`/`opacity`, Abbruch/Cleanup und `prefers-reduced-motion`; kein ungeprüftes React-/Framer-Motion-Migrationsprojekt. |
+| Einstellungen: `src/Settings.tsx`, `src/settings/useSettings.ts`, `src/hooks/useSettingsSync.ts` | Konsistente Änderungen über Ansichten, validierter Zustand, sichtbare Speicherfehler | Vorhandenen Air-OS-Preferences-Service ausbauen; nicht eine zweite globale `localStorage`-Konfiguration einführen. |
+| Status: `src-tauri/src/battery.rs`, `wifi.rs`, `bluetooth.rs` und UI | Datenquelle, Aktualität, Fehler und fehlende Capability gemeinsam darstellen | Electron-Adapter pro Plattform; Batteriezustand nur aus einer geprüften Quelle. Dekoration nicht als Live-Telemetrie ausgeben. |
+| Performance: `src/hooks/useTrailingThrottle.ts`, Visualizer in `src/App.tsx`, Vorschauen in `src/Dock.tsx` | Gedrosselte Eingaben mit letztem Wert, verzögerte begrenzte Vorschauen, Listener-Cleanup; Visualizer-Abonnement nur bei Wiedergabe | Prinzipien eigenständig umsetzen, sichtbarkeits-/lifecycleabhängig pausieren und messen. Bloom enthält auch Polling; kein pauschales Versprechen von „zero idle CPU“. |
+
+## 6. Windows-/macOS-Unterschiede als Teil der Abnahme
+
+| Thema | Windows | macOS | Gemeinsame Regel |
+| --- | --- | --- | --- |
+| Laufzeit | Legacy und experimenteller Modern-Build; x64/arm64 Installer vorhanden | Catalina-Legacy Electron 32.3.3; Modern-Workflow im Repository: Electron 44.9.0 mit Ziel macOS >=13 | Gepflegte aktuelle Version/Toolchain im jeweiligen nächsten Audit prüfen, nicht aus Versionsnummern Sicherheit ableiten. Kanäle getrennt testen. |
+| Externe Apps | EXE-/Protokollhandler, Store-/Alias-Varianten, Zugriffsrechte | `.app`-Bundles, Protokollzuordnung, ggf. Betriebssystemfreigaben | Erfolg der OS-Übergabe nicht mit Prozess-/Fensterkontrolle gleichsetzen; kein freier Pfad/Command aus dem Renderer. |
+| Dateien | Laufwerke, reservierte Namen, Groß-/Kleinschreibung, Dateisperren | APFS-Varianten, Unicode, Berechtigungen, Finder/Papierkorb | Pfad- und No-overwrite-Tests pro OS; Workspace-Grenzen, Race-Fälle und Wiederherstellung erhalten. |
+| Oberfläche | Ctrl, DPI-/Mehrmonitor-/Taskleistenvarianten | Cmd, Retina, Menü-/Vollbild-/Space-Verhalten, Hardware-Notch | Nur eigenen Desktop belegen; Fokus, Zoomen, Safe Areas und reduzierte Bewegung real testen. |
+| Medien / Hardware | Manche Funktionen brauchen gepflegte native Windows-Adapter | Andere APIs/Freigaben; keine automatische Parität zu Windows-COM/WMI | Capability-Modell mit `available/unavailable/error`, schmale geprüfte IPC. Zuerst app-interne Medien. |
+| Release | Authenticode, Installer-/Update-/Rollback-Prüfung | Developer-ID-Signing, Hardened Runtime, Notarisierung; Intel/Apple Silicon | Keine Schlüssel im Repository. Pro Kanal echte Installation/Start/Deinstallation und Lizenznachweise. |
+
+## 7. Sicherheits- und Release-Blocker
+
+**P0 – vor einer regulären öffentlichen Freigabe:**
+
+1. **Legacy-Laufzeit und Toolchain:** Der dokumentierte Audit vom 20. Oktober meldet zehn betroffene Pakete, davon zwei High (`electron`, `extract-zip`) und acht Moderate. Das ist ein historischer Befund, kein neu erhobener Audit dieser Sitzung. Electron 32 ist Legacy. `npm audit fix --force` würde die Catalina-Zielsetzung gefährden und ist keine Lösung. Der Modern-Workflow baut/testet, enthält derzeit aber keinen eigenen `npm audit`-Schritt. Beide tatsächlich installierten Kanäle müssen separat auditiert und freigegeben werden.
+2. **Mehrbenutzerdaten:** Globale App-Daten und Profilwechsel sind ein konkreter Prüf-/Migrationsbedarf. Lokales Login ist keine OS-Sicherheitsgrenze und lokale App-Daten sind nicht automatisch verschlüsselt.
+3. **Runtime- und Dateisystemgrenzen:** Tests zu manipulierten Paketen, Logout/`beforeunload`, Protokollwiderruf und Installations-Recovery existieren. Echte Electron-/Dateisystem-Race-/Power-Loss-Nachweise fehlen weiterhin; eine Signatur schützt nicht vor allen Laufzeitfehlern.
+4. **Produktions-Trust:** Demo-App-Signatur ist kein Produktions-Schlüsselmanagement. Für zusätzliche Herausgeber/Downloads fehlen Rotation/Widerruf, Update-/Rollback-Regeln und ein belastbares Berechtigungsmodell. Aktuelle Grenzen nicht vorschnell öffnen.
+5. **Release-Kette:** Signing/Notarisierung, sichere Updates, getesteter Datenexport/Restore, Installationsmatrix und Third-Party-/Markenprüfung sind offen. Kein öffentlicher Release allein aufgrund erfolgreicher Paketierung.
+6. **Reproduzierbarkeit / CI:** Kein eingechecktes Dependency-Lockfile; transitive Auflösung ist nicht vollständig festgelegt. Lockfile-/Toolchain-Strategie als separate Änderung bewerten. Aktueller CI-Status bleibt bis erfolgreicher Abfrage unbekannt; frühere rote Security-Läufe bleiben sichtbar.
+
+## 8. Priorisierte, einzeln abnehmbare Micro-Einheiten
+
+Jede Tabellenzeile ist **höchstens eine Sitzung**, keine Aufforderung, die ganze Phase abzuarbeiten. Ziel sind etwa 5–10 Minuten Implementierungsarbeit. Wenn Diagnose, Hardware oder Umfang das verhindern, nur den überprüfbaren Teil dokumentieren und sauber abschließen; größere Aufgaben vor Codeänderungen weiter teilen. Plattform-Smoke-Tests benötigen die genannten Geräte und dürfen nicht durch simulierte Erfolge ersetzt werden.
+
+### P0 – verlässliche Sicherheits- und Datenbasis
+
+| ID | Genau eine Einheit | Abnahme / Abhängigkeit |
+| --- | --- | --- |
+| S1 | Audit der bestehenden Legacy-Abhängigkeiten reproduzieren und Befund aktualisieren; noch kein Upgrade | Tatsächliche Auflösung, Audit-Exitcode und Advisories dokumentiert; vorhandene Tests weiter aktiv. |
+| S2 | Modern-Kanal isoliert auditieren und kleinsten Toolchain-Fix festlegen | Eigener nachprüfbarer Befund; Catalina-Dateien unverändert. Umsetzung eines Updates folgt in separater Einheit. |
+| D1 | Globale App-Daten und Profilwechsel für **eine** App inventarisieren, zuerst Kalender | Reproduzierbarer A→B→A-Fall mit nichtprivaten Testdaten und dokumentierter Migrationsentscheidung; kein stilles Löschen. |
+| D2 | Für Kalender einen profilbezogenen Main-Store nach Notes-/Reminders-Muster ergänzen | CRUD/Validierung, Isolation und fehlgeschlagener atomarer Schreibvorgang getestet. Noch keine GUI-Migration. |
+| D3 | Kalender-UI an diesen Store anbinden | A→B→A-GUI-Abnahme; vorhandene Daten bleiben erhalten. Altdatenimport nur nach gesondert festgelegter Zuordnung. |
+| R1 | Einen echten Electron-Test für Air-App-Logout/Protokollwiderruf ergänzen | Geladene Demo-App wird beendet, alte Requests abgelehnt, frischer Start funktioniert; keine produktiven Daten. |
+| F1 | Papierkorb-/Restore-Vertrag für den gewählten Workspace entwerfen | Bestätigung, Kollision, Wiederherstellungsziel und Fehlerfälle spezifiziert; noch keine Löschfunktion. |
+
+D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfachmigration in einer Sitzung. S1/S2 sind Release-Arbeit und können in separaten Sitzungen neben kleinen Produktfortschritten laufen; neue visuelle Funktionen beseitigen diese Freigabeblocker nicht.
+
+### P1 – vorhandenen Desktop stabilisieren, dann sichtbaren Mehrwert liefern
+
+| ID | Genau eine Einheit | Abnahme / Abhängigkeit |
+| --- | --- | --- |
+| U1 | Vorhandenes Classic-/Modern-Dock in Electron visuell prüfen | Schmale Breite, Scrollen, Fokus, Theme-Persistenz, Start/Minimieren/Wiederherstellen und reduzierte Bewegung; nur Befunde dokumentieren bzw. genau einen isolierten Defekt beheben. |
+| N1 | Bestehenden Spotify-Dateisystemfehler benutzerfreundlich abbilden | EACCES/fehlender Client/Retry getestet; Auth-, Pfad- und No-browser-Grenzen unverändert. |
+| N2 | Spotify auf **einer** tatsächlichen Plattform/Installationsart prüfen | Pfad-/OS-Übergabe und bereits laufender/fehlender Client dokumentiert; Windows-Store/macOS in weiteren Sitzungen. |
+| C1 | Offiziellen lokalen ChatGPT-Startmechanismus für eine Zielplattform prüfen | Quelle, erlaubter Startweg, Versions-/Installationsgrenzen und benötigte Rechte dokumentiert. Kein Login-/API-Key-/Browser-Umbau. |
+| C2 | Nach C1 genau diesen nativen Startadapter in bestehende Registry/Bridge integrieren | Parameterlose authentifizierte IPC, fehlender Client und Fehler getestet; weitere Plattform separat. ChatGPT bleibt der bereits gewünschte nächste neue Integrationskandidat. |
+| I1 | Eigenständigen Island-Zustandskern implementieren | Kompakt/expandiert/geschlossen und Aufräumen getestet; keine Host-API. |
+| I2 | Uhrzeit-Island im Air-OS-Desktop anbinden | Tastatur, Escape, Fokus-Rückgabe, Fensterkollisionen/kleine Breite, reduzierte Bewegung real prüfen. Abhängig von I1. |
+| Q1 | Quick Settings nur für vorhandene Air-OS-Darstellung anbinden | Bestehende Preferences ändern/persistieren; Speicherfehler sichtbar, kein zweiter Store. |
+| M1 | Ein getestetes Medienzustandsmodell für **Air Music** extrahieren | Echte Audioereignisse, Pause/Ended/Fehler und Listener-Cleanup; keine Spotify-Steuerung behaupten. |
+| M2 | Island-Medienansicht an M1 anbinden | Play/Pause und Titel folgen wirklichem Audio; verborgen/geschlossen keine unnötige Aktualisierung. |
+| P1 | **Speichervertrag umgesetzt, 23.10.2026**; siehe Pinning-Checkpoint | Geordnete ID-Verweise, begrenzt/validiert/profilisoliert; `null` gegenüber `[]`, keine App-Metadaten. Dock-Bedienung noch offen. |
+| P2 | Bestehendes Dock aus P1 rendern und Pin/Unpin anbieten | Keine doppelte Registry; fehlende/deinstallierte IDs sicher behandeln, Startwege erhalten. |
+
+### P2 – Ausbau nach abgesicherten Grundlagen
+
+| ID | Nächste begrenzte Einheit | Abnahme / Voraussetzung |
+| --- | --- | --- |
+| W1 | Zustands-/Fokusvertrag für interne und Air-App-Fenster dokumentieren | Fenstertypen getrennt, eindeutige IDs und testbare Übergänge; danach Adapter einzeln extrahieren. |
+| B1 | Ehrliches Statusmodell mit `unavailable` einführen | Statische Host-Werte nicht mehr als Messung behandeln; eine echte Quelle erst in Folgeeinheit ergänzen. |
+| T1 | Einen Idle-/Animationsmessfall erfassen | Gleiche Umgebung/Ansicht und Messdauer; CPU-/Timer-/Listener-Befund vor Optimierung, keine erfundenen Zielwerte. |
+| A1 | Einen Tastatur-/Screenreader-Ablauf absichern, zuerst Launchpad | Fokusreihenfolge, Escape und Namen; danach Spotlight/Island einzeln. |
+| X1 | Versionierten Export für **einen** Profil-Store spezifizieren/testen | Backup/Restore mit beschädigten Daten und Kollisionen; GUI und weitere Stores separat. |
+| L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
+
+Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Finder-Save-Checkpoint F2 – 23. Oktober 2026
+
+Auf `fix/air-finder-save-temp-cleanup-20261023`, ausgehend von `764ac84`, ist genau ein reproduzierbarer Datenverlust-Randfall behoben: bei Kollision mit einem bereits vorhandenen temporären Speichernamen darf der Finder dessen Datei/Symlink nicht im Fehler-Cleanup löschen. Der vorhandene Text-Save reserviert seinen temporären Pfad nun exklusiv vor dem Cleanup-Block, schreibt über den Deskriptor und schließt ihn vor der bestehenden Ersetzung. Workspace-/Auth-/Pfadgrenzen und reguläres explizites Überschreiben beim Speichern bleiben bestehen; keine neue Löschfunktion.
+
+Zwei neue Kollisionsfälle vor Fix rot, danach gezielte Finder-Suite 12/12 und Gesamtsuite 117/117 grün. Neue Tests verwenden Produktionshandler/-Resolver im Node-Adapter mit echtem Dateisystem, aber nachgebildeter Vertrauensprüfung und injizierten Fehlern; keine neue GUI-/Native-Abnahme. Erfolg, vorhandene Dateien, EEXIST, Link-Erhalt, partieller Schreibfehler, Rename-Fehler und Zugriffs-/Pfadablehnungen geprüft. Details/Grenzen in der neuesten Übergabe.
+
+Nächste kleine Aufgaben: externer Änderungskonflikt beim Speichern, datenbewahrender Unlink-Fehler beim vorhandenen Umbenennen und separat Papierkorb-/Restore-Vertrag. Bösartiger gleichzeitiger Pfadaustausch und Power-Loss benötigen weitergehende eigene Architektur-/Plattformprüfungen.
+
+## Pinning-Speicher-Checkpoint P1 – 23. Oktober 2026
+
+Auf `feat/air-dock-pin-preferences-20261023`, ausgehend von `9709376`, ist genau die Speichergrundlage ergänzt: `dockPins` im bestehenden profilbezogenen Preferences-Store und dessen unveränderter authentifizierter IPC. `null` erbt die Standardbelegung; eine geordnete Liste von höchstens 64 eindeutigen ID-Verweisen bzw. `[]` ist eine explizite Auswahl. Syntax validiert, Arrays kopiert, kein Name/Icon/Installationsstatus dupliziert. Alte Dateien bleiben kompatibel, Reset/Profiltrennung sind getestet. Eine gespeicherte ID ist keine Installations-/Startberechtigung.
+
+Vier neue Node-Tests vor Änderung rot, danach 111 Node-Tests grün. Echte Linux-Electron-IPC-Prüfung mit vier Prüfgruppen grün: Profildatei/Reload, Entfernen/leere Auswahl, unveränderte Bytes bei ungültigem Write, abgemeldete Ablehnung und getrennte Profile/Reset. Details in der neuesten Übergabe.
+
+**Noch kein sichtbares Pinning:** feste Dock-Buttons bleiben in dieser Micro-Einheit unverändert. P2 wird weiter zerlegt: **P2a** Rendering aus der vorhandenen Registry und Referenzen, einschließlich Installations-/Deinstallationsänderungen und Profilwechsel; **P2b** danach Pin/Unpin-Bedienung mit Fehlerbehandlung. Fehlende Registry-Einträge sicher aus der Darstellung auslassen, nicht als installiert ausgeben und bei noch laufendem Bootstrap nicht blind aus Präferenzen löschen. Drag-and-drop erst anschließend. Keine zweite App Registry und kein paralleles App-Inventar anlegen.
+
+## Fenster-Checkpoint W0 – 23. Oktober 2026
+
+Auf `fix/air-window-focus-20261023`, ausgehend von `a40bb24`, ist der konkrete Fokusmarker-Fehler Notes→Rechner→Notes behoben. Der vorhandene Lifecycle berücksichtigt den zuletzt fokussierten internen App-Eintrag bei seiner Ereignis-Deduplizierung. Gleicher per-App-Zustand nach Fokus einer anderen App meldet einen echten erneuten Fokusgewinn; wiederholtes Fokussieren derselben aktiven App bleibt idempotent. Minimieren/Schließen werden berücksichtigt. Keine zweite Fensterverwaltung, kein Geometrieumbau und keine Kontrolle externer Fenster.
+
+Zwei neue Node-Regressionstests und der vorhandene echte Dock-GUI-Test waren vor Fix rot. Danach 107 Node-Tests grün; echter Linux-Electron-Dock-Test mit zehn Prüfgruppen inklusive alleiniger aktiver A-Markierung nach A/B/A, tatsächlicher Z-Reihenfolge und Minimieren/Restore grün. Details/Grenzen in der neuesten Übergabe. Ältere Checkpoints nennen diesen konkreten Markerfehler noch als offen; dieser Nachtrag ersetzt diesen Status. Native Windows/macOS, Mehrmonitor, vollständige Fokus-/Tastaturnavigation und Release-Gates bleiben offen.
+
+Weitere Vorhaben bleiben **einzeln** zu bearbeiten:
+
+| Einheit | Kleiner nächster Umfang / Abnahme |
+| --- | --- |
+| W2 Fokus-Fallback | Verhalten beim Schließen/Minimieren des obersten internen Fensters reproduzieren, dann genau eine Fallback-Regel mit Tests festlegen. |
+| W3 Fenstermenü-Restore | Den bestehenden Menüpfad mit den vorhandenen Restore-/Fokus-/Animationswegen vergleichen und regressionsprüfen. |
+| W4 Task-Switcher | Zuerst ein interner Tastaturwechsel zwischen zwei vorhandenen Fenstern; keine Host-Hotkeys/Fremdfenster. |
+| W5 Snapping | Genau eine interne Randposition mit Größen-/Restore-Regel testen. |
+| W6 Fenstergeometrie | Vertrag für ein profilbezogen gespeichertes Fenster plus ungültige/alte Displaygrenzen definieren. |
+| W7 Vorschau/Übersicht | Zuerst eine Registry-/Lifecycle-basierte Liste bestehender interner Fenster; Bildvorschauen und Mission-Control-Darstellung separat. |
+| W8 Virtuelle Arbeitsflächen | Erst Zuordnungs-/Sichtbarkeitsvertrag für zwei interne Arbeitsflächen, kein Host-Workspace-Adapter. |
+
+## Notes-Mitteilungs-Checkpoint – 23. Oktober 2026
+
+Auf `feat/air-notes-island-notification-20261023`, ausgehend von `c35f31d`: nach einem tatsächlich bestätigten Air-Notes-Save erscheint eine feste Meldung samt lokalem Zeitstempel im Island-Panel. Kein Titel/Inhalt/ID im Signal, kein automatisches Öffnen/Fokuswechsel. Genau die letzte Meldung je Dokument, ohne persistente Historie; Cleanup bei Seitenende und leeres Panel nach Reload/Profilwechsel. Kein allgemeiner Notification-Service oder Berechtigungsnachweis durch DOM-Events.
+
+105 Node-Tests grün; echter Linux-Electron-GUI-Lauf mit sechs Prüfgruppen einschließlich tatsächlichem Save, erneuter Speicherung, emulierten 760/390px, Reload und zweitem Profil grün. Details/Grenzen in den neuesten Übergabedokumenten. Vorhandene Musikfunktionen wurden geprüft, aber weder Spotify-Steuerung noch Audioaufnahme/Visualizer oder erfundene Mediendaten ergänzt. Weitere App-Quellen/Berechtigungen, Gelesen/Löschen/Ruhemodus, vollständige Mediensteuerung und native Plattformabnahme bleiben separate spätere Einheiten.
+
+## Kontrollzentrum-Checkpoint Q1 – 23. Oktober 2026
+
+Auf `feat/air-control-center-dock-theme-20261023`, ausgehend von `f5cdcac`, ist **genau eine** Kachel angebunden: „Modernes Dock“ schaltet Classic/Modern im bestehenden Air-OS-Dock. Vorhandene Preferences-IPC, profilbezogener Store und Schreibwarteschlange werden verwendet; Anwendung und Erfolgshinweis erst nach bestätigtem Save, Fehler/Retry/Busy/Unavailable explizit behandelt. Kachel und vorhandenes Settings-Select spiegeln Änderungen in beide Richtungen. Kein Host-Systemzustand wird verändert oder vorgetäuscht, keine weiteren Kacheln und kein Bloom-Code.
+
+102 Node-Tests grün, einschließlich drei neuer Kontrollzentrum-/Saveadapter-Tests. Echter Linux-Electron-GUI-Lauf: sechs Prüfgruppen grün, Profildatei und Renderer-Reload sowie Maus/Tastatur/Fokus und emulierte 760/390px geprüft. Details, Grenzen und Reproduktion in den neuesten Übergabedokumenten. Q1 ist nur für diese erste Einstellung umgesetzt; weitere Kacheln werden einzeln in späteren Sitzungen entwickelt. Native Plattform-/Release-Gates und der bekannte Dock-Marker bleiben offen.
+
+## Island-Checkpoint I1/I2 – 22. Oktober 2026
+
+Auf `feat/air-dynamic-island-base-20261022`, ausgehend von `335e0ac`, ist die erste kleine Island-Einheit implementiert: schwarze zentrierte Pille unter der Menüleiste, echte lokal formatierte Uhrzeit mit vorhandener 12-/24h-Einstellung, nicht modales Panel, Maus-/Tastaturbedienung und Fokusverwaltung. Reservierter Platz für die kompakte Island, begrenzte Ebenen für Fenster/Symbole, responsive Panelbreite/-höhe und reduzierte Animationen. Keine Host-Steuerung oder weiteren Panel-Inhalte. Eigenständige Lösung ohne Bloom-Code/Assets.
+
+99 Node-Tests einschließlich drei neuer Island-Tests bestanden; echter Linux-Electron-GUI-Lauf mit acht Prüfgruppen grün. Emulierte 1440×900/760×540/390×600-Ansichten, Fokus, Bedienbarkeit maximierter Fensterleisten, bestehende Clock-/Reduced-Motion-Preferences und OS-Reduced-Motion geprüft. Native Windows/macOS und Release-Gates bleiben offen; Details/Reproduktion in den neuesten Fortschrittsdokumenten. I1/I2 sind für dieses Grundelement abgedeckt; dies ersetzt keine vollständige Desktop-/Barrierefreiheitsabnahme.
+
+Nächste Island-Einheit auf Nutzerwunsch: **Q1**, kleines Kontrollzentrum mit bestehenden Air-OS-Darstellungseinstellungen und echter Persistenz. Medien, Notifications, Kalender, Timer und Host-Status bleiben eigene spätere Einheiten. Dock-Pinning/Drag-and-drop und der bekannte Dock-Fokusmarker bleiben offen.
+
+## Dock-Checkpoint U1 – 22. Oktober 2026
+
+**Nachtrag Phase 6:** Der unten historisch offene wiederholte Fokusmarker ist in W0 behoben und der Dock-GUI-Lauf grün. Native Plattformprüfungen bleiben offen.
+
+Auf Branch `test/air-modern-dock-gui-20261022` nach Basis `b450031` in echtem Linux-Electron geprüft: Position/Classic↔Modern, Start, tatsächlicher Fensterfokus, Minimieren/Wiederherstellen, Enter und schmale emulierte Rendererbreiten. Eine CSS-Korrektur macht die aktive Modern-Hintergrundfläche sichtbar. `scripts/check-dock-gui.cjs` hält den Nachweis wiederholbar. **U1 bleibt teilweise offen:** erneuter Fokuswechsel kann die aktive Dock-Markierung veralten lassen. Finaler GUI-Test: neun erfolgreiche Prüfgruppen, ein expliziter Fehler (Exit 1); Node-Tests 96/96 grün. Keine Windows-/macOS-Abnahme. Details und Reproduktion im neuesten DEVELOPMENT_PROGRESS-Checkpoint.
+
+Der Phase-2-Nutzerauftrag priorisiert als nächste Dock-Einheit **P1 (Pinning-Datenvertrag)**, danach P2 und erst anschließend Drag-and-drop. Der offene Fokusmarker bleibt vor Freigabe zu beheben; diese Sitzung korrigierte entsprechend Nutzergrenze genau einen Fehler.
+
+## 9. Nächste drei mögliche Sitzungen und Abschlussregel
+
+Empfohlene Reihenfolge: **S1** (Audit reproduzieren), **D1** (Kalender-Profilgrenze prüfen), **U1** (vorhandenes Dock real validieren). Der bestehende ChatGPT-Wunsch wird als C1/C2 erhalten; wenn der nächste Nutzerprompt diese Integration ausdrücklich priorisiert, zuerst C1 durchführen. Diese Roadmap startet keine dieser Aufgaben automatisch.
+
+Vor jeder Sitzung GitHub-HEAD, PR/CI und Arbeitsbaum erneut prüfen. Ein eigener Branch schützt PR #11 vor parallelem Schreiben; Agentenaktivität lässt sich nicht allein aus einem unveränderten HEAD ausschließen. Keinen Force-Push, keine automatischen Merges, `main` und andere PRs erhalten. Nach genau einer Einheit: tatsächlich passende Tests, Commit und beide Übergabedokumente aktualisieren, Push nach erneuter Remote-Prüfung, Ergebnis und Grenzen berichten, dann stoppen.
+
+## Quellen
+
+- [Air-OS PR #11](https://github.com/quattrologic/Air-Os-Clean/pull/11), [geprüfter Air-OS-Commit](https://github.com/quattrologic/Air-Os-Clean/tree/eecab2a043fc62ab0802312aa09ce29dfd96c280).
+- Lokale Belege: [Architektur](ARCHITECTURE.md), [Fortschritt](DEVELOPMENT_PROGRESS.md), [nächste Schritte](NEXT_STEPS.md), [Security Audit](SECURITY_AUDIT.md), [Air-App-Sicherheit](AIRAPP_SECURITY.md), [bisherige Roadmap](../ROADMAP.md), [Paketmanifest](../package.json).
+- [Bloom am geprüften Commit](https://github.com/SehajveerSingh2005/bloom/tree/8b3d5dcdcbadc1490c2824ccec01e818b7a0233c), insbesondere die in Abschnitt 5 genannten Dateien; [Manifest/Lizenzangabe](https://github.com/SehajveerSingh2005/bloom/blob/8b3d5dcdcbadc1490c2824ccec01e818b7a0233c/package.json) und [Lizenz](https://github.com/SehajveerSingh2005/bloom/blob/8b3d5dcdcbadc1490c2824ccec01e818b7a0233c/LICENSE).

@@ -26,6 +26,12 @@ jobs:
           node --check app.js
           node --check air-os-enhancements.js
           node --check aircard-lite.js
+          node --check air-reminders.js
+          node --check src/main/reminders-store.cjs
+          node --check src/main/file-search.cjs
+          node --check air-spotlight.js
+      - name: Run Node.js unit tests
+        run: npm test
       - name: Audit production and development dependencies
         run: npm audit --audit-level=high
       - name: Check for accidentally tracked private files

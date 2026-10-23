@@ -1,0 +1,75 @@
+name: Build Air-OS Modern Channel (test only)
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: "Platform to build"
+        required: true
+        type: choice
+        default: macos
+        options:
+          - macos
+          - windows
+
+permissions:
+  contents: read
+
+jobs:
+  build-modern-macos:
+    if: inputs.platform == 'macos'
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install application dependencies
+        run: npm install --no-audit --no-fund
+      - name: Use modern Electron only for this CI workspace
+        run: npm install --no-save --no-audit --no-fund electron@44.9.0
+      - name: Verify modern runtime
+        run: npm run check:modern
+      - name: Check JavaScript and run tests
+        run: |
+          node --check main.cjs
+          node --check preload.cjs
+          npm test
+      - name: Package macOS 13+ installers
+        run: npm run pack:mac:modern
+      - name: Upload modern macOS test installers (not public releases)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-macOS-modern-test
+          path: |
+            dist/*.dmg
+            dist/*.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  build-modern-windows:
+    if: inputs.platform == 'windows'
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install application dependencies
+        run: npm install --no-audit --no-fund
+      - name: Use modern Electron only for this CI workspace
+        run: npm install --no-save --no-audit --no-fund electron@44.9.0
+      - name: Verify modern runtime
+        run: npm run check:modern
+      - name: Run Node tests
+        run: npm test
+      - name: Package Windows test installers
+        run: npm run pack:win
+      - name: Upload modern Windows test installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Windows-modern-test
+          path: dist/*.exe
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,157 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {verifyPackage}=require('./airapp-package.cjs');
+const CATALOG=Object.freeze({'com.airos.demo.timer':'demo-timer.airapp'});
+const maximum=8*1024*1024;
+function createManager({root,appPath,publicKeys}){
+ if(typeof root!=='function'||typeof appPath!=='function')throw new TypeError('Paths must be functions.');
+ function profile(user){
+  if(typeof user!=='string'||!user||user.length>80)throw new TypeError('Invalid user.');
+  const key=crypto.createHash('sha256').update(user.toLowerCase()).digest('hex');
+  return path.join(root(),'profiles',key,'airapps');
+ }
+ function manifestFor(id){
+  if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('App is not in trusted local catalog.');
+  const src=path.join(appPath(),'store','catalog',CATALOG[id]);
+  if(fs.statSync(src).size>maximum)throw new Error('Catalog package too large.');
+  const pkg=JSON.parse(fs.readFileSync(src,'utf8'));
+  if(pkg.signer!=='demo'||!publicKeys.demo)throw new Error('Unknown package signer.');
+  const verified=verifyPackage(pkg,publicKeys.demo);
+  if(verified.manifest.id!==id)throw new Error('Package identity mismatch.');
+  if(!verified.manifest.platforms.includes(process.platform))throw new Error('Incompatible platform.');
+  return verified;
+ }
+ function catalog(){
+  return Object.keys(CATALOG).map(id=>{
+   try{const {manifest:m}=manifestFor(id);return{id:m.id,name:m.name,description:m.description,version:m.version,author:m.author,permissions:m.permissions,compatible:true}}
+   catch(error){return{id,compatible:false,error:error.message}}
+  });
+ }
+ function indexFile(user){return path.join(profile(user),'installed-v1.json')}
+ function readIndex(user){
+  try{
+   const data=JSON.parse(fs.readFileSync(indexFile(user),'utf8'));
+   if(data.schemaVersion!==1||!Array.isArray(data.apps))throw new Error('Installed apps index corrupt.');
+   return data.apps.map(a=>({...a}));
+  }catch(error){if(error.code==='ENOENT')return [];throw error}
+ }
+ function journalFile(user){return path.join(profile(user),'uninstall-transaction-v1.json')}
+ function recover(user){
+  const journal=journalFile(user);
+  let transaction;
+  try{transaction=JSON.parse(fs.readFileSync(journal,'utf8'))}
+  catch(error){if(error.code==='ENOENT')return;throw new Error('App removal journal is corrupt; manual recovery required.')}
+  if(!transaction||transaction.version!==1||!Object.prototype.hasOwnProperty.call(CATALOG,transaction.id)||
+     typeof transaction.staged!=='string'||!/^\.uninstall-[0-9a-f]{24}$/.test(transaction.staged))
+    throw new Error('Invalid removal journal; manual recovery required.');
+  const base=profile(user),target=path.join(base,transaction.id),staged=path.join(base,transaction.staged);
+  const inIndex=readIndex(user).some(a=>a.id===transaction.id);
+  // Use lstat rather than existsSync, which follows and can miss dangling links.
+  const statOrNull=loc=>{try{return fs.lstatSync(loc)}catch(error){if(error.code==='ENOENT')return null;throw error}};
+  const targetStat=statOrNull(target),stagedStat=statOrNull(staged);
+  if(targetStat&&(!targetStat.isDirectory()||targetStat.isSymbolicLink()))throw new Error('Invalid app directory during recovery.');
+  if(stagedStat&&(!stagedStat.isDirectory()||stagedStat.isSymbolicLink()))throw new Error('Invalid staged directory during recovery.');
+  if(targetStat&&stagedStat)throw new Error('Conflicting app directories during recovery.');
+  if(inIndex){
+   if(stagedStat)fs.renameSync(staged,target);
+   else if(!targetStat)throw new Error('Installed application missing during recovery.');
+  }else{
+   if(targetStat)throw new Error('Untracked application directory during recovery.');
+   if(stagedStat)fs.rmSync(staged,{recursive:true,force:true});
+  }
+  fs.unlinkSync(journal);
+ }
+ function installed(user){recover(user);return readIndex(user)}
+
+ function persist(user,apps){
+  const file=indexFile(user);fs.mkdirSync(path.dirname(file),{recursive:true});
+  const tmp=file+'.'+crypto.randomBytes(6).toString('hex')+'.tmp';
+  try{fs.writeFileSync(tmp,JSON.stringify({schemaVersion:1,apps},null,2),{mode:0o600});fs.renameSync(tmp,file)}
+  finally{try{fs.unlinkSync(tmp)}catch(error){if(error.code!=='ENOENT')throw error}}
+ }
+ function install(user,id){
+  const {manifest,files}=manifestFor(id);
+  const existing=installed(user);
+  if(existing.some(a=>a.id===id))return{id,alreadyInstalled:true};
+  const base=profile(user);fs.mkdirSync(base,{recursive:true});
+  const target=path.join(base,id);
+  let targetExists=false;
+  try{fs.lstatSync(target);targetExists=true}catch(error){if(error.code!=='ENOENT')throw error}
+  if(targetExists){
+   // Retry after a crash between package rename and index commit. Never
+   // overwrite or delete an orphan; adopt only after full signed verification.
+   verifyFolder(target,manifest);
+   persist(user,[...existing,{id,name:manifest.name,version:manifest.version,entry:manifest.entry}]);
+   return{id,alreadyInstalled:false};
+  }
+  const tmp=path.join(base,'.install-'+crypto.randomBytes(8).toString('hex'));
+  // Only a directory created exclusively by this attempt may be cleaned up.
+  // A crash leftover, existing file or symlink must never enter the finally block.
+  try{fs.mkdirSync(tmp,{mode:0o700})}
+  catch(error){
+   if(error.code==='EEXIST')throw new Error('Temporärer Installationspfad bereits vorhanden. Dateien bleiben erhalten. Bitte Installation erneut versuchen.');
+   throw error;
+  }
+  try{
+   for(const [name,bytes]of files){const dst=path.join(tmp,name);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.writeFileSync(dst,bytes,{flag:'wx',mode:0o600})}
+   fs.writeFileSync(path.join(tmp,'manifest.airapp.json'),JSON.stringify(manifest),{flag:'wx',mode:0o600});
+   fs.renameSync(tmp,target);
+   try{persist(user,[...existing,{id,name:manifest.name,version:manifest.version,entry:manifest.entry}])}
+   catch(error){fs.rmSync(target,{recursive:true,force:true});throw error}
+  }finally{if(fs.existsSync(tmp))fs.rmSync(tmp,{recursive:true,force:true})}
+  return{id,alreadyInstalled:false};
+ }
+ function remove(user,id){
+  if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');
+  const current=installed(user);if(!current.some(a=>a.id===id))throw new Error('Not installed.');
+  const target=path.join(profile(user),id);
+  // Stage removal by renaming on the same filesystem. Persist the index
+  // before deleting the staged app; a failed index write restores the app.
+  const base=profile(user);
+  if(!fs.existsSync(target))throw new Error('Installed app directory is missing.');
+  const stat=fs.lstatSync(target);
+  if(!stat.isDirectory()||stat.isSymbolicLink())throw new Error('Invalid installation directory.');
+  const stageName='.uninstall-'+crypto.randomBytes(12).toString('hex');
+  const staged=path.join(base,stageName),journal=journalFile(user);
+  // Write the durable intent *before* touching the installed directory.
+  // If the process is interrupted, installed() resolves the transaction.
+  fs.writeFileSync(journal,JSON.stringify({version:1,id,staged:stageName}),{mode:0o600,flag:'wx'});
+  try{
+   fs.renameSync(target,staged);
+   persist(user,current.filter(a=>a.id!==id));
+  }catch(error){
+   // The on-disk index determines whether to restore or finish removal.
+   try{recover(user)}catch(recoveryError){error.recoveryError=recoveryError.message}
+   throw error;
+  }
+  // If this fails, leave the journal and staged folder intact for recovery.
+  recover(user);
+  return{ok:true};
+ }
+ function installedFolder(user,id){
+  if(!Object.prototype.hasOwnProperty.call(CATALOG,id))throw new Error('Unknown app ID.');
+  const record=installed(user).find(a=>a.id===id);if(!record)throw new Error('App not installed.');
+  // Verify the original signed manifest AND every installed asset again on launch.
+  // User-writable files must not silently become unsigned executable content.
+  const signed=manifestFor(id),m=signed.manifest;
+  if(record.entry!==m.entry||record.version!==m.version||record.name!==m.name)throw new Error('Installed metadata mismatch.');
+  return verifyFolder(path.join(profile(user),id),m);
+ }
+ function verifyFolder(folder,m){
+  const realFolder=fs.realpathSync(folder);
+  if(!fs.lstatSync(folder).isDirectory()||fs.lstatSync(folder).isSymbolicLink())throw new Error('Invalid installation directory.');
+  const copy=JSON.parse(fs.readFileSync(path.join(folder,'manifest.airapp.json'),'utf8'));
+  if(JSON.stringify(copy)!==JSON.stringify(m))throw new Error('Installed manifest integrity check failed.');
+  for(const {path:name,sha256} of m.files){
+   const local=path.join(folder,name);
+   const stat=fs.lstatSync(local);
+   if(!stat.isFile()||stat.isSymbolicLink())throw new Error('Invalid installed asset.');
+   const canonical=fs.realpathSync(local),relative=path.relative(realFolder,canonical);
+   if(relative==='..'||relative.startsWith('..'+path.sep)||path.isAbsolute(relative))throw new Error('Installed asset escapes application folder.');
+   if(crypto.createHash('sha256').update(fs.readFileSync(local)).digest('hex')!==sha256)throw new Error('Installed file integrity check failed.');
+  }
+  return folder;
+ }
+ return Object.freeze({catalog,installed,install,remove,installedFolder});
+}
+module.exports={createManager};
