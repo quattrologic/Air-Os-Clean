@@ -2,10 +2,16 @@ name: Build Air-OS desktop installers
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feat/air-os-architecture-foundation]
   push:
-    branches: [main]
+    branches: [main, build/air-ultimate-test-installers-20261023]
+    paths-ignore:
+      - 'docs/**'
   workflow_dispatch:
+
+concurrency:
+  group: air-os-desktop-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -46,15 +52,27 @@ jobs:
       - run: npm install --no-audit --no-fund
       - name: Run Windows regression tests before packaging
         run: npm test
+      - name: Prepare identifiable development version
+        run: node scripts/test-build.cjs prepare
       - run: npm run pack:win
-      - name: Upload Windows test installers (not a public release)
+      - name: Verify packages and collect installers with SHA-256
+        run: node scripts/test-build.cjs collect windows
+      - name: Upload Windows x64 test installer (not a public release)
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: Air-OS-Windows-test
-          path: dist/*.exe
+          name: Air-OS-Windows-x64-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/test-artifacts/windows-x64/*
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
+      - name: Upload Windows ARM64 test installer
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Windows-ARM64-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/test-artifacts/windows-arm64/*
+          if-no-files-found: error
+          retention-days: 14
 
   build-macos:
     needs: validate-source
@@ -67,14 +85,24 @@ jobs:
       - run: npm install --no-audit --no-fund
       - name: Run macOS regression tests before packaging
         run: npm test
+      - name: Prepare identifiable development version
+        run: node scripts/test-build.cjs prepare
       - run: npm run pack:mac
-      - name: Upload macOS test installers (not a public release)
+      - name: Verify packages and collect installers with SHA-256
+        run: node scripts/test-build.cjs collect macos
+      - name: Upload macOS Universal test DMG (not a public release)
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: Air-OS-macOS-test
-          path: |
-            dist/*.dmg
-            dist/*.zip
+          name: Air-OS-macOS-Universal-DMG-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/test-artifacts/macos-universal-dmg/*
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
+      - name: Upload macOS Universal test ZIP
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-macOS-Universal-ZIP-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/test-artifacts/macos-universal-zip/*
+          if-no-files-found: error
+          retention-days: 14
