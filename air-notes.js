@@ -38,6 +38,8 @@
    saving=true;saveButton.disabled=true;announce('Speichere …');
    try{
     const saved=await api.save({id:selected,title:title.value,body:body.value});
+    // Only acknowledged saves emit a fixed, content-free local notification.
+    document.dispatchEvent(new Event('air-notes-saved'));
     selected=saved.id;await refresh(selected);announce('Notiz im Benutzerprofil gespeichert.');
    }catch(error){announce(error.message||'Speichern fehlgeschlagen.');console.error(error)}
    finally{saving=false;saveButton.disabled=false}

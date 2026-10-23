@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island- und Kontrollzentrum-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -148,6 +148,12 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Notes-Mitteilungs-Checkpoint – 23. Oktober 2026
+
+Auf `feat/air-notes-island-notification-20261023`, ausgehend von `c35f31d`: nach einem tatsächlich bestätigten Air-Notes-Save erscheint eine feste Meldung samt lokalem Zeitstempel im Island-Panel. Kein Titel/Inhalt/ID im Signal, kein automatisches Öffnen/Fokuswechsel. Genau die letzte Meldung je Dokument, ohne persistente Historie; Cleanup bei Seitenende und leeres Panel nach Reload/Profilwechsel. Kein allgemeiner Notification-Service oder Berechtigungsnachweis durch DOM-Events.
+
+105 Node-Tests grün; echter Linux-Electron-GUI-Lauf mit sechs Prüfgruppen einschließlich tatsächlichem Save, erneuter Speicherung, emulierten 760/390px, Reload und zweitem Profil grün. Details/Grenzen in den neuesten Übergabedokumenten. Vorhandene Musikfunktionen wurden geprüft, aber weder Spotify-Steuerung noch Audioaufnahme/Visualizer oder erfundene Mediendaten ergänzt. Weitere App-Quellen/Berechtigungen, Gelesen/Löschen/Ruhemodus, vollständige Mediensteuerung und native Plattformabnahme bleiben separate spätere Einheiten.
 
 ## Kontrollzentrum-Checkpoint Q1 – 23. Oktober 2026
 

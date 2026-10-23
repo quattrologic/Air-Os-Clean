@@ -83,3 +83,9 @@
 .air-control-tile strong { font-size: 13px; overflow-wrap: anywhere; }
 .air-control-tile > span:last-child { color: #d3d6df; font-size: 12px; }
 .air-island-panel .air-control-status { font-size: 12px; }
+
+.air-island-notice[hidden] { display: none !important; }
+.air-island-notice { margin-top: 16px; padding: 14px; border: 1px solid #ffffff24; border-radius: 16px; background: #ffffff08; }
+.air-island-notice h3 { margin: 0; font-size: 13px; color: #f6f7fb; }
+.air-island-panel .air-island-notice p { margin: 8px 0; font-size: 13px; }
+.air-island-notice time { display: block; color: #c2c5d0; font-size: 12px; }

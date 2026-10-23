@@ -11,6 +11,17 @@
   const dockTile = document.querySelector('#air-control-dock-theme');
   const dockValue = document.querySelector('#air-control-dock-value');
   const dockStatus = document.querySelector('#air-control-dock-status');
+  const noteNotice = document.querySelector('#air-island-note-notice');
+  const noteNoticeMessage = document.querySelector('#air-island-note-message');
+  const noteNoticeTime = document.querySelector('#air-island-note-time');
+  function notesSaved() {
+    const now = new Date();
+    // No note title/body, event payload or history is retained.
+    noteNoticeMessage.textContent = 'Notiz im Air-OS-Profil gespeichert.';
+    noteNoticeTime.dateTime = now.toISOString();
+    noteNoticeTime.textContent = now.toLocaleString(undefined, {dateStyle:'short', timeStyle:'short'});
+    noteNotice.hidden = false;
+  }
   let savingDock = false;
   let timer = null;
 
@@ -96,6 +107,11 @@
     document.removeEventListener('visibilitychange', visibility);
     document.removeEventListener('air-settings-changed', settingsChanged);
     dockTile.removeEventListener('click', changeDockTheme);
+    document.removeEventListener('air-notes-saved', notesSaved);
+    noteNotice.hidden = true;
+    noteNoticeMessage.textContent = '';
+    noteNoticeTime.textContent = '';
+    noteNoticeTime.dateTime = '';
     desktop.classList.remove('has-air-island');
   }
   trigger.addEventListener('click', toggle);
@@ -106,6 +122,7 @@
   document.addEventListener('visibilitychange', visibility);
   document.addEventListener('air-settings-changed', settingsChanged);
   dockTile.addEventListener('click', changeDockTheme);
+  document.addEventListener('air-notes-saved', notesSaved);
   window.addEventListener('pagehide', dispose, {once: true});
   desktop.classList.add('has-air-island');
   settingsChanged();

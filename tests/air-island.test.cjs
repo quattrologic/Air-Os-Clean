@@ -10,7 +10,7 @@ function setup(options = {}) {
   let active = null, now = new Date('2026-10-22T13:04:00Z'), settings = {clock24:true};
   function element(id) {
     const handlers = new Map();
-    const el = {hidden:id==='air-island-panel', attrs:{}, textContent:'',
+    const el = {hidden:id==='air-island-panel'||id==='air-island-note-notice', attrs:{}, textContent:'',
       addEventListener(type, fn) { handlers.set(type, fn); },
       removeEventListener(type, fn) { if(handlers.get(type)===fn) handlers.delete(type); },
       emit(type, event={}) { return handlers.get(type)?.(event); },
@@ -22,7 +22,7 @@ function setup(options = {}) {
     elements[id]=el; return el;
   }
   const document=element('document'), window=element('window');
-  for(const id of ['air-island','air-island-toggle','air-island-panel','air-island-close','air-island-clock','desktop','air-control-dock-theme','air-control-dock-value','air-control-dock-status']) element(id);
+  for(const id of ['air-island','air-island-toggle','air-island-panel','air-island-close','air-island-clock','desktop','air-control-dock-theme','air-control-dock-value','air-control-dock-status','air-island-note-notice','air-island-note-message','air-island-note-time']) element(id);
   document.querySelector=selector=>elements[selector.slice(1)];
   if(options.available!==false)window.airOS={preferences:{}};
   const save=options.save || (async dockTheme=>{settings={...settings,dockTheme};document.emit('air-settings-changed');});
@@ -125,4 +125,19 @@ test('Control Center save adapter uses real profile store, survives restart and 
     assert.equal(cache.dockTheme,'classic');assert.equal(store.load('alice').dockTheme,'classic');
     await assert.rejects(context.persistAirDockTheme('unknown'),/Dock-Theme/);
   }finally{fs.rmSync(folder,{recursive:true,force:true});}
+});
+
+test('Island shows only the latest real Notes save signal without content or focus interruption',()=>{
+  const h=setup(),notice=h.elements['air-island-note-notice'],message=h.elements['air-island-note-message'],time=h.elements['air-island-note-time'];
+  assert.equal(notice.hidden,true);assert.equal(message.textContent,'');
+  h.document.emit('air-notes-saved',{detail:{title:'Private title',body:'<script>secret</script>'}});
+  assert.equal(notice.hidden,false);assert.equal(message.textContent,'Notiz im Air-OS-Profil gespeichert.');
+  assert.equal(time.dateTime,'2026-10-22T13:04:00.000Z');
+  assert.equal(h.elements['air-island-panel'].hidden,true);assert.equal(h.active,null);
+  h.tick();h.document.emit('air-notes-saved');assert.equal(time.dateTime,'2026-10-22T13:05:00.000Z');
+  assert.equal(message.textContent,'Notiz im Air-OS-Profil gespeichert.');
+  h.window.emit('pagehide');assert.equal(notice.hidden,true);assert.equal(message.textContent,'');
+  assert.equal(time.dateTime,'');
+  h.document.emit('air-notes-saved');assert.equal(notice.hidden,true,'Disposed document no longer receives notifications');
+  const fresh=setup();assert.equal(fresh.elements['air-island-note-notice'].hidden,true,'New profile document starts empty');
 });
