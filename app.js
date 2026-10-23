@@ -365,25 +365,23 @@ function clampAppWindow(win){
 
 function openApp(id){
  if(id==='spotify'){
-  if(!window.airOS?.launchSpotify){toast('Spotify-Desktop-Start ist nur in der Air-OS Desktop-App verfügbar.');return}
-  window.airOS.launchSpotify().then(()=>toast('Start an Spotify übergeben. Das Spotify-Fenster wird vom Betriebssystem verwaltet.')).catch(error=>toast(error.message||'Spotify konnte nicht gestartet werden.'));
-  return;
+  if(!window.airOS?.launchSpotify){const error='Spotify-Desktop-Start ist nur in der Air-OS Desktop-App verfügbar.';toast(error);return {ok:false,error}}
+  return window.airOS.launchSpotify().then(()=>{toast('Start an Spotify übergeben. Das Spotify-Fenster wird vom Betriebssystem verwaltet.');return {ok:true}}).catch(error=>{const message=error.message||'Spotify konnte nicht gestartet werden.';toast(message);return {ok:false,error:message}});
  }
  const registered=window.airAppRegistry?.get(id);
  if(registered?.origin==='store'){
-  if(!window.airOS?.appStore?.launch){toast('Diese App kann nur in Air-OS geöffnet werden.');return}
-  window.airOS.appStore.launch(id).catch(error=>toast(error.message||'App konnte nicht geöffnet werden.'));
-  return;
+  if(!window.airOS?.appStore?.launch){const error='Diese App kann nur in Air-OS geöffnet werden.';toast(error);return {ok:false,error}}
+  return window.airOS.appStore.launch(id).then(()=>({ok:true})).catch(error=>{const message=error.message||'App konnte nicht geöffnet werden.';toast(message);return {ok:false,error:message}});
  }
- if(!appNames[id])return;
- if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return}
+ if(!appNames[id])return {ok:false,error:'Diese App ist nicht verfügbar.'};
+ if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
  catch (error) {
   console.error("Air-OS konnte die App nicht vorbereiten:", id, error);
   toast(appNames[id] + " konnte nicht geöffnet werden. Bitte Konsole prüfen.");
-  return;
+  return {ok:false,error:appNames[id]+" konnte nicht geöffnet werden."};
  }
  win.innerHTML=`<div class="window-titlebar"><div class="traffic"><button class="close" aria-label="Fenster schließen"></button><button class="minimize" aria-label="Minimieren"></button><button class="maximize" aria-label="Maximieren"></button></div><div class="window-title">${id==="finder"?"Dokumente":appNames[id]}</div></div><div class="window-content">${body}</div>`; paintAppIcons(win); const resizeHandle=document.createElement("div");resizeHandle.className="window-resize-handle";resizeHandle.setAttribute("role","separator");resizeHandle.setAttribute("aria-label","Fenstergröße ändern");win.appendChild(resizeHandle);
  windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);if(id==="launchpad")window.airLaunchpad?.mount(win);if(id==="store")window.airAppStore?.mount(win);normalizeAppWindow(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
@@ -470,6 +468,7 @@ function openApp(id){
  if(id==="stocks")initStocksApp(win);
  if(id==="aircard" && window.airCardLiteApp) window.airCardLiteApp.init(win);
  if((id==="translator"||id==="ai") && window.airExtraApps)window.airExtraApps.mount(id,win);
+ return {ok:true};
 }
 let calcExpr="";
 function calcEvaluate(expression){
@@ -823,6 +822,7 @@ for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-
     event.preventDefault();
     event.stopPropagation();
     const id = launcher.dataset.app;
+    if(id==='launchpad'&&window.airStartMenu?.enabled()){window.airStartMenu.toggle();return}
     if (id && window.airAppRegistry?.get(id)) openApp(id);
     else if (id) toast("Diese App ist noch nicht verfügbar.");
   }, true);
