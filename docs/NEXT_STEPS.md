@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – Windows: verwaisten Preferences-Temp-Symlink vor Open abweisen
+
+23. Oktober 2026. Ausgangs-HEAD `eb3f3bc62641afdd4a0fc2a5a66f6dc3fa053f73` (PR #12), eigener Branch `build/air-ultimate-test-installers-20261023`. PR #11/Entwicklungsbase unverändert `eecab2a`, main `a1f3e12`. PR #12 zeigt laut öffentlicher Seite auf main; passende Entwicklungsbase ist dessen bestätigter Vorfahr `feat/air-os-architecture-foundation` (0/13). Änderung der PR-Base per `gh pr edit` versucht, GraphQL Forbidden; nicht erfolgt.
+
+Vom Benutzer bereitgestellter Original-Log zu Run 39987254742, Windows-Job 120529625679: 134 Tests, 133 bestanden, einziger Fehler `dangling temporary symlink cannot create its target and remains untouched`, erwartetes EEXIST blieb aus. Öffentliche Jobseite bestätigt den fehlgeschlagenen Testschritt und übersprungene Paketierung. Direkter Log-/API-Zugriff hier gesperrt. Das ist eine Windows-Open-/Reparse-Point-Semantik mit Sicherheitswirkung, keine zu entfernende Assertion: wx allein verhinderte in diesem Fall nicht das Folgen eines verwaisten Links.
+
+Fix nur im bestehenden Preferences-Writer: vor exklusiver Reservierung `lstatSync(temp)` statt linkfolgendem existsSync; jede bestehende Directory-Entry mit EEXIST abweisen, andere Inspektionsfehler fail-closed. Kein Cleanup auf solchen fremden Pfaden. Anschließend unverändert wx/0600, Dateideskriptor-Schreiben/Schließen, Rename und nur eigener Cleanup. Zwei neue Regressionstests vor Fix rot/nach Fix grün, einschließlich eines expliziten Windows-Semantik-Dateisystem-Doubles; ursprünglicher Test erhalten. Kein allgemeiner Schutz vor bösartigem konkurrierendem Austausch zwischen lstat/Open behauptet; dieser Race bleibt eine bekannte Grenze.
+
+`node --test tests/preferences-write.test.cjs tests/preferences.test.cjs tests/dock-pins.test.cjs`: **15/15 bestanden** auf Linux (gezielter Lauf im zusammenhängenden Build-Vorbereitungslauf ebenfalls grün). Keine echte Windows-/macOS-Abnahme behauptet. Keine Tests zur Umgehung des Fehlers deaktiviert/übersprungen. Testbuild-Pipeline und Artefaktprüfung folgen als nächster gesicherter Schritt im selben autorisierten Installer-Auftrag, aus einem danach festgelegten identischen Commit für beide Plattformen. Keine öffentliche Veröffentlichung, keine Änderungen an main oder fremden Branches.
+
+Nächste drei kontrollierte Schritte: (1) vorbereitete Paket-/Architektur-/Prüfsummenprüfung samt Tests sichern; (2) gemeinsamen nativen Windows/macOS-Testlauf auf dem Testbranch starten; (3) tatsächlich hochgeladene Artefakte/Größen/Hashes prüfen und echte Downloadlinks dokumentieren. Audit/Signing/Notarisierung und native Hardwaretests bleiben offen.
+
+---
+
 # Aktueller Checkpoint – Desktop-CI: Plattformtests vor Windows-/macOS-Paketierung
 
 23. Oktober 2026. Genau eine Micro-Einheit: **vorhandene Node-Regressionstests auf beiden nativen Desktop-CI-Runnern vor der Paketierung verbindlich ausführen**. Ausgangs-Commit `827d1ef0203b61e01c3d600ff7398f3da3c2bc9d` auf `fix/air-preferences-exclusive-temp-20261023` per GitHub bestätigt; main `a1f3e123200b17f3d5b1d6275dd39cd526d5f96e`, PR #11 `eecab2a043fc62ab0802312aa09ce29dfd96c280`. Remote-Branch-Refs geprüft, lokaler Ausgangsarbeitsbaum sauber. Eigener Branch `fix/air-desktop-platform-test-gates-20261023`; main/PR #11/fremde Branches unverändert.

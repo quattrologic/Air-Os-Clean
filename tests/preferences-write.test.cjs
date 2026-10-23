@@ -65,6 +65,33 @@ test('dangling temporary symlink cannot create its target and remains untouched'
   assert.deepEqual(fs.readFileSync(h.file),before);
  }finally{h.close()}
 });
+test('Windows-style dangling-link open is rejected before it can create a target',t=>{
+ for(const action of Object.values(actions)){
+  const h=fixture();try{
+   const missing=path.join(h.root,'must-not-create.json'),before=fs.readFileSync(h.file);
+   try{fs.symlinkSync(missing,h.temp)}catch(error){if(process.platform==='win32'&&error.code==='EPERM'){t.skip('Symlink permission unavailable');return}throw error}
+   let opens=0;
+   // Explicit filesystem double for the observed Windows behavior. Linux's
+   // native wx would reject this link, concealing a missing preflight check.
+   h.filesystem.openSync=(file,flags,mode)=>{
+    opens++;
+    if(file===h.temp&&fs.lstatSync(file).isSymbolicLink()&&!fs.existsSync(file))return fs.openSync(file,'w',mode);
+    return fs.openSync(file,flags,mode);
+   };
+   assert.throws(()=>action(h.store),{code:'EEXIST'});
+   assert.equal(opens,0);assert.equal(fs.existsSync(missing),false);
+   assert.equal(fs.readlinkSync(h.temp),missing);assert.deepEqual(fs.readFileSync(h.file),before);
+  }finally{h.close()}
+ }
+});
+test('temporary path inspection errors fail closed without replacing saved settings',()=>{
+ const h=fixture();try{
+  const before=fs.readFileSync(h.file);
+  h.filesystem.lstatSync=file=>{if(file===h.temp)throw Object.assign(new Error('Inspection denied'),{code:'EACCES'});return fs.lstatSync(file)};
+  assert.throws(()=>h.store.update('Alice',{clock24:true}),{code:'EACCES'});
+  assert.deepEqual(fs.readFileSync(h.file),before);assert.equal(fs.existsSync(h.temp),false);
+ }finally{h.close()}
+});
 test('partial write closes its descriptor, preserves saved preferences and permits retry',()=>{
  const h=fixture();let descriptor;
  try{

@@ -52,6 +52,11 @@ function createStore({root}){
  function write(username,settings){
   const file=filename(username);fs.mkdirSync(path.dirname(file),{recursive:true});
   const temp=file+'.'+crypto.randomBytes(8).toString('hex')+'.tmp';
+  // Windows can follow a dangling reparse point even for an exclusive open.
+  // existsSync follows links, so inspect the directory entry itself first.
+  let occupied=false;
+  try{fs.lstatSync(temp);occupied=true}catch(error){if(error.code!=='ENOENT')throw error}
+  if(occupied)throw Object.assign(new Error('Temporärer Einstellungspfad bereits vorhanden. Bitte erneut versuchen.'),{code:'EEXIST'});
   // Reserve before entering cleanup: a collision belongs to someone else.
   // Write through the exclusive descriptor so an existing symlink is not followed.
   const descriptor=fs.openSync(temp,'wx',0o600);
