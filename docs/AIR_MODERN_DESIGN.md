@@ -174,3 +174,9 @@ Neuer Auftrag ersetzt die bisherigen 2px/6px-Floating-Abstände: Modern-Island o
 ## Neue Bildreferenzen – Logo-Schritt
 
 Die fünf Bilder liegen nun sichtbar vor; alte Blockade aufgehoben. Bild 3 ist das weiße Birnenlogo auf schwarzem Grund. Vorhandene 96×96-PNG-Quelle `assets/air-logo.png` visuell passend, ohne Umfärbung als PNG-Daten im vorhandenen Launchpad-SVG eingebettet. Nur Modern verwendet es, Classic behält das Grid; andere App-Icons unverändert. Kein neuer Paket-/Installerpfad. Bild 5: Referenzpanel näherungsweise 430×284px, dunkler Grund, schmale Statuszeile, 2×2-Tiles, sechs Kreisaktionen, zwei flache Slider. Diese Maße sind visuelle Ableitungen, keine behaupteten Pixel-Samples. Folgender Schritt setzt diese Struktur mit ehrlichen Funktionszuständen um.
+
+## C2 – Referenzpanel und Original-Startlogo umgesetzt
+
+Modern: schwarzes oberkantiges 430×284px-Panel (1650/1920), 366×284px bei x12/y44 auf 390px. Statuszeile, vier Kacheln, sechs 36px-Kreise, zwei Slider; Dock bleibt 358×68px unten0, geschlossene Island oben0. Screenshot-Vergleich, Maße und ehrliche Funktionsmatrix: [AIR_CONTROL_CENTER_COMPARISON.md](AIR_CONTROL_CENTER_COMPARISON.md). Bildblockade aufgehoben; frühere Abschnitte sind Historie.
+
+Desktop- und Dock-Preferences unabhängig, nur bestätigte Speicherung; Classic zeigt ursprüngliches Layout und Grid. Wi-Fi/Bluetooth/Focus/Übersicht/Host-Helligkeit deaktiviert; Volume nur für echte lokale Air-Music-Quelle. Keine erfundenen Statuswerte. 183 Node-Tests und echte Electron-Prüfung aller drei Größen erfolgreich. Vorhandene PNG-Bytes des weißen Air-OS-Birnenlogos unverändert, alle anderen bunten SVG-Icons bleiben identisch. Keine Installeränderung oder fremder GPL-Code. Nächster Gestaltungsschritt D1; Fotowolken und native Hardwareabnahme bleiben offen.

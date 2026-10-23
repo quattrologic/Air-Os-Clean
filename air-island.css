@@ -131,3 +131,55 @@ html[data-desktop-theme="modern"] .air-island-toggle {
   border-radius:0 0 22px 22px;
   box-shadow:0 3px 10px #0003;
 }
+
+/* C2: proportions from supplied reference 5; unavailable host controls stay honest. */
+.air-control-modern{display:none!important}
+html[data-desktop-theme="modern"] .air-control-modern{display:flex!important}
+html[data-desktop-theme="modern"] .air-island{width:min(430px,calc(100vw - 24px))}
+html[data-desktop-theme="modern"] .air-island-panel{padding:14px 16px 12px;background:#080d10ed;border-color:#ffffff15;backdrop-filter:blur(20px);border-radius:18px;box-shadow:0 10px 24px #0004}
+html[data-desktop-theme="modern"] .air-island-panel>header{position:relative;display:block;height:24px}
+html[data-desktop-theme="modern"] #air-island-title{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+html[data-desktop-theme="modern"] .air-control-topline{display:grid!important;grid-template-columns:1fr 1fr 1fr;align-items:center;height:24px;font-size:10px;font-weight:600;color:#bfc8c9;padding-right:24px}
+.air-control-topline time{text-align:center;color:#f6f8f7;font-size:13px;font-variant-numeric:tabular-nums}
+.air-control-topline>span:last-child{text-align:right}
+html[data-desktop-theme="modern"] .air-island-close{position:absolute;right:0;top:0;min-width:24px;min-height:24px;width:24px;height:24px;border:0;background:transparent;font-size:15px}
+html[data-desktop-theme="modern"] .air-control-grid{gap:10px;margin-top:14px}
+html[data-desktop-theme="modern"] .air-control-tile{display:grid!important;grid-template-columns:22px minmax(0,1fr);gap:1px 7px;align-content:center;min-height:46px;padding:6px 12px;border-radius:12px;border-color:#ffffff0e;background:#ffffff0b;text-align:left}
+html[data-desktop-theme="modern"] .air-control-tile>span:first-child{grid-column:1;grid-row:1/3;align-self:center;font-size:18px}
+html[data-desktop-theme="modern"] .air-control-tile strong{grid-column:2;font-size:11px;line-height:14px}
+html[data-desktop-theme="modern"] .air-control-tile>span:last-child{grid-column:2;font-size:9px;line-height:12px;color:#9fa8ab}
+html[data-desktop-theme="modern"] .air-control-tile[aria-pressed="true"]{background:#f8faf9;color:#111719;border-color:#e0e4e3}
+html[data-desktop-theme="modern"] .air-control-tile[aria-pressed="true"]>span:last-child{color:#50595b}
+html[data-desktop-theme="modern"] .air-control-tile:disabled{opacity:.52;cursor:not-allowed}
+html[data-desktop-theme="modern"] .air-control-shortcuts{justify-content:space-between;gap:8px;margin-top:12px}
+.air-control-shortcuts button{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:1px solid #ffffff12;border-radius:50%;background:#ffffff08;color:#dce5e4;font:inherit;font-size:19px;cursor:pointer}
+.air-control-shortcuts button:hover:not(:disabled){background:#ffffff20}
+.air-control-shortcuts button:disabled{opacity:.35;cursor:not-allowed}
+.air-control-shortcuts button:focus-visible,.air-control-sliders input:focus-visible{outline:2px solid #b0e5ad;outline-offset:2px}
+html[data-desktop-theme="modern"] .air-control-sliders{flex-direction:column;gap:8px;margin-top:12px}
+.air-control-sliders label{display:grid;grid-template-columns:78px minmax(0,1fr) 34px;align-items:center;gap:10px;font-size:10px;color:#d2d8d8}
+.air-control-sliders input{appearance:none;width:100%;height:6px;min-width:0;border:0;border-radius:6px;background:#ffffff1c;accent-color:#f8faf9}
+.air-control-sliders input::-webkit-slider-thumb{appearance:none;width:10px;height:10px;border-radius:50%;background:#f8faf9}
+.air-control-sliders input:disabled{opacity:.35;cursor:not-allowed}
+.air-control-sliders input:disabled::-webkit-slider-thumb{background:#6a7376}
+.air-control-sliders output{text-align:right;font-size:10px}
+.air-control-sliders #air-control-slider-help{font-size:9px;line-height:12px;margin:0;color:#8f9c9f}
+html[data-desktop-theme="modern"] .air-island-panel .air-control-status{font-size:10px;line-height:14px;margin:8px 0 0;color:#a9b4b5}
+
+.air-control-shortcuts svg{width:18px;height:18px;display:block}
+
+/* Expanded desktop panel shares the upper edge, as in reference 5. */
+html[data-desktop-theme="modern"] .air-island-panel{
+  margin-top:calc(0px - clamp(36px,2.34375vw,45px));
+  border-radius:0 0 18px 18px;
+  padding:12px 16px 8px;
+  background:#080d10fa;
+}
+html[data-desktop-theme="modern"] .air-control-tile{min-height:45px}
+html[data-desktop-theme="modern"] .air-control-shortcuts{margin-top:10px}
+.air-control-shortcuts button{flex-basis:36px;width:36px;height:36px}
+html[data-desktop-theme="modern"] .air-control-sliders{margin-top:10px}
+html[data-desktop-theme="modern"] .air-island-panel .air-control-status{margin-top:4px}
+@media(max-width:600px){
+  html[data-desktop-theme="modern"] .air-island-panel{margin-top:8px;border-radius:18px}
+}

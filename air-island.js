@@ -14,6 +14,38 @@
   const noteNotice = document.querySelector('#air-island-note-notice');
   const noteNoticeMessage = document.querySelector('#air-island-note-message');
   const noteNoticeTime = document.querySelector('#air-island-note-time');
+  const desktopTile=document.querySelector('#air-control-desktop-theme');
+  const desktopValue=document.querySelector('#air-control-desktop-value');
+  const controlClock=document.querySelector('#air-control-clock');
+  const noticeButton=document.querySelector('#air-control-notice');
+  const volume=document.querySelector('#air-control-volume');
+  const volumeValue=document.querySelector('#air-control-volume-value');
+  let savingDesktop=false,observedAudio=null;
+  function syncDesktop(){
+    if(!desktopTile)return;
+    desktopTile.setAttribute('aria-pressed',String(readAirSettings().desktopTheme==='modern'));
+    desktopTile.setAttribute('aria-disabled',String(savingDesktop||!window.airOS?.preferences));
+    desktopValue.textContent=readAirSettings().desktopTheme==='modern'?'Air Modern':'Classic';
+  }
+  async function changeDesktop(){
+    if(savingDesktop||desktopTile.getAttribute('aria-disabled')==='true')return;
+    savingDesktop=true;syncDesktop();dockStatus.textContent='Desktop-Design wird gespeichert …';
+    try{await persistAirDesktopTheme(readAirSettings().desktopTheme==='modern'?'classic':'modern');dockStatus.textContent='Desktop-Design gespeichert.'}
+    catch{dockStatus.textContent='Desktop-Design konnte nicht gespeichert werden. Bitte erneut versuchen.'}
+    finally{savingDesktop=false;syncDesktop()}
+  }
+  function localAudio(){try{const audio=window.Amplitude?.getAudio?.();return audio&&(audio.src||audio.currentSrc)&&typeof audio.volume==='number'?audio:null}catch{return null}}
+  function syncVolume(){
+    if(!volume)return;
+    const audio=localAudio();volume.disabled=!audio;volume.value=audio?String(Math.round(audio.volume*100)):'0';volumeValue.textContent=audio?volume.value+'%':'—';
+  }
+  function changeVolume(){const audio=localAudio();if(audio)audio.volume=Math.max(0,Math.min(1,Number(volume.value)/100));syncVolume()}
+  function watchVolume(){
+    observedAudio?.removeEventListener('volumechange',syncVolume);observedAudio=localAudio();
+    observedAudio?.addEventListener('volumechange',syncVolume);syncVolume();
+  }
+  function quickAction(event,action){event.stopPropagation();close(false,true);action()}
+
   function notesSaved() {
     const now = new Date();
     // No note title/body, event payload or history is retained.
@@ -21,6 +53,7 @@
     noteNoticeTime.dateTime = now.toISOString();
     noteNoticeTime.textContent = now.toLocaleString(undefined, {dateStyle:'short', timeStyle:'short'});
     noteNotice.hidden = false;
+    if(noticeButton){noticeButton.disabled=false;noticeButton.title='Letzte Notes-Mitteilung lesen'}
   }
   let savingDock = false;
   let timer = null;
@@ -38,8 +71,8 @@
   function settingsChanged() {
     if(closingAnimation)finishClose();
     updateClock();
-    syncDockTheme();
-    if (!savingDock && dockTile.getAttribute('aria-disabled') !== 'true')
+    syncDockTheme();syncDesktop();
+    if (!savingDock && !savingDesktop && dockTile.getAttribute('aria-disabled') !== 'true')
       dockStatus.textContent = 'Dock-Design für dein Air-OS-Profil.';
   }
   async function changeDockTheme() {
@@ -68,12 +101,14 @@
     clock.textContent = now.toLocaleTimeString(undefined, {
       hour: '2-digit', minute: '2-digit', hour12: settings.clock24 === false
     });
+    if(controlClock){controlClock.dateTime=clock.dateTime;controlClock.textContent=clock.textContent}
     trigger.setAttribute('aria-label', 'Air Island, ' + clock.textContent + ', öffnen oder schließen');
   }
   function finishClose() {
     const motion=closingAnimation;closingAnimation=null;
     if(motion){motion.onfinish=null;motion.cancel()}
     panel.hidden=true;panel.inert=false;panel.classList.remove('is-closing');
+    observedAudio?.removeEventListener('volumechange',syncVolume);observedAudio=null;
   }
   function close(restoreFocus = false, immediate = false) {
     if (panel.hidden) return;
@@ -100,7 +135,7 @@
     if(startMenu&&!startMenu.hidden)window.airStartMenu?.toggle();
     panel.hidden = false;panel.inert=false;
     trigger.setAttribute('aria-expanded', 'true');
-    closeButton.focus();
+    closeButton.focus();watchVolume();
   }
   function keydown(event) {
     if (!panel.hidden && event.key === 'Escape') {
@@ -130,11 +165,13 @@
     document.removeEventListener('visibilitychange', visibility);
     document.removeEventListener('air-settings-changed', settingsChanged);
     dockTile.removeEventListener('click', changeDockTheme);
+    desktopTile?.removeEventListener('click',changeDesktop);volume?.removeEventListener('input',changeVolume);
     document.removeEventListener('air-notes-saved', notesSaved);
     noteNotice.hidden = true;
     noteNoticeMessage.textContent = '';
     noteNoticeTime.textContent = '';
     noteNoticeTime.dateTime = '';
+    if(noticeButton)noticeButton.disabled=true;
     desktop.classList.remove('has-air-island');
   }
   trigger.addEventListener('click', toggle);
@@ -145,6 +182,16 @@
   document.addEventListener('visibilitychange', visibility);
   document.addEventListener('air-settings-changed', settingsChanged);
   dockTile.addEventListener('click', changeDockTheme);
+  desktopTile?.addEventListener('click',changeDesktop);
+  volume?.addEventListener('input',changeVolume);
+  document.querySelector('#air-control-apps')?.addEventListener('click',event=>quickAction(event,()=>{if(window.airStartMenu?.enabled())window.airStartMenu.toggle();else{openApp('launchpad');document.querySelector('.alp-search')?.focus()}}));
+  document.querySelector('#air-control-settings')?.addEventListener('click',event=>quickAction(event,()=>{openApp('settings');document.querySelector('#air-desktop-theme')?.focus()}));
+  document.querySelector('#air-control-refresh')?.addEventListener('click',async()=>{
+    try{await airSettingsWrites;const saved=await window.airOS.preferences.get();airSettingsCache=saved;applyAirSettings(saved);dockStatus.textContent='Einstellungen aktualisiert.'}
+    catch{dockStatus.textContent='Einstellungen konnten nicht aktualisiert werden.'}
+  });
+  noticeButton?.addEventListener('click',()=>{noteNotice.focus();noteNotice.scrollIntoView({block:'nearest'})});
+
   document.addEventListener('air-notes-saved', notesSaved);
   window.addEventListener('pagehide', dispose, {once: true});
   desktop.classList.add('has-air-island');

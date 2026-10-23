@@ -17,12 +17,14 @@ function setup(options = {}) {
       focus() { active=el; },
       setAttribute(key, value) { el.attrs[key]=value; },
       getAttribute(key) { return el.attrs[key]; },
-      classList:{add(){},remove(){}}
+      classList:{add(){},remove(){}},scrollIntoView(){}
     };
     elements[id]=el; return el;
   }
   const document=element('document'), window=element('window');
   for(const id of ['air-island','air-island-toggle','air-island-panel','air-island-close','air-island-clock','desktop','air-control-dock-theme','air-control-dock-value','air-control-dock-status','air-island-note-notice','air-island-note-message','air-island-note-time']) element(id);
+  if(options.controls){for(const id of ['air-control-desktop-theme','air-control-desktop-value','air-control-clock','air-control-notice','air-control-volume','air-control-volume-value','air-control-apps','air-control-settings','air-control-refresh'])element(id);elements['air-control-notice'].disabled=true;}
+  if(options.audio)window.Amplitude={getAudio:()=>options.audio};
   document.querySelector=selector=>elements[selector.slice(1)];
   if(options.available!==false)window.airOS={preferences:{}};
   const motions=[];window.matchMedia=()=>({matches:!!options.reduced});
@@ -34,7 +36,7 @@ function setup(options = {}) {
   const timers=new Map(); let serial=0;
   class Clock extends Date { constructor(){super(now.getTime());} }
   vm.runInNewContext(fs.readFileSync(path.join(root,'air-island.js'),'utf8'), {
-    window, document, Date:Clock, readAirSettings:()=>settings, persistAirDockTheme:save,
+    window, document, Date:Clock, readAirSettings:()=>settings, persistAirDockTheme:save, persistAirDesktopTheme:options.desktopSave||(async value=>{settings={...settings,desktopTheme:value};document.emit('air-settings-changed')}),
     setInterval(fn){timers.set(++serial,fn);return serial;},clearInterval(id){timers.delete(id);}
   });
   return {elements,document,window,timers,motions,get active(){return active;},
@@ -166,4 +168,24 @@ test('both reduced-motion preferences bypass Modern exit animation; Classic stay
 });
 test('opening Island first dismisses the existing start menu without replacing either component',()=>{
  const h=setup({startMenu:true});h.elements['air-island-toggle'].emit('click');assert.equal(h.elements['air-start-menu'].hidden,true);assert.equal(h.elements['air-island-panel'].hidden,false);assert.equal(h.active,h.elements['air-island-close']);
+});
+
+test('reference status line shares the real clock; Desktop tile confirms writes and reports failed writes',async()=>{
+ let fail=true;const h=setup({controls:true,settings:{desktopTheme:'modern'},desktopSave:async()=>{if(fail)throw Error('disk full');h.settings({desktopTheme:'classic'})}}),tile=h.elements['air-control-desktop-theme'];
+ assert.equal(h.elements['air-control-clock'].textContent,h.elements['air-island-clock'].textContent);
+ await tile.emit('click');assert.match(h.elements['air-control-dock-status'].textContent,/nicht gespeichert/);assert.equal(tile.attrs['aria-pressed'],'true');
+ fail=false;await tile.emit('click');assert.equal(tile.attrs['aria-pressed'],'false');assert.match(h.elements['air-control-dock-status'].textContent,/gespeichert/);
+ h.window.emit('pagehide');await tile.emit('click');assert.equal(tile.attrs['aria-pressed'],'false');
+});
+test('Volume controls only a loaded local Air Music audio element and releases its listener on close',()=>{
+ const handlers=new Map(),audio={src:'blob:local-test',volume:.75,addEventListener:(name,fn)=>handlers.set(name,fn),removeEventListener:name=>handlers.delete(name)};
+ const h=setup({controls:true,audio}),volume=h.elements['air-control-volume'];h.elements['air-island-toggle'].emit('click');
+ assert.equal(volume.disabled,false);assert.equal(h.elements['air-control-volume-value'].textContent,'75%');volume.value='32';volume.emit('input');assert.equal(audio.volume,.32);
+ audio.volume=.6;handlers.get('volumechange')();assert.equal(volume.value,'60');h.elements['air-island-close'].emit('click');assert.equal(handlers.size,0);
+ const unavailable=setup({controls:true});unavailable.elements['air-island-toggle'].emit('click');assert.equal(unavailable.elements['air-control-volume'].disabled,true);assert.equal(unavailable.elements['air-control-volume-value'].textContent,'—');
+});
+test('notification shortcut is available only after a real Notes signal and is cleared on profile disposal',()=>{
+ const h=setup({controls:true}),button=h.elements['air-control-notice'];assert.equal(button.disabled,true);
+ h.document.emit('air-notes-saved');assert.equal(button.disabled,false);button.emit('click');assert.equal(h.active,h.elements['air-island-note-notice']);
+ h.window.emit('pagehide');assert.equal(button.disabled,true);assert.equal(h.elements['air-island-note-message'].textContent,'');
 });

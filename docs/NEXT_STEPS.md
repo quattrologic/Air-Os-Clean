@@ -1,3 +1,19 @@
+# Aktueller Checkpoint – C2: sichtbarer Referenzabgleich abgeschlossen
+
+23. Oktober 2026. Ausgangsstand Randkorrektur **71139f562ea751f546e01efc6e5006d8961a803b**, separater Branch **theme/air-modern-reference-c2-20261023**. Schritt 1 Logo separat in **a6d25a3** gesichert, Schritt 2 Kontrollzentrum in eigenem Folgecommit. Die früher fehlenden Bilder sind jetzt sichtbar; frühere Blockade ist aufgehoben. Neuer SHA steht im Abschlussbericht.
+
+Modern übernimmt das vorhandene weiße Birnen-PNG ausschließlich für den Startbutton; Classic behält Grid. Neues Kontrollzentrum nach Bild 5: dunkles Panel, echte Statusuhr, 2×2-Kacheln, sechs runde Aktionen, zwei Slider. Dock-/Desktop-Design nutzen bestätigte bestehende Preferences-Schreibwege. Apps, Settings, erneutes Einlesen und echte Notes-Mitteilung verwenden vorhandene Dienste. Wi-Fi, Bluetooth, Focus, Fensterübersicht und native Helligkeit ausdrücklich deaktiviert; lokale Volume-Steuerung erst mit echter Air-Music-Quelle. Keine falschen Hardwareprozente oder Demo-Erfolge.
+
+**183/183 Node-Tests bestanden**, keine Skips/Fehler; Syntax, Catalina-Konfiguration und Diff geprüft. Drei neue Kontrollregressionen und Logo-Regression; bestehende Pin-/Profil-/Speicher-/Sicherheitsregressionen erhalten. Echter Linux/Electron-32.3.3-/Xvfb-Test an allen drei Größen bestanden, inklusive Suche/Start/Pin/Unpin, Escape/Fokus, Classic-Rückkehr, echten bestätigten Theme-Wechseln, Audio.volume=0,32 aus synthetischer lokaler WAV-Datei und echter Notes-Mitteilung. Keine Rendererfehler. Sandbox aktiv, keine neue Dependency. Kein nativer Windows-/macOS-Hardwaretest. GitHub-Actions-API am Sitzungsende erneut Forbidden; keine neue CI-Bestätigung.
+
+Gemessene Dock-/Island-Randabstände **0px**. Dock jeweils **358×68px**, kein Scrollen/Abschneiden. Island 250×45 / 214,84×38,67 / 156×36px für 1920/1650/390px. Panel auf großen Displays **430×284px bei y0**, auf 390px **366×284px bei x12/y44**, damit Systemmenü erreichbar bleibt. [Sichtbarer Vorher-/Nachher-Vergleich und genaue Grenzen](AIR_CONTROL_CENTER_COMPARISON.md), Screenshots und rohe Messwerte unter docs/visual.
+
+Keine behauptete Pixelidentität: Fotowolken, Air Home und Hardwareanzeigen der Referenz fehlen; Funktionszustände ehrlich statt kopierter Fantasiewerte. Weitere Icons/Registry/Pins/Profiles unverändert; main, bestehende PRs, Installer und Downloads nicht angefasst. Bestehende Dependency-Audit-, Signing-, Notarisierungs- und Release-Blocker bleiben offen; keine Security-Prüfung deaktiviert, kein Audit-Erfolg behauptet.
+
+Nächste drei separate Einheiten: **D1** eigenständiges mintgrünes Air-Home-Grundfenster; **E1** genau ein echtes vorhandenes Widget integrieren; **F1** eine vorhandene App optisch integrieren. Fotografische Wolkentextur nur mit eigener oder geklärter lizenzierter Quelle. Sitzung nach Commit/Push beenden.
+
+---
+
 # Referenzkorrektur – Schritt 1: Bilder erhalten, Air-OS-Startlogo übernommen
 
 23. Oktober 2026. Basis 71139f562ea751f546e01efc6e5006d8961a803b, eigener Branch `theme/air-modern-reference-c2-20261023`. Die fünf Referenzbilder sind jetzt sichtbar; die vorherige Bildblockade ist aufgehoben. Ränder bereits mit 0px gesichert. Bild 3 zeigt das weiße Birnenlogo auf Schwarz; das vorhandene, vom Benutzer stammende `assets/air-logo.png` entspricht dieser Form visuell. Unveränderte PNG-Bytes sind im bestehenden Launchpad-SVG eingebettet, damit kein Installer-/Paketmanifest geändert werden muss. Nur das Modern-Launchpad-Icon wechselt; andere Originalicons und Classic-Grid bleiben erhalten. Logo-Regression prüft Originalbytes und Theme-Rückkehr. Kein 1:1-Bytevergleich mit dem hochauflösenden Anhang behauptet. Nächster bereits beauftragter Schritt: Kontrollzentrum nach Bild 5 (Statuszeile, 2×2-Tiles, sechs runde Aktionen, zwei ehrliche Reglerdarstellungen); danach GUI-Vergleich bei drei Auflösungen. Kein Air Home, kein Build/Release, main unverändert.
