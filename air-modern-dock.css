@@ -1,28 +1,29 @@
 /* Opt-in Air Modern: the same dock, app buttons and lifecycle. */
 .dock[data-theme="modern"] {
-  --modern-icon: clamp(30px, calc(var(--air-dock-icon-size, 48px) - 10px), 48px);
+  --modern-icon: clamp(30px, calc(var(--air-dock-icon-size, 48px) - 6px), 42px);
   left: 50% !important;
-  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  bottom: max(6px, env(safe-area-inset-bottom)) !important;
   width: max-content !important;
-  max-width: min(760px, calc(100vw - 24px)) !important;
+  max-width: min(440px, calc(100vw - 24px)) !important;
   min-height: 0 !important;
-  padding: 8px 12px 11px !important;
-  gap: 3px !important;
+  padding: 6px 12px 8px !important;
+  gap: 4px !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  border-radius: 24px !important;
+  border-radius: 20px !important;
   border: 1px solid rgba(255,255,255,.16) !important;
-  background: rgba(20,23,31,.9) !important;
+  background: #090b0c !important;
   box-shadow: 0 12px 32px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.06) !important;
   backdrop-filter: blur(18px) saturate(1.2) !important;
   -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: #687080 transparent;
+  overflow-x: clip !important;
+  overflow-y: clip !important;
+  scrollbar-width: none !important;
+
 }
-.dock[data-theme="modern"]::-webkit-scrollbar { display: block !important; height: 3px; }
-.dock[data-theme="modern"]::-webkit-scrollbar-thumb { background: #687080; border-radius: 4px; }
+.dock[data-theme="modern"]::-webkit-scrollbar { display: none !important; }
+.dock[data-theme="modern"] .dock-app[hidden], .dock[data-theme="modern"] .dock-divider { display:none !important; }
+.dock .dock-app[data-extra-pin][hidden] { display:none !important; }
 .dock[data-theme="modern"] .dock-app {
   flex: 0 0 calc(var(--modern-icon) + 10px) !important;
   width: calc(var(--modern-icon) + 10px) !important;
@@ -43,7 +44,7 @@
 .dock[data-theme="modern"] .dock-app.is-open::after { bottom: -5px !important; background: #e0edff !important; }
 .dock[data-theme="modern"] .dock-app:focus-visible { outline: 2px solid #b8d9ff; outline-offset: -2px; }
 .dock[data-theme="modern"] .dock-divider { height: 28px !important; background: rgba(255,255,255,.18) !important; }
-.dock[data-theme="modern"].air-reduced-glass { background: #171b24 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.dock[data-theme="modern"].air-reduced-glass { background: #090b0c !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 .air-reduced-motion .dock[data-theme="modern"] .dock-icon { transition: none !important; transform: none !important; }
 .air-reduced-motion .dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: none !important; }
 @media (prefers-reduced-motion: reduce) {
@@ -51,5 +52,5 @@
   .dock[data-theme="modern"] .dock-app:hover .dock-icon { transform: none !important; }
 }
 @media (max-width: 600px) {
-  .dock[data-theme="modern"] { --modern-icon: 32px; padding: 7px 9px 10px !important; border-radius: 20px !important; }
+  .dock[data-theme="modern"] { border-radius: 18px !important; }
 }

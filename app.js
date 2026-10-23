@@ -294,7 +294,7 @@ function normalizeAppWindow(win){
 }
 function appDockRect(id){
  const button=document.querySelector(".dock-app[data-app='"+id+"']");
- if(button)return button.getBoundingClientRect();
+ if(button&&!button.hidden)return button.getBoundingClientRect();
  const dock=document.querySelector(".dock");
  if(dock)return dock.getBoundingClientRect();
  return {left:innerWidth/2,top:innerHeight-40,width:36,height:28};
@@ -728,6 +728,51 @@ if (window.airOS) {
   const profileMenu = document.querySelector("#account-menu-wrap");
   if (profileMenu) profileMenu.hidden = true;
 }
+
+// Choose references from the existing Registry; never truncate or rewrite saved pins.
+function airDockSelection(registry,pins,width,iconSize){
+ const defaults=['finder','browser','notes','music','settings'];
+ const candidates=[...new Set(['launchpad',...(Array.isArray(pins)?pins:defaults)])].filter(id=>registry.get(id)?.iconClass);
+ const icon=Math.max(30,Math.min(42,(Number(iconSize)||48)-6));
+ const capacity=Math.max(1,Math.floor((Math.min(440,Math.max(0,width-24))-22)/(icon+14)));
+ return {visible:candidates.slice(0,capacity),overflow:Math.max(0,candidates.length-capacity)};
+}
+function initAirDockLayout(){
+ const dock=document.querySelector('.dock'),registry=window.airAppRegistry;
+ const originals=Array.from(dock.children),buttons=new Map(originals.filter(el=>el.dataset.app).map(el=>[el.dataset.app,el]));
+ const update=()=>{
+  const settings=readAirSettings(),modern=settings.dockTheme==='modern',active=document.activeElement;
+  const selection=airDockSelection(registry,settings.dockPins,window.innerWidth,settings.dockSize);
+  if(modern){
+   for(const id of selection.visible){
+    if(!buttons.has(id)){
+     const meta=registry.get(id),button=document.createElement('button'),icon=document.createElement('span');
+     button.type='button';button.className='dock-app';button.dataset.app=id;button.dataset.extraPin='';button.title=meta.name;button.setAttribute('aria-label',meta.name);
+     icon.className='dock-icon'+(meta.iconClass?' '+meta.iconClass:'');icon.textContent='';button.appendChild(icon);
+     dock.appendChild(button);paintAppIcons(button);buttons.set(id,button);
+    }
+   }
+   for(const [id,button]of buttons)button.hidden=!selection.visible.includes(id);
+   for(const id of selection.visible)dock.appendChild(buttons.get(id));
+   const start=buttons.get('launchpad');
+   if(start){const label=selection.overflow?`Alle Apps · ${selection.overflow} weitere angeheftete Apps`:'Alle Apps · Launchpad';start.title=label;start.setAttribute('aria-label',label);}
+  }else{
+   for(const child of originals)dock.appendChild(child);
+   for(const button of buttons.values())button.hidden=button.hasAttribute('data-extra-pin');
+   const start=buttons.get('launchpad');if(start){start.title='Launchpad';start.setAttribute('aria-label','Launchpad');}
+  }
+  if(dock.contains(active)){
+   if(active.hidden)buttons.get('launchpad')?.focus();
+   else if(document.activeElement!==active)active.focus();
+  }
+  dock.scrollLeft=0;
+ };
+ document.addEventListener('air-settings-changed',update);
+ window.addEventListener('resize',update);
+ registry.onChange(update);
+ update();
+}
+initAirDockLayout();
 
 // One disclosure for Modern; reuse the original account controls and action handlers.
 function initAirModernShell(){
