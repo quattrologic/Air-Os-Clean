@@ -711,3 +711,24 @@ button{ -webkit-tap-highlight-color:transparent}
 }
 .wallpaper { background-image: var(--air-modern-clouds, linear-gradient(#124f86, #9bbcc7)); }
 .wallpaper-clouds { background-image: var(--air-modern-clouds); background-size: cover; background-position: center; }
+
+/* A3: Desktop chrome only. Dock, island and window geometry remain independent. */
+html[data-desktop-theme="modern"] .menubar,
+html[data-desktop-theme="modern"] .desktop-icons { display:none !important; }
+.air-modern-shell[hidden], .air-system-panel[hidden] { display:none !important; }
+.air-modern-shell { position:fixed;top:10px;left:12px;z-index:350;color:#f5f7f6;font-size:13px; }
+.air-system-toggle { min-height:32px;padding:6px 11px;border:1px solid #ffffff35;border-radius:12px;background:#11191fe8;color:inherit;font:inherit;cursor:pointer;box-shadow:0 4px 14px #112b3926; }
+.air-system-toggle span { margin-left:5px; }
+.air-system-panel { position:absolute;top:40px;left:0;width:270px;max-width:calc(100vw - 24px);max-height:calc(100vh - 160px);overflow-y:auto;overscroll-behavior:contain;padding:8px;border:1px solid #ffffff32;border-radius:14px;background:#172127fa;box-shadow:0 12px 32px #0a1b3340; }
+.air-system-panel>button,.air-system-panel details>button,.air-system-panel summary { display:block;width:100%;padding:10px;border:0;border-radius:7px;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;overflow-wrap:anywhere; }
+.air-system-panel button:hover,.air-system-panel summary:hover { background:#ffffff16; }
+.air-system-panel small { color:#becbcf;font-size:10px; }
+.air-modern-shell :focus-visible { outline:2px solid #b0e5ad;outline-offset:2px; }
+.air-system-panel .account-menu-wrap { display:block;margin-bottom:5px;border-bottom:1px solid #ffffff28;padding-bottom:6px; }
+.air-system-panel .account-pill { max-width:100%;width:100%;color:inherit;background:#ffffff12;border-color:#ffffff25; }
+.air-system-panel #account-label { max-width:190px; }
+.air-system-panel .account-dropdown { position:static;width:100%;margin-top:6px;box-shadow:none;background:#eef4ef;color:#2c3b31; }
+.air-system-panel .account-pill #account-label,.air-system-panel .account-chevron { display:inline; }
+/* No opening animation: OS and Air-OS reduced-motion settings need no override. */
+
+.air-system-panel .account-card-info small,.air-system-panel .account-card-info>span { color:#596d60; }

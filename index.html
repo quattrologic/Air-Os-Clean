@@ -46,6 +46,25 @@
       </div>
     </div>
   </header>
+  <div id="air-modern-shell" class="air-modern-shell" hidden>
+    <button id="air-system-toggle" class="air-system-toggle" type="button" aria-expanded="false" aria-controls="air-system-panel">Air-OS <span aria-hidden="true">⌄</span></button>
+    <nav id="air-system-panel" class="air-system-panel" aria-label="Air-OS Systemaktionen" hidden>
+      <div id="air-modern-profile"></div>
+      <button type="button" data-app="finder">Finder</button>
+      <button type="button" data-app="launchpad">Launchpad · Alle Apps</button>
+      <button type="button" data-system-action="air-search-open">Suche <small>⌘ / Ctrl + K</small></button>
+      <button type="button" data-app="settings">Systemeinstellungen · Desktop-Design</button>
+      <button type="button" data-app="downloads">Downloads</button>
+      <button type="button" data-app="photos">Bilder</button>
+      <button type="button" data-app="trash">Papierkorb</button>
+      <details><summary>Weitere Menüaktionen</summary>
+        <button type="button" data-system-action="edit-menu">Bearbeiten</button>
+        <button type="button" data-system-action="view-menu">Darstellung</button>
+        <button type="button" data-system-action="window-menu">Letztes Fenster anzeigen</button>
+        <button type="button" data-system-action="help-menu">Hilfe · Über Air-OS</button>
+      </details>
+    </nav>
+  </div>
   <main id="desktop" class="desktop" aria-label="Schreibtisch">
     <div id="air-island" class="air-island">
       <button id="air-island-toggle" class="air-island-toggle" type="button" aria-expanded="false" aria-controls="air-island-panel" aria-label="Air Island öffnen oder schließen">

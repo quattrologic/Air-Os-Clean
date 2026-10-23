@@ -41,7 +41,7 @@ Spätere Schriftumstellung: System-UI für Navigation/Inhalte (`system-ui`, macO
 
 - **A1 – diese Sitzung abgeschlossen:** Original-Wolkenhintergrund und Farb-/Maßgrundlage. `clouds` ist der neue Default bei fehlender Auswahl/neuen Profilen. Vorhandene explizite Bilder bleiben erhalten. Bestehende Einstellungen erlauben Auswahl von „Blaue Wolken“, Classic-Bildern und eigenen Bildern.
 - **A2 – abgeschlossen:** separater profilbezogener Desktop-Theme-Vertrag „Air Modern / Classic“ im bestehenden Preferences-Service; Alt-/Neuprofile, Reset und fehlgeschlagenen Save testen. Dock-Theme nicht als zweiten widersprüchlichen Desktop-Theme-Store missbrauchen.
-- **A3:** minimale Modern-Desktop-Hülle: dauerhaft sichtbare Menüleiste/Seiten-Icons ausblenden, aber Menüfunktionen, Kontomenü/Abmelden, Suche, Settings und alle Apps über erreichbare Maus-/Tastaturwege erhalten. Classic wiederherstellbar; keine stille Funktionsentfernung.
+- **A3 – abgeschlossen:** minimale Modern-Desktop-Hülle: dauerhaft sichtbare Menüleiste/Seiten-Icons ausblenden, aber Menüfunktionen, Kontomenü/Abmelden, Suche, Settings und alle Apps über erreichbare Maus-/Tastaturwege erhalten. Classic wiederherstellbar; keine stille Funktionsentfernung.
 - **B:** Dock erst auf ca. 350–420 px und dunkle Fläche reduzieren; Apps weiterhin aus bestehender Registry/Lifecycle. Pinning-Renderer, Pin/Unpin, Sortierung und Kontextmenüs in jeweils eigenen Untereinheiten. Vorhandener Pinning-Speichervertrag bleibt die Grundlage.
 - **C:** bestehende Island an oberen Rand/proportionale Größe anpassen; echte Uhrzeit/Control-Tile/Notes-Mitteilung erhalten, Fokus/kleine Displays/reduzierte Bewegung regressionsprüfen. Keine Fake-Medien-/Batteriewerte.
 - **D:** eigenständiges Air Home in bestehender Registry/Fensterverwaltung, Mint-Rahmen und Navigation; kein Web-Wrapper für Folia. Ein Fenster, keine Dashboard-Funktionssammlung in derselben Einheit.
@@ -72,7 +72,7 @@ Screenshots stammen tatsächlich aus diesem Electron-Lauf, kein Mockup und kein 
 ## Ausdrückliche Abweichungen zu Bild 2
 
 - **Hintergrund:** eigenes weiches Vektorbild, nicht die fotografische Wolkenstruktur/Körnung oder exakte Wolkenverteilung der Referenz. Farbrichtung angenähert, kein Pixel-Match.
-- **Menü/Icons:** klassische Menüleiste (31 px bei Desktopgrößen) und große linke Icons sind noch sichtbar; A3 steht aus. Sie werden nicht als neue finale Oberfläche ausgegeben.
+- **Menü/Icons (seit A3):** in Modern ausgeblendet, in Classic unverändert sichtbar. Kleiner eigener Air-OS-Menüknopf links oben erhält System-/Profilaktionen. Kein dauerhaftes neues Werkzeugband.
 - **Dock:** tatsächlich 1553 × 86 px bei 1920/1650 px Breite, statt Ziel etwa 440 × 68 bzw. 378 × 59; noch hell/Classic und 12 px vom unteren Rand. B ist nicht umgesetzt.
 - **Island:** tatsächlich 156 × 38 px, y=39; Ziel etwa 250 × 45 bei y≈0 bzw. skaliert bei 1650. Vorhandene Funktion erhalten, neue Proportionen erst C.
 - **Air Home:** Mint-Fenster, Seitenleiste, cremefarbene Kacheln/Typografie und Widgets fehlen vollständig; nur Designvorgaben/Tokens, keine fertigen Komponenten behauptet.
@@ -86,3 +86,19 @@ Die Sitzung liefert bewusst nur A1. Ziel bleibt Bild 2; die deutlichen strukture
 Desktop-Design und Dock-Design sind unabhängige Felder desselben profilbezogenen Preferences-Stores. `html[data-desktop-theme="modern"]` / `html[data-desktop-theme="classic"]` ist der zentrale Renderer-Zustand für A3; A2 ändert daran keine Desktop-Styles. Neue Main-registrierte Konten mit `profileSchemaVersion: 2` starten bei fehlender Datei Modern, Alt-/unklare Profile und bestehende Dateien ohne gültigen Desktop-Wert Classic. Explizite Auswahl bleibt erhalten; Reset folgt der Kontogeneration. Erst bestätigtes Speichern aktiviert die Auswahl, Fehler werden sichtbar gemeldet.
 
 [Eigener Electron-Screenshot bei 1650×930](visual/air-modern-a2-settings-1650.png): getrennte Auswahl Desktop/Dock; Menü, Icons, Dock und Island bewusst im bisherigen Zustand. Ausführlicher Test-/Persistenznachweis und Grenzen im aktuellen DEVELOPMENT_PROGRESS-Checkpoint. Nächste Einheit A3; keine behauptete Übereinstimmung mit Bild 2.
+
+## A3 – minimalistische Desktop-Hülle (23. Oktober 2026)
+
+Modern nutzt den bestehenden Desktop-Theme-Vertrag, keine neue Präferenz. `display:none` entfernt klassische Menüleiste/Icons auch aus dem Tastaturzugriff; Classic stellt sie wieder her. Ein 32px hoher Air-OS-Knopf bei x=12/y=10 öffnet eine zurückhaltende dunkle Navigation (270px breit, auf Viewport begrenzt, scrollbar). Native Buttons und Details statt unvollständiger ARIA-Menü-Semantik: Enter/Space, normale Tab-Reihenfolge, sichtbarer Mint-Fokus und Escape mit Rückgabe. Originale Account-Elemente werden verschoben; Apps/Suche/Legacy-Aktionen behalten ihre vorhandenen Handler. Alle vorhandenen Apps bleiben über Launchpad/Dock zugänglich.
+
+Echte Electron-Screenshots desselben GUI-Laufs, kein Mockup:
+
+| Größe | Modern | Classic |
+| --- | --- | --- |
+| 1920×1080 | [Modern](visual/air-modern-a3-1920.png) | [Classic](visual/air-classic-a3-1920.png) |
+| 1650×930 | [Modern](visual/air-modern-a3-1650.png) | [Classic](visual/air-classic-a3-1650.png) |
+| 390×600 | [Modern](visual/air-modern-a3-390.png) | [Classic](visual/air-classic-a3-390.png) |
+
+[System-/Profilmenü bei 390×600](visual/air-modern-a3-menu-390.png). A3 entfernt die beiden dominierenden Classic-Elemente aus Modern. Gegenüber Bild 2 bleiben Vektorwolken, großes helles Dock, alte Island-Proportionen/-Position und fehlendes Air Home ausdrücklich offen. Ein geöffnetes Popup überlagert vorübergehend Desktop-Inhalte; Escape/Outside-Click stellen die freie Fläche sofort wieder her. Classic bleibt optisch im bisherigen Zustand. Kein Vergleich mit behauptetem Pixel-Match; keine Windows/macOS-Hardware-Abnahme.
+
+Automatisiert: `npm test` (154/154). Optionaler tatsächlicher Electron-Test: `AIR_GUI_TEST_ISOLATED=1 AIR_GUI_CDP=http://127.0.0.1:9233 node scripts/check-air-modern-shell.cjs`. Voraussetzung: Electron in **eigener Wegwerf-userData-Konfiguration** am Login, aktiver Sandbox/Xvfb und lokalem CDP; vorhandenes externes Playwright, keine zusätzliche Projektabhängigkeit. Der Helfer erstellt ausschließlich ein synthetisches Testkonto, hält das zufällige Passwort nur im Arbeitsspeicher und prüft alle drei Auflösungen inkl. echten Klicks, App-/Fensteraktionen, Suche, Profil/Abmelden und erneuter Anmeldung. Nicht gegen ein persönliches Profil ausführen. Lokaler Starthelfer: `/workspace/.air-os-onboarding/start-modern-a3.sh`, eigenes authentifiziertes Display :103. Native Screenreader-/OS-Tests bleiben Folgearbeit. Keine neue Bewegung hinzugefügt.

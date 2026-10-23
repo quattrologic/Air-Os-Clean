@@ -729,6 +729,48 @@ if (window.airOS) {
   if (profileMenu) profileMenu.hidden = true;
 }
 
+// One disclosure for Modern; reuse the original account controls and action handlers.
+function initAirModernShell(){
+ const shell=document.querySelector('#air-modern-shell'),toggle=document.querySelector('#air-system-toggle'),panel=document.querySelector('#air-system-panel');
+ const profile=document.querySelector('#account-menu-wrap'),slot=document.querySelector('#air-modern-profile');
+ const originalParent=profile.parentNode,originalNext=profile.nextSibling;
+ const close=(restore=false)=>{
+  panel.hidden=true;toggle.setAttribute('aria-expanded','false');
+  document.querySelector('#account-dropdown').hidden=true;
+  document.querySelector('#account-toggle').setAttribute('aria-expanded','false');
+  if(restore)toggle.focus();
+ };
+ const sync=()=>{
+  const modern=document.documentElement.dataset.desktopTheme==='modern';
+  const active=document.activeElement;
+  const needsFocus=modern?(document.querySelector('.menubar').contains(active)||document.querySelector('.desktop-icons').contains(active)):shell.contains(active);
+  close();
+  if(modern)slot.appendChild(profile);else originalParent.insertBefore(profile,originalNext);
+  shell.hidden=!modern;
+  if(needsFocus)(modern?toggle:document.querySelector('#air-search-open')).focus();
+ };
+ toggle.addEventListener('click',()=>{
+  if(!panel.hidden){close();return}
+  panel.hidden=false;toggle.setAttribute('aria-expanded','true');
+  panel.querySelector('button:not([disabled])')?.focus();
+ });
+ panel.addEventListener('click',event=>{
+  const action=event.target.closest('[data-app], [data-system-action]');
+  if(!action)return;
+  close(true);
+  // App buttons use the existing document-level Registry/Lifecycle delegation.
+  if(action.dataset.systemAction)document.getElementById(action.dataset.systemAction)?.click();
+ });
+ document.addEventListener('click',event=>{if(!shell.contains(event.target))close()});
+ shell.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!panel.hidden){event.preventDefault();event.stopPropagation();close(true)}
+ });
+ shell.addEventListener('focusout',event=>{if(!shell.contains(event.relatedTarget))close()});
+ document.addEventListener('air-settings-changed',sync);
+ sync();
+}
+initAirModernShell();
+
 // Robust launch handlers for Dock and desktop shortcuts. These controls must remain
 // usable even if a window's own delegated click handler changes in a future build.
 for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-icon[data-app]")) {
