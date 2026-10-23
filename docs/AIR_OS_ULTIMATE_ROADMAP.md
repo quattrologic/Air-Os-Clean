@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -149,6 +149,24 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
 
+## Fenster-Checkpoint W0 – 23. Oktober 2026
+
+Auf `fix/air-window-focus-20261023`, ausgehend von `a40bb24`, ist der konkrete Fokusmarker-Fehler Notes→Rechner→Notes behoben. Der vorhandene Lifecycle berücksichtigt den zuletzt fokussierten internen App-Eintrag bei seiner Ereignis-Deduplizierung. Gleicher per-App-Zustand nach Fokus einer anderen App meldet einen echten erneuten Fokusgewinn; wiederholtes Fokussieren derselben aktiven App bleibt idempotent. Minimieren/Schließen werden berücksichtigt. Keine zweite Fensterverwaltung, kein Geometrieumbau und keine Kontrolle externer Fenster.
+
+Zwei neue Node-Regressionstests und der vorhandene echte Dock-GUI-Test waren vor Fix rot. Danach 107 Node-Tests grün; echter Linux-Electron-Dock-Test mit zehn Prüfgruppen inklusive alleiniger aktiver A-Markierung nach A/B/A, tatsächlicher Z-Reihenfolge und Minimieren/Restore grün. Details/Grenzen in der neuesten Übergabe. Ältere Checkpoints nennen diesen konkreten Markerfehler noch als offen; dieser Nachtrag ersetzt diesen Status. Native Windows/macOS, Mehrmonitor, vollständige Fokus-/Tastaturnavigation und Release-Gates bleiben offen.
+
+Weitere Vorhaben bleiben **einzeln** zu bearbeiten:
+
+| Einheit | Kleiner nächster Umfang / Abnahme |
+| --- | --- |
+| W2 Fokus-Fallback | Verhalten beim Schließen/Minimieren des obersten internen Fensters reproduzieren, dann genau eine Fallback-Regel mit Tests festlegen. |
+| W3 Fenstermenü-Restore | Den bestehenden Menüpfad mit den vorhandenen Restore-/Fokus-/Animationswegen vergleichen und regressionsprüfen. |
+| W4 Task-Switcher | Zuerst ein interner Tastaturwechsel zwischen zwei vorhandenen Fenstern; keine Host-Hotkeys/Fremdfenster. |
+| W5 Snapping | Genau eine interne Randposition mit Größen-/Restore-Regel testen. |
+| W6 Fenstergeometrie | Vertrag für ein profilbezogen gespeichertes Fenster plus ungültige/alte Displaygrenzen definieren. |
+| W7 Vorschau/Übersicht | Zuerst eine Registry-/Lifecycle-basierte Liste bestehender interner Fenster; Bildvorschauen und Mission-Control-Darstellung separat. |
+| W8 Virtuelle Arbeitsflächen | Erst Zuordnungs-/Sichtbarkeitsvertrag für zwei interne Arbeitsflächen, kein Host-Workspace-Adapter. |
+
 ## Notes-Mitteilungs-Checkpoint – 23. Oktober 2026
 
 Auf `feat/air-notes-island-notification-20261023`, ausgehend von `c35f31d`: nach einem tatsächlich bestätigten Air-Notes-Save erscheint eine feste Meldung samt lokalem Zeitstempel im Island-Panel. Kein Titel/Inhalt/ID im Signal, kein automatisches Öffnen/Fokuswechsel. Genau die letzte Meldung je Dokument, ohne persistente Historie; Cleanup bei Seitenende und leeres Panel nach Reload/Profilwechsel. Kein allgemeiner Notification-Service oder Berechtigungsnachweis durch DOM-Events.
@@ -170,6 +188,8 @@ Auf `feat/air-dynamic-island-base-20261022`, ausgehend von `335e0ac`, ist die er
 Nächste Island-Einheit auf Nutzerwunsch: **Q1**, kleines Kontrollzentrum mit bestehenden Air-OS-Darstellungseinstellungen und echter Persistenz. Medien, Notifications, Kalender, Timer und Host-Status bleiben eigene spätere Einheiten. Dock-Pinning/Drag-and-drop und der bekannte Dock-Fokusmarker bleiben offen.
 
 ## Dock-Checkpoint U1 – 22. Oktober 2026
+
+**Nachtrag Phase 6:** Der unten historisch offene wiederholte Fokusmarker ist in W0 behoben und der Dock-GUI-Lauf grün. Native Plattformprüfungen bleiben offen.
 
 Auf Branch `test/air-modern-dock-gui-20261022` nach Basis `b450031` in echtem Linux-Electron geprüft: Position/Classic↔Modern, Start, tatsächlicher Fensterfokus, Minimieren/Wiederherstellen, Enter und schmale emulierte Rendererbreiten. Eine CSS-Korrektur macht die aktive Modern-Hintergrundfläche sichtbar. `scripts/check-dock-gui.cjs` hält den Nachweis wiederholbar. **U1 bleibt teilweise offen:** erneuter Fokuswechsel kann die aktive Dock-Markierung veralten lassen. Finaler GUI-Test: neun erfolgreiche Prüfgruppen, ein expliziter Fehler (Exit 1); Node-Tests 96/96 grün. Keine Windows-/macOS-Abnahme. Details und Reproduktion im neuesten DEVELOPMENT_PROGRESS-Checkpoint.
 

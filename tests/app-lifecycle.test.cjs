@@ -18,3 +18,30 @@ test('invalid states and identifiers fail',()=>{
  assert.throws(()=>lifecycle.transition('finder','deleted'),/Unknown lifecycle/);
  assert.throws(()=>lifecycle.onChange(null),/Listener/);
 });
+test('focusing A then B then A notifies observers even when A last reported focused',()=>{
+ const events=[],off=lifecycle.onChange(event=>events.push(event));
+ try{
+  lifecycle.transition('notes','focused');
+  lifecycle.transition('calculator','focused');
+  assert.equal(lifecycle.transition('notes','focused'),true,'Reacquiring focus must notify the Dock');
+  assert.equal(lifecycle.transition('notes','focused'),false,'Repeated focus on the active app stays idempotent');
+  assert.deepEqual(events.filter(e=>e.state==='focused').map(e=>e.id),['notes','calculator','notes']);
+ }finally{off();lifecycle.transition('notes','closed');lifecycle.transition('calculator','closed');}
+});
+test('minimize, restore and background closure preserve focus notifications without reviving hidden apps',()=>{
+ const focused=[],off=lifecycle.onChange(event=>{if(['focused','maximized'].includes(event.state))focused.push(event.id);});
+ try{
+  lifecycle.transition('notes','maximized');
+  lifecycle.transition('calculator','focused');
+  lifecycle.transition('calculator','minimized');
+  assert.equal(lifecycle.transition('notes','maximized'),true,'An already maximized window can regain focus');
+  lifecycle.transition('calculator','closed');
+  assert.equal(lifecycle.transition('notes','maximized'),false,'Closing a background app must not forget current focus');
+  lifecycle.transition('notes','minimized');
+  assert.equal(lifecycle.get('notes'),'minimized');
+  lifecycle.transition('calculator','focused');
+  assert.equal(lifecycle.get('notes'),'minimized','Focusing another app never restores a minimized window');
+  lifecycle.transition('notes','focused');
+  assert.deepEqual(focused,['notes','calculator','notes','calculator','notes']);
+ }finally{off();lifecycle.transition('notes','closed');lifecycle.transition('calculator','closed');}
+});

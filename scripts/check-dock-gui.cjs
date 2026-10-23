@@ -94,6 +94,9 @@ const {pathToFileURL} = require('node:url');
     if (!await evaluate('document.querySelector(".dock-app[data-app=notes]").classList.contains("is-active")')) {
       failures.push('Repeated focus leaves the active dock marker on the previous app');
       console.error('FAIL '+failures.at(-1));
+    } else {
+      assert.deepEqual(await evaluate('[...document.querySelectorAll(".dock-app.is-active")].map(b=>b.dataset.app)'), ['notes']);
+      console.log('PASS repeated A/B/A focus leaves exactly the current app marked active');
     }
     const noteSelector = await evaluate(`(() => {const list=[...document.querySelectorAll('.app-window')]; const index=list.findIndex(w=>w.querySelector('.window-title').textContent==='Notizen'); return '.app-window:nth-child('+(index+1)+')';})()`);
     assert(await evaluate(`(() => { const w=document.querySelector(${JSON.stringify(noteSelector)}); return [...document.querySelectorAll('.app-window')].every(other=>Number(w.style.zIndex)>=Number(other.style.zIndex)); })()`), 'Focused Notes window must be on top');
