@@ -1,3 +1,21 @@
+# Aktueller Checkpoint – Redesign A2: profilbezogenes Desktop-Design
+
+23. Oktober 2026. Ausgangs-Commit **`6d6c5add6111b7c957852e61c6b2ccc11fbee994`** / bestätigter A1-HEAD; eigener Branch **`theme/air-modern-desktop-a2-20261023`**. Genau eine Einheit: `desktopTheme` (`modern` / `classic`) im bestehenden Preferences-Service und eigener Bereich **Desktop-Design** in den Systemeinstellungen. `dockTheme`, Wallpaper und alle anderen Felder bleiben beim Wechsel erhalten. Kein zweiter Settings-Store.
+
+Kompatibilität: gespeicherte gültige Auswahl hat Vorrang. Bestehende/unklare Profile ohne gültige Auswahl bleiben Classic, auch bei fehlender Preferences-Datei; kein Umschreiben beim Lesen. Nur die Main-Registrierung kennzeichnet eindeutig neue Konten mit `profileSchemaVersion: 2`; diese erhalten bei erstmalig fehlender Datei Modern. Bestehende Dateien ohne Desktop-Auswahl werden konservativ Classic. Reset verwendet diese Kontogeneration (alt Classic / neu Modern), setzt wie bisher die gesamten Darstellungseinstellungen zurück und löscht keine App-Dateien. Der Marker enthält keine zusätzliche Theme-Auswahl.
+
+Renderer-Vertrag für A3: `document.documentElement.dataset.desktopTheme` bzw. `html[data-desktop-theme="modern|classic"]`. Initial sicher Classic, danach bestätigter Preferences-Wert. Umschaltung nutzt vorhandene IPC/Schreibwarteschlange; erst bestätigtes Speichern ändert Cache/Root, laufende Auswahl ist gesperrt. Fehler erscheinen im bestehenden `role=status`, bisheriger Wert bleibt bestehen, Retry möglich. Ohne Desktop-API ist die Auswahl deaktiviert; kein neuer LocalStorage-Fallback.
+
+Prüfungen: **150/150 automatisierte Tests, 0 Fehler/Skips**, darunter fünf neue Tests für gültige/ungültige Werte, Alt-/Neuprofile, Main-Registrierung (explizites Test-Double für Passwortableitung), Profiltrennung, unabhängiges Dock/Wallpaper, Modern → Classic → Modern, Reset, fresh-store Persistenz und verzögertes/fehlgeschlagenes Speichern. Bestehende Temp-/Symlink-Schutztests weiterhin aktiv. `node --check` für app.js/main.cjs, Catalina-Konfigurationscheck und `git diff --check` bestanden.
+
+Echter Linux/Electron-32.3.3-/Xvfb-GUI-Test mit eigener Testkonfiguration: neues Konto startet Modern; beide Auswahlen unabhängig; Wechsel, Renderer-Neuladen und Reset erfolgreich. Absichtlich blockierte Preferences-Datei nur im isolierten Testprofil: echte IPC meldet Fehler sichtbar, bestätigtes Theme bleibt, Originalbytes werden unverändert wiederhergestellt; Retry erfolgreich. [Screenshot 1650×930](visual/air-modern-a2-settings-1650.png). Kein vollständiger Electron-Prozessneustart im GUI-Test; Wiederladen des persistenten Stores ist automatisiert geprüft. Keine neuen nativen Windows-/macOS-Hardwaretests, keine neue CI-Abnahme behauptet. Theme-Branch-Push löst laut unveränderter Workflow-Filter keinen Installer-Build aus.
+
+Visuelle Abweichungen zu Bild 2 bleiben ausdrücklich: Menüleiste/Seiten-Icons sichtbar, bestehendes helles großes Dock, bisherige Island-Position, kein Mint-Air-Home. A2 bereitet nur den Zustand vor; keine A3-Styles umgesetzt. main, A1, PR #11/#12, Installer-Branch, Workflows, Dependencies und Downloads unverändert. Bekannte Audit-/Signing-/Notarisierungs- und native Release-Blocker bleiben offen.
+
+Nächste drei Micro-Einheiten, jeweils erst nach neuem Prompt: (1) **A3** reduzierte Modern-Desktop-Hülle mit erreichbarer Suche/Settings/Abmelden/Finder/Launchpad und Classic-Rückkehr; (2) **B1** kompaktes schwarzes Dock über vorhandene Registry/Lifecycle; (3) **C1** kompakte schwarze Island am oberen Rand ohne neue Systemsteuerungen. Commit `Add profile-scoped desktop theme selection independent of dock`; SHA im Abschlussbericht. Danach Sitzung beenden.
+
+---
+
 # Aktueller Checkpoint – Redesign A1: Original-Wolkenhintergrund und Designsystem
 
 23. Oktober 2026. Genau eine kleine Phase-A-Einheit: **eigener Offline-Wolkenhintergrund, neue Standardauswahl und wiederverwendbare Farbtokens**, nicht das vollständige Desktop-Redesign. Ausgangs-Commit `d6a2cc086113eceb71da02e68742f13903ffe2aa` auf Testinstaller-Branch per GitHub bestätigt, eigener Branch `theme/air-modern-foundation-a1-20261023`. main `a1f3e12`, PR #11 `eecab2a`, PR #12 `eb3f3bc` unverändert. Arbeitsbaum zuvor sauber, kein paralleles Schreiben auf dem Installer-Branch.

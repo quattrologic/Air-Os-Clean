@@ -1,7 +1,7 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
 const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
@@ -11,6 +11,7 @@ function validate(patch){
   if(key==='wallpaper'&&(!WALLPAPERS.has(value)))throw new TypeError('Ungültiges Hintergrundbild.');
   if(key==='accent'&&(typeof value!=='string'||!/^#[0-9a-fA-F]{6}$/.test(value)))throw new TypeError('Ungültige Akzentfarbe.');
   if(key==='dockTheme'&&!['classic','modern'].includes(value))throw new TypeError('Ungültiges Dock-Theme.');
+  if(key==='desktopTheme'&&!['classic','modern'].includes(value))throw new TypeError('Ungültiges Desktop-Design.');
   if(key==='dockPins'){
    // References only: null inherits the default dock; [] explicitly pins nothing.
    // Existence, metadata and launch authorization remain with Registry/Main services.
@@ -34,8 +35,12 @@ function validate(patch){
  }
  return result;
 }
-function createStore({root}){
+function createStore({root,isNewProfile=()=>false}){
  if(typeof root!=='function')throw new TypeError('root must be a function');
+ if(typeof isNewProfile!=='function')throw new TypeError('Profile classifier must be a function');
+ // Only Main can classify accounts explicitly created after this feature.
+ // Missing files, dates and renderer input are not evidence of a new profile.
+ function defaultsFor(username){return {...DEFAULTS,desktopTheme:isNewProfile(username)===true?'modern':'classic'}}
  function filename(username){
   if(typeof username!=='string'||!username||username.length>80)throw new TypeError('Ungültiger Benutzername.');
   const id=crypto.createHash('sha256').update(username.toLocaleLowerCase('en-US')).digest('hex');
@@ -43,7 +48,7 @@ function createStore({root}){
  }
  function load(username){
   let settings;try{settings=JSON.parse(fs.readFileSync(filename(username),'utf8'))}
-  catch(error){if(error.code==='ENOENT')return {...DEFAULTS};throw error}
+  catch(error){if(error.code==='ENOENT')return defaultsFor(username);throw error}
   const safe={};if(settings&&typeof settings==='object'&&!Array.isArray(settings)){
    for(const [key,value] of Object.entries(settings)){try{Object.assign(safe,validate({[key]:value}))}catch{}}
   }
@@ -69,7 +74,7 @@ function createStore({root}){
   return settings;
  }
  function update(username,patch){return write(username,{...load(username),...validate(patch)})}
- function reset(username){return write(username,{...DEFAULTS})}
+ function reset(username){return write(username,defaultsFor(username))}
  return Object.freeze({load,update,reset});
 }
 module.exports={createStore,validate,DEFAULTS};

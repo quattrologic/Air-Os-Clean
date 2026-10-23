@@ -14,7 +14,10 @@ const spotifyLauncher=require('./src/main/spotify-launcher.cjs').createSpotifyLa
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
-const preferenceStore=require('./src/main/preferences.cjs').createStore({root:()=>app.getPath('userData')});
+const preferenceStore=require('./src/main/preferences.cjs').createStore({
+ root:()=>app.getPath('userData'),
+ isNewProfile:username=>readAccounts().some(account=>account.usernameKey===username.toLocaleLowerCase('en-US')&&account.profileSchemaVersion===2)
+});
 const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
 const reminderStore=require('./src/main/reminders-store.cjs').createStore({root:()=>app.getPath('userData')});
 const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
@@ -138,7 +141,7 @@ ipcMain.handle('air-os:create-account', (event, input = {}) => {
   if (accounts.some(item => item.usernameKey === usernameKey)) return { ok: false, error: 'Dieser Benutzername ist schon vergeben.' };
   const salt = crypto.randomBytes(16);
   const passwordHash = crypto.scryptSync(password, salt, 64, scryptOptions).toString('hex');
-  const account = { username, usernameKey, displayName, salt: salt.toString('hex'), passwordHash, createdAt: new Date().toISOString() };
+  const account = { username, usernameKey, displayName, salt: salt.toString('hex'), passwordHash, createdAt: new Date().toISOString(), profileSchemaVersion: 2 };
   accounts.push(account);
   writeAccounts(accounts);
   setImmediate(() => openDesktop(account));
