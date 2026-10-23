@@ -44,6 +44,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - name: Run Windows regression tests before packaging
+        run: npm test
       - run: npm run pack:win
       - name: Upload Windows test installers (not a public release)
         if: github.event_name != 'pull_request'
@@ -63,6 +65,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - name: Run macOS regression tests before packaging
+        run: npm test
       - run: npm run pack:mac
       - name: Upload macOS test installers (not a public release)
         if: github.event_name != 'pull_request'
