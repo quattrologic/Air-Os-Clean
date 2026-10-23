@@ -1,8 +1,8 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'yosemite',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
-const WALLPAPERS=new Set(['yosemite','coast','aurora','midnight']);
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
+const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
  const result={};

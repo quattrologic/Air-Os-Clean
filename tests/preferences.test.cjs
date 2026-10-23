@@ -5,12 +5,12 @@ test('preferences persist independently for each account and survive restart',()
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-os-prefs-'));
  try{
   const store=createStore({root:()=>root});
-  assert.equal(store.load('alice').wallpaper,'yosemite');
+  assert.equal(store.load('alice').wallpaper,'clouds');
   store.update('alice',{accent:'#abcdef',dockSize:62,wallpaper:'aurora'});
   assert.equal(store.load('bob').accent,'#75aeea');
   const restarted=createStore({root:()=>root});
   assert.equal(restarted.load('ALICE').dockSize,62);
-  assert.equal(restarted.load('bob').wallpaper,'yosemite');
+  assert.equal(restarted.load('bob').wallpaper,'clouds');
   assert.equal(restarted.reset('alice').accent,'#75aeea');
  }finally{fs.rmSync(root,{recursive:true,force:true})}
 });
@@ -33,5 +33,23 @@ test('dock theme is validated, persisted per profile and resets to classic',()=>
   assert.throws(()=>store.update('Alice',{dockTheme:'unknown'}),/Dock-Theme/);
   assert.equal(store.load('Alice').dockTheme,'modern');
   assert.equal(store.reset('Alice').dockTheme,'classic');
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+
+test('offline clouds default preserves explicit Classic wallpapers and custom images by profile',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-cloud-wallpaper-'));
+ try{
+  const store=createStore({root:()=>root});
+  assert.equal(store.load('New').wallpaper,'clouds');
+  store.update('Alice',{wallpaper:'yosemite'});
+  store.update('Bob',{wallpaper:'coast',customWallpaper:'data:image/png;base64,AAAA'});
+  const restarted=createStore({root:()=>root});
+  assert.equal(restarted.load('Alice').wallpaper,'yosemite');
+  assert.equal(restarted.load('Bob').customWallpaper,'data:image/png;base64,AAAA');
+  store.update('Alice',{wallpaper:'clouds'});
+  assert.equal(restarted.load('Alice').wallpaper,'clouds');
+  assert.equal(restarted.load('Bob').wallpaper,'coast');
+  assert.equal(store.reset('Alice').wallpaper,'clouds');
+  assert.throws(()=>store.update('Alice',{wallpaper:'https://foreign.example/image.png'}));
  }finally{fs.rmSync(root,{recursive:true,force:true})}
 });

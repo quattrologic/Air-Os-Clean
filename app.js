@@ -90,7 +90,7 @@ function appBody(id){
   <div class="stocks-disclaimer">Marktdaten und Charts von TradingView. Kurse können je nach Börse zeitverzögert sein. Nur zu Informationszwecken – keine Anlageberatung.</div>
 </div>`;
   if(id==="calculator")return `<div class="calc-layout"><div class="app-heading" style="padding:0 0 15px"><h2>Rechner</h2><p>Ein einfacher Desktop-Rechner.</p></div><div class="calc-display" id="calc-display">0</div><div class="calc-keys">${["7","8","9","÷","4","5","6","×","1","2","3","−","C","0","=","+"].map(k=>`<button class="${["÷","×","−","+","="].includes(k)?"operator":""}" data-key="${k}">${k}</button>`).join("")}</div></div>`;
-  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><label for="air-dock-theme"><strong>Dock-Design</strong></label><select id="air-dock-theme"><option value="classic">Air Classic</option><option value="modern">Air Modern</option></select></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
+  if(id==="settings")return `<div class="settings-layout air-settings"><div class="app-heading" style="padding:0 0 12px"><h2>Einstellungen</h2><p>Dein Schreibtisch, dein Stil. Änderungen werden automatisch auf diesem Gerät gespeichert.</p></div><div class="air-settings-section"><h3>Hintergrundbild</h3><div class="air-wallpaper-choices"><button type="button" data-wallpaper="clouds" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-clouds"></span><strong>Blaue Wolken</strong></button><button type="button" data-wallpaper="yosemite" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-yosemite"></span><strong>Yosemite</strong></button><button type="button" data-wallpaper="coast" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-coast"></span><strong>Küste</strong></button><button type="button" data-wallpaper="aurora" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-aurora"></span><strong>Aurora</strong></button><button type="button" data-wallpaper="midnight" class="air-wallpaper-choice"><span class="air-wallpaper-preview wallpaper-midnight"></span><strong>Mitternacht</strong></button></div></div><div class="setting-row"><span><strong>Eigenes Bild</strong><br><small class="muted">PNG, JPG, WEBP oder GIF · max. 3 MB</small></span><label class="secondary-button air-file-picker">Bild auswählen<input id="air-custom-wallpaper" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div><div class="setting-row"><span><strong>Akzentfarbe</strong><br><small class="muted">Farbe für Schaltflächen</small></span><input id="accent-color" type="color" value="#8f9ff4"></div><div class="setting-row"><label for="air-dock-theme"><strong>Dock-Design</strong></label><select id="air-dock-theme"><option value="classic">Air Classic</option><option value="modern">Air Modern</option></select></div><div class="setting-row"><span><strong>Dock-Größe</strong><br><small class="muted">Symbole skalieren</small></span><input id="air-dock-size" type="range" min="36" max="64" step="2" value="48"></div><div class="setting-row"><span><strong>Glaseffekte reduzieren</strong><br><small class="muted">Deckendere Oberfläche</small></span><input id="reduce-glass" type="checkbox"></div><div class="setting-row"><span><strong>Animationen reduzieren</strong><br><small class="muted">Weniger Bewegung in Fenstern und Dock</small></span><input id="air-reduce-motion" type="checkbox"></div><div class="setting-row"><span><strong>Uhrzeit</strong><br><small class="muted">24-Stunden-Anzeige</small></span><input id="air-clock-24" type="checkbox" checked></div><button class="secondary-button" id="reset-settings">Alle Einstellungen zurücksetzen</button><p class="air-settings-status" id="air-settings-status" role="status">Einstellungen werden lokal gespeichert.</p></div>`;
   if(id==="spotify")return `<p>Spotify wird als installierte Desktop-App geöffnet.</p>`;
   if(id==="downloads")return `<div class="app-heading"><h2>Downloads</h2><p>Zuletzt geladene Dateien.</p></div><table class="file-table"><thead><tr><th>Name</th><th>Art</th><th>Datum</th></tr></thead><tbody><tr><td>Air-OS-Design.zip</td><td>Archiv</td><td>Heute</td></tr><tr><td>Hintergrundbild.jpg</td><td>Bild</td><td>Gestern</td></tr></tbody></table><div class="app-notice">Demo-Dateien – keine echten Downloads.</div>`;
   if(id==="trash")return `<div class="app-heading"><h2>Papierkorb</h2><p>Der Papierkorb ist leer.</p></div><div class="empty-trash"><span class="desktop-art" data-art="trash"></span><p>Keine Objekte im Papierkorb.</p></div>`;
@@ -509,7 +509,27 @@ function calcEvaluate(expression){
 let airSettingsCache={};
 let airSettingsWrites=Promise.resolve();
 const AIR_SETTINGS_KEY="air-os-desktop-settings-v2"; // legacy single-profile key (not read for authenticated profiles)
+// Original Air-OS vector artwork, MIT: static clouds, no remote image or animation.
+const AIR_MODERN_CLOUDS=`<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+ <linearGradient id="sky" x2="0.15" y2="1"><stop stop-color="#124f86"/><stop offset=".6" stop-color="#3d82b2"/><stop offset="1" stop-color="#9bbcc7"/></linearGradient>
+ <linearGradient id="cloud" x2=".2" y2="1"><stop stop-color="#fff5df"/><stop offset=".55" stop-color="#e0dbcc"/><stop offset="1" stop-color="#a9b6bb"/></linearGradient>
+ <filter id="soft" x="-30%" y="-40%" width="160%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<g filter="url(#soft)" fill="url(#cloud)">
+ <path opacity=".73" d="M860-100c-95 110-16 177 90 192 77 11 133 65 214 60 99-7 75-95 165-104 126-12 200 53 278 20L1610-100Z"/>
+ <ellipse cx="1890" cy="695" rx="220" ry="230"/>
+ <ellipse cx="1690" cy="940" rx="390" ry="270"/>
+ <ellipse cx="1375" cy="1040" rx="350" ry="170"/>
+ <ellipse cx="1010" cy="1095" rx="330" ry="175"/>
+ <ellipse cx="355" cy="1140" rx="580" ry="265"/>
+ <ellipse cx="-95" cy="860" rx="220" ry="270"/>
+</g>
+<g filter="url(#soft)" fill="#fff3dd" opacity=".52"><ellipse cx="1910" cy="560" rx="120" ry="110"/><ellipse cx="1620" cy="850" rx="150" ry="110"/><ellipse cx="220" cy="1070" rx="270" ry="90"/></g>
+</svg>`;
 const AIR_WALLPAPERS={
+ clouds:'url("data:image/svg+xml,'+encodeURIComponent(AIR_MODERN_CLOUDS)+'")',
  yosemite:'linear-gradient(180deg,#8bb6dc33,#152c5033),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2560&q=85")',
  coast:'url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2560&q=85")',
  aurora:'url("https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=2560&q=85")',
@@ -543,6 +563,7 @@ const airSettingsLoad=window.airOS?.preferences?
  Promise.resolve().then(()=>{try{airSettingsCache=JSON.parse(localStorage.getItem(AIR_SETTINGS_KEY)||'{}')}catch{};applyAirSettings(airSettingsCache)});
 function applyAirSettings(settings=readAirSettings()){
  const root=document.documentElement,wallpaper=document.querySelector(".wallpaper"),dock=document.querySelector(".dock");
+ root.style.setProperty("--air-modern-clouds",AIR_WALLPAPERS.clouds);
  if(settings.accent)root.style.setProperty("--accent",settings.accent);else root.style.removeProperty("--accent");
  if(dock){
   dock.dataset.theme=settings.dockTheme==='modern'?'modern':'classic';
@@ -556,9 +577,9 @@ function applyAirSettings(settings=readAirSettings()){
  if(clock){const now=new Date();clock.textContent=now.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+now.toLocaleTimeString("de-DE",settings.clock24===false?{hour:"numeric",minute:"2-digit",hour12:true}:{hour:"2-digit",minute:"2-digit",hour12:false});}
  if(wallpaper){
   if(settings.customWallpaper)wallpaper.style.backgroundImage='linear-gradient(#dceaff08 0%,transparent 38%,#1027471c 100%),url("'+settings.customWallpaper+'")';
-  else wallpaper.style.backgroundImage=AIR_WALLPAPERS[settings.wallpaper||"yosemite"]||AIR_WALLPAPERS.yosemite;
+  else wallpaper.style.backgroundImage=AIR_WALLPAPERS[settings.wallpaper||"clouds"]||AIR_WALLPAPERS.clouds;
  }
- document.querySelectorAll("[data-wallpaper]").forEach(button=>button.classList.toggle("selected",(settings.wallpaper||"yosemite")===button.dataset.wallpaper&&!settings.customWallpaper));
+ document.querySelectorAll("[data-wallpaper]").forEach(button=>button.classList.toggle("selected",(settings.wallpaper||"clouds")===button.dataset.wallpaper&&!settings.customWallpaper));
 }
 function initAirSettings(win){
  const s=readAirSettings();

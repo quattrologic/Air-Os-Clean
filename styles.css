@@ -551,7 +551,6 @@ button{ -webkit-tap-highlight-color:transparent}
   inset:0 !important;
   z-index:0 !important;
   background-color:#168da9 !important;
-  background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2560&q=90") !important;
   background-position:center center !important;
   background-size:cover !important;
   background-repeat:no-repeat !important;
@@ -693,3 +692,22 @@ button{ -webkit-tap-highlight-color:transparent}
 
 /* The menu pear is black; Arcade uses a light minimalist tile. */
 .air-mark svg path{fill:#101820;stroke:none}
+
+/* Air Modern A1: original palette and offline sky. Components adopt these in
+   later micro-units; existing app styles are intentionally not overridden. */
+:root {
+ --air-modern-sky: #235f94;
+ --air-modern-mint: #9cdaa1;
+ --air-modern-sidebar: #b0e5ad;
+ --air-modern-canvas: #f8f7f3;
+ --air-modern-ink: #2c3b31;
+ --air-modern-muted: #677e6c;
+ --air-modern-line: #b8bcb6;
+ --air-modern-black: #090b0c;
+ --air-modern-window-radius: 22px;
+ --air-modern-card-radius: 10px;
+ --air-modern-window-shadow: 0 18px 48px #183b3929;
+ --air-modern-space: 20px;
+}
+.wallpaper { background-image: var(--air-modern-clouds, linear-gradient(#124f86, #9bbcc7)); }
+.wallpaper-clouds { background-image: var(--air-modern-clouds); background-size: cover; background-position: center; }

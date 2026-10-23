@@ -1,3 +1,19 @@
+# Aktueller Checkpoint – Redesign A1: Original-Wolkenhintergrund und Designsystem
+
+23. Oktober 2026. Genau eine kleine Phase-A-Einheit: **eigener Offline-Wolkenhintergrund, neue Standardauswahl und wiederverwendbare Farbtokens**, nicht das vollständige Desktop-Redesign. Ausgangs-Commit `d6a2cc086113eceb71da02e68742f13903ffe2aa` auf Testinstaller-Branch per GitHub bestätigt, eigener Branch `theme/air-modern-foundation-a1-20261023`. main `a1f3e12`, PR #11 `eecab2a`, PR #12 `eb3f3bc` unverändert. Arbeitsbaum zuvor sauber, kein paralleles Schreiben auf dem Installer-Branch.
+
+Bild 1/Bild 2 visuell analysiert; [präzises Maß-/Farbkonzept, Phasen und echte Screenshots](AIR_MODERN_DESIGN.md). Referenz 1920×1080: Air Home ca. 79,3 % × 78,6 %, 212-px-Navigation, 380-px-Kacheln/20-px-Lücken; Dockziel bei 1650px ca. 378px, Island ca. 215px. Farben sind visuell angenäherte Air-OS-Festlegungen, keine behaupteten exakten Pixel-Samples. Kein GPL-/Folia-Code/Asset/Logo übernommen.
+
+Implementiert: eigene statische SVG-Wolken als Data-URI in bestehendem app.js, `--air-modern-*`-Palette/Radius/Schatten-Tokens in styles.css, `clouds` als neuer Preferences-Default für fehlende Auswahl/neue Profile und echter Settings-Button „Blaue Wolken“. Explizite Classic-/Custom-Auswahl und Profiltrennung bleiben. Alte CSS-`!important`-Strandbildregel überdeckte die echte Auswahl, im GUI reproduziert und entfernt. Keine Menü-/Dock-/Window-Manager-/Registry-Neuentwicklung, kein Air Home oder Fake-Widget.
+
+Tests: gesamte Suite **145 bestanden, 0 Fehler/Skips**; gezielt Preferences/Temp-Schreibsicherheit/Dock-Pins **16/16**. Echter sandboxed Linux/Electron-32.3.3-/Xvfb-Lauf: SVG tatsächlich dekodiert, neues Profil, echte Settings-Klicks/Preferences-IPC/Persistenz nach Reload, Launchpad-Start/Schließen, vollflächiger Hintergrund/zentrierte bestehende Island bei 1920/1650/390px, statischer Reduce-Motion-Hintergrund, keine Rendererfehler. Drei echte PNGs unter docs/visual. Syntax, Catalina-Konfiguration, git diff --check bestanden. package.json, Installer-Workflows und Testbuild-Helfer per Diff unverändert; kein neuer Installer-Build ausgelöst.
+
+Abweichungen: Vektorwolken statt Fotostruktur; Menüleiste und Desktop-Icons noch sichtbar; Dock 1553×86px bei Desktopgrößen statt ca. 378px Breite, noch hell; Island 156×38px bei y39 statt am Rand; Mint-Air-Home/Navigation/Kacheln/Typografie noch nicht umgesetzt. Keine 1:1-Übereinstimmung oder neue Windows-/macOS-/Release-Abnahme behauptet. Vorhandene Installer bleiben unverändert und enthalten A1 nicht. Audit-/Signing-/Profilgrenzen weiter offen.
+
+Nächste drei Micro-Einheiten, jeweils erst auf neuen Prompt: (1) A2: profilbezogenen Desktop-Theme-Vertrag Modern/Classic im vorhandenen Preferences-Store ergänzen; (2) A3: reduzierte Modern-Hülle mit Menü/Account/Suche auf Abruf und erhaltenen Tastatur-/App-Zugängen; (3) B1: kompaktes schwarzes Dock mit vorhandenem Registry-/Lifecycle-Pfad, Pinning/Sortierung separat. Commit `Establish Air Modern palette and original offline cloud wallpaper`; SHA im Abschlussbericht. Danach Sitzung beenden.
+
+---
+
 # Abschluss – echte Windows-/macOS-Testinstaller hochgeladen
 
 23. Oktober 2026. Erfolgreicher gemeinsamer [Run #99 / 39990292082](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39990292082), **Build-Commit `668f636e63a16f78fa5c5bae2e042ec65259d743`**, Vorabversion `1.0.3-dev.99.sha668f636e63a1`. Beide nativen Regressionstestschritte, Windows x64/ARM64- und macOS-Universal-Paketierung, tatsächliche Paket-/CPU-/Hash-Prüfung und vier Uploads erfolgreich. Kein behaupteter Hardware-/Installations-/Starttest. Lokale Suite 144/144 ohne Fehler/Skips; native genaue Log-Zählungen nicht erneut abrufbar.
