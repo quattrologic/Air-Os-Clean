@@ -210,3 +210,51 @@ test('closing and reopening cannot authorize an in-flight old-window response',a
   assert.equal((await route(appRequest)).status,200);
  }finally{c.runtime.closeAll();c.close()}
 });
+
+test('renderer crash retires only its app window, revokes assets and permits verified restart',async()=>{
+ const c=setup();
+ try{
+  await c.runtime.open('Alice','com.airos.demo.timer');
+  const crashed=c.instances[0],aliceRoute=c.route();
+  await c.runtime.open('Bob','com.airos.demo.timer');
+  const bob=c.instances[1],bobRoute=c.route();
+  assert.equal((await aliceRoute(appRequest)).status,200);
+  crashed.webContents.emit('render-process-gone',{}, {reason:'crashed',exitCode:1});
+  assert.equal(crashed.isDestroyed(),true);
+  assert.equal(bob.isDestroyed(),false);
+  assert.equal((await aliceRoute(appRequest)).status,403);
+  assert.equal((await bobRoute(appRequest)).status,200);
+  // A restart must pass the current installation check, not reuse a dead renderer.
+  const installedFolder=c.manager.installedFolder;
+  c.manager.installedFolder=()=>{throw new Error('Installed integrity failure')};
+  await assert.rejects(c.runtime.open('Alice','com.airos.demo.timer'),/integrity/);
+  assert.equal(c.created(),2);
+  c.manager.installedFolder=installedFolder;
+  assert.deepEqual(await c.runtime.open('Alice','com.airos.demo.timer'),{ok:true,alreadyOpen:false});
+  assert.equal(c.created(),3);
+  // Late duplicate events from the retired window cannot close its replacement.
+  crashed.webContents.emit('render-process-gone',{}, {reason:'crashed',exitCode:1});
+  assert.equal(c.instances[2].isDestroyed(),false);
+  assert.equal((await aliceRoute(appRequest)).status,200);
+ }finally{c.runtime.closeAll();c.close()}
+});
+
+test('renderer crash during startup rejects waiting launches and permits retry',async()=>{
+ const c=setup({delayLoad:true});
+ try{
+  const first=c.runtime.open('Alice','com.airos.demo.timer');
+  const second=c.runtime.open('Alice','com.airos.demo.timer');
+  const failures=Promise.all([
+   assert.rejects(first,/closed during startup/),
+   assert.rejects(second,/closed during startup/)
+  ]);
+  c.instances[0].webContents.emit('render-process-gone',{}, {reason:'crashed',exitCode:1});
+  assert.equal(c.instances[0].isDestroyed(),true);
+  c.release();await failures;
+  assert.equal((await c.route()(appRequest)).status,403);
+  const retry=c.runtime.open('Alice','com.airos.demo.timer');
+  assert.equal(c.created(),2);
+  c.release();
+  assert.deepEqual(await retry,{ok:true,alreadyOpen:false});
+ }finally{c.runtime.closeAll();c.close()}
+});

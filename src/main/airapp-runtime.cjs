@@ -67,6 +67,9 @@ function createRuntime({BrowserWindow,protocol,session,manager}){
   }
   const win=new BrowserWindow({width:660,height:540,minWidth:440,minHeight:400,title:record.name,show:false,backgroundColor:'#d9edfc',autoHideMenuBar:true,webPreferences:{session:partition,nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,webviewTag:false}});
   windows.set(k,win);
+  // A crashed renderer is not a reusable running app. Retire this instance so
+  // protocol authorization is revoked and the next launch verifies afresh.
+  win.webContents.on('render-process-gone',()=>{if(!win.isDestroyed())win.destroy()});
   win.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   const entry='airapp://'+id+'/'+record.entry;
   win.webContents.on('will-navigate',(event,url)=>{if(url!==entry)event.preventDefault()});
