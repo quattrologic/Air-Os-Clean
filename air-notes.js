@@ -21,7 +21,7 @@
    for(const note of notes){
     const button=document.createElement('button');button.type='button';button.className='air-note-item'+(selected===note.id?' selected':'');button.textContent=note.title.trim()||'Ohne Titel';
     button.title=new Date(note.updatedAt).toLocaleString('de-DE');
-    button.addEventListener('click',()=>select(note));list.append(button);
+    button.addEventListener('click',()=>{if(!loading&&!saving)select(note)});list.append(button);
    }
   }
   function select(note){
@@ -40,19 +40,27 @@
     const saved=await api.save({id:selected,title:title.value,body:body.value});
     // Only acknowledged saves emit a fixed, content-free local notification.
     document.dispatchEvent(new Event('air-notes-saved'));
-    selected=saved.id;await refresh(selected);announce('Notiz im Benutzerprofil gespeichert.');
+    // A save acknowledges its submitted snapshot, not edits made while waiting.
+    // Update the list from that acknowledgement without reloading the editor.
+    const index=notes.findIndex(note=>note.id===saved.id);
+    if(index<0)notes.unshift(saved);else notes[index]=saved;
+    selected=saved.id;render();
+    announce(title.value===saved.title&&body.value===saved.body
+     ?'Notiz im Benutzerprofil gespeichert.'
+     :'Stand gespeichert. Neuere Änderungen sind noch nicht gespeichert.');
    }catch(error){announce(error.message||'Speichern fehlgeschlagen.');console.error(error)}
    finally{saving=false;saveButton.disabled=false}
   }
   saveButton.addEventListener('click',save);
-  newButton.addEventListener('click',()=>select(null));
+  newButton.addEventListener('click',()=>{if(!loading&&!saving)select(null)});
   removeButton.addEventListener('click',async()=>{
+   if(loading||saving)return;
    if(!selected){title.value='';body.value='';announce('Neue Notiz verworfen.');return}
    if(!confirm('Diese Notiz wirklich löschen?'))return;
    try{await api.remove(selected);selected=null;await refresh();announce('Notiz gelöscht.')}
    catch(error){announce('Löschen fehlgeschlagen.');console.error(error)}
   });
-  activeNote={win,select:id=>refresh(id)};
+  activeNote={win,select:id=>{if(!loading&&!saving)refresh(id)}};
   refresh(pendingNote);pendingNote=null;
  }
  window.airNotes={mount,focusNote};
