@@ -7,7 +7,7 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 function setup(options = {}) {
   const elements = {};
-  let active = null, now = new Date('2026-10-22T13:04:00Z'), settings = {clock24:true};
+  let active = null, now = new Date('2026-10-22T13:04:00Z'), settings = {clock24:true,...options.settings};
   function element(id) {
     const handlers = new Map();
     const el = {hidden:id==='air-island-panel'||id==='air-island-note-notice', attrs:{}, textContent:'',
@@ -25,6 +25,9 @@ function setup(options = {}) {
   for(const id of ['air-island','air-island-toggle','air-island-panel','air-island-close','air-island-clock','desktop','air-control-dock-theme','air-control-dock-value','air-control-dock-status','air-island-note-notice','air-island-note-message','air-island-note-time']) element(id);
   document.querySelector=selector=>elements[selector.slice(1)];
   if(options.available!==false)window.airOS={preferences:{}};
+  const motions=[];window.matchMedia=()=>({matches:!!options.reduced});
+  if(options.motion)elements['air-island-panel'].animate=(frames,config)=>{const motion={frames,config,cancel(){this.cancelled=true},finish(){this.onfinish?.()}};motions.push(motion);return motion};
+  if(options.startMenu){elements['air-start-menu']={hidden:false};window.airStartMenu={toggle(){elements['air-start-menu'].hidden=true}};}
   const save=options.save || (async dockTheme=>{settings={...settings,dockTheme};document.emit('air-settings-changed');});
   const inside=new Set(Object.values(elements).filter(el=>el!==document && el!==window));
   elements['air-island'].contains=target=>inside.has(target);
@@ -34,7 +37,7 @@ function setup(options = {}) {
     window, document, Date:Clock, readAirSettings:()=>settings, persistAirDockTheme:save,
     setInterval(fn){timers.set(++serial,fn);return serial;},clearInterval(id){timers.delete(id);}
   });
-  return {elements,document,window,timers,get active(){return active;},
+  return {elements,document,window,timers,motions,get active(){return active;},
     settings(value){settings=value;document.emit('air-settings-changed');},
     tick(){now=new Date(now.getTime()+60000);for(const fn of timers.values())fn();return now;}
   };
@@ -140,4 +143,27 @@ test('Island shows only the latest real Notes save signal without content or foc
   assert.equal(time.dateTime,'');
   h.document.emit('air-notes-saved');assert.equal(notice.hidden,true,'Disposed document no longer receives notifications');
   const fresh=setup();assert.equal(fresh.elements['air-island-note-notice'].hidden,true,'New profile document starts empty');
+});
+
+test('Modern exit is brief and inert immediately; Escape returns focus before visual completion',()=>{
+ const h=setup({settings:{desktopTheme:'modern'},motion:true}),trigger=h.elements['air-island-toggle'],panel=h.elements['air-island-panel'];
+ trigger.emit('click');h.elements['air-island-close'].emit('click');
+ assert.equal(trigger.attrs['aria-expanded'],'false');assert.equal(panel.inert,true);assert.equal(panel.hidden,false);assert.equal(h.active,trigger);
+ assert.equal(h.motions.length,1);assert.equal(h.motions[0].config.duration,120);h.motions[0].finish();assert.equal(panel.hidden,true);assert.equal(panel.inert,false);
+});
+test('reopening cancels stale exit; switching theme, hiding document and disposing cancel animations safely',()=>{
+ const h=setup({settings:{desktopTheme:'modern'},motion:true}),trigger=h.elements['air-island-toggle'],panel=h.elements['air-island-panel'];
+ trigger.emit('click');h.elements['air-island-close'].emit('click');const old=h.motions[0];trigger.emit('click');
+ assert.equal(old.cancelled,true);assert.equal(panel.hidden,false);assert.equal(panel.inert,false);old.finish();assert.equal(panel.hidden,false);
+ h.elements['air-island-close'].emit('click');h.settings({desktopTheme:'classic'});assert.equal(panel.hidden,true);
+ h.settings({desktopTheme:'modern'});trigger.emit('click');h.document.hidden=true;h.document.emit('visibilitychange');assert.equal(panel.hidden,true);assert.equal(h.timers.size,0);
+ h.document.hidden=false;h.document.emit('visibilitychange');trigger.emit('click');h.elements['air-island-close'].emit('click');h.window.emit('pagehide');assert.equal(panel.hidden,true);assert.equal(h.timers.size,0);
+});
+test('both reduced-motion preferences bypass Modern exit animation; Classic stays immediate',()=>{
+ for(const options of [{settings:{desktopTheme:'modern',reduceMotion:true}},{settings:{desktopTheme:'modern'},reduced:true},{settings:{desktopTheme:'classic'}}]){
+  const h=setup({...options,motion:true});h.elements['air-island-toggle'].emit('click');h.elements['air-island-close'].emit('click');assert.equal(h.elements['air-island-panel'].hidden,true);assert.equal(h.motions.length,0);
+ }
+});
+test('opening Island first dismisses the existing start menu without replacing either component',()=>{
+ const h=setup({startMenu:true});h.elements['air-island-toggle'].emit('click');assert.equal(h.elements['air-start-menu'].hidden,true);assert.equal(h.elements['air-island-panel'].hidden,false);assert.equal(h.active,h.elements['air-island-close']);
 });

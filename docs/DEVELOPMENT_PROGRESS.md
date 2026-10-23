@@ -1,3 +1,31 @@
+# Aktueller Checkpoint – C1: kompakte Modern-Island am Viewportrand
+
+23. Oktober 2026. Bestätigter B2.2-HEAD **`ceae6ba438f552edc32845369f2c6a31aa0473b4`**; eigener Branch **`theme/air-modern-island-c1-20261023`**. Genau C1: bestehende Island unter `html[data-desktop-theme="modern"]` viewportfest bei **y=2px**, tiefschwarz #090b0c, exakt mittig, warme weiße Uhrzeit, ruhiger Rand/Schatten. Classic-Styles bleiben unverändert. Kein dockTheme-Ersatz und keine Preference-Migration.
+
+Befund: bisheriger `.desktop`-Inset 31px/29px plus absolutem Island-top 8px ergab wirklich y39/y37. Lösung positioniert nur Modern-Island fixed; Desktop-/Fensterhost-Koordinaten bleiben exakt erhalten (y93 auf großen Displays, y91 bei 390px). Pillenbreite begrenzt auf 156–250px, Höhe 36–45px, Uhrzeit über dreispaltiges Layout tatsächlich mittig. Panel bleibt unter der Pille, 340px breit, dunkel, höchstens min(420px, Viewporthöhe−150px), bei Bedarf intern vertikal scrollbar. Keine neue Komponente oder Fensterverwaltung.
+
+Echte Electron-Messung `getBoundingClientRect()` (CSS-Pixel):
+
+| Viewport | Pille x/y | Pille Breite×Höhe | Horizontaler Abstand zum Systemmenü | Panel x/y, Breite×Höhe |
+| --- | --- | --- | --- | --- |
+| 1920×1080 | 835 / 2 | 250×45 | 740,47px | 790 / 55, 340×210 |
+| 1650×930 | 717,58 / 2 | 214,84×38,67 | 623,05px | 655 / 48,67, 340×210 |
+| 390×600 | 117 / 2 | 156×36 | 22,47px | 25 / 46, 340×210 |
+
+Classic gemessen unverändert 156×38px bei y39/y39/y37. Neue Geometrie nur für desktopTheme=modern; Dock-Design bleibt unabhängig. Startmenü/Island schließen einander über bestehende Fokus-/Outside-Wege; beim Öffnen der Island wird ein bereits offenes Startmenü zuerst regulär geschlossen. Keine Änderung am Startmenü-/Dock-Code. Geschlossene Island berührt weder Systemknopf noch Fensterbedienelemente; geöffnetes Panel kann Inhalte vorübergehend überlagern und ist jederzeit schließbar.
+
+Vorhandene Funktionen erhalten: echte lokale 12-/24h-Uhr nach Preferences; echte bestätigte Dock-Theme-Änderung mit Fehler/Retry; echte Notes-Speichernachricht ohne Inhalt; Enter/Space/Escape, Outside-Click/Fokus und Rückgabe. Vorhandene Öffnungsanimation plus kurzer 120ms-WAAPI-Exit nur in Modern, nur Opazität/4px-Translation. Beim Schließen sofort inert/pointer-inaktiv und ARIA geschlossen, danach hidden; Reopen cancelt alten Exit. Classic schließt wie zuvor sofort. Beide Reduce-Motion-Quellen, Themewechsel, verborgenes Dokument und pagehide umgehen/beenden Exit. Keine neuen Timer; bestehender Uhrtimer bleibt bei verborgenem Dokument pausiert und wird beim Profilwechsel entsorgt.
+
+**179/179 Node-Tests bestanden, 0 Fehler/Skips** (zuvor 175). Vier neue Regressionen für Modern-Exit/Inert/Fokusrückgabe, Reopen-/Theme-/Visibility-/Dispose-Abbruch, beide Bewegungsreduktionen/Classic und Startmenü-Koordination. Bestehende Uhr-/IPC-Save-/Notes-/Profile-/Runtime-/Pinning-/Sicherheitstests aktiv. Zusätzlich echter wiederholbarer Layout-/Funktions-GUI-Helfer mit drei Auflösungen. Syntax, Catalina-Konfiguration und Whitespace geprüft.
+
+Echter Linux/Electron-32.3.3-/Xvfb-Test: sämtliche Tabellenwerte, exakte Zentrierung, schwarzer Hintergrund, Modern→Classic→Modern ohne Neustart, unveränderter Fensterhost, lokale Uhr/12h/24h, Panel/Enter/Space/Tab/Escape/Outside/Fokus, Fenster maximieren/minimieren/wiederherstellen/schließen (Hit-Test der Schließen-Taste), Startmenü-Koordination, Dock 358×68px und Scrollversuch 0. Kontrollzentrum speichert beide Dock-Themes tatsächlich; echte isolierte blockierte Preferences-Datei meldet Fehler, ursprüngliche Bytes erhalten, Retry erfolgreich. Normalanimation und beide Bewegungsreduktionen geprüft. Echte Notes-UI-Speicherung erzeugt einmalige Nachricht ohne private Notizinhalte/erzwungenes Öffnen; zweites Profil enthält weder Nachricht noch Notes-Daten. Keine ungefangenen Rendererfehler. [Elf echte Screenshots und rohe JSON-Messwerte](AIR_MODERN_DESIGN.md). Timer-/Visibility-Abbruch zusätzlich automatisiert mit kontrolliertem Dokument-/Uhr-Test-Double; kein behaupteter OS-Hardware-/Screenreader-Test.
+
+Main a1f3e12, PR #11 eecab2a, PR #12 eb3f3bc, Installer-Branch d6a2cc0 unverändert. Actions-Abruf über gh weiterhin Forbidden; keine neue CI-Abnahme behauptet oder Builds gestartet. Dock-/Startmenü-/Preferences-/Main-/IPC-/Icon-/Dependency-/Installer-Dateien unverändert. Bestehende Audit-/Signing-/Notarisierungs-/Release-Blocker offen. Keine GPL-/Folia-Assets oder fremder Code, keine Medien-/Batterie-/Netzwerkwerte oder Systemsteuerungen ergänzt.
+
+Vergleich mit Bild 2: geometrisches Island-Ziel erreicht, 2px oberer Abstand statt bündigem Ausschnitt, runde eigenständige Air-OS-Pille mit Uhr/Chevron statt fremden Mediengrafiken. Vektorhimmel und fehlendes Mint-Air-Home bleiben; keine Pixelgleichheit. Nächste drei separate Micro-Einheiten erst nach neuem Prompt: (1) **D1** eigenständiges großes Mint-Air-Home-Grundfenster in bestehender Registry/Fensterverwaltung, (2) **E1** genau ein echtes Dashboard-Widget anbinden, (3) **F1** einzelne vorhandene App optisch integrieren und nativ visuell prüfen. Commit `Position and refine the Modern Island at the viewport edge`; SHA im Abschlussbericht. Danach Sitzung beenden.
+
+---
+
 # Aktueller Checkpoint – B2.2: Apps im Startmenü anheften und lösen
 
 23. Oktober 2026. Bestätigter B2-Ausgangs-HEAD **`f21441703c833fa9d3a7e0c6922badc0fca0fca8`**; eigener Branch **`theme/air-modern-start-pins-b22-20261023`**. Genau B2.2: getrennte native App-Start- und Anheften-/Lösen-Buttons in einer kompakten Startmenü-Liste. App-Suche, Originalicons und Startpfad bleiben erhalten. Kein Drag-and-drop, Kontextmenü, neues Dock, Island oder Air Home.
