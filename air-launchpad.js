@@ -28,7 +28,15 @@
   const host=document.querySelector('#windows');if(host){const observer=new MutationObserver(()=>{if(!win.isConnected){off?.();offRegistry?.();observer.disconnect()}});observer.observe(host,{childList:true})}
   render();
  }
- vectorIcon.launchpad='<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#b8dffa"/>'+Array.from({length:9},(_,i)=>'<rect x="'+(13+i%3*15)+'" y="'+(13+Math.floor(i/3)*15)+'" width="10" height="10" rx="3" fill="'+(i===4?'#248ed7':'#f9fcff')+'"/>').join('')+'</svg>';
+ const classicLaunchpadIcon='<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#b8dffa"/>'+Array.from({length:9},(_,i)=>'<rect x="'+(13+i%3*15)+'" y="'+(13+Math.floor(i/3)*15)+'" width="10" height="10" rx="3" fill="'+(i===4?'#248ed7':'#f9fcff')+'"/>').join('')+'</svg>';
+ const airLaunchpadLogo='<svg viewBox="0 0 64 64" aria-hidden="true"><image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQAAAADK40qVAAAA8ElEQVR42p2TwQ2DMBAEFwcJfqEDXEIKiASdhdIoxSXwyMMPxOUR32WBOILwQeO1z+s9G/j/uwOAS9CzMpNSgMAxlAw1w6pAs1IYfMwp/cRKyE3DSGMPVoRhYXgCAC7JdTidWtvynjJ8QGRkb96g2LheQWPgfk3LQ21QHl5TGtQb5eOkyRbw6UimDAqrWyTyTsRRBHA6VVtXiYhwNYNaW+fIzf6K+exJewDxRKJqejqQ9cF4t721kQHZEDVIg1v6dyIiCyvFt9Jh500STPoadmuiRuo02phg4WmCVMWpY9us4zYGfYEAUM3XyPsNJ17bC9lOPtbfZmX+AAAAAElFTkSuQmCC" width="64" height="64"/></svg>';
+ function syncLaunchpadLogo(){
+  const icon=(typeof readAirSettings==='function'?readAirSettings():{}).desktopTheme==='modern'?airLaunchpadLogo:classicLaunchpadIcon;
+  vectorIcon.launchpad=icon;
+  document.querySelectorAll?.('.launchpad-icon')?.forEach(element=>{element.innerHTML=icon});
+ }
+ document.addEventListener?.('air-settings-changed',syncLaunchpadLogo);
+ syncLaunchpadLogo();
  window.airLaunchpad={body,mount};
  if(typeof paintAppIcons==='function')paintAppIcons();
  // B2: a small view of the same Registry and launch path, not a second app catalog.

@@ -1,3 +1,9 @@
+# Referenzkorrektur – Schritt 1: Bilder erhalten, Air-OS-Startlogo übernommen
+
+23. Oktober 2026. Basis 71139f562ea751f546e01efc6e5006d8961a803b, eigener Branch `theme/air-modern-reference-c2-20261023`. Die fünf Referenzbilder sind jetzt sichtbar; die vorherige Bildblockade ist aufgehoben. Ränder bereits mit 0px gesichert. Bild 3 zeigt das weiße Birnenlogo auf Schwarz; das vorhandene, vom Benutzer stammende `assets/air-logo.png` entspricht dieser Form visuell. Unveränderte PNG-Bytes sind im bestehenden Launchpad-SVG eingebettet, damit kein Installer-/Paketmanifest geändert werden muss. Nur das Modern-Launchpad-Icon wechselt; andere Originalicons und Classic-Grid bleiben erhalten. Logo-Regression prüft Originalbytes und Theme-Rückkehr. Kein 1:1-Bytevergleich mit dem hochauflösenden Anhang behauptet. Nächster bereits beauftragter Schritt: Kontrollzentrum nach Bild 5 (Statuszeile, 2×2-Tiles, sechs runde Aktionen, zwei ehrliche Reglerdarstellungen); danach GUI-Vergleich bei drei Auflösungen. Kein Air Home, kein Build/Release, main unverändert.
+
+---
+
 # Zwischenstand – C1/C2-Visuelle Korrektur: Randanbindung gesichert, Bildreferenzen fehlen
 
 23. Oktober 2026. Explizit gewünschte Basis **`ceae6ba438f552edc32845369f2c6a31aa0473b4`** / B2.2; neuer separater Branch **`fix/air-modern-edge-attachment-c12-20261023`**. Kein Merge oder Schreiben auf C1, main, PRs oder Installer-Branches. Die bereits eigenständig implementierten Island-Viewport-/Animations-/Cleanup-Änderungen aus C1 `8c550c2` wurden als geprüfte Dateigrundlage wiederverwendet, ohne Branches zusammenzuführen. C1/C2-Gesamtauftrag ausdrücklich **noch nicht abgeschlossen**.
