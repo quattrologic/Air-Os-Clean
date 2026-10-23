@@ -1,6 +1,6 @@
 # Air-OS Ultimate – verifizierter Bestand und priorisierte Roadmap
 
-Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
+Stand: **23. Oktober 2026**, fortgeschrieben um Dock-, Island-, Kontrollzentrum- und Notes-Mitteilungs- sowie Fensterfokus- und Pinning-Speicher-Checkpoints. Abschnitt 1 dokumentiert die ursprüngliche Bestandsaufnahme; spätere Änderungen und ihre Nachweise stehen in den benannten Checkpoints und den neuesten Übergabedokumenten.
 
 ## 1. Ausgangspunkt und belastbare Nachweise
 
@@ -133,7 +133,7 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | Q1 | Quick Settings nur für vorhandene Air-OS-Darstellung anbinden | Bestehende Preferences ändern/persistieren; Speicherfehler sichtbar, kein zweiter Store. |
 | M1 | Ein getestetes Medienzustandsmodell für **Air Music** extrahieren | Echte Audioereignisse, Pause/Ended/Fehler und Listener-Cleanup; keine Spotify-Steuerung behaupten. |
 | M2 | Island-Medienansicht an M1 anbinden | Play/Pause und Titel folgen wirklichem Audio; verborgen/geschlossen keine unnötige Aktualisierung. |
-| P1 | Profilbezogene Dock-Pins als Datenvertrag ergänzen | Nur Registry-IDs, begrenzt, validiert, profilisoliert und persistiert; noch kein Drag-and-drop. |
+| P1 | **Speichervertrag umgesetzt, 23.10.2026**; siehe Pinning-Checkpoint | Geordnete ID-Verweise, begrenzt/validiert/profilisoliert; `null` gegenüber `[]`, keine App-Metadaten. Dock-Bedienung noch offen. |
 | P2 | Bestehendes Dock aus P1 rendern und Pin/Unpin anbieten | Keine doppelte Registry; fehlende/deinstallierte IDs sicher behandeln, Startwege erhalten. |
 
 ### P2 – Ausbau nach abgesicherten Grundlagen
@@ -148,6 +148,14 @@ D1–D3 anschließend je App einzeln auf AirWrite/Musik anwenden; keine Mehrfach
 | L1 | Einen Modern-Installer auf einer realen Plattform abnehmen | Installation, Start, Profilpersistenz, Deinstallation; Signing/Updates gesonderte Einheiten. |
 
 Langfristig folgen nach diesen Verträgen Finder-Vorschauen/Move/Trash, Benachrichtigungen mit echten Auslösebedingungen, Mission Control, produktionsfähige Paketverteilung/SDK, Provider-basierte Mail/Kalender, opt-in Cloud und native iPadOS-Laufzeit. Jedes Vorhaben wird vor Beginn erneut in eine konkrete kleine Einheit zerlegt; keine Vollimplementierung eines „kompletten Desktops“ in einer Sitzung.
+
+## Pinning-Speicher-Checkpoint P1 – 23. Oktober 2026
+
+Auf `feat/air-dock-pin-preferences-20261023`, ausgehend von `9709376`, ist genau die Speichergrundlage ergänzt: `dockPins` im bestehenden profilbezogenen Preferences-Store und dessen unveränderter authentifizierter IPC. `null` erbt die Standardbelegung; eine geordnete Liste von höchstens 64 eindeutigen ID-Verweisen bzw. `[]` ist eine explizite Auswahl. Syntax validiert, Arrays kopiert, kein Name/Icon/Installationsstatus dupliziert. Alte Dateien bleiben kompatibel, Reset/Profiltrennung sind getestet. Eine gespeicherte ID ist keine Installations-/Startberechtigung.
+
+Vier neue Node-Tests vor Änderung rot, danach 111 Node-Tests grün. Echte Linux-Electron-IPC-Prüfung mit vier Prüfgruppen grün: Profildatei/Reload, Entfernen/leere Auswahl, unveränderte Bytes bei ungültigem Write, abgemeldete Ablehnung und getrennte Profile/Reset. Details in der neuesten Übergabe.
+
+**Noch kein sichtbares Pinning:** feste Dock-Buttons bleiben in dieser Micro-Einheit unverändert. P2 wird weiter zerlegt: **P2a** Rendering aus der vorhandenen Registry und Referenzen, einschließlich Installations-/Deinstallationsänderungen und Profilwechsel; **P2b** danach Pin/Unpin-Bedienung mit Fehlerbehandlung. Fehlende Registry-Einträge sicher aus der Darstellung auslassen, nicht als installiert ausgeben und bei noch laufendem Bootstrap nicht blind aus Präferenzen löschen. Drag-and-drop erst anschließend. Keine zweite App Registry und kein paralleles App-Inventar anlegen.
 
 ## Fenster-Checkpoint W0 – 23. Oktober 2026
 

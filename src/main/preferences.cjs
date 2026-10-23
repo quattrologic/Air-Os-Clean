@@ -1,7 +1,7 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'yosemite',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',reduceGlass:false,reduceMotion:false,clock24:true});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'yosemite',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
 const WALLPAPERS=new Set(['yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
@@ -11,6 +11,22 @@ function validate(patch){
   if(key==='wallpaper'&&(!WALLPAPERS.has(value)))throw new TypeError('Ungültiges Hintergrundbild.');
   if(key==='accent'&&(typeof value!=='string'||!/^#[0-9a-fA-F]{6}$/.test(value)))throw new TypeError('Ungültige Akzentfarbe.');
   if(key==='dockTheme'&&!['classic','modern'].includes(value))throw new TypeError('Ungültiges Dock-Theme.');
+  if(key==='dockPins'){
+   // References only: null inherits the default dock; [] explicitly pins nothing.
+   // Existence, metadata and launch authorization remain with Registry/Main services.
+   if(value!==null){
+    if(!Array.isArray(value)||value.length>64)throw new TypeError('Ungültige Dock-Pins.');
+    const seen=new Set();
+    for(const id of value){
+     if(typeof id!=='string'||(!/^[a-z][a-z0-9-]{0,63}$/.test(id)&&
+        !(id.length<=90&&/^com\.[a-z0-9-]+(?:\.[a-z0-9-]+){1,8}$/.test(id)))||seen.has(id))
+      throw new TypeError('Ungültige Dock-Pins.');
+     seen.add(id);
+    }
+   }
+   result[key]=value===null?null:[...value];
+   continue;
+  }
   if(key==='dockSize'&&(!Number.isInteger(value)||value<36||value>64))throw new TypeError('Ungültige Dock-Größe.');
   if(['reduceGlass','reduceMotion','clock24'].includes(key)&&typeof value!=='boolean')throw new TypeError('Ungültiger Schalter.');
   if(key==='customWallpaper'&&(typeof value!=='string'||(value.length>7*1024*1024)|| (value!==''&&!/^data:image\/(?:png|jpeg|webp|gif);base64,[A-Za-z0-9+/]+={0,2}$/.test(value))))throw new TypeError('Ungültiges Hintergrundbild.');
