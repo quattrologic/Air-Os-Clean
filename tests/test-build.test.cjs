@@ -4,7 +4,26 @@ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),cryp
 const {prepare,verifyPackage,collect,REQUIRED}=require('../scripts/test-build.cjs');
 // Uses the ASAR tool already supplied by electron-builder, no new dependency.
 const asar=require('@electron/asar');
+const vm=require('node:vm');
 const commit='a'.repeat(40);
+test('ASAR extraction uses native Windows separators while feature matching stays portable',()=>{
+ const module={exports:{}};
+ vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/test-build.cjs'),'utf8'),{
+  module,require:name=>name==='node:path'?path.win32:require(name)
+ });
+ const {publicKey}=crypto.generateKeyPairSync('ed25519');
+ const key=publicKey.export({type:'spki',format:'pem'});
+ const info={commit,version:'1.0.3-dev.1.shaaaaaaaaaaaaa'};
+ const reader={
+  listPackage:()=>['package.json',...REQUIRED].map(file=>'\\'+file.replace(/\//g,'\\')),
+  extractFile:(_archive,file)=>{
+   assert.equal(file.includes('/'),false,'ASAR traverses using the host path separator');
+   const relative=file.replace(/\\/g,'/');
+   return Buffer.from(relative==='package.json'?JSON.stringify({version:info.version,airOSDevelopmentBuild:{...info,testOnly:true}}):relative==='store/keys/demo-publisher-public.txt'?key:'fixture');
+  }
+ };
+ module.exports.verifyPackage('fixture.asar',info,reader);
+});
 async function fixture(platform='windows',change=()=>{}){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-test-build-'));
  try{

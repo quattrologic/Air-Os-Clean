@@ -12,19 +12,22 @@ function prepare(root,commit,run){
  return pkg.airOSDevelopmentBuild;
 }
 function verifyPackage(archive,expected,asar){
+ // ASAR's directory traversal splits on the host separator. Keep portable
+ // names for comparisons, but pass native paths at the extraction boundary.
+ const read=file=>asar.extractFile(archive,path.normalize(file));
  const entries=asar.listPackage(archive).map(name=>name.replace(/^[\\/]+/,'').replace(/\\/g,'/'));
  for(const file of ['package.json',...REQUIRED])if(!entries.includes(file))throw Error('Missing packaged file: '+file);
- const pkg=JSON.parse(asar.extractFile(archive,'package.json').toString());
+ const pkg=JSON.parse(read('package.json').toString());
  if(pkg.airOSDevelopmentBuild?.commit!==expected.commit||pkg.version!==expected.version||pkg.airOSDevelopmentBuild?.testOnly!==true)throw Error('Packaged build identity mismatch.');
  for(const file of entries){
   if(/(^|\/)(\.env($|\.)|accounts\.json$|profiles\/|id_(rsa|ed25519)$)|\.(p12|pfx|pem|key)$|(^|\/)tests\//i.test(file))throw Error('Forbidden packaged path: '+file);
   if(/\.(js|cjs|json|txt)$/.test(file)){
-   const bytes=asar.extractFile(archive,file);
+   const bytes=read(file);
    if(/-----BEGIN (?:RSA |EC |OPENSSH |ENCRYPTED )?PRIVATE KEY-----/.test(bytes.toString()))throw Error('Private key in package: '+file);
   }
  }
  // The offline Store requires this PUBLIC verification key at host startup.
- crypto.createPublicKey(asar.extractFile(archive,'store/keys/demo-publisher-public.txt'));
+ crypto.createPublicKey(read('store/keys/demo-publisher-public.txt'));
 }
 function verifyArchitecture(file,expected){
  const bytes=fs.readFileSync(file);
@@ -80,7 +83,17 @@ if(require.main===module){
  if(process.argv[2]==='prepare'){
   const commit=require('node:child_process').execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
   console.log(JSON.stringify(prepare(root,commit,process.env.GITHUB_RUN_NUMBER||'')));
- }else if(process.argv[2]==='collect')console.log(collect(root,process.argv[3],require('@electron/asar')));
+ }else if(process.argv[2]==='collect'){
+  const groups=collect(root,process.argv[3],require('@electron/asar'));
+  let summary='## Verified development installers\n\n';
+  for(const group of groups){
+   const info=JSON.parse(fs.readFileSync(path.join(root,'dist/test-artifacts',group,'BUILD-INFO.json'),'utf8'));
+   summary+='- '+info.file+' ('+info.bytes+' bytes)\n  - Commit: `'+info.commit+'`\n  - SHA-256: `'+info.sha256+'`\n';
+  }
+  console.log(summary);
+  // Only real CLI collection writes CI summaries; synthetic unit fixtures never do.
+  if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,summary);
+ }
  else throw Error('Usage: test-build.cjs prepare | collect windows|macos');
 }
 module.exports={prepare,verifyPackage,collect,REQUIRED};

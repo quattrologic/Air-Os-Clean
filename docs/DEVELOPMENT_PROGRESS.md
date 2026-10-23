@@ -1,3 +1,13 @@
+# Testbuild-Zwischenstand – native macOS-Pakete vorhanden, ASAR-Pfadgrenze korrigiert
+
+23. Oktober 2026. Erster echter Push-Testlauf [39989705165](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39989705165), Commit `364cb284cac7c1719ad14331499592b508dd3569`, Build #98: macOS-Tests, Universal-Paketierung, Inhalts-/Architektur-/Datei-/Hash-Prüfung und beide Uploads erfolgreich. Zwei etwa 170-MB-Artefakte sichtbar: DMG `12517666264`, ZIP `12516473563`. Windows-Testschritt weiterhin rot, Paketierung/Uploads dort übersprungen. Kein Windows-Erfolg behauptet und macOS-Artefakte nicht als Vier-Plattform-Abschluss ausgegeben. API-Logs weiterhin gesperrt; neue Logausgabe beim Benutzer angefragt.
+
+Unabhängig nachgewiesener Fehler im neuen Paketprüfer: @electron/asar trennt Verzeichnisnamen am nativen path.sep; plattformneutrale Slash-Namen wurden ungeändert an extractFile übergeben. Unter Windows ergibt dies falsche Traversierung. Fix: Vergleiche weiterhin mit portablen Namen, Extraktion ausschließlich mit path.normalize an der API-Grenze. Zusätzlicher strikter Windows-Pfad-Vertragstest mit Produktionsmodul im VM-Adapter vor Fix rot/nach Fix grün. Keine ASAR-/Signatur-/Dateiprüfung entfernt. CLI schreibt echte Installer-Namen/Größen/Hashes zusätzlich in GitHub-Step-Summary; Unit-Fixtures schreiben dort nichts.
+
+Aktueller lokaler Gesamtstand **144 Tests bestanden, 0 Fehler/Skips**. Erneuter isolierter Audit der unveränderten Dependencies: **Exit 1, zwei High (Electron und extract-zip), keine Critical/Moderate/Low**; kein Upgrade/Abschalten. Nächster kontrollierter Schritt: genau ein erneuter gemeinsamer nativer Lauf mit diesem ASAR-Fix und Windows-Preferences-Fix; alle vier finalen Installer müssen dessen identischen SHA tragen. Erster Lauf ist bereits beendet, kein widersprüchlicher Parallelbuild.
+
+---
+
 # Aktueller Checkpoint – überprüfbare Vorab-Installer-Pipeline vorbereitet
 
 23. Oktober 2026. Autorisierter Windows-/macOS-Testinstaller-Auftrag, eigener Branch `build/air-ultimate-test-installers-20261023`, auf neuestem Funktionsstand `eb3f3bc` plus gesichertem Windows-Sicherheitsfix `cdc97aa`. Beide Plattformen sollen aus einem identischen nächsten Code-/Workflow-Commit bauen; tatsächlicher Build-SHA/Run und Artefaktresultate folgen im Testbuild-Bericht. Noch keine Installer oder erfolgreichen nativen Tests behauptet.
