@@ -204,3 +204,7 @@ Notes-Delete sendet inhaltsfreies air-notes-changed, Notes-Save behält air-note
 ## F1 – Notes optisch integriert (24. Oktober 2026)
 
 Nur html[data-desktop-theme="modern"] .air-notes-window: Mint-Rahmen/Titelleiste, hellgrüne190px-Liste, cremeweißer Editor, Georgia-Titel/Systemtext, feine Rahmen und sichtbarer Fokus. Mobil100px-Liste oben statt unbedienbar schmaler Seitenleiste. Classic-Skin gegen bisherigen CSS-Stand im Browser identisch geprüft; keine Notes-/Store-/E3-Logik geändert. Notes870×480px groß bzw.378×433px bei390px. [Screenshots, genaue Messwerte und Abweichungen](AIR_NOTES_MODERN_F1.md).216 Tests und echter Electron-Lauf an drei Größen erfolgreich. Native Fonts/Scrollbars/Controls und Plattformabnahme in F2 separat.
+
+## F2.1 – native Windows-Abnahme blockiert (24. Oktober 2026)
+
+[Prüfbericht und native Prüfliste](AIR_NOTES_WINDOWS_F21_REVIEW.md). Hier nur Linux verfügbar; keine Windows-GUI, Messwerte oder Screenshots erzeugt.216/216 bestehende Tests neu auf Linux bestanden, kein Windows-Erfolg. Status-/Textarea-Placeholder-Kontrast aus CSS rechnerisch4,10035:1, Traffic-Buttons im CSS10px, relevante Konturen und tatsächliche Hitboxen nativ offen. Keine Korrekturen. Kandidat#5f7464 unverändert. F2.1 bleibtBLOCKIERT, F2.2/K1/K2 separat.

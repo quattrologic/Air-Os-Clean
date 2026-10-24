@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – F2.1 Windows-Abnahme: BLOCKIERT
+
+24. Oktober 2026. Bestätigter Ausgangscommit/Remote-HEAD **1866281571b04ad74efdf549d665eae68842d254**, eigener Berichtszweig **docs/air-notes-windows-f21-20261024**. Ausschließlich Abnahme/Dokumentation, keine CSS-/JS-/Funktionsänderung. [F2.1-Prüfbericht](AIR_NOTES_WINDOWS_F21_REVIEW.md).
+
+**Keine native Windows-Umgebung verfügbar:** Debian13.6/Linux6.18.55/x64, Node24.19.0; keine Windows-Sitzung oder entsprechendes Ausführungswerkzeug angebunden. Electron32.3.3 nur als Paketversion festgestellt, keine GUI gestartet. Alle nativen Prüfungen bei1920×1080,1650×930,390×600 BLOCKIERT. Keine Windows-Version/Skalierung/Font-/Hitbox-/Fenster-Messwerte oder Screenshots erfunden; Linux-/Emulationsbelege nicht als Windows ausgegeben.
+
+Separat bestätigte Code-/Rechenbefunde: #677e6c auf Creme **4,10035:1**, betroffen Notes-Status12/11px und Textarea-Placeholder14/13px; Titel-Placeholder24/30px gegen große Schrift3:1 separat bewerten. Kandidat#5f7464≈4,69920:1 unverändert. CSS deklariert Traffic-Buttons10×10px, tatsächliche Windows-Hitbox offen. Rand#b8bcb6≈1,79610:1, funktionale Relevanz nativ zu prüfen. Keine dieser Stellen korrigiert. Quellbefund BrowserWindow-minWidth760:390px-Nativfenster-Erreichbarkeit muss ausdrücklich geprüft werden.
+
+**Neuer tatsächlicher Linux-Testlauf:216/216 bestanden,0 Fehler/Skips**; Catalina-Konfiguration bestanden. Kein nativer Windows-/macOS-Erfolg. Vorhandene Regressionen bleiben aktiv. PR-/Actions-Abfrage Forbidden, keine neue CI-Bestätigung. Quellen/Kontrast/Dokumentlinks/Whitespace und Docs-only-Diff geprüft. Bekannte Audit-/Signing-/Notarisierungs-/Release-Blocker bleiben offen. main/PRs/Installer/andere Entwicklungsbranches unverändert.
+
+Nächste drei getrennte Schritte: (1) F2.1 auf echter Windows-Sitzung nach dokumentiertem Ablauf vervollständigen; (2) F2.2 native macOS-Abnahme separat; (3) K1 genau eine nachgewiesene Kontrast-/Hitboxabweichung separat korrigieren. K2 danach als eigener Auftrag. Nach Commit/Push STOP, keine weiteren Arbeiten im Hintergrund. Neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – Air-OS Ultimate Hybrid: Konzept vor F2
 
 24. Oktober 2026. Bestätigter F1-Remote-HEAD **4cae58f367c76cdc9d8989fe35970df58d13ac07**, eigener Dokumentationsbranch **docs/air-os-hybrid-design-20261024**. Nur der vom Benutzer beauftragte Designplan, keine F2-Implementierung oder zusätzliche App-Funktion. [Konkreter Hybrid-Plan](AIR_OS_ULTIMATE_HYBRID_DESIGN.md) ergänzt die bestehende Mint-/Creme-/Wolken-/Originalicon-Identität um kompakte dunkle Such-/Schnellflächen und Apple-inspirierte Interaktionsregeln. Neue Token-/Maßwerte sind reviewfähige Vorschläge, bestehende gemessene Geometrien als Baseline festgehalten.
