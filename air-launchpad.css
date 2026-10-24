@@ -28,3 +28,28 @@
 .air-start-label small{font-size:10px;color:#b7c9be}
 .air-start-entry>[data-pin-app]{padding:8px 5px;font-size:11px;min-height:32px;background:#ffffff0b}
 .air-start-entry>[data-pin-app]:disabled{cursor:default}
+
+/* K2: one existing menu, Modern desktop only; outer width/position/cap remain unchanged. */
+.air-start-filters[hidden]{display:none!important}
+html[data-desktop-theme="modern"] .air-start-menu{background:#101517;color:#f2f5f3;color-scheme:dark;font-family:system-ui,sans-serif;gap:12px}
+html[data-desktop-theme="modern"] .air-start-menu h2{font-size:16px;font-weight:600;line-height:22px;letter-spacing:-.01em}
+html[data-desktop-theme="modern"] #air-start-search{min-height:40px;padding:8px 12px;background:#171e21;color:#f2f5f3;border-color:#67776e;line-height:20px;font-size:14px}
+html[data-desktop-theme="modern"] #air-start-search::placeholder{color:#b5c1ba;opacity:1}
+html[data-desktop-theme="modern"] #air-start-status{color:#b5c1ba;font-size:12px;line-height:16px}
+html[data-desktop-theme="modern"] .air-start-filters{display:flex;flex-wrap:wrap;gap:8px}
+html[data-desktop-theme="modern"] .air-start-filters button{min-height:30px;border:1px solid #67776e;border-radius:999px;padding:4px 12px;font-size:13px;line-height:18px;background:#171e21;color:#b5c1ba}
+html[data-desktop-theme="modern"] .air-start-filters button[aria-pressed="true"]{background:#26382f;color:#f2f5f3;border-color:#9cdaa1}
+html[data-desktop-theme="modern"] .air-start-results{gap:8px}
+html[data-desktop-theme="modern"] .air-start-entry{background:#171e21;border-radius:12px;grid-template-columns:minmax(0,1fr) 112px;gap:8px}
+html[data-desktop-theme="modern"] .air-start-entry>[data-start-app]{min-height:52px;padding:8px;gap:10px;border-radius:12px}
+html[data-desktop-theme="modern"] .air-start-label{font-size:13px;line-height:18px;gap:2px}
+html[data-desktop-theme="modern"] .air-start-label small{color:#b5c1ba;font-size:11px;line-height:15px}
+html[data-desktop-theme="modern"] .air-start-label small:empty{display:none}
+html[data-desktop-theme="modern"] .air-start-entry>[data-pin-app]{margin-right:6px;background:#202a2c;border:1px solid #67776e;border-radius:8px;color:#b5c1ba;font-size:11px;line-height:15px;padding:6px;min-height:32px}
+html[data-desktop-theme="modern"] .air-start-menu button{transition:background-color 80ms ease,color 80ms ease}
+html[data-desktop-theme="modern"] .air-start-menu button:hover:not(:disabled){background-color:#202a2c}
+html[data-desktop-theme="modern"] .air-start-menu button:active:not(:disabled){background-color:#365044;transition:none}
+html[data-desktop-theme="modern"] .air-start-menu :focus-visible{outline:2px solid #9cdaa1;outline-offset:2px}
+html[data-desktop-theme="modern"] #air-start-search:focus-visible{outline-offset:1px}
+html[data-desktop-theme="modern"].air-reduced-motion .air-start-menu button{transition:none}
+@media(prefers-reduced-motion:reduce){html[data-desktop-theme="modern"] .air-start-menu button{transition:none}}

@@ -174,3 +174,7 @@ Reihenfolge: Konzept prüfen, Supaste-Belege ergänzen, Freigabe, F2-Abnahme, da
 ## 13. Prüfstand dieser Konzept-Sitzung
 
 Nur Dokumentation. Keine Renderer-/CSS-/Runtime-/IPC-/Preferences-/Installeränderung und keine neue Abhängigkeit. Keine neue App-GUI-Abnahme oder Testsuite behauptet; letzter real belegter F1-Stand216/216 Tests und Linux/Electron-Screenshots bleibt historische Basis. Hier geprüft: Remote-HEAD, Code-/Messdaten, fixierte Skill-Quelle/Lizenz, Kontrastrechnung und Dokumentlinks/Whitespace. Supaste-Prüfung konkret blockiert wie Abschnitt1. Bestehende Audit-, Legacy-Electron-, Signing-/Notarisierungs- und Release-Blocker bleiben unverändert.
+
+## Umsetzungshinweis K2 (24. Oktober 2026)
+
+[Bestehendes Startmenü mit exakt zwei echten Pin-Filtern umgesetzt](AIR_START_MENU_HYBRID_K2.md). Der in diesem Plan vorgeschlagene dunkle Such-/Zeilenstil ist für diese eine Oberfläche umgesetzt; andere Schnellflächen bleiben separat. Originalgeometrien erhalten, Classic unverändert, kein Clipboard-/Cloud-/OCR-Ausbau. Supaste-Abgleich weiter offen.

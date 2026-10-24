@@ -43,7 +43,8 @@
  const menu=document.querySelector('#air-start-menu'),trigger=document.querySelector('.dock [data-app="launchpad"]');
  if(!menu||!trigger)return;
  const input=menu.querySelector('#air-start-search'),results=menu.querySelector('#air-start-results'),status=menu.querySelector('#air-start-status');
- let busy=false,pinBusy=false,version=0;
+ const filters=menu.querySelector('#air-start-filters'),allFilter=menu.querySelector('#air-start-filter-all'),pinnedFilter=menu.querySelector('#air-start-filter-pinned');
+ let busy=false,pinBusy=false,version=0,filter='all',interaction=0,summary=true;
  const enabled=()=>readAirSettings().dockTheme==='modern';
  function position(){
   const dock=document.querySelector('.dock').getBoundingClientRect();
@@ -57,8 +58,8 @@
  }
  async function launch(id){
   if(busy)return;
-  if(!registry.get(id)){status.textContent='Diese App ist nicht mehr verfügbar.';render();return}
-  busy=true;const request=++version;status.textContent='App wird gestartet …';input.disabled=true;
+  if(!registry.get(id)){summary=false;status.textContent='Diese App ist nicht mehr verfügbar.';render(false);return}
+  busy=true;summary=false;const request=++version;status.textContent='App wird gestartet …';
   results.querySelectorAll('button').forEach(button=>button.disabled=true);
   try{
    const outcome=await openApp(id);
@@ -69,7 +70,7 @@
  }
  async function pin(id,pinned){
   if(pinBusy||busy)return;
-  pinBusy=true;const request=version;status.textContent='Dock-Pins werden gespeichert …';render(false);
+  pinBusy=true;summary=false;const request=version;status.textContent='Dock-Pins werden gespeichert …';render(false);const startedInteraction=interaction;
   try{
    await persistAirDockPin(id,pinned);
    if(request!==version)return;
@@ -80,14 +81,19 @@
    status.textContent='Dock-Pins konnten nicht gespeichert werden. '+String(error.message||'').replace(/^Error invoking remote method '[^']+': (?:Error: )?/,'');
   }finally{
    pinBusy=false;
-   if(!menu.hidden){render(false);if(request===version){const action=Array.from(results.querySelectorAll('[data-pin-app]')).find(button=>button.dataset.pinApp===id);(action&&!action.disabled?action:input).focus()}}
+   if(!menu.hidden){render(false);if(request===version&&startedInteraction===interaction){const action=Array.from(results.querySelectorAll('[data-pin-app]')).find(button=>button.dataset.pinApp===id);(action&&!action.disabled?action:input).focus()}}
   }
  }
  function render(clearStatus=true){
+  const focusedApp=document.activeElement?.dataset.startApp,focusedPin=document.activeElement?.dataset.pinApp;
+  const settings=readAirSettings(),hybrid=settings.desktopTheme==='modern';
+  if(!hybrid)filter='all';
+  filters.hidden=!hybrid;allFilter.setAttribute('aria-pressed',String(filter==='all'));pinnedFilter.setAttribute('aria-pressed',String(filter==='pinned'));
+  const references=airDockReferences(settings.dockPins);
   const query=input.value.trim().toLocaleLowerCase('de-DE');
-  const apps=registry.list().filter(app=>app.name.toLocaleLowerCase('de-DE').includes(query)||app.id.toLocaleLowerCase('de-DE').includes(query));
+  const apps=registry.list().filter(app=>(filter==='all'||references.includes(app.id))).filter(app=>app.name.toLocaleLowerCase('de-DE').includes(query)||app.id.toLocaleLowerCase('de-DE').includes(query));
   results.replaceChildren();
-  if(clearStatus)status.textContent=apps.length?apps.length+' Anwendungen':'Keine passenden Apps gefunden.';
+  if((clearStatus||summary)&&!busy&&!pinBusy){summary=true;status.textContent=apps.length?apps.length+' Anwendungen':filter==='pinned'&&!query?'Keine angehefteten Apps.':'Keine passenden Apps gefunden.';}
   for(const app of apps){
    const button=document.createElement('button'),art=document.createElement('span'),name=document.createElement('span');
    button.type='button';button.dataset.startApp=app.id;button.disabled=busy;button.setAttribute('aria-label',app.name);
@@ -113,17 +119,22 @@
    }
    results.append(entry);
   }
+  if(focusedApp){const next=Array.from(results.querySelectorAll('[data-start-app]')).find(button=>button.dataset.startApp===focusedApp&&!button.disabled);(next||input).focus()}
+  else if(focusedPin){const next=Array.from(results.querySelectorAll('[data-pin-app]')).find(button=>button.dataset.pinApp===focusedPin&&!button.disabled);(next||input).focus()}
  }
  function toggle(){
   if(!enabled())return;
   if(!menu.hidden){close();return}
-  input.value='';input.disabled=false;busy=false;render();position();menu.hidden=false;trigger.setAttribute('aria-expanded','true');input.focus();
+  input.value='';filter='all';input.disabled=false;busy=false;render();position();menu.hidden=false;trigger.setAttribute('aria-expanded','true');input.focus();
  }
  menu.querySelector('#air-start-close').addEventListener('click',()=>close());
  menu.querySelector('#air-start-full').addEventListener('click',()=>launch('launchpad'));
- input.addEventListener('input',()=>render());
+ input.addEventListener('input',()=>{interaction++;render()});
+ input.addEventListener('focus',()=>{interaction++});
+ for(const [button,value] of [[allFilter,'all'],[pinnedFilter,'pinned']])button.addEventListener('click',()=>{if(readAirSettings().desktopTheme!=='modern')return;filter=value;interaction++;render()});
  menu.addEventListener('keydown',event=>{
   if(event.key==='Escape'){event.preventDefault();event.stopPropagation();close();return}
+  interaction++;
   const buttons=Array.from(results.querySelectorAll('[data-start-app]:not([disabled])'));
   if(event.target===input&&event.key==='Enter'){event.preventDefault();if(buttons[0])buttons[0].click()}
   if(['ArrowDown','ArrowUp'].includes(event.key)&&buttons.length){event.preventDefault();const index=buttons.indexOf(document.activeElement);buttons[index<0?(event.key==='ArrowDown'?0:buttons.length-1):(index+(event.key==='ArrowDown'?1:buttons.length-1))%buttons.length].focus()}

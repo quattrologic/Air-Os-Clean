@@ -212,3 +212,7 @@ Nur html[data-desktop-theme="modern"] .air-notes-window: Mint-Rahmen/Titelleiste
 ## K1 – Notes-Sekundärtext korrigiert (24. Oktober 2026)
 
 Nur Modern-Notes-Status und Placeholder verwenden jetzt#5f7464 statt#677e6c. Auf tatsächlicher Cremefläche#f8f7f3 erreicht der Linux-Electron-Nachweis4,69920:1 statt4,10035:1. Keine globale Textfarben-, Layout-, Größen- oder Funktionsänderung; Classic und andere Apps unverändert.217/217 Tests, echte Vorher-/Nachher-Aufnahmen an drei Viewports und Notes/E3 geprüft. [K1-Bericht](AIR_NOTES_CONTRAST_K1.md). CB-02/CB-03 sowie native Windows-/macOS-Abnahme weiter offen.
+
+## K2 – Hybrid-Startmenü (24. Oktober 2026)
+
+Bestehendes Modern-Startmenü dunkel verfeinert: Suche#171e21, Text#f2f5f3/#b5c1ba, Mint-Fokus, Originalicons, getrennte Pin-Aktion. Genau Alle/Angeheftet aus vorhandenen Dock-Referenzen; null/[] bleiben verschieden. Keine neue Persistenz, Registry oder Animation. Menü480×440 bzw.366×440 und10px über Dock unverändert. Classic-Skin gegen echte K1-Baseline identisch.225/225 Tests und echte Linux-Electron-Vorher-/Nachher-Prüfung an drei Größen erfolgreich. [Bericht/Screenshots/Maße](AIR_START_MENU_HYBRID_K2.md). Keine Supaste-Pixelgleichheit behauptet; K3 und native Plattformabnahmen separat.
