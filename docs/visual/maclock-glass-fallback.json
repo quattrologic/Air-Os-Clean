@@ -1,0 +1,290 @@
+{
+  "phase": "fallback",
+  "platform": "Linux Electron 32.3.3 / DPR1",
+  "comparisonClock": "2026-10-24 10:24 local; test-only fixed clock, not production",
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "clock": {
+        "x": 748.78125,
+        "y": 95.40625,
+        "width": 422.4375,
+        "height": 191
+      },
+      "profile": {
+        "x": 899.453125,
+        "y": 858.421875,
+        "width": 121.09375,
+        "height": 88
+      },
+      "stage": {
+        "x": 0,
+        "y": 858.421875,
+        "width": 1920,
+        "height": 151.390625
+      },
+      "field": {
+        "x": 865.5,
+        "y": 955.421875,
+        "width": 189,
+        "height": 32.390625
+      },
+      "font": "680 158.4px \"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "time": "10:24",
+      "scroll": false,
+      "material": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "frames": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45
+        },
+        "home": {
+          "x": 200,
+          "y": 103,
+          "width": 1522,
+          "height": 849
+        }
+      }
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "clock": {
+        "x": 643.125,
+        "y": 82.90625,
+        "width": 363.75,
+        "height": 165
+      },
+      "profile": {
+        "x": 772.9375,
+        "y": 739.171875,
+        "width": 104.125,
+        "height": 76
+      },
+      "stage": {
+        "x": 0,
+        "y": 739.171875,
+        "width": 1650,
+        "height": 130.390625
+      },
+      "field": {
+        "x": 743.625,
+        "y": 822.921875,
+        "width": 162.75,
+        "height": 27.890625
+      },
+      "font": "680 136.4px \"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "time": "10:24",
+      "scroll": false,
+      "material": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "frames": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875
+        },
+        "home": {
+          "x": 171.875,
+          "y": 93,
+          "width": 1307.96875,
+          "height": 731.078125
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "clock": {
+        "x": 54.171875,
+        "y": 55.609375,
+        "width": 281.65625,
+        "height": 127
+      },
+      "profile": {
+        "x": 141.1875,
+        "y": 428.203125,
+        "width": 107.625,
+        "height": 63
+      },
+      "stage": {
+        "x": 0,
+        "y": 428.203125,
+        "width": 390,
+        "height": 125
+      },
+      "field": {
+        "x": 90,
+        "y": 497.203125,
+        "width": 210,
+        "height": 36
+      },
+      "font": "680 105.6px \"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "time": "10:24",
+      "scroll": false,
+      "material": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "frames": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36
+        },
+        "home": {
+          "x": 12,
+          "y": 91,
+          "width": 366,
+          "height": 430
+        }
+      }
+    }
+  ],
+  "gpuProbe": null,
+  "cleanup": [
+    {
+      "status": "disposed",
+      "reason": "pagehide",
+      "disposed": true,
+      "frames": 0,
+      "pendingFrame": false,
+      "last": null,
+      "renderer": {
+        "disposed": true,
+        "contextAlive": false,
+        "resources": {
+          "shader": 0,
+          "program": 0,
+          "texture": 0,
+          "buffer": 0,
+          "framebuffer": 0,
+          "vertexArray": 0
+        }
+      }
+    },
+    {
+      "status": "disposed",
+      "reason": "pagehide",
+      "disposed": true,
+      "frames": 0,
+      "pendingFrame": false,
+      "last": null,
+      "renderer": {
+        "disposed": true,
+        "contextAlive": false,
+        "resources": {
+          "shader": 0,
+          "program": 0,
+          "texture": 0,
+          "buffer": 0,
+          "framebuffer": 0,
+          "vertexArray": 0
+        }
+      }
+    },
+    {
+      "status": "disposed",
+      "reason": "pagehide",
+      "disposed": true,
+      "frames": 0,
+      "pendingFrame": false,
+      "last": null,
+      "renderer": {
+        "disposed": true,
+        "contextAlive": false,
+        "resources": {
+          "shader": 0,
+          "program": 0,
+          "texture": 0,
+          "buffer": 0,
+          "framebuffer": 0,
+          "vertexArray": 0
+        }
+      }
+    }
+  ],
+  "errors": []
+}

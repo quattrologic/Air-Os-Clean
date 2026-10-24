@@ -159,3 +159,24 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 .maclock-login .saved-accounts{max-height:96px;overflow:auto}
+
+/* L1B.1: material-only enhancement, never a hit target or an authentication layer.
+   The original native input, DOM clock metrics and CSS fallback remain in place. */
+.maclock-material{position:fixed;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}
+.maclock-login.has-maclock-glass #login-clock{color:transparent}
+.maclock-login.has-maclock-glass .login-stage{z-index:2}
+.maclock-login.has-maclock-glass .password-row{background:transparent;border-color:transparent;box-shadow:none}
+#maclock-reduce-glass{position:fixed;z-index:2;left:210px;bottom:18px;margin:0;font-size:11px}
+.maclock-login.is-creating #maclock-reduce-glass{display:none}
+.maclock-login #maclock-reduce-glass[aria-pressed="true"]{text-decoration:underline}
+@media(max-width:600px){#maclock-reduce-glass{left:auto;right:16px;bottom:22px;font-size:10px}}
+@media(prefers-reduced-transparency:reduce),(forced-colors:active),(prefers-contrast:more){
+ .maclock-material{display:none}
+ .maclock-login.has-maclock-glass #login-clock{color:rgba(255,255,255,.85)}
+ .maclock-login.has-maclock-glass .password-row{background:rgba(31,31,36,.45);border-color:#ffffff2e}
+}
+@media(forced-colors:active){.maclock-login.has-maclock-glass .password-row{background:Canvas;border-color:CanvasText}}
+
+.maclock-login[data-maclock-glass="reduced"] .password-row{background:#202226;border-color:#ffffff80}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.maclock-login .password-row{background:#202226;border-color:#ffffff80}}
+@media(forced-colors:active){.maclock-login[data-maclock-glass="reduced"] .password-row{background:Canvas;border-color:CanvasText}}

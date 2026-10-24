@@ -20,3 +20,17 @@ maclock-wallpaper.svg is existing original Air-OS vector artwork, copied from
 AIR_MODERN_CLOUDS in app.js without changing the desktop or its preferences.
 
 Detailed port/deviation and later-phase plan: docs/AIR_MACLOCK_L1A.md in the repository.
+
+## L1B.1 Liquid Glass port
+
+MacLock/liquidglass.frag and MacLock/glasstext.frag at the same pinned revision
+are now copied unmodified in original/ as audit sources, under the MIT notice above.
+Their fragment main/math bodies are ported to maclock-shaders.js without algorithm
+changes (clock uniform refract renamed refractPx). GLSL ES300 input/output and
+individual uniform declarations replace Qt440 uniform blocks/bindings.
+maclock-glass.js ports Glass.qml / LockScreen.qml material parameters and manages
+only public local wallpaper/clock textures; it reads no credentials or profile API.
+Vertex, separable Gaussian and WebGL2/DOM lifecycle plumbing are Air-OS adaptations.
+No Qt framework code, binaries or runtime are required. Qt MultiEffect's private blur pyramid
+is approximated by an explicitly documented Gaussian support/sigma mapping.
+Detailed values, screenshots and limitations: docs/AIR_MACLOCK_L1B1_GLASS.md.

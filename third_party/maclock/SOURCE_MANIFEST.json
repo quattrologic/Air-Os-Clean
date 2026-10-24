@@ -133,7 +133,7 @@
       "path": "MacLock/glasstext.frag",
       "sha256": "2f4feef2797fefaef9eae8cf6822ceb060257d6f8f13a26b55a76e0e26fa9dd8",
       "bytes": 4782,
-      "status": "analysed; not copied for L1A"
+      "status": "L1B.1: original raw fragment copied byte-identically to original/; main/math ported unchanged to maclock-shaders.js, GLSL ES declarations adapted"
     },
     {
       "path": "MacLock/glasstext.frag.qsb",
@@ -151,7 +151,7 @@
       "path": "MacLock/liquidglass.frag",
       "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
       "bytes": 8333,
-      "status": "analysed; not copied for L1A"
+      "status": "L1B.1: original raw fragment copied byte-identically to original/; main/math ported unchanged to maclock-shaders.js, GLSL ES declarations adapted"
     },
     {
       "path": "MacLock/liquidglass.frag.qsb",
