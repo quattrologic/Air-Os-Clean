@@ -183,3 +183,25 @@ html[data-desktop-theme="modern"] .air-island-panel .air-control-status{margin-t
 @media(max-width:600px){
   html[data-desktop-theme="modern"] .air-island-panel{margin-top:8px;border-radius:18px}
 }
+
+/* K3: one host, two mutually exclusive views; Classic keeps its original layout. */
+.air-island-controls{display:contents}
+#air-island-views[hidden],#air-island-controls[hidden],#air-island-quick[hidden]{display:none!important}
+html[data-desktop-theme="modern"] .air-island-panel{background:#101517;color:#f2f5f3}
+html[data-desktop-theme="modern"] .air-island-controls{display:flow-root}
+html[data-desktop-theme="modern"] .air-island-views{display:flex;gap:8px;margin:10px 0}
+html[data-desktop-theme="modern"] .air-island-views button{flex:1;min-width:0;min-height:30px;padding:4px 8px;border:1px solid #67776e;border-radius:999px;background:#171e21;color:#b5c1ba;font:13px/18px system-ui,sans-serif;cursor:pointer}
+html[data-desktop-theme="modern"] .air-island-views button[aria-pressed="true"]{background:#26382f;color:#f2f5f3;border-color:#9cdaa1}
+html[data-desktop-theme="modern"] .air-island-quick-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+html[data-desktop-theme="modern"] .air-island-quick-card{display:flex;align-items:center;gap:10px;min-width:0;min-height:82px;padding:12px;border:1px solid #ffffff18;border-radius:12px;background:#171e21;color:#f2f5f3;text-align:left;font:13px/18px system-ui,sans-serif;cursor:pointer}
+html[data-desktop-theme="modern"] .air-island-quick-icon{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;font-size:28px;color:#9cdaa1}
+html[data-desktop-theme="modern"] .air-island-quick-icon svg{width:32px;height:32px;display:block}
+html[data-desktop-theme="modern"] .air-island-quick-card>span:last-child{min-width:0;display:flex;flex-direction:column;gap:4px}
+html[data-desktop-theme="modern"] .air-island-quick-card strong{font-size:13px;line-height:18px;font-weight:600;overflow-wrap:anywhere}
+html[data-desktop-theme="modern"] .air-island-quick-card small{color:#b5c1ba;font-size:11px;line-height:15px;overflow-wrap:anywhere}
+html[data-desktop-theme="modern"] :is(.air-island-views button,.air-island-quick-card):hover:not(:disabled){background-color:#202a2c}
+html[data-desktop-theme="modern"] :is(.air-island-views button,.air-island-quick-card):active:not(:disabled){background-color:#365044}
+html[data-desktop-theme="modern"] :is(.air-island-views button,.air-island-quick-card):focus-visible{outline:2px solid #9cdaa1;outline-offset:2px}
+html[data-desktop-theme="modern"] .air-island-quick-card:disabled{opacity:.55;cursor:default}
+html[data-desktop-theme="modern"] #air-island-quick-status{margin:10px 0 0;color:#b5c1ba;font:12px/16px system-ui,sans-serif}
+html[data-desktop-theme="modern"] #air-island-quick-status:empty{display:none}

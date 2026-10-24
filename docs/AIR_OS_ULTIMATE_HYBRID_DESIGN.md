@@ -178,3 +178,7 @@ Nur Dokumentation. Keine Renderer-/CSS-/Runtime-/IPC-/Preferences-/Installeränd
 ## Umsetzungshinweis K2 (24. Oktober 2026)
 
 [Bestehendes Startmenü mit exakt zwei echten Pin-Filtern umgesetzt](AIR_START_MENU_HYBRID_K2.md). Der in diesem Plan vorgeschlagene dunkle Such-/Zeilenstil ist für diese eine Oberfläche umgesetzt; andere Schnellflächen bleiben separat. Originalgeometrien erhalten, Classic unverändert, kein Clipboard-/Cloud-/OCR-Ausbau. Supaste-Abgleich weiter offen.
+
+## Umsetzungshinweis K3 (24. Oktober 2026)
+
+[Eine zusätzliche Schnellzugriff-Ansicht im bestehenden Panel umgesetzt](AIR_ISLAND_QUICK_K3.md): vier echte interne Apps, keine neue Ablage/Datenquelle, keine zweite Island. Control bleibt Default, beide Ansichten vollständig getrennt verborgen/inert. Benutzer wählte bestehendes Birnenlogo für die Home-Karte. Breite und Randposition erhalten; aktive Ansicht braucht unterschiedliche dokumentierte Höhe. Unterbrechbare Feder-/Richtungswechsel-Logik weiter nur geplanter M1-Schritt.

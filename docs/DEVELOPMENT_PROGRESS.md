@@ -1,3 +1,23 @@
+# Aktueller Checkpoint – K3: Schnellzugriff im bestehenden Island-Panel
+
+24. Oktober 2026. Bestätigte K2-Basis/Remote-HEAD **41d7d67d11c46928ba6fa171a4730b9ac9cacb73**, eigener Branch **feat/air-island-quick-access-k3-20261024**. Genau eine neue flüchtige Ansicht: bestehendes Panel erhält Kontrollzentrum/Schnellzugriff als beschriftete Buttons mit aria-pressed/aria-controls. Öffnen beginnt immer im Kontrollzentrum. Inaktive Inhalte hidden UND inert; aktive Regionsbeschriftung folgt der Ansicht. Kein zweiter Host, keine zweite Registry/Lifecycle/Preferences-Option.
+
+Vier Karten referenzieren ausschließlich home/notes/reminders/finder, lesen die tatsächlichen Registry-Namen und rufen openApp auf. Erfolgreicher Start schließt das Panel, Fokus geht in sichtbare Inhalte des existierenden internen Fensters. Der GUI-Lauf fand beim Finder ein verborgenes Editorfeld als erste Eingabe; nur die neue Fokusübergabe wurde so korrigiert, dass hidden/inert/unsichtbare Ziele übersprungen werden. Finder-/Window-Manager-Code unverändert. Fehler bleiben mit Retry sichtbar, Doppelstart und verspätete Antwort nach Close/Reopen werden verworfen.
+
+Iconwahl mit Benutzer geklärt: Air Home hatte keinen eigenen registrierten Iconeintrag; nur seine neue Schnellkarte verwendet ausdrücklich das vorhandene Air-OS-Birnenlogo. Kein globaler Home-/Launchpad-/Pinning-Iconeintrag geändert. Notes/Erinnerungen/Finder verwenden originale statische Icon-Daten bzw. Dock-SVGs. Namen ausschließlich textContent, kein Metadaten-HTML. Unregistrierte App-Karte sicher deaktiviert, kein falscher Start.
+
+**231/231 Linux-Tests bestanden**,0 Fehler/Skips. Sechs neue Island-Regressionen für Default/Wechsel/Reset, hidden/inert, vier bestehende Startpfade/Registry-Namen/Originalicons/Fokus, Fehler/Retry/Doppelstart/stale Completion, Classic/Pagehide/Registry-Unsubscribe, sichere Namen/fehlende Apps und versteckte Finder-Fokusziele. Vorhandene Clock-/Speicherfehler-/Session-/Notes-/Volume-/Reduced-Motion-/Animationscleanup-Tests erhalten. Syntax, Catalina-Konfiguration und Diff geprüft.
+
+Echte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachher-Läufe bei1920×1080,1650×930,390×600: unveränderter K2-Test-Worktree und K3 nacheinander in getrennten Wegwerfprofilen, neun Screenshots plus JSON-Messwerte. Island geschlossen250×45 /214,84×38,67 /156×36px, immer y0; Dock sechs Standardicons358×68px unten0 unverändert. Panelbreiten430/430/366px und x/y identisch; Kontrollzentrum nun334px hoch statt284px durch50px-Ansichtsnavigation, Schnellzugriff270px. Auf390: Panel y44, unterer Rand maximal378px vor Notes-Mitteilung, Dock y532. Längere Inhalte begrenzt/vertikal scrollbar, kein horizontaler Overflow.
+
+GUI bestätigt vier echte Starts je Auflösung und sichtbares Fokusziel im jeweiligen Fenster, Tab/Enter/Space, sofortiges Press-Feedback, Escape/Trigger-Fokus und Outside-Click. Klassische Panel-Skin/Geometrie gegen K2 identisch. Alle vorhandenen Einstellungen nach Kartenstarts unverändert; Dock- und Desktop-Theme-Schalter, Refresh, deaktivierte Hardwarekacheln/Helligkeit, echte Notes-Mitteilung ohne Titel/Inhalt und echte lokale Air-Music-Lautstärke32% geprüft. OS- und Air-OS-Reduced-Motion, neuer Bob-Login mit Control-Default/keiner alten Notes-Mitteilung, keine Rendererfehler. [Vergleich, Messwerte und Grenzen](AIR_ISLAND_QUICK_K3.md).
+
+Keine neuen Timer, Spring-Logik, Datenquellen oder Host-Steuerung; bestehende120/140ms-Panelanimation bleibt für M1. K2/Notes/Home/Registry/Dock-/Window-Manager-/Installer-Code nicht angefasst. Native Windows/macOS und CB-02/CB-03 bleiben offen. Supaste bleibt nicht visuell verifiziert, Hybridwerte eigenständiger Entwurf. Actions-API Forbidden, keine neue CI-Zusage; Audit-/Signing-/Notarisierungsblocker unverändert.
+
+Nächste drei getrennte Einheiten: **M1** Island-Unterbrechbarkeit/Richtungswechsel; **F2.1** native Windows-Abnahme; **F2.2** native macOS-Abnahme. main/PRs/Installer/andere Entwicklungsbranches unverändert. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – K2: Hybrid-Startmenü mit zwei echten Filtern
 
 24. Oktober 2026. Bestätigte K1-Basis/Remote-HEAD **3dacfc4316c2f8081c91a7c289b09b7b5bedb23f**, eigener Branch **theme/air-start-menu-hybrid-k2-20261024**. Ausschließlich bestehendes Startmenü: Modern-dunkle Fläche#101517, Such-/Zeilenfläche#171e21, Text#f2f5f3/#b5c1ba, Mint-Fokus,40px-Suche, kompakte Originalicon-Zeilen und getrennte Pin-Aktion. Native Scrollbar erhält nur innerhalb der Modern-Menüfläche color-scheme:dark. Genau zwei Chips „Alle“/„Angeheftet“, sichtbarer Zustand und aria-pressed; keine zusätzliche Datenquelle/Registry/Lifecycle/Preferences-Option.

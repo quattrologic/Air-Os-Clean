@@ -216,3 +216,7 @@ Nur Modern-Notes-Status und Placeholder verwenden jetzt#5f7464 statt#677e6c. Auf
 ## K2 – Hybrid-Startmenü (24. Oktober 2026)
 
 Bestehendes Modern-Startmenü dunkel verfeinert: Suche#171e21, Text#f2f5f3/#b5c1ba, Mint-Fokus, Originalicons, getrennte Pin-Aktion. Genau Alle/Angeheftet aus vorhandenen Dock-Referenzen; null/[] bleiben verschieden. Keine neue Persistenz, Registry oder Animation. Menü480×440 bzw.366×440 und10px über Dock unverändert. Classic-Skin gegen echte K1-Baseline identisch.225/225 Tests und echte Linux-Electron-Vorher-/Nachher-Prüfung an drei Größen erfolgreich. [Bericht/Screenshots/Maße](AIR_START_MENU_HYBRID_K2.md). Keine Supaste-Pixelgleichheit behauptet; K3 und native Plattformabnahmen separat.
+
+## K3 – Schnellzugriff in derselben Island (24. Oktober 2026)
+
+Genau eine weitere Ansicht mit vier echten Registry-App-Verweisen. Standard bleibt Kontrollzentrum; zwei beschriftete aria-pressed-Buttons, inaktive Inhalte hidden/inert, flüchtige Auswahl. Vorhandenes Air-OS-Birnenlogo für Home-Karte ausdrücklich vom Benutzer gewählt; andere Originalicons und globale Registry unverändert. Panel430/366px breit, Control334px/Quick270px hoch; closed-Island und Dock unverändert randbündig.231 Tests und echte Linux-Electron-Vorher-/Nachher-Prüfung an drei Größen erfolgreich. [Screenshots/Messwerte/Grenzen](AIR_ISLAND_QUICK_K3.md). Kontrollfunktionen erhalten, keine neue Federlogik; M1 separat.

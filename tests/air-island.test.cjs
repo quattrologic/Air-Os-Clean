@@ -10,7 +10,7 @@ function setup(options = {}) {
   let active = null, now = new Date('2026-10-22T13:04:00Z'), settings = {clock24:true,...options.settings};
   function element(id) {
     const handlers = new Map();
-    const el = {hidden:id==='air-island-panel'||id==='air-island-note-notice', attrs:{}, textContent:'',
+    const el = {dataset:{},children:[],append(...children){this.children.push(...children)},replaceChildren(){this.children=[]},contains(target){return this===target||this.children.some(child=>child.contains(target))},hidden:id==='air-island-panel'||id==='air-island-note-notice', attrs:{}, textContent:'',
       addEventListener(type, fn) { handlers.set(type, fn); },
       removeEventListener(type, fn) { if(handlers.get(type)===fn) handlers.delete(type); },
       emit(type, event={}) { return handlers.get(type)?.(event); },
@@ -24,6 +24,7 @@ function setup(options = {}) {
   const document=element('document'), window=element('window');
   for(const id of ['air-island','air-island-toggle','air-island-panel','air-island-close','air-island-clock','desktop','air-control-dock-theme','air-control-dock-value','air-control-dock-status','air-island-note-notice','air-island-note-message','air-island-note-time']) element(id);
   if(options.controls){for(const id of ['air-control-desktop-theme','air-control-desktop-value','air-control-clock','air-control-notice','air-control-volume','air-control-volume-value','air-control-apps','air-control-settings','air-control-refresh'])element(id);elements['air-control-notice'].disabled=true;}
+  if(options.quick){for(const id of ['air-island-title','air-island-views','air-island-controls','air-island-quick','air-island-quick-cards','air-island-view-control','air-island-view-quick','air-island-quick-status'])element(id);document.createElement=()=>element('');window.airAppRegistry={get:id=>options.apps?.[id],onChange:fn=>{window.registryChanged=fn;return()=>{window.registryStopped=true}}};}
   if(options.audio)window.Amplitude={getAudio:()=>options.audio};
   document.querySelector=selector=>elements[selector.slice(1)];
   if(options.available!==false)window.airOS={preferences:{}};
@@ -36,7 +37,7 @@ function setup(options = {}) {
   const timers=new Map(); let serial=0;
   class Clock extends Date { constructor(){super(now.getTime());} }
   vm.runInNewContext(fs.readFileSync(path.join(root,'air-island.js'),'utf8'), {
-    window, document, Date:Clock, readAirSettings:()=>settings, persistAirDockTheme:save, persistAirDesktopTheme:options.desktopSave||(async value=>{settings={...settings,desktopTheme:value};document.emit('air-settings-changed')}),
+    window, document, Date:Clock, vectorIcon:options.icons||{},openApp:options.launch||(()=>({ok:true})),openApps:options.openApps||new Map(), readAirSettings:()=>settings, persistAirDockTheme:save, persistAirDesktopTheme:options.desktopSave||(async value=>{settings={...settings,desktopTheme:value};document.emit('air-settings-changed')}),
     setInterval(fn){timers.set(++serial,fn);return serial;},clearInterval(id){timers.delete(id);}
   });
   return {elements,document,window,timers,motions,get active(){return active;},
@@ -188,4 +189,35 @@ test('notification shortcut is available only after a real Notes signal and is c
  const h=setup({controls:true}),button=h.elements['air-control-notice'];assert.equal(button.disabled,true);
  h.document.emit('air-notes-saved');assert.equal(button.disabled,false);button.emit('click');assert.equal(h.active,h.elements['air-island-note-notice']);
  h.window.emit('pagehide');assert.equal(button.disabled,true);assert.equal(h.elements['air-island-note-message'].textContent,'');
+});
+const quickApps={home:{id:'home',name:'Air Home'},notes:{id:'notes',name:'Notizen',iconClass:'notes-icon'},reminders:{id:'reminders',name:'Air Erinnerungen',iconClass:'reminders-icon'},finder:{id:'finder',name:'Finder',iconClass:'finder-icon'}};
+const quickIcons={launchpad:'<svg data-icon="pear"></svg>',notes:'<svg data-icon="notes"></svg>',reminders:'<svg data-icon="reminders"></svg>',finder:'<svg data-icon="finder"></svg>'};
+function quickSetup(extra={}){return setup({quick:true,apps:quickApps,icons:quickIcons,settings:{desktopTheme:'modern'},...extra})}
+test('Island defaults to Control Center; view buttons switch hidden/inert content and reset on next open',()=>{
+ const h=quickSetup(),e=h.elements;e['air-island-toggle'].emit('click');assert.equal(e['air-island-view-control'].attrs['aria-pressed'],'true');assert.equal(e['air-island-quick'].hidden,true);assert.equal(e['air-island-quick'].inert,true);
+ e['air-island-view-quick'].emit('click');assert.equal(e['air-island-controls'].hidden,true);assert.equal(e['air-island-controls'].inert,true);assert.equal(e['air-island-view-quick'].attrs['aria-pressed'],'true');assert.equal(e['air-island-title'].textContent,'Schnellzugriff');assert.equal(e['air-island-quick-cards'].children.length,4);
+ e['air-island-view-control'].emit('click');assert.equal(e['air-island-controls'].hidden,false);e['air-island-view-quick'].emit('click');e['air-island-close'].emit('click');e['air-island-toggle'].emit('click');assert.equal(e['air-island-controls'].hidden,false);assert.equal(e['air-island-quick'].hidden,true);
+});
+test('quick cards use registered names and existing icons; four launches reuse openApp then close and focus existing window',async()=>{
+ for(const id of ['home','notes','reminders','finder']){
+  const calls=[];let focused=false;const openApps=new Map([[id,{querySelectorAll:()=>[{getClientRects:()=>[{}],closest:()=>null,focus(){focused=true}}]}]]);
+  const h=quickSetup({openApps,launch:app=>{calls.push(app);assert.equal(h.elements['air-island-panel'].hidden,false);return{ok:true}}}),e=h.elements;
+  e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');const card=e['air-island-quick-cards'].children.find(card=>card.dataset.quickApp===id);
+  assert.equal(card.children[1].children[0].textContent,quickApps[id].name);assert.equal(card.children[0].innerHTML,quickIcons[id==='home'?'launchpad':id]);
+  await card.emit('click',{stopPropagation(){}});assert.deepEqual(calls,[id]);assert.equal(e['air-island-panel'].hidden,true);assert.equal(focused,true);
+ }
+});
+test('quick launch failure keeps retry and suppresses duplicate starts; stale completion does not alter reopened panel',async()=>{
+ let resolve,calls=0;const h=quickSetup({launch:()=>{calls++;return new Promise(r=>resolve=r)}}),e=h.elements;e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');const card=e['air-island-quick-cards'].children[0];const first=card.emit('click',{stopPropagation(){}});await card.emit('click',{stopPropagation(){}});assert.equal(calls,1);resolve({ok:false});await first;assert.match(e['air-island-quick-status'].textContent,/erneut versuchen/);assert.equal(e['air-island-panel'].hidden,false);
+ const retry=card.emit('click',{stopPropagation(){}});e['air-island-close'].emit('click');e['air-island-toggle'].emit('click');resolve({ok:true});await retry;assert.equal(e['air-island-panel'].hidden,false);assert.equal(e['air-island-controls'].hidden,false);
+});
+test('Classic hides new navigation and quick content; switching profiles/pagehide removes registry listener',()=>{
+ const h=quickSetup(),e=h.elements;e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');h.settings({desktopTheme:'classic'});assert.equal(e['air-island-views'].hidden,true);assert.equal(e['air-island-quick'].hidden,true);assert.equal(e['air-island-controls'].hidden,false);h.window.emit('pagehide');assert.equal(e['air-island-panel'].hidden,true);assert.equal(h.window.registryStopped,true);
+});
+test('registry names remain safe text and missing app cannot falsely launch',async()=>{
+ const apps={...quickApps,notes:{id:'notes',name:'<img src=x onerror=alert(1)>'},finder:undefined};const calls=[],h=quickSetup({apps,launch:id=>calls.push(id)}),e=h.elements;e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');const cards=e['air-island-quick-cards'].children;assert.equal(cards[1].children[1].children[0].textContent,'<img src=x onerror=alert(1)>');assert.equal(cards[1].children[1].children[0].innerHTML,undefined);assert.equal(cards[3].disabled,true);await cards[3].emit('click',{stopPropagation(){}});assert.deepEqual(calls,[]);
+});
+test('quick app focus skips hidden Finder editor and uses visible existing content',async()=>{
+ let focused=false;const openApps=new Map([['finder',{querySelectorAll:()=>[{getClientRects:()=>[],focus(){assert.fail('hidden editor focused')}},{getClientRects:()=>[{}],closest:()=>null,focus(){focused=true}}]}]]);
+ const h=quickSetup({openApps}),e=h.elements;e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');await e['air-island-quick-cards'].children[3].emit('click',{stopPropagation(){}});assert.equal(focused,true);assert.equal(e['air-island-panel'].hidden,true);
 });

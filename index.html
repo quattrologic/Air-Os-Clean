@@ -72,6 +72,11 @@
       </button>
       <section id="air-island-panel" class="air-island-panel" role="region" aria-labelledby="air-island-title" hidden>
         <header><h2 id="air-island-title">Kontrollzentrum</h2><div class="air-control-topline air-control-modern"><span>Air-OS</span><time id="air-control-clock"></time><span>Lokal</span></div><button id="air-island-close" class="air-island-close" type="button" aria-label="Air Island schließen">×</button></header>
+        <div id="air-island-views" class="air-island-views" role="group" aria-label="Island-Ansicht" hidden>
+          <button id="air-island-view-control" type="button" aria-pressed="true" aria-controls="air-island-controls">Kontrollzentrum</button>
+          <button id="air-island-view-quick" type="button" aria-pressed="false" aria-controls="air-island-quick">Schnellzugriff</button>
+        </div>
+        <div id="air-island-controls" class="air-island-controls">
         <div class="air-control-grid">
           <button class="air-control-tile air-control-modern" type="button" disabled aria-label="WLAN: native Steuerung nicht verfügbar"><span aria-hidden="true">⌁</span><strong>Wi-Fi</strong><span>Nicht verfügbar</span></button>
           <button id="air-control-dock-theme" class="air-control-tile" type="button" aria-pressed="false" aria-describedby="air-control-dock-status">
@@ -98,6 +103,11 @@
           <h3 id="air-island-notice-title">Letzte Mitteilung · Air Notes</h3>
           <p id="air-island-note-message" role="status"></p>
           <time id="air-island-note-time"></time>
+        </section>
+        </div>
+        <section id="air-island-quick" class="air-island-quick" aria-labelledby="air-island-view-quick" hidden inert>
+          <div id="air-island-quick-cards" class="air-island-quick-cards"></div>
+          <p id="air-island-quick-status" role="status"></p>
         </section>
       </section>
     </div>
