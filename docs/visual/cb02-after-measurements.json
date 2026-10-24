@@ -1,0 +1,1424 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "modern": {
+      "window": {
+        "x": 525,
+        "y": 244.71875,
+        "width": 870,
+        "height": 480
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 525,
+          "y": 244.71875,
+          "width": 870,
+          "height": 36,
+          "backgroundColor": "rgb(156, 218, 161)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 14px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 939.4765625,
+          "y": 255.71875,
+          "width": 41.046875,
+          "height": 14,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "12px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 533,
+          "y": 280.71875,
+          "width": 854,
+          "height": 436,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "12px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 533,
+          "y": 280.71875,
+          "width": 854,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 533,
+          "y": 280.71875,
+          "width": 190,
+          "height": 436,
+          "backgroundColor": "rgb(176, 229, 173)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "18px 12px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 723,
+          "y": 280.71875,
+          "width": 664,
+          "height": 436,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "24px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 747,
+          "y": 304.71875,
+          "width": 616,
+          "height": 45,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "4px 2px",
+          "fontSize": "30px",
+          "fontFamily": "Georgia, serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 747,
+          "y": 363.71875,
+          "width": 616,
+          "height": 274,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "6px 2px",
+          "fontSize": "14px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 747,
+          "y": 649.71875,
+          "width": 616,
+          "height": 43,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "12px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 539,
+          "y": 250.71875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Minimieren",
+          "x": 567,
+          "y": 250.71875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Maximieren",
+          "x": 595,
+          "y": 250.71875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    "circles": [
+      {
+        "x": 546,
+        "y": 257.71875,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 574,
+        "y": 257.71875,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 602,
+        "y": 257.71875,
+        "width": 10,
+        "height": 10
+      }
+    ],
+    "classic": {
+      "window": {
+        "x": 525,
+        "y": 244.71875,
+        "width": 870,
+        "height": 480
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 526,
+          "y": 245.71875,
+          "width": 868,
+          "height": 42,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px 13px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 924.3515625,
+          "y": 258.71875,
+          "width": 71.296875,
+          "height": 15,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(49, 72, 103)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 526,
+          "y": 287.71875,
+          "width": 868,
+          "height": 436,
+          "backgroundColor": "rgba(251, 252, 255, 0.94)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 526,
+          "y": 287.71875,
+          "width": 868,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 526,
+          "y": 287.71875,
+          "width": 176,
+          "height": 436,
+          "backgroundColor": "rgb(241, 245, 251)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "16px 10px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 702,
+          "y": 287.71875,
+          "width": 692,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "24px 28px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 730,
+          "y": 311.71875,
+          "width": 636,
+          "height": 31,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(42, 59, 84)",
+          "borderRadius": "0px",
+          "padding": "1px 2px",
+          "fontSize": "25px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 730,
+          "y": 354.71875,
+          "width": 636,
+          "height": 230,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(69, 88, 115)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 730,
+          "y": 596.71875,
+          "width": 636,
+          "height": 48,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "12px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 539,
+          "y": 259.71875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 559,
+          "y": 259.71875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 579,
+          "y": 259.71875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    },
+    "home": {
+      "window": {
+        "x": 200,
+        "y": 103,
+        "width": 1522,
+        "height": 849
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 200,
+          "y": 103,
+          "width": 212,
+          "height": 46,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 16px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 270,
+          "y": 120.5,
+          "width": 44.859375,
+          "height": 11,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(53, 93, 64)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "10px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-nav": {
+          "x": 200,
+          "y": 103,
+          "width": 212,
+          "height": 849,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "54px 10px 14px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-main": {
+          "x": 412,
+          "y": 113,
+          "width": 1300,
+          "height": 829,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "16px",
+          "padding": "60px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "rgba(62, 112, 65, 0.157) -3px 2px 9px 0px"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 216,
+          "y": 121.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 232,
+          "y": 121.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 248,
+          "y": 121.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    }
+  },
+  {
+    "viewport": [
+      1650,
+      930
+    ],
+    "modern": {
+      "window": {
+        "x": 390,
+        "y": 180.21875,
+        "width": 870,
+        "height": 480
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 390,
+          "y": 180.21875,
+          "width": 870,
+          "height": 36,
+          "backgroundColor": "rgb(156, 218, 161)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 14px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 804.4765625,
+          "y": 191.21875,
+          "width": 41.046875,
+          "height": 14,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "12px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 398,
+          "y": 216.21875,
+          "width": 854,
+          "height": 436,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "12px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 398,
+          "y": 216.21875,
+          "width": 854,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 398,
+          "y": 216.21875,
+          "width": 190,
+          "height": 436,
+          "backgroundColor": "rgb(176, 229, 173)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "18px 12px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 588,
+          "y": 216.21875,
+          "width": 664,
+          "height": 436,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "24px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 612,
+          "y": 240.21875,
+          "width": 616,
+          "height": 45,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "4px 2px",
+          "fontSize": "30px",
+          "fontFamily": "Georgia, serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 612,
+          "y": 299.21875,
+          "width": 616,
+          "height": 274,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "6px 2px",
+          "fontSize": "14px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 612,
+          "y": 585.21875,
+          "width": 616,
+          "height": 43,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "12px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 404,
+          "y": 186.21875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Minimieren",
+          "x": 432,
+          "y": 186.21875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Maximieren",
+          "x": 460,
+          "y": 186.21875,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    "circles": [
+      {
+        "x": 411,
+        "y": 193.21875,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 439,
+        "y": 193.21875,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 467,
+        "y": 193.21875,
+        "width": 10,
+        "height": 10
+      }
+    ],
+    "classic": {
+      "window": {
+        "x": 390,
+        "y": 180.21875,
+        "width": 870,
+        "height": 480
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 391,
+          "y": 181.21875,
+          "width": 868,
+          "height": 42,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px 13px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 789.3515625,
+          "y": 194.21875,
+          "width": 71.296875,
+          "height": 15,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(49, 72, 103)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 391,
+          "y": 223.21875,
+          "width": 868,
+          "height": 436,
+          "backgroundColor": "rgba(251, 252, 255, 0.94)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 391,
+          "y": 223.21875,
+          "width": 868,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 391,
+          "y": 223.21875,
+          "width": 176,
+          "height": 436,
+          "backgroundColor": "rgb(241, 245, 251)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "16px 10px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 567,
+          "y": 223.21875,
+          "width": 692,
+          "height": 436,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "24px 28px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 595,
+          "y": 247.21875,
+          "width": 636,
+          "height": 31,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(42, 59, 84)",
+          "borderRadius": "0px",
+          "padding": "1px 2px",
+          "fontSize": "25px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 595,
+          "y": 290.21875,
+          "width": 636,
+          "height": 230,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(69, 88, 115)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 595,
+          "y": 532.21875,
+          "width": 636,
+          "height": 48,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "12px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 404,
+          "y": 195.21875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 424,
+          "y": 195.21875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 444,
+          "y": 195.21875,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    },
+    "home": {
+      "window": {
+        "x": 171.875,
+        "y": 93,
+        "width": 1307.96875,
+        "height": 731.078125
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 171.875,
+          "y": 93,
+          "width": 182.1875,
+          "height": 46,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 16px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 241.875,
+          "y": 110.5,
+          "width": 44.859375,
+          "height": 11,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(53, 93, 64)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "10px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-nav": {
+          "x": 171.875,
+          "y": 93,
+          "width": 182.1875,
+          "height": 731.078125,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "54px 10px 14px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-main": {
+          "x": 354.0625,
+          "y": 103,
+          "width": 1115.78125,
+          "height": 711.078125,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "16px",
+          "padding": "51.5625px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "rgba(62, 112, 65, 0.157) -3px 2px 9px 0px"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 187.875,
+          "y": 111.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 203.875,
+          "y": 111.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 219.875,
+          "y": 111.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    }
+  },
+  {
+    "viewport": [
+      390,
+      600
+    ],
+    "modern": {
+      "window": {
+        "x": 6,
+        "y": 91,
+        "width": 378,
+        "height": 433
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 6,
+          "y": 91,
+          "width": 378,
+          "height": 36,
+          "backgroundColor": "rgb(156, 218, 161)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 14px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 174.4765625,
+          "y": 102,
+          "width": 41.046875,
+          "height": 14,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "12px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 14,
+          "y": 127,
+          "width": 362,
+          "height": 389,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "12px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 14,
+          "y": 127,
+          "width": 362,
+          "height": 389,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 14,
+          "y": 127,
+          "width": 362,
+          "height": 100,
+          "backgroundColor": "rgb(176, 229, 173)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "8px 12px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 14,
+          "y": 227,
+          "width": 362,
+          "height": 289,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "12px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 26,
+          "y": 239,
+          "width": 338,
+          "height": 37.796875,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "4px 2px",
+          "fontSize": "24px",
+          "fontFamily": "Georgia, serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 26,
+          "y": 284.796875,
+          "width": 338,
+          "height": 148.8125,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "6px 2px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 26,
+          "y": 441.609375,
+          "width": 338,
+          "height": 62.390625,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "8px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 20,
+          "y": 97,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Minimieren",
+          "x": 48,
+          "y": 97,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        {
+          "label": "Maximieren",
+          "x": 76,
+          "y": 97,
+          "width": 24,
+          "height": 24,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        }
+      ]
+    },
+    "circles": [
+      {
+        "x": 27,
+        "y": 104,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 55,
+        "y": 104,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 83,
+        "y": 104,
+        "width": 10,
+        "height": 10
+      }
+    ],
+    "classic": {
+      "window": {
+        "x": 6,
+        "y": 91,
+        "width": 378,
+        "height": 433
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 7,
+          "y": 92,
+          "width": 376,
+          "height": 42,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px 13px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 159.3515625,
+          "y": 105,
+          "width": 71.296875,
+          "height": 15,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(49, 72, 103)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-content": {
+          "x": 7,
+          "y": 134,
+          "width": 376,
+          "height": 389,
+          "backgroundColor": "rgba(251, 252, 255, 0.94)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-layout": {
+          "x": 7,
+          "y": 134,
+          "width": 376,
+          "height": 389,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-list": {
+          "x": 7,
+          "y": 134,
+          "width": 96,
+          "height": 389,
+          "backgroundColor": "rgb(241, 245, 251)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "16px 10px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-workspace": {
+          "x": 103,
+          "y": 134,
+          "width": 280,
+          "height": 389,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "17px 12px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-title-input": {
+          "x": 115,
+          "y": 151,
+          "width": 256,
+          "height": 31,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(42, 59, 84)",
+          "borderRadius": "0px",
+          "padding": "1px 2px",
+          "fontSize": "25px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-editor": {
+          "x": 115,
+          "y": 194,
+          "width": 256,
+          "height": 230,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(69, 88, 115)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".note-actions": {
+          "x": 115,
+          "y": 436,
+          "width": 256,
+          "height": 48,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(39, 62, 91)",
+          "borderRadius": "0px",
+          "padding": "12px 0px 0px",
+          "fontSize": "13px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 20,
+          "y": 106,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 40,
+          "y": 106,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 60,
+          "y": 106,
+          "width": 13,
+          "height": 13,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    },
+    "home": {
+      "window": {
+        "x": 12,
+        "y": 91,
+        "width": 366,
+        "height": 430
+      },
+      "layout": {
+        ".window-titlebar": {
+          "x": 12,
+          "y": 91,
+          "width": 366,
+          "height": 36,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "0px 16px 0px 12px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".window-title": {
+          "x": 78,
+          "y": 103.5,
+          "width": 44.859375,
+          "height": 11,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(53, 93, 64)",
+          "borderRadius": "0px",
+          "padding": "0px",
+          "fontSize": "10px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-nav": {
+          "x": 12,
+          "y": 127,
+          "width": 366,
+          "height": 48,
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "0px",
+          "padding": "4px 8px 8px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "none"
+        },
+        ".air-home-main": {
+          "x": 20,
+          "y": 175,
+          "width": 350,
+          "height": 338,
+          "backgroundColor": "rgb(248, 247, 243)",
+          "color": "rgb(44, 59, 49)",
+          "borderRadius": "10px",
+          "padding": "18px",
+          "fontSize": "13px",
+          "fontFamily": "system-ui, sans-serif",
+          "boxShadow": "rgba(62, 112, 65, 0.157) -3px 2px 9px 0px"
+        }
+      },
+      "buttons": [
+        {
+          "label": "Fenster schließen",
+          "x": 24,
+          "y": 104.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 95, 87)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Minimieren",
+          "x": 40,
+          "y": 104.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(255, 189, 46)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        },
+        {
+          "label": "Maximieren",
+          "x": 56,
+          "y": 104.5,
+          "width": 9,
+          "height": 9,
+          "backgroundColor": "rgb(40, 200, 64)",
+          "color": "rgb(0, 0, 0)",
+          "borderRadius": "50%",
+          "padding": "0px",
+          "fontSize": "16px",
+          "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "boxShadow": "rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px"
+        }
+      ]
+    }
+  }
+]

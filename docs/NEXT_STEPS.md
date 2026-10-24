@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – CB-02: größere Notes-Fensterbutton-Klickflächen
+
+24. Oktober 2026. Verifizierte M2-Basis/Remote-HEAD **bc5b8dae196aabc62df5ffc3d1710da02289aed2**, eigener Branch **fix/air-notes-window-buttons-cb02**. Nur Modern-Notes-CSS: echte transparente24×24px-Buttons, Originalfarben als mittige10×10px-before-Kreise,4px-Abstände, voller rechteckiger Hitbereich ohne Overlay, Hover und focus-visible.36px-Titelleiste, absoluter Fenstertitel und übriges Layout unverändert. Erste abgerundete Hitbox verlor Ecken beim echten Hit-Test; durch rechteckige transparente Kästen korrigiert und erneut geprüft. Keine Handler-/M1-/M2-/Speicher-/Profil-/Dock-/Island-/Home-/Classicänderung.
+
+**244/244 Linux-Tests bestanden**,0 Fehler/Skips; zwei zusätzliche gezielte Designregressionen, bestehende Notes-Modern-Isolation und alle funktionalen/Sicherheitsregressionen aktiv. Echte getrennte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachherläufe bei1920×1080,1650×930,390×600:24×24-DOMRects,10×10-Pseudoelemente per CDP-BoxModel exakt mittig, keine Überlappung,81 korrekte Hit-Testpunkte. Echte transparente Eck-Mausklicks für Close/Minimize/Maximize, M2-Dock-Restore, Reopen, Tab/Shift+Tab/Enter/Space/Fokus/Hover und Titelleisten-Drag bestanden. Fenster/Titel/Editorlayout und Classic/Home vollständig gegen unveränderten M2-Stand verglichen, keine Rendererfehler.20 echte Screenshots und zwei JSON-Dateien; finale Helfer Exit0. Syntax/Catalina/Diff/Dokumentlinks geprüft.
+
+[Vollständiger anklickbarer Bildvergleich, Messwerte und Grenzen](AIR_NOTES_BUTTONS_CB02.md). Native Windows/macOS bleiben offen, CB-03 nicht angefasst. PR-/Actions-API erneut Forbidden, kein CI-Erfolg behauptet. Audit-/Signing-/Notarisierungs-/Release-Blocker unverändert. Der spätere Windows-Anleitungsbranch bleibt separat erhalten; dieser CB-02-Branch basiert ausdrücklich auf M2. main/PRs/Installer/andere Branches unverändert.
+
+Nächste drei separate Einheiten: **Windows-Belege erheben/auswerten**, **native macOS-Abnahme**, **CB-03 gezielt prüfen**. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – M2: umkehrbare Fensteranimationen
 
 24. Oktober 2026. Verifizierte M1-Basis/Remote-HEAD **ce0ef22d5b4083258fd9a49ff933f92442a86728**, eigener Branch **fix/air-window-interruptible-m2-20261024**. Ausschließlich vorhandene Fensteranimations-/Dock-Startwege in app.js: Modern-Minimieren/Restore teilen410ms-WAAPI im bestehenden Motion-Slot; reverse() erhält live currentTime/Translate/Scale/Opacity. Zielbahn einmal aus bestehendem dockMotionValues bestimmt, keine Neuberechnung aus skaliertem Zwischenrect. Identität/Generation/Verbindung schützen alte Completions. Close während Minimize/Restore, Reopen vor/nach Abschluss, pointerEvents/display/Fokus und bestehende Lifecycle-/Dock-Markierung bleiben konsistent. Neue App-Starts weiter synchron, Classic-Pfad unverändert. Keine neue Bibliothek/zweiter Window Manager.
