@@ -1,0 +1,665 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "geometry": {
+        "x": 525,
+        "y": 244.71875,
+        "width": 870,
+        "height": 480
+      },
+      "restored": {
+        "x": 525,
+        "y": 244.71875,
+        "width": 870,
+        "height": 480
+      },
+      "max": {
+        "x": 0,
+        "y": 93,
+        "width": 1920,
+        "height": 911
+      },
+      "skin": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "20px"
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "16px 16px 22px 22px"
+        },
+        "icons": [
+          "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+        ]
+      },
+      "trials": [
+        {
+          "before": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.30299999173727
+          },
+          "after": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.30299999173727
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 559.0599365234375,
+            "y": 305.9749450683594,
+            "width": 806.2447509765625,
+            "height": 444.8247375488281,
+            "opacity": 0.92206,
+            "time": 166.60299999173733
+          },
+          "after": {
+            "x": 559.0599365234375,
+            "y": 305.9749450683594,
+            "width": 806.2447509765625,
+            "height": 444.8247375488281,
+            "opacity": 0.92206,
+            "time": 166.60299999173733
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.3029999917375
+          },
+          "after": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.3029999917375
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.63699999173764
+          },
+          "after": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.63699999173764
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.30299999173772
+          },
+          "after": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.30299999173772
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.63699999173764
+          },
+          "after": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.63699999173764
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.3029999917375
+          },
+          "after": {
+            "x": 567.2943725585938,
+            "y": 320.7843933105469,
+            "width": 790.8311157226562,
+            "height": 436.3205871582031,
+            "opacity": 0.903217,
+            "time": 183.3029999917375
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.6369999917374
+          },
+          "after": {
+            "x": 559.0755615234375,
+            "y": 306.0030517578125,
+            "width": 806.2154541015625,
+            "height": 444.80859375,
+            "opacity": 0.922024,
+            "time": 166.6369999917374
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "geometry": {
+        "x": 390,
+        "y": 180.21875,
+        "width": 870,
+        "height": 480
+      },
+      "restored": {
+        "x": 390,
+        "y": 180.21875,
+        "width": 870,
+        "height": 480
+      },
+      "max": {
+        "x": 0,
+        "y": 93,
+        "width": 1650,
+        "height": 761
+      },
+      "skin": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "20px"
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "16px 16px 22px 22px"
+        },
+        "icons": [
+          "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+        ]
+      },
+      "trials": [
+        {
+          "before": {
+            "x": 432.3175964355469,
+            "y": 248.046630859375,
+            "width": 790.78759765625,
+            "height": 436.296630859375,
+            "opacity": 0.903163,
+            "time": 183.3469999941766
+          },
+          "after": {
+            "x": 432.3175964355469,
+            "y": 248.046630859375,
+            "width": 790.78759765625,
+            "height": 436.296630859375,
+            "opacity": 0.903163,
+            "time": 183.3469999941766
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.0149999941769
+          },
+          "after": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.0149999941769
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 424.09674072265625,
+            "y": 234.86997985839844,
+            "width": 806.1759643554688,
+            "height": 444.78668212890625,
+            "opacity": 0.921975,
+            "time": 166.682999994177
+          },
+          "after": {
+            "x": 424.09674072265625,
+            "y": 234.86997985839844,
+            "width": 806.1759643554688,
+            "height": 444.78668212890625,
+            "opacity": 0.921975,
+            "time": 166.682999994177
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 416.9587707519531,
+            "y": 223.42906188964844,
+            "width": 819.537109375,
+            "height": 452.15838623046875,
+            "opacity": 0.938309,
+            "time": 150.01699999417718
+          },
+          "after": {
+            "x": 416.9587707519531,
+            "y": 223.42906188964844,
+            "width": 819.537109375,
+            "height": 452.15838623046875,
+            "opacity": 0.938309,
+            "time": 150.01699999417718
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 424.09674072265625,
+            "y": 234.86997985839844,
+            "width": 806.1759643554688,
+            "height": 444.78668212890625,
+            "opacity": 0.921975,
+            "time": 166.682999994177
+          },
+          "after": {
+            "x": 424.09674072265625,
+            "y": 234.86997985839844,
+            "width": 806.1759643554688,
+            "height": 444.78668212890625,
+            "opacity": 0.921975,
+            "time": 166.682999994177
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.0149999941769
+          },
+          "after": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.0149999941769
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 424.0958251953125,
+            "y": 234.8685302734375,
+            "width": 806.1776123046875,
+            "height": 444.78765869140625,
+            "opacity": 0.921978,
+            "time": 166.68099999417674
+          },
+          "after": {
+            "x": 424.0958251953125,
+            "y": 234.8685302734375,
+            "width": 806.1776123046875,
+            "height": 444.78765869140625,
+            "opacity": 0.921978,
+            "time": 166.68099999417674
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.014999994176
+          },
+          "after": {
+            "x": 416.9579772949219,
+            "y": 223.42779541015625,
+            "width": 819.53857421875,
+            "height": 452.15924072265625,
+            "opacity": 0.938311,
+            "time": 150.014999994176
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        }
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "geometry": {
+        "x": 6,
+        "y": 91,
+        "width": 378,
+        "height": 433
+      },
+      "restored": {
+        "x": 6,
+        "y": 91,
+        "width": 378,
+        "height": 433
+      },
+      "max": {
+        "x": 0,
+        "y": 91,
+        "width": 390,
+        "height": 433
+      },
+      "skin": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "20px"
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "backgroundColor": "rgba(9, 11, 12, 0.84)",
+          "borderRadius": "16px 16px 22px 22px"
+        },
+        "icons": [
+          "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+          "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+        ]
+      },
+      "trials": [
+        {
+          "before": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993057
+          },
+          "after": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993057
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999993162
+          },
+          "after": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999993162
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993236
+          },
+          "after": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993236
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999993162
+          },
+          "after": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999993162
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993057
+          },
+          "after": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999993057
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999992983
+          },
+          "after": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999992983
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        },
+        {
+          "before": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999992878
+          },
+          "after": {
+            "x": 24.822174072265625,
+            "y": 134.39794921875,
+            "width": 345.7803955078125,
+            "height": 396.0924072265625,
+            "opacity": 0.90313,
+            "time": 183.37499999992878
+          },
+          "rate": -1,
+          "state": "focused",
+          "pointerEvents": "auto"
+        },
+        {
+          "before": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999992804
+          },
+          "after": {
+            "x": 21.165695190429688,
+            "y": 125.96726989746094,
+            "width": 352.03948974609375,
+            "height": 403.26220703125,
+            "opacity": 0.921948,
+            "time": 166.70899999992804
+          },
+          "rate": 1,
+          "state": "minimized",
+          "pointerEvents": "none"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

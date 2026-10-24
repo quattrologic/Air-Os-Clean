@@ -84,7 +84,7 @@ test('Dock and Launchpad routing reach native bridge and surface missing-client 
  const registry=require('../src/core/app-registry.js');assert.equal(registry.get('spotify').name,'Spotify');
  const messages=[],listeners=new Map(),button={dataset:{app:'spotify'},addEventListener:(type,fn)=>listeners.set(type,fn)};
  const native=setup('win32','',{app:{getApplicationInfoForProtocol:async()=>{throw Error('not installed')}}});
- const context=vm.createContext({window:{airAppRegistry:registry,airOS:{launchSpotify:()=>native.launcher.launch()}},
+ const context=vm.createContext({openApps:new Map(),modernWindowMotion:()=>true,window:{airAppRegistry:registry,airOS:{launchSpotify:()=>native.launcher.launch()}},
   toast:message=>messages.push(message),document:{querySelectorAll:()=>[button]}});
  vm.runInContext(nativeBranch,context);
  const dockHandlers=source.slice(source.indexOf('for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-icon[data-app]"))'));

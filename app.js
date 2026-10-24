@@ -328,7 +328,71 @@ function dockMotionValues(win,id){
   scale:Math.max(.055,Math.min(.18,Math.min(dock.width/Math.max(rect.width,1),dock.height/Math.max(rect.height,1))))
  };
 }
+// M2 reuses each window's existing WAAPI slot; no separate window manager.
+const windowReducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+function modernWindowMotion(){return typeof readAirSettings==='function'&&readAirSettings().desktopTheme==='modern'}
+function windowMotionAllowed(win){return modernWindowMotion()&&!readAirSettings().reduceMotion&&!windowReducedMotion?.matches&&typeof win.animate==='function'}
+function focusRestoredWindow(win){
+ const previous=win._airOSReturnFocus;
+ const target=previous?.isConnected&&win.contains(previous)&&previous.getClientRects?.().length&&!previous.closest('[hidden],[inert]')&&!previous.disabled?previous:win.querySelector('.window-titlebar .close');
+ target?.focus({preventScroll:true});
+}
+function settleModernDockMotion(win){
+ const state=win._airOSDockMotion;if(!state)return;
+ const {targetDock,done}=state;
+ clearDockMotion(win);win.style.display=targetDock?'none':'flex';
+ if(targetDock&&done)done();
+}
+function animateModernDockWindow(win,id,targetDock,done){
+ let state=win._airOSDockMotion;
+ // Only a fully minimized window begins at the dock; new windows keep synchronous launch.
+ const wasHidden=win.style.display==='none';
+ if(wasHidden&&targetDock&&!state){if(done)done();return}
+ win.style.display='flex';win.style.visibility='visible';
+ if(!state){
+  clearDockMotion(win);
+  if(!targetDock&&!wasHidden){win.style.transform='none';win.style.opacity='1';win.style.pointerEvents='auto';return}
+  const v=dockMotionValues(win,id);
+  state={targetDock,done,version:0,transition:win.style.transition,pointerEvents:win.style.pointerEvents};
+  win._airOSDockMotion=state;win.style.transition='none';
+  win.classList.add('dock-animating');
+  if(windowMotionAllowed(win)){
+   const motion=win.animate([{transform:'translate(0px,0px) scale(1)',opacity:1},{transform:'translate('+v.dx+'px,'+v.dy+'px) scale('+v.scale+')',opacity:0}],{duration:410,easing:'cubic-bezier(.55,0,.9,.35)',fill:'both'});
+   win._airOSMotion=motion;motion.pause();motion.currentTime=targetDock?0:410;motion.playbackRate=targetDock?1:-1;motion.play();
+  }
+ }else{
+  const reverse=state.targetDock!==targetDock;
+  state.targetDock=targetDock;state.done=done;
+  if(reverse&&windowMotionAllowed(win))win._airOSMotion.reverse();
+ }
+ const version=++state.version;
+ win.style.pointerEvents=targetDock?'none':'auto';
+ if(!targetDock){win.style.zIndex=++zIndex;focusRestoredWindow(win)}
+ else if(win.contains(document.activeElement)){
+  win._airOSReturnFocus=document.activeElement;
+  const button=document.querySelector(".dock-app[data-app='"+id+"']");
+  (button&&!button.hidden?button:document.querySelector('.dock-app[data-app="launchpad"]'))?.focus({preventScroll:true});
+ }
+ if(!windowMotionAllowed(win)){settleModernDockMotion(win);return}
+ const motion=win._airOSMotion;
+ motion.onfinish=()=>{if(win.isConnected&&win._airOSDockMotion===state&&win._airOSMotion===motion&&state.version===version)settleModernDockMotion(win)};
+}
+function settleWindowMotions(){
+ for(const win of openApps.values())if(win._airOSDockMotion&&!windowMotionAllowed(win))settleModernDockMotion(win);
+}
+document.addEventListener('air-settings-changed',settleWindowMotions);
+windowReducedMotion?.addEventListener?.('change',settleWindowMotions);
+function windowMotionVisibility(){if(document.hidden)for(const win of openApps.values())if(win._airOSDockMotion)settleModernDockMotion(win)}
+document.addEventListener('visibilitychange',windowMotionVisibility);
+window.addEventListener('pagehide',()=>{
+ document.removeEventListener('air-settings-changed',settleWindowMotions);
+ document.removeEventListener('visibilitychange',windowMotionVisibility);
+ windowReducedMotion?.removeEventListener?.('change',settleWindowMotions);
+ for(const win of openApps.values())clearDockMotion(win);
+},{once:true});
 function clearDockMotion(win){
+ const state=win._airOSDockMotion;
+ if(state){win._airOSDockMotion=null;state.version++;win.style.transition=state.transition;win.style.pointerEvents=state.pointerEvents;}
  const motion=win._airOSMotion;
  if(motion){win._airOSMotion=null;motion.onfinish=null;try{motion.cancel()}catch(e){}}
  win.classList.remove("dock-animating","is-opening","is-minimizing");
@@ -336,6 +400,7 @@ function clearDockMotion(win){
  win.style.opacity="";
 }
 function animateAppWindowFromDock(win,id){
+ if(modernWindowMotion()||win._airOSDockMotion){animateModernDockWindow(win,id,false);return}
  // Show the app synchronously. WebKit/Electron can retain a filled Web Animation
  // above CSS transforms, leaving a newly launched app invisible or unclickable.
  clearDockMotion(win);
@@ -357,6 +422,7 @@ function animateAppWindowFromDock(win,id){
  });
 }
 function animateAppWindowIntoDock(win,id,done){
+ if(modernWindowMotion()||win._airOSDockMotion){animateModernDockWindow(win,id,true,done);return}
  if(win.classList.contains("is-minimizing"))return;
  if(typeof win.animate!=="function"){win.style.display="none";win.classList.remove("dock-animating","is-opening","is-minimizing");if(done)done();return;}
  clearDockMotion(win);
@@ -394,7 +460,7 @@ function openApp(id){
   return window.airOS.appStore.launch(id).then(()=>({ok:true})).catch(error=>{const message=error.message||'App konnte nicht geöffnet werden.';toast(message);return {ok:false,error:message}});
  }
  if(!appNames[id])return {ok:false,error:'Diese App ist nicht verfügbar.'};
- if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
+ if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none"||w._airOSDockMotion?.targetDock)animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"")+(id==="home"?" air-home-window":"")+(id==="notes"?" air-notes-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
@@ -879,6 +945,8 @@ for (const launcher of document.querySelectorAll(".dock-app[data-app], .desktop-
     event.stopPropagation();
     const id = launcher.dataset.app;
     if(id==='launchpad'&&window.airStartMenu?.enabled()){window.airStartMenu.toggle();return}
+    const moving=openApps.get(id);
+    if(modernWindowMotion()&&moving?._airOSDockMotion&&!moving._airOSDockMotion.targetDock){moving.querySelector('.minimize').click();return}
     if (id && window.airAppRegistry?.get(id)) openApp(id);
     else if (id) toast("Diese App ist noch nicht verfügbar.");
   }, true);
