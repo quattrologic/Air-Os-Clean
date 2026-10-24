@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – gerade Dock-/Island-Randkante mit konkaven Seiten
+
+24. Oktober2026. Verifizierte Basis/Remote-HEAD **d40f2c40b1bf8eb5d6ae923b204b938cd34708b0**, eigener Branch **fix/air-modern-concave-edge-20261024**. Die abgelehnte untere Ellipse ist ausdrücklich ersetzt: Dock unten0, gerade Basis, oben22px-Radien; dekorative12px-Inversecken verbinden beide Seiten mit dem unteren Rand. Island oben0 gespiegelt, untere16px-Ecken. Dunkleres Anthrazit-Rauchglas70%/80%, Blur erhalten. Layoutboxen/Buttons/Originalicons/weiße Birne/Trennlinie/M1/M2/HTML/JS/Home/Notes/Profile/Classic unverändert. Pseudoelemente ohne Klickfang, kein Scrollen.
+
+**248/248 Linux-Tests bestanden**,0 Fehler/Skips. Echte getrennte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachherläufe1920×1080,1650×930,390×600. Dock358×68 unten0; Island250×45 /214,84×38,67 /156×36 oben0, exakt mittig. Screenshot-Pixelkontur2px über Boden168→370px: neue Basis durchgehend mit auslaufenden Seiten statt verjüngter Kapsel. Visuelle Maximalhülle382px passt bei390px in x4…386. Alle sichtbaren Dock-App-Klicks, Suche/Pinning, Tastatur/Fokus/Escape/Outside-Click, Kontrollzentrum/Schnellzugriff, tatsächliches M2-Minimize/Restore, Notes-Save/Persistenz, Reduce Glass/Forced Colors geprüft. Home-/Classic-Messwerte identisch zur Baseline; keine Rendererfehler.50 echte PNGs und zwei JSON-Dateien. Syntax/Catalina/Diff geprüft.
+
+[Vollständiger sichtbarer Vergleich, inverse Seiten-Details, Messwerte/Grenzen](AIR_CONCAVE_EDGE_CORRECTION.md). Historische Ellipsenentscheidung im folgenden alten Checkpoint ist überholt. Kein nativer Windows/macOS- oder1:1-Referenznachweis; CB-03/Plattform-/Releaseblocker offen. PR-/Actions-API Forbidden, kein neuer CI-Erfolg behauptet. main/PRs/Installer unverändert.
+
+Nächste drei separate Einheiten: **Benutzerabnahme der korrigierten Randform**, **native Plattformbelege**, **CB-03 prüfen**. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – sichtbarer Dock-Bogen und statische Musik-Demo
 
 24. Oktober 2026. Verifizierte Basis/Remote-HEAD **e6100b3038bed01e8eeb472acb550f2017ace7c1**, eigener Branch **theme/air-modern-dock-bow-demo-20261024**. Hauptkorrektur: durchgehende untere Ellipse mit je50%horizontalem Radius/24px-Tiefe statt kleinem26px-Eckenradius. Dock weiter358×68 unten0, Mitte bodenbündig; Schwebeschatten durch Kontaktkante ersetzt. Gemessene Hit-Kontur2px über Boden327→145px (≈55,7%schmaler). Laufende-App-Punkte gezielt in die gewölbte Fläche versetzt; Originalicons/Buttons/Trennlinie erhalten. Dunkleres weiterhin transparentes Dock56%/Pille76%, Modern-Pfeil entfernt.

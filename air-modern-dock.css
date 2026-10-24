@@ -58,15 +58,18 @@
 /* Attached lower edge; Classic desktop/dock choices retain their original layout. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
   bottom:0 !important;
-  border-radius:22px 22px 50% 50% / 22px 22px 24px 24px !important;
+  border-radius:22px 22px 0 0 !important;
   box-shadow:0 -4px 16px #0003 !important;
 }
 
 /* Soft glass revision: preserve the compact layout, original artwork and edge anchor. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
-  background:rgba(35,48,56,.56) !important;
-  border-color:rgba(255,255,255,.32) !important;
-  box-shadow:0 1px 0 #0005,inset 0 -1px #ffffff1a,inset 0 1px #ffffff30 !important;
+  background:rgba(16,23,28,.70) !important;
+  border-color:transparent !important;
+  border-top-color:rgba(255,255,255,.24) !important;
+  box-shadow:inset 0 1px #ffffff18 !important;
+  overflow:clip !important;
+  overflow-clip-margin:13px;
   backdrop-filter:blur(24px) saturate(1.3) !important;
   -webkit-backdrop-filter:blur(24px) saturate(1.3) !important;
 }
@@ -95,5 +98,29 @@ html[data-desktop-theme="modern"] .dock[data-theme="modern"] .dock-app[data-app=
   width:1px;height:28px;background:rgba(190,198,203,.65);pointer-events:none;
 }
 
-/* Keep running dots inside the pronounced lower bowl, below the original icons. */
+/* Preserve the existing running-dot placement below the original icons. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] .dock-app.is-open::after {bottom:2px !important}
+
+/* Inverse edge corners, not an ellipse: only the bottom 12px flare outwards.
+   The existing 12px viewport margin contains these decorative, non-hit-test feet.
+   Border offsets align the feet with the outer border box at viewport bottom 0. */
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]::before,
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]::after {
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  width:12px;
+  height:12px;
+  pointer-events:none;
+  background:inherit;
+  backdrop-filter:inherit;
+  -webkit-backdrop-filter:inherit;
+}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]::before {
+  left:-13px;
+  mask-image:radial-gradient(circle at top left,transparent 12px,#000 12.5px);
+}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]::after {
+  right:-13px;
+  mask-image:radial-gradient(circle at top right,transparent 12px,#000 12.5px);
+}

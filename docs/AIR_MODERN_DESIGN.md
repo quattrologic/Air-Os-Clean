@@ -232,3 +232,10 @@ Genau eine weitere Ansicht mit vier echten Registry-App-Verweisen. Standard blei
 ## Verbindliche Folgekorrektur – durchgehender unterer Bogen und Demo
 
 24. Oktober2026: [Aktueller Vergleich](AIR_DOCK_BOW_DEMO.md). Neuer ausdrücklicher Benutzerauftrag ersetzt die26px-Ecken unten durch einen über die volle Breite laufenden50%-Ellipsenradius/24px-Vertikaltiefe. Weiter358×68px unten0. Dock56%Deckung, Pille76%, Modern-Pfeil verborgen. Kleine Musik-Demokarte im vorhandenen Panel mit eigenen Texten, deutlich als statisch/ohne Audio gekennzeichnet. Keine tatsächliche Musikwiedergabe daraus ableiten.
+
+
+## Verbindliche Korrektur – gerade Randkante / konkave Übergänge (24.10.2026)
+
+Die frühere untere Ellipse/Bogenkapsel ist verworfen. Modern-Dock: Layout358×68px unverändert, `bottom:0`, gerade Unterkante, obere22px-Ecken, untere0px-Ecken. Ausschließlich seitliche12px-Inversrundungen flaren am Boden nach außen; keine Wölbung mitten unter dem Dock. Visuelle Hülle inklusive Dekor382px, auch390px bleibt ohne Viewportüberlauf. Rauchglasrgba(16,23,28,.70),24px-Blur; unveränderte Originalicons/Birne/Trennlinie/Buttons. `overflow:clip` mit13px-Dekorreserve, tatsächlich kein horizontales Scrollen.
+
+Island gespiegelt an `top:0`, untere16px-Ecken,12px-konkave Anschlüsse oben,rgba(16,23,28,.80),18px-Blur. Bestehende Triggermaße/Uhr/M1/K3 unverändert, Pfeil weiterhin verborgen. Keine neue Komponenten-/Animationslogik; Classic unverändert. [Electron-Messungen, tatsächliche Bilder und Referenzabweichungen](AIR_CONCAVE_EDGE_CORRECTION.md).
