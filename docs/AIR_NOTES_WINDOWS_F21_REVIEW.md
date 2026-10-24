@@ -116,3 +116,7 @@ F2.1 als native Abnahme bleibt **BLOCKIERT**. F2.2 ist eine separate echte macOS
 ## Nachtrag K1 – nur Linux-Kontrastkorrektur
 
 24. Oktober2026: [CB-01-Korrektur mit echten Linux-Vorher-/Nachher-Belegen](AIR_NOTES_CONTRAST_K1.md). Der oben beschriebene Ausgangszustand bleibt historische Prüfbasis; Modern Notes verwendet nun gezielt#5f7464 (4,69920:1). Keine nachträgliche native Windows-Abnahme, keine CB-02-/CB-03-Korrektur.
+
+## Nachtrag: Windows-Testanleitung auf M2
+
+24. Oktober2026: [Aktueller Ablauf für den Benutzer auf M2](AIR_WINDOWS_F21_M2_TEST_GUIDE.md), Produktcommit bc5b8dae196aabc62df5ffc3d1710da02289aed2. Der oben stehende F1-Prüfbericht bleibt historischer Befund. Keine neue native Abnahme: Benutzer meldet erfolgreichen Start, genaue Buildzuordnung und Windows-Belege stehen aus. Neue Anleitung berücksichtigt Glass, K1, M1/M2 und tatsächlich verfügbare DPI-/Fenstergrößen. CB-02/CB-03 bleiben offen.

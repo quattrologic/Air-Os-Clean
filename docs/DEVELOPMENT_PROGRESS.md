@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – F2.1: Windows-Testanleitung auf M2
+
+24. Oktober 2026. Verifizierte M2-Basis/Remote-HEAD **bc5b8dae196aabc62df5ffc3d1710da02289aed2**, eigener reiner Dokumentationsbranch **docs/air-windows-f21-m2-guide-20261024**. [Kurze Windows-Prüfanleitung mit Umgebungskopf, W01–W10, Größen-/Skalierungsmatrix und optionalen lesenden DOM-Messungen](AIR_WINDOWS_F21_M2_TEST_GUIDE.md). Echter Windows-Start laut Benutzerbericht, Commit/Version des Starts noch unbestätigt. Hier weiterhin Debian13/Linux, keine Windows-Sitzung und kein entsprechendes Werkzeug; eigene native Abnahme BLOCKIERT, alle konkreten M2-Windows-Ergebnisse OFFEN.
+
+Anleitung prüft Glass/Birne/Originalicons/Air-OS-Schriftzug, neue/gespeicherte Theme-Auswahl, Home/Notes/Startmenü/Island, M1/M2-Richtungswechsel, Fokus/Tastatur, Profilwechsel, Reduced Motion, CB-02/CB-03 und Windows-Schriften. Physische Displayauflösung, Anzeigeskalierung/Textgröße/App-Zoom, gemessener CSS-Viewport und DPR getrennt. Native760px-Mindestbreite als Quellbefund,390px nicht erzwingen oder per DevTools-Simulation als nativen Test ausgeben. CB-01-K1-Korrektur berücksichtigt; CB-02/03 weiterhin Prüfpunkte, keine unbelegten neuen Fehler-/Erfolgsurteile. Neue synthetische Testprofile statt Änderungen an Bestandsdaten, keine Installeränderung.
+
+Keine neue Windows-GUI, Screenshots oder Messwerte; erst nach Bereitstellung echter Belege auswerten. Neuer Linux-Regressionslauf: **242/242 bestanden**,0 Fehler/Skips, kein Windows-Nachweis. Lokale Dokumentlinks, lesende Mess-Snippet-Syntax und Docs-only-Diff geprüft. PR-/Actions-Zugriff erneut Forbidden, kein CI-Erfolg behauptet. Produktcode/Design/main/PRs/Installer und andere Entwicklungsbranches unverändert. Audit-/Signing-/Notarisierungs-/Release-Blocker bleiben offen.
+
+Nächste drei getrennte kleine Einheiten: **Benutzer führt W01–W10 auf Windows aus**, **bereitgestellte echte Windows-Belege auswerten**, **F2.2 native macOS-Abnahme**. CB-02/CB-03 erst nach Bewertung separat korrigieren. Nach Dokumentvalidierung/Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – M2: umkehrbare Fensteranimationen
 
 24. Oktober 2026. Verifizierte M1-Basis/Remote-HEAD **ce0ef22d5b4083258fd9a49ff933f92442a86728**, eigener Branch **fix/air-window-interruptible-m2-20261024**. Ausschließlich vorhandene Fensteranimations-/Dock-Startwege in app.js: Modern-Minimieren/Restore teilen410ms-WAAPI im bestehenden Motion-Slot; reverse() erhält live currentTime/Translate/Scale/Opacity. Zielbahn einmal aus bestehendem dockMotionValues bestimmt, keine Neuberechnung aus skaliertem Zwischenrect. Identität/Generation/Verbindung schützen alte Completions. Close während Minimize/Restore, Reopen vor/nach Abschluss, pointerEvents/display/Fokus und bestehende Lifecycle-/Dock-Markierung bleiben konsistent. Neue App-Starts weiter synchron, Classic-Pfad unverändert. Keine neue Bibliothek/zweiter Window Manager.
