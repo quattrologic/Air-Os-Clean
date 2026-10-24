@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – Air-OS Ultimate Hybrid: Konzept vor F2
+
+24. Oktober 2026. Bestätigter F1-Remote-HEAD **4cae58f367c76cdc9d8989fe35970df58d13ac07**, eigener Dokumentationsbranch **docs/air-os-hybrid-design-20261024**. Nur der vom Benutzer beauftragte Designplan, keine F2-Implementierung oder zusätzliche App-Funktion. [Konkreter Hybrid-Plan](AIR_OS_ULTIMATE_HYBRID_DESIGN.md) ergänzt die bestehende Mint-/Creme-/Wolken-/Originalicon-Identität um kompakte dunkle Such-/Schnellflächen und Apple-inspirierte Interaktionsregeln. Neue Token-/Maßwerte sind reviewfähige Vorschläge, bestehende gemessene Geometrien als Baseline festgehalten.
+
+Apple-Design-Skill vollständig gelesen und auf **2d228630ba1446365f614a108cb8252f1feda202** fixiert, MIT-Lizenz geprüft; keine Quelle/Assets/Beispielcodes übernommen. Drittanbieter-WWDC-Zusammenfassung, keine offizielle Apple-Vorgabe. Supaste ist **nicht visuell verifiziert**: www und Apex HTTP403/CONNECT Forbidden; isolierter Electron-Browser ERR_TUNNEL_CONNECTION_FAILED. Supaste-Richtung ausdrücklich aus Benutzerbriefing abgeleitet, keine erfundenen beobachteten Farben/Maße. Exakte Supaste-Annäherung benötigt erreichbare Referenzbilder; der Plan weist diese Grenze offen aus.
+
+Belegte Konzeptbefunde: #677e6c auf #f8f7f3≈4,10:1 (kleiner Text unter4,5:1), Vorschlag#5f7464≈4,70:1; bestehende Traffic-Light-Trefferflächen und feste Animationen sind F2-Prüfpunkte. Keine dieser Stellen geändert. Bestehende Island-Reopen-/Minimierungswege aus Code gelesen; unterbrechbare, positionsstetige Federbewegung noch kein bestätigter Ist-Zustand. Konkrete Material-/Typografie-/Responsive-/Keyboard-/Datenschutzregeln und kleine spätere Einheiten dokumentiert.
+
+Validierung dieser Sitzung: Quellenabruf/Hash, vorhandene JSON-Geometrien, Kontrastberechnung, lokale Dokumentlinks, Whitespace und ausschließlich Docs-Diff. **Keine neue Testsuite oder App-GUI-Abnahme ausgeführt**; F1-Belege216/216 und Screenshots bleiben historische Basis. main/PRs/Installer/Produktcode unverändert. Bestehende Audit-/Signing-/Notarisierungs-/Release-Blocker bleiben offen.
+
+Nächste drei kleine Einheiten: (1) erreichbare Supaste-Belege ergänzen und Konzept prüfen; (2) erst nach Freigabe F2-Windows-Abnahme; (3) F2-macOS-Abnahme, danach jeweils nur eine separat beauftragte Korrektur. Keine Umsetzung im Hintergrund. Neuen Dokumentations-SHA im Abschlussbericht nennen.
+
+---
+
 # Aktueller Checkpoint – F1: Air Notes im Air-Modern-Design
 
 24. Oktober 2026. Bestätigter E3-Remote-HEAD **b57da11ea7952d7d2000955f9eadaae42249ee28**, eigener Branch **theme/air-notes-modern-f1-20261024**. Ausschließlich visuelle Notes-Integration: vorhandenes Notes-Fenster erhält `air-notes-window`, alle neuen CSS-Selektoren benötigen `html[data-desktop-theme="modern"]` UND diese Klasse. Mint-Rahmen#9cdaa1/36px-Titelleiste, hellgrüne Liste#b0e5ad, cremeweißer Editor#f8f7f3, dunkelgrüne Texte, feine Rahmen, Georgia-Titel, Systemschrift, dezente Auswahl/Hover und sichtbarer Tastaturfokus. Keine neue Glasfläche/Farbverlaufsfläche. Andere Fenster und Classic behalten ihre Regeln.
