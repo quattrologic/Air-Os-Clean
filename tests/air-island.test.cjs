@@ -29,7 +29,7 @@ function setup(options = {}) {
   document.querySelector=selector=>elements[selector.slice(1)];
   if(options.available!==false)window.airOS={preferences:{}};
   const motions=[];window.matchMedia=()=>({matches:!!options.reduced});
-  if(options.motion)elements['air-island-panel'].animate=(frames,config)=>{const motion={frames,config,cancel(){this.cancelled=true},finish(){this.onfinish?.()}};motions.push(motion);return motion};
+  if(options.motion)elements['air-island-panel'].animate=(frames,config)=>{const motion={frames,config,playbackRate:1,pause(){},play(){},reverse(){this.playbackRate*=-1;this.reversals=(this.reversals||0)+1},cancel(){this.cancelled=true},finish(){this.onfinish?.()}};motions.push(motion);return motion};
   if(options.startMenu){elements['air-start-menu']={hidden:false};window.airStartMenu={toggle(){elements['air-start-menu'].hidden=true}};}
   const save=options.save || (async dockTheme=>{settings={...settings,dockTheme};document.emit('air-settings-changed');});
   const inside=new Set(Object.values(elements).filter(el=>el!==document && el!==window));
@@ -152,12 +152,12 @@ test('Modern exit is brief and inert immediately; Escape returns focus before vi
  const h=setup({settings:{desktopTheme:'modern'},motion:true}),trigger=h.elements['air-island-toggle'],panel=h.elements['air-island-panel'];
  trigger.emit('click');h.elements['air-island-close'].emit('click');
  assert.equal(trigger.attrs['aria-expanded'],'false');assert.equal(panel.inert,true);assert.equal(panel.hidden,false);assert.equal(h.active,trigger);
- assert.equal(h.motions.length,1);assert.equal(h.motions[0].config.duration,120);h.motions[0].finish();assert.equal(panel.hidden,true);assert.equal(panel.inert,false);
+ assert.equal(h.motions.length,1);assert.equal(h.motions[0].config.duration,140);h.motions[0].finish();assert.equal(panel.hidden,true);assert.equal(panel.inert,false);
 });
 test('reopening cancels stale exit; switching theme, hiding document and disposing cancel animations safely',()=>{
  const h=setup({settings:{desktopTheme:'modern'},motion:true}),trigger=h.elements['air-island-toggle'],panel=h.elements['air-island-panel'];
- trigger.emit('click');h.elements['air-island-close'].emit('click');const old=h.motions[0];trigger.emit('click');
- assert.equal(old.cancelled,true);assert.equal(panel.hidden,false);assert.equal(panel.inert,false);old.finish();assert.equal(panel.hidden,false);
+ trigger.emit('click');h.elements['air-island-close'].emit('click');const old=h.motions[0],stale=old.onfinish;trigger.emit('click');
+ assert.equal(old.cancelled,undefined);assert.equal(old.reversals,2);assert.equal(panel.hidden,false);assert.equal(panel.inert,false);stale();assert.equal(panel.hidden,false);old.finish();assert.equal(panel.hidden,false);
  h.elements['air-island-close'].emit('click');h.settings({desktopTheme:'classic'});assert.equal(panel.hidden,true);
  h.settings({desktopTheme:'modern'});trigger.emit('click');h.document.hidden=true;h.document.emit('visibilitychange');assert.equal(panel.hidden,true);assert.equal(h.timers.size,0);
  h.document.hidden=false;h.document.emit('visibilitychange');trigger.emit('click');h.elements['air-island-close'].emit('click');h.window.emit('pagehide');assert.equal(panel.hidden,true);assert.equal(h.timers.size,0);
@@ -220,4 +220,31 @@ test('registry names remain safe text and missing app cannot falsely launch',asy
 test('quick app focus skips hidden Finder editor and uses visible existing content',async()=>{
  let focused=false;const openApps=new Map([['finder',{querySelectorAll:()=>[{getClientRects:()=>[],focus(){assert.fail('hidden editor focused')}},{getClientRects:()=>[{}],closest:()=>null,focus(){focused=true}}]}]]);
  const h=quickSetup({openApps}),e=h.elements;e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');await e['air-island-quick-cards'].children[3].emit('click',{stopPropagation(){}});assert.equal(focused,true);assert.equal(e['air-island-panel'].hidden,true);
+});
+
+test('M1 reverses the same timeline from its live time, including rapid repeated direction changes',()=>{
+ const h=setup({settings:{desktopTheme:'modern'},motion:true}),e=h.elements;
+ e['air-island-toggle'].emit('click');const motion=h.motions[0];assert.equal(motion.currentTime,0);assert.equal(motion.playbackRate,1);
+ motion.currentTime=57;const staleOpen=motion.onfinish;e['air-island-close'].emit('click');const staleClose=motion.onfinish;
+ assert.equal(motion.currentTime,57);assert.equal(motion.playbackRate,-1);assert.equal(e['air-island-panel'].inert,true);
+ e['air-island-toggle'].emit('click');assert.equal(motion.currentTime,57);assert.equal(motion.playbackRate,1);assert.equal(e['air-island-panel'].inert,false);
+ staleOpen();staleClose();assert.equal(motion.cancelled,undefined);assert.equal(e['air-island-panel'].hidden,false);
+ for(let i=0;i<10;i++)e['air-island-toggle'].emit('click');assert.equal(h.motions.length,1);assert.equal(motion.currentTime,57);
+ motion.finish();assert.equal(motion.cancelled,true);assert.equal(e['air-island-panel'].hidden,false);
+ e['air-island-close'].emit('click');assert.equal(h.motions[1].currentTime,140);assert.equal(h.motions[1].playbackRate,-1);h.motions[1].finish();assert.equal(e['air-island-panel'].hidden,true);
+});
+test('M1 interrupted quick view keeps its contents, fresh open resets control, close invalidates pending launch',async()=>{
+ let resolve;const h=quickSetup({motion:true,launch:()=>new Promise(r=>resolve=r)}),e=h.elements;
+ e['air-island-toggle'].emit('click');e['air-island-view-quick'].emit('click');
+ const pending=e['air-island-quick-cards'].children[0].emit('click',{stopPropagation(){}});
+ e['air-island-close'].emit('click');e['air-island-toggle'].emit('click');resolve({ok:true});await pending;
+ assert.equal(e['air-island-panel'].hidden,false);assert.equal(e['air-island-quick'].hidden,false);
+ e['air-island-close'].emit('click');h.motions[0].finish();e['air-island-toggle'].emit('click');assert.equal(e['air-island-controls'].hidden,false);
+});
+test('M1 reduced-motion changes settle safely and stale callbacks after disposal cannot reopen',()=>{
+ const h=setup({settings:{desktopTheme:'modern'},motion:true}),e=h.elements;
+ e['air-island-toggle'].emit('click');const stale=h.motions[0].onfinish;
+ h.settings({desktopTheme:'modern',reduceMotion:true});assert.equal(h.motions[0].cancelled,true);assert.equal(e['air-island-panel'].hidden,false);
+ e['air-island-close'].emit('click');assert.equal(e['air-island-panel'].hidden,true);
+ h.window.emit('pagehide');stale();assert.equal(e['air-island-panel'].hidden,true);
 });

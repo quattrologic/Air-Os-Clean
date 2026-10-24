@@ -224,3 +224,6 @@ html[data-desktop-theme="modern"].air-reduced-glass .air-island-toggle {
 @media (forced-colors: active) {
   html[data-desktop-theme="modern"] .air-island-toggle {background:Canvas;color:CanvasText;border-color:CanvasText;backdrop-filter:none}
 }
+
+/* M1: one reversible WAAPI timeline owns Modern entry and exit. Classic keeps CSS entry. */
+html[data-desktop-theme="modern"] .air-island-panel {animation:none}

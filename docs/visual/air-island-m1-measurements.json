@@ -1,0 +1,701 @@
+{
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dock": {
+        "x": 781,
+        "y": 1012,
+        "width": 358,
+        "height": 68
+      },
+      "island": {
+        "x": 835,
+        "y": 0,
+        "width": 250,
+        "height": 45
+      },
+      "panel": {
+        "x": 745,
+        "y": 0,
+        "width": 430,
+        "height": 334
+      },
+      "dockSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "20px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px -4px 16px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(36, 59, 90)"
+      },
+      "islandSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "16px 16px 22px 22px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px 3px 10px 0px",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(248, 247, 243)"
+      },
+      "icons": [
+        "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+      ],
+      "trials": [
+        {
+          "before": {
+            "opacity": 0.658759,
+            "y": -1.3649638891220093,
+            "time": 66.67399999406187,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658759,
+            "y": -1.3649638891220093,
+            "time": 66.67399999406187,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518181,
+            "y": -1.9272756576538086,
+            "time": 49.97399999406183,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518181,
+            "y": -1.9272756576538086,
+            "time": 49.97399999406183,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.657969,
+            "y": -1.3681222200393677,
+            "time": 66.57399999406178,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.657969,
+            "y": -1.3681222200393677,
+            "time": 66.57399999406178,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.517288,
+            "y": -1.9308463335037231,
+            "time": 49.87399999406173,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.517288,
+            "y": -1.9308463335037231,
+            "time": 49.87399999406173,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.657179,
+            "y": -1.3712830543518066,
+            "time": 66.47399999406167,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.657179,
+            "y": -1.3712830543518066,
+            "time": 66.47399999406167,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.516395,
+            "y": -1.9344192743301392,
+            "time": 49.773999994061626,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.516395,
+            "y": -1.9344192743301392,
+            "time": 49.773999994061626,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.657179,
+            "y": -1.3712830543518066,
+            "time": 66.47399999406156,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.657179,
+            "y": -1.3712830543518066,
+            "time": 66.47399999406156,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.516395,
+            "y": -1.9344192743301392,
+            "time": 49.77399999406151,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.516395,
+            "y": -1.9344192743301392,
+            "time": 49.77399999406151,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.656388,
+            "y": -1.3744466304779053,
+            "time": 66.37399999406146,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.656388,
+            "y": -1.3744466304779053,
+            "time": 66.37399999406146,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.515501,
+            "y": -1.9379945993423462,
+            "time": 49.67399999406141,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.515501,
+            "y": -1.9379945993423462,
+            "time": 49.67399999406141,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.655597,
+            "y": -1.3776127099990845,
+            "time": 66.27399999406136,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.655597,
+            "y": -1.3776127099990845,
+            "time": 66.27399999406136,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.513712,
+            "y": -1.945151925086975,
+            "time": 49.47399999406132,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.513712,
+            "y": -1.945151925086975,
+            "time": 49.47399999406132,
+            "rate": -1
+          },
+          "settledRate": 1
+        }
+      ]
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "dock": {
+        "x": 646,
+        "y": 862,
+        "width": 358,
+        "height": 68
+      },
+      "island": {
+        "x": 717.578125,
+        "y": 0,
+        "width": 214.84375,
+        "height": 38.671875
+      },
+      "panel": {
+        "x": 610,
+        "y": 0,
+        "width": 430,
+        "height": 334
+      },
+      "dockSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "20px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px -4px 16px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(36, 59, 90)"
+      },
+      "islandSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "16px 16px 22px 22px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px 3px 10px 0px",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(248, 247, 243)"
+      },
+      "icons": [
+        "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+      ],
+      "trials": [
+        {
+          "before": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.659059,
+            "y": -1.3637644052505493,
+            "time": 66.71200000161815,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518823,
+            "y": -1.924706220626831,
+            "time": 50.046000001618296,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.65909,
+            "y": -1.363638162612915,
+            "time": 66.71600000161871,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.65909,
+            "y": -1.363638162612915,
+            "time": 66.71600000161871,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518859,
+            "y": -1.9245635271072388,
+            "time": 50.050000001618855,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518859,
+            "y": -1.9245635271072388,
+            "time": 50.050000001618855,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.65909,
+            "y": -1.363638162612915,
+            "time": 66.71600000161871,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.65909,
+            "y": -1.363638162612915,
+            "time": 66.71600000161871,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518841,
+            "y": -1.9246349334716797,
+            "time": 50.048000001618576,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518841,
+            "y": -1.9246349334716797,
+            "time": 50.048000001618576,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.659075,
+            "y": -1.363701343536377,
+            "time": 66.71400000161842,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.659075,
+            "y": -1.363701343536377,
+            "time": 66.71400000161842,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518841,
+            "y": -1.9246349334716797,
+            "time": 50.048000001618576,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518841,
+            "y": -1.9246349334716797,
+            "time": 50.048000001618576,
+            "rate": -1
+          },
+          "settledRate": 1
+        }
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "dock": {
+        "x": 16,
+        "y": 532,
+        "width": 358,
+        "height": 68
+      },
+      "island": {
+        "x": 117,
+        "y": 0,
+        "width": 156,
+        "height": 36
+      },
+      "panel": {
+        "x": 12,
+        "y": 44,
+        "width": 366,
+        "height": 334
+      },
+      "dockSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "20px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px -4px 16px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(36, 59, 90)"
+      },
+      "islandSkin": {
+        "backgroundColor": "rgba(9, 11, 12, 0.84)",
+        "borderRadius": "16px 16px 22px 22px",
+        "borderColor": "rgba(255, 255, 255, 0.22)",
+        "boxShadow": "rgba(0, 0, 0, 0.2) 0px 3px 10px 0px",
+        "backdropFilter": "blur(18px) saturate(1.2)",
+        "filter": "none",
+        "color": "rgb(248, 247, 243)"
+      },
+      "icons": [
+        "<svg viewBox=\"175 10 455 775\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z\" fill=\"#fff\" stroke=\"none\" stroke-linejoin=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"finA\" x2=\"0\" y2=\"1\"><stop stop-color=\"#6de5ff\"></stop><stop offset=\"1\" stop-color=\"#1686d8\"></stop></linearGradient><linearGradient id=\"finB\" x2=\"0\" y2=\"1\"><stop stop-color=\"#e9f9ff\"></stop><stop offset=\"1\" stop-color=\"#8cd9f8\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#1c8fe2\"></rect><path d=\"M2 16A14 14 0 0 1 16 2h16v60H16A14 14 0 0 1 2 48Z\" fill=\"url(#finB)\"></path><path d=\"M32 2h16A14 14 0 0 1 62 16v32a14 14 0 0 1-14 14H32Z\" fill=\"url(#finA)\"></path><path d=\"M19 24v-5m26 5v-5\" stroke=\"#1f456d\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path><path d=\"M13 39q7 4 16 0m6 0q9 4 16 0\" fill=\"none\" stroke=\"#16466f\" stroke-width=\"2.3\" stroke-linecap=\"round\"></path><path d=\"M29 41 24 49m11-8 5 8\" stroke=\"#16466f\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"saf\" x2=\"0\" y2=\"1\"><stop stop-color=\"#2fe6ff\"></stop><stop offset=\".52\" stop-color=\"#1686e4\"></stop><stop offset=\"1\" stop-color=\"#0645a7\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"15\" fill=\"#f7fbff\"></rect><circle cx=\"32\" cy=\"32\" r=\"27\" fill=\"url(#saf)\" stroke=\"#dcefff\" stroke-width=\"1.5\"></circle><circle cx=\"32\" cy=\"32\" r=\"22\" fill=\"none\" stroke=\"#c5edff\" stroke-width=\"1.2\"></circle><path d=\"M32 7 37 30 57 32 35 36 32 57 28 35 7 32 29 29Z\" fill=\"#fff\"></path><path d=\"m32 32 18-18-7 24-11-6Z\" fill=\"#ed4c55\"></path><circle cx=\"32\" cy=\"32\" r=\"3\" fill=\"#fff\"></circle></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"58\" height=\"60\" rx=\"10\" fill=\"#fff\" stroke=\"#e0e3e8\"></rect><path d=\"M3 12A10 10 0 0 1 13 2h38a10 10 0 0 1 10 10v8H3Z\" fill=\"#ffd44f\"></path><path d=\"M4 26h56M4 35h56M4 44h56M4 53h56\" stroke=\"#dfe5ec\" stroke-width=\"2\"></path><path d=\"M4 22h56\" stroke=\"#fff0a6\" stroke-width=\"2\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"airMusicPodBg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#edf8ff\"></stop><stop offset=\"1\" stop-color=\"#bddaf4\"></stop></linearGradient><linearGradient id=\"airMusicPodBody\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#ffffff\"></stop><stop offset=\"1\" stop-color=\"#e1ebf6\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#airMusicPodBg)\"></rect><rect x=\"17\" y=\"6\" width=\"30\" height=\"52\" rx=\"6\" fill=\"url(#airMusicPodBody)\" stroke=\"#8da9c2\" stroke-width=\"1.2\"></rect><rect x=\"21\" y=\"11\" width=\"22\" height=\"20\" rx=\"2.5\" fill=\"#c9e8f8\"></rect><path d=\"M21 24 Q32 16 43 24 V29 H21Z\" fill=\"#83c9ed\" opacity=\".55\"></path><path d=\"M28 17v8m0-8 7-2v8\" fill=\"none\" stroke=\"#2489c9\" stroke-width=\"1.8\" stroke-linecap=\"round\"></path><circle cx=\"27\" cy=\"25\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"34\" cy=\"23\" r=\"2\" fill=\"#2489c9\"></circle><circle cx=\"32\" cy=\"43\" r=\"11\" fill=\"#f7fbff\" stroke=\"#b4c7da\" stroke-width=\"1\"></circle><circle cx=\"32\" cy=\"43\" r=\"4\" fill=\"#dcebf6\"></circle><path d=\"M32 34v3M32 49v3M23 43h3M38 43h3\" stroke=\"#7b9cb8\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"m30.7 40.5 4 2.5-4 2.5Z\" fill=\"#408dbd\"></path></svg>",
+        "<svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><defs><linearGradient id=\"gear\" x2=\"0\" y2=\"1\"><stop stop-color=\"#f7f9fc\"></stop><stop offset=\"1\" stop-color=\"#9ca9bb\"></stop></linearGradient></defs><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"url(#gear)\"></rect><g transform=\"translate(32 32)\" fill=\"#717d8f\"><path d=\"M-5-27h10l2 7 6 2 6-4 7 7-4 6 2 6 7 2v10l-7 2-2 6 4 6-7 7-6-4-6 2-2 7h-10l-2-7-6-2-6 4-7-7 4-6-2-6-7-2V-1l7-2 2-6-4-6 7-7 6 4 6-2Z\" transform=\"scale(.82)\"></path><circle r=\"12\" fill=\"#dce2ea\"></circle><circle r=\"7\" fill=\"#69778b\"></circle></g></svg>"
+      ],
+      "trials": [
+        {
+          "before": {
+            "opacity": 0.658664,
+            "y": 42.63465881347656,
+            "time": 66.66199999419042,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658664,
+            "y": 42.63465881347656,
+            "time": 66.66199999419042,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.961999994190265,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.961999994190265,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999418922,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999418922,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999418849,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999418849,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.658412,
+            "y": 42.63364791870117,
+            "time": 66.6299999941895,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658412,
+            "y": 42.63364791870117,
+            "time": 66.6299999941895,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518092,
+            "y": 42.07236862182617,
+            "time": 49.963999994190544,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518092,
+            "y": 42.07236862182617,
+            "time": 49.963999994190544,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.658412,
+            "y": 42.63364791870117,
+            "time": 66.62999999419128,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658412,
+            "y": 42.63364791870117,
+            "time": 66.62999999419128,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999419204,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999419204,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999419278,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999419278,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999419382,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.96199999419382,
+            "rate": -1
+          },
+          "settledRate": 1
+        },
+        {
+          "before": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999419455,
+            "rate": 1
+          },
+          "after": {
+            "opacity": 0.658396,
+            "y": 42.633583068847656,
+            "time": 66.62799999419455,
+            "rate": 1
+          },
+          "settledRate": -1
+        },
+        {
+          "before": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.961999994195594,
+            "rate": -1
+          },
+          "after": {
+            "opacity": 0.518074,
+            "y": 42.072296142578125,
+            "time": 49.961999994195594,
+            "rate": -1
+          },
+          "settledRate": 1
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
