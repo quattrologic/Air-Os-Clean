@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – D1: Air-Home-Grundfenster
+
+24. Oktober 2026. Bestätigte Basis **c2e48fec1e289dbb337578f29bf83db49a477d0e**, Remote-HEAD geprüft; eigener Branch **theme/air-home-foundation-d1-20261024**. Ausschließlich D1: registrierte integrierte App `home`/Air Home, über bestehendes Startmenü auffindbar/startbar, dieselbe Fensterverwaltung und Lifecycle. Kein Autostart und keine Widget-Implementierung. Eigener Mint-Rahmen, cremeweiße Fläche, Navigation Home/Apps/Dateien/Settings mit echten bestehenden App-Startaktionen; drei Kachelspalten als klar bezeichnete Demnächst-Zustände. Keine fiktiven Projekte, Termine, Fortschritte, Nutzerangaben oder Fotos.
+
+**186/186 Node-Tests grün**, 0 Fehler/Skips, drei neue Air-Home-Regressionen. Syntax, Catalina-Konfiguration und Diff geprüft. Echter Linux/Electron32.3.3-/Sandbox-/Xvfb-GUI-Test bei 1920×1080, 1650×930, 390×600 erfolgreich: Registry-Suche/Start, keine Doppelinstanz, Navigation startet vorhandene Apps, bestehendes Verschieben/Maximieren/Minimieren/Wiederherstellen/Schließen, Classic-Rückkehr, kein horizontaler Überlauf, keine Rendererfehler. Bewegungsreduktion im GUI-Test aktiv. Bestehende Profil-/Pinning-/Sicherheitsregressionen weiterhin grün. Keine neuen Abhängigkeiten. Actions-/PR-API weiterhin Forbidden, deshalb kein aktueller CI-/PR-Status bestätigt und keine native Windows-/macOS-Abnahme behauptet.
+
+Gemessen: **1920: x200/y103, 1522×849px, Sidebar212px, Kacheln380px bei x472/872/1272**. **1650: x171,875/y93, 1307,969×731,078px, Sidebar182,188px**. Bestehender Fensterhost begrenzt hier y auf93 statt proportional88,69. **390: x12/y91, 366×430px**, kompakte48px-Navigation, einspaltiger Inhalt. Dock unverändert358×68px unten0; Island oben0; Originalicons identisch. [Screenshots, Messdaten und genaue Referenzabweichungen](AIR_HOME_D1_COMPARISON.md).
+
+Classic-Desktop, Startmenü, Pins, Profile und C2-Kontrollzentrum unverändert. Keine Installer-, Paketmanifest-, Workflow-, IPC- oder Preferences-Änderung, kein main-/PR-Merge/Release. Audit-, Signing-, Notarisierungs- und Hardware-Abnahmeblocker bleiben offen. Foto/echte Widgets/Folia-Werkzeugband nicht übernommen; keine vollständige Pixelgleichheit behauptet.
+
+Nächste drei kleine Einheiten: **E1** genau ein reales bestehendes Widget mit Profilgrenzen; **E2** ein weiteres Widget separat; **F1** eine bestehende App optisch integrieren. Fotografische Wolken nur mit eigener oder geklärter Quelle. Neuen Commit-SHA im Abschlussbericht nennen; nach Push Sitzung beenden.
+
+---
+
 # Aktueller Checkpoint – C2: sichtbarer Referenzabgleich abgeschlossen
 
 23. Oktober 2026. Ausgangsstand Randkorrektur **71139f562ea751f546e01efc6e5006d8961a803b**, separater Branch **theme/air-modern-reference-c2-20261023**. Schritt 1 Logo separat in **a6d25a3** gesichert, Schritt 2 Kontrollzentrum in eigenem Folgecommit. Die früher fehlenden Bilder sind jetzt sichtbar; frühere Blockade ist aufgehoben. Neuer SHA steht im Abschlussbericht.

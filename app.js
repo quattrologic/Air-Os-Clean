@@ -47,7 +47,25 @@ function paintAppIcons(root=document){
 }
 paintAppIcons();
 
+// Air Home is a trusted built-in view, using the same window/lifecycle as other apps.
+function airHomeBody(){
+ return `<section class="air-home" aria-label="Air Home"><nav class="air-home-nav" aria-label="Air-Home-Navigation"><span class="air-home-brand">AIR HOME</span><button type="button" data-home-action="home" aria-current="page"><span aria-hidden="true">⌂</span>Home</button><button type="button" data-home-action="launchpad"><span aria-hidden="true">▦</span>Apps</button><button type="button" data-home-action="finder"><span aria-hidden="true">▱</span>Dateien</button><button type="button" data-home-action="settings"><span aria-hidden="true">⚙︎</span>Einstellungen</button><p class="air-home-nav-note">Dein Air-OS-Arbeitsplatz</p></nav><main class="air-home-main" tabindex="-1"><div class="air-home-columns"><div class="air-home-column"><section class="air-home-card air-home-welcome"><h1>Willkommen zu Hause.</h1><p>Dein Platz in Air-OS.</p></section><section class="air-home-card air-home-inbox"><h2>Notizen &amp; Aufgaben</h2><p>Deine Gedanken an einem Ort.</p><p class="air-home-empty">Widget demnächst verfügbar.</p></section><section class="air-home-card air-home-tint"><h2>Raum für Ideen.</h2><p>Demnächst</p></section></div><div class="air-home-column"><section class="air-home-card air-home-horizon"><h2>Vorhaben</h2><p>Platz für deine nächsten Schritte.</p><p class="air-home-empty">Projekt-Widget · Demnächst</p></section><section class="air-home-card air-home-focus"><h2>Fokus</h2><p>Timer · Demnächst</p></section><section class="air-home-card air-home-due"><h2>Heute</h2><p>Kalender-Widget · Demnächst</p></section></div><div class="air-home-column"><section class="air-home-card air-home-preview"><h2>Deine Perspektive</h2><p>Medien-Widget · Demnächst</p></section><section class="air-home-card air-home-projects"><h2>Aktuelle Projekte</h2><p>Deine Arbeit im Überblick.</p><p class="air-home-empty">Projektübersicht demnächst verfügbar.</p></section></div></div></main></section>`;
+}
+function mountAirHome(win){
+ win.querySelectorAll('[data-home-action]').forEach(button=>button.addEventListener('click',()=>{
+  const id=button.dataset.homeAction;
+  if(id==='home'){win.querySelector('.air-home-main').focus();return}
+  if(['launchpad','finder','settings'].includes(id))openApp(id);
+ }));
+ // Initial bounds in viewport coordinates; existing drag/resize/maximize owns them afterwards.
+ const host=appWindowHostRect(),small=innerWidth<=700;
+ const width=small?Math.min(innerWidth-24,host.width):Math.min(innerWidth*1522/1920,host.width);
+ const height=small?Math.max(220,Math.min(innerHeight-170,host.height)):Math.min(innerHeight*849/1080,host.height);
+ setWindowToViewportRect(win,{left:small?12:innerWidth*200/1920,top:small?Math.max(host.top,62):innerHeight*103/1080,width,height});
+}
+
 function appBody(id){
+ if(id==='home')return airHomeBody();
  if(id==='reminders')return window.airReminders?.body()||'<p>Erinnerungen laden …</p>';
  if(id==='store')return window.airAppStore?.body()||'<p>App Store lädt …</p>';
  if(id==='launchpad')return window.airLaunchpad?.body()||'<p>Launchpad lädt …</p>';
@@ -375,7 +393,7 @@ function openApp(id){
  }
  if(!appNames[id])return {ok:false,error:'Diese App ist nicht verfügbar.'};
  if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
- const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"");win.style.zIndex=++zIndex;
+ const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"")+(id==="home"?" air-home-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
  catch (error) {
@@ -384,7 +402,7 @@ function openApp(id){
   return {ok:false,error:appNames[id]+" konnte nicht geöffnet werden."};
  }
  win.innerHTML=`<div class="window-titlebar"><div class="traffic"><button class="close" aria-label="Fenster schließen"></button><button class="minimize" aria-label="Minimieren"></button><button class="maximize" aria-label="Maximieren"></button></div><div class="window-title">${id==="finder"?"Dokumente":appNames[id]}</div></div><div class="window-content">${body}</div>`; paintAppIcons(win); const resizeHandle=document.createElement("div");resizeHandle.className="window-resize-handle";resizeHandle.setAttribute("role","separator");resizeHandle.setAttribute("aria-label","Fenstergröße ändern");win.appendChild(resizeHandle);
- windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);if(id==="launchpad")window.airLaunchpad?.mount(win);if(id==="store")window.airAppStore?.mount(win);normalizeAppWindow(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
+ windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);if(id==="launchpad")window.airLaunchpad?.mount(win);if(id==="store")window.airAppStore?.mount(win);normalizeAppWindow(win);if(id==="home")mountAirHome(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
  win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id]});
  $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);lifecycle?.transition(id,'closed');$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
  $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);lifecycle?.transition(id,'minimized');toast(appNames[id]+" ins Dock minimiert")};

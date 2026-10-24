@@ -180,3 +180,9 @@ Die fünf Bilder liegen nun sichtbar vor; alte Blockade aufgehoben. Bild 3 ist d
 Modern: schwarzes oberkantiges 430×284px-Panel (1650/1920), 366×284px bei x12/y44 auf 390px. Statuszeile, vier Kacheln, sechs 36px-Kreise, zwei Slider; Dock bleibt 358×68px unten0, geschlossene Island oben0. Screenshot-Vergleich, Maße und ehrliche Funktionsmatrix: [AIR_CONTROL_CENTER_COMPARISON.md](AIR_CONTROL_CENTER_COMPARISON.md). Bildblockade aufgehoben; frühere Abschnitte sind Historie.
 
 Desktop- und Dock-Preferences unabhängig, nur bestätigte Speicherung; Classic zeigt ursprüngliches Layout und Grid. Wi-Fi/Bluetooth/Focus/Übersicht/Host-Helligkeit deaktiviert; Volume nur für echte lokale Air-Music-Quelle. Keine erfundenen Statuswerte. 183 Node-Tests und echte Electron-Prüfung aller drei Größen erfolgreich. Vorhandene PNG-Bytes des weißen Air-OS-Birnenlogos unverändert, alle anderen bunten SVG-Icons bleiben identisch. Keine Installeränderung oder fremder GPL-Code. Nächster Gestaltungsschritt D1; Fotowolken und native Hardwareabnahme bleiben offen.
+
+## D1 – Air-Home-Grundfenster (24. Oktober 2026)
+
+Eigenständige Registry-App `home` unter Verwendung der bestehenden Fensterverwaltung. Mint #9cdaa1 / Creme #f8f7f3, Radius22px, Sidebar212px; echte Apps-/Finder-/Settings-Navigation. Bei1920 exakt x200/y103,1522×849px; erste Kachel x472/y173,380×210px, Spaltenabstand20px. Drei Spalten auf großen Displays, auf390px horizontale kompakte Navigation und eine Kachelspalte. Nur Demnächst-Zustände, keine Widgets oder erfundenen Daten. Kein Autostart/zweiter Window Manager, keine Fremdassets oder Installeränderung.
+
+[Screenshots, alle Geometrien und Abweichungen](AIR_HOME_D1_COMPARISON.md). 1650px y93 wegen unverändertem Fensterhost statt proportional89px. 186 Node-Tests und echter Electron-GUI-Lauf an drei Größen erfolgreich; native Hardware offen. D1 ist abgeschlossen, E1 nächstes separates Widget.
