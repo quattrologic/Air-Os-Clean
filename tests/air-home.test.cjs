@@ -5,7 +5,7 @@ const source=fs.readFileSync(require.resolve('../app.js'),'utf8').split('functio
 function fixture(width,height){
  const handlers={},opened=[],main={focus(){this.focused=true}},host={left:0,top:93,width,height:height-169};let bounds;
  const buttons=['home','launchpad','finder','settings','arbitrary-path'].map(id=>({dataset:{homeAction:id},addEventListener(type,fn){handlers[id]=fn}}));
- const context={innerWidth:width,innerHeight:height,appWindowHostRect:()=>host,setWindowToViewportRect:(win,rect)=>{bounds=rect},openApp:id=>opened.push(id)};
+ const context={window:{},innerWidth:width,innerHeight:height,appWindowHostRect:()=>host,setWindowToViewportRect:(win,rect)=>{bounds=rect},openApp:id=>opened.push(id)};
  vm.createContext(context);vm.runInContext('function airHomeBody(){'+source,context);
  const win={querySelectorAll:()=>buttons,querySelector:()=>main};context.mountAirHome(win);
  return{context,handlers,opened,main,get bounds(){return bounds}};

@@ -65,3 +65,65 @@
  }
  window.airNotes={mount,focusNote};
 })();
+
+// Read-only Home summary. No note bodies or persistent secondary cache are retained.
+(() => {
+ function mount(win){
+  const root=win.querySelector('.air-home-inbox');if(!root||root.dataset.notesReady)return;
+  root.dataset.notesReady='1';
+  const list=root.querySelector('.air-home-notes-list'),status=root.querySelector('.air-home-notes-status');
+  const retry=root.querySelector('.air-home-notes-retry'),open=root.querySelector('.air-home-notes-open');
+  const close=win.querySelector('.close');
+  let disposed=false,request=0,owner=null;
+  const alive=token=>!disposed&&win.isConnected&&request===token;
+  function clear(){list.replaceChildren();status.textContent='';retry.hidden=true}
+  function dispose(){
+   if(disposed)return;disposed=true;request++;clear();open.disabled=true;
+   document.removeEventListener('air-notes-saved',refresh);
+   document.removeEventListener('air-profile-changing',dispose);
+   window.removeEventListener('pagehide',dispose);
+   close?.removeEventListener('click',dispose,true);observer.disconnect();
+  }
+  const observer=new MutationObserver(()=>{if(!win.isConnected)dispose()});
+  if(win.parentNode)observer.observe(win.parentNode,{childList:true});
+  async function sameOwner(token){
+   const user=await window.airOS?.currentUser?.();
+   if(!alive(token))return false;
+   if(!user?.preferenceSession||owner!==user.preferenceSession){dispose();return false}
+   return true;
+  }
+  async function refresh(){
+   if(disposed||!win.isConnected)return;
+   const token=++request;clear();status.textContent='Notizen werden geladen …';
+   try{
+    const user=await window.airOS?.currentUser?.();if(!alive(token))return;
+    if(!user?.preferenceSession)throw new Error('Keine authentifizierte Sitzung.');
+    if(owner&&owner!==user.preferenceSession){dispose();return}
+    owner=user.preferenceSession;
+    const notes=await window.airOS.notes.list();
+    if(!alive(token)||!await sameOwner(token))return;
+    if(!Array.isArray(notes))throw new Error('Ungültige Notizliste.');
+    // Invalid dates sort last; stable ties retain store order. Never render note HTML/body.
+    const timestamp=value=>typeof value==='string'&&Number.isFinite(Date.parse(value))?Date.parse(value):-Infinity;
+    const recent=notes.filter(note=>note&&typeof note.title==='string')
+     .map(note=>({title:note.title.trim()||'Ohne Titel',time:timestamp(note.updatedAt)}))
+     .sort((a,b)=>b.time-a.time).slice(0,3);
+    for(const note of recent){const item=document.createElement('li');item.textContent=note.title;list.append(item)}
+    status.textContent=recent.length?'':'Noch keine Notizen vorhanden.';
+   }catch{
+    if(!alive(token))return;
+    // Never display a previous profile's response, including an old failure/retry state.
+    if(owner){try{if(!await sameOwner(token))return}catch{if(!alive(token))return}}
+    clear();status.textContent='Notizen konnten nicht geladen werden. Bitte erneut versuchen.';retry.hidden=false;
+   }
+  }
+  retry.addEventListener('click',refresh);
+  open.addEventListener('click',()=>{if(!disposed&&win.isConnected)openApp('notes')});
+  close?.addEventListener('click',dispose,true);
+  document.addEventListener('air-notes-saved',refresh);
+  document.addEventListener('air-profile-changing',dispose);
+  window.addEventListener('pagehide',dispose);
+  refresh();return {refresh,dispose};
+ }
+ window.airHomeNotes={mount};
+})();
