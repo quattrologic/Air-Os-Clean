@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – helleres Dock-/Pillenglas und Logo-Trennung
+
+24. Oktober 2026. Verifizierte CB-02-Basis/Remote-HEAD **c0b7a67015bfe3132fcc702ef8230e38e22d7c59**, eigener Branch **theme/air-modern-lighter-glass-20261024**. Nur Material/Radien in air-modern-dock.css und air-island.css: Dock helleres Grau mit38%Alpha,24px-Blur, weicheren26px-Ecken auch unten; obere bestehende Island-Pille mit68%Alpha und weicheren unteren Radien. Maße/Positionen unverändert. Dekorativer grauer1×28px-Divider im bestehenden Abstand nach der Birne, ohne Layout-/Hitbox-/Iconänderung; bei leeren Pins keine Linie. Glasreduktion/Forced Colors weiterhin deckend. Kein neuer Manager/Preference/Timer, keine Fremdassets.
+
+**245/245 Linux-Tests bestanden**,0 Fehler/Skips. Neuer Material-Lesbarkeits-/Divider-Vertragstest; vorhandene CB-02-/M1-/M2-/Sicherheitsregressionen aktiv. Echte getrennte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachherläufe bei1920×1080,1650×930,390×600: Dock358×68 unten0; Pille unverändert250×45 /214,84×38,67 /156×36 oben0. Originalicons bytegleich, kein Scrollen, System-/Startmenü/Suche/Kontrollzentrum/Schnellzugriff/Fokus, tatsächliches M2-Minimize/Restore, Pin/Unpin, Reload-Persistenz/erhaltene unbekannte Referenz, echter Notes-Save, Glasreduktion/Forced Colors und leere Pins geprüft. Classic und Home-Geometrie gegen unveränderte Baseline identisch. Beide Helfer Exit0, keine Rendererfehler.20 echte PNGs plus JSON-Vergleich. Syntax/Catalina/Diff/Dokumentlinks geprüft.
+
+[Anklickbarer Bildvergleich, Material- und Geometriemesswerte](AIR_MODERN_LIGHTER_GLASS.md). Keine pixelgenaue Referenzgleichheit oder native Windows/macOS-Abnahme behauptet. app.js/HTML/Fenster/Notes/CB-02/Profile/Animationslogik/Classic unangetastet. PR-/Actions-API Forbidden, kein neuer CI-Erfolg; Audit-/Signing-/Notarisierungsblocker offen. main/PRs/Installer/andere Branches unverändert.
+
+Nächste drei getrennte Einheiten: **Windows-Belege auswerten**, **native macOS-Abnahme**, **CB-03 prüfen**. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – CB-02: größere Notes-Fensterbutton-Klickflächen
 
 24. Oktober 2026. Verifizierte M2-Basis/Remote-HEAD **bc5b8dae196aabc62df5ffc3d1710da02289aed2**, eigener Branch **fix/air-notes-window-buttons-cb02**. Nur Modern-Notes-CSS: echte transparente24×24px-Buttons, Originalfarben als mittige10×10px-before-Kreise,4px-Abstände, voller rechteckiger Hitbereich ohne Overlay, Hover und focus-visible.36px-Titelleiste, absoluter Fenstertitel und übriges Layout unverändert. Erste abgerundete Hitbox verlor Ecken beim echten Hit-Test; durch rechteckige transparente Kästen korrigiert und erneut geprüft. Keine Handler-/M1-/M2-/Speicher-/Profil-/Dock-/Island-/Home-/Classicänderung.

@@ -224,3 +224,7 @@ Genau eine weitere Ansicht mit vier echten Registry-App-Verweisen. Standard blei
 ## Benutzerkorrektur: dezentes Glas, 24. Oktober 2026
 
 [Umsetzung und echter Vorher-/Nachhervergleich](AIR_MODERN_SOFT_GLASS.md). Neueste ausdrückliche Vorgabe ersetzt die früheren opaken/eckigen Randflächen: Modern-Dock rgba(9,11,12,.84), alle vier Ecken20px, weiter unten0 und358×68px; Island gleicher Glasgrund mit16/16/22/22px-Radien, oben0 und unveränderten Maßen. Birne vorhandener weißer Vektor ohne Kasten, andere bunte Originalicons unverändert. Schlichter Air-OS-Textzugang, Tastaturfokus erhalten. Neue Profile Desktop/Dock Modern, bestehende Auswahlen maßgeblich. Mint/Creme/Home-Geometrie und Classic unverändert. 232/232 Linux-Tests und echte Linux-Electron-Prüfungen an drei Größen; native Windows/macOS weiterhin offen. Kein Supaste-/Referenzpixelgleichheitsanspruch.
+
+## Aktuelle Benutzerkorrektur – helleres Dock-/Pillenglas
+
+24. Oktober2026: [Echter Vorher-/Nachhervergleich](AIR_MODERN_LIGHTER_GLASS.md). Die neue Vorgabe konkretisiert das bisherige84%-dunkle Glas: Dock rgba(55,69,77,.38), Radius26px, Blur24px; geschlossene bestehende Modern-Island rgba(24,34,40,.68), weichere Radien. Dünne graue Trennlinie nach der Birne im vorhandenen Abstand. Beide Komponenten bleiben randbündig und gleich groß, Classic und App-Oberflächen unverändert. Historische opake Farbwerte weiter oben sind keine neu bestätigten Zielwerte.
