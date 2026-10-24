@@ -786,3 +786,19 @@ html[data-desktop-theme="modern"] .desktop-icons { display:none !important; }
 .air-home-inbox .air-home-notes-open{margin-top:auto}.air-home-notes-retry{margin:12px 0}
 .air-home-inbox button:hover{background:#e4efdf}
 @media(max-width:700px){.air-home-notes-list{margin:8px 0}.air-home-notes-list li{padding:1px 0}.air-home-inbox .air-home-notes-open{margin-top:8px}}
+
+/* E2: read-only reminders in the existing due card; no changes to E1 or desktop chrome. */
+.air-home-due{display:flex;flex-direction:column;min-width:0}
+.air-home-card.air-home-due h2{font-size:clamp(18px,1.25vw,24px)}
+.air-home-card .air-home-reminders-status{font-size:12px;margin-top:10px}
+.air-home-reminders-status:empty{display:none}
+.air-home-reminders-list{list-style:none;margin:10px 0;padding:0;min-width:0}
+.air-home-reminders-list:empty{display:none}
+.air-home-reminders-list li{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0;padding:6px 0;border-bottom:1px solid #dce0d9}
+.air-home-reminders-list span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;line-height:1.3;color:#365e43}
+.air-home-reminders-list small{flex-shrink:0;font-size:10px;line-height:1.3;color:#677e6c}
+.air-home-reminders-list .is-overdue small{color:#895548}
+.air-home-reminders-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.air-home-due button{border:1px solid #b8bcb6;border-radius:7px;background:transparent;color:#365e43;padding:6px 8px;font:inherit;font-size:10px;cursor:pointer}
+.air-home-due button:hover{background:#e4efdf}
+@media(max-width:700px){.air-home-reminders-list li{padding:4px 0}}

@@ -67,3 +67,78 @@
  window.airReminders={body,mount};
  if(typeof paintAppIcons==='function')paintAppIcons();
 })();
+// Read-only Home summary. No reminder details or persistent secondary cache are retained.
+(() => {
+ // Compare validated date-only strings with local calendar components, never UTC instants.
+ function dateOnly(value){
+  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return null;
+  const [y,m,d]=value.split('-').map(Number),leap=y%4===0&&(y%100!==0||y%400===0);
+  return m>=1&&m<=12&&d>=1&&d<=[31,leap?29:28,31,30,31,30,31,31,30,31,30,31][m-1]?value:null;
+ }
+ function preview(entries,now=new Date()){
+  if(!Array.isArray(entries))throw new Error('Ungültige Erinnerungsliste.');
+  const today=String(now.getFullYear()).padStart(4,'0')+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  return entries.filter(item=>item&&item.completed===false&&typeof item.title==='string'&&item.title.trim())
+   .map(item=>({title:item.title.trim(),due:dateOnly(item.dueDate)}))
+   .sort((a,b)=>a.due===b.due?0:a.due===null?1:b.due===null?-1:a.due<b.due?-1:1)
+   .slice(0,3).map(item=>{
+    const date=item.due?item.due.slice(8,10)+'.'+item.due.slice(5,7)+'.'+item.due.slice(0,4):null;
+    return {title:item.title,overdue:!!item.due&&item.due<today,label:!date?'Ohne Datum':item.due<today?'Überfällig · '+date:item.due===today?'Heute':'Fällig am '+date};
+   });
+ }
+ function mount(win){
+  const root=win.querySelector('.air-home-due');if(!root||root.dataset.remindersReady)return;
+  root.dataset.remindersReady='1';
+  const list=root.querySelector('.air-home-reminders-list'),status=root.querySelector('.air-home-reminders-status');
+  const retry=root.querySelector('.air-home-reminders-refresh'),open=root.querySelector('.air-home-reminders-open');
+  const close=win.querySelector('.close');
+  let disposed=false,request=0,owner=null;
+  const alive=token=>!disposed&&win.isConnected&&request===token;
+  function clear(){list.replaceChildren();status.textContent='';retry.textContent='Aktualisieren'}
+  function dispose(){
+   if(disposed)return;disposed=true;request++;clear();open.disabled=true;retry.disabled=true;
+   document.removeEventListener('air-profile-changing',dispose);
+   window.removeEventListener('pagehide',dispose);
+   close?.removeEventListener('click',dispose,true);observer.disconnect();
+  }
+  const observer=new MutationObserver(()=>{if(!win.isConnected)dispose()});
+  if(win.parentNode)observer.observe(win.parentNode,{childList:true});
+  async function sameOwner(token){
+   const user=await window.airOS?.currentUser?.();
+   if(!alive(token))return false;
+   if(!user?.preferenceSession||owner!==user.preferenceSession){dispose();return false}
+   return true;
+  }
+  async function refresh(){
+   if(disposed||!win.isConnected)return;
+   const token=++request;clear();status.textContent='Erinnerungen werden geladen …';
+   try{
+    const user=await window.airOS?.currentUser?.();if(!alive(token))return;
+    if(!user?.preferenceSession)throw new Error('Keine authentifizierte Sitzung.');
+    if(owner&&owner!==user.preferenceSession){dispose();return}
+    owner=user.preferenceSession;
+    const entries=await window.airOS.reminders.list();
+    if(!alive(token)||!await sameOwner(token))return;
+    const items=preview(entries);
+    for(const item of items){
+     const row=document.createElement('li'),title=document.createElement('span'),due=document.createElement('small');
+     title.textContent=item.title;due.textContent=item.label;
+     row.className=item.overdue?'is-overdue':'';row.append(title,due);list.append(row);
+    }
+    status.textContent=items.length?'':'Keine offenen Aufgaben.';
+   }catch{
+    if(!alive(token))return;
+    // Never display a previous profile's response, including an old failure/retry state.
+    if(owner){try{if(!await sameOwner(token))return}catch{if(!alive(token))return}}
+    clear();status.textContent='Erinnerungen konnten nicht geladen werden. Bitte erneut versuchen.';retry.textContent='Erneut laden';
+   }
+  }
+  retry.addEventListener('click',refresh);
+  open.addEventListener('click',()=>{if(!disposed&&win.isConnected)openApp('reminders')});
+  close?.addEventListener('click',dispose,true);
+  document.addEventListener('air-profile-changing',dispose);
+  window.addEventListener('pagehide',dispose);
+  refresh();return {refresh,dispose};
+ }
+ window.airHomeReminders={mount,preview};
+})();
