@@ -17,6 +17,7 @@
  function createRenderer(canvas,sources){
   const gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:true,antialias:false,preserveDrawingBuffer:false,powerPreference:'low-power'});
   if(!gl)throw Error('webgl2-unavailable');
+  const debug=gl.getExtension('WEBGL_debug_renderer_info'),rendererName=debug?.UNMASKED_RENDERER_WEBGL?String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL)):'';const software=/swiftshader|llvmpipe|software|softpipe/i.test(rendererName);
   const live={shader:new Set(),program:new Set(),texture:new Set(),buffer:new Set(),framebuffer:new Set(),vertexArray:new Set()};
   const create=(kind,fn)=>{const v=fn();if(!v)throw Error('webgl-allocation');live[kind].add(v);return v};
   function drop(kind,v){if(v&&live[kind].delete(v))gl['delete'+kind[0].toUpperCase()+kind.slice(1)](v)}
@@ -108,21 +109,21 @@
    use(programs.field,{toScreen:1,qt_Opacity:sceneState?sceneState.opacity*sceneState.loginOpacity:1,itemSize:[field.width,field.height],glassSize:[fieldRect.width,fieldRect.height],srcSize:[width,height],srcOffset:[field.x,field.y],src:0,...params.field});gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
    if(validate&&gl.getError()!==gl.NO_ERROR)throw Error('webgl-draw');
   }
-  return Object.freeze({setScene,setMask,draw,destroy,snapshot:()=>({disposed,contextAlive:!disposed&&!gl.isContextLost(),resources:Object.fromEntries(Object.entries(live).map(([k,v])=>[k,v.size]))})});
+  return Object.freeze({setScene,setMask,draw,destroy,snapshot:()=>({disposed,software,contextAlive:!disposed&&!gl.isContextLost(),resources:Object.fromEntries(Object.entries(live).map(([k,v])=>[k,v.size]))})});
  }
  function mount(win){
   const doc=win.document,body=doc.body,clock=doc.querySelector('#login-clock'),field=doc.querySelector('.password-row'),toggle=doc.querySelector('#maclock-reduce-glass');
   const media=[win.matchMedia('(forced-colors: active)'),win.matchMedia('(prefers-reduced-transparency: reduce)'),win.matchMedia('(prefers-contrast: more)')];
-  let disposed=false,ready=false,manual=false,failed=false,renderer=null,canvas=null,surfaceEvents=null,frame=null,frames=0,maskRebuilds=0,sceneRebuilds=0,generation=0,sceneKey='',maskKey='',classKey='',last=null;
+  let disposed=false,ready=false,manual=false,failed=false,renderer=null,canvas=null,surfaceEvents=null,frame=null,frames=0,maskRebuilds=0,sceneRebuilds=0,generation=0,sceneKey='',maskKey='',classKey='',last=null,tile=null,tileKey='',tileBuilds=0;
   let state={status:'loading',reason:'assets'};const events=new win.AbortController(),image=new win.Image();
   const listen=(target,type,fn)=>target.addEventListener(type,fn,{signal:events.signal});
   function status(value,reason){const changed=state.status!==value||state.reason!==reason;state={status:value,reason};body.dataset.maclockGlass=value;if(changed)doc.dispatchEvent(new win.CustomEvent('air-maclock-material-state',{detail:{status:value,reason}}))}
   function release(value,reason){
    generation++;if(frame!==null)win.cancelAnimationFrame(frame);frame=null;
-   body.classList.remove('has-maclock-glass');
+   body.classList.remove('has-maclock-glass','maclock-software-material');
    surfaceEvents?.abort();surfaceEvents=null;
    if(renderer){renderer.destroy();renderer=null}if(canvas){canvas.remove();canvas=null}
-   sceneKey=maskKey='';status(value,reason);
+   sceneKey=maskKey=tileKey='';tile=null;status(value,reason);
   }
   function reduced(){return manual||media.some(m=>m.matches)||doc.documentElement.classList.contains('air-reduced-glass')||body.classList.contains('air-reduced-glass')}
   function schedule(){if(disposed||frame!==null)return;const owner=generation;let ticket;ticket=win.requestAnimationFrame(()=>{if(disposed||owner!==generation||frame!==ticket)return;render()});frame=ticket}
@@ -161,7 +162,18 @@
     const padding=params.clock.padding,clockRect={x:r.x-padding,y:r.y-padding,width:Math.ceil((r.width+2*padding)*dpr)/dpr,height:Math.ceil((r.height+2*padding)*dpr)/dpr},fieldRect={x:f.x,y:f.y,width:f.width,height:f.height};
     const motion=win.airMacLockMotionController?.snapshot(),sceneState=motion?.values,validate=!motion?.active||frames===0;
     renderer.draw({width,height,dpr,clockRect,fieldRect,params,sceneState,validate});last={width,height,dpr,clockRect,fieldRect,params,sceneState,validate};frames++;
-    body.classList.add('has-maclock-glass');status('webgl','ready');
+    body.classList.add('has-maclock-glass');body.classList.toggle('maclock-software-material',renderer.snapshot().software);status('webgl','ready');
+    if(win.airMacLockMorphController&&!motion?.active&&!body.classList.contains('maclock-field-morph')&&(!sceneState||sceneState.opacity===1)){
+     const key=[maskKey,clockRect.x,clockRect.y,sceneState?.zoom,sceneState?.blur,sceneState?.blurOpacity,fieldRect.width,fieldRect.height].join('|');
+     if(key!==tileKey){
+      if(renderer.snapshot().software)tile={text:clock.textContent,software:true};else{
+      const copy=doc.createElement('canvas');copy.width=Math.round(clockRect.width*dpr);copy.height=Math.round(clockRect.height*dpr);const cx=copy.getContext('2d');
+      cx.drawImage(canvas,Math.round(clockRect.x*dpr),Math.round(clockRect.y*dpr),copy.width,copy.height,0,0,copy.width,copy.height);
+      const fp=params.field.pad,fieldCopy=doc.createElement('canvas');fieldCopy.width=Math.round((f.width+fp*2)*dpr);fieldCopy.height=Math.round((f.height+fp*2)*dpr);
+      fieldCopy.getContext('2d').drawImage(canvas,Math.round((f.x-fp)*dpr),Math.round((f.y-fp)*dpr),fieldCopy.width,fieldCopy.height,0,0,fieldCopy.width,fieldCopy.height);
+      tile={text:clock.textContent,canvas:copy,width:clockRect.width,height:clockRect.height,pad:padding,field:{canvas:fieldCopy}};}tileKey=key;tileBuilds++;doc.dispatchEvent(new win.Event('air-maclock-clock-tile'));
+     }
+    }
    }catch(error){failed=true;release('fallback',String(error.message||'material-error'))}
   }
   function checkClasses(){
@@ -172,6 +184,7 @@
   let oldTime=clock.textContent;const textObserver=new win.MutationObserver(()=>{if(clock.textContent!==oldTime){oldTime=clock.textContent;schedule()}});textObserver.observe(clock,{childList:true,characterData:true,subtree:true});
   const resize=new win.ResizeObserver(schedule);for(const e of [clock,field,doc.querySelector('#login-stage')])resize.observe(e);
   for(const m of media)listen(m,'change',()=>{failed=false;schedule()});
+  listen(doc,'air-maclock-visual-settled',schedule);
   listen(doc,'air-maclock-frame',()=>{if(disposed)return;if(frame!==null)win.cancelAnimationFrame(frame);frame=null;render()});
   listen(win,'resize',schedule);listen(doc,'visibilitychange',schedule);
   listen(toggle,'click',()=>{manual=!manual;failed=false;schedule()});
@@ -180,7 +193,7 @@
   image.src='maclock-wallpaper.svg';
   Promise.all([image.decode(),doc.fonts.ready]).then(()=>{if(!disposed){ready=true;schedule()}}).catch(()=>{if(!disposed){failed=true;release('fallback','assets-unavailable')}});
   checkClasses();
-  return Object.freeze({destroy,snapshot:()=>({...state,disposed,frames,maskRebuilds,sceneRebuilds,pendingFrame:frame!==null,last,renderer:renderer?.snapshot()||{disposed:true,contextAlive:false,resources:{shader:0,program:0,texture:0,buffer:0,framebuffer:0,vertexArray:0}}})});
+  return Object.freeze({destroy,clockTile:()=>tile,snapshot:()=>({...state,disposed,software:renderer?.snapshot().software||false,frames,tileBuilds,maskRebuilds,sceneRebuilds,pendingFrame:frame!==null,last,renderer:renderer?.snapshot()||{disposed:true,contextAlive:false,resources:{shader:0,program:0,texture:0,buffer:0,framebuffer:0,vertexArray:0}}})});
  }
  return Object.freeze({parameters,createRenderer,mount});
 });

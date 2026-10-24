@@ -32,9 +32,9 @@
       <input id="login-username" name="username" type="hidden" autocomplete="username">
       <div class="saved-accounts" id="saved-accounts" aria-label="Benutzerkonto wählen"></div>
       <div class="password-row">
-        <span id="login-caps" aria-label="Feststelltaste aktiv" hidden>⇪</span>
+        <span id="login-caps" aria-label="Feststelltaste aktiv" hidden><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2.2 15.6 9.2H12v3.2H6V9.2H2.4Z M6 15.4h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></span>
         <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Passwort eingeben" required aria-label="Air-OS-Passwort" aria-describedby="login-hint">
-        <button id="login-submit" class="password-submit" type="submit" aria-label="Anmelden" title="Anmelden"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button id="login-submit" class="password-submit" type="submit" aria-label="Anmelden" title="Anmelden"><svg class="maclock-submit-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="maclock-submit-spinner" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.64" fill="none" stroke="currentColor" stroke-width="2.16" stroke-linecap="round" stroke-dasharray="38 16.3"/></svg></button>
       </div>
       <p id="login-hint">Air-OS-Passwort zum Anmelden eingeben.</p>
       <div id="login-error" class="auth-error" role="alert" hidden></div>
@@ -86,5 +86,6 @@
   <script src="maclock-motion.js"></script>
   <script src="maclock-shaders.js"></script>
   <script src="maclock-glass.js"></script>
+  <script src="maclock-morph.js"></script>
 </body>
 </html>

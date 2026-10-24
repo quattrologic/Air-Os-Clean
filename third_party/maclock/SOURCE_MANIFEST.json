@@ -7,7 +7,7 @@
       "path": "MacLock/ClockGlyph.qml",
       "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad",
       "bytes": 3109,
-      "status": "analysed; not copied for L1A"
+      "status": "copied byte-exact as audit source and analysed; original alarm/stopwatch/timer widget glyphs, not large clock text; no fake widgets added"
     },
     {
       "path": "MacLock/ContourGlow.qml",
@@ -43,13 +43,13 @@
       "path": "MacLock/MorphGlyph.qml",
       "sha256": "e77b8eca1525ef4887c77a5bb29ba18d306cf46d2492d49555147189eec8cde0",
       "bytes": 1984,
-      "status": "analysed; not copied for L1A"
+      "status": "copied byte-exact as audit source and analysed; used by media controls upstream, not artificially added to the login surface in L1B.3"
     },
     {
       "path": "MacLock/MorphText.qml",
       "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096",
       "bytes": 7158,
-      "status": "analysed; not copied for L1A"
+      "status": "copied byte-exact as audit source; two-layer timing/stretch/width/alignment and real clock overrides ported in maclock-morph.js; Qt effects adapted to compositor and documented software fallback"
     },
     {
       "path": "MacLock/README.md",
@@ -195,5 +195,16 @@
       "confirmed Air-OS login never awaits exit completion; no PAM unlock delay copied"
     ],
     "report": "docs/AIR_MACLOCK_L1B2_MOTION.md"
+  },
+  "l1b3": {
+    "module": "maclock-morph.js",
+    "source": "MacLock/MorphText.qml and actual instances/interactions in LockScreen.qml",
+    "adaptations": [
+      "clock560ms, no width/stretch; date/hint420ms with width/stretch; exact OutQuint/OutCubic",
+      "bounded two-layer compositor model, original caps/submit/press/shake values, no password clones",
+      "hardware material snapshots at content changes; detected software renderer avoids readback and uses a transient compositor approximation",
+      "native password and authenticated bridge unchanged; finite generation/ticket guarded RAF; no added polling"
+    ],
+    "report": "docs/AIR_MACLOCK_L1B3_MORPH.md"
   }
 }

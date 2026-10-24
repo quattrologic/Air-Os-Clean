@@ -19,7 +19,7 @@ function fakeGL(options={}){
 function fixture(options={}){
  const g=fakeGL(options),rafs=new Map(),created=[],observers=[],media=[];let raf=0;
  class Element extends EventTarget{
-  constructor(){super();this.classes=new Set();this.classList={contains:k=>this.classes.has(k),add:k=>this.classes.add(k),remove:k=>this.classes.delete(k)};this.dataset={};this.children=[];this.attrs={};this.textContent='10:24';this.width=1;this.height=1;}
+  constructor(){super();this.classes=new Set();this.classList={contains:k=>this.classes.has(k),add:k=>this.classes.add(k),remove:k=>this.classes.delete(k),toggle:(k,v)=>v?this.classes.add(k):this.classes.delete(k)};this.dataset={};this.children=[];this.attrs={};this.textContent='10:24';this.width=1;this.height=1;}
   setAttribute(k,v){this.attrs[k]=v}removeAttribute(k){delete this.attrs[k]}appendChild(e){this.children.push(e)}remove(){this.removed=true}
   getBoundingClientRect(){return{x:850,y:950,width:189,height:32}}
   getContext(type){if(type==='webgl2')return options.noGL?null:g.gl;return{letterSpacing:'0',scale(){},drawImage(){},createLinearGradient(){return{addColorStop(){}}},fillRect(){},fillText(){},measureText(){return{fontBoundingBoxAscent:150,width:400}}}}
@@ -27,7 +27,7 @@ function fixture(options={}){
  const doc=new EventTarget();doc.body=new Element();doc.documentElement=new Element();doc.hidden=false;doc.fonts={ready:Promise.resolve()};
  const nodes=Object.fromEntries(['#login-clock','.password-row','#maclock-reduce-glass','#login-stage'].map(k=>[k,new Element()]));
  doc.querySelector=s=>{assert.ok(nodes[s],'no secret/profile access');return nodes[s]};doc.createElement=()=>{const e=new Element();created.push(e);return e};doc.createRange=()=>({selectNodeContents(){},getBoundingClientRect:()=>({x:750,y:95,width:420,height:190})});
- const win=new EventTarget();Object.assign(win,{document:doc,innerWidth:1920,innerHeight:1080,devicePixelRatio:1,airMacLockShaders:shaders,AbortController,CustomEvent,requestAnimationFrame:fn=>{rafs.set(++raf,fn);return raf},cancelAnimationFrame:id=>rafs.delete(id),getComputedStyle:()=>({fontWeight:'680',fontSize:'158.4px',fontFamily:'Open Runde',letterSpacing:'-1.35px'}),matchMedia:()=>{const m=new EventTarget();m.matches=false;media.push(m);return m}});
+ const win=new EventTarget();Object.assign(win,{document:doc,innerWidth:1920,innerHeight:1080,devicePixelRatio:1,airMacLockShaders:shaders,AbortController,CustomEvent,Event,requestAnimationFrame:fn=>{rafs.set(++raf,fn);return raf},cancelAnimationFrame:id=>rafs.delete(id),getComputedStyle:()=>({fontWeight:'680',fontSize:'158.4px',fontFamily:'Open Runde',letterSpacing:'-1.35px'}),matchMedia:()=>{const m=new EventTarget();m.matches=false;media.push(m);return m}});
  Object.defineProperty(win,'airOS',{get(){throw Error('No authentication/Preferences/secret API may be read by materials')}});
  let resolve;win.Image=class{constructor(){this.naturalWidth=1920;this.naturalHeight=1080}decode(){return new Promise(r=>resolve=r)}removeAttribute(){}};
  win.MutationObserver=class{constructor(cb){this.cb=cb;observers.push(this)}observe(){}disconnect(){this.disconnected=true}};win.ResizeObserver=class extends win.MutationObserver{};
@@ -84,4 +84,11 @@ test('hidden pages release materials and become static; visible pages can recrea
 test('enhancement CSS only affects MacLock materials, is non-blocking and includes no new animation/layout transforms',()=>{
  const css=fs.readFileSync(require.resolve('../login.css'),'utf8').split('/* L1B.1:')[1].split('/* L1B.2:')[0];assert.match(css,/pointer-events:none/);assert.doesNotMatch(css,/transform:|animation:|transition:|\.dock|\.air-island|\.air-home|\.air-notes/);
  const pkg=require('../package.json');for(const path of ['maclock-shaders.js','maclock-glass.js','third_party/maclock/**/*'])assert.ok(pkg.build.files.includes(path));
+});
+
+test('public material tiles are cached between draws and released on context loss, without extra WebGL programs',async()=>{
+ const h=fixture();h.win.airMacLockMorphController={};h.win.airMacLockMotionController={snapshot:()=>({active:false,values:{opacity:1,clockOpacity:1,loginOpacity:1,zoom:1,blur:0,blurOpacity:0}})};await h.ready();h.flush();assert.equal(h.c.snapshot().tileBuilds,1);const tile=h.c.clockTile();assert.equal(tile.text,'10:24');assert.ok(tile.canvas);assert.ok(tile.field.canvas);h.win.dispatchEvent(new Event('resize'));h.flush();assert.equal(h.c.clockTile(),tile);assert.equal(h.c.snapshot().tileBuilds,1);assert.equal(h.c.snapshot().renderer.resources.program,4);h.doc.body.children.at(-1).dispatchEvent(new Event('webglcontextlost',{cancelable:true}));assert.equal(h.c.clockTile(),null);h.c.destroy();assert.equal(h.live.size,0);
+});
+test('software renderer detection avoids all material readback tiles while retaining real GL and finite content notifications',async()=>{
+ const h=fixture(),extension=h.gl.getExtension;h.gl.getExtension=name=>name==='WEBGL_debug_renderer_info'?{UNMASKED_RENDERER_WEBGL:999}:extension(name);h.gl.getParameter=p=>p===999?'ANGLE SwiftShader':4096;h.win.airMacLockMorphController={};h.win.airMacLockMotionController={snapshot:()=>({active:false,values:{opacity:1,clockOpacity:1,loginOpacity:1,zoom:1,blur:0,blurOpacity:0}})};await h.ready();h.flush();assert.equal(h.c.snapshot().status,'webgl');assert.equal(h.c.snapshot().software,true);assert.deepEqual(h.c.clockTile(),{text:'10:24',software:true});assert.equal(h.c.snapshot().renderer.resources.program,4);const frames=h.c.snapshot().frames;h.flush();assert.equal(h.c.snapshot().frames,frames);h.c.destroy();assert.equal(h.c.clockTile(),null);assert.equal(h.live.size,0);
 });

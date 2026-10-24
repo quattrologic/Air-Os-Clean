@@ -48,6 +48,7 @@
       "maclock-shaders.js",
       "maclock-glass.js",
       "maclock-motion.js",
+      "maclock-morph.js",
       "maclock-wallpaper.svg",
       "third_party/maclock/**/*",
       "README.md",

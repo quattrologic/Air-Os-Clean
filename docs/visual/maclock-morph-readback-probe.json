@@ -1,0 +1,42 @@
+{
+  "status": "superseded diagnostic, not final acceptance",
+  "source": "rounded values recorded from the first real after-run terminal analysis before software readback was removed; not a full retained trace",
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "entryMs": 934,
+      "minuteChangeToLastPaintMs": 1329.9,
+      "morphAfterStartMs": 666.8,
+      "morphPaints": 10,
+      "GLDraws": 1,
+      "maskBuilds": 1
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "entryMs": 1367.9,
+      "minuteChangeToLastPaintMs": 854.8,
+      "morphAfterStartMs": 608.1,
+      "morphPaints": 11,
+      "GLDraws": 1,
+      "maskBuilds": 1
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "entryMs": 666.4,
+      "minuteChangeToLastPaintMs": 580.1,
+      "morphAfterStartMs": 576.2,
+      "morphPaints": 18,
+      "GLDraws": 1,
+      "maskBuilds": 1
+    }
+  ]
+}

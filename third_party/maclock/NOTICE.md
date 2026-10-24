@@ -48,3 +48,19 @@ as an explicitly documented approximation of the Qt blur pyramid.
 Authentication remains in the existing bridge; its confirmed notification has no
 payload and never waits for animation completion.
 Detailed source mapping, measured frames and limitations: docs/AIR_MACLOCK_L1B2_MOTION.md.
+
+## L1B.3 text and interaction port
+
+MorphText.qml, MorphGlyph.qml and ClockGlyph.qml are bundled byte-exact in original/
+as MIT audit sources at the pinned Rickky revision. MorphText's two layers,
+width/alignment/stretch equations and timings are ported to maclock-morph.js with
+LockScreen.qml's actual clock overrides (560ms,1.03/.97,no stretch/animated width).
+LockScreen.qml also supplies CapsLock vector paths/timings, submit arc800ms,
+press140/420ms and six-step435ms shake. Native password entry replaces QML's
+custom password dot model; no credential is cloned/rastered. MorphGlyph and
+ClockGlyph belong to upstream media/timer widgets; analysed/audited, not injected
+as invented login actions. Hardware raster caching and finite compositor lifecycle
+are Air-OS adaptations. Detected software rendering avoids GPU readback with a
+documented transient text/CSS approximation, returning to original GL materials.
+Original L1B.1 fragment math, Open Runde font files and their separate OFL notices
+remain unchanged. See docs/AIR_MACLOCK_L1B3_MORPH.md for exact values and limitations.

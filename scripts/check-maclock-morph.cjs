@@ -1,0 +1,65 @@
+'use strict';
+// Real isolated Linux Electron. Natural RAF traces precede controlled-time screenshots.
+const{chromium}=require('playwright'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
+if(process.env.AIR_GUI_TEST_ISOLATED!=='1')throw Error('Use isolated synthetic profiles');
+const phase=process.env.AIR_GUI_PHASE||'after',before=phase==='before',fallback=phase==='fallback',port=before?9281:fallback?9282:9280;
+const near=(a,b,t=.05)=>assert.ok(Math.abs(a-b)<=t,`${a} != ${b}`);
+(async()=>{const b=await chromium.connectOverCDP(process.env.AIR_GUI_CDP||'http://127.0.0.1:'+port);try{
+ const p=b.contexts()[0].pages()[0],errors=[],cleanups=[],rows=[];p.on('pageerror',e=>errors.push(e.message));await p.exposeFunction('morphCleanup',x=>cleanups.push(x));
+ await p.addInitScript(()=>{
+  const Real=Date;window.__testEpoch=new Real(2026,9,24,9,59).getTime();globalThis.Date=class extends Real{constructor(...args){super(...(args.length?args:[window.__testEpoch]))}static now(){return window.__testEpoch}};
+  window.__longTasks=[];new PerformanceObserver(l=>__longTasks.push(...l.getEntries().map(x=>({start:x.startTime,duration:x.duration})))).observe({type:'longtask',buffered:true});
+  window.__clockChanges=[];document.addEventListener('DOMContentLoaded',()=>{if(!document.querySelector('#login-clock'))return;new MutationObserver(()=>__clockChanges.push({time:performance.now(),text:document.querySelector('#login-clock').textContent})).observe(document.querySelector('#login-clock'),{childList:true});window.addEventListener('pagehide',()=>{if(window.airMacLockMorphController)morphCleanup({morph:airMacLockMorphController.snapshot(),motion:airMacLockMotionController.snapshot(),glass:airMacLockGlassController.snapshot(),hosts:document.querySelectorAll('.maclock-morph-host').length})})});
+ });
+ await p.reload();
+ const secret=crypto.randomBytes(24).toString('hex'),alice='morph'+crypto.randomBytes(5).toString('hex');
+ async function create(name){if(await p.locator('#switch-create').isVisible())await p.locator('#switch-create').click();for(const[id,value]of [['create-display-name','Morph-Testprofil'],['create-username',name],['create-password',secret],['create-confirm',secret]])await p.locator('#'+id).fill(value);await p.locator('#create-submit').click();await p.waitForURL('**/index.html');await p.waitForFunction(()=>!!window.airStartMenu)}
+ async function logout(){await p.evaluate(()=>airOS.logout());await p.waitForURL('**/login.html')}
+ async function login(){await p.locator('#login-password').fill(secret);await p.locator('#login-submit').click();await p.waitForURL('**/index.html');await p.waitForFunction(()=>!!window.airStartMenu)}
+ async function settled(){await p.waitForFunction(()=>{const a=airMacLockMotionController.snapshot(),c=window.airMacLockMorphController?.snapshot();return a.ready&&!a.active&&!a.pendingFrame&&(!c||(!c.active&&!c.pendingFrame&&!c.clockWaiting))})}
+ async function controlledSettle(){for(let n=0;n<170;n++){await p.clock.runFor(16);if(await p.evaluate(()=>{const a=airMacLockMotionController.snapshot(),c=window.airMacLockMorphController?.snapshot();return a.ready&&!a.active&&!a.pendingFrame&&(!c||(!c.active&&!c.pendingFrame&&!c.clockWaiting))}))return}throw Error('controlled settle timeout')}
+ function shot(name,clip){return p.screenshot({path:path.join(__dirname,`../docs/visual/maclock-morph-${phase}-${name}.png`),...(clip?{clip}:{})})}
+ async function measure(){return p.evaluate(()=>{const range=document.createRange();range.selectNodeContents(document.querySelector('#login-clock'));const r=range.getBoundingClientRect(),f=document.querySelector('.password-row').getBoundingClientRect();return{now:performance.now(),text:document.querySelector('#login-clock').textContent,clock:{x:r.x,y:r.y,width:r.width,height:r.height},field:{x:f.x,y:f.y,width:f.width,height:f.height},motion:airMacLockMotionController.snapshot(),morph:window.airMacLockMorphController?.snapshot()||null,glass:airMacLockGlassController.snapshot(),fieldTransform:getComputedStyle(document.querySelector('.password-row')).transform,caps:{hidden:document.querySelector('#login-caps').hidden,opacity:getComputedStyle(document.querySelector('#login-caps')).opacity},tasks:__longTasks.slice()}})}
+ async function clockClip(){const m=await measure(),r=m.clock;return{x:Math.max(0,r.x-65),y:Math.max(0,r.y-35),width:Math.min(await p.evaluate(()=>innerWidth)-Math.max(0,r.x-65),r.width+130),height:r.height+95}}
+ async function fieldClip(){const r=await p.locator('#login-stage').boundingBox();return{x:Math.max(0,(await p.evaluate(()=>innerWidth))/2-180),y:r.y-10,width:Math.min(360,await p.evaluate(()=>innerWidth)),height:r.height+25}}
+ function capsToggle(){assert.ok(process.env.AIR_GUI_DISPLAY&&process.env.AIR_GUI_XAUTHORITY,'XTest display needed');execFileSync('python',['-c',`import ctypes\nx=ctypes.CDLL('libX11.so.6');t=ctypes.CDLL('libXtst.so.6');x.XOpenDisplay.restype=ctypes.c_void_p;x.XKeysymToKeycode.argtypes=[ctypes.c_void_p,ctypes.c_ulong];t.XTestFakeKeyEvent.argtypes=[ctypes.c_void_p,ctypes.c_uint,ctypes.c_int,ctypes.c_ulong];x.XSync.argtypes=[ctypes.c_void_p,ctypes.c_int];x.XCloseDisplay.argtypes=[ctypes.c_void_p];d=x.XOpenDisplay(None);assert d;k=x.XKeysymToKeycode(d,0xffe5);t.XTestFakeKeyEvent(d,k,1,0);t.XTestFakeKeyEvent(d,k,0,0);k=x.XKeysymToKeycode(d,0xffe1);t.XTestFakeKeyEvent(d,k,1,0);t.XTestFakeKeyEvent(d,k,0,0);x.XSync(d,0);x.XCloseDisplay(d)`],{env:{...process.env,DISPLAY:process.env.AIR_GUI_DISPLAY,XAUTHORITY:process.env.AIR_GUI_XAUTHORITY}})}
+ await create(alice);await p.evaluate(()=>airOS.notes.save({title:'Synthetic profile A',body:'Isolated fixture'}));await logout();
+ const baseline=before?null:JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/visual/maclock-morph-before.json')));
+ const nativeRows=[];
+ for(const[w,h]of [[1920,1080],[1650,930],[390,600]]){
+  await p.setViewportSize({width:w,height:h});await p.reload();await p.waitForFunction(()=>document.querySelector('#login-username').value.length>0);await settled();const entry=await measure();
+  // Natural minute rollover; performance.now and RAF are not mocked or paused here.
+  const start=await measure();await p.evaluate(()=>{__testEpoch+=60000;window.__rafTimes=[];const deadline=performance.now()+2200;const sample=t=>{__rafTimes.push(t);if(performance.now()<deadline)requestAnimationFrame(sample)};requestAnimationFrame(sample)});await p.waitForFunction(()=>document.querySelector('#login-clock').textContent==='10:00');await settled();await p.waitForTimeout(150);const end=await measure();const natural={entry,start,end,changes:await p.evaluate(()=>__clockChanges),rafs:await p.evaluate(()=>__rafTimes)};
+  nativeRows.push({viewport:[w,h],...natural});console.log('PASS',phase,w,'natural minute measured before clock installation');
+ }
+ for(const[w,h]of [[1920,1080],[1650,930],[390,600]]){
+  await p.setViewportSize({width:w,height:h});await p.reload();await p.waitForFunction(()=>document.querySelector('#login-username').value.length>0);await settled();const entry=await measure();
+  const natural=nativeRows.find(r=>r.viewport[0]===w);
+  await p.clock.install({time:new Date('2026-10-24T09:59:00Z')});await p.clock.pauseAt(new Date('2026-10-24T09:59:01Z'));await p.reload();await controlledSettle();const idle=await measure();assert.equal(idle.text,'9:59');if(!before){assert.deepEqual(idle.clock,baseline.rows.find(r=>r.viewport[0]===w).idle.clock);assert.deepEqual(idle.field,baseline.rows.find(r=>r.viewport[0]===w).idle.field)}
+  await shot('desktop-'+w);await shot('clock-before-'+w,await clockClip());
+  const quarters=[];await p.clock.setSystemTime(new Date('2026-10-24T10:00:00Z'));
+  if(!before){for(let n=0;n<110;n++){await p.clock.runFor(16);const s=await measure();if(s.text==='10:00'&&s.morph.views.find(v=>v.kind==='clock').visible)break;if(n===109)throw Error('clock morph did not start')}
+   const s=await measure(),at=s.morph.views.find(v=>v.kind==='clock').startedAt;
+   for(const[pct,name]of [[.25,'25'],[.5,'50'],[.75,'75']]){const time=await p.evaluate(()=>performance.now());if(at+560*pct>time)await p.clock.runFor(at+560*pct-time);const m=await measure();await shot('morph'+name+'-'+w,await clockClip());quarters.push(m);assert.equal(m.morph.views.find(v=>v.kind==='clock').layers.length,2)}
+  }
+  if(before)await p.clock.runFor(1100);await controlledSettle();const clockAfter=await measure();assert.equal(clockAfter.text,'10:00');await shot('clock-after-'+w,await clockClip());
+  await p.keyboard.press('Escape');await controlledSettle();await shot('field-rest-'+w,await fieldClip());await p.locator('#login-password').focus();await controlledSettle();await shot('field-focus-'+w,await fieldClip());const focus=await measure();
+  // Actual CapsLock through XTest, not a getModifierState renderer mock.
+  capsToggle();await p.clock.runFor(350);assert.equal(await p.locator('#login-caps').evaluate(e=>e.hidden),false);await shot('caps-'+w,await fieldClip());const caps=await measure();capsToggle();await p.clock.runFor(350);assert.equal(await p.locator('#login-caps').evaluate(e=>e.hidden),true);
+  await p.locator('#login-password').fill('wrong-test-credential');await p.clock.runFor(360);await shot('submit-'+w,await fieldClip());await p.keyboard.press('Enter');await p.waitForFunction(()=>!document.querySelector('#login-error').hidden);assert.equal(await p.evaluate(()=>airOS.currentUser()),null);await p.clock.runFor(55);const error=await measure();if(!before)assert.ok(Math.abs(error.morph.scalar.shake)>0);await shot('shake-'+w,await fieldClip());await controlledSettle();
+  if(!before){
+   // Rapid public clock changes exercise repeated replacement without copying credentials.
+   for(const time of ['10:01','10:02','10:01','11:00']){await p.evaluate(t=>airMacLockMorphController.clock(t,document.querySelector('#maclock-date').textContent,new Date().toISOString()),time);await p.clock.runFor(60)}await controlledSettle();assert.equal(await p.evaluate(()=>airMacLockMorphController.snapshot().pendingFrame),false);
+   await p.emulateMedia({reducedMotion:'reduce'});await p.evaluate(()=>airMacLockMorphController.clock('11:01',document.querySelector('#maclock-date').textContent,new Date().toISOString()));await controlledSettle();assert.equal(await p.evaluate(()=>airMacLockMorphController.snapshot().active),false);
+  }else await p.emulateMedia({reducedMotion:'reduce'});
+  await shot('reduced-'+w);await p.emulateMedia({reducedMotion:'no-preference'});await p.clock.resume();
+  await login();await p.evaluate(()=>openApp('home'));await p.waitForSelector('.air-home-window');await p.evaluate(()=>openApp('notes'));await p.waitForSelector('.air-notes-window');const desktop=await p.evaluate(()=>{const r=s=>{const a=document.querySelector(s).getBoundingClientRect();return{x:a.x,y:a.y,width:a.width,height:a.height}};return{dock:r('.dock'),island:r('#air-island-toggle'),home:r('.air-home-window')}});if(!before)assert.deepEqual(desktop,baseline.rows.find(r=>r.viewport[0]===w).desktop);
+  rows.push({viewport:[w,h],natural,idle,quarters,clockAfter,focus,caps,error,desktop});console.log('PASS',phase,w,'minute/focus/auth/CapsLock/cleanup');await logout();
+ }
+ if(!before){await settled();if(!fallback){await p.evaluate(()=>{airMacLockMorphController.clock('12:01',document.querySelector('#maclock-date').textContent,new Date().toISOString());document.querySelector('.maclock-material').getContext('webgl2').getExtension('WEBGL_lose_context').loseContext()});await p.waitForFunction(()=>airMacLockGlassController.snapshot().reason==='context-lost');await settled();assert.equal(await p.evaluate(()=>airMacLockMorphController.snapshot().pendingFrame),false)}
+  await login();assert.equal((await p.evaluate(()=>airOS.notes.list()))[0].title,'Synthetic profile A');await p.evaluate(async()=>{persistAirSettings({desktopTheme:'classic',dockTheme:'classic',dockPins:['notes','missing-reference']});await airSettingsWrites});await logout();await create('morph'+crypto.randomBytes(5).toString('hex'));assert.deepEqual(await p.evaluate(()=>airOS.notes.list()),[]);await logout();
+  assert.ok(cleanups.length>=4);assert.ok(cleanups.every(x=>x.morph.disposed&&!x.morph.pendingFrame&&x.hosts===0&&!x.glass.renderer.contextAlive));
+ }
+ assert.deepEqual(errors,[]);if(fallback)assert.equal(await p.evaluate(()=>!document.createElement('canvas').getContext('webgl2')&&!document.createElement('canvas').getContext('webgl')),true);
+ fs.writeFileSync(path.join(__dirname,`../docs/visual/maclock-morph-${phase}.json`),JSON.stringify({phase,platform:'Linux Electron32.3.3 DPR1 '+(fallback?'native webgl=false':'ANGLE SwiftShader software'),timing:'Natural time for performance; paused Playwright clock for exact screenshots; XTest CapsLock',rows,cleanups,errors},null,2)+'\n');console.log('PASS',phase,'complete, no renderer errors; cleanup',cleanups.length);await p.evaluate(()=>airOS.quit()).catch(()=>{});
+ }finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});

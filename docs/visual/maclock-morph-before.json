@@ -1,0 +1,4050 @@
+{
+  "phase": "before",
+  "platform": "Linux Electron32.3.3 DPR1 ANGLE SwiftShader software",
+  "timing": "Natural time for performance; paused Playwright clock for exact screenshots; XTest CapsLock",
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "natural": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "entry": {
+          "now": 1450,
+          "text": "9:59",
+          "clock": {
+            "x": 786.96875,
+            "y": 95.40625,
+            "width": 346.0625,
+            "height": 191
+          },
+          "field": {
+            "x": 865.5,
+            "y": 955.421875,
+            "width": 189,
+            "height": 32.390625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 73.79999999701977,
+            "now": 1450,
+            "paintTime": 1439.7000000029802,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 2,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1920,
+              "height": 1080,
+              "dpr": 1,
+              "clockRect": {
+                "x": 707.76875,
+                "y": 16.206249999999997,
+                "width": 505,
+                "height": 350
+              },
+              "fieldRect": {
+                "x": 865.5,
+                "y": 955.421875,
+                "width": 189,
+                "height": 32.390625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 6.84,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 79.2,
+                  "heightRadius": 6.336
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 16.1953125,
+                  "bezel": 11.660625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 333.8999999910593,
+              "duration": 1105
+            }
+          ]
+        },
+        "start": {
+          "now": 1453.3999999910593,
+          "text": "9:59",
+          "clock": {
+            "x": 786.96875,
+            "y": 95.40625,
+            "width": 346.0625,
+            "height": 191
+          },
+          "field": {
+            "x": 865.5,
+            "y": 955.421875,
+            "width": 189,
+            "height": 32.390625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 73.79999999701977,
+            "now": 1453.3999999910593,
+            "paintTime": 1439.7000000029802,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 2,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1920,
+              "height": 1080,
+              "dpr": 1,
+              "clockRect": {
+                "x": 707.76875,
+                "y": 16.206249999999997,
+                "width": 505,
+                "height": 350
+              },
+              "fieldRect": {
+                "x": 865.5,
+                "y": 955.421875,
+                "width": 189,
+                "height": 32.390625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 6.84,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 79.2,
+                  "heightRadius": 6.336
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 16.1953125,
+                  "bezel": 11.660625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 333.8999999910593,
+              "duration": 1105
+            }
+          ]
+        },
+        "end": {
+          "now": 3208,
+          "text": "10:00",
+          "clock": {
+            "x": 743.859375,
+            "y": 95.40625,
+            "width": 432.28125,
+            "height": 191
+          },
+          "field": {
+            "x": 865.5,
+            "y": 955.421875,
+            "width": 189,
+            "height": 32.390625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 73.79999999701977,
+            "now": 3208.0999999940395,
+            "paintTime": 1439.7000000029802,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 3,
+            "maskRebuilds": 2,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1920,
+              "height": 1080,
+              "dpr": 1,
+              "clockRect": {
+                "x": 664.659375,
+                "y": 16.206249999999997,
+                "width": 591,
+                "height": 350
+              },
+              "fieldRect": {
+                "x": 865.5,
+                "y": 955.421875,
+                "width": 189,
+                "height": 32.390625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 6.84,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 79.2,
+                  "heightRadius": 6.336
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 16.1953125,
+                  "bezel": 11.660625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 333.8999999910593,
+              "duration": 1105
+            },
+            {
+              "start": 2686.0999999940395,
+              "duration": 349
+            }
+          ]
+        },
+        "changes": [
+          {
+            "time": 2454.7999999970198,
+            "text": "10:00"
+          }
+        ],
+        "rafs": [
+          2674.2,
+          3024.2,
+          3040.9,
+          3174.2,
+          3190.8,
+          3207.5
+        ]
+      },
+      "idle": {
+        "now": 658,
+        "text": "9:59",
+        "clock": {
+          "x": 786.96875,
+          "y": 95.40625,
+          "width": 346.0625,
+          "height": 191
+        },
+        "field": {
+          "x": 865.5,
+          "y": 955.421875,
+          "width": 189,
+          "height": 32.390625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 2,
+          "now": 658,
+          "paintTime": 656,
+          "paints": 43,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 41,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 707.76875,
+              "y": 16.206249999999997,
+              "width": 505,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 865.5,
+              "y": 955.421875,
+              "width": 189,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.5999999940395355,
+            "duration": 349
+          },
+          {
+            "start": 387.5,
+            "duration": 914
+          },
+          {
+            "start": 1557.8999999910593,
+            "duration": 549
+          }
+        ]
+      },
+      "quarters": [],
+      "clockAfter": {
+        "now": 1774,
+        "text": "10:00",
+        "clock": {
+          "x": 743.859375,
+          "y": 95.40625,
+          "width": 432.28125,
+          "height": 191
+        },
+        "field": {
+          "x": 865.5,
+          "y": 955.421875,
+          "width": 189,
+          "height": 32.390625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 2,
+          "now": 1774,
+          "paintTime": 656,
+          "paints": 43,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 42,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 664.659375,
+              "y": 16.206249999999997,
+              "width": 591,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 865.5,
+              "y": 955.421875,
+              "width": 189,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.5999999940395355,
+            "duration": 349
+          },
+          {
+            "start": 387.5,
+            "duration": 914
+          },
+          {
+            "start": 1557.8999999910593,
+            "duration": 549
+          },
+          {
+            "start": 4144.29999999702,
+            "duration": 565
+          }
+        ]
+      },
+      "focus": {
+        "now": 2462,
+        "text": "10:00",
+        "clock": {
+          "x": 743.859375,
+          "y": 95.40625,
+          "width": 432.28125,
+          "height": 191
+        },
+        "field": {
+          "x": 853.796875,
+          "y": 955.421875,
+          "width": 212.390625,
+          "height": 32.390625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 2,
+          "now": 2462,
+          "paintTime": 2448,
+          "paints": 86,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 85,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": true,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 664.659375,
+              "y": 16.206249999999997,
+              "width": 591,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 853.796875,
+              "y": 955.421875,
+              "width": 212.390625,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.5999999940395355,
+            "duration": 349
+          },
+          {
+            "start": 387.5,
+            "duration": 914
+          },
+          {
+            "start": 1557.8999999910593,
+            "duration": 549
+          },
+          {
+            "start": 4144.29999999702,
+            "duration": 565
+          },
+          {
+            "start": 6986.79999999702,
+            "duration": 723
+          },
+          {
+            "start": 7950.199999988079,
+            "duration": 875
+          }
+        ]
+      },
+      "caps": {
+        "now": 2812,
+        "text": "10:00",
+        "clock": {
+          "x": 743.859375,
+          "y": 95.40625,
+          "width": 432.28125,
+          "height": 191
+        },
+        "field": {
+          "x": 853.796875,
+          "y": 955.421875,
+          "width": 212.390625,
+          "height": 32.390625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 2,
+          "now": 2812,
+          "paintTime": 2448,
+          "paints": 86,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 86,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 664.659375,
+              "y": 16.206249999999997,
+              "width": 591,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 853.796875,
+              "y": 955.421875,
+              "width": 212.390625,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": false,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.5999999940395355,
+            "duration": 349
+          },
+          {
+            "start": 387.5,
+            "duration": 914
+          },
+          {
+            "start": 1557.8999999910593,
+            "duration": 549
+          },
+          {
+            "start": 4144.29999999702,
+            "duration": 565
+          },
+          {
+            "start": 6986.79999999702,
+            "duration": 723
+          },
+          {
+            "start": 7950.199999988079,
+            "duration": 875
+          },
+          {
+            "start": 12492.79999999702,
+            "duration": 946
+          }
+        ]
+      },
+      "error": {
+        "now": 3577,
+        "text": "10:00",
+        "clock": {
+          "x": 743.859375,
+          "y": 95.40625,
+          "width": 432.28125,
+          "height": 191
+        },
+        "field": {
+          "x": 853.796875,
+          "y": 917.625,
+          "width": 212.390625,
+          "height": 32.390625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 2,
+          "now": 3577,
+          "paintTime": 3522,
+          "paints": 88,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 90,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 664.659375,
+              "y": 16.206249999999997,
+              "width": 591,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 853.796875,
+              "y": 917.625,
+              "width": 212.390625,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.5999999940395355,
+            "duration": 349
+          },
+          {
+            "start": 387.5,
+            "duration": 914
+          },
+          {
+            "start": 1557.8999999910593,
+            "duration": 549
+          },
+          {
+            "start": 4144.29999999702,
+            "duration": 565
+          },
+          {
+            "start": 6986.79999999702,
+            "duration": 723
+          },
+          {
+            "start": 7950.199999988079,
+            "duration": 875
+          },
+          {
+            "start": 12492.79999999702,
+            "duration": 946
+          },
+          {
+            "start": 14186,
+            "duration": 909
+          },
+          {
+            "start": 15099.09999999404,
+            "duration": 318
+          },
+          {
+            "start": 15977.29999999702,
+            "duration": 775
+          },
+          {
+            "start": 16793.29999999702,
+            "duration": 335
+          }
+        ]
+      },
+      "desktop": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45
+        },
+        "home": {
+          "x": 200,
+          "y": 103,
+          "width": 1522,
+          "height": 849
+        }
+      }
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "natural": {
+        "viewport": [
+          1650,
+          930
+        ],
+        "entry": {
+          "now": 2074,
+          "text": "9:59",
+          "clock": {
+            "x": 676,
+            "y": 82.90625,
+            "width": 297.984375,
+            "height": 165
+          },
+          "field": {
+            "x": 743.625,
+            "y": 822.921875,
+            "width": 162.75,
+            "height": 27.890625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 478.40000000596046,
+            "now": 2074,
+            "paintTime": 1389.6000000089407,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 2,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1650,
+              "height": 930,
+              "dpr": 1,
+              "clockRect": {
+                "x": 607.8,
+                "y": 14.706249999999997,
+                "width": 435,
+                "height": 302
+              },
+              "fieldRect": {
+                "x": 743.625,
+                "y": 822.921875,
+                "width": 162.75,
+                "height": 27.890625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 5.89,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 68.2,
+                  "heightRadius": 5.456
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 13.9453125,
+                  "bezel": 10.040625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 39.30000001192093,
+              "duration": 410
+            },
+            {
+              "start": 809.5,
+              "duration": 580
+            },
+            {
+              "start": 1389.6000000089407,
+              "duration": 681
+            }
+          ]
+        },
+        "start": {
+          "now": 2077.1000000089407,
+          "text": "9:59",
+          "clock": {
+            "x": 676,
+            "y": 82.90625,
+            "width": 297.984375,
+            "height": 165
+          },
+          "field": {
+            "x": 743.625,
+            "y": 822.921875,
+            "width": 162.75,
+            "height": 27.890625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 478.40000000596046,
+            "now": 2077.1000000089407,
+            "paintTime": 1389.6000000089407,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 2,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1650,
+              "height": 930,
+              "dpr": 1,
+              "clockRect": {
+                "x": 607.8,
+                "y": 14.706249999999997,
+                "width": 435,
+                "height": 302
+              },
+              "fieldRect": {
+                "x": 743.625,
+                "y": 822.921875,
+                "width": 162.75,
+                "height": 27.890625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 5.89,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 68.2,
+                  "heightRadius": 5.456
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 13.9453125,
+                  "bezel": 10.040625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 39.30000001192093,
+              "duration": 410
+            },
+            {
+              "start": 809.5,
+              "duration": 580
+            },
+            {
+              "start": 1389.6000000089407,
+              "duration": 681
+            }
+          ]
+        },
+        "end": {
+          "now": 3235.1000000089407,
+          "text": "10:00",
+          "clock": {
+            "x": 638.875,
+            "y": 82.90625,
+            "width": 372.234375,
+            "height": 165
+          },
+          "field": {
+            "x": 743.625,
+            "y": 822.921875,
+            "width": 162.75,
+            "height": 27.890625
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 478.40000000596046,
+            "now": 3235.1000000089407,
+            "paintTime": 1389.6000000089407,
+            "paints": 4,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 3,
+            "maskRebuilds": 2,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 1650,
+              "height": 930,
+              "dpr": 1,
+              "clockRect": {
+                "x": 570.675,
+                "y": 14.706249999999997,
+                "width": 509,
+                "height": 302
+              },
+              "fieldRect": {
+                "x": 743.625,
+                "y": 822.921875,
+                "width": 162.75,
+                "height": 27.890625
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 5.89,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 68.2,
+                  "heightRadius": 5.456
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 13.9453125,
+                  "bezel": 10.040625,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 39.30000001192093,
+              "duration": 410
+            },
+            {
+              "start": 809.5,
+              "duration": 580
+            },
+            {
+              "start": 1389.6000000089407,
+              "duration": 681
+            }
+          ]
+        },
+        "changes": [
+          {
+            "time": 3072.1000000089407,
+            "text": "10:00"
+          }
+        ],
+        "rafs": [
+          2260.2,
+          2277,
+          2293.6,
+          2560.3,
+          2576.9,
+          2593.6,
+          2610.3,
+          2626.9,
+          2643.6,
+          2660.2,
+          2676.9,
+          2693.5,
+          2710.3,
+          2726.9,
+          2743.6,
+          2760.2,
+          2776.9,
+          2793.6,
+          2810.2,
+          2826.9,
+          2843.5,
+          2860.2,
+          2876.9,
+          2893.6,
+          2910.2,
+          2926.9,
+          2943.5,
+          2960.2,
+          2976.9,
+          2993.6,
+          3010.2,
+          3026.9,
+          3043.6,
+          3060.3,
+          3076.9,
+          3093.6,
+          3160.2,
+          3176.9,
+          3193.6,
+          3210.2,
+          3226.9
+        ]
+      },
+      "idle": {
+        "now": 7609,
+        "text": "9:59",
+        "clock": {
+          "x": 676,
+          "y": 82.90625,
+          "width": 297.984375,
+          "height": 165
+        },
+        "field": {
+          "x": 743.625,
+          "y": 822.921875,
+          "width": 162.75,
+          "height": 27.890625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 6937,
+          "now": 7609,
+          "paintTime": 7600,
+          "paints": 44,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 42,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 607.8,
+              "y": 14.706249999999997,
+              "width": 435,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 743.625,
+              "y": 822.921875,
+              "width": 162.75,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.200000002980232,
+            "duration": 948
+          },
+          {
+            "start": 1016.0999999940395,
+            "duration": 633
+          },
+          {
+            "start": 1830.7999999970198,
+            "duration": 731
+          }
+        ]
+      },
+      "quarters": [],
+      "clockAfter": {
+        "now": 8725,
+        "text": "10:00",
+        "clock": {
+          "x": 638.875,
+          "y": 82.90625,
+          "width": 372.234375,
+          "height": 165
+        },
+        "field": {
+          "x": 743.625,
+          "y": 822.921875,
+          "width": 162.75,
+          "height": 27.890625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 6937,
+          "now": 8725,
+          "paintTime": 7600,
+          "paints": 44,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 43,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 570.675,
+              "y": 14.706249999999997,
+              "width": 509,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 743.625,
+              "y": 822.921875,
+              "width": 162.75,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.200000002980232,
+            "duration": 948
+          },
+          {
+            "start": 1016.0999999940395,
+            "duration": 633
+          },
+          {
+            "start": 1830.7999999970198,
+            "duration": 731
+          },
+          {
+            "start": 4255.5,
+            "duration": 646
+          }
+        ]
+      },
+      "focus": {
+        "now": 9397,
+        "text": "10:00",
+        "clock": {
+          "x": 638.875,
+          "y": 82.90625,
+          "width": 372.234375,
+          "height": 165
+        },
+        "field": {
+          "x": 733.546875,
+          "y": 822.921875,
+          "width": 182.890625,
+          "height": 27.890625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 6937,
+          "now": 9397,
+          "paintTime": 9392,
+          "paints": 86,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 85,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": true,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 570.675,
+              "y": 14.706249999999997,
+              "width": 509,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 733.546875,
+              "y": 822.921875,
+              "width": 182.890625,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.200000002980232,
+            "duration": 948
+          },
+          {
+            "start": 1016.0999999940395,
+            "duration": 633
+          },
+          {
+            "start": 1830.7999999970198,
+            "duration": 731
+          },
+          {
+            "start": 4255.5,
+            "duration": 646
+          },
+          {
+            "start": 6167.5,
+            "duration": 421
+          }
+        ]
+      },
+      "caps": {
+        "now": 9747,
+        "text": "10:00",
+        "clock": {
+          "x": 638.875,
+          "y": 82.90625,
+          "width": 372.234375,
+          "height": 165
+        },
+        "field": {
+          "x": 733.546875,
+          "y": 822.921875,
+          "width": 182.890625,
+          "height": 27.890625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 6937,
+          "now": 9747,
+          "paintTime": 9392,
+          "paints": 86,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 86,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 570.675,
+              "y": 14.706249999999997,
+              "width": 509,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 733.546875,
+              "y": 822.921875,
+              "width": 182.890625,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": false,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.200000002980232,
+            "duration": 948
+          },
+          {
+            "start": 1016.0999999940395,
+            "duration": 633
+          },
+          {
+            "start": 1830.7999999970198,
+            "duration": 731
+          },
+          {
+            "start": 4255.5,
+            "duration": 646
+          },
+          {
+            "start": 6167.5,
+            "duration": 421
+          },
+          {
+            "start": 9021.89999999106,
+            "duration": 719
+          }
+        ]
+      },
+      "error": {
+        "now": 10512,
+        "text": "10:00",
+        "clock": {
+          "x": 638.875,
+          "y": 82.90625,
+          "width": 372.234375,
+          "height": 165
+        },
+        "field": {
+          "x": 733.546875,
+          "y": 786.375,
+          "width": 182.890625,
+          "height": 27.890625
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 6937,
+          "now": 10512,
+          "paintTime": 10457,
+          "paints": 88,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 90,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 570.675,
+              "y": 14.706249999999997,
+              "width": 509,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 733.546875,
+              "y": 786.375,
+              "width": 182.890625,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 6.200000002980232,
+            "duration": 948
+          },
+          {
+            "start": 1016.0999999940395,
+            "duration": 633
+          },
+          {
+            "start": 1830.7999999970198,
+            "duration": 731
+          },
+          {
+            "start": 4255.5,
+            "duration": 646
+          },
+          {
+            "start": 6167.5,
+            "duration": 421
+          },
+          {
+            "start": 9021.89999999106,
+            "duration": 719
+          },
+          {
+            "start": 10437.79999999702,
+            "duration": 697
+          },
+          {
+            "start": 11145.70000000298,
+            "duration": 365
+          },
+          {
+            "start": 12032.79999999702,
+            "duration": 653
+          },
+          {
+            "start": 12696.29999999702,
+            "duration": 266
+          }
+        ]
+      },
+      "desktop": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875
+        },
+        "home": {
+          "x": 171.875,
+          "y": 93,
+          "width": 1307.96875,
+          "height": 731.078125
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "natural": {
+        "viewport": [
+          390,
+          600
+        ],
+        "entry": {
+          "now": 946.7000000029802,
+          "text": "9:59",
+          "clock": {
+            "x": 79.625,
+            "y": 55.609375,
+            "width": 230.734375,
+            "height": 127
+          },
+          "field": {
+            "x": 90,
+            "y": 497.203125,
+            "width": 210,
+            "height": 36
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 143.5,
+            "now": 946.7999999970198,
+            "paintTime": 852.7000000029802,
+            "paints": 8,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 6,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 390,
+              "height": 600,
+              "dpr": 1,
+              "clockRect": {
+                "x": 26.825000000000003,
+                "y": 2.809375000000003,
+                "width": 337,
+                "height": 233
+              },
+              "fieldRect": {
+                "x": 90,
+                "y": 497.203125,
+                "width": 210,
+                "height": 36
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 4.56,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 52.8,
+                  "heightRadius": 4.224
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 18,
+                  "bezel": 12.959999999999999,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 30.700000002980232,
+              "duration": 89
+            },
+            {
+              "start": 228.70000000298023,
+              "duration": 167
+            },
+            {
+              "start": 852.2999999970198,
+              "duration": 89
+            }
+          ]
+        },
+        "start": {
+          "now": 950.7000000029802,
+          "text": "9:59",
+          "clock": {
+            "x": 79.625,
+            "y": 55.609375,
+            "width": 230.734375,
+            "height": 127
+          },
+          "field": {
+            "x": 90,
+            "y": 497.203125,
+            "width": 210,
+            "height": 36
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 143.5,
+            "now": 950.7000000029802,
+            "paintTime": 852.7000000029802,
+            "paints": 8,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 6,
+            "maskRebuilds": 1,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 390,
+              "height": 600,
+              "dpr": 1,
+              "clockRect": {
+                "x": 26.825000000000003,
+                "y": 2.809375000000003,
+                "width": 337,
+                "height": 233
+              },
+              "fieldRect": {
+                "x": 90,
+                "y": 497.203125,
+                "width": 210,
+                "height": 36
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 4.56,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 52.8,
+                  "heightRadius": 4.224
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 18,
+                  "bezel": 12.959999999999999,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 30.700000002980232,
+              "duration": 89
+            },
+            {
+              "start": 228.70000000298023,
+              "duration": 167
+            },
+            {
+              "start": 852.2999999970198,
+              "duration": 89
+            }
+          ]
+        },
+        "end": {
+          "now": 1312.0999999940395,
+          "text": "10:00",
+          "clock": {
+            "x": 50.890625,
+            "y": 55.609375,
+            "width": 288.21875,
+            "height": 127
+          },
+          "field": {
+            "x": 90,
+            "y": 497.203125,
+            "width": 210,
+            "height": 36
+          },
+          "motion": {
+            "disposed": false,
+            "ready": true,
+            "reason": "wallpaper-ready",
+            "leaving": false,
+            "reducedMotion": false,
+            "pendingFrame": false,
+            "deadlinePending": false,
+            "startedAt": 143.5,
+            "now": 1312.2999999970198,
+            "paintTime": 852.7000000029802,
+            "paints": 8,
+            "active": false,
+            "values": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "tracks": {}
+          },
+          "morph": null,
+          "glass": {
+            "status": "webgl",
+            "reason": "ready",
+            "disposed": false,
+            "frames": 7,
+            "maskRebuilds": 2,
+            "sceneRebuilds": 1,
+            "pendingFrame": false,
+            "last": {
+              "width": 390,
+              "height": 600,
+              "dpr": 1,
+              "clockRect": {
+                "x": -1.9093749999999972,
+                "y": 2.809375000000003,
+                "width": 394,
+                "height": 233
+              },
+              "fieldRect": {
+                "x": 90,
+                "y": 497.203125,
+                "width": 210,
+                "height": 36
+              },
+              "params": {
+                "scene": {
+                  "scale": 0.5,
+                  "blurMax": 32,
+                  "blur": 0.35
+                },
+                "clock": {
+                  "mode": 1,
+                  "intensity": 0.6,
+                  "refractPx": 4.56,
+                  "bevel": 4.5,
+                  "tint": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "lightDir": [
+                    -0.6,
+                    -0.8
+                  ],
+                  "padding": 52.8,
+                  "heightRadius": 4.224
+                },
+                "field": {
+                  "pad": 10,
+                  "radius": 18,
+                  "bezel": 12.959999999999999,
+                  "thickness": 28.8,
+                  "dispersion": 0.078,
+                  "magnify": 0.08000000000000002,
+                  "rim": 0.5,
+                  "grain": 0.006,
+                  "blurPx": 1.5,
+                  "tintMix": 0.275,
+                  "saturation": 1.25,
+                  "dark": 1,
+                  "debug": 0,
+                  "shadowAmt": 0.4
+                }
+              },
+              "sceneState": {
+                "opacity": 1,
+                "zoom": 1,
+                "clockPosition": 0.075,
+                "clockOpacity": 1,
+                "loginBottom": 78,
+                "loginOpacity": 1,
+                "blur": 0,
+                "blurOpacity": 0,
+                "fieldWidth": 210,
+                "avatarScale": 0.94
+              },
+              "validate": true
+            },
+            "renderer": {
+              "disposed": false,
+              "contextAlive": true,
+              "resources": {
+                "shader": 0,
+                "program": 4,
+                "texture": 3,
+                "buffer": 1,
+                "framebuffer": 1,
+                "vertexArray": 1
+              }
+            }
+          },
+          "fieldTransform": "none",
+          "caps": {
+            "hidden": true,
+            "opacity": "1"
+          },
+          "tasks": [
+            {
+              "start": 30.700000002980232,
+              "duration": 89
+            },
+            {
+              "start": 228.70000000298023,
+              "duration": 167
+            },
+            {
+              "start": 852.2999999970198,
+              "duration": 89
+            }
+          ]
+        },
+        "changes": [
+          {
+            "time": 1138.3999999910593,
+            "text": "10:00"
+          }
+        ],
+        "rafs": [
+          1029.8,
+          1046.5,
+          1096.5,
+          1113.1,
+          1129.8,
+          1146.5,
+          1163.1,
+          1196.4,
+          1213.2,
+          1229.8,
+          1246.5,
+          1263.1,
+          1279.8,
+          1296.5,
+          1313.2
+        ]
+      },
+      "idle": {
+        "now": 13430,
+        "text": "9:59",
+        "clock": {
+          "x": 79.625,
+          "y": 55.609375,
+          "width": 230.734375,
+          "height": 127
+        },
+        "field": {
+          "x": 90,
+          "y": 497.203125,
+          "width": 210,
+          "height": 36
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 12774,
+          "now": 13430,
+          "paintTime": 13424,
+          "paints": 43,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 41,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": 26.825000000000003,
+              "y": 2.809375000000003,
+              "width": 337,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 3.7999999970197678,
+            "duration": 185
+          },
+          {
+            "start": 220.70000000298023,
+            "duration": 240
+          },
+          {
+            "start": 647.6000000089407,
+            "duration": 55
+          }
+        ]
+      },
+      "quarters": [],
+      "clockAfter": {
+        "now": 14546,
+        "text": "10:00",
+        "clock": {
+          "x": 50.890625,
+          "y": 55.609375,
+          "width": 288.21875,
+          "height": 127
+        },
+        "field": {
+          "x": 90,
+          "y": 497.203125,
+          "width": 210,
+          "height": 36
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 12774,
+          "now": 14546,
+          "paintTime": 13424,
+          "paints": 43,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0,
+            "blurOpacity": 0,
+            "fieldWidth": 210,
+            "avatarScale": 0.94
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 42,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": -1.9093749999999972,
+              "y": 2.809375000000003,
+              "width": 394,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 3.7999999970197678,
+            "duration": 185
+          },
+          {
+            "start": 220.70000000298023,
+            "duration": 240
+          },
+          {
+            "start": 647.6000000089407,
+            "duration": 55
+          },
+          {
+            "start": 1440.6000000089407,
+            "duration": 185
+          }
+        ]
+      },
+      "focus": {
+        "now": 15218,
+        "text": "10:00",
+        "clock": {
+          "x": 50.890625,
+          "y": 55.609375,
+          "width": 288.21875,
+          "height": 127
+        },
+        "field": {
+          "x": 90,
+          "y": 497.203125,
+          "width": 210,
+          "height": 36
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 12774,
+          "now": 15218,
+          "paintTime": 15216,
+          "paints": 85,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 84,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": -1.9093749999999972,
+              "y": 2.809375000000003,
+              "width": 394,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 3.7999999970197678,
+            "duration": 185
+          },
+          {
+            "start": 220.70000000298023,
+            "duration": 240
+          },
+          {
+            "start": 647.6000000089407,
+            "duration": 55
+          },
+          {
+            "start": 1440.6000000089407,
+            "duration": 185
+          },
+          {
+            "start": 2118.2999999970198,
+            "duration": 466
+          }
+        ]
+      },
+      "caps": {
+        "now": 15568,
+        "text": "10:00",
+        "clock": {
+          "x": 50.890625,
+          "y": 55.609375,
+          "width": 288.21875,
+          "height": 127
+        },
+        "field": {
+          "x": 90,
+          "y": 497.203125,
+          "width": 210,
+          "height": 36
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 12774,
+          "now": 15568,
+          "paintTime": 15216,
+          "paints": 85,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 84,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": -1.9093749999999972,
+              "y": 2.809375000000003,
+              "width": 394,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": false,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 3.7999999970197678,
+            "duration": 185
+          },
+          {
+            "start": 220.70000000298023,
+            "duration": 240
+          },
+          {
+            "start": 647.6000000089407,
+            "duration": 55
+          },
+          {
+            "start": 1440.6000000089407,
+            "duration": 185
+          },
+          {
+            "start": 2118.2999999970198,
+            "duration": 466
+          }
+        ]
+      },
+      "error": {
+        "now": 16333,
+        "text": "10:00",
+        "clock": {
+          "x": 50.890625,
+          "y": 55.609375,
+          "width": 288.21875,
+          "height": 127
+        },
+        "field": {
+          "x": 90,
+          "y": 462.40625,
+          "width": 210,
+          "height": 36
+        },
+        "motion": {
+          "disposed": false,
+          "ready": true,
+          "reason": "wallpaper-ready",
+          "leaving": false,
+          "reducedMotion": false,
+          "pendingFrame": false,
+          "deadlinePending": false,
+          "startedAt": 12774,
+          "now": 16333,
+          "paintTime": 16278,
+          "paints": 87,
+          "active": false,
+          "values": {
+            "opacity": 1,
+            "zoom": 1,
+            "clockPosition": 0.075,
+            "clockOpacity": 1,
+            "loginBottom": 78,
+            "loginOpacity": 1,
+            "blur": 0.55,
+            "blurOpacity": 1,
+            "fieldWidth": 236,
+            "avatarScale": 1
+          },
+          "tracks": {}
+        },
+        "morph": null,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "frames": 88,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": -1.9093749999999972,
+              "y": 2.809375000000003,
+              "width": 394,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 462.40625,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0.55,
+              "blurOpacity": 1,
+              "fieldWidth": 236,
+              "avatarScale": 1
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 4,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        },
+        "fieldTransform": "none",
+        "caps": {
+          "hidden": true,
+          "opacity": "1"
+        },
+        "tasks": [
+          {
+            "start": 3.7999999970197678,
+            "duration": 185
+          },
+          {
+            "start": 220.70000000298023,
+            "duration": 240
+          },
+          {
+            "start": 647.6000000089407,
+            "duration": 55
+          },
+          {
+            "start": 1440.6000000089407,
+            "duration": 185
+          },
+          {
+            "start": 2118.2999999970198,
+            "duration": 466
+          },
+          {
+            "start": 3645.7000000029802,
+            "duration": 232
+          },
+          {
+            "start": 4281.9000000059605,
+            "duration": 52
+          },
+          {
+            "start": 4343.100000008941,
+            "duration": 98
+          }
+        ]
+      },
+      "desktop": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36
+        },
+        "home": {
+          "x": 12,
+          "y": 91,
+          "width": 366,
+          "height": 430
+        }
+      }
+    }
+  ],
+  "cleanups": [],
+  "errors": []
+}

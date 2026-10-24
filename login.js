@@ -60,6 +60,7 @@
     $("#login-submit").disabled = false;
     setError(loginError, "");
     accountsBox.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
+    document.dispatchEvent(new Event("air-login-account-changed"));
     if (accountsBox.children.length > 1) accountsBox.hidden = false;
   }
   function renderAccounts() {
@@ -112,7 +113,7 @@
         password: $("#login-password").value
       });
       if (!disposed && result?.ok) document.dispatchEvent(new Event("air-login-confirmed"));
-      if (!disposed && (!result || !result.ok)) setError(loginError, result && result.error || "Anmeldung fehlgeschlagen.");
+      if (!disposed && (!result || !result.ok)) { setError(loginError, result && result.error || "Anmeldung fehlgeschlagen."); if (result?.ok === false) document.dispatchEvent(new Event("air-login-rejected")); }
     } catch {
       if (!disposed) setError(loginError, "Anmeldung fehlgeschlagen. Bitte versuche es erneut.");
     } finally {
@@ -159,9 +160,9 @@
     clearTimeout(clockTimer); clockTimer = null;
     if (disposed || document.hidden) return;
     const now = new Date();
-    $("#login-clock").textContent = window.airMacLockLayout.time(now);
-    $("#login-clock").dateTime = now.toISOString();
-    $("#maclock-date").textContent = window.airMacLockLayout.date(now, document.documentElement.lang || undefined);
+    const time = window.airMacLockLayout.time(now), day = window.airMacLockLayout.date(now, document.documentElement.lang || undefined);
+    if (window.airMacLockMorphController) window.airMacLockMorphController.clock(time, day, now.toISOString());
+    else { $("#login-clock").textContent = time; $("#login-clock").dateTime = now.toISOString(); $("#maclock-date").textContent = day; }
     clockTimer = setTimeout(updateClock, 1000);
   }
   function resize() { document.body.style.setProperty("--maclock-u", window.airMacLockLayout.layout(window.innerHeight).u); }
