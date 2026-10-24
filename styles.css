@@ -821,9 +821,9 @@ html[data-desktop-theme="modern"] .air-notes-window .air-note-item.selected{back
 html[data-desktop-theme="modern"] .air-notes-window .note-workspace{display:flex;flex-direction:column;min-width:0;min-height:0;padding:24px;background:#f8f7f3;overflow:auto}
 html[data-desktop-theme="modern"] .air-notes-window .note-title-input{flex-shrink:0;min-height:44px;margin:0 0 14px;padding:4px 2px;border:0;border-bottom:1px solid #b8bcb6;border-radius:0;background:transparent;color:#2c3b31;font:normal 30px/1.2 Georgia,serif}
 html[data-desktop-theme="modern"] .air-notes-window .note-editor{flex:1;min-height:120px;padding:6px 2px;background:transparent;color:#2c3b31;font:14px/1.7 system-ui,sans-serif;resize:vertical}
-html[data-desktop-theme="modern"] .air-notes-window input::placeholder,html[data-desktop-theme="modern"] .air-notes-window textarea::placeholder{color:#677e6c;opacity:1}
+html[data-desktop-theme="modern"] .air-notes-window input::placeholder,html[data-desktop-theme="modern"] .air-notes-window textarea::placeholder{color:#5f7464;opacity:1}
 html[data-desktop-theme="modern"] .air-notes-window .note-actions{position:sticky;bottom:0;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:12px;padding-top:12px;border-color:#b8bcb6;background:#f8f7f3}
-html[data-desktop-theme="modern"] .air-notes-window #note-status{flex:1;min-width:140px;color:#677e6c;font-size:12px;line-height:1.4}
+html[data-desktop-theme="modern"] .air-notes-window #note-status{flex:1;min-width:140px;color:#5f7464;font-size:12px;line-height:1.4}
 html[data-desktop-theme="modern"] .air-notes-window .secondary-button,html[data-desktop-theme="modern"] .air-notes-window #new-note{min-height:30px;border:1px solid #b8bcb6;border-radius:7px;background:#f8f7f3;color:#365e43;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer}
 html[data-desktop-theme="modern"] .air-notes-window #new-note{min-width:28px;min-height:26px;padding:2px 6px;background:transparent}
 html[data-desktop-theme="modern"] .air-notes-window #save-note{background:#365e43;border-color:#365e43;color:#f8f7f3}

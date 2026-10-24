@@ -112,3 +112,7 @@ Der760px-Mindestwert ist ein weiterer **Quellbefund**, keine jetzt beobachtete W
 ## 7. Übergabe und Grenzen
 
 F2.1 als native Abnahme bleibt **BLOCKIERT**. F2.2 ist eine separate echte macOS-Prüfung; die hiesige Linux-Umgebung gilt auch dafür nicht als Nachweis. K1 nur als ausdrücklich beauftragte einzelne Korrektur; K2 separat. Keine Änderung von Produktcode, Installer, Releases, main, bestehenden PRs oder anderen Entwicklungsbranches. Bestehende Audit-/Legacy-Electron-/Signing-/Notarisierungsblocker unverändert.
+
+## Nachtrag K1 – nur Linux-Kontrastkorrektur
+
+24. Oktober2026: [CB-01-Korrektur mit echten Linux-Vorher-/Nachher-Belegen](AIR_NOTES_CONTRAST_K1.md). Der oben beschriebene Ausgangszustand bleibt historische Prüfbasis; Modern Notes verwendet nun gezielt#5f7464 (4,69920:1). Keine nachträgliche native Windows-Abnahme, keine CB-02-/CB-03-Korrektur.

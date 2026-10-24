@@ -1,0 +1,166 @@
+{
+  "baselineCommit": "617b1b293ef5a5b075c2c5819c0b84238731e1a3",
+  "platform": "linux",
+  "placeholderMeasurement": "CDP CSS.getComputedStyleForNode on actual UA shadow placeholder",
+  "viewports": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "window": {
+        "x": 525,
+        "y": 244.71875,
+        "width": 870,
+        "height": 480
+      },
+      "statusStyle": {
+        "color": "rgb(95, 116, 100)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "fontFamily": "system-ui, sans-serif",
+        "fontSize": "12px",
+        "lineHeight": "16.8px",
+        "padding": "0px",
+        "borderColor": "rgb(95, 116, 100)",
+        "borderWidth": "0px",
+        "borderRadius": "0px",
+        "opacity": "1"
+      },
+      "before": {
+        "status": "rgb(103, 126, 108)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(103, 126, 108)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(103, 126, 108)"
+      },
+      "after": {
+        "status": "rgb(95, 116, 100)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(95, 116, 100)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(95, 116, 100)"
+      },
+      "contrastBefore": {
+        "status": 4.100348321253258,
+        "placeholder": 4.100348321253258
+      },
+      "contrastAfter": {
+        "status": 4.699198484260892,
+        "placeholder": 4.699198484260892
+      },
+      "geometryComparedElements": 22,
+      "layoutUnchanged": true,
+      "classicUnchanged": true,
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "window": {
+        "x": 390,
+        "y": 180.21875,
+        "width": 870,
+        "height": 480
+      },
+      "statusStyle": {
+        "color": "rgb(95, 116, 100)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "fontFamily": "system-ui, sans-serif",
+        "fontSize": "12px",
+        "lineHeight": "16.8px",
+        "padding": "0px",
+        "borderColor": "rgb(95, 116, 100)",
+        "borderWidth": "0px",
+        "borderRadius": "0px",
+        "opacity": "1"
+      },
+      "before": {
+        "status": "rgb(103, 126, 108)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(103, 126, 108)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(103, 126, 108)"
+      },
+      "after": {
+        "status": "rgb(95, 116, 100)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(95, 116, 100)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(95, 116, 100)"
+      },
+      "contrastBefore": {
+        "status": 4.100348321253258,
+        "placeholder": 4.100348321253258
+      },
+      "contrastAfter": {
+        "status": 4.699198484260892,
+        "placeholder": 4.699198484260892
+      },
+      "geometryComparedElements": 22,
+      "layoutUnchanged": true,
+      "classicUnchanged": true,
+      "otherSurfacesUnchanged": true
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "window": {
+        "x": 6,
+        "y": 91,
+        "width": 378,
+        "height": 433
+      },
+      "statusStyle": {
+        "color": "rgb(95, 116, 100)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "fontFamily": "system-ui, sans-serif",
+        "fontSize": "11px",
+        "lineHeight": "15.4px",
+        "padding": "0px",
+        "borderColor": "rgb(95, 116, 100)",
+        "borderWidth": "0px",
+        "borderRadius": "0px",
+        "opacity": "1"
+      },
+      "before": {
+        "status": "rgb(103, 126, 108)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(103, 126, 108)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(103, 126, 108)"
+      },
+      "after": {
+        "status": "rgb(95, 116, 100)",
+        "statusBackground": "rgb(248, 247, 243)",
+        "placeholder": "rgb(95, 116, 100)",
+        "placeholderOpacity": "1",
+        "editorBackground": "rgb(248, 247, 243)",
+        "titlePlaceholder": "rgb(95, 116, 100)"
+      },
+      "contrastBefore": {
+        "status": 4.100348321253258,
+        "placeholder": 4.100348321253258
+      },
+      "contrastAfter": {
+        "status": 4.699198484260892,
+        "placeholder": 4.699198484260892
+      },
+      "geometryComparedElements": 22,
+      "layoutUnchanged": true,
+      "classicUnchanged": true,
+      "otherSurfacesUnchanged": true
+    }
+  ]
+}

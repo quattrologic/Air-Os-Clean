@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – K1: Notes-Sekundärtext-Kontrast CB-01 korrigiert
+
+24. Oktober 2026. Bestätigte F2.1-Basis/Remote-HEAD **617b1b293ef5a5b075c2c5819c0b84238731e1a3**, eigener Branch **fix/air-notes-secondary-contrast-k1-20261024**. Ausschließlich zwei Farbdeklarationen in styles.css geändert: Modern-Notes-Status und gemeinsame Input-/Textarea-Placeholder-Regel von#677e6c auf#5f7464. Große Titel-Placeholder dürfen dieselbe Farbe erhalten. Kein globales Sekundärtext-Token verändert; keine Geometrie-/Font-/Spacing-/Animations-/Funktionsänderung. CB-02 und CB-03 unberührt.
+
+**217/217 Linux-Tests bestanden**,0 Fehler/Skips. Ein neuer Farb-/Flächen-Kontrasttest liest tatsächliche CSS-Deklarationen, prüft beide normalen Textfälle gegen4,5:1 und alten Wert als Negativfall; bestehender Modern-/Notes-Scope-Test sowie Notes-/E3-/Profil-/Race-Tests weiter aktiv. Syntax, Catalina-Konfiguration und Diff geprüft. Keine neue Dependency oder IPC-/Datenformatänderung.
+
+Echter Linux/Electron32.3.3-/Sandbox-/Xvfb-Test bei1920×1080,1650×930,390×600: Vorher aus exaktem styles.css des Ausgangscommits im selben isolierten Renderer geladen; Nachher aktuelles Stylesheet, jeweils unveränderte DOM-/Testdaten und gleiche Auflösung. Sechs echte Screenshots. Tatsächlich berechnete Farbe#5f7464 auf opakem Creme#f8f7f3, Placeholder-opacity1; Kontrast vor4,1003483213:1, nach4,6991984843:1 für Status UND Textarea-Placeholder. Chromium128 meldet per getComputedStyle(::placeholder) die Elternfarbe; deshalb tatsächlichen sichtbaren UA-Placeholder-Knoten per CDP/CSS.getComputedStyleForNode geprüft. Kein erfundener Pixelwert.
+
+Alle22 Notes-DOM-Geometrien je Auflösung vor/nach identisch; bestehende Font-/Padding-/Konturwerte unverändert. Randloser Statusspan erhält implizit andere currentColor-borderColor, borderWidth bleibt0; keine Bedienkontur geändert. Classic vollständig identisch, Home-/Widget-/Dock-/Island-Oberflächen und Positionen ebenfalls. Echter Notes-Save/Delete aktualisiert Home/Island weiterhin; keine Rendererfehler. [Vorher/Nachher und Messdaten](AIR_NOTES_CONTRAST_K1.md).
+
+Native Windows-F2.1 und macOS-F2.2 bleiben offen/blockiert, Linux kein Ersatz. Actions-API weiterhin Forbidden, keine neue CI-Zusage. Bestehende Audit-/Signing-/Notarisierungs-/Release-Blocker bleiben offen. main/PRs/Installer/andere Branches unverändert. Nächste drei separate Einheiten: echte Windows-F2.1, echte macOS-F2.2, K2 Startmenü gemäß Hybridplan. Nach Sicherung STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – F2.1 Windows-Abnahme: BLOCKIERT
 
 24. Oktober 2026. Bestätigter Ausgangscommit/Remote-HEAD **1866281571b04ad74efdf549d665eae68842d254**, eigener Berichtszweig **docs/air-notes-windows-f21-20261024**. Ausschließlich Abnahme/Dokumentation, keine CSS-/JS-/Funktionsänderung. [F2.1-Prüfbericht](AIR_NOTES_WINDOWS_F21_REVIEW.md).

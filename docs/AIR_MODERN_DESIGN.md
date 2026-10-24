@@ -208,3 +208,7 @@ Nur html[data-desktop-theme="modern"] .air-notes-window: Mint-Rahmen/Titelleiste
 ## F2.1 – native Windows-Abnahme blockiert (24. Oktober 2026)
 
 [Prüfbericht und native Prüfliste](AIR_NOTES_WINDOWS_F21_REVIEW.md). Hier nur Linux verfügbar; keine Windows-GUI, Messwerte oder Screenshots erzeugt.216/216 bestehende Tests neu auf Linux bestanden, kein Windows-Erfolg. Status-/Textarea-Placeholder-Kontrast aus CSS rechnerisch4,10035:1, Traffic-Buttons im CSS10px, relevante Konturen und tatsächliche Hitboxen nativ offen. Keine Korrekturen. Kandidat#5f7464 unverändert. F2.1 bleibtBLOCKIERT, F2.2/K1/K2 separat.
+
+## K1 – Notes-Sekundärtext korrigiert (24. Oktober 2026)
+
+Nur Modern-Notes-Status und Placeholder verwenden jetzt#5f7464 statt#677e6c. Auf tatsächlicher Cremefläche#f8f7f3 erreicht der Linux-Electron-Nachweis4,69920:1 statt4,10035:1. Keine globale Textfarben-, Layout-, Größen- oder Funktionsänderung; Classic und andere Apps unverändert.217/217 Tests, echte Vorher-/Nachher-Aufnahmen an drei Viewports und Notes/E3 geprüft. [K1-Bericht](AIR_NOTES_CONTRAST_K1.md). CB-02/CB-03 sowie native Windows-/macOS-Abnahme weiter offen.
