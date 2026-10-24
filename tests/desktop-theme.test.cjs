@@ -13,6 +13,7 @@ test('only explicitly new accounts default to Modern; ambiguous/legacy preferenc
  const h=fixture();try{
   assert.equal(h.store.load('OldWithoutFile').desktopTheme,'classic');
   assert.equal(h.store.load('new').desktopTheme,'modern');
+  assert.equal(h.store.load('new').dockTheme,'modern');
   assert.equal(createStore({root:()=>h.root}).load('unknown').desktopTheme,'classic');
   fs.mkdirSync(path.dirname(h.file('new')),{recursive:true});
   for(const desktopTheme of [undefined,'unsupported',null]){

@@ -220,3 +220,7 @@ Bestehendes Modern-Startmenü dunkel verfeinert: Suche#171e21, Text#f2f5f3/#b5c1
 ## K3 – Schnellzugriff in derselben Island (24. Oktober 2026)
 
 Genau eine weitere Ansicht mit vier echten Registry-App-Verweisen. Standard bleibt Kontrollzentrum; zwei beschriftete aria-pressed-Buttons, inaktive Inhalte hidden/inert, flüchtige Auswahl. Vorhandenes Air-OS-Birnenlogo für Home-Karte ausdrücklich vom Benutzer gewählt; andere Originalicons und globale Registry unverändert. Panel430/366px breit, Control334px/Quick270px hoch; closed-Island und Dock unverändert randbündig.231 Tests und echte Linux-Electron-Vorher-/Nachher-Prüfung an drei Größen erfolgreich. [Screenshots/Messwerte/Grenzen](AIR_ISLAND_QUICK_K3.md). Kontrollfunktionen erhalten, keine neue Federlogik; M1 separat.
+
+## Benutzerkorrektur: dezentes Glas, 24. Oktober 2026
+
+[Umsetzung und echter Vorher-/Nachhervergleich](AIR_MODERN_SOFT_GLASS.md). Neueste ausdrückliche Vorgabe ersetzt die früheren opaken/eckigen Randflächen: Modern-Dock rgba(9,11,12,.84), alle vier Ecken20px, weiter unten0 und358×68px; Island gleicher Glasgrund mit16/16/22/22px-Radien, oben0 und unveränderten Maßen. Birne vorhandener weißer Vektor ohne Kasten, andere bunte Originalicons unverändert. Schlichter Air-OS-Textzugang, Tastaturfokus erhalten. Neue Profile Desktop/Dock Modern, bestehende Auswahlen maßgeblich. Mint/Creme/Home-Geometrie und Classic unverändert. 232/232 Linux-Tests und echte Linux-Electron-Prüfungen an drei Größen; native Windows/macOS weiterhin offen. Kein Supaste-/Referenzpixelgleichheitsanspruch.

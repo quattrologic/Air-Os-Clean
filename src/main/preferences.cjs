@@ -40,7 +40,7 @@ function createStore({root,isNewProfile=()=>false}){
  if(typeof isNewProfile!=='function')throw new TypeError('Profile classifier must be a function');
  // Only Main can classify accounts explicitly created after this feature.
  // Missing files, dates and renderer input are not evidence of a new profile.
- function defaultsFor(username){return {...DEFAULTS,desktopTheme:isNewProfile(username)===true?'modern':'classic'}}
+ function defaultsFor(username){return {...DEFAULTS,...(isNewProfile(username)===true?{desktopTheme:'modern',dockTheme:'modern'}:{})}}
  function filename(username){
   if(typeof username!=='string'||!username||username.length>80)throw new TypeError('Ungültiger Benutzername.');
   const id=crypto.createHash('sha256').update(username.toLocaleLowerCase('en-US')).digest('hex');

@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – Air Modern: dezentes Glas und freigestellte Birne
+
+24. Oktober 2026. Basis/Remote-HEAD **f65e7683d70904183b1217d2bc16e73bb6b60036**, eigener Branch **theme/air-modern-soft-glass-20261024**. Benutzerbeauftragte zusammenhängende Designkorrektur: neue eindeutig registrierte Profile ohne bestehende Preferences erhalten nun Desktop UND Dock Modern; gespeicherte Entscheidungen und Altprofile konservativ erhalten. Modern-Dock/Island dezent transparent, Dock an allen vier Ecken rund, eigene vorhandene Birnen-Vektorsilhouette weiß ohne schwarzen Bildkasten, andere Originalicons bytegleich mit dezentem Kontrastuntergrund, Air-OS links nur Schriftzug mit erhaltenem Menü/Fokus. Bestehendes Reduce Glass auch an geschlossener Island respektiert; keine neue Preference/Registry/Animation/Dependency.
+
+**232/232 Linux-Tests bestanden**,0 Fehler/Skips; echte getrennte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachherprüfungen bei1920×1080,1650×930,390×600,18 Screenshots und JSON. Dock358×68 unten0, Island250×45 /214,84×38,67 /156×36 oben0, Air-Home- und Classic-Geometrien exakt gegen unveränderten K3-Stand bestätigt. Menü/Suche/Tastatur/Fokus, Kontrollzentrum/Schnellzugriff, große Classic-Launchpad-Ansicht, bestätigtes Pin/Unpin, echter Notes-Save, gespeicherte Auswahl/Pins nach Reload, Glasreduktion/Forced Colors und keine Rendererfehler geprüft. Erste SVG-Maske zeigte im390px-GUI nach Themewechsel einen weißen Block; durch referenzfreien vorhandenen Birnenpfad behoben und alle Größen neu geprüft. Syntax/Catalina/Diff bestanden.
+
+[Bericht, sichtbare Vorher-/Nachherbilder, Messwerte und Abweichungen](AIR_MODERN_SOFT_GLASS.md). Kein Pixel-Diff gegen die nur im Chat sichtbaren Benutzerbilder; eigenes weiches Wallpaper/funktionale statt fremde Referenzinhalte erhalten. Linux kein nativer Windows/macOS-Beleg. Bekannte Audit-/Signing-/Notarisierungsblocker unverändert; PR-/Actions-Zugriff nicht verfügbar, kein neuer CI-Erfolg behauptet. main/PRs/Installer/andere Entwicklungsbranches unverändert.
+
+Nächste drei separate kleine Einheiten: **F2.1 native Windows-Abnahme**, **F2.2 native macOS-Abnahme**, **M1 Island-Unterbrechbarkeit**. CB-02/CB-03 offen. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – K3: Schnellzugriff im bestehenden Island-Panel
 
 24. Oktober 2026. Bestätigte K2-Basis/Remote-HEAD **41d7d67d11c46928ba6fa171a4730b9ac9cacb73**, eigener Branch **feat/air-island-quick-access-k3-20261024**. Genau eine neue flüchtige Ansicht: bestehendes Panel erhält Kontrollzentrum/Schnellzugriff als beschriftete Buttons mit aria-pressed/aria-controls. Öffnen beginnt immer im Kontrollzentrum. Inaktive Inhalte hidden UND inert; aktive Regionsbeschriftung folgt der Ansicht. Kein zweiter Host, keine zweite Registry/Lifecycle/Preferences-Option.

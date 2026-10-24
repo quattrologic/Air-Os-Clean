@@ -58,6 +58,30 @@
 /* Attached lower edge; Classic desktop/dock choices retain their original layout. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
   bottom:0 !important;
-  border-radius:18px 18px 0 0 !important;
+  border-radius:20px !important;
   box-shadow:0 -4px 16px #0003 !important;
+}
+
+/* Soft glass revision: preserve the compact layout, original artwork and edge anchor. */
+html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
+  background:rgba(9,11,12,.84) !important;
+  border-color:rgba(255,255,255,.22) !important;
+  box-shadow:0 -4px 16px #0003,inset 0 1px #ffffff14 !important;
+}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"] .dock-icon {
+  background:rgba(255,255,255,.07);
+  box-shadow:inset 0 0 0 1px #ffffff12;
+  filter:none;
+}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"] .launchpad-icon {
+  background:transparent;box-shadow:none;
+}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"].air-reduced-glass {
+  background:#090b0c !important;
+}
+@media (prefers-contrast: more) {
+  html[data-desktop-theme="modern"] .dock[data-theme="modern"] {background:#090b0c !important;border-color:#b5c1ba !important}
+}
+@media (forced-colors: active) {
+  html[data-desktop-theme="modern"] .dock[data-theme="modern"] {background:Canvas !important;border-color:CanvasText !important;backdrop-filter:none !important}
 }

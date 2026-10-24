@@ -626,6 +626,7 @@ function applyAirSettings(settings=readAirSettings()){
   dock.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  }
  root.classList.toggle("air-reduced-motion",!!settings.reduceMotion);
+ root.classList.toggle("air-reduced-glass",!!settings.reduceGlass);
  document.querySelectorAll("#air-dock-theme").forEach(select=>{select.value=settings.dockTheme==='modern'?'modern':'classic'});
  document.dispatchEvent(new Event("air-settings-changed"));
  const clock=document.querySelector("#clock");

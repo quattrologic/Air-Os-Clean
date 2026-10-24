@@ -182,3 +182,7 @@ Nur Dokumentation. Keine Renderer-/CSS-/Runtime-/IPC-/Preferences-/Installeränd
 ## Umsetzungshinweis K3 (24. Oktober 2026)
 
 [Eine zusätzliche Schnellzugriff-Ansicht im bestehenden Panel umgesetzt](AIR_ISLAND_QUICK_K3.md): vier echte interne Apps, keine neue Ablage/Datenquelle, keine zweite Island. Control bleibt Default, beide Ansichten vollständig getrennt verborgen/inert. Benutzer wählte bestehendes Birnenlogo für die Home-Karte. Breite und Randposition erhalten; aktive Ansicht braucht unterschiedliche dokumentierte Höhe. Unterbrechbare Feder-/Richtungswechsel-Logik weiter nur geplanter M1-Schritt.
+
+## Benutzerkorrektur: dezentes Glas, 24. Oktober 2026
+
+[Umsetzung und echter Vorher-/Nachhervergleich](AIR_MODERN_SOFT_GLASS.md). Neueste ausdrückliche Vorgabe ersetzt die früheren opaken/eckigen Randflächen: Modern-Dock rgba(9,11,12,.84), alle vier Ecken20px, weiter unten0 und358×68px; Island gleicher Glasgrund mit16/16/22/22px-Radien, oben0 und unveränderten Maßen. Birne vorhandener weißer Vektor ohne Kasten, andere bunte Originalicons unverändert. Schlichter Air-OS-Textzugang, Tastaturfokus erhalten. Neue Profile Desktop/Dock Modern, bestehende Auswahlen maßgeblich. Mint/Creme/Home-Geometrie und Classic unverändert. 232/232 Linux-Tests und echte Linux-Electron-Prüfungen an drei Größen; native Windows/macOS weiterhin offen. Kein Supaste-/Referenzpixelgleichheitsanspruch.
