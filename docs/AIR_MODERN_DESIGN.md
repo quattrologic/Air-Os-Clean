@@ -198,3 +198,7 @@ Bestehende Due-Kachel mit maximal drei echten offenen Erinnerungen aus vorhanden
 ## E3 – automatische Widgetänderungen ohne Designumbau (24. Oktober 2026)
 
 Notes-Delete sendet inhaltsfreies air-notes-changed, Notes-Save behält air-notes-saved. Alle bestätigten Reminder-Mutationen senden air-reminders-changed. Nur bestehende Datenquellen neu lesen; kein Polling. Publisher an ursprüngliche Sitzung/Editor gebunden, Widget-Generations-/Session-/Cleanup-Schutz erhalten. Keine CSS-/Template-/Preferences-Änderung. Bestehenden disabled-Checkbox-Befund im Mutationspfad behoben; Erledigt/Offen wieder nutzbar. 215 Tests und echte Electron-Prüfung aller drei Größen erfolgreich. [Ereignisvertrag, Screenshots und Grenzen](AIR_HOME_LIVE_E3.md). F1 folgt als eigene visuelle Einheit.
+
+## F1 – Notes optisch integriert (24. Oktober 2026)
+
+Nur html[data-desktop-theme="modern"] .air-notes-window: Mint-Rahmen/Titelleiste, hellgrüne190px-Liste, cremeweißer Editor, Georgia-Titel/Systemtext, feine Rahmen und sichtbarer Fokus. Mobil100px-Liste oben statt unbedienbar schmaler Seitenleiste. Classic-Skin gegen bisherigen CSS-Stand im Browser identisch geprüft; keine Notes-/Store-/E3-Logik geändert. Notes870×480px groß bzw.378×433px bei390px. [Screenshots, genaue Messwerte und Abweichungen](AIR_NOTES_MODERN_F1.md).216 Tests und echter Electron-Lauf an drei Größen erfolgreich. Native Fonts/Scrollbars/Controls und Plattformabnahme in F2 separat.

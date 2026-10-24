@@ -395,7 +395,7 @@ function openApp(id){
  }
  if(!appNames[id])return {ok:false,error:'Diese App ist nicht verfügbar.'};
  if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none")animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
- const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"")+(id==="home"?" air-home-window":"");win.style.zIndex=++zIndex;
+ const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"")+(id==="home"?" air-home-window":"")+(id==="notes"?" air-notes-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
  catch (error) {

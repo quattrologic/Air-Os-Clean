@@ -802,3 +802,43 @@ html[data-desktop-theme="modern"] .desktop-icons { display:none !important; }
 .air-home-due button{border:1px solid #b8bcb6;border-radius:7px;background:transparent;color:#365e43;padding:6px 8px;font:inherit;font-size:10px;cursor:pointer}
 .air-home-due button:hover{background:#e4efdf}
 @media(max-width:700px){.air-home-reminders-list li{padding:4px 0}}
+
+/* F1: Notes only, opt-in to the existing desktop theme. Classic rules remain above. */
+html[data-desktop-theme="modern"] .air-notes-window{background:#9cdaa1;color:#2c3b31;border:0;border-radius:20px;box-shadow:0 18px 48px #183b3929;backdrop-filter:none;font-family:system-ui,sans-serif}
+html[data-desktop-theme="modern"] .air-notes-window .window-titlebar{height:36px;flex-basis:36px;padding:0 14px;background:#9cdaa1;border:0}
+html[data-desktop-theme="modern"] .air-notes-window .window-title{color:#2c3b31;font-size:12px;font-weight:500}
+html[data-desktop-theme="modern"] .air-notes-window .window-title:before{display:none}
+html[data-desktop-theme="modern"] .air-notes-window .traffic{gap:8px}
+html[data-desktop-theme="modern"] .air-notes-window .traffic button{width:10px;height:10px;min-width:10px;min-height:10px}
+html[data-desktop-theme="modern"] .air-notes-window .window-content{margin:0 8px 8px;border-radius:12px;background:#f8f7f3;overflow:hidden}
+html[data-desktop-theme="modern"] .air-notes-window .note-layout{grid-template-columns:190px minmax(0,1fr);min-height:0;height:100%}
+html[data-desktop-theme="modern"] .air-notes-window .note-list{display:flex;flex-direction:column;min-height:0;min-width:0;padding:18px 12px;background:#b0e5ad;border:0}
+html[data-desktop-theme="modern"] .air-notes-window .note-list-title{flex-shrink:0;align-items:center;gap:8px;margin:0 4px 12px;color:#365e43;font-size:12px;font-weight:500}
+html[data-desktop-theme="modern"] .air-notes-window #air-note-list{overflow:auto;min-height:0}
+html[data-desktop-theme="modern"] .air-notes-window .air-note-item{display:block;width:100%;margin:0 0 5px;padding:10px;border:1px solid transparent;border-radius:7px;background:transparent;color:#365e43;text-align:left;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+html[data-desktop-theme="modern"] .air-notes-window .air-note-item:hover{background:#e0f5ddab}
+html[data-desktop-theme="modern"] .air-notes-window .air-note-item.selected{background:#e0f5dd;border-color:#b8bcb6;color:#2c3b31}
+html[data-desktop-theme="modern"] .air-notes-window .note-workspace{display:flex;flex-direction:column;min-width:0;min-height:0;padding:24px;background:#f8f7f3;overflow:auto}
+html[data-desktop-theme="modern"] .air-notes-window .note-title-input{flex-shrink:0;min-height:44px;margin:0 0 14px;padding:4px 2px;border:0;border-bottom:1px solid #b8bcb6;border-radius:0;background:transparent;color:#2c3b31;font:normal 30px/1.2 Georgia,serif}
+html[data-desktop-theme="modern"] .air-notes-window .note-editor{flex:1;min-height:120px;padding:6px 2px;background:transparent;color:#2c3b31;font:14px/1.7 system-ui,sans-serif;resize:vertical}
+html[data-desktop-theme="modern"] .air-notes-window input::placeholder,html[data-desktop-theme="modern"] .air-notes-window textarea::placeholder{color:#677e6c;opacity:1}
+html[data-desktop-theme="modern"] .air-notes-window .note-actions{position:sticky;bottom:0;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:12px;padding-top:12px;border-color:#b8bcb6;background:#f8f7f3}
+html[data-desktop-theme="modern"] .air-notes-window #note-status{flex:1;min-width:140px;color:#677e6c;font-size:12px;line-height:1.4}
+html[data-desktop-theme="modern"] .air-notes-window .secondary-button,html[data-desktop-theme="modern"] .air-notes-window #new-note{min-height:30px;border:1px solid #b8bcb6;border-radius:7px;background:#f8f7f3;color:#365e43;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer}
+html[data-desktop-theme="modern"] .air-notes-window #new-note{min-width:28px;min-height:26px;padding:2px 6px;background:transparent}
+html[data-desktop-theme="modern"] .air-notes-window #save-note{background:#365e43;border-color:#365e43;color:#f8f7f3}
+html[data-desktop-theme="modern"] .air-notes-window .secondary-button:hover:not(:disabled){background:#e4efdf;color:#2c3b31}
+html[data-desktop-theme="modern"] .air-notes-window #new-note:hover{background:#e0f5dd}
+html[data-desktop-theme="modern"] .air-notes-window button:disabled{opacity:.55;cursor:default}
+html[data-desktop-theme="modern"] .air-notes-window :is(button,input,textarea):focus-visible{outline:2px solid #365e43;outline-offset:2px}
+@media(max-width:650px){
+ html[data-desktop-theme="modern"] .air-notes-window .note-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:100px minmax(0,1fr)}
+ html[data-desktop-theme="modern"] .air-notes-window .note-list{padding:8px 12px}
+ html[data-desktop-theme="modern"] .air-notes-window .note-list-title{margin-bottom:4px}
+ html[data-desktop-theme="modern"] .air-notes-window .air-note-item{padding:6px 8px;margin-bottom:3px}
+ html[data-desktop-theme="modern"] .air-notes-window .note-workspace{padding:12px}
+ html[data-desktop-theme="modern"] .air-notes-window .note-title-input{min-height:36px;font-size:24px;margin-bottom:8px}
+ html[data-desktop-theme="modern"] .air-notes-window .note-editor{min-height:76px;font-size:13px;line-height:1.6}
+ html[data-desktop-theme="modern"] .air-notes-window .note-actions{margin-top:8px;padding-top:8px}
+ html[data-desktop-theme="modern"] .air-notes-window #note-status{flex-basis:100%;font-size:11px}
+}
