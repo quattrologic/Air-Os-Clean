@@ -14,6 +14,24 @@
   const q=s=>root.querySelector(s),title=q('#note-title'),body=q('#note-body'),list=q('#air-note-list'),status=q('#note-status');
   const saveButton=q('#save-note'),removeButton=q('#delete-note'),newButton=q('#new-note');
   if(!api){status.textContent='Notizen benötigen die Air-OS Desktop-App.';return}
+
+  // Content-free confirmation belongs to this mounted app and its original login session.
+  const owner=Promise.resolve(window.airOS?.currentUser?.()).then(user=>user?.preferenceSession).catch(()=>null);
+  let notifyActive=true;
+  const closeButton=win.querySelector('.close');
+  function stopNotifications(){
+   notifyActive=false;document.removeEventListener('air-profile-changing',stopNotifications);
+   window.removeEventListener('pagehide',stopNotifications);closeButton?.removeEventListener('click',stopNotifications,true);
+  }
+  document.addEventListener('air-profile-changing',stopNotifications);
+  window.addEventListener('pagehide',stopNotifications);closeButton?.addEventListener('click',stopNotifications,true);
+  async function notifyChange(type){
+   try{
+    const expected=await owner;if(!expected||!notifyActive||!win.isConnected)return;
+    const current=await window.airOS.currentUser();
+    if(notifyActive&&win.isConnected&&current?.preferenceSession===expected)document.dispatchEvent(new Event(type));
+   }catch{ /* A stale/unavailable session must never publish a change into another profile. */ }
+  }
   let notes=[],selected=null,loading=false,saving=false;
   const announce=text=>status.textContent=text;
   function render(){
@@ -39,7 +57,7 @@
    try{
     const saved=await api.save({id:selected,title:title.value,body:body.value});
     // Only acknowledged saves emit a fixed, content-free local notification.
-    document.dispatchEvent(new Event('air-notes-saved'));
+    await notifyChange('air-notes-saved');
     // A save acknowledges its submitted snapshot, not edits made while waiting.
     // Update the list from that acknowledgement without reloading the editor.
     const index=notes.findIndex(note=>note.id===saved.id);
@@ -57,7 +75,7 @@
    if(loading||saving)return;
    if(!selected){title.value='';body.value='';announce('Neue Notiz verworfen.');return}
    if(!confirm('Diese Notiz wirklich löschen?'))return;
-   try{await api.remove(selected);selected=null;await refresh();announce('Notiz gelöscht.')}
+   try{await api.remove(selected);await notifyChange('air-notes-changed');selected=null;await refresh();announce('Notiz gelöscht.')}
    catch(error){announce('Löschen fehlgeschlagen.');console.error(error)}
   });
   activeNote={win,select:id=>{if(!loading&&!saving)refresh(id)}};
@@ -80,6 +98,7 @@
   function dispose(){
    if(disposed)return;disposed=true;request++;clear();open.disabled=true;
    document.removeEventListener('air-notes-saved',refresh);
+   document.removeEventListener('air-notes-changed',refresh);
    document.removeEventListener('air-profile-changing',dispose);
    window.removeEventListener('pagehide',dispose);
    close?.removeEventListener('click',dispose,true);observer.disconnect();
@@ -121,6 +140,7 @@
   open.addEventListener('click',()=>{if(!disposed&&win.isConnected)openApp('notes')});
   close?.addEventListener('click',dispose,true);
   document.addEventListener('air-notes-saved',refresh);
+  document.addEventListener('air-notes-changed',refresh);
   document.addEventListener('air-profile-changing',dispose);
   window.addEventListener('pagehide',dispose);
   refresh();return {refresh,dispose};

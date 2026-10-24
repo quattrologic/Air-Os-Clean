@@ -71,3 +71,9 @@ test('close, removal and pagehide scrub data and ignore future results',async()=
 test('new refresh wins over an older pending response',async()=>{
  const pending=[],f=fixture({list:()=>new Promise(r=>pending.push(r))});await tick();f.retry.dispatchEvent(new Event('click'));await tick();pending[1]([task('New')]);await tick();pending[0]([task('Old')]);await tick();assert.deepEqual(f.titles(),['New']);
 });
+test('rapid confirmed change events discard older loads and detach on close',async()=>{
+ const pending=[],f=fixture({list:()=>new Promise(resolve=>pending.push(resolve))});await tick();f.document.dispatchEvent(new Event('air-reminders-changed'));await tick();f.document.dispatchEvent(new Event('air-reminders-changed'));await tick();pending[2]([task('Newest')]);await tick();pending[1]([task('Older')]);pending[0]([task('Oldest')]);await tick();assert.deepEqual(f.titles(),['Newest']);f.close.dispatchEvent(new Event('click'));f.document.dispatchEvent(new Event('air-reminders-changed'));await tick();assert.equal(f.calls,3);
+});
+test('profile change during event-driven reload prevents stale tasks rendering',async()=>{
+ let resolve;let pending=false;const f=fixture({list:async()=>pending?new Promise(r=>resolve=r):[task('Alice')]});await tick();pending=true;f.document.dispatchEvent(new Event('air-reminders-changed'));await tick();f.session('bob-new');resolve([task('Alice private')]);await tick();assert.deepEqual(f.titles(),[]);assert.equal(f.disconnected,true);
+});

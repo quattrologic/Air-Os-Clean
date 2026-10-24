@@ -1,0 +1,212 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "window": {
+      "x": 200,
+      "y": 103,
+      "width": 1522,
+      "height": 849
+    },
+    "notes": {
+      "x": 472,
+      "y": 403,
+      "width": 380,
+      "height": 384
+    },
+    "reminders": {
+      "x": 872,
+      "y": 749,
+      "width": 380,
+      "height": 230.390625
+    },
+    "dock": {
+      "x": 781,
+      "y": 1012,
+      "width": 358,
+      "height": 68
+    },
+    "island": {
+      "x": 835,
+      "y": 0,
+      "width": 250,
+      "height": 45
+    },
+    "events": [
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      }
+    ]
+  },
+  {
+    "viewport": [
+      1650,
+      930
+    ],
+    "window": {
+      "x": 171.875,
+      "y": 93,
+      "width": 1307.96875,
+      "height": 731.078125
+    },
+    "notes": {
+      "x": 405.625,
+      "y": 352.21875,
+      "width": 326.09375,
+      "height": 330
+    },
+    "reminders": {
+      "x": 748.90625,
+      "y": 649.5625,
+      "width": 326.09375,
+      "height": 198
+    },
+    "dock": {
+      "x": 646,
+      "y": 862,
+      "width": 358,
+      "height": 68
+    },
+    "island": {
+      "x": 717.578125,
+      "y": 0,
+      "width": 214.84375,
+      "height": 38.671875
+    },
+    "events": [
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      }
+    ]
+  },
+  {
+    "viewport": [
+      390,
+      600
+    ],
+    "window": {
+      "x": 12,
+      "y": 91,
+      "width": 366,
+      "height": 430
+    },
+    "notes": {
+      "x": 38,
+      "y": 359,
+      "width": 299,
+      "height": 180
+    },
+    "reminders": {
+      "x": 38,
+      "y": 1083,
+      "width": 299,
+      "height": 156.375
+    },
+    "dock": {
+      "x": 16,
+      "y": 532,
+      "width": 358,
+      "height": 68
+    },
+    "island": {
+      "x": 117,
+      "y": 0,
+      "width": 156,
+      "height": 36
+    },
+    "events": [
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-saved",
+        "hasDetail": false
+      },
+      {
+        "type": "air-notes-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      },
+      {
+        "type": "air-reminders-changed",
+        "hasDetail": false
+      }
+    ]
+  }
+]

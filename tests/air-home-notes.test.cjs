@@ -67,3 +67,6 @@ test('superseded load cannot overwrite a newer confirmed-save refresh',async()=>
  pending[1]([{title:'New snapshot'}]);await tick();assert.deepEqual(f.titles(),['New snapshot']);
  pending[0]([{title:'Old snapshot'}]);await tick();assert.deepEqual(f.titles(),['New snapshot']);
 });
+test('confirmed deletion change reloads Notes once and stops after widget close',async()=>{
+ let notes=[{title:'Before'}];const f=fixture({list:async()=>notes});await tick();notes=[];f.document.dispatchEvent(new Event('air-notes-changed'));await tick();assert.deepEqual(f.titles(),[]);assert.equal(f.calls,2);f.close.dispatchEvent(new Event('click'));f.document.dispatchEvent(new Event('air-notes-changed'));await tick();assert.equal(f.calls,2);
+});

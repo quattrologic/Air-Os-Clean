@@ -13,18 +13,19 @@ function fixture(initial=[]){
  function element(){
   const listeners=new Map();
   return {dataset:{},value:'',textContent:'',disabled:false,children:[],
-   addEventListener:(type,fn)=>listeners.set(type,fn),emit:type=>listeners.get(type)?.(),
+   addEventListener:(type,fn)=>listeners.set(type,fn),removeEventListener:(type)=>listeners.delete(type),emit:type=>listeners.get(type)?.(),
    replaceChildren(){this.children=[]},append(node){this.children.push(node)}};
  }
  for(const id of ['note-title','note-body','air-note-list','note-status','save-note','delete-note','new-note'])elements.set(id,element());
  const editor=element();editor.querySelector=selector=>elements.get(selector.slice(1));
  const win={isConnected:true,querySelector:()=>editor};
- const window={airOS:{notes:{
+ const window=Object.assign(new EventTarget(),{airOS:{currentUser:async()=>({preferenceSession:"alice-session"}),notes:{
   list:async()=>{listCalls++;return store.list('Alice')},
   save:async input=>{inputs.push({...input});await new Promise((resolve,reject)=>{finish=resolve;fail=reject});return store.save('Alice',input)},
   remove:async id=>{removals++;return store.remove('Alice',id)}
- }}};
- vm.runInNewContext(source,{window,document:{createElement:element,dispatchEvent:e=>events.push(e)},Event,Date,confirm:()=>true,console:{error(){}}});
+ }}});
+ const document=Object.assign(new EventTarget(),{createElement:element,dispatchEvent:e=>{events.push(e);return true}});
+ vm.runInNewContext(source,{window,document,Event,Date,confirm:()=>true,console:{error(){}}});
  window.airNotes.mount(win);
  return {get:id=>elements.get(id),store,root,bob,inputs,events,window,
   complete:()=>finish(),reject:()=>fail(new Error('Disk unavailable')),

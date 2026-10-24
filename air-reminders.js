@@ -12,6 +12,24 @@
   const api=window.airOS?.reminders,q=s=>root.querySelector(s),list=q('.arem-list'),form=q('.arem-editor');
   const title=q('.arem-title'),details=q('.arem-details'),date=q('.arem-date'),priority=q('.arem-priority'),done=q('.arem-done');
   const save=q('.arem-save'),del=q('.arem-delete'),status=q('.arem-status'),count=q('.arem-count');
+
+  // Content-free confirmation belongs to this mounted app and its original login session.
+  const owner=Promise.resolve(window.airOS?.currentUser?.()).then(user=>user?.preferenceSession).catch(()=>null);
+  let notifyActive=true;
+  const closeButton=win.querySelector('.close');
+  function stopNotifications(){
+   notifyActive=false;document.removeEventListener('air-profile-changing',stopNotifications);
+   window.removeEventListener('pagehide',stopNotifications);closeButton?.removeEventListener('click',stopNotifications,true);
+  }
+  document.addEventListener('air-profile-changing',stopNotifications);
+  window.addEventListener('pagehide',stopNotifications);closeButton?.addEventListener('click',stopNotifications,true);
+  async function notifyChange(type){
+   try{
+    const expected=await owner;if(!expected||!notifyActive||!win.isConnected)return;
+    const current=await window.airOS.currentUser();
+    if(notifyActive&&win.isConnected&&current?.preferenceSession===expected)document.dispatchEvent(new Event(type));
+   }catch{ /* A stale/unavailable session must never publish a change into another profile. */ }
+  }
   let entries=[],selected=null,busy=false;
   function inform(message){status.textContent=message}
   function select(item){
@@ -28,9 +46,9 @@
     checkbox.disabled=busy;
     checkbox.addEventListener('change',async()=>{
      if(busy)return;busy=true;checkbox.disabled=true;
-     try{await api.save({...item,completed:checkbox.checked});await refresh(selected);inform('Aufgabe gespeichert.')}
+     try{await api.save({...item,completed:checkbox.checked});await notifyChange('air-reminders-changed');await refresh(selected);inform('Aufgabe gespeichert.')}
      catch(e){checkbox.checked=!checkbox.checked;inform(e.message||'Speichern fehlgeschlagen.')}
-     finally{busy=false;checkbox.disabled=false}
+     finally{busy=false;checkbox.disabled=false;draw()}
     });
     const button=document.createElement('button');button.type='button';button.className='arem-item';
     const name=document.createElement('strong');name.textContent=item.title;
@@ -50,16 +68,17 @@
    event.preventDefault();if(busy)return;busy=true;save.disabled=true;
    try{
     const saved=await api.save({id:selected,title:title.value,details:details.value,dueDate:date.value||null,priority:priority.value,completed:done.checked});
+    await notifyChange('air-reminders-changed');
     await refresh(saved.id);inform('Im Air-OS-Profil gespeichert.');
    }catch(e){inform(e.message||'Speichern fehlgeschlagen.')}
-   finally{busy=false;save.disabled=false}
+   finally{busy=false;save.disabled=false;draw()}
   });
   del.addEventListener('click',async()=>{
    if(!selected||busy||!confirm('Diese Erinnerung endgültig löschen?'))return;
    busy=true;del.disabled=true;
-   try{await api.remove(selected);await refresh(null);inform('Erinnerung gelöscht.')}
+   try{await api.remove(selected);await notifyChange('air-reminders-changed');await refresh(null);inform('Erinnerung gelöscht.')}
    catch(e){inform(e.message||'Löschen fehlgeschlagen.')}
-   finally{busy=false;del.disabled=!selected}
+   finally{busy=false;del.disabled=!selected;draw()}
   });
   if(!api){inform('Erinnerungen benötigen die Air-OS Desktop-App.');save.disabled=true;return}
   refresh(null).then(()=>inform('Nur auf diesem Gerät.')).catch(e=>inform(e.message||'Aufgaben konnten nicht geladen werden.'));
@@ -97,6 +116,7 @@
   function clear(){list.replaceChildren();status.textContent='';retry.textContent='Aktualisieren'}
   function dispose(){
    if(disposed)return;disposed=true;request++;clear();open.disabled=true;retry.disabled=true;
+   document.removeEventListener('air-reminders-changed',refresh);
    document.removeEventListener('air-profile-changing',dispose);
    window.removeEventListener('pagehide',dispose);
    close?.removeEventListener('click',dispose,true);observer.disconnect();
@@ -136,6 +156,7 @@
   retry.addEventListener('click',refresh);
   open.addEventListener('click',()=>{if(!disposed&&win.isConnected)openApp('reminders')});
   close?.addEventListener('click',dispose,true);
+  document.addEventListener('air-reminders-changed',refresh);
   document.addEventListener('air-profile-changing',dispose);
   window.addEventListener('pagehide',dispose);
   refresh();return {refresh,dispose};

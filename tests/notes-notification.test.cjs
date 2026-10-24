@@ -7,14 +7,15 @@ function fixture(save) {
     const listeners=new Map();
     return {dataset:{},value:'',textContent:'',disabled:false,
       addEventListener(type,fn){listeners.set(type,fn);},
+      removeEventListener(type){listeners.delete(type);},
       emit(type){return listeners.get(type)?.();},replaceChildren(){},append(){}};
   }
   for(const id of ['#note-title','#note-body','#air-note-list','#note-status','#save-note','#delete-note','#new-note'])elements.set(id,element());
   const root=element();root.querySelector=id=>elements.get(id);
   const win={isConnected:true,querySelector:()=>root};
   // Production saves return the canonical saved note, not just its ID.
-  const window={airOS:{notes:{list:async()=>[],save:async input=>({...input,...await save(input)}),remove:async()=>{}}}};
-  const document={createElement:element,dispatchEvent(event){events.push(event);}};
+  const window=Object.assign(new EventTarget(),{airOS:{currentUser:async()=>({preferenceSession:"alice-session"}),notes:{list:async()=>[],save:async input=>({...input,...await save(input)}),remove:async()=>{}}}});
+  const document=Object.assign(new EventTarget(),{createElement:element,dispatchEvent(event){events.push(event);return true}});
   vm.runInNewContext(source,{window,document,Event,Date,console:{error(){}},confirm:()=>false});
   window.airNotes.mount(win);
   return {elements,events};
