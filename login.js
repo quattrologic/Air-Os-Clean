@@ -111,6 +111,7 @@
         username: $("#login-username").value.trim(),
         password: $("#login-password").value
       });
+      if (!disposed && result?.ok) document.dispatchEvent(new Event("air-login-confirmed"));
       if (!disposed && (!result || !result.ok)) setError(loginError, result && result.error || "Anmeldung fehlgeschlagen.");
     } catch {
       if (!disposed) setError(loginError, "Anmeldung fehlgeschlagen. Bitte versuche es erneut.");

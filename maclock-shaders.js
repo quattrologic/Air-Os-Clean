@@ -316,5 +316,29 @@ void main()
     fragColor = vec4(clamp(col, 0.0, 1.0) * a, a) * qt_Opacity;
 }
 `;
- return Object.freeze({vertex,blur,liquidglass,glasstext});
+ const motionScene=`#version 300 es
+precision highp float;
+in vec2 qt_TexCoord0;
+out vec4 fragColor;
+uniform sampler2D src;
+uniform float zoom;
+uniform float blurControl;
+uniform float blurOpacity;
+// Motion-only composition from cached, mipmapped L1B.1 scene texture.
+// The original material shader math remains unchanged. Qt blur pyramid is approximated.
+float vignette(float y){
+ if(y<.35)return mix(.22,0.,y/.35);
+ if(y>.72)return mix(0.,.30,(y-.72)/.28);
+ return 0.;
+}
+void main(){
+ vec2 uv=clamp((qt_TexCoord0-.5)/zoom+.5,vec2(.001),vec2(.999));
+ float sigmaHalf=48.*blurControl/3.*.5;
+ float lod=max(0.,log2(max(1.,sigmaHalf*sqrt(12.))));
+ vec3 a=textureLod(src,uv,0.).rgb,b=textureLod(src,uv,lod).rgb;
+ vec3 color=mix(a,b,blurOpacity);
+ color*=(1.-vignette(qt_TexCoord0.y))/max(.01,1.-vignette(uv.y));
+ fragColor=vec4(clamp(color,0.,1.),1.);
+}`;
+ return Object.freeze({vertex,blur,liquidglass,glasstext,motionScene});
 });

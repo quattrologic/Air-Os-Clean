@@ -37,7 +37,7 @@
       "path": "MacLock/LockScreen.qml",
       "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006",
       "bytes": 95509,
-      "status": "selected settled-layout/clock/avatar/fallback logic ported; remaining effects/auth/runtime not copied"
+      "status": "selected settled layout and L1B.2 entry/exit/engaged animation targets, durations and OutQuint behavior ported to DOM/RAF; remaining morph/media/PAM/runtime not copied"
     },
     {
       "path": "MacLock/MorphGlyph.qml",
@@ -183,5 +183,17 @@
       "bytes": 6225,
       "status": "analysed; not copied for L1A"
     }
-  ]
+  ],
+  "l1b2": {
+    "module": "maclock-motion.js",
+    "source": "MacLock/LockScreen.qml",
+    "method": "behavior/parameter port; no QML runtime or Qt framework code",
+    "adaptations": [
+      "generation-guarded finite RAF timeline and shared public visual frame event",
+      "local Air-OS poster replaces unavailable Wayland xray desktop",
+      "cached mip LOD approximates Qt focus blur pyramid; CSS fallback sigma=blurMax*blur/3",
+      "confirmed Air-OS login never awaits exit completion; no PAM unlock delay copied"
+    ],
+    "report": "docs/AIR_MACLOCK_L1B2_MOTION.md"
+  }
 }

@@ -27,7 +27,7 @@ function fixture(options={}){
  const doc=new EventTarget();doc.body=new Element();doc.documentElement=new Element();doc.hidden=false;doc.fonts={ready:Promise.resolve()};
  const nodes=Object.fromEntries(['#login-clock','.password-row','#maclock-reduce-glass','#login-stage'].map(k=>[k,new Element()]));
  doc.querySelector=s=>{assert.ok(nodes[s],'no secret/profile access');return nodes[s]};doc.createElement=()=>{const e=new Element();created.push(e);return e};doc.createRange=()=>({selectNodeContents(){},getBoundingClientRect:()=>({x:750,y:95,width:420,height:190})});
- const win=new EventTarget();Object.assign(win,{document:doc,innerWidth:1920,innerHeight:1080,devicePixelRatio:1,airMacLockShaders:shaders,AbortController,requestAnimationFrame:fn=>{rafs.set(++raf,fn);return raf},cancelAnimationFrame:id=>rafs.delete(id),getComputedStyle:()=>({fontWeight:'680',fontSize:'158.4px',fontFamily:'Open Runde',letterSpacing:'-1.35px'}),matchMedia:()=>{const m=new EventTarget();m.matches=false;media.push(m);return m}});
+ const win=new EventTarget();Object.assign(win,{document:doc,innerWidth:1920,innerHeight:1080,devicePixelRatio:1,airMacLockShaders:shaders,AbortController,CustomEvent,requestAnimationFrame:fn=>{rafs.set(++raf,fn);return raf},cancelAnimationFrame:id=>rafs.delete(id),getComputedStyle:()=>({fontWeight:'680',fontSize:'158.4px',fontFamily:'Open Runde',letterSpacing:'-1.35px'}),matchMedia:()=>{const m=new EventTarget();m.matches=false;media.push(m);return m}});
  Object.defineProperty(win,'airOS',{get(){throw Error('No authentication/Preferences/secret API may be read by materials')}});
  let resolve;win.Image=class{constructor(){this.naturalWidth=1920;this.naturalHeight=1080}decode(){return new Promise(r=>resolve=r)}removeAttribute(){}};
  win.MutationObserver=class{constructor(cb){this.cb=cb;observers.push(this)}observe(){}disconnect(){this.disconnected=true}};win.ResizeObserver=class extends win.MutationObserver{};
@@ -55,6 +55,12 @@ test('renderer replaces textures without accumulation and destroys every GPU obj
  for(let i=0;i<8;i++){r.setScene({width:960,height:540},11.2);r.setMask({width:600,height:350},6.3);r.draw({width:1920,height:1080,clockRect:{x:600,y:10,width:600,height:350},fieldRect:{x:850,y:950,width:189,height:32},params});assert.equal(r.snapshot().resources.texture,3)}
  r.destroy();r.destroy();assert.equal(g.live.size,0);assert.equal(g.gl.losses,1);assert.equal(r.snapshot().contextAlive,false);
 });
+test('motion uses one cached scene texture and validates initial/final frames without accumulating GPU resources',()=>{
+ const g=fakeGL(),r=api.createRenderer({getContext:()=>g.gl},shaders),params=api.parameters(1080,32),frame={width:1920,height:1080,clockRect:{x:600,y:10,width:600,height:350},fieldRect:{x:850,y:950,width:189,height:32},params};
+ let checks=0;const error=g.gl.getError;g.gl.getError=()=>{checks++;return error()};r.setScene({width:960,height:540},11.2);r.setMask({width:600,height:350},6.3);
+ const initial=checks;for(let i=0;i<12;i++){r.draw({...frame,validate:i===0,sceneState:{zoom:1.09-i*.005,blur:.55,blurOpacity:1,opacity:.8,clockOpacity:.8,loginOpacity:.8}});assert.equal(r.snapshot().resources.texture,4)}assert.equal(checks,initial+1);
+ r.draw({...frame,sceneState:{zoom:1,blur:0,blurOpacity:0,opacity:1,clockOpacity:1,loginOpacity:1}});assert.equal(checks,initial+2);assert.equal(r.snapshot().resources.texture,3);assert.equal(r.snapshot().resources.program,4);r.destroy();assert.equal(g.live.size,0);
+});
 test('compile/allocation-pass failures release partial GPU objects rather than hiding working DOM controls',()=>{
  const g=fakeGL({failCompileAt:3});assert.throws(()=>api.createRenderer({getContext:()=>g.gl},shaders),/compile/);assert.equal(g.live.size,0);
  for(const flag of ['framebufferFailure','uploadFailure']){const g=fakeGL({[flag]:true}),r=api.createRenderer({getContext:()=>g.gl},shaders);assert.throws(()=>r.setScene({width:64,height:64},11.2));r.destroy();assert.equal(g.live.size,0)}
@@ -76,6 +82,6 @@ test('hidden pages release materials and become static; visible pages can recrea
  const h=fixture();await h.ready();h.flush();h.doc.hidden=true;h.doc.dispatchEvent(new Event('visibilitychange'));h.flush();assert.equal(h.live.size,0);assert.equal(h.c.snapshot().status,'hidden');h.gl.lost=false;h.doc.hidden=false;h.doc.dispatchEvent(new Event('visibilitychange'));h.flush();assert.equal(h.c.snapshot().status,'webgl');assert.equal(h.rafs.size,0);h.c.destroy();
 });
 test('enhancement CSS only affects MacLock materials, is non-blocking and includes no new animation/layout transforms',()=>{
- const css=fs.readFileSync(require.resolve('../login.css'),'utf8').split('/* L1B.1:')[1];assert.match(css,/pointer-events:none/);assert.doesNotMatch(css,/transform:|animation:|transition:|\.dock|\.air-island|\.air-home|\.air-notes/);
+ const css=fs.readFileSync(require.resolve('../login.css'),'utf8').split('/* L1B.1:')[1].split('/* L1B.2:')[0];assert.match(css,/pointer-events:none/);assert.doesNotMatch(css,/transform:|animation:|transition:|\.dock|\.air-island|\.air-home|\.air-notes/);
  const pkg=require('../package.json');for(const path of ['maclock-shaders.js','maclock-glass.js','third_party/maclock/**/*'])assert.ok(pkg.build.files.includes(path));
 });

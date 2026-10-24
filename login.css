@@ -180,3 +180,20 @@ button{-webkit-tap-highlight-color:transparent}
 .maclock-login[data-maclock-glass="reduced"] .password-row{background:#202226;border-color:#ffffff80}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.maclock-login .password-row{background:#202226;border-color:#ffffff80}}
 @media(forced-colors:active){.maclock-login[data-maclock-glass="reduced"] .password-row{background:Canvas;border-color:CanvasText}}
+
+/* L1B.2: original QML targets, driven by one exact OutQuint timeline.
+   A static local poster replaces unavailable Wayland xray, never a black frame. */
+.maclock-login.maclock-motion-pending,.maclock-login.maclock-motion-ready{background:linear-gradient(180deg,#00000038 0%,transparent 35%,transparent 72%,#0000004d 100%),#235f94 url("maclock-wallpaper.svg") center/cover no-repeat}
+.maclock-backdrop{position:fixed;inset:0;z-index:0;overflow:hidden}
+.login-focus-wallpaper{position:fixed;inset:0;background:#0b0b10 url("maclock-wallpaper.svg") center/cover no-repeat;opacity:0;pointer-events:none}
+.maclock-motion-pending :is(.maclock-clock,.login-stage,.power-controls,.login-create-link,#maclock-reduce-glass,.maclock-scope){opacity:0}
+.maclock-motion-ready .maclock-backdrop{opacity:var(--maclock-motion-opacity,1)}
+.maclock-motion-ready :is(.login-wallpaper,.login-focus-wallpaper){transform:scale(var(--maclock-motion-zoom,1))}
+.maclock-motion-ready .login-focus-wallpaper{filter:blur(calc(var(--maclock-motion-blur,0) * 1px));opacity:var(--maclock-motion-blurAlpha,0)}
+.maclock-login.maclock-motion-ready .maclock-clock{transform:translateY(calc(var(--maclock-motion-clockOffset,0) * 1px));opacity:var(--maclock-motion-clockAlpha,1)}
+.maclock-login.maclock-motion-ready:not(.is-creating) .login-stage{transform:translateY(calc(var(--maclock-motion-loginOffset,0) * 1px));opacity:var(--maclock-motion-loginAlpha,1)}
+.maclock-login.maclock-motion-ready:not(.is-creating) .password-row{width:calc(var(--maclock-motion-fieldWidth,210) * 1px)}
+.maclock-login.maclock-motion-ready .profile-picture{transform:scale(var(--maclock-motion-avatar,.94))}
+.maclock-motion-ready :is(.power-controls,.login-create-link,#maclock-reduce-glass,.maclock-scope){opacity:var(--maclock-motion-opacity,1)}
+.maclock-motion-ready.is-creating .maclock-backdrop{opacity:1}
+@media(prefers-reduced-transparency:reduce),(forced-colors:active){.maclock-motion-ready .login-focus-wallpaper{display:none}}

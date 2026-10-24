@@ -8,9 +8,12 @@
   <title>Air-OS – Anmelden</title>
   <link rel="stylesheet" href="login.css">
 </head>
-<body class="maclock-login" tabindex="-1">
-  <div class="login-wallpaper" aria-hidden="true"></div>
-  <div class="login-vignette" aria-hidden="true"></div>
+<body class="maclock-login maclock-motion-pending" tabindex="-1">
+  <div class="maclock-backdrop" aria-hidden="true">
+    <div class="login-wallpaper"></div>
+    <div class="login-focus-wallpaper"></div>
+    <div class="login-vignette"></div>
+  </div>
 
   <!-- MacLock/LockScreen.qml clock layout; MIT, Copyright (c) 2026 Rickky. -->
   <header class="maclock-clock" aria-label="Datum und Uhrzeit">
@@ -80,6 +83,7 @@
   </div>
   <script src="maclock-layout.js"></script>
   <script src="login.js"></script>
+  <script src="maclock-motion.js"></script>
   <script src="maclock-shaders.js"></script>
   <script src="maclock-glass.js"></script>
 </body>

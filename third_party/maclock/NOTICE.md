@@ -34,3 +34,17 @@ Vertex, separable Gaussian and WebGL2/DOM lifecycle plumbing are Air-OS adaptati
 No Qt framework code, binaries or runtime are required. Qt MultiEffect's private blur pyramid
 is approximated by an explicitly documented Gaussian support/sigma mapping.
 Detailed values, screenshots and limitations: docs/AIR_MACLOCK_L1B1_GLASS.md.
+
+## L1B.2 motion behavior port
+
+LockScreen.qml at the same revision supplies entry/exit opacity, wallpaper scale,
+clock/login positions, avatar scale and engaged password width/blur targets,
+per-property durations and OutQuint easing. maclock-motion.js ports this behavior
+to a finite, generation-guarded DOM/RAF timeline. No Qt framework, PAM unlock
+delay, media/morph logic or operating-system session lock is copied.
+The original L1B.1 material shader bodies and font assets are unchanged.
+maclock-shaders.js adds an Air-OS motion-scene pass, using cached mip levels
+as an explicitly documented approximation of the Qt blur pyramid.
+Authentication remains in the existing bridge; its confirmed notification has no
+payload and never waits for animation completion.
+Detailed source mapping, measured frames and limitations: docs/AIR_MACLOCK_L1B2_MOTION.md.
