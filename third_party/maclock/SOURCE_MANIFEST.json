@@ -1,0 +1,187 @@
+{
+  "repository": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT, Copyright (c) 2026 Rickky; fonts independently SIL OFL 1.1",
+  "files": [
+    {
+      "path": "MacLock/ClockGlyph.qml",
+      "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad",
+      "bytes": 3109,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/ContourGlow.qml",
+      "sha256": "cee641011698c21d089d9937457d3e03c2dc698af7b73d586bde624d214c9e87",
+      "bytes": 1079,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/Glass.qml",
+      "sha256": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a",
+      "bytes": 2750,
+      "status": "selected settled-layout/clock/avatar/fallback logic ported; remaining effects/auth/runtime not copied"
+    },
+    {
+      "path": "MacLock/Glyph.qml",
+      "sha256": "e12373fe51ccef66380673fbf6145df8d1275caa925adffeea0f1efec880cfc7",
+      "bytes": 14979,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/I18n.js",
+      "sha256": "86caa100d7a4b6e0680a733aa20eb582465437d75552af58719c9c1a4874419b",
+      "bytes": 1289,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/LockScreen.qml",
+      "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006",
+      "bytes": 95509,
+      "status": "selected settled-layout/clock/avatar/fallback logic ported; remaining effects/auth/runtime not copied"
+    },
+    {
+      "path": "MacLock/MorphGlyph.qml",
+      "sha256": "e77b8eca1525ef4887c77a5bb29ba18d306cf46d2492d49555147189eec8cde0",
+      "bytes": 1984,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/MorphText.qml",
+      "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096",
+      "bytes": 7158,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/README.md",
+      "sha256": "ba763147d98f4e73e6ff5b5f86ff5e85fc80d0aed8ea1f4566bee387d4387734",
+      "bytes": 2342,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/__pycache__/spotify-canvas.cpython-314.pyc",
+      "sha256": "9e18bc2fe6bc44d23cb7576e826a28827b46b3874e5b76ef871a9f2cb528605c",
+      "bytes": 6065,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/build-shaders.sh",
+      "sha256": "c8a11ec8889026d7e9f94e29b6174a6e923f857e89dd814ca35816d17e024378",
+      "bytes": 307,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/burn.frag",
+      "sha256": "cb398e32c09db79e52e1bd7c08a140762f5b17f5f8b859b79272de0dbab08fe2",
+      "bytes": 2146,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/burn.frag.qsb",
+      "sha256": "f7057c1e8af670f60070a7b2635d06c84276cf69c13c7d7f9470949833b20a69",
+      "bytes": 4206,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/contourglow.frag",
+      "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579",
+      "bytes": 1757,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/contourglow.frag.qsb",
+      "sha256": "5fd314b9c433fd7890e810129d9d07cd0b9146bb7464cc26122393a44f06f5f8",
+      "bytes": 2847,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/enable-sleep-lock.sh",
+      "sha256": "521d4dbc568acc3704141409c897bcb7615fd39e936e27c5cba48770157f93c5",
+      "bytes": 2902,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/fade.frag",
+      "sha256": "c613824a8e60f06b7e1361b8e4ddf56b05cd2e8bf6ec8469f3a9481e46e97ed5",
+      "bytes": 746,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/fade.frag.qsb",
+      "sha256": "4750978bad3058392990b3caff9498b54e03d8d72a7ebeb3c476e6294890601a",
+      "bytes": 1513,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/fonts/OpenRunde-Regular.otf",
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc",
+      "bytes": 312956,
+      "status": "direct byte-identical copy, SIL OFL 1.1 (not MIT)"
+    },
+    {
+      "path": "MacLock/fonts/OpenRunde-Semibold.otf",
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c",
+      "bytes": 315896,
+      "status": "direct byte-identical copy, SIL OFL 1.1 (not MIT)"
+    },
+    {
+      "path": "MacLock/genius-lyrics.py",
+      "sha256": "ea5cd6d986920e52b06f579bdceff9f0f26837724e9910411f6dcf8451170501",
+      "bytes": 5351,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/glasstext.frag",
+      "sha256": "2f4feef2797fefaef9eae8cf6822ceb060257d6f8f13a26b55a76e0e26fa9dd8",
+      "bytes": 4782,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/glasstext.frag.qsb",
+      "sha256": "e58211227bf1a395a687169b6cdb8f05ae54332de891150a5614c1e3dbdf660e",
+      "bytes": 6204,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/hyprland.lua",
+      "sha256": "730c699c26738fa41adc89ddca5d09015056d95d7303615f86ed63bf6b72b3fd",
+      "bytes": 305,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/liquidglass.frag",
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+      "bytes": 8333,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/liquidglass.frag.qsb",
+      "sha256": "d0b03039be856592b1bcbc54f1ff694e2dbb1ea91187e5aadcb4a67f401f6155",
+      "bytes": 11450,
+      "status": "not reused: compiled/runtime-specific artifact"
+    },
+    {
+      "path": "MacLock/lock-via-ipc.sh",
+      "sha256": "8cd8f4c9fcb113a618776135d801d17f0b6ca57736ac4b0763104de34ae3d6ab",
+      "bytes": 1445,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/ripple.frag",
+      "sha256": "cd0121c3c770a3494538270d1ad485eabfc3d8c5dbc4a98c08c145ccbf912fe6",
+      "bytes": 1559,
+      "status": "analysed; not copied for L1A"
+    },
+    {
+      "path": "MacLock/shell.qml",
+      "sha256": "9483a3f0aae4ed553ecd7a78c5926a967a364cc33f163e4225452e102eee1f13",
+      "bytes": 13946,
+      "status": "selected settled-layout/clock/avatar/fallback logic ported; remaining effects/auth/runtime not copied"
+    },
+    {
+      "path": "MacLock/spotify-canvas.py",
+      "sha256": "7c9ba761ddf634187e76ab177239a313236607b1bb3b90c0a8af6cd3528e80d8",
+      "bytes": 6225,
+      "status": "analysed; not copied for L1A"
+    }
+  ]
+}

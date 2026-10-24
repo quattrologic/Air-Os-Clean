@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – L1A MacLock-Grundansicht / bestehende Air-OS-Anmeldung
+
+24.Oktober2026. Verifizierte Air-OS-Basis/Remote-HEAD **8834f7f965e1f09581a826a66c2e602e31810f6c**, eigener Branch **feat/air-maclock-foundation-l1a-20261024**. Original analysiert/fixiert: 0-ss/MacShell **1bdb51870b621100fd2709f66c8f8e00ab17b9c4**. Originalformeln für u=max(.6,H/1200), Uhr y7.5%/176u/Datum25u/−14u, Login unten78u, Avatar70u/Name15u/Passwort210→236u×36u portiert; zwei originale Open-Runde-OTFs bytegleich kopiert. MIT Copyright2026 Rickky und separate SIL OFL1.1 inkl.Copyright Laurids Kern/Inter vollständig gebündelt; Komponentenmatrix und Originaldatei-SHA-Inventar dokumentieren tatsächliche Übernahmen. Eigenes bestehendes Air-OS-Clouds-SVG, keine fremden Wallpaper/Logos/Lyrics. Paketmanifest nur um erforderliche Laufzeit-/Lizenzressourcen ergänzt, keine Installeroption/-Workflow-/Dependencyänderung.
+
+Start-/Abmeldeanmeldung jetzt MacLock-Grundlayout, echtes natives Passwortfeld, Accountwechsel/Kontoanlage und bisherige authentifizierende Bridge erhalten. Keine OS-Passwörter/PAM/Wayland/Quickshell-Runtime oder Fake-Entsperrung. Neue Busy-/Retry-/stale-/Secret-/Clock-Lifecycle-Schutzregeln; bei390px dokumentierte native Feldmindestgrößen. Keine private Pref vor Anmeldung gelesen/überschrieben; Lockuhr MacLock24h-Default, gespeicherte12h/Classic/Pins nach Login erhalten. L1B-Glass/Blur/Animationen und L1C-Player/Lyrics ausdrücklich noch NICHT implementiert.
+
+**258/258 Tests bestanden**,0 Fehler/Skips (10 neue L1A-Regressionen). Echte Linux/Electron32.3.3/Chromium128-/Sandbox-/Xvfb-GUI1920×1080,1650×930,390×600 mit synthetischen Profilen: Originalformel-Anker/Schriftgrößen, echte Kontoanlage/Fehlversuch/Retry/Login, Passwortmaskierung/Tab/Escape/Fokus, Notes/Home/Startmenü/Island/Classic, Profile/Persistenz einschließlich unbekannter Pinreferenz/12h und Reduced Motion/Forced Colors geprüft.17 echte PNGs und JSON; keine Remote-Assetrequests/Rendererfehler. Syntax/Catalina-Konfigurationscheck/Diff geprüft. main/preload/Desktop-/Dock-/Island-/Home-/Notes-/M1/M2-Quellen unverändert.
+
+[Bericht, Lizenznachweise, Messwerte, echte Bilder und detaillierter L1B–L1E-Plan](AIR_MACLOCK_L1A.md). **Originalvergleich BLOCKIERT:** kein lauffähiges Qt/Quickshell/Hyprland; Original-README-Bild HTTP403. Keine Original-/Pixel-/native Windows/macOS-Abnahme behauptet. PR-/Actions-API Forbidden, kein CI-Erfolg behauptet. CB-03/Plattform-/Releaseblocker offen. main/PRs/Installerbranches unverändert.
+
+Nächste drei getrennte Einheiten: **L1B.1 Shader-/Materialport**, **L1B.2 Entry/Fokus**, **L1B.3 unterbrechbarer Morph**. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – gerade Dock-/Island-Randkante mit konkaven Seiten
 
 24. Oktober2026. Verifizierte Basis/Remote-HEAD **d40f2c40b1bf8eb5d6ae923b204b938cd34708b0**, eigener Branch **fix/air-modern-concave-edge-20261024**. Die abgelehnte untere Ellipse ist ausdrücklich ersetzt: Dock unten0, gerade Basis, oben22px-Radien; dekorative12px-Inversecken verbinden beide Seiten mit dem unteren Rand. Island oben0 gespiegelt, untere16px-Ecken. Dunkleres Anthrazit-Rauchglas70%/80%, Blur erhalten. Layoutboxen/Buttons/Originalicons/weiße Birne/Trennlinie/M1/M2/HTML/JS/Home/Notes/Profile/Classic unverändert. Pseudoelemente ohne Klickfang, kein Scrollen.

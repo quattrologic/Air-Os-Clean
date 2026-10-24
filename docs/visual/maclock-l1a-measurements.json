@@ -1,0 +1,431 @@
+{
+  "platform": "Linux Debian 13 x64 / Electron 32.3.3",
+  "dpr": 1,
+  "originalRuntime": "BLOCKED: no Quickshell/Qt6/Hyprland; upstream README attachment HTTP403",
+  "rows": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "expected": {
+        "u": 0.9,
+        "clockTop": 81,
+        "clockPx": 158.4,
+        "datePx": 22.5,
+        "clockLetterSpacing": -1.35,
+        "clockGap": -12.6,
+        "loginBottom": 70.2,
+        "avatar": 63,
+        "avatarScale": 0.94,
+        "namePx": 13.5,
+        "spacing": 9,
+        "passwordWidth": 189,
+        "passwordHeight": 32.4,
+        "passwordPx": 12.6,
+        "hintPx": 10.8
+      },
+      "clock": {
+        "x": 0,
+        "y": 81,
+        "width": 1920,
+        "height": 205.40625,
+        "top": 81,
+        "right": 1920,
+        "bottom": 286.40625,
+        "left": 0
+      },
+      "digits": {
+        "x": 747.09375,
+        "y": 95.40625,
+        "width": 425.8125,
+        "height": 191,
+        "top": 95.40625,
+        "right": 1172.90625,
+        "bottom": 286.40625,
+        "left": 747.09375
+      },
+      "date": {
+        "x": 844.828125,
+        "y": 81,
+        "width": 230.328125,
+        "height": 27,
+        "top": 81,
+        "right": 1075.15625,
+        "bottom": 108,
+        "left": 844.828125
+      },
+      "profile": {
+        "x": 905.28125,
+        "y": 858.421875,
+        "width": 109.4375,
+        "height": 88,
+        "top": 858.421875,
+        "right": 1014.71875,
+        "bottom": 946.421875,
+        "left": 905.28125
+      },
+      "avatar": {
+        "x": 930.3900146484375,
+        "y": 860.3118896484375,
+        "width": 59.219970703125,
+        "height": 59.219970703125,
+        "top": 860.3118896484375,
+        "right": 989.6099853515625,
+        "bottom": 919.5318603515625,
+        "left": 930.3900146484375
+      },
+      "stage": {
+        "x": 0,
+        "y": 858.421875,
+        "width": 1920,
+        "height": 151.390625,
+        "top": 858.421875,
+        "right": 1920,
+        "bottom": 1009.8125,
+        "left": 0
+      },
+      "password": {
+        "x": 865.5,
+        "y": 955.421875,
+        "width": 189,
+        "height": 32.390625,
+        "top": 955.421875,
+        "right": 1054.5,
+        "bottom": 987.8125,
+        "left": 865.5
+      },
+      "dateFont": "22.5px",
+      "clockFont": "158.4px",
+      "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "fontReady": true,
+      "wallpaper": "url(\"file:///workspace/Air-Os-Clean/maclock-wallpaper.svg\")",
+      "filter": "none",
+      "time": "18:49",
+      "expectedTime": "18:49",
+      "scroll": false,
+      "focused": {
+        "x": 853.796875,
+        "y": 955.421875,
+        "width": 212.390625,
+        "height": 32.390625
+      },
+      "desktop": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        },
+        "home": {
+          "x": 200,
+          "y": 103,
+          "width": 1522,
+          "height": 849,
+          "top": 103,
+          "right": 1722,
+          "bottom": 952,
+          "left": 200
+        }
+      }
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "expected": {
+        "u": 0.775,
+        "clockTop": 69.75,
+        "clockPx": 136.4,
+        "datePx": 19.375,
+        "clockLetterSpacing": -1.1625,
+        "clockGap": -10.85,
+        "loginBottom": 60.45,
+        "avatar": 54.25,
+        "avatarScale": 0.94,
+        "namePx": 11.625,
+        "spacing": 7.75,
+        "passwordWidth": 162.75,
+        "passwordHeight": 27.900000000000002,
+        "passwordPx": 10.85,
+        "hintPx": 9.3
+      },
+      "clock": {
+        "x": 0,
+        "y": 69.75,
+        "width": 1650,
+        "height": 178.15625,
+        "top": 69.75,
+        "right": 1650,
+        "bottom": 247.90625,
+        "left": 0
+      },
+      "digits": {
+        "x": 641.671875,
+        "y": 82.90625,
+        "width": 366.65625,
+        "height": 165,
+        "top": 82.90625,
+        "right": 1008.328125,
+        "bottom": 247.90625,
+        "left": 641.671875
+      },
+      "date": {
+        "x": 725.90625,
+        "y": 69.75,
+        "width": 198.1875,
+        "height": 24,
+        "top": 69.75,
+        "right": 924.09375,
+        "bottom": 93.75,
+        "left": 725.90625
+      },
+      "profile": {
+        "x": 777.9375,
+        "y": 739.171875,
+        "width": 94.109375,
+        "height": 76,
+        "top": 739.171875,
+        "right": 872.046875,
+        "bottom": 815.171875,
+        "left": 777.9375
+      },
+      "avatar": {
+        "x": 799.4868774414062,
+        "y": 740.7993774414062,
+        "width": 50.9949951171875,
+        "height": 50.9949951171875,
+        "top": 740.7993774414062,
+        "right": 850.4818725585938,
+        "bottom": 791.7943725585938,
+        "left": 799.4868774414062
+      },
+      "stage": {
+        "x": 0,
+        "y": 739.171875,
+        "width": 1650,
+        "height": 130.390625,
+        "top": 739.171875,
+        "right": 1650,
+        "bottom": 869.5625,
+        "left": 0
+      },
+      "password": {
+        "x": 743.625,
+        "y": 822.921875,
+        "width": 162.75,
+        "height": 27.890625,
+        "top": 822.921875,
+        "right": 906.375,
+        "bottom": 850.8125,
+        "left": 743.625
+      },
+      "dateFont": "19.375px",
+      "clockFont": "136.4px",
+      "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "fontReady": true,
+      "wallpaper": "url(\"file:///workspace/Air-Os-Clean/maclock-wallpaper.svg\")",
+      "filter": "none",
+      "time": "18:49",
+      "expectedTime": "18:49",
+      "scroll": false,
+      "focused": {
+        "x": 733.546875,
+        "y": 822.921875,
+        "width": 182.890625,
+        "height": 27.890625
+      },
+      "desktop": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        },
+        "home": {
+          "x": 171.875,
+          "y": 93,
+          "width": 1307.96875,
+          "height": 731.078125,
+          "top": 93,
+          "right": 1479.84375,
+          "bottom": 824.078125,
+          "left": 171.875
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "expected": {
+        "u": 0.6,
+        "clockTop": 45,
+        "clockPx": 105.6,
+        "datePx": 15,
+        "clockLetterSpacing": -0.8999999999999999,
+        "clockGap": -8.4,
+        "loginBottom": 46.8,
+        "avatar": 42,
+        "avatarScale": 0.94,
+        "namePx": 9,
+        "spacing": 6,
+        "passwordWidth": 126,
+        "passwordHeight": 21.599999999999998,
+        "passwordPx": 8.4,
+        "hintPx": 7.199999999999999
+      },
+      "clock": {
+        "x": 0,
+        "y": 45,
+        "width": 390,
+        "height": 137.609375,
+        "top": 45,
+        "right": 390,
+        "bottom": 182.609375,
+        "left": 0
+      },
+      "digits": {
+        "x": 53.046875,
+        "y": 55.609375,
+        "width": 283.90625,
+        "height": 127,
+        "top": 55.609375,
+        "right": 336.953125,
+        "bottom": 182.609375,
+        "left": 53.046875
+      },
+      "date": {
+        "x": 118.21875,
+        "y": 45,
+        "width": 153.5625,
+        "height": 19,
+        "top": 45,
+        "right": 271.78125,
+        "bottom": 64,
+        "left": 118.21875
+      },
+      "profile": {
+        "x": 146.359375,
+        "y": 428.203125,
+        "width": 97.28125,
+        "height": 63,
+        "top": 428.203125,
+        "right": 243.640625,
+        "bottom": 491.203125,
+        "left": 146.359375
+      },
+      "avatar": {
+        "x": 175.25999450683594,
+        "y": 429.463134765625,
+        "width": 39.47999572753906,
+        "height": 39.47998046875,
+        "top": 429.463134765625,
+        "right": 214.739990234375,
+        "bottom": 468.943115234375,
+        "left": 175.25999450683594
+      },
+      "stage": {
+        "x": 0,
+        "y": 428.203125,
+        "width": 390,
+        "height": 125,
+        "top": 428.203125,
+        "right": 390,
+        "bottom": 553.203125,
+        "left": 0
+      },
+      "password": {
+        "x": 90,
+        "y": 497.203125,
+        "width": 210,
+        "height": 36,
+        "top": 497.203125,
+        "right": 300,
+        "bottom": 533.203125,
+        "left": 90
+      },
+      "dateFont": "15px",
+      "clockFont": "105.6px",
+      "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+      "fontReady": true,
+      "wallpaper": "url(\"file:///workspace/Air-Os-Clean/maclock-wallpaper.svg\")",
+      "filter": "none",
+      "time": "18:49",
+      "expectedTime": "18:49",
+      "scroll": false,
+      "focused": {
+        "x": 90,
+        "y": 497.203125,
+        "width": 210,
+        "height": 36
+      },
+      "desktop": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        },
+        "home": {
+          "x": 12,
+          "y": 91,
+          "width": 366,
+          "height": 430,
+          "top": 91,
+          "right": 378,
+          "bottom": 521,
+          "left": 12
+        }
+      }
+    }
+  ],
+  "remoteRequests": [],
+  "rendererErrors": [],
+  "profileSeparation": true,
+  "preservedClassicPinsClock": true
+}

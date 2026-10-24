@@ -4,7 +4,7 @@ html,body{width:100%;height:100%;min-height:420px;margin:0;overflow:hidden}
 body{background:#1c3044;user-select:none}
 button,input{font:inherit}
 button{-webkit-tap-highlight-color:transparent}
-.login-wallpaper{position:fixed;inset:-25px;z-index:0;background-color:#34495c;background-image:url("https://images.unsplash.com/photo-1640373200653-069241627a30?auto=format&fit=crop&fm=jpg&q=85&w=2560"),url("wallpaper.jpg");background-position:center center;background-size:cover;background-repeat:no-repeat;filter:blur(15px) saturate(.88);transform:scale(1.055)}
+.login-wallpaper{position:fixed;inset:0;z-index:0;background:#0b0b10 url("maclock-wallpaper.svg") center/cover no-repeat}
 .login-vignette{position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,15,28,.1) 0%,rgba(11,20,35,.15) 43%,rgba(8,18,31,.41) 100%),linear-gradient(90deg,rgba(10,22,38,.1),transparent 50%,rgba(11,20,34,.1));}
 .login-status{position:absolute;top:0;right:0;z-index:2;height:27px;display:flex;align-items:center;gap:7px;padding:0 14px;color:#fff;font-size:10px;font-weight:550;text-shadow:0 1px 4px #0008;letter-spacing:.05px}
 .status-battery{display:flex;align-items:center;gap:4px}
@@ -93,3 +93,69 @@ button{-webkit-tap-highlight-color:transparent}
  .create-fields{gap:4px}
  .create-fields input{height:27px}
 }
+/* L1A port: MacLock/LockScreen.qml (1bdb518), Copyright (c) 2026 Rickky, MIT.
+   Exact height unit, settled positions, type sizes, avatar and password dimensions.
+   Glass.qml fallback only; shader/blur/morph/entry are explicitly reserved for L1B.
+   Open Runde: Copyright 2023 Laurids Kern; SIL OFL 1.1, notices in third_party/maclock. */
+@font-face{font-family:"Open Runde";font-style:normal;font-weight:400;src:url("third_party/maclock/fonts/OpenRunde-Regular.otf") format("opentype");font-display:swap}
+@font-face{font-family:"Open Runde";font-style:normal;font-weight:600;src:url("third_party/maclock/fonts/OpenRunde-Semibold.otf") format("opentype");font-display:swap}
+.maclock-login{--maclock-u:.9;font-family:"Open Runde","Segoe UI",Arial,sans-serif;background:#0b0b10}
+.maclock-login .login-wallpaper{filter:none;transform:none}
+.maclock-login .login-vignette{background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,transparent 35%,transparent 72%,rgba(0,0,0,.30) 100%)}
+.maclock-clock{position:absolute;z-index:1;top:7.5%;left:0;width:100%;text-align:center;pointer-events:none}
+#maclock-date{font-size:calc(25px * var(--maclock-u));font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 1px 3px #0004;line-height:normal}
+.maclock-clock #login-clock{display:block;min-width:0;margin-top:calc(-14px * var(--maclock-u));font-size:calc(176px * var(--maclock-u));font-weight:680;letter-spacing:calc(-1.5px * var(--maclock-u));line-height:normal;color:rgba(255,255,255,.85);text-align:center;text-shadow:0 calc(8px * var(--maclock-u)) calc(64px * var(--maclock-u)) rgba(0,0,0,.22)}
+.maclock-login .login-stage{top:auto;bottom:calc(78px * var(--maclock-u));left:0;width:100%;transform:none;gap:0;padding:0 16px}
+.maclock-login .login-profile{gap:calc(10px * var(--maclock-u))}
+.maclock-login .profile-picture{display:grid;place-items:center;flex-shrink:0;width:calc(70px * var(--maclock-u));height:calc(70px * var(--maclock-u));border:1px solid #ffffff38;background:#ffffff29;box-shadow:none;transform:scale(.94);font-size:calc(30px * var(--maclock-u));font-weight:600}
+.maclock-login.is-engaged .profile-picture{transform:scale(1)}
+.maclock-login .login-profile-name{margin:0;font-size:calc(15px * var(--maclock-u));font-weight:600;letter-spacing:0;line-height:normal;text-shadow:0 1px 3px #0005;max-width:calc(100vw - 32px);overflow-wrap:anywhere}
+.maclock-login .login-profile-subtitle{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.maclock-login .login-form{display:flex;align-items:center;flex-direction:column;gap:calc(10px * var(--maclock-u));margin-top:calc(10px * var(--maclock-u))}
+.maclock-login .saved-accounts{margin:0;max-width:calc(100vw - 32px)}
+.maclock-login .saved-accounts[hidden]{display:none}
+.maclock-login .password-row{width:calc(210px * var(--maclock-u));height:calc(36px * var(--maclock-u));margin:0;border:1px solid #ffffff2e;border-radius:999px;background:rgba(31,31,36,.45);box-shadow:none;backdrop-filter:none}
+.maclock-login:is(.is-engaged,.has-password) .password-row{width:calc(236px * var(--maclock-u))}
+.maclock-login .password-row input{padding:0 calc(16px * var(--maclock-u));font-size:calc(14px * var(--maclock-u));text-shadow:none;letter-spacing:0}
+.maclock-login .password-row input::placeholder{color:rgba(255,255,255,.62);text-shadow:none}
+.maclock-login .password-submit{flex:0 0 calc(24px * var(--maclock-u));width:calc(24px * var(--maclock-u));height:calc(24px * var(--maclock-u));margin-right:calc(6px * var(--maclock-u));padding:0;border-radius:50%;background:#ffffff42;color:#fff}
+.maclock-login:not(.has-password):not(.is-auth-busy) .password-submit{visibility:hidden}
+.maclock-login .password-submit svg{width:72%;height:72%}
+.maclock-login .password-submit:hover{background:#ffffff6b}
+.maclock-login .password-row:focus-within{outline:1.5px solid #ffffffbd;outline-offset:2px}
+.maclock-login #login-hint{margin:0;color:#ffffff8c;font-size:calc(12px * var(--maclock-u));line-height:normal;visibility:hidden}
+.maclock-login.is-engaged #login-hint{visibility:visible}
+.maclock-login .auth-error{margin:0;font-size:12px}
+.maclock-login #login-caps{order:1;font:14px system-ui;padding-right:4px}
+.maclock-login #login-caps[hidden]{display:none}
+.maclock-login .password-submit{order:2}
+.maclock-login .login-create-link{position:fixed;z-index:2;left:22px;bottom:18px;margin:0;font-size:11px}
+.maclock-scope{position:fixed;z-index:1;right:22px;bottom:22px;margin:0;color:#ffffffb8;font-size:10px;text-shadow:0 1px 3px #0008}
+.maclock-login .power-controls{top:calc(14px * var(--maclock-u));right:calc(22px * var(--maclock-u));left:auto;bottom:auto;transform:none;gap:calc(12px * var(--maclock-u))}
+.maclock-login .power-button{min-width:24px;padding:0}
+.maclock-login .power-button>span:last-child{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.maclock-login .power-icon{width:24px;height:24px;background:#0002;border-color:#ffffff66}
+.maclock-login button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:5px}
+.maclock-login .password-submit:focus-visible{border-radius:50%;outline-offset:1px}
+.maclock-login.is-creating .maclock-clock,.maclock-login.is-creating .login-create-link{display:none}
+.maclock-login.is-creating .login-stage{top:50%;bottom:auto;transform:translateY(-50%)}
+.maclock-login .create-form{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.maclock-login .text-link[hidden]{display:none}
+@media(max-width:600px){
+ /* Accessibility adaptation: retain original clock/avatar/anchors; keep native form text legible. */
+ .maclock-login .password-row{min-width:210px;min-height:36px}
+ .maclock-login .password-row input{font-size:14px}
+ .maclock-login .password-submit{flex-basis:24px;width:24px;height:24px}
+ .maclock-login .login-profile-name{font-size:12px}
+ .maclock-login #login-hint{font-size:11px}
+ .maclock-scope{bottom:5px;left:0;right:0;text-align:center;font-size:9px}
+ .maclock-login .login-create-link{bottom:22px;left:16px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.maclock-login *{animation:none!important;transition:none!important}}
+@media(forced-colors:active){
+ .maclock-login .password-row,.maclock-login .profile-picture{background:Canvas;color:CanvasText;border-color:CanvasText}
+ .maclock-login .password-row input,.maclock-login .password-row input::placeholder{color:CanvasText}
+ .maclock-login button:focus-visible,.maclock-login .password-row:focus-within{outline-color:Highlight}
+}
+
+.maclock-login .saved-accounts{max-height:96px;overflow:auto}

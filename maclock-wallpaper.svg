@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+ <linearGradient id="sky" x2="0.15" y2="1"><stop stop-color="#124f86"/><stop offset=".6" stop-color="#3d82b2"/><stop offset="1" stop-color="#9bbcc7"/></linearGradient>
+ <linearGradient id="cloud" x2=".2" y2="1"><stop stop-color="#fff5df"/><stop offset=".55" stop-color="#e0dbcc"/><stop offset="1" stop-color="#a9b6bb"/></linearGradient>
+ <filter id="soft" x="-30%" y="-40%" width="160%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<g filter="url(#soft)" fill="url(#cloud)">
+ <path opacity=".73" d="M860-100c-95 110-16 177 90 192 77 11 133 65 214 60 99-7 75-95 165-104 126-12 200 53 278 20L1610-100Z"/>
+ <ellipse cx="1890" cy="695" rx="220" ry="230"/>
+ <ellipse cx="1690" cy="940" rx="390" ry="270"/>
+ <ellipse cx="1375" cy="1040" rx="350" ry="170"/>
+ <ellipse cx="1010" cy="1095" rx="330" ry="175"/>
+ <ellipse cx="355" cy="1140" rx="580" ry="265"/>
+ <ellipse cx="-95" cy="860" rx="220" ry="270"/>
+</g>
+<g filter="url(#soft)" fill="#fff3dd" opacity=".52"><ellipse cx="1910" cy="560" rx="120" ry="110"/><ellipse cx="1620" cy="850" rx="150" ry="110"/><ellipse cx="220" cy="1070" rx="270" ry="90"/></g>
+</svg>

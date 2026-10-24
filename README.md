@@ -170,3 +170,13 @@ Air-OS verwendet für Catalina **Electron 32.3.3** (Electron 33+ unterstützt ma
 ## Air Erinnerungen (nur Entwicklungszweig PR #11)
 
 Die neue eigenständige **Air-Erinnerungen-App** enthält Aufgabenlisten, Fälligkeitsdaten, Prioritäten und Erledigt-Markierungen. Daten werden atomar und getrennt nach lokalem Air-OS-Profil gespeichert. Systembenachrichtigungen und Cloud-Sync sind noch nicht integriert; die grafische Oberfläche muss auf realer Hardware geprüft werden. Das Feature befindet sich aktuell nur im Entwicklungszweig.
+
+
+### MacLock-Anmeldeansicht und Drittanbieterhinweise
+
+Die appinterne Anmeldeoberfläche portiert ausgewählte MacLock-Layout-/Uhrbestandteile
+(Copyright2026 Rickky, MIT) und bündelt unveränderte Open-Runde-Schriften
+(Copyright2023 Laurids Kern / Inter, SIL OFL1.1).
+Vollständige Hinweise und Lizenztexte: [third_party/maclock/NOTICE.md](third_party/maclock/NOTICE.md).
+Die Ansicht ist keine native Betriebssystemsperre. Aktueller Umfang, Originalquellen,
+Abweichungen und spätere Phasen: [L1A-Bericht](docs/AIR_MACLOCK_L1A.md).

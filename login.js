@@ -12,23 +12,53 @@
   };
   let accounts = [];
   let selectedAccount = null;
+  let authBusy = false;
+  let disposed = false;
+  let accountsRequest = 0;
+  let clockTimer = null;
+  const listeners = new AbortController();
+  const listen = (target, type, handler) => target.addEventListener(type, handler, {signal:listeners.signal});
+  const input = $("#login-password");
+  function syncPassword() {
+    document.body.classList.toggle("has-password", input.value.length > 0);
+  }
+  function engage(value) {
+    document.body.classList.toggle("is-engaged", value);
+  }
+  function setBusy(value) {
+    authBusy = value;
+    document.body.classList.toggle("is-auth-busy", value);
+    loginForm.setAttribute("aria-busy", String(value));
+    createForm.setAttribute("aria-busy", String(value));
+    input.readOnly = value;
+    $("#login-submit").disabled = value || !selectedAccount;
+    $("#switch-create").disabled = value;
+    $("#switch-login").disabled = value;
+    accountsBox.querySelectorAll("button").forEach(button => button.disabled = value);
+  }
 
   function setMode(next) {
+    if (authBusy || disposed) return;
     const creating = next === "create";
+    input.value = ""; syncPassword(); engage(false);
     document.body.classList.toggle("is-creating", creating);
     loginForm.hidden = creating;
     createForm.hidden = !creating;
     setError(loginError, "");
     setError(createError, "");
     if (creating) $("#create-display-name").focus();
-    else $("#login-password").focus();
+    else document.body.focus();
   }
   function selectAccount(account, button) {
+    if (authBusy || disposed) return;
     selectedAccount = account;
     $("#login-username").value = account.username;
     $("#login-profile-name").textContent = account.displayName || account.username;
     $("#login-profile-subtitle").textContent = "Air-OS Benutzerkonto";
-    $("#login-password").value = "";
+    $("#login-password").value = ""; syncPassword();
+    $("#login-avatar").textContent = Array.from((account.displayName || account.username).trim())[0]?.toLocaleUpperCase() || "?";
+    $("#login-submit").disabled = false;
+    setError(loginError, "");
     accountsBox.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
     if (accountsBox.children.length > 1) accountsBox.hidden = false;
   }
@@ -43,28 +73,37 @@
       button.querySelector(".saved-account-avatar").textContent = (account.displayName || account.username).trim().charAt(0).toLocaleUpperCase("de-DE");
       button.querySelector("span:last-child").textContent = account.displayName || account.username;
       button.title = "Als " + account.username + " anmelden";
-      button.addEventListener("click", () => selectAccount(account, button));
+      button.addEventListener("click", () => { if (!authBusy) { selectAccount(account, button); input.focus(); } });
       accountsBox.appendChild(button);
     });
     if (accounts.length) selectAccount(accounts[0], accountsBox.querySelector("button"));
   }
   async function loadAccounts() {
+    const request = ++accountsRequest;
+    $("#retry-accounts").hidden = true;
+    $("#login-submit").disabled = true;
     try {
-      accounts = await window.airOS.accounts();
+      const result = await window.airOS.accounts();
+      if (disposed || request !== accountsRequest) return;
+      accounts = result;
       renderAccounts();
-      if (!accounts.length) setMode("create");
-      else setMode("login");
+      setMode(accounts.length ? "login" : "create");
     } catch {
-      setError(loginError, "Konten konnten nicht gelesen werden. Bitte starte Air-OS neu.");
+      if (disposed || request !== accountsRequest) return;
+      setError(loginError, "Konten konnten nicht gelesen werden. Bitte erneut versuchen.");
+      $("#retry-accounts").hidden = false;
     }
   }
+  listen($("#retry-accounts"), "click", loadAccounts);
 
   $("#switch-create").addEventListener("click", () => setMode("create"));
   $("#switch-login").addEventListener("click", () => setMode(accounts.length ? "login" : "create"));
 
   loginForm.addEventListener("submit", async event => {
     event.preventDefault();
+    if (authBusy || disposed || !selectedAccount || input.value.length === 0) return;
     setError(loginError, "");
+    setBusy(true);
     const button = $("#login-submit");
     button.disabled = true;
     try {
@@ -72,18 +111,19 @@
         username: $("#login-username").value.trim(),
         password: $("#login-password").value
       });
-      if (!result || !result.ok) setError(loginError, result && result.error || "Anmeldung fehlgeschlagen.");
+      if (!disposed && (!result || !result.ok)) setError(loginError, result && result.error || "Anmeldung fehlgeschlagen.");
     } catch {
-      setError(loginError, "Anmeldung fehlgeschlagen. Bitte versuche es erneut.");
+      if (!disposed) setError(loginError, "Anmeldung fehlgeschlagen. Bitte versuche es erneut.");
     } finally {
-      button.disabled = false;
-      $("#login-password").value = "";
-      $("#login-password").focus();
+      if (!disposed) {
+        setBusy(false); input.value = ""; syncPassword(); input.focus();
+      }
     }
   });
 
   createForm.addEventListener("submit", async event => {
     event.preventDefault();
+    if (authBusy || disposed) return;
     setError(createError, "");
     const password = $("#create-password").value;
     if (password !== $("#create-confirm").value) {
@@ -91,6 +131,7 @@
       $("#create-confirm").focus();
       return;
     }
+    setBusy(true);
     const button = $("#create-submit");
     button.disabled = true;
     button.querySelector("span").textContent = "Konto wird erstellt …";
@@ -100,23 +141,53 @@
         username: $("#create-username").value.trim(),
         password
       });
-      if (!result || !result.ok) setError(createError, result && result.error || "Das Konto konnte nicht erstellt werden.");
+      if (!disposed && (!result || !result.ok)) setError(createError, result && result.error || "Das Konto konnte nicht erstellt werden.");
     } catch {
-      setError(createError, "Konto konnte nicht erstellt werden. Bitte versuche es erneut.");
+      if (!disposed) setError(createError, "Konto konnte nicht erstellt werden. Bitte versuche es erneut.");
     } finally {
-      button.disabled = false;
-      button.querySelector("span").textContent = "Konto erstellen";
-      $("#create-password").value = "";
-      $("#create-confirm").value = "";
+      if (!disposed) {
+        setBusy(false); button.disabled = false;
+        button.querySelector("span").textContent = "Konto erstellen";
+        $("#create-password").value = ""; $("#create-confirm").value = "";
+      }
     }
   });
 
+  // Port of MacLock's local clock; no OS credentials, PAM or global keyboard hook.
   function updateClock() {
+    clearTimeout(clockTimer); clockTimer = null;
+    if (disposed || document.hidden) return;
     const now = new Date();
-    $("#login-clock").textContent = now.toLocaleTimeString("en-US", { hour:"2-digit", minute:"2-digit", hour12:true });
+    $("#login-clock").textContent = window.airMacLockLayout.time(now);
+    $("#login-clock").dateTime = now.toISOString();
+    $("#maclock-date").textContent = window.airMacLockLayout.date(now, document.documentElement.lang || undefined);
+    clockTimer = setTimeout(updateClock, 1000);
   }
-  updateClock();
-  setInterval(updateClock, 15000);
+  function resize() { document.body.style.setProperty("--maclock-u", window.airMacLockLayout.layout(window.innerHeight).u); }
+  listen(window, "resize", resize);
+  listen(document, "visibilitychange", updateClock);
+  listen(input, "input", syncPassword);
+  listen(input, "focus", () => engage(true));
+  listen(input, "blur", () => { if (!input.value && !authBusy) engage(false); });
+  for (const type of ["keydown", "keyup"]) listen(input, type, event => {
+    $("#login-caps").hidden = !event.getModifierState?.("CapsLock");
+  });
+  listen(document, "keydown", event => {
+    if (authBusy || document.body.classList.contains("is-creating") || !$("#sleep-overlay").hidden) return;
+    if (event.key === "Escape") {
+      input.value = ""; syncPassword(); engage(false); input.blur(); document.body.focus(); event.preventDefault();
+    } else if (event.ctrlKey && event.key.toLowerCase() === "u" && event.target === input) {
+      input.value = ""; syncPassword(); event.preventDefault();
+    } else if (event.target === document.body && selectedAccount && !event.ctrlKey && !event.metaKey && !event.altKey && !event.isComposing) {
+      if (event.key.length === 1) { input.focus(); input.value += event.key; syncPassword(); event.preventDefault(); }
+      else if (event.key === "Enter") { input.focus(); event.preventDefault(); }
+    }
+  });
+  listen(window, "pagehide", () => {
+    disposed = true; accountsRequest++; clearTimeout(clockTimer); listeners.abort();
+    input.value = ""; $("#create-password").value = ""; $("#create-confirm").value = "";
+  });
+  resize(); updateClock();
 
   const sleepOverlay = $("#sleep-overlay");
   const wake = () => { sleepOverlay.hidden = true; document.body.focus(); };
