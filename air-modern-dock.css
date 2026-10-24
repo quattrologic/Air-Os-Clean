@@ -58,15 +58,15 @@
 /* Attached lower edge; Classic desktop/dock choices retain their original layout. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
   bottom:0 !important;
-  border-radius:26px !important;
+  border-radius:22px 22px 50% 50% / 22px 22px 24px 24px !important;
   box-shadow:0 -4px 16px #0003 !important;
 }
 
 /* Soft glass revision: preserve the compact layout, original artwork and edge anchor. */
 html[data-desktop-theme="modern"] .dock[data-theme="modern"] {
-  background:rgba(55,69,77,.38) !important;
+  background:rgba(35,48,56,.56) !important;
   border-color:rgba(255,255,255,.32) !important;
-  box-shadow:0 -3px 12px #0002,inset 0 1px #ffffff30 !important;
+  box-shadow:0 1px 0 #0005,inset 0 -1px #ffffff1a,inset 0 1px #ffffff30 !important;
   backdrop-filter:blur(24px) saturate(1.3) !important;
   -webkit-backdrop-filter:blur(24px) saturate(1.3) !important;
 }
@@ -94,3 +94,6 @@ html[data-desktop-theme="modern"] .dock[data-theme="modern"] .dock-app[data-app=
   content:"";position:absolute;right:-3px;top:50%;transform:translateY(-50%);
   width:1px;height:28px;background:rgba(190,198,203,.65);pointer-events:none;
 }
+
+/* Keep running dots inside the pronounced lower bowl, below the original icons. */
+html[data-desktop-theme="modern"] .dock[data-theme="modern"] .dock-app.is-open::after {bottom:2px !important}

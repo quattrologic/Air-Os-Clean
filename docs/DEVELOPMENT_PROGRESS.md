@@ -1,3 +1,17 @@
+# Aktueller Checkpoint – sichtbarer Dock-Bogen und statische Musik-Demo
+
+24. Oktober 2026. Verifizierte Basis/Remote-HEAD **e6100b3038bed01e8eeb472acb550f2017ace7c1**, eigener Branch **theme/air-modern-dock-bow-demo-20261024**. Hauptkorrektur: durchgehende untere Ellipse mit je50%horizontalem Radius/24px-Tiefe statt kleinem26px-Eckenradius. Dock weiter358×68 unten0, Mitte bodenbündig; Schwebeschatten durch Kontaktkante ersetzt. Gemessene Hit-Kontur2px über Boden327→145px (≈55,7%schmaler). Laufende-App-Punkte gezielt in die gewölbte Fläche versetzt; Originalicons/Buttons/Trennlinie erhalten. Dunkleres weiterhin transparentes Dock56%/Pille76%, Modern-Pfeil entfernt.
+
+Statische Musik-Demokarte im vorhandenen Modern-Kontrollzentrum: Wolkenreise / Air-OS Demo, eigener kurzer Demo-Satz, ausdrücklich DEMO/keine Audiowiedergabe. Keine Audioquelle, Fake-Playback, geschützten Texte/Assets oder neue API/Timer. Classic keine Demo. Panel absichtlich bis bestehende420px-Maximalhöhe scrollbar; existierender Close-Header sticky, nach Demo-Scroll real anklickbar geprüft. M1-/M2-/App-/Profil-/Notes-/Home-Logik unangetastet.
+
+**247/247 Linux-Tests bestanden**,0 Fehler/Skips; zwei zusätzliche Ellipsen-/Demo-Regressionen. Echte getrennte Linux/Electron32.3.3-/Sandbox-/Xvfb-Vorher-/Nachherläufe bei1920×1080,1650×930,390×600: Außenmaße unverändert, Kontur signifikant stärker, kein Scrollen, SVGs erhalten, Suche/Menüs/Tastatur/Fokus, Kontrollzentrum/Schnellzugriff, tatsächliche M2-Minimize/Restore-Klicks, Notes-Save/Pinning/Reload/Reduce Glass/Forced Colors bestanden. Home und Classic gegen Baseline identisch; beide Helfer Exit0, keine Rendererfehler.32 echte Screenshots plus JSON. Syntax/Catalina/Diff/Dokumentlinks geprüft.
+
+[Bildvergleich einschließlich unterer Kante und Demo, Messwerte/Grenzen](AIR_DOCK_BOW_DEMO.md). Keine neue native Windows-/macOS-Abnahme; CB-03/Releaseblocker offen. Actions-/PR-API Forbidden, kein CI-Erfolg behauptet. Produktcode nur CSS und statisches HTML, keine Animationsbibliothek/zweite Verwaltung. main/PRs/Installer/andere Branches unverändert.
+
+Nächste drei getrennte Einheiten: **Benutzerabnahme des sichtbaren Bogens**, **native Plattformbelege**, **CB-03 prüfen**. Nach Commit/Push STOP; neuer SHA im Abschlussbericht.
+
+---
+
 # Aktueller Checkpoint – helleres Dock-/Pillenglas und Logo-Trennung
 
 24. Oktober 2026. Verifizierte CB-02-Basis/Remote-HEAD **c0b7a67015bfe3132fcc702ef8230e38e22d7c59**, eigener Branch **theme/air-modern-lighter-glass-20261024**. Nur Material/Radien in air-modern-dock.css und air-island.css: Dock helleres Grau mit38%Alpha,24px-Blur, weicheren26px-Ecken auch unten; obere bestehende Island-Pille mit68%Alpha und weicheren unteren Radien. Maße/Positionen unverändert. Dekorativer grauer1×28px-Divider im bestehenden Abstand nach der Birne, ohne Layout-/Hitbox-/Iconänderung; bei leeren Pins keine Linie. Glasreduktion/Forced Colors weiterhin deckend. Kein neuer Manager/Preference/Timer, keine Fremdassets.

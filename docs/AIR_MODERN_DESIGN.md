@@ -228,3 +228,7 @@ Genau eine weitere Ansicht mit vier echten Registry-App-Verweisen. Standard blei
 ## Aktuelle Benutzerkorrektur – helleres Dock-/Pillenglas
 
 24. Oktober2026: [Echter Vorher-/Nachhervergleich](AIR_MODERN_LIGHTER_GLASS.md). Die neue Vorgabe konkretisiert das bisherige84%-dunkle Glas: Dock rgba(55,69,77,.38), Radius26px, Blur24px; geschlossene bestehende Modern-Island rgba(24,34,40,.68), weichere Radien. Dünne graue Trennlinie nach der Birne im vorhandenen Abstand. Beide Komponenten bleiben randbündig und gleich groß, Classic und App-Oberflächen unverändert. Historische opake Farbwerte weiter oben sind keine neu bestätigten Zielwerte.
+
+## Verbindliche Folgekorrektur – durchgehender unterer Bogen und Demo
+
+24. Oktober2026: [Aktueller Vergleich](AIR_DOCK_BOW_DEMO.md). Neuer ausdrücklicher Benutzerauftrag ersetzt die26px-Ecken unten durch einen über die volle Breite laufenden50%-Ellipsenradius/24px-Vertikaltiefe. Weiter358×68px unten0. Dock56%Deckung, Pille76%, Modern-Pfeil verborgen. Kleine Musik-Demokarte im vorhandenen Panel mit eigenen Texten, deutlich als statisch/ohne Audio gekennzeichnet. Keine tatsächliche Musikwiedergabe daraus ableiten.
