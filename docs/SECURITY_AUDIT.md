@@ -1,3 +1,9 @@
+# R1-Update – getrennte Modern-Windows-Toolchain, 25.Oktober2026
+
+Die neue eingefrorene Windows-x64-Toolchain Electron44.9.3/electron-builder26.18.0 meldet im frisch ausgeführten npm-Audit **0 Befunde**; der getrennt neu aufgelöste Legacybaum weiterhin **2 High** (Electron32/extract-zip). Keine pauschale Releasefreigabe, keine Änderung der bestehenden Legacykonfiguration oder Security-Workflows. Neue CI auditiert denselben Lockbaum erneut. [R1-Bericht und Original-Audit-JSONs](AIR_OS_WINDOWS_X64_R1.md). Folgender bisheriger Bericht bleibt als historischer Nachweis erhalten.
+
+---
+
 # Air-OS – Dependency Audit und Release-Risiken
 
 Stand: 20. Oktober 2026. Quelle: GitHub Actions Security Check auf PR #11, zuletzt Run [39370066571](https://github.com/quattrologic/Air-Os-Clean/actions/runs/39370066571). Meldung: **10 Einträge, 2 High, 8 Moderate**. Das sind gemeldete betroffene Abhängigkeiten im npm-Abhängigkeitsbaum, keine gezählten Exploits.

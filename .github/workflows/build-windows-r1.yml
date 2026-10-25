@@ -1,0 +1,92 @@
+name: Air-OS Ultimate Windows x64 R1 test build
+
+on:
+  push:
+    branches: [build/air-ultimate-windows-x64-r1-20261025]
+    paths-ignore: ['docs/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: air-os-windows-r1-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows-x64:
+    runs-on: windows-2022
+    timeout-minutes: 40
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Require a native Windows x64 runner
+        run: node -e "if(process.platform!=='win32'||process.arch!=='x64')throw Error('Native Windows x64 required')"
+      - name: Install frozen modern toolchain without changing Catalina
+        run: npm ci --prefix build/windows-x64 --no-audit --no-fund
+      - name: Gate on actual production and development dependency audit
+        run: npm audit --prefix build/windows-x64 --audit-level=high
+      - name: Link isolated dependencies and download verified Electron runtime
+        run: |
+          node scripts/windows-test-build.cjs link
+          node build/windows-x64/node_modules/electron/install.js
+          npm run check:modern
+          npm run check:catalina
+          node scripts/windows-test-build.cjs validate
+      - name: Complete regression suite on native Windows
+        run: npm test
+      - name: Prepare exact source identity and modern runtime metadata
+        run: node scripts/windows-test-build.cjs prepare
+      - name: Build unsigned x64 NSIS installer from this commit only
+        run: node build/windows-x64/node_modules/electron-builder/cli.js --win nsis --x64 --publish never --config.electronVersion=44.9.3 --config.npmRebuild=false
+      - name: Verify actual ASAR bytes, MacLock assets, licenses, architecture and installer checksum
+        id: collect
+        run: node scripts/windows-test-build.cjs collect
+      - name: Install the actual NSIS test package on this Windows runner
+        id: install
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem dist/test-artifacts/windows-x64/*-Windows-x64.exe
+          if (@($installer).Count -ne 1) { throw 'One current installer required' }
+          $destination = Join-Path $env:RUNNER_TEMP 'air-os-r1-installed'
+          $result = Start-Process -FilePath $installer.FullName -ArgumentList '/S', "/D=$destination" -Wait -PassThru
+          if ($result.ExitCode -ne 0) { throw "Installer exited $($result.ExitCode)" }
+          $exe = Join-Path $destination 'Air-OS.exe'
+          if (!(Test-Path $exe)) { throw 'Installed application executable is missing' }
+          "AIR_R1_EXE=$exe" >> $env:GITHUB_ENV
+      - name: Actual installed Electron login, profiles, desktop, apps and fallback smoke
+        id: gui
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_OUTPUT: dist/r1-gui
+        run: node scripts/check-windows-package.cjs
+      - name: Record actual installation and GUI outcomes without granting release approval
+        if: always() && steps.collect.outcome == 'success'
+        shell: pwsh
+        run: |
+          $file = 'dist/test-artifacts/windows-x64/BUILD-INFO.json'
+          $info = Get-Content $file -Raw | ConvertFrom-Json
+          $info.evidence | Add-Member -NotePropertyName runnerInstallation -NotePropertyValue '${{ steps.install.outcome }}'
+          $info.evidence | Add-Member -NotePropertyName runnerGui -NotePropertyValue '${{ steps.gui.outcome }}'
+          $info | ConvertTo-Json -Depth 20 | Set-Content $file -Encoding utf8
+          "Windows runner installation: ${{ steps.install.outcome }}; GUI: ${{ steps.gui.outcome }}. Physical hardware: BLOCKED. Production release: NOT APPROVED." >> $env:GITHUB_STEP_SUMMARY
+      - name: Upload current technical test installer, not a public release
+        if: always() && steps.collect.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Ultimate-Windows-x64-R1-${{ github.sha }}-${{ steps.collect.outputs.sha256 }}-${{ steps.collect.outputs.bytes }}bytes-${{ github.run_attempt }}
+          path: dist/test-artifacts/windows-x64/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload actual GUI evidence and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-R1-GUI-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+          path: dist/r1-gui/*
+          if-no-files-found: warn
+          retention-days: 14

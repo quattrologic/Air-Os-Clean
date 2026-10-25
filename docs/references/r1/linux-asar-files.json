@@ -1,0 +1,357 @@
+[
+  {
+    "file": "README.md",
+    "bytes": 13062,
+    "sha256": "2fd0847423e9cc2d6bf7204c0ac5bf6f53b547eaa29478ec158828fbc8f2a1d1"
+  },
+  {
+    "file": "air-app-bootstrap.js",
+    "bytes": 419,
+    "sha256": "a1cadb03a9a343b19cdc6615058e8a79f4ba475fa5ba25375b7e59acde5134bb"
+  },
+  {
+    "file": "air-app-store.css",
+    "bytes": 1273,
+    "sha256": "2558ae6cdf1b2c0dd52d84cb0566973d4ea4eae4c92c847eb7102a54d5702f8b"
+  },
+  {
+    "file": "air-app-store.js",
+    "bytes": 3711,
+    "sha256": "42a509fc6c02c07563d8537c2c9438a01b82f5582d54d05f99ece6f2f8dee5ab"
+  },
+  {
+    "file": "air-arcade-games.css",
+    "bytes": 2338,
+    "sha256": "0ee9398c08f767899bccf688d302d6328e353e3423ba469af8c76d9fff5f2c4e"
+  },
+  {
+    "file": "air-arcade-games.js",
+    "bytes": 13101,
+    "sha256": "631e7aa164e9df23a3e679bc012e56d668256f3da533421f7439e2e35c5682d4"
+  },
+  {
+    "file": "air-extra-apps.css",
+    "bytes": 2622,
+    "sha256": "42670994b74e8ac84f19f77de8409cce8959d6fc5815f976c5f32085a95b15e0"
+  },
+  {
+    "file": "air-extra-apps.js",
+    "bytes": 8359,
+    "sha256": "0b15f8d92a6ee72d83792b25972523b64a509357317e0cc0cb024d3967faf6cd"
+  },
+  {
+    "file": "air-island.css",
+    "bytes": 15859,
+    "sha256": "022b0b782ab1f12966493b4cf1aff2504ecff26eaebebf304ae73424b54d6480"
+  },
+  {
+    "file": "air-island.js",
+    "bytes": 16765,
+    "sha256": "e343308d3efb73efed2d7398463b0a782e976616ecbcd962f49472c8216460fc"
+  },
+  {
+    "file": "air-launchpad.css",
+    "bytes": 7440,
+    "sha256": "f20731c49b04da347ffa0bcc686cd111bdc1070dd3956fee7d3e813b5d6486bd"
+  },
+  {
+    "file": "air-launchpad.js",
+    "bytes": 12856,
+    "sha256": "92b7ab0318a6640e6714f17bd606fa56b954e69a9fa67e501caf5b871e980c7e"
+  },
+  {
+    "file": "air-modern-dock.css",
+    "bytes": 6278,
+    "sha256": "a9843d8d78274bb0253035c8be77c6ace849430a3e0e7a6decd21605ab2096e1"
+  },
+  {
+    "file": "air-music.css",
+    "bytes": 3474,
+    "sha256": "06353785377381eff31f6fc1882d79f35891340703794615d67afa3ce2be78bf"
+  },
+  {
+    "file": "air-music.js",
+    "bytes": 8700,
+    "sha256": "832b9484b7c64dafed7781448feb7d763d4698ea6f4f49e0326816b968c04d84"
+  },
+  {
+    "file": "air-notes.js",
+    "bytes": 8131,
+    "sha256": "95d81170919303c4e83784af946e962a4e17e5adce7b25f47abf8adcd9318892"
+  },
+  {
+    "file": "air-os-enhancements.css",
+    "bytes": 19598,
+    "sha256": "0df008a48d0052658e1ec4aa04eea495c9bf089970e007fa85f6c38a7168819a"
+  },
+  {
+    "file": "air-os-enhancements.js",
+    "bytes": 42984,
+    "sha256": "de4cd6756b73808e1d275d50eef213abb5c788e2c74d9c105bacaf0db59bcd6c"
+  },
+  {
+    "file": "air-reminders.css",
+    "bytes": 2755,
+    "sha256": "d50847b1928853aa84269300da5048125cfbe21119d0cf04d329f097deda3137"
+  },
+  {
+    "file": "air-reminders.js",
+    "bytes": 11968,
+    "sha256": "c032bc0b4d0e1f872e4d8eb10a23919303ce94d8cf055ef9c0c87a9062718068"
+  },
+  {
+    "file": "air-spotlight.css",
+    "bytes": 1455,
+    "sha256": "4e11a4ebf1bd4de2195a4eddfc2b578024635d6db0c9b93e26382db5c52f463a"
+  },
+  {
+    "file": "air-spotlight.js",
+    "bytes": 5367,
+    "sha256": "8768015a249eeb3b6d8c9665e2637565aaee207db2b7f21924aa2d4c4f247f16"
+  },
+  {
+    "file": "aircard-lite.js",
+    "bytes": 13908,
+    "sha256": "1a265357cbe42e89baf59d66aee0c963288d39177e7f0fdc4fe1e7f4d6f7861f"
+  },
+  {
+    "file": "airwrite.css",
+    "bytes": 5885,
+    "sha256": "5160e7794af28be3861adc1a086288ff5e9a192558e980cff1490716f27e3fcc"
+  },
+  {
+    "file": "airwrite.js",
+    "bytes": 11256,
+    "sha256": "0fb0eb4129132e006ed5b0e19d5e77d725dd4a4dfeb25369585b6e48ff830e47"
+  },
+  {
+    "file": "app.js",
+    "bytes": 90322,
+    "sha256": "acb5755d74c9c1489161c5f493bf758b9f856a0dcb6724f064e08fd80938788c"
+  },
+  {
+    "file": "index.html",
+    "bytes": 17987,
+    "sha256": "11cf792e2fe38d7e586ae1d3e4add8d39925360053eacbd64f36ab1d92b67d0c"
+  },
+  {
+    "file": "login.css",
+    "bytes": 22558,
+    "sha256": "3c7ccd9dec096ee204dd77142076723ddc152ef88dbce481d78449da79a28203"
+  },
+  {
+    "file": "login.html",
+    "bytes": 6449,
+    "sha256": "e3bcf91f49f0e0282e46e64c67d623b96423e5bfadd3a53ab40b5d92bd4f44c0"
+  },
+  {
+    "file": "login.js",
+    "bytes": 10015,
+    "sha256": "9c4eeb18a769e17c73708e81cced8e89b8df9edfbb9cbec39fc50bbd69ed5ab4"
+  },
+  {
+    "file": "maclock-glass.js",
+    "bytes": 18704,
+    "sha256": "e5dee78989b7047c95b5d9665f2a83625e6cdaa371ff7b5abdb9a31684db1cf4"
+  },
+  {
+    "file": "maclock-layout.js",
+    "bytes": 1476,
+    "sha256": "41265c8701f4da7e0ef7ab6e8250662fd2cb11782595683994ac88f0173ea837"
+  },
+  {
+    "file": "maclock-morph.js",
+    "bytes": 16995,
+    "sha256": "83c279f840cc9f3735356d1e649bf5fa1f2da73d8538ef97bfbc32200b25da00"
+  },
+  {
+    "file": "maclock-motion.js",
+    "bytes": 7587,
+    "sha256": "8470b967410dcef634dbb20152daec8a120916178571268fe02368b73934b095"
+  },
+  {
+    "file": "maclock-shaders.js",
+    "bytes": 14098,
+    "sha256": "7ac2706e75b6acd774aa2fe49bbfbc5ec7ffc3b58a311d3d07688f8f5e05b595"
+  },
+  {
+    "file": "maclock-wallpaper.svg",
+    "bytes": 1280,
+    "sha256": "13d818b78850c55b72a100f8cbb4dbc16f8f5254c8b6db320759f03e960849b3"
+  },
+  {
+    "file": "main.cjs",
+    "bytes": 26648,
+    "sha256": "743f7b950c6d5773e98fd539d5c5c9b73c4b41a0f4aa3ffc77807376867684dc"
+  },
+  {
+    "file": "node_modules/amplitudejs/LICENSE",
+    "bytes": 1081,
+    "sha256": "7db9cdb985800a66e27705b3dce57143e68706519e1e72bbe07e2348e3701155"
+  },
+  {
+    "file": "node_modules/amplitudejs/dist/amplitude.min.js",
+    "bytes": 97356,
+    "sha256": "93dca7ce6633162642feb998d08f5560358ec0578e0dd244ce5b8434de692dc8"
+  },
+  {
+    "file": "node_modules/amplitudejs/package.json",
+    "bytes": 1090,
+    "sha256": "56477822e1e9596b6fc6e732fe72e321d298f7bdce11e31d9997ace5a22cc1fc"
+  },
+  {
+    "file": "package.json",
+    "bytes": 966,
+    "sha256": "33dd82cc3554655913e7ee6d41a68956c41edf0468f4ad535b44030d74323cd3"
+  },
+  {
+    "file": "preload.cjs",
+    "bytes": 3271,
+    "sha256": "006369f8fab7614e16c3fe7423273a24b1a6f9629c153c42a90c00860c7e4963"
+  },
+  {
+    "file": "src/core/app-lifecycle.js",
+    "bytes": 1706,
+    "sha256": "a96b99e2ab162b7856bf523214ada3f2cf77a23546473833feaf9c16d4e97d2a"
+  },
+  {
+    "file": "src/core/app-registry.js",
+    "bytes": 4596,
+    "sha256": "3a80ef5c1a476eb980b01a297800a69f0d20274e35355f38b3bd69b9140795cc"
+  },
+  {
+    "file": "src/core/search-service.js",
+    "bytes": 1728,
+    "sha256": "fb00412c33930cd47092ca88aed7d504e1b991a4585b917d3d9bf8626fd736d4"
+  },
+  {
+    "file": "src/main/airapp-manager.cjs",
+    "bytes": 9304,
+    "sha256": "e8d32c1831f256430bc60722f45ce7ac92b2360610b9449292c2adf26085e980"
+  },
+  {
+    "file": "src/main/airapp-package.cjs",
+    "bytes": 3579,
+    "sha256": "10315ac5e361688af1904d6af5e506f65d8d100b1b6fb9e0659d7321ce50d95c"
+  },
+  {
+    "file": "src/main/airapp-runtime.cjs",
+    "bytes": 6218,
+    "sha256": "f23e7725b11dec209806cb4926fd26b9bb123da7dd6520ec07c129149afa413e"
+  },
+  {
+    "file": "src/main/chatgpt-installation.cjs",
+    "bytes": 1335,
+    "sha256": "e7c941d8799649f5d396420ff99a0fc1db76f72f803891dae610e1511b112a7a"
+  },
+  {
+    "file": "src/main/file-ops.cjs",
+    "bytes": 4373,
+    "sha256": "0b29995efb0136824b71488bff97ee0fc51596d720052a56f469f00d84d3cadf"
+  },
+  {
+    "file": "src/main/file-search.cjs",
+    "bytes": 2768,
+    "sha256": "1651099518d4c784df8db1315df47f78064e75c3592fa5fe3fc8d5561c4d7601"
+  },
+  {
+    "file": "src/main/notes-store.cjs",
+    "bytes": 2486,
+    "sha256": "912e3fcfd37c0fb8d5f4d0a98560c0fd8c8634b28d069f4ac1a982735e2dbe1c"
+  },
+  {
+    "file": "src/main/preferences.cjs",
+    "bytes": 5033,
+    "sha256": "e190fb1aa2f5ea0eb70b12571746cdbe5398231e3cae1e4c898818e0cd0487f7"
+  },
+  {
+    "file": "src/main/reminders-store.cjs",
+    "bytes": 3154,
+    "sha256": "e550a7bdceda341a98341b61caeb751103810882bef00b113b7643b4d7e01aad"
+  },
+  {
+    "file": "src/main/spotify-launcher.cjs",
+    "bytes": 1759,
+    "sha256": "7b564032a310136b8d764fc53a5aa06155b72e6723fbe24a77881106eb6204ab"
+  },
+  {
+    "file": "store/catalog/demo-timer.airapp",
+    "bytes": 3805,
+    "sha256": "0024f1223d976904069150af8ba29b5ad33df13a93a004728045ba662c752b0a"
+  },
+  {
+    "file": "store/keys/demo-publisher-public.txt",
+    "bytes": 113,
+    "sha256": "d0d467c8274a15c325354af411c3222743990583cf304047d4e40eddaa799925"
+  },
+  {
+    "file": "styles.css",
+    "bytes": 71811,
+    "sha256": "fefffc8d3fe8a929c36a1b397c4819523ec06eecd7e793d64958e55273e98acb"
+  },
+  {
+    "file": "third_party/maclock/LICENSE",
+    "bytes": 1063,
+    "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+  },
+  {
+    "file": "third_party/maclock/NOTICE.md",
+    "bytes": 4268,
+    "sha256": "e61824a7c16738df5c38885051a0eff244750218baf48d40bbfe263ff69a842b"
+  },
+  {
+    "file": "third_party/maclock/OpenRunde-LICENSE.txt",
+    "bytes": 4380,
+    "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+  },
+  {
+    "file": "third_party/maclock/SOURCE_MANIFEST.json",
+    "bytes": 8722,
+    "sha256": "1f5c82471e9b7f55ea6df8ac9ab11a3a9ac5e8e27a16d79084709882587472e3"
+  },
+  {
+    "file": "third_party/maclock/fonts/OpenRunde-Regular.otf",
+    "bytes": 312956,
+    "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc"
+  },
+  {
+    "file": "third_party/maclock/fonts/OpenRunde-Semibold.otf",
+    "bytes": 315896,
+    "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c"
+  },
+  {
+    "file": "third_party/maclock/original/ClockGlyph.qml",
+    "bytes": 3109,
+    "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad"
+  },
+  {
+    "file": "third_party/maclock/original/MorphGlyph.qml",
+    "bytes": 1984,
+    "sha256": "e77b8eca1525ef4887c77a5bb29ba18d306cf46d2492d49555147189eec8cde0"
+  },
+  {
+    "file": "third_party/maclock/original/MorphText.qml",
+    "bytes": 7158,
+    "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096"
+  },
+  {
+    "file": "third_party/maclock/original/glasstext.frag",
+    "bytes": 4782,
+    "sha256": "2f4feef2797fefaef9eae8cf6822ceb060257d6f8f13a26b55a76e0e26fa9dd8"
+  },
+  {
+    "file": "third_party/maclock/original/liquidglass.frag",
+    "bytes": 8333,
+    "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35"
+  },
+  {
+    "file": "wallpaper.jpg",
+    "bytes": 11978,
+    "sha256": "7efc15e29cfb8e00a75713c46feb62bcc2c46c34ae845e41e2ac7913313f3579"
+  },
+  {
+    "file": "wallpaper.svg",
+    "bytes": 4373,
+    "sha256": "0f345ccc3fdcf44b02abd7851543d90db3528708b730e00ab3fe7457e4d5d5e4"
+  }
+]

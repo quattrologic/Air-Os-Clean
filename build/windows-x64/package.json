@@ -1,0 +1,15 @@
+{
+  "name": "air-os-windows-x64-test-toolchain",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "amplitudejs": "5.3.2"
+  },
+  "devDependencies": {
+    "electron": "44.9.3",
+    "electron-builder": "26.18.0"
+  }
+}

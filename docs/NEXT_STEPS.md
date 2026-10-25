@@ -1,3 +1,15 @@
+# Aktueller Checkpoint – R1 Windows-x64-Testkanal / Packagingintegration
+
+25. Oktober2026. Verifizierte Basis/Remote **5e642b43aaaaf0bc11babe629840322f0ae46be0** (enthält AM1/L1B.3), eigener Branch **build/air-ultimate-windows-x64-r1-20261025**. Tatsächlicher neuer Windows-x64-Workflow mit eingefrorener Electron44.9.3/electron-builder26.18.0-Toolchain, vollständiger Ressourcen-/Syntax-/ASAR-/Hash-/CPU-/Lizenzprüfung, echter NSIS-Installation und installiertem Electron-Smoke auf Windowsrunner. Root-Catalina/Electron32 und bestehende Workflows bleiben getrennt/unverändert. Kein neuer Player/Matrixfeature vorweggenommen. [R1-Bericht](AIR_OS_WINDOWS_X64_R1.md).
+
+**309/309 Tests frisch bestanden**,9 neue R1-Regressionen;0 Fehler/Skips. Neuer Modern-Audit0 Befunde, Legacy2 High weiterhin offen. Tatsächliches Linux-Verzeichnispaket/ASAR gegen71 Ressourcen verifiziert. Finale echte Linux-Electron32/44-Vorher-/Nachherläufe1920×1080,1650×930,390×600 beide Exit0: je25 interne Appfenster/26 Registryeinträge, kritische Apps zusätzlich per Startmenü, echte Notes/Home-Liveupdates, Fehlanmeldung/Retry/Profile/Logout/Restart, Classic/Modern/M1/M2/K3/ReducedMotion/native WebGL-Ausfälle bestanden.32 echte PNGs und Rohmessungen; geschützte Dock-/Islandboxen exakt gleich.390px ist ein schmaler echter Renderer, kein natives390px-Gerät. Keine physische GPU-/Windows-/macOS-Abnahme aus Linux abgeleitet.
+
+**Windows-CI/Artefakt nach Push noch zu verifizieren**, kein alter Installer als aktuell bezeichnet; PR-/Actions-API Forbidden, öffentliche Seiten lesbar. Report wird mit tatsächlichem Run/Artefakt/Hash oder konkreter Infrastrukturblockade ergänzt. Unsigned-Testkanal, keine Releasefreigabe; Signing/Notarisierung/native Hardware/CB-03/Legacy-Advisories/MacLock-Softwareperformance/weitere Architekturblocker offen. main/PRs/alter Installerbranch/Desktopquellen/Profile/Classic/M1/M2 unverändert. Neuer SHA im Abschlussbericht.
+
+Nächste drei Einheiten nur nach neuem Auftrag: **R1-Ergebnisse auf echter Windows-x64-Hardware abnehmen**, **L1C.1 öffentliche DEMO-Medienblase**, **AM2 begrenzter echter NewAmp-Transportport**. Private Lockdaten erst mit sicherem Sitzungsvertrag; keine Folgephase automatisch beginnen. Nach R1-Abschluss STOP.
+
+---
+
 # Aktueller Checkpoint – MacShell-Funktionsinventur / strukturerhaltender Masterplan
 
 25. Oktober 2026. Verifizierte Air-OS-Basis/Remote-HEAD **3b3b87ae5d308aacc6d8024353d2b68f95cc74da** (AM1, enthält L1B.3); eigener Dokumentationsbranch **docs/macshell-integration-roadmap-20261025**. MacShell-Remote erneut fixiert auf **1bdb51870b621100fd2709f66c8f8e00ab17b9c4**. [Masterplan und vollständige Matrix](MACSHELL_INTEGRATION_ROADMAP.md):100 Funktionszeilen in11 Bereichen mit Originalquelle/Verhalten, Air-OS-Status, Direkt-/Portoption, Windows-/macOS-Adapter und Abhängigkeiten, Lizenz/Assets, Zielort, Risiken/Tests. [129/129 Originaldateien mit SHA256](references/MACSHELL_INTEGRATION_SOURCES.json), sechs bytegleiche ZIP-Scriptduplikate; unverdrahtete ExtraWidgets/Desktop/WindowBar/Installer/MinimizeFx ausdrücklich von erreichbaren Originalfunktionen getrennt.
