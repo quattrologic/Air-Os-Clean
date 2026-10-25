@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-10-25T13:02:13.312434+00:00",
+  "sourceCommit": "4b52e6c6571728a0541bd812f3ebd265829687a4",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40195597970",
+  "configurationJob": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40195597970/job/121175640712",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm ci --prefix build/windows-x64 --no-audit --no-fund",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm audit --prefix build/windows-x64 --audit-level=high",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run node scripts/windows-test-build.cjs link",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run node scripts/run-test-gate.cjs",
+      "conclusion": "success"
+    },
+    {
+      "name": "Parse actual PowerShell and check native SignTool rejection",
+      "conclusion": "success"
+    },
+    {
+      "name": "Report explicit signing block without a bound identity",
+      "conclusion": "success"
+    },
+    {
+      "name": "Cleanup probe state",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "signingJob": {
+    "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40195597970/job/121175833621",
+    "status": "skipped: workflow_dispatch-only, no signing identity bound"
+  },
+  "artifacts": [],
+  "signatureStatus": "BLOCKED_NOT_SIGNED",
+  "smartAppControl": "NOT_TESTED",
+  "evidenceSource": "Public GitHub job and run pages; no private secrets or signed binary available"
+}
