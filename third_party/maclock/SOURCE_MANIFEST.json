@@ -25,7 +25,7 @@
       "path": "MacLock/Glyph.qml",
       "sha256": "e12373fe51ccef66380673fbf6145df8d1275caa925adffeea0f1efec880cfc7",
       "bytes": 14979,
-      "status": "analysed; not copied for L1A"
+      "status": "copied byte-exact as MIT audit source; rounded transport polygon procedure and coordinates ported directly into maclock-media.js for public geometric glyphs only"
     },
     {
       "path": "MacLock/I18n.js",
@@ -206,5 +206,16 @@
       "native password and authenticated bridge unchanged; finite generation/ticket guarded RAF; no added polling"
     ],
     "report": "docs/AIR_MACLOCK_L1B3_MORPH.md"
+  },
+  "l1c1": {
+    "module": "maclock-media.js / maclock-media.css; shared maclock-glass.js slab",
+    "source": "MacLock/LockScreen.qml:754-1085 and MacLock/Glyph.qml:rpoly,play,prev,next",
+    "adaptations": [
+      "372u x 150u, top slot, 28u radius, cover58u, original text/scrub/transport coordinates",
+      "same liquidglass program/backdrop, original thickness26/tint.48/shadow.55; one extra draw, no new GL objects or loop",
+      "static public Air-OS DEMO, own SVG artwork; no MPRIS/private metadata/audio/seek/transport access",
+      "existing L1B.2 host opacity650ms retained instead of adding independent500ms bubble fade; no drag/cover/lyrics modes in L1C.1"
+    ],
+    "report": "docs/AIR_MACLOCK_L1C1_MEDIA.md"
   }
 }

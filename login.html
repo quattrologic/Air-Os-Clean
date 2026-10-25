@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
   <title>Air-OS – Anmelden</title>
   <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="maclock-media.css">
 </head>
 <body class="maclock-login maclock-motion-pending" tabindex="-1">
   <div class="maclock-backdrop" aria-hidden="true">
@@ -20,6 +21,19 @@
     <div id="maclock-date"></div>
     <time id="login-clock"></time>
   </header>
+
+  <!-- Compact MacLock media port; only public DEMO data, no audio/session access. -->
+  <section id="maclock-media" class="maclock-media" aria-label="Öffentliche Musik-DEMO" aria-describedby="maclock-media-demo">
+    <div id="maclock-media-demo" class="maclock-media-demo">DEMO · keine Audiowiedergabe</div>
+    <img class="maclock-media-cover" src="maclock-demo-cover.svg" alt="Eigenes DEMO-Cover: Sonne über grünen Hügeln">
+    <div class="maclock-media-text"><span id="maclock-media-title" class="maclock-media-title"></span><span id="maclock-media-artist" class="maclock-media-artist"></span></div>
+    <div class="maclock-media-scrub"><span id="maclock-media-elapsed"></span><div class="maclock-media-progress" role="progressbar" aria-label="Statische DEMO-Position, keine Wiedergabe" aria-valuemin="0" aria-valuemax="200" aria-valuenow="56" aria-valuetext="DEMO: 0:56 von 3:20"><span></span></div><span id="maclock-media-remaining"></span></div>
+    <div class="maclock-media-transport">
+      <button type="button" disabled aria-label="Vorheriger Titel – DEMO, nicht verfügbar"><canvas data-glyph="prev" aria-hidden="true"></canvas></button>
+      <button type="button" class="maclock-media-play" disabled aria-label="Wiedergabe – DEMO, keine Audioquelle"><canvas data-glyph="play" aria-hidden="true"></canvas></button>
+      <button type="button" disabled aria-label="Nächster Titel – DEMO, nicht verfügbar"><canvas data-glyph="next" aria-hidden="true"></canvas></button>
+    </div>
+  </section>
 
   <main class="login-stage" id="login-stage">
     <section class="login-profile" id="login-profile" aria-label="Ausgewähltes Benutzerkonto">
@@ -87,5 +101,6 @@
   <script src="maclock-shaders.js"></script>
   <script src="maclock-glass.js"></script>
   <script src="maclock-morph.js"></script>
+  <script src="maclock-media.js"></script>
 </body>
 </html>

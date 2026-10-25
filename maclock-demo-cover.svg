@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="232" height="232" viewBox="0 0 232 232">
+  <!-- Original public Air-OS DEMO artwork; no external cover or logo. -->
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#193b55"/><stop offset="1" stop-color="#9cdaa1"/></linearGradient></defs>
+  <rect width="232" height="232" fill="url(#sky)"/>
+  <circle cx="157" cy="74" r="34" fill="#f8f7f3" opacity=".88"/>
+  <path d="M0 140Q55 96 116 145T232 138V232H0Z" fill="#b0e5ad" opacity=".75"/>
+  <path d="M0 179Q61 131 126 178T232 170V232H0Z" fill="#2c655a"/>
+  <path d="M0 212Q88 168 232 213V232H0Z" fill="#193e43"/>
+</svg>

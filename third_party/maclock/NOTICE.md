@@ -64,3 +64,16 @@ are Air-OS adaptations. Detected software rendering avoids GPU readback with a
 documented transient text/CSS approximation, returning to original GL materials.
 Original L1B.1 fragment math, Open Runde font files and their separate OFL notices
 remain unchanged. See docs/AIR_MACLOCK_L1B3_MORPH.md for exact values and limitations.
+
+## L1C.1 compact public DEMO media port
+
+maclock-media.js/maclock-media.css port the actual compact media/art/txtCol/
+scrub/transport geometry in LockScreen.qml at the pinned revision. Glyph.qml
+is bundled byte-exact as an MIT audit source; its rpoly procedure and transport
+coordinate arrays are reused in the public 2D geometric glyph renderer.
+The existing liquidglass program renders another slab with original media
+cornerR28u/thickness26/tint0.48/shadowAmt0.55, sharing scene textures/lifecycle.
+No MPRIS, shell command, lyrics scraper, music source or private metadata is used.
+maclock-demo-cover.svg and the named static DEMO are original Air-OS test material,
+not MacShell/third-party cover art. No audio is bundled or played.
+Differences, measurements and screenshots: docs/AIR_MACLOCK_L1C1_MEDIA.md.

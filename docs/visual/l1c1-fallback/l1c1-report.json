@@ -1,0 +1,501 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "clock": {
+        "x": 0,
+        "y": 81,
+        "width": 1920,
+        "height": 205.40625
+      },
+      "field": {
+        "x": 865.5,
+        "y": 955.421875,
+        "width": 189,
+        "height": 32.390625
+      },
+      "profile": {
+        "x": 914.375,
+        "y": 858.421875,
+        "width": 91.25,
+        "height": 88
+      },
+      "stage": {
+        "x": 0,
+        "y": 858.421875,
+        "width": 1920,
+        "height": 151.390625
+      },
+      "expected": {
+        "x": 792.6,
+        "y": 306.20625,
+        "width": 334.8,
+        "height": 135
+      },
+      "media": {
+        "x": 792.59375,
+        "y": 306.203125,
+        "width": 334.796875,
+        "height": 135
+      },
+      "glass": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "software": false,
+        "frames": 0,
+        "tileBuilds": 0,
+        "maskRebuilds": 0,
+        "sceneRebuilds": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "motion": {
+        "disposed": false,
+        "ready": true,
+        "reason": "wallpaper-ready",
+        "leaving": false,
+        "reducedMotion": false,
+        "pendingFrame": false,
+        "deadlinePending": false,
+        "startedAt": 59.099999994039536,
+        "now": 1300.300000011921,
+        "paintTime": 713.1999999880791,
+        "paints": 10,
+        "active": false,
+        "values": {
+          "opacity": 1,
+          "zoom": 1,
+          "clockPosition": 0.075,
+          "clockOpacity": 1,
+          "loginBottom": 78,
+          "loginOpacity": 1,
+          "blur": 0,
+          "blurOpacity": 0,
+          "fieldWidth": 210,
+          "avatarScale": 0.94
+        },
+        "tracks": {}
+      },
+      "publicDemo": {
+        "label": "DEMO · keine Audiowiedergabe",
+        "title": "Wolkenlicht",
+        "artist": "Air-OS Studio",
+        "buttons": [
+          {
+            "disabled": true,
+            "label": "Vorheriger Titel – DEMO, nicht verfügbar"
+          },
+          {
+            "disabled": true,
+            "label": "Wiedergabe – DEMO, keine Audioquelle"
+          },
+          {
+            "disabled": true,
+            "label": "Nächster Titel – DEMO, nicht verfügbar"
+          }
+        ],
+        "audio": 0
+      },
+      "desktop": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        }
+      }
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "clock": {
+        "x": 0,
+        "y": 69.75,
+        "width": 1650,
+        "height": 178.15625
+      },
+      "field": {
+        "x": 743.625,
+        "y": 822.921875,
+        "width": 162.75,
+        "height": 27.890625
+      },
+      "profile": {
+        "x": 785.765625,
+        "y": 739.171875,
+        "width": 78.46875,
+        "height": 76
+      },
+      "stage": {
+        "x": 0,
+        "y": 739.171875,
+        "width": 1650,
+        "height": 130.390625
+      },
+      "expected": {
+        "x": 680.85,
+        "y": 264.95625,
+        "width": 288.3,
+        "height": 116.25
+      },
+      "media": {
+        "x": 680.84375,
+        "y": 264.953125,
+        "width": 288.296875,
+        "height": 116.25
+      },
+      "glass": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "software": false,
+        "frames": 0,
+        "tileBuilds": 0,
+        "maskRebuilds": 0,
+        "sceneRebuilds": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "motion": {
+        "disposed": false,
+        "ready": true,
+        "reason": "wallpaper-ready",
+        "leaving": false,
+        "reducedMotion": false,
+        "pendingFrame": false,
+        "deadlinePending": false,
+        "startedAt": 36.5,
+        "now": 1270.5,
+        "paintTime": 710.5999999940395,
+        "paints": 12,
+        "active": false,
+        "values": {
+          "opacity": 1,
+          "zoom": 1,
+          "clockPosition": 0.075,
+          "clockOpacity": 1,
+          "loginBottom": 78,
+          "loginOpacity": 1,
+          "blur": 0,
+          "blurOpacity": 0,
+          "fieldWidth": 210,
+          "avatarScale": 0.94
+        },
+        "tracks": {}
+      },
+      "publicDemo": {
+        "label": "DEMO · keine Audiowiedergabe",
+        "title": "Wolkenlicht",
+        "artist": "Air-OS Studio",
+        "buttons": [
+          {
+            "disabled": true,
+            "label": "Vorheriger Titel – DEMO, nicht verfügbar"
+          },
+          {
+            "disabled": true,
+            "label": "Wiedergabe – DEMO, keine Audioquelle"
+          },
+          {
+            "disabled": true,
+            "label": "Nächster Titel – DEMO, nicht verfügbar"
+          }
+        ],
+        "audio": 0
+      },
+      "desktop": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "clock": {
+        "x": 0,
+        "y": 45,
+        "width": 390,
+        "height": 137.609375
+      },
+      "field": {
+        "x": 90,
+        "y": 497.203125,
+        "width": 210,
+        "height": 36
+      },
+      "profile": {
+        "x": 154.4375,
+        "y": 428.203125,
+        "width": 81.109375,
+        "height": 63
+      },
+      "stage": {
+        "x": 0,
+        "y": 428.203125,
+        "width": 390,
+        "height": 125
+      },
+      "expected": {
+        "x": 83.4,
+        "y": 195.809375,
+        "width": 223.2,
+        "height": 90
+      },
+      "media": {
+        "x": 83.390625,
+        "y": 195.796875,
+        "width": 223.1875,
+        "height": 90
+      },
+      "glass": {
+        "status": "fallback",
+        "reason": "webgl2-unavailable",
+        "disposed": false,
+        "software": false,
+        "frames": 0,
+        "tileBuilds": 0,
+        "maskRebuilds": 0,
+        "sceneRebuilds": 0,
+        "pendingFrame": false,
+        "last": null,
+        "renderer": {
+          "disposed": true,
+          "contextAlive": false,
+          "resources": {
+            "shader": 0,
+            "program": 0,
+            "texture": 0,
+            "buffer": 0,
+            "framebuffer": 0,
+            "vertexArray": 0
+          }
+        }
+      },
+      "motion": {
+        "disposed": false,
+        "ready": true,
+        "reason": "wallpaper-ready",
+        "leaving": false,
+        "reducedMotion": false,
+        "pendingFrame": false,
+        "deadlinePending": false,
+        "startedAt": 26.599999994039536,
+        "now": 1333.4000000059605,
+        "paintTime": 680.2000000178814,
+        "paints": 24,
+        "active": false,
+        "values": {
+          "opacity": 1,
+          "zoom": 1,
+          "clockPosition": 0.075,
+          "clockOpacity": 1,
+          "loginBottom": 78,
+          "loginOpacity": 1,
+          "blur": 0,
+          "blurOpacity": 0,
+          "fieldWidth": 210,
+          "avatarScale": 0.94
+        },
+        "tracks": {}
+      },
+      "publicDemo": {
+        "label": "DEMO · keine Audiowiedergabe",
+        "title": "Wolkenlicht",
+        "artist": "Air-OS Studio",
+        "buttons": [
+          {
+            "disabled": true,
+            "label": "Vorheriger Titel – DEMO, nicht verfügbar"
+          },
+          {
+            "disabled": true,
+            "label": "Wiedergabe – DEMO, keine Audioquelle"
+          },
+          {
+            "disabled": true,
+            "label": "Nächster Titel – DEMO, nicht verfügbar"
+          }
+        ],
+        "audio": 0
+      },
+      "desktop": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        }
+      }
+    }
+  ],
+  "fallbackContextsNull": {
+    "webgl": true,
+    "webgl2": true
+  },
+  "cleanup": {
+    "media": {
+      "disposed": true,
+      "updates": 1,
+      "layout": {
+        "u": 0.6,
+        "x": 83.4,
+        "y": 195.809375,
+        "width": 223.2,
+        "height": 90,
+        "radius": 16.8,
+        "cover": 34.8
+      },
+      "publicDemo": true
+    },
+    "glass": {
+      "status": "disposed",
+      "reason": "pagehide",
+      "disposed": true,
+      "software": false,
+      "frames": 0,
+      "tileBuilds": 0,
+      "maskRebuilds": 0,
+      "sceneRebuilds": 0,
+      "pendingFrame": false,
+      "last": null,
+      "renderer": {
+        "disposed": true,
+        "contextAlive": false,
+        "resources": {
+          "shader": 0,
+          "program": 0,
+          "texture": 0,
+          "buffer": 0,
+          "framebuffer": 0,
+          "vertexArray": 0
+        }
+      }
+    },
+    "motion": {
+      "disposed": true,
+      "ready": true,
+      "reason": "wallpaper-ready",
+      "leaving": false,
+      "reducedMotion": false,
+      "pendingFrame": false,
+      "deadlinePending": false,
+      "startedAt": 34.89999997615814,
+      "now": 173.39999997615814,
+      "paintTime": 167.19999998807907,
+      "paints": 10,
+      "active": false,
+      "values": {
+        "opacity": 0.6795029461515745,
+        "zoom": 1.0288447348463583,
+        "clockPosition": 0.06218011784606298,
+        "clockOpacity": 0.6795029461515745,
+        "loginBottom": 62.61614141527558,
+        "loginOpacity": 0.6795029461515745,
+        "blur": 0,
+        "blurOpacity": 0,
+        "fieldWidth": 210,
+        "avatarScale": 0.94
+      },
+      "tracks": {}
+    },
+    "morph": {
+      "disposed": true,
+      "pendingFrame": false,
+      "active": false,
+      "paints": 3,
+      "paintTime": 171.69999998807907,
+      "clockWaiting": false,
+      "scalar": {
+        "shake": 0,
+        "sx": 1,
+        "sy": 1,
+        "capsOpacity": 0,
+        "capsScale": 0.5,
+        "goOpacity": 0,
+        "goScale": 0.4,
+        "hintOpacity": 0
+      },
+      "views": []
+    }
+  },
+  "profileIsolation": true,
+  "phase": "fallback",
+  "runtime": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) air-os-desktop/1.0.3 Chrome/152.0.7977.167 Electron/44.9.3 Safari/537.36"
+}

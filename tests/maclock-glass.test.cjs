@@ -25,7 +25,7 @@ function fixture(options={}){
   getContext(type){if(type==='webgl2')return options.noGL?null:g.gl;return{letterSpacing:'0',scale(){},drawImage(){},createLinearGradient(){return{addColorStop(){}}},fillRect(){},fillText(){},measureText(){return{fontBoundingBoxAscent:150,width:400}}}}
  }
  const doc=new EventTarget();doc.body=new Element();doc.documentElement=new Element();doc.hidden=false;doc.fonts={ready:Promise.resolve()};
- const nodes=Object.fromEntries(['#login-clock','.password-row','#maclock-reduce-glass','#login-stage'].map(k=>[k,new Element()]));
+ const nodes=Object.fromEntries(['#login-clock','.password-row','#maclock-reduce-glass','#login-stage','#maclock-media'].map(k=>[k,new Element()]));
  doc.querySelector=s=>{assert.ok(nodes[s],'no secret/profile access');return nodes[s]};doc.createElement=()=>{const e=new Element();created.push(e);return e};doc.createRange=()=>({selectNodeContents(){},getBoundingClientRect:()=>({x:750,y:95,width:420,height:190})});
  const win=new EventTarget();Object.assign(win,{document:doc,innerWidth:1920,innerHeight:1080,devicePixelRatio:1,airMacLockShaders:shaders,AbortController,CustomEvent,Event,requestAnimationFrame:fn=>{rafs.set(++raf,fn);return raf},cancelAnimationFrame:id=>rafs.delete(id),getComputedStyle:()=>({fontWeight:'680',fontSize:'158.4px',fontFamily:'Open Runde',letterSpacing:'-1.35px'}),matchMedia:()=>{const m=new EventTarget();m.matches=false;media.push(m);return m}});
  Object.defineProperty(win,'airOS',{get(){throw Error('No authentication/Preferences/secret API may be read by materials')}});
@@ -91,4 +91,14 @@ test('public material tiles are cached between draws and released on context los
 });
 test('software renderer detection avoids all material readback tiles while retaining real GL and finite content notifications',async()=>{
  const h=fixture(),extension=h.gl.getExtension;h.gl.getExtension=name=>name==='WEBGL_debug_renderer_info'?{UNMASKED_RENDERER_WEBGL:999}:extension(name);h.gl.getParameter=p=>p===999?'ANGLE SwiftShader':4096;h.win.airMacLockMorphController={};h.win.airMacLockMotionController={snapshot:()=>({active:false,values:{opacity:1,clockOpacity:1,loginOpacity:1,zoom:1,blur:0,blurOpacity:0}})};await h.ready();h.flush();assert.equal(h.c.snapshot().status,'webgl');assert.equal(h.c.snapshot().software,true);assert.deepEqual(h.c.clockTile(),{text:'10:24',software:true});assert.equal(h.c.snapshot().renderer.resources.program,4);const frames=h.c.snapshot().frames;h.flush();assert.equal(h.c.snapshot().frames,frames);h.c.destroy();assert.equal(h.c.clockTile(),null);assert.equal(h.live.size,0);
+});
+
+test('L1C.1 media slab reuses the existing liquidglass program, adds one draw and releases all GPU objects',()=>{
+ const g=fakeGL();let draws=0;g.gl.drawArrays=()=>draws++;
+ const r=api.createRenderer({getContext:()=>g.gl},shaders),params=api.parameters(1080,32),frame={width:1920,height:1080,clockRect:{x:600,y:10,width:600,height:350},fieldRect:{x:850,y:950,width:189,height:32},params};
+ r.setScene({width:960,height:540},11.2);r.setMask({width:600,height:350},6.3);r.draw(frame);assert.equal(draws,6);const resources=r.snapshot().resources;
+ r.draw({...frame,mediaRect:{x:792.6,y:300,width:334.8,height:135}});assert.equal(draws,9);assert.deepEqual(r.snapshot().resources,resources);assert.equal(resources.program,4);assert.equal(resources.texture,3);
+ for(let n=0;n<3;n++)r.draw({...frame,mediaRect:{x:792.6,y:300,width:334.8,height:135},sceneState:{zoom:1,blur:0,blurOpacity:0,opacity:.5,clockOpacity:1,loginOpacity:1}});
+ assert.equal(params.media.radius,25.2);assert.equal(params.media.thickness,41.6);assert.equal(params.media.tintMix,.264);assert.equal(params.media.shadowAmt,.55);assert.equal(params.media.bezel,26);assert.equal(params.field.thickness,28.8);
+ r.destroy();assert.equal(g.live.size,0);assert.equal(g.gl.losses,1);
 });

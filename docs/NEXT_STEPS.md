@@ -1,3 +1,15 @@
+# L1C.1 – kompakte originale MacLock-Musikblase implementiert
+
+25.Oktober2026 (Europe/Berlin). Basis/Remote **7c90367c3489408940a2c773aa9c58a38a041b52**, eigener Branch **feat/air-maclock-compact-media-l1c1-20261025**. MacShell fixiert/unverändert1bdb51870b621100fd2709f66c8f8e00ab17b9c4. Originale372u×150u-Blase/topSlot/28u-Radius/58u-Cover/Text-/Scrub-/Transportpositionen; tatsächlicher vorhandener Liquidglass-Shader mit thickness26/tint.48/shadow.55, gemeinsame Texturen/GPU-Lebensdauer. Originale rpoly-/Transportglyphen portiert, Glyph.qml bytegleich/MIT/OFL/Quellmanifest erhalten. Eigene öffentliche SVG-/Song-DEMO, sichtbareKennzeichnung, alleTransportbuttons/Seeking inaktiv; keine Audioengine, privaten Daten, neuen IPCs/Preferences/Timer.
+
+**321/321 Tests bestanden**,0 Fehler/Skips (zehn neue); gezielt23/23,75 Ressourcen/Syntax/Catalina/Diff und frischer Modern-Audit0 bestanden. Drei echte Linux-Electron44-Vorher/Nachher/nativeWebGL-Ausfall-Läufe1920×1080,1650×930,390×600 jeweilsExit0: Formularanmeldung/Fehler/Retry/Profiles/Logout, kritische Apps/Classic/Modern, ReducedMotion/ReducedGlass/ForcedColors, nativeGL1/GL2null, ContextLoss/GPU0 und Pagehide-/Fontcleanup.31 echtePNG/Rohdaten. Clock/Profil/Passwort/Loginstage/Dock/Island vorher/nachher/Fallback exaktgleich; M1/M2/Motion/Morph/Shaderquellen/Desktopelemente/Auth unverändert. [Bericht und vollständiger Bildvergleich](AIR_MACLOCK_L1C1_MEDIA.md).
+
+Grenzen: static öffentlicheDEMO, keine Wiedergabe, kein Drag/großesCover/Lyrics; Entry folgt bestehender650ms-Hostopacity statt separater500ms-Blasenanimation. Softwaregrafik bleibt begrenzt (19204 DOM-Paints/2Glass-Frames, letztePaintspan1781.1ms), keinFPS-/Originalpixel-/physischeGPU-Nachweis.390px schmalerRenderer, keine native390pxHardware. Windows/macOS/Signing/CB-03/Legacy2High/Softwareperformance offen. Kein neuer Windowsinstaller/CI-Erfolg behauptet; R1-Buildbranch/main/PRs/Installerworkflows unverändert, Paketdateiliste nur für neueAssets ergänzt. Neuer Commit-SHA im Abschlussbericht.
+
+Nächste drei Einheiten ausschließlich nach neuem Auftrag: **L1C.2 große Coveransicht**, **L1C.3 begrenzter Material-/Coverwechsel**, **AM2 echte lokale Wiedergabe separat**. L1C.1 abgeschlossen; STOP.
+
+---
+
 # R1-Abschluss – aktueller Windows-x64-Testbuild vorhanden
 
 25.Oktober2026. Integrationsbranch **build/air-ultimate-windows-x64-r1-20261025**, Integrationsbasis5e642b43aaaaf0bc11babe629840322f0ae46be0, tatsächlicher Buildcommit **0c343b01914d1829869a6cb50f24d0653a7b25eb**. [Windowslauf40191099653](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653) **vollständiggrün**: Audit/Vollsuite/Build/71 Ressourcen/ASAR/Lizenzen/NSIS-Installation/installierte Electron-GUI inklusive explizitem isoliertem WebGL1-/WebGL2-Ausfall bestanden. [Realer aktueller Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653/artifacts/12597932217),121043907Bytes, SHA256`aacaf5994f8c1ac29bf5a6926b8686ee22c69d2bb8602d6cdb9498324ceb0792`, unsigned/test-only, kein Release. Dateiname/CI/Belege/Bilder/Grenzen im [R1-Bericht](AIR_OS_WINDOWS_X64_R1.md).
