@@ -1,0 +1,9 @@
+{
+  "viewBox": "180 180 900 900",
+  "path": "M630 238 478 386 796 708 797 817 983 655 982 590Z M420 439 273 582 273 800 441 650 441 768 685 1015 847 865Z",
+  "reference": "User supplied black geometric mark, BRAND-2; manually vectorized from displayed reference",
+  "variants": {
+    "black": "#000",
+    "white": "#fff"
+  }
+}

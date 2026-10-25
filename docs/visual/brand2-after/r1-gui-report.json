@@ -1,0 +1,722 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 81,
+          "width": 1920,
+          "height": 205.40625,
+          "top": 81,
+          "right": 1920,
+          "bottom": 286.40625,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 4,
+          "tileBuilds": 1,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 670.190625,
+              "y": 16.206249999999997,
+              "width": 580,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 865.5,
+              "y": 955.421875,
+              "width": 189,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 69.75,
+          "width": 1650,
+          "height": 178.15625,
+          "top": 69.75,
+          "right": 1650,
+          "bottom": 247.90625,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 6,
+          "tileBuilds": 1,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 2,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 575.45625,
+              "y": 14.706249999999997,
+              "width": 500,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 743.625,
+              "y": 822.921875,
+              "width": 162.75,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 45,
+          "width": 390,
+          "height": 137.609375,
+          "top": 45,
+          "right": 390,
+          "bottom": 182.609375,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 6,
+          "tileBuilds": 1,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 2,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": 1.7781250000000028,
+              "y": 2.809375000000003,
+              "width": 387,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) air-os-desktop/1.0.3 Chrome/152.0.7977.167 Electron/44.9.3 Safari/537.36",
+  "registeredApps": [
+    {
+      "id": "about",
+      "name": "Über Air-OS",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "ai",
+      "name": "Air-KI",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "aircard",
+      "name": "AirCard Lite",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "airwrite",
+      "name": "AirWrite",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "arcade",
+      "name": "Air Arcade",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "browser",
+      "name": "Safari",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "calculator",
+      "name": "Air-Rechner",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "calendar",
+      "name": "Kalender",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "downloads",
+      "name": "Downloads",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "finder",
+      "name": "Finder",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "football",
+      "name": "Fußball",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "home",
+      "name": "Air Home",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "launchpad",
+      "name": "Launchpad",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "mail",
+      "name": "Mail",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "music",
+      "name": "Air Music",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "notes",
+      "name": "Notizen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "photos",
+      "name": "Fotos",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "reminders",
+      "name": "Air Erinnerungen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "settings",
+      "name": "Einstellungen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "stocks",
+      "name": "Aktien",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "store",
+      "name": "Air App Store",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "tagesschau",
+      "name": "tagesschau",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "translator",
+      "name": "Air-Übersetzer",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "trash",
+      "name": "Papierkorb",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "weather",
+      "name": "Wetter",
+      "origin": "builtin",
+      "internalHandler": true
+    }
+  ],
+  "appShellStarts": [
+    {
+      "id": "about",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "ai",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "aircard",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "airwrite",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "arcade",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "browser",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "calculator",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "calendar",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "downloads",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "finder",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "football",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "home",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "launchpad",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "mail",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "music",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "notes",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "photos",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "reminders",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "settings",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "spotify",
+      "status": "NOT TESTED: external native Spotify launcher; no Spotify installation assumed"
+    },
+    {
+      "id": "stocks",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "store",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "tagesschau",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "translator",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "trash",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "weather",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    }
+  ],
+  "fallbackContextsNull": {
+    "webgl": true,
+    "webgl2": true
+  },
+  "profileIsolation": true,
+  "processRestartPersistence": true,
+  "nativeWebGLDisabledFallback": true
+}

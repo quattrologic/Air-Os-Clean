@@ -85,6 +85,7 @@ function openDesktop(account) {
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1440, height: 900, minWidth: 760, minHeight: 540,
+    icon: path.join(app.getAppPath(), 'assets/brand/png/app-256.png'),
     backgroundColor: '#142847', title: 'Air-OS – Anmeldung', show: false, autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(app.getAppPath(), 'preload.cjs'),

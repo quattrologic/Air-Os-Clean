@@ -29,7 +29,7 @@
   render();
  }
  const classicLaunchpadIcon='<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#b8dffa"/>'+Array.from({length:9},(_,i)=>'<rect x="'+(13+i%3*15)+'" y="'+(13+Math.floor(i/3)*15)+'" width="10" height="10" rx="3" fill="'+(i===4?'#248ed7':'#f9fcff')+'"/>').join('')+'</svg>';
- const airLaunchpadLogo='<svg viewBox="175 10 455 775" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M365,233 344,243 332,257 324,278 312,340 291,395 274,422 234,467 216,498 208,521 202,558 202,588 206,619 221,666 243,704 268,733 299,756 320,765 347,770 370,767 401,757 423,758 454,769 483,769 520,755 544,738 565,717 586,688 603,649 567,638 543,622 518,593 505,564 501,544 501,520 507,495 527,459 554,435 533,406 515,368 503,327 496,282 487,259 472,242 452,233 435,233 411,240 396,238 383,233Z M512,28 496,32 472,47 447,72 426,102 416,124 408,152 406,183 410,205 422,202 449,186 472,164 490,140 505,110 514,77 516,48Z" fill="#fff" stroke="none" stroke-linejoin="round"/></svg>';
+ const airLaunchpadLogo='<svg viewBox="180 180 900 900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M630 238 478 386 796 708 797 817 983 655 982 590Z M420 439 273 582 273 800 441 650 441 768 685 1015 847 865Z" fill="#fff"/></svg>';
  function syncLaunchpadLogo(){
   const icon=(typeof readAirSettings==='function'?readAirSettings():{}).desktopTheme==='modern'?airLaunchpadLogo:classicLaunchpadIcon;
   vectorIcon.launchpad=icon;

@@ -236,3 +236,6 @@ button{-webkit-tap-highlight-color:transparent}
 
 .maclock-morph-clock,.maclock-morph-date{opacity:calc(var(--maclock-motion-clockAlpha,1) * var(--maclock-layer-opacity,1))}
 .maclock-morph-hint{opacity:calc(var(--maclock-motion-loginAlpha,1) * var(--maclock-layer-opacity,1))}
+
+/* BRAND-2: brand artwork only; profile/avatar and login geometry unchanged. */
+.air-brand-logo{vertical-align:middle;object-fit:contain}

@@ -1,0 +1,260 @@
+{
+  "platform": "Linux directory package, not Windows/macOS installer",
+  "builder": "26.18.0",
+  "electron": "44.9.3",
+  "uncommittedBrand2Staging": true,
+  "sourceBase": "99ba39383dd20198d77981572ccc91d3f738314c",
+  "runtimeFiles": 121,
+  "brandFiles": [
+    {
+      "file": "assets/brand/air-os-app.svg",
+      "bytes": 558,
+      "sha256": "834c111a49cb149697aadcd53138d3e8d1f50bffaa5f64b9abdb296d8054aab6"
+    },
+    {
+      "file": "assets/brand/air-os-black.svg",
+      "bytes": 261,
+      "sha256": "2715dfc486376d9b46dc9d9f8e3c5adf3d209e0c10b53c5de6f8402a77a3205f"
+    },
+    {
+      "file": "assets/brand/air-os-maskable.svg",
+      "bytes": 556,
+      "sha256": "e9d213f9c8574545da12bff13793adb4f0331b56c2d5527425d38ecb311dd4b5"
+    },
+    {
+      "file": "assets/brand/air-os-master.json",
+      "bytes": 327,
+      "sha256": "5a8cc30af35ff262a234d20d2fed29018744875465994982b1069ea20d4fcfbc"
+    },
+    {
+      "file": "assets/brand/air-os-master.svg",
+      "bytes": 261,
+      "sha256": "2715dfc486376d9b46dc9d9f8e3c5adf3d209e0c10b53c5de6f8402a77a3205f"
+    },
+    {
+      "file": "assets/brand/air-os-white.svg",
+      "bytes": 261,
+      "sha256": "fd316dc5f0846e0bed41c3f3b5a2a0dcff4ca8f32ef4faa1803d80f5fe916ae6"
+    },
+    {
+      "file": "assets/brand/air-os.icns",
+      "bytes": 617440,
+      "sha256": "f57cde9ba1e76cfc28d3ff9e58005d9f298d8c16a928e8b5206a131be7a39a36"
+    },
+    {
+      "file": "assets/brand/air-os.ico",
+      "bytes": 51478,
+      "sha256": "8cac215da8186702e1024a6fc97af814191f13d20761d03f362b4aaa87f3f55b"
+    },
+    {
+      "file": "assets/brand/png/app-1024.png",
+      "bytes": 324319,
+      "sha256": "ded32e3b01539b4d8eacb308e81738329e9d3c2dace37aaece6b17c4b3ec253b"
+    },
+    {
+      "file": "assets/brand/png/app-128.png",
+      "bytes": 10785,
+      "sha256": "b5b6f4406e7fdbd0a015aacd9334846b69456faf2dbadc38581c7edcfddfa330"
+    },
+    {
+      "file": "assets/brand/png/app-16.png",
+      "bytes": 718,
+      "sha256": "aba4a33749ef8a37fbb931ab2009c7a37f3c2e0b35dcfdbcd63d47faeed05e53"
+    },
+    {
+      "file": "assets/brand/png/app-180.png",
+      "bytes": 17838,
+      "sha256": "e74367fdf2286743d8274918113943ec44c5b356c33df59d23e1421e94ad0577"
+    },
+    {
+      "file": "assets/brand/png/app-192.png",
+      "bytes": 19338,
+      "sha256": "ff0147cc80c8427eb2ced5b736adce9d776dac8998bd59f724d94e543ad59e72"
+    },
+    {
+      "file": "assets/brand/png/app-256.png",
+      "bytes": 32539,
+      "sha256": "a2c08a0ecc153053442faaeef44e290fb90bc2ef119c5d6f56d3af6b374c0c8c"
+    },
+    {
+      "file": "assets/brand/png/app-32.png",
+      "bytes": 1603,
+      "sha256": "af3f8034d5c65dd9a3482555ed7f570bd486b7cdf577ba9bd25a8553e16305e0"
+    },
+    {
+      "file": "assets/brand/png/app-48.png",
+      "bytes": 2349,
+      "sha256": "2021b441bb69be37eecf12dae95acd50b9a53fd2cf1ab1521e08277a5141713d"
+    },
+    {
+      "file": "assets/brand/png/app-512.png",
+      "bytes": 103237,
+      "sha256": "69b64d445e2736016dde20c1f49f570348e037cacc368cf335f3961015bf88d3"
+    },
+    {
+      "file": "assets/brand/png/app-64.png",
+      "bytes": 3382,
+      "sha256": "fdd191ea07cbd81a49a445d7cf904557f4b1de4a21226d8b03a4da31ecdd49a0"
+    },
+    {
+      "file": "assets/brand/png/apple-touch-icon.png",
+      "bytes": 17838,
+      "sha256": "e74367fdf2286743d8274918113943ec44c5b356c33df59d23e1421e94ad0577"
+    },
+    {
+      "file": "assets/brand/png/black-1024.png",
+      "bytes": 22092,
+      "sha256": "00601228da5df5f7d9b239890294add296f575cc4c0396cd8fb041c8b5173599"
+    },
+    {
+      "file": "assets/brand/png/black-128.png",
+      "bytes": 2213,
+      "sha256": "2682a0825c0399662ea571b2bb8630246925fd1c37e90030953bc25a6d130d9f"
+    },
+    {
+      "file": "assets/brand/png/black-16.png",
+      "bytes": 367,
+      "sha256": "596128001ed68dd7f22f93d84a626138a508e583a0db757acff118616082df1b"
+    },
+    {
+      "file": "assets/brand/png/black-180.png",
+      "bytes": 3205,
+      "sha256": "046ca37f2ad229cf0f55a3b64da67b3154211b6e372815ba2c261e68768f2cad"
+    },
+    {
+      "file": "assets/brand/png/black-192.png",
+      "bytes": 3484,
+      "sha256": "389fb65a324e6018b7d861b84767745e884cdbf512e78c1126eae51a47d4e876"
+    },
+    {
+      "file": "assets/brand/png/black-256.png",
+      "bytes": 4672,
+      "sha256": "1a52dc8b065484a183b163b6ed40f6930aaad128c33e04bc57ccf1b873fc4fc4"
+    },
+    {
+      "file": "assets/brand/png/black-32.png",
+      "bytes": 701,
+      "sha256": "5776eb3e22f8d4fc827651251ac4f74a00ec109342d4783613b07a9cc9639f3d"
+    },
+    {
+      "file": "assets/brand/png/black-48.png",
+      "bytes": 935,
+      "sha256": "759f4b9b11c4faeb87018a37085f025a800b0fb1e469173a1ea61c3d7662c4b6"
+    },
+    {
+      "file": "assets/brand/png/black-512.png",
+      "bytes": 9670,
+      "sha256": "92d3752e22cbfbf20e003a14893655c0f113e437303beb052804a809342a9d31"
+    },
+    {
+      "file": "assets/brand/png/black-64.png",
+      "bytes": 1263,
+      "sha256": "cf3ac90bb710e56f620fbd3a08ff1fa156b9695119f26ac4b71effe1f7444c5b"
+    },
+    {
+      "file": "assets/brand/png/maskable-1024.png",
+      "bytes": 288568,
+      "sha256": "4962264fe17724454ab70674ec46f7138f7a919986e4b110836c03f1b43032c5"
+    },
+    {
+      "file": "assets/brand/png/maskable-128.png",
+      "bytes": 8506,
+      "sha256": "94d53b0de87777747c827c1481e803cf5d2d9b5b7293223eef77fc673ff18f9f"
+    },
+    {
+      "file": "assets/brand/png/maskable-16.png",
+      "bytes": 536,
+      "sha256": "ce4175f64a3fce77b58746a97d4372cc6368108592b2ea15bc9f5cd9527fef00"
+    },
+    {
+      "file": "assets/brand/png/maskable-180.png",
+      "bytes": 14025,
+      "sha256": "cf97b5df54c0b13f2c5cc0dc3e4465466d8c0f5c05bbd9ae94a6c17ec5788cbc"
+    },
+    {
+      "file": "assets/brand/png/maskable-192.png",
+      "bytes": 14919,
+      "sha256": "d0c06054403c1baa9c166e373f8517edf14f1f9c91e9754ef62c4e4ba8f33e01"
+    },
+    {
+      "file": "assets/brand/png/maskable-256.png",
+      "bytes": 26642,
+      "sha256": "4c0a4e516598f3e89fd3ae50f0610a28c40097ec06440b1512c86a89b2c2dfb9"
+    },
+    {
+      "file": "assets/brand/png/maskable-32.png",
+      "bytes": 1184,
+      "sha256": "9fbd3d02f6551b7306c9d21f1a55237888337a3fc68aa4f129e0ae101f3ec23e"
+    },
+    {
+      "file": "assets/brand/png/maskable-48.png",
+      "bytes": 1909,
+      "sha256": "9d321197375cce2a8dd05e75a693f1e4ea2209c3fe38c63ee7efb906b63a44ec"
+    },
+    {
+      "file": "assets/brand/png/maskable-512.png",
+      "bytes": 85556,
+      "sha256": "47bef224c4b8a18d345dee408c2d72de4f5995c21106fff1a34c63e835806505"
+    },
+    {
+      "file": "assets/brand/png/maskable-64.png",
+      "bytes": 2482,
+      "sha256": "236b8c668c86f4c1f93e385c8c4160926802999719d66ca60a88c7837b0e7cb0"
+    },
+    {
+      "file": "assets/brand/png/white-1024.png",
+      "bytes": 23958,
+      "sha256": "c6634eed49dcf30ef87e4dd38ea61512fa3a048c94f250cce260f0df861b0e30"
+    },
+    {
+      "file": "assets/brand/png/white-128.png",
+      "bytes": 2320,
+      "sha256": "bfb556e8cd80d61a1d28decbed6bde290adb6a444fc642fef72264a3f640cec5"
+    },
+    {
+      "file": "assets/brand/png/white-16.png",
+      "bytes": 381,
+      "sha256": "98722b7e15e7c0d3fe7c969f4c3db02b3e1639d11a93e7be84e0d7a081cb5f6d"
+    },
+    {
+      "file": "assets/brand/png/white-180.png",
+      "bytes": 3421,
+      "sha256": "abf85ea78edc0cf07924f366c9e17f47f03e581b8cf8f92370d6108216b68fd3"
+    },
+    {
+      "file": "assets/brand/png/white-192.png",
+      "bytes": 3584,
+      "sha256": "882c172b6354473d412bb029a840ca5f1f145d063e5c7a12cc34ac51b1bb51a1"
+    },
+    {
+      "file": "assets/brand/png/white-256.png",
+      "bytes": 4956,
+      "sha256": "66a51b5e085a3258a8783c7d9afae79437d693baccd450a5761223ea81bf0a77"
+    },
+    {
+      "file": "assets/brand/png/white-32.png",
+      "bytes": 727,
+      "sha256": "f0ae736b4c6543fb2beec04229f39b9c130c0564e18c796228f389d0a7329555"
+    },
+    {
+      "file": "assets/brand/png/white-48.png",
+      "bytes": 949,
+      "sha256": "00d396ebde907d66738a88bb671d1dd3e0d7f376de3a74fc0206b227157b3853"
+    },
+    {
+      "file": "assets/brand/png/white-512.png",
+      "bytes": 10367,
+      "sha256": "10dcc0a7bb58c69f76db6c9d568814b6796821809cb8bea880889d1d3f60f179"
+    },
+    {
+      "file": "assets/brand/png/white-64.png",
+      "bytes": 1338,
+      "sha256": "553d4690b64dcdbf79646f4cf6cf25617bef507e6e16dc41c2c526bba07cbea9"
+    },
+    {
+      "file": "assets/brand/pwa-icons.json",
+      "bytes": 397,
+      "sha256": "71da5a3d7b79278e0244a02b733b6cb0cd54d2fb3f8c1d5588683ba5228855fc"
+    }
+  ]
+}

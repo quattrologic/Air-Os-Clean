@@ -7,6 +7,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
   <title>Air-OS – Anmelden</title>
   <link rel="stylesheet" href="login.css">
+  <link rel="icon" href="assets/brand/air-os.ico">
+  <link rel="apple-touch-icon" href="assets/brand/png/apple-touch-icon.png">
 </head>
 <body class="maclock-login maclock-motion-pending" tabindex="-1">
   <div class="maclock-backdrop" aria-hidden="true">
@@ -42,7 +44,7 @@
     </form>
 
     <form id="create-form" class="auth-form create-form" autocomplete="on" hidden>
-      <div class="create-heading"><span class="create-logo">A</span><div><h1>Air-OS einrichten</h1><p>Erstelle dein persönliches Benutzerkonto.</p></div></div>
+      <div class="create-heading"><span class="create-logo"><img src="assets/brand/air-os-white.svg" width="28" height="28" alt="Air-OS"></span><div><h1>Air-OS einrichten</h1><p>Erstelle dein persönliches Benutzerkonto.</p></div></div>
       <div class="create-fields">
         <label for="create-display-name">Dein Name</label>
         <input id="create-display-name" name="name" type="text" autocomplete="name" maxlength="40" placeholder="Wie sollen wir dich nennen?" required>
@@ -63,7 +65,7 @@
 
   <button id="switch-create" class="text-link login-create-link" type="button">Anderen Account erstellen</button>
   <button id="maclock-reduce-glass" class="text-link" type="button" aria-pressed="false" title="Nur für diese Anmeldung; keine Profileinstellung wird gespeichert">Glas reduzieren</button>
-  <p class="maclock-scope">Air-OS-Anmeldung · keine Betriebssystemsperre</p>
+  <p class="maclock-scope"><img src="assets/brand/air-os-white.svg" width="16" height="16" alt="Air-OS" class="air-brand-logo"> Air-OS-Anmeldung · keine Betriebssystemsperre</p>
 
   <nav class="power-controls" aria-label="Air-OS-Aktionen">
     <button type="button" id="sleep-button" class="power-button">
@@ -78,7 +80,7 @@
   </nav>
 
   <div id="sleep-overlay" class="sleep-overlay" hidden role="button" tabindex="0" aria-label="Air-OS aufwecken">
-    <div class="sleep-wordmark"><span class="brand-mark"><i></i><i></i><i></i></span> Air-OS</div>
+    <div class="sleep-wordmark"><span class="brand-mark"><img src="assets/brand/air-os-white.svg" width="24" height="24" alt=""></span> Air-OS</div>
     <div class="sleep-message">Zum Aufwecken klicken oder eine Taste drücken</div>
   </div>
   <script src="maclock-layout.js"></script>

@@ -1,3 +1,13 @@
+# BRAND-2 – offizielles hochgeladenes Logo eingebaut
+
+25.Oktober2026, Europe/Berlin. Basis/Remote **99ba39383dd20198d77981572ccc91d3f738314c**, eigener Branch **design/air-os-brand-2-20261025**. Tatsächlich aktive Birne und Einrichtungs-/Schlafmarken durch manuell aus der Nutzerreferenz vektorisiertes geometrisches Zeichen ersetzt; kein BRAND-1-Entwurf. Schwarz/weiß aus identischem SVG-Master; Modern-Dock/Systemmenü/Island-Homekarte/Lockscreen/Favicon/Touchicon, Windows-/macOS-/NSIS-Iconpfade und PNG/ICO/ICNS ergänzt. Profile/Classic-Grid/Appicons/Reihenfolge/Dock-/Islandgeometrien/M1/M2/MacLock und Signierworkflows erhalten. PWA-Icons vorbereitet, keine PWA implementiert. [Bericht/Bilder/Dateien](brand/brand-2/README.md).
+
+**334/334 Tests bestanden**,0 Fehler/Skips; echte Linux-Electron44-Vorher/Nachherläufe drei Größen jeweilsExit0 inklusive bestehender R1-Funktions-/Profil-/Fallbackprüfungen. Dock-/Island-/Uhrboxen exaktgleich. SVG/PNG/ICO/ICNS geprüft/dekodiert; reales Linux-builder-ASAR enthält alle121 Laufzeitdateien einschließlich50 Branddateien. Keine neue Dependency. Vorlage visuell vektorisiert, keine unbelegte Pixelgleichheit. Native Windows/macOS/Icon-/Installer-/SAC-/iPad-Abnahme offen; Linuxpaket ist kein Windowsinstaller, Signierung weiterblockiert. Historische Dateien/andere Entwicklungsbranches nicht gelöscht/überschrieben.
+
+Nächste drei Einheiten nur nach neuem Auftrag: native Windows-Iconabnahme, macOS-Bundleabnahme, PWA-Integration separat. Neuer SHA im Abschlussbericht; nach Commit/Push STOP.
+
+---
+
 # BRAND-1 – drei eigenständige Markensymbole zur Auswahl
 
 25.Oktober2026 (Europe/Berlin). Verifizierte aktuelle Basis/Remote **0df1a30426b205e6cde5d998e0154f42de968c2c**, eigener Branch **design/air-os-brand-1-20261025**. Drei neue selbst erstellte SVG-Zeichen ohne Schrift/Apple-/Birnenkopie/Fremdassets: **01Faltkern (Empfehlung)**,02Strömung,03Prisma. Keine Auswahl vorweggenommen und keine aktive Birne/App-Icons ersetzt.19 echte Electron44/Linux-PNGs, darunter15 transparente Größenexporte16/32/64/256/512 und helle/dunkle Vergleichsblätter. [Vorschauen/SVGs/Iconpfadprüfung](brand/brand-1/README.md).

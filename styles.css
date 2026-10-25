@@ -684,14 +684,14 @@ button{ -webkit-tap-highlight-color:transparent}
 .air-mark{width:24px;height:24px;flex-basis:24px}
 .air-mark img{display:block;width:23px;height:23px;object-fit:contain;border-radius:3px}
 
-/* Air-OS pear: exact silhouette traced from supplied artwork; no PNG or black tile. */
+/* BRAND-2: official geometric Air-OS mark; original container geometry retained. */
 .air-mark svg{display:block;width:23px;height:24px;overflow:visible;filter:none}
 
 /* Minimal download icon: blue arrow only, no tile or tray. */
 .dock .downloads-icon{background:transparent!important;box-shadow:none!important}
 
-/* The menu pear is black; Arcade uses a light minimalist tile. */
-.air-mark svg path{fill:#101820;stroke:none}
+/* Official menu symbol is black; other app artwork is unchanged. */
+.air-mark svg path{fill:#000;stroke:none}
 
 /* Air Modern A1: original palette and offline sky. Components adopt these in
    later micro-units; existing app styles are intentionally not overridden. */

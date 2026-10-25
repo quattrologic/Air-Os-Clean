@@ -84,7 +84,8 @@
       "src/main/file-search.cjs",
       "src/main/reminders-store.cjs",
       "air-reminders.js",
-      "air-reminders.css"
+      "air-reminders.css",
+      "assets/brand/**/*"
     ],
     "mac": {
       "target": [
@@ -92,19 +93,24 @@
         "zip"
       ],
       "category": "public.app-category.productivity",
-      "minimumSystemVersion": "10.15.0"
+      "minimumSystemVersion": "10.15.0",
+      "icon": "assets/brand/air-os.icns"
     },
     "win": {
       "target": [
         "nsis"
       ],
-      "artifactName": "${productName}-${version}-Windows-${arch}.${ext}"
+      "artifactName": "${productName}-${version}-Windows-${arch}.${ext}",
+      "icon": "assets/brand/air-os.ico"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "installerIcon": "assets/brand/air-os.ico",
+      "uninstallerIcon": "assets/brand/air-os.ico",
+      "installerHeaderIcon": "assets/brand/air-os.ico"
     },
     "linux": {
       "target": [
