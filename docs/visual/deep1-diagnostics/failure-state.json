@@ -1,0 +1,86 @@
+{
+  "page": "/workspace/Air-Os-Clean/index.html",
+  "active": "",
+  "events": [
+    {
+      "type": "pointerdown",
+      "id": "clock"
+    },
+    {
+      "type": "click",
+      "id": "clock"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "clock"
+    },
+    {
+      "type": "click",
+      "id": "clock"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "air-start-search"
+    },
+    {
+      "type": "click",
+      "id": "air-start-search"
+    },
+    {
+      "type": "input",
+      "id": "air-start-search"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    }
+  ]
+}

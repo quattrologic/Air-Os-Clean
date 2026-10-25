@@ -53,4 +53,5 @@ const ccCellH=66,ccGap=6,ccSliderGap=10;const ccDef=id=>Number.isInteger(id)&&id
         return { items: out, rows: rows, total: rows > 0 ? ys[rows - 1] + ccCellH : 0 };
     }
 
-if(typeof module==='object')module.exports={calcValue,ccLayout};else root.airMacShellMath={calcValue,ccLayout};})(typeof window==='object'?window:null);
+function clockTime(now){var hour=now.getHours()%12;if(hour===0)hour=12;return hour+':'+('0'+now.getMinutes()).slice(-2);}
+if(typeof module==='object')module.exports={calcValue,ccLayout,clockTime};else root.airMacShellMath={calcValue,ccLayout,clockTime};})(typeof window==='object'?window:null);

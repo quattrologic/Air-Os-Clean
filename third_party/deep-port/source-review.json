@@ -1,0 +1,82 @@
+[
+  {
+    "source": "MacShell/liquidglass.frag",
+    "sha256": "17c803e919d156cfff3c285fc2b11a59548b8b757e191190269ee0b81b2f336b",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/contourglow.frag",
+    "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/tintcard.frag",
+    "sha256": "fcb5040b7dee6bd3bace55ce8f5295b6d1fd3903772b2d357ea5d712da5f53c5",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/dust.frag",
+    "sha256": "df220fb441294153943d3aff37aeeb56bced5763b94a9bdd6068981fdd891a3d",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/fade.frag",
+    "sha256": "c613824a8e60f06b7e1361b8e4ddf56b05cd2e8bf6ec8469f3a9481e46e97ed5",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/MacDock.qml",
+    "sha256": "89ff98bfa058659abdc0924bb8287a8c0e0cea0197446cc5cf159bee4785bacc",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/SPopUp.qml",
+    "sha256": "82bd3e7425b95266e1ee6d8a57bc192a6641d48769e5d9dd577cd4bd8c6e9e23",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/ClockWidget.qml",
+    "sha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/WidgetVisual.qml",
+    "sha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/PlayerWidget.qml",
+    "sha256": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/ImageWidget.qml",
+    "sha256": "aeea6af41f8c5ad95dface4f5d1b76e28d9cc1b182384ffb47e6b2a345af5c5e",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/MacWidgets.qml",
+    "sha256": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/shell.qml",
+    "sha256": "3df070f6302a1f8dbd03a56a8f925888a1625b43856e7fa627e2b1fccd60c0d1",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/MacBar.qml",
+    "sha256": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "MacShell/CalendarWidget.qml",
+    "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  },
+  {
+    "source": "LICENSE",
+    "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d",
+    "pinnedCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4"
+  }
+]

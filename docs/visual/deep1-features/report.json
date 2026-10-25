@@ -1,0 +1,45 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "checks": [
+        "tile reorder persisted",
+        "widget keyboard position persisted",
+        "window close hitbox above widgets",
+        "real Notes event in history",
+        "mark read and remove",
+        "real right-click and app start"
+      ]
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "checks": [
+        "tile reorder persisted",
+        "widget keyboard position persisted",
+        "window close hitbox above widgets",
+        "real Notes event in history",
+        "mark read and remove",
+        "real right-click and app start"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "checks": [
+        "tile reorder persisted",
+        "widget keyboard position persisted",
+        "window close hitbox above widgets",
+        "real Notes event in history",
+        "mark read and remove",
+        "real right-click and app start"
+      ]
+    }
+  ]
+}

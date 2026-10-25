@@ -1,0 +1,20 @@
+{
+  "engine": "Chromium Linux SwiftShader fixture, NOT hardware acceptance",
+  "guardBypassedInFixtureOnly": true,
+  "firstDrawWallTimeMs": 652,
+  "idleObservationMs": 300,
+  "idleDraws": 0,
+  "state": {
+    "failed": false,
+    "draws": 2,
+    "tiles": 1,
+    "pending": false,
+    "disposed": false
+  },
+  "pixels": {
+    "nonzero": true,
+    "unique": 152
+  },
+  "contextLossFallback": true,
+  "pagehideCleanup": true
+}
