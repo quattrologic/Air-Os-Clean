@@ -26,7 +26,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 4,
+          "frames": 2,
           "tileBuilds": 1,
           "maskRebuilds": 1,
           "sceneRebuilds": 1,
@@ -36,9 +36,9 @@
             "height": 1080,
             "dpr": 1,
             "clockRect": {
-              "x": 708.51875,
+              "x": 683.6125,
               "y": 16.206249999999997,
-              "width": 503,
+              "width": 553,
               "height": 350
             },
             "fieldRect": {
@@ -173,7 +173,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 6,
+          "frames": 4,
           "tileBuilds": 1,
           "maskRebuilds": 2,
           "sceneRebuilds": 2,
@@ -183,9 +183,9 @@
             "height": 930,
             "dpr": 1,
             "clockRect": {
-              "x": 608.45625,
+              "x": 591.159375,
               "y": 14.706249999999997,
-              "width": 434,
+              "width": 468,
               "height": 302
             },
             "fieldRect": {
@@ -320,7 +320,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 6,
+          "frames": 5,
           "tileBuilds": 1,
           "maskRebuilds": 2,
           "sceneRebuilds": 2,
@@ -330,9 +330,9 @@
             "height": 600,
             "dpr": 1,
             "clockRect": {
-              "x": 25.746875000000003,
+              "x": 13.950000000000003,
               "y": 2.809375000000003,
-              "width": 339,
+              "width": 363,
               "height": 233
             },
             "fieldRect": {
@@ -712,6 +712,10 @@
       "status": "internal window started and closed; external service/content functionality not certified"
     }
   ],
+  "fallbackContextsNull": {
+    "webgl": true,
+    "webgl2": true
+  },
   "profileIsolation": true,
   "processRestartPersistence": true,
   "nativeWebGLDisabledFallback": true

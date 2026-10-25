@@ -1,3 +1,11 @@
+# R1-Fortsetzung – isolierter nativer WebGL-Fallback
+
+25.Oktober2026. Bestehender Branch **build/air-ultimate-windows-x64-r1-20261025**, Fortsetzungsbasis **660f7b6ecebbbc116dac460c6fd0a2ee441e1caa**, Integrationsbasis5e642b43aaaaf0bc11babe629840322f0ae46be0. Sauberer Arbeitsbaum verifiziert, keine Änderungen verworfen. Hostabschaltung nun ausschließlich mit `AIR_GUI_TEST_ISOLATED=1` UND `--disable-webgl`; Normalbetrieb unverändert. Gezielte11/11, echte Linux-Electron44-GUI drei Größen mit beiden Kontextennull, Login/Retry/Profile/Restart/CSS-Fallback bestanden. Anschließend311/311 Vollsuite,71 Ressourcen/Catalina/Diff und Modern-Audit0 bestanden. Dock/Islandboxen exakt erhalten, Sandbox/ContextIsolation/WebSecuritytrue, NodeIntegrationfalse und Fenster1440×900/min760×540 geprüft. Vorheriger Windowslauf40177130531 zu660f7b6 vollständiggrün; neuer Checkpoint wird über vorhandenen Workflow erneut gebaut. Nicht als physische Windows-/macOS-Abnahme ausgeben. Bericht: [R1](AIR_OS_WINDOWS_X64_R1.md).
+
+Nächste drei Einheiten nur nach neuem Auftrag: Windows-Hardwareabnahme, L1C.1, AM2. Signing/Notarisierung/Legacy2 High/CB-03/Software-GPU bleiben offen. Keine Folgephase; STOP nach R1-Ergebnis.
+
+---
+
 # Aktueller Checkpoint – R1 Windows-x64-Testkanal / Packagingintegration
 
 25. Oktober2026. Verifizierte Basis/Remote **5e642b43aaaaf0bc11babe629840322f0ae46be0** (enthält AM1/L1B.3), eigener Branch **build/air-ultimate-windows-x64-r1-20261025**. Tatsächlicher neuer Windows-x64-Workflow mit eingefrorener Electron44.9.3/electron-builder26.18.0-Toolchain, vollständiger Ressourcen-/Syntax-/ASAR-/Hash-/CPU-/Lizenzprüfung, echter NSIS-Installation und installiertem Electron-Smoke auf Windowsrunner. Root-Catalina/Electron32 und bestehende Workflows bleiben getrennt/unverändert. Kein neuer Player/Matrixfeature vorweggenommen. [R1-Bericht](AIR_OS_WINDOWS_X64_R1.md).
