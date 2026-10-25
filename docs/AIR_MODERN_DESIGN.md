@@ -1,5 +1,7 @@
 # Air Modern – verbindlicher Designplan aus Bild 2
 
+> Verbindliche Komponenten-Zuordnung,25.Oktober2026: **Lockscreen = MacShell/MacLock; Air Musik = NewAmp als konkrete Codebasis; Spotify = Spicetify optional/separat.** [Quellen, Grenzen und Roadmap](OPEN_SOURCE_BLUEPRINTS.md) · [AM1-Code-/Lizenz-/Architekturprüfung](AIR_MUSIC_NEWAMP_AM1.md). Nur Dokumentation; bestehende L1B.3-/L1C-Entwicklung und Produktgeometrien bleiben erhalten.
+
 > Neue ergänzende Richtung,24. Oktober2026: [Air-OS Ultimate Hybrid – Konzept vor F2](AIR_OS_ULTIMATE_HYBRID_DESIGN.md). Mint/Creme, Wolken, Originalicons und gemessene Geometrien bleiben erhalten. Neue dunkle Such-/Schnellflächen und Apple-Interaktionsprinzipien sind dokumentierte Entwürfe; F2 erst nach Freigabe. Supaste-Zugriff hier403, deshalb dessen genaue visuelle Auswertung noch offen. Historische Abschnitte unten sind keine neuen Abnahmen.
 
 23. Oktober 2026. Bild 1 ist der zu ersetzende Bestand, **Bild 2 ist die visuelle Zielreferenz**. Keine Folia-Webseite, kein fremdes Logo, kein Bloom-Code/-Asset. Bloom bleibt GPL-Referenz für allgemeine Interaktionsprinzipien; Air-OS-Implementierung eigenständig unter MIT. Desktop bleibt innerhalb der Electron-App. Installer-Workflows, Testinstaller-Branch und vorhandene Downloads bleiben unangetastet.

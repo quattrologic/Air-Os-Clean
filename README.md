@@ -180,3 +180,7 @@ Die appinterne Anmeldeoberfläche portiert ausgewählte MacLock-Layout-/Uhrbesta
 Vollständige Hinweise und Lizenztexte: [third_party/maclock/NOTICE.md](third_party/maclock/NOTICE.md).
 Die Ansicht ist keine native Betriebssystemsperre. Aktueller Umfang, Originalquellen,
 Abweichungen und spätere Phasen: [L1A-Bericht](docs/AIR_MACLOCK_L1A.md).
+
+### Verbindliche Open-Source-Vorlagen / AM1
+
+Lockscreen: **MacShell/MacLock**. Künftige Air-Musik-Codebasis: **NewAmp**. Spotify-Anpassung: **Spicetify optional und separat**. [Zuordnung und Roadmap](docs/OPEN_SOURCE_BLUEPRINTS.md) · [AM1-Code-/Lizenzprüfung mit Originalscreenshots](docs/AIR_MUSIC_NEWAMP_AM1.md). AM1 ist reine Vorbereitung; der oben dokumentierte bestehende AmplitudeJS-Player wurde noch nicht ersetzt. Keine zweite Electron-Laufzeit, keine fremden Logos und keine Spotify-Audioextraktion.

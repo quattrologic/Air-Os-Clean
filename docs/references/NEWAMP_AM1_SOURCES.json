@@ -1,0 +1,282 @@
+{
+  "repository": "https://github.com/Evilander/newamp",
+  "commit": "d27c765de8ef2bacbc409dd42c1aebae61b2a9bb",
+  "package_version": "2.7.0",
+  "analysis_date": "2026-10-25",
+  "air_os_base": "1346006c8d6f0dd8cf96c1fa9a6122d32a7ba0e4",
+  "runtime_code_copied": false,
+  "files": [
+    {
+      "path": "src/audio/engine.ts",
+      "sha256": "96c9e286f0788a343e4fd6c40095cbf2ad0db3592c384d970e10cc33664ddaea",
+      "bytes": 79387,
+      "phase": "AM2",
+      "status": "port-selected",
+      "note": "AudioEngine.play/pause/seek/state events/playSeq/subscribe/dispose; one local transport first; no wholesale EQ/gapless/exclusive engine",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/audio/engine.ts"
+    },
+    {
+      "path": "shared/play-intent.ts",
+      "sha256": "4f38514e8276a412544412c70a18c5d888c389a896010d07ff6796f368dd194b",
+      "bytes": 894,
+      "phase": "AM2",
+      "status": "planned-direct-port",
+      "note": "newest-play intent ticket, plus profile-session invalidation",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/play-intent.ts"
+    },
+    {
+      "path": "shared/playback-start.ts",
+      "sha256": "386724364e9cc05493c4ec018cb0f9b113d4cf36e8b3feaf0da2e974ce9e00c9",
+      "bytes": 3115,
+      "phase": "AM2/AM3",
+      "status": "planned-direct-port",
+      "note": "clamp/recover queue selection by stable identity",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/playback-start.ts"
+    },
+    {
+      "path": "shared/playback-error.ts",
+      "sha256": "8a5adb3714b8aa460dba6d17eded295934b9520d1bee2c62d65ef98239a9a827",
+      "bytes": 3167,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "bounded error progression; no endless error skip",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/playback-error.ts"
+    },
+    {
+      "path": "shared/queue-edit.ts",
+      "sha256": "034710cf0ae18c597d5fc648dad049ed55d1ff53327956f5c19a89b418d5fa67",
+      "bytes": 2145,
+      "phase": "AM3",
+      "status": "planned-direct-port",
+      "note": "queue move/remove order and current index",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/queue-edit.ts"
+    },
+    {
+      "path": "shared/queue-insert.ts",
+      "sha256": "87f6cb64bd824fcb206827c132950fed586597cc31719f5438c3bd389e3b05ac",
+      "bytes": 1656,
+      "phase": "AM3",
+      "status": "planned-direct-port",
+      "note": "append/play-next queue semantics",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/queue-insert.ts"
+    },
+    {
+      "path": "shared/album-key.ts",
+      "sha256": "df1fc3d519a1d69c19d58e0a3ad9ef412b87d8727ca4d58d1da43e2dfc756167",
+      "bytes": 1616,
+      "phase": "AM3",
+      "status": "planned-direct-port",
+      "note": "canonical album identity and separator",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/album-key.ts"
+    },
+    {
+      "path": "shared/types.ts",
+      "sha256": "960d77b49298801000305c1a8e35b9faa3f10a31d6f1167d9b51c3c6f89c7ba7",
+      "bytes": 54478,
+      "phase": "AM2/AM3",
+      "status": "port-selected",
+      "note": "minimal Track/playlist/transport shapes; no whole visualizer/server type graph",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/types.ts"
+    },
+    {
+      "path": "electron/library.ts",
+      "sha256": "ca34490f309537288370582afa7e907a9b913f4ece0ef14ca27098ad0a1b2cc6",
+      "bytes": 353210,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "local scan, metadata/cover, playlist schema/position; per-Air-OS-profile persistence adapter",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/library.ts"
+    },
+    {
+      "path": "electron/playlist-cover-guard.ts",
+      "sha256": "dc52063c75c8a02d94be726b0e6ea30cb659abc62d32953739049a952a1a34a6",
+      "bytes": 1712,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "dialog-approved cover references, per-session bounded allowlist",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/playlist-cover-guard.ts"
+    },
+    {
+      "path": "electron/audio-path-policy.ts",
+      "sha256": "7b231ce4acc542847d147b955ec1d5c0198008474da688d3bcd133a1dbe1c16b",
+      "bytes": 2237,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "separator-safe allowlist, bound to authorized profile",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/audio-path-policy.ts"
+    },
+    {
+      "path": "electron/audio-protocol-authorize.ts",
+      "sha256": "e41da7bd70250e04681cdb3dc7373cc2d96acf53fb8237496f51f2152e1dcf08",
+      "bytes": 4301,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "pre-filesystem and post-realpath validation; no arbitrary path IPC",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/audio-protocol-authorize.ts"
+    },
+    {
+      "path": "src/api/lrclib.ts",
+      "sha256": "36f638b44aac707426977ec3cf09bb915ae5e68d3a535ed2fcd5f041196fdb1e",
+      "bytes": 5370,
+      "phase": "AM4",
+      "status": "port-selected",
+      "note": "parseLrc only first; do not copy fetch/cache side effects",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/api/lrclib.ts"
+    },
+    {
+      "path": "electron/local-lyrics.ts",
+      "sha256": "8df4d40e8609e7f764887d24ab35e04407b3e0d7835e7727941c4f214d485ee3",
+      "bytes": 7436,
+      "phase": "AM4",
+      "status": "port-selected",
+      "note": "bounded sidecar/embedded reading; profile/file authorization and cache invalidation",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/local-lyrics.ts"
+    },
+    {
+      "path": "shared/media-session.ts",
+      "sha256": "ba7ef17d8ca113a1771f0a44fc6511bdb3600961c57603e059b663e8ea8bef4b",
+      "bytes": 3158,
+      "phase": "AM4",
+      "status": "planned-direct-port",
+      "note": "metadata/position validation and coalesced position sync",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/shared/media-session.ts"
+    },
+    {
+      "path": "src/components/views/NowPlayingView.tsx",
+      "sha256": "f0c9c21d25957c4cf1d3d25cb40e32189b63cb080117c16de2fcd60e820cc550",
+      "bytes": 111228,
+      "phase": "AM3/AM4",
+      "status": "port-selected",
+      "note": "seek/lyrics active-line and information layout; adapt to existing DOM host",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/components/views/NowPlayingView.tsx"
+    },
+    {
+      "path": "src/components/views/LibraryView.tsx",
+      "sha256": "ac627bce7baa86ba58d886d1d04afe57bd8c30e7052fd1078bab0d661321841b",
+      "bytes": 125063,
+      "phase": "AM3",
+      "status": "analysed-reference",
+      "note": "library interaction and compact rows; no React root/window shell",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/components/views/LibraryView.tsx"
+    },
+    {
+      "path": "src/store/usePlayerStore.ts",
+      "sha256": "9328b902f5ee3f9e2bd0f08e8fe96793a10b9341861bbeaff9cc017d5f8c8a82",
+      "bytes": 112519,
+      "phase": "AM2-4",
+      "status": "analysed-not-wholesale",
+      "note": "queue/lifecycle references; no whole Zustand store or unrelated features",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/store/usePlayerStore.ts"
+    },
+    {
+      "path": "src/hooks/useSavedPlaylists.ts",
+      "sha256": "ba8363dac03cb732f78b413b892d8470bd9117d97076a69750208903c89b1ddf",
+      "bytes": 767,
+      "phase": "AM3",
+      "status": "port-selected",
+      "note": "confirmed change events plus stale/cancel cleanup",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/hooks/useSavedPlaylists.ts"
+    },
+    {
+      "path": "electron/main.ts",
+      "sha256": "9e4b458f4061e125d3aaab6b7a959b116b9620dd7ef0f381b18cb24998355ff4",
+      "bytes": 310112,
+      "phase": "none",
+      "status": "exclude-runtime",
+      "note": "no second Electron runtime, windows, generic IPC graph, sandbox changes, installer",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/electron/main.ts"
+    },
+    {
+      "path": "src/styles/index.css",
+      "sha256": "a180c0a67e73529fbcd25e9b15241d125152df96c5179429f3d30c1dcf7bffa0",
+      "bytes": 3254,
+      "phase": "none",
+      "status": "exclude-global-style",
+      "note": "no root Tailwind cascade/skins; scope Air Music to existing Air-OS theme",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/src/styles/index.css"
+    },
+    {
+      "path": "native/newamp-audio/miniaudio.h",
+      "sha256": "6b2029714f8634c4d7c70cc042f45074e0565766113fc064f20cd27c986be9c9",
+      "bytes": 3985018,
+      "phase": "none",
+      "status": "exclude-for-AM2-4",
+      "note": "public-domain or MIT-0 declaration; native/exclusive backend not required",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/native/newamp-audio/miniaudio.h"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "de520d1dd0f44f6579d82e22c62261a1b71ac8958dffa31063818500493e4458",
+      "bytes": 1076,
+      "phase": "AM1",
+      "status": "license-reference-only",
+      "note": "full MIT text preserved as analysis evidence",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e5b6f11fdddc8ad9f63efdd01bdd7caa4a371d66ffc9bce4a90c147ebe712ad8",
+      "bytes": 15504,
+      "phase": "AM1",
+      "status": "analysed",
+      "note": "name/logo exception, privacy and screenshots",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/README.md"
+    },
+    {
+      "path": "package.json",
+      "sha256": "0973c0bafcca96f9f68973be4a5b3e1da8ea1d8b38d867adae05651f96faff0f",
+      "bytes": 36921,
+      "phase": "AM1",
+      "status": "analysed",
+      "note": "direct dependencies and build/runtime architecture",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/package.json"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b164e8bc30323be66abe3c643af12c38687173d7b756edb075c5362e3574edf1",
+      "bytes": 253208,
+      "phase": "AM1",
+      "status": "analysed-declared-licenses",
+      "note": "locked versions/declared license fields; not a full transitive security review",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/package-lock.json"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "assets/screenshots/real/real-now-playing.png",
+      "sha256": "15baec71c44fc450fc825b59df705df201f039db8aca4b06bcbb75af881e8764",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-now-playing.png",
+      "raw_url": "https://raw.githubusercontent.com/Evilander/newamp/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-now-playing.png",
+      "status": "visually inspected for now-playing/library; albums linked as additional reference; external upstream reference only, not copied into Air-OS",
+      "version_note": "screenshots display v2.1.0, analysed source package2.7.0"
+    },
+    {
+      "path": "assets/screenshots/real/real-library.png",
+      "sha256": "6a169d343a84b6549312f86b996ed7777b89be8c878e2ff08cf7caea07b3aa8f",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-library.png",
+      "raw_url": "https://raw.githubusercontent.com/Evilander/newamp/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-library.png",
+      "status": "visually inspected for now-playing/library; albums linked as additional reference; external upstream reference only, not copied into Air-OS",
+      "version_note": "screenshots display v2.1.0, analysed source package2.7.0"
+    },
+    {
+      "path": "assets/screenshots/real/real-albums.png",
+      "sha256": "06575c4c713d1cfd8e861237d8b34d37dbf14104354fc483eac53ac113646147",
+      "source_url": "https://github.com/Evilander/newamp/blob/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-albums.png",
+      "raw_url": "https://raw.githubusercontent.com/Evilander/newamp/d27c765de8ef2bacbc409dd42c1aebae61b2a9bb/assets/screenshots/real/real-albums.png",
+      "status": "visually inspected for now-playing/library; albums linked as additional reference; external upstream reference only, not copied into Air-OS",
+      "version_note": "screenshots display v2.1.0, analysed source package2.7.0"
+    }
+  ],
+  "license_evidence": {
+    "upstream": "MIT Copyright(c)2026 NewAmp contributors; README excludes name/logo",
+    "npm_tarball_license_texts_read": [
+      "ffmpeg-static@5.3.0 GPL-3.0-or-later",
+      "mediabunny@1.50.4 MPL-2.0",
+      "music-metadata@11.12.3 MIT Copyright2026 Borewit",
+      "sql.js@1.14.1 MIT Copyright2017 sql.js authors"
+    ],
+    "fonts": "four woff2 files; no separate font license files found in repository; embedded metadata extraction blocked by missing Brotli; not selected",
+    "spicetify_commit": "c3fd98f6fbf922ae944d1ecd64f97c380d04368e",
+    "spicetify_license": "LGPL-2.1 per root LICENSE; optional separate project"
+  }
+}

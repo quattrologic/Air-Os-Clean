@@ -1,5 +1,7 @@
 # Air-OS Ultimate Hybrid – Designplan vor F2
 
+> Verbindliche Komponenten-Zuordnung,25.Oktober2026: **Lockscreen = MacShell/MacLock; Air Musik = NewAmp als konkrete Codebasis; Spotify = Spicetify optional/separat.** [Quellen, Grenzen und Roadmap](OPEN_SOURCE_BLUEPRINTS.md) · [AM1-Code-/Lizenz-/Architekturprüfung](AIR_MUSIC_NEWAMP_AM1.md). Nur Dokumentation; bestehende L1B.3-/L1C-Entwicklung und Produktgeometrien bleiben erhalten.
+
 24. Oktober 2026 · Basis: F1 `4cae58f367c76cdc9d8989fe35970df58d13ac07` · Dokumentationsbranch `docs/air-os-hybrid-design-20261024`.
 
 **Status:** Die Richtung „Air-OS Ultimate Hybrid“ ist verbindlich. Dieses Dokument ist der konkrete Entwurf zur Prüfung; neue Maße/Farben sind Vorschläge und noch nicht implementiert. F2 beginnt erst nach Freigabe. Die Supaste-Oberfläche konnte hier wegen einer Netzwerksperre nicht visuell geprüft werden. Keine behauptete pixelgenaue Supaste-Abnahme. Bestehende gemessene Geometrien bleiben die Baseline.
