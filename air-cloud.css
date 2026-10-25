@@ -1,0 +1,2 @@
+/* Optional cloud controls, scoped to their own Settings panel. */
+.air-cloud-panel form,.air-cloud-panel label{display:grid;gap:8px;min-width:0}.air-cloud-panel form{margin:12px 0}.air-cloud-panel input{width:100%;min-width:0;box-sizing:border-box;padding:8px}.air-cloud-panel [role="status"]{overflow-wrap:anywhere}

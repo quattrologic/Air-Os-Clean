@@ -30,17 +30,24 @@ function createStore({root}){
   const notes=list(user);const index=id?notes.findIndex(n=>n.id===id):-1;
   if(id&&index<0)throw new Error('Notiz nicht gefunden.');
   if(index<0&&notes.length>=200)throw new Error('Höchstens 200 Notizen erlaubt.');
+  if(index>=0&&input.expectedSnapshot&&JSON.stringify(notes[index])!==JSON.stringify(input.expectedSnapshot))throw new Error('Notiz wurde inzwischen synchronisiert oder geändert. Bitte Notiz erneut auswählen; ungespeicherte Eingaben vorher sichern.');
   const now=new Date().toISOString();
   const note={id:index>=0?id:crypto.randomUUID(),title,body,createdAt:index>=0?notes[index].createdAt:now,updatedAt:now};
   if(index>=0)notes[index]=note;else notes.unshift(note);
   persist(user,notes);return {...note};
  }
- function remove(user,id){
+ function remove(user,id,expectedSnapshot){
   if(typeof id!=='string'||!idPattern.test(id))throw new TypeError('Ungültige Notiz-ID.');
   const notes=list(user),remaining=notes.filter(n=>n.id!==id);
+  if(expectedSnapshot&&JSON.stringify(notes.find(n=>n.id===id))!==JSON.stringify(expectedSnapshot))throw new Error('Notiz wurde inzwischen geändert. Löschen abgebrochen; bitte neu laden.');
   if(notes.length===remaining.length)throw new Error('Notiz nicht gefunden.');
   persist(user,remaining);return {ok:true};
  }
- return Object.freeze({list,save,remove});
+ function replaceFromCloud(user,expected,next){
+  if(JSON.stringify(list(user))!==JSON.stringify(expected))throw new Error('Lokale Notizen während der Synchronisierung geändert. Bitte erneut versuchen.');
+  const validated=require('./cloud-notes.cjs').validate(next);
+  persist(user,validated);
+ }
+ return Object.freeze({list,save,remove,replaceFromCloud});
 }
 module.exports={createStore};

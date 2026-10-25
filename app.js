@@ -548,7 +548,7 @@ function openApp(id){
  $("#browser-form",win)?.addEventListener("submit",e=>{e.preventDefault();let q=$("#browser-query",win).value.trim();if(!q)return;let url=/^https?:\/\//i.test(q)?q:/^[\w-]+\.[a-z]{2,}/i.test(q)?"https://"+q:"https://www.google.com/search?q="+encodeURIComponent(q);window.open(url,"_blank","noopener,noreferrer")});
  if(id==="notes")window.airNotes?.mount(win);
  if(id==='reminders')window.airReminders?.mount(win);
- if(id==="settings") initAirSettings(win);
+ if(id==="settings"){initAirSettings(win);window.airCloudUI?.mount(win);}
  $("#music-play",win)?.addEventListener("click",()=>{const audio=$("#air-music-audio",win);if(audio&&audio.src){audio.paused?audio.play().catch(()=>toast("Audiodatei konnte nicht abgespielt werden.")):audio.pause()}else toast("Wähle zuerst eine Musikdatei aus.")});
  if(id==="tagesschau")tsLoadNews(win,"homepage");
  if(id==="stocks")initStocksApp(win);

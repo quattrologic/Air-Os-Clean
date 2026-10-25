@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, ipcMain, shell, session, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
@@ -19,6 +19,10 @@ const preferenceStore=require('./src/main/preferences.cjs').createStore({
  isNewProfile:username=>readAccounts().some(account=>account.usernameKey===username.toLocaleLowerCase('en-US')&&account.profileSchemaVersion===2)
 });
 const notesStore=require('./src/main/notes-store.cjs').createStore({root:()=>app.getPath('userData')});
+const cloudModule=require('./src/main/cloud-notes.cjs');
+let cloudConfig=null;
+try{cloudConfig=cloudModule.config()}catch{console.error('Air Cloud: ungültige Konfiguration; Cloud deaktiviert.');}
+const airCloud=cloudModule.createCloud({root:()=>app.getPath('userData'),store:notesStore,safeStorage,settings:cloudConfig});
 const reminderStore=require('./src/main/reminders-store.cjs').createStore({root:()=>app.getPath('userData')});
 const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
  root:()=>app.getPath('userData'),appPath:()=>app.getAppPath(),
@@ -68,6 +72,7 @@ function requireTrusted(event) {
 }
 function openLogin() {
   airAppRuntime.closeAll();
+  airCloud.suspend(activeUser?.username);
   activeUser = null;
   fileWorkspaceRoot = null;
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -124,9 +129,18 @@ ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePr
 ipcMain.handle('air-os:reminders:list',event=>reminderStore.list(requirePreferenceUser(event)));
 ipcMain.handle('air-os:reminders:save',(event,item)=>reminderStore.save(requirePreferenceUser(event),item));
 ipcMain.handle('air-os:reminders:remove',(event,id)=>reminderStore.remove(requirePreferenceUser(event),id));
+for(const action of ['status','signIn','sync','signOut'])ipcMain.handle('air-os:cloud:'+action,async(event,input)=>{
+ const user=requirePreferenceUser(event),owner=activeUser.preferenceSession;
+ const alive=()=>activeUser?.username===user&&activeUser?.preferenceSession===owner;
+ try{
+  const result=await airCloud[action](user,...(action==='signIn'?[input,alive]:action==='sync'?[alive]:[]));
+  if(!alive())throw Error('Anmeldung geändert.');
+  return {ok:true,...result};
+ }catch(error){return {ok:false,error:error.message};}
+});
 ipcMain.handle('air-os:notes:list',event=>notesStore.list(requirePreferenceUser(event)));
 ipcMain.handle('air-os:notes:save',(event,note)=>notesStore.save(requirePreferenceUser(event),note));
-ipcMain.handle('air-os:notes:remove',(event,id)=>notesStore.remove(requirePreferenceUser(event),id));
+ipcMain.handle('air-os:notes:remove',(event,id,expectedSnapshot)=>notesStore.remove(requirePreferenceUser(event),id,expectedSnapshot));
 ipcMain.handle('air-os:store:catalog',event=>{requirePreferenceUser(event);return airAppManager.catalog()});
 ipcMain.handle('air-os:store:installed',event=>airAppManager.installed(requirePreferenceUser(event)));
 ipcMain.handle('air-os:store:install',(event,id)=>airAppManager.install(requirePreferenceUser(event),id));

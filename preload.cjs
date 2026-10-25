@@ -22,10 +22,16 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     save: item => ipcRenderer.invoke('air-os:reminders:save',item),
     remove: id => ipcRenderer.invoke('air-os:reminders:remove',id)
   }),
+  cloud: Object.freeze({
+    status: () => ipcRenderer.invoke('air-os:cloud:status'),
+    signIn: input => ipcRenderer.invoke('air-os:cloud:signIn',input),
+    sync: () => ipcRenderer.invoke('air-os:cloud:sync'),
+    signOut: () => ipcRenderer.invoke('air-os:cloud:signOut')
+  }),
   notes: Object.freeze({
     list: () => ipcRenderer.invoke('air-os:notes:list'),
     save: note => ipcRenderer.invoke('air-os:notes:save',note),
-    remove: id => ipcRenderer.invoke('air-os:notes:remove',id)
+    remove: (id,expectedSnapshot) => ipcRenderer.invoke('air-os:notes:remove',id,expectedSnapshot)
   }),
   preferences: Object.freeze({
     get: () => ipcRenderer.invoke('air-os:preferences:get'),

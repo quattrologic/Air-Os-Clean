@@ -85,7 +85,10 @@
       "src/main/reminders-store.cjs",
       "air-reminders.js",
       "air-reminders.css",
-      "assets/brand/**/*"
+      "assets/brand/**/*",
+      "src/main/cloud-notes.cjs",
+      "air-cloud.js",
+      "air-cloud.css"
     ],
     "mac": {
       "target": [

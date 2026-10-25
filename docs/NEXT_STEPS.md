@@ -1,3 +1,13 @@
+# CLOUD-1 – optionale Supabase-Profilverknüpfung und Notes-Abgleich
+
+25.Oktober2026, Europe/Berlin. Verifizierte BRAND-2-Basis/Remote **1491eaab6d12a31cf0e5f989e439e3fde9b45b9e**, eigener Branch **feat/air-cloud-notes-cloud1-20261025**. Tatsächlicher Hauptprozess-REST/Auth-Adapter, freiwillige Cloud-Verknüpfung in bestehenden Einstellungen, OS-verschlüsselte Refresh-Sitzung, Logout-/Profilgrenzen, bestehender lokaler Notes-Store, atomarer Versions-CAS/3-Wege-Abgleich/Löschungen und Schutz veralteter Editorwrites. Eventgetrieben ohne Polling; Konflikte/Fehler behalten Daten. Keine Cloud-Daten im Lockscreen, keine neue lokale Kontoverwaltung/Dependencies. [Implementierung, Setup, SQL/RLS, Bilder und Grenzen](cloud/CLOUD_1.md).
+
+**342/342 Tests bestanden**,8 neue Cloudtests mit zwei separaten Instanzen/Identitäten an simuliertem Backend; kein echter Supabase-Test.124 Laufzeitdateien/Syntax/Diff bestanden. Echte Linux-Electron44-GUI drei Größen Exit0 einschließlich neuer Settings-Sektion/fehlendem-Backend-Hinweis und bisheriger R1-App-/Profil-/Neustart-/M1-/M2-/K3-/Classic-/Fallbacktests.22 echte PNGs/Rohmessungen, Dock-/Islandboxen exakt wie BRAND-2. Keine native Windows/macOS/iPad-Abnahme. **Kein konfiguriertes Supabase-Projekt/öffentlicher Schlüssel: echte Online-Synchronisierung, RLS-Ausführung und positive Auth-/Refresh-Abnahme OFFEN.** Signier-/Buildkonfigurationen/Branding/geschützte Desktopgeometrien erhalten; Packagingliste ergänzt nur drei Laufzeitdateien. Bestehende Audit-/Signingblocker bleiben.
+
+Nächste drei kleine Einheiten nur nach Auftrag: eigenes Supabase-Projekt bereitstellen und echten Zwei-Nutzer-/Zwei-Geräte-RLS-Abgleich abnehmen; expliziten Konfliktauflösungsdialog ergänzen; native sichere Tokenablage Windows/macOS prüfen. Neuer SHA im Abschlussbericht; Commit/Push, danach STOP.
+
+---
+
 # BRAND-2 – offizielles hochgeladenes Logo eingebaut
 
 25.Oktober2026, Europe/Berlin. Basis/Remote **99ba39383dd20198d77981572ccc91d3f738314c**, eigener Branch **design/air-os-brand-2-20261025**. Tatsächlich aktive Birne und Einrichtungs-/Schlafmarken durch manuell aus der Nutzerreferenz vektorisiertes geometrisches Zeichen ersetzt; kein BRAND-1-Entwurf. Schwarz/weiß aus identischem SVG-Master; Modern-Dock/Systemmenü/Island-Homekarte/Lockscreen/Favicon/Touchicon, Windows-/macOS-/NSIS-Iconpfade und PNG/ICO/ICNS ergänzt. Profile/Classic-Grid/Appicons/Reihenfolge/Dock-/Islandgeometrien/M1/M2/MacLock und Signierworkflows erhalten. PWA-Icons vorbereitet, keine PWA implementiert. [Bericht/Bilder/Dateien](brand/brand-2/README.md).

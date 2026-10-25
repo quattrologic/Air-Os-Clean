@@ -55,7 +55,8 @@
    if(loading||saving)return;
    saving=true;saveButton.disabled=true;announce('Speichere …');
    try{
-    const saved=await api.save({id:selected,title:title.value,body:body.value});
+    const expectedSnapshot=notes.find(n=>n.id===selected);
+    const saved=await api.save({id:selected,title:title.value,body:body.value,...(expectedSnapshot?{expectedSnapshot}: {})});
     // Only acknowledged saves emit a fixed, content-free local notification.
     await notifyChange('air-notes-saved');
     // A save acknowledges its submitted snapshot, not edits made while waiting.
@@ -75,7 +76,7 @@
    if(loading||saving)return;
    if(!selected){title.value='';body.value='';announce('Neue Notiz verworfen.');return}
    if(!confirm('Diese Notiz wirklich löschen?'))return;
-   try{await api.remove(selected);await notifyChange('air-notes-changed');selected=null;await refresh();announce('Notiz gelöscht.')}
+   try{await api.remove(selected,notes.find(n=>n.id===selected));await notifyChange('air-notes-changed');await notifyChange('air-notes-deleted');selected=null;await refresh();announce('Notiz gelöscht.')}
    catch(error){announce('Löschen fehlgeschlagen.');console.error(error)}
   });
   activeNote={win,select:id=>{if(!loading&&!saving)refresh(id)}};
