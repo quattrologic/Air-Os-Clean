@@ -88,7 +88,7 @@ async function run(){
   await login();assert.ok((await evaluate('airOS.notes.list()')).some(x=>x.title==='R1 Saved 390'));assert.equal((await evaluate('airOS.preferences.get()')).desktopTheme,'modern');
   report.profileIsolation=true;report.processRestartPersistence=true;report.nativeWebGLDisabledFallback=true;
   fs.writeFileSync(path.join(output,'r1-gui-report.json'),JSON.stringify(report,null,2)+'\n');console.log('PASS actual Electron '+os.platform()+' GUI; screenshots and measurements: '+output);
- }catch(error){try{await shot('r1-failure');fs.writeFileSync(path.join(output,'failure-state.json'),JSON.stringify(await evaluate("({page:location.pathname,active:document.activeElement?.id,error:document.querySelector('#login-error')?.textContent,submitDisabled:document.querySelector('#login-submit')?.disabled,events:window.__r1Events})"),null,2))}catch{}throw error}finally{await stop();fs.rmSync(profile,{recursive:true,force:true})}
+ }catch(error){try{await shot('r1-failure');fs.writeFileSync(path.join(output,'failure-state.json'),JSON.stringify(await evaluate("({page:location.pathname,active:document.activeElement?.id,error:document.querySelector('#login-error')?.textContent,submitDisabled:document.querySelector('#login-submit')?.disabled,events:window.__r1Events})"),null,2))}catch{}throw error}finally{await stop();fs.rmSync(profile,{recursive:true,force:true,maxRetries:10,retryDelay:150})}
 }
-if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1});
+if(require.main===module)run().catch(e=>{console.error(e);console.error('::error title=Installed Electron GUI smoke::'+String(e.stack||e).slice(0,3500).replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A'));process.exitCode=1});
 module.exports={cdp};
