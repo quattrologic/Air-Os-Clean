@@ -1,0 +1,144 @@
+name: Air-OS Windows x64 R1.1 signing
+
+on:
+  push:
+    branches: [build/air-windows-authenticode-r11-20261025]
+    paths-ignore: ['docs/**']
+  workflow_dispatch:
+    inputs:
+      signing_mode:
+        description: Protected signing identity (never falls back to unsigned)
+        type: choice
+        options: [certificate, artifact]
+        default: certificate
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: air-os-r11-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  configuration-check:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --prefix build/windows-x64 --no-audit --no-fund
+      - run: npm audit --prefix build/windows-x64 --audit-level=high
+      - run: node scripts/windows-test-build.cjs link
+      - run: node scripts/run-test-gate.cjs
+      - name: Parse actual PowerShell and check native SignTool rejection
+        shell: pwsh
+        run: |
+          $tokens=$null; $errors=$null
+          [Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'scripts/windows-signing.ps1'),[ref]$tokens,[ref]$errors) | Out-Null
+          if ($errors.Count) { throw 'Signing PowerShell syntax invalid.' }
+          ./scripts/windows-signing.ps1 -Action Probe
+      - name: Report explicit signing block without a bound identity
+        if: github.event_name != 'workflow_dispatch'
+        shell: pwsh
+        run: |
+          node scripts/windows-signing.cjs status certificate
+          'SIGNED BUILD BLOCKED: push checks bind no signing identity. Run manually from this branch with an approved windows-code-signing environment and trusted credentials. No signed artifact or Smart App Control acceptance exists.' >> $env:GITHUB_STEP_SUMMARY
+      - name: Cleanup probe state
+        if: always()
+        shell: pwsh
+        run: ./scripts/windows-signing.ps1 -Action Cleanup
+
+  signed-windows-x64:
+    needs: configuration-check
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/build/air-windows-authenticode-r11-20261025'
+    environment: windows-code-signing
+    runs-on: windows-2022
+    timeout-minutes: 50
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      AIR_SIGNING_PUBLISHER: ${{ vars.AIR_SIGNING_PUBLISHER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Require native Windows x64
+        run: node -e "if(process.platform!=='win32'||process.arch!=='x64')throw Error('Native Windows x64 required')"
+      - run: npm ci --prefix build/windows-x64 --no-audit --no-fund
+      - run: npm audit --prefix build/windows-x64 --audit-level=high
+      - name: Prepare locked runtime and run existing R1 gates
+        run: |
+          node scripts/windows-test-build.cjs link
+          node build/windows-x64/node_modules/electron/install.js
+          npm run check:modern
+          npm run check:catalina
+          node scripts/windows-test-build.cjs validate
+          node scripts/run-test-gate.cjs
+      - name: Prepare protected signing identity and strict policy
+        shell: pwsh
+        env:
+          R11_MODE: ${{ inputs.signing_mode }}
+          AIR_WINDOWS_CERTIFICATE_PFX: ${{ inputs.signing_mode == 'certificate' && secrets.AIR_WINDOWS_CERTIFICATE_PFX || '' }}
+          AIR_WINDOWS_CERTIFICATE_PASSWORD: ${{ inputs.signing_mode == 'certificate' && secrets.AIR_WINDOWS_CERTIFICATE_PASSWORD || '' }}
+          AIR_ARTIFACT_ENDPOINT: ${{ vars.AIR_ARTIFACT_ENDPOINT }}
+          AIR_ARTIFACT_ACCOUNT: ${{ vars.AIR_ARTIFACT_ACCOUNT }}
+          AIR_ARTIFACT_PROFILE: ${{ vars.AIR_ARTIFACT_PROFILE }}
+          AZURE_TENANT_ID: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_TENANT_ID || '' }}
+          AZURE_CLIENT_ID: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_CLIENT_ID || '' }}
+          AZURE_CLIENT_SECRET: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_CLIENT_SECRET || '' }}
+        run: ./scripts/windows-signing.ps1 -Action Prepare -Mode $env:R11_MODE
+      - name: Prepare exact source identity
+        run: node scripts/windows-test-build.cjs prepare
+      - name: Sign app, helper EXEs, DLLs, native modules, NSIS uninstaller and installer
+        shell: pwsh
+        env:
+          AZURE_TENANT_ID: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_TENANT_ID || '' }}
+          AZURE_CLIENT_ID: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_CLIENT_ID || '' }}
+          AZURE_CLIENT_SECRET: ${{ inputs.signing_mode == 'artifact' && secrets.AZURE_CLIENT_SECRET || '' }}
+        run: node build/windows-x64/node_modules/electron-builder/cli.js --win nsis --x64 --publish never --config "$env:R11_SIGNING_CONFIG" --config.electronVersion=44.9.3 --config.npmRebuild=false
+      - name: Verify actual package bytes and compute post-signing installer hash
+        run: node scripts/windows-test-build.cjs collect
+      - name: Verify every packaged PE and installer with SignTool, trusted chain and timestamp
+        shell: pwsh
+        run: ./scripts/windows-signing.ps1 -Action VerifyPackage
+      - name: Install verified current NSIS package
+        shell: pwsh
+        run: |
+          $installer=@(Get-ChildItem dist/test-artifacts/windows-x64/*-Windows-x64.exe)
+          if ($installer.Count -ne 1) { throw 'One current installer required.' }
+          $destination=Join-Path $env:RUNNER_TEMP 'air-os-r11-installed'
+          $result=Start-Process $installer[0].FullName -ArgumentList '/S',"/D=$destination" -Wait -PassThru
+          if ($result.ExitCode -ne 0) { throw 'NSIS installation failed.' }
+          $exe=Join-Path $destination 'Air-OS.exe'
+          if (!(Test-Path -LiteralPath $exe)) { throw 'Installed EXE missing.' }
+          "AIR_R1_EXE=$exe" >> $env:GITHUB_ENV
+      - name: Verify installed application, uninstaller and every installed PE
+        shell: pwsh
+        run: ./scripts/windows-signing.ps1 -Action VerifyInstalled
+      - name: Existing real installed R1 Electron GUI regression
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_OUTPUT: dist/r1-gui
+        run: node scripts/check-windows-package.cjs
+      - name: Finalize only genuinely verified signature evidence and hashes
+        id: verified
+        run: node scripts/windows-signing.cjs finalize
+      - name: Remove temporary PFX, private key and signing state
+        if: always()
+        shell: pwsh
+        run: ./scripts/windows-signing.ps1 -Action Cleanup
+      - name: Upload only fully verified signed technical build
+        if: success() && steps.verified.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Windows-x64-Authenticode-verified-SAC-NOT-TESTED-${{ github.sha }}-${{ steps.verified.outputs.sha256 }}-${{ steps.verified.outputs.bytes }}bytes
+          path: dist/test-artifacts/windows-x64/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record limits without claiming SAC acceptance
+        if: always()
+        shell: pwsh
+        run: |
+          'Signature gates must all pass before any signed artifact upload. Smart App Control on protected physical Windows 11: BLOCKED / NOT TESTED. A valid signature is not SAC acceptance or production release approval.' >> $env:GITHUB_STEP_SUMMARY

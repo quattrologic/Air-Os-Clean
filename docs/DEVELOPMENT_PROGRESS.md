@@ -1,3 +1,13 @@
+# R1.1 – optionale Authenticode-Signierung; signierter Build BLOCKIERT
+
+25.Oktober2026 (Europe/Berlin). Verifizierte R1-Basis **7c90367c3489408940a2c773aa9c58a38a041b52**, eigener Branch **build/air-windows-authenticode-r11-20261025**. Ausschließlich Signier-/Buildpolicy, native Windows-Prüfer und gezielte Tests; eingefrorene26.18.0/44.9.3, R1-Workflow/Produkt/Auth/Design/andere Entwicklungsbranches unverändert. Optional geschützter manueller Zertifikat-/Microsoft-Artifact-Signing-Workflow, forceCodeSigning, SHA256/RFC3161, EXE/DLL/NODE/Installer/Uninstaller, native SignTool-/Chain-/Timestamp-/Publisherprüfung vor Upload, private Temp-/Schlüsselcleanup, finaler Dateihash. Niemals unsignierter Ersatz oder behauptete SAC-Freigabe.
+
+**327/327 Tests bestanden**,0 Fehler/Skips (16 neue), gezielt16/16,71 Ressourcen/Syntax/Catalina/YAML/Diff und Modern-Audit0. Windows-Konfigurations-/PowerShell-/negativeSDK-CI durch Push vorgesehen; tatsächliches Ergebnis im [bestehenden R1-Bericht](AIR_OS_WINDOWS_X64_R1.md) ergänzen. Keine Signieridentität bereitgestellt/gebunden; unbekannte GitHub-Secrets nicht als abwesend behauptet. Signierter Build und positive Signatur-/SAC-Abnahme **BLOCKIERT**. Kein neuer signierter Download. Beide Credentialswege mit exakten Secret-/Variablennamen/CA-/PublicTrust-/RBAC-/Environmentvoraussetzungen dokumentiert; physisches geschütztes Windows11 nicht verfügbar. main/PRs/Installerbranch und L1C.1-Entwicklungsbranch erhalten, kein UI-/Musikumbau.
+
+Nächste drei kleine Einheiten ausschließlich nach Einrichtung/neuem Auftrag: **geschützte Signieridentität durch Owner provisionieren**, **echten signierten Windows-Testbuild samt nativer positiver SignTool-Prüfung erzeugen**, **SAC-Verhalten auf betroffenem Windows11-PC mit aktivem Schutz abnehmen**. Nach R1.1-Commit/Push STOP; SHA im Abschlussbericht.
+
+---
+
 # R1-Abschluss – aktueller Windows-x64-Testbuild vorhanden
 
 25.Oktober2026. Integrationsbranch **build/air-ultimate-windows-x64-r1-20261025**, Integrationsbasis5e642b43aaaaf0bc11babe629840322f0ae46be0, tatsächlicher Buildcommit **0c343b01914d1829869a6cb50f24d0653a7b25eb**. [Windowslauf40191099653](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653) **vollständiggrün**: Audit/Vollsuite/Build/71 Ressourcen/ASAR/Lizenzen/NSIS-Installation/installierte Electron-GUI inklusive explizitem isoliertem WebGL1-/WebGL2-Ausfall bestanden. [Realer aktueller Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653/artifacts/12597932217),121043907Bytes, SHA256`aacaf5994f8c1ac29bf5a6926b8686ee22c69d2bb8602d6cdb9498324ceb0792`, unsigned/test-only, kein Release. Dateiname/CI/Belege/Bilder/Grenzen im [R1-Bericht](AIR_OS_WINDOWS_X64_R1.md).
