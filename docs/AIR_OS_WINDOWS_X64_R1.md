@@ -8,7 +8,7 @@ Die Basis enthält nach geprüfter Git-Abstammung A1–A3, B1/B2/B2.2, C1/C2/K3,
 
 PR-#11-Head `eecab2a043fc62ab0802312aa09ce29dfd96c280` und PR-#12-Head `eb3f3bc62641afdd4a0fc2a5a66f6dc3fa053f73` erneut über Git-Refs gelesen. Der aktuelle Entwicklungsstand führt deren relevante bestehende App-/Build-/Pfadfixes bereits weiter; der alte Installerbranch enthält keine darüber hinaus fehlende Änderung an `scripts/test-build.cjs` oder dem Desktopworkflow. Kein pauschales Merge alter oder fremder Dependabot-/PR-Stände. main/PRs/alter Installerbranch nicht verändert.
 
-Bestehende Anmeldung, Profile, App Registry/Lifecycle, Air Home mit echten Notes-/Reminderswidgets, Notes/Reminders/Finder, Startmenü/Suche/Pinning, K3-Schnellzugriff, M1/M2 und Classic bleiben im Produktcode unverändert. Kein neues Dock/keine zweite Island oder Audioengine. Keine zusätzlichen privaten Daten vor Login, keine native OS-Sperre behauptet.
+Bestehende Anmeldung, Profile, App Registry/Lifecycle, Air Home mit echten Notes-/Reminderswidgets, Notes/Reminders/Finder, Startmenü/Suche/Pinning, K3-Schnellzugriff, M1/M2 und Classic bleiben unverändert. Einziger Host-Laufzeitpatch: `main.cjs` respektiert den ausdrücklich gesetzten Schalter `--disable-webgl` über native `BrowserWindow.webPreferences.webgl=false`; ohne Schalter bleibt WebGL wie bisher aktiviert. Keine IPC-/Auth-/Sandbox-/Geometrieänderung. Kein neues Dock/keine zweite Island oder Audioengine. Keine zusätzlichen privaten Daten vor Login, keine native OS-Sperre behauptet.
 
 ## Implementierter Buildweg
 
@@ -31,9 +31,9 @@ Lizenzen der ausgewählten Werkzeuge geprüft: Electron MIT (Electron contributo
 
 ## Tatsächlich lokale Tests und Paketprüfung
 
-**310/310 Tests bestanden**,0 Fehler/Skips;10 gezielte neue R1-Regressionen: Runtime-/Legacytrennung, tatsächliche ASAR-Dateien, fehlender Font, veralteter Shader, ungebündeltes HTML-Script, unerwartete Runtimeabhängigkeit, falsche Musikversion, x64-only Checksum-/Stale-Outputvertrag und geschütztes Dependencylinking sowie bytegleichen Git-Checkout trotz Windows-`autocrlf`. Synthetische PE-/Installerfixtures sind ausdrücklich **keine lauffähigen Installer** und werden nie als Download hochgeladen.
+**311/311 Tests bestanden**,0 Fehler/Skips;11 gezielte neue R1-Regressionen: Runtime-/Legacytrennung, tatsächliche ASAR-Dateien, fehlender Font, veralteter Shader, ungebündeltes HTML-Script, unerwartete Runtimeabhängigkeit, falsche Musikversion, x64-only Checksum-/Stale-Outputvertrag und geschütztes Dependencylinking sowie bytegleichen Git-Checkout trotz Windows-`autocrlf` und nativen WebGL-Recovery-Schalter mit unveränderten Sicherheits-/Fensteroptionen. Synthetische PE-/Installerfixtures sind ausdrücklich **keine lauffähigen Installer** und werden nie als Download hochgeladen.
 
-Alle71 Runtime-Ressourcen gefunden und sämtliche JS/CJS-Dateien syntaktisch geprüft; YAML/`check:catalina`/`git diff --check` bestanden. Zusätzlich **echtes electron-builder26.18.0-Linux-Verzeichnispaket** mit Electron44.9.3 erzeugt und dessen tatsächliches ASAR gegen71 Ressourcen verifiziert: [Dateihashes](references/r1/linux-asar-files.json). Das ist kein Windowsinstaller und wird nicht als solcher angeboten.
+Alle71 Runtime-Ressourcen gefunden und sämtliche JS/CJS-Dateien syntaktisch geprüft; YAML/`check:catalina`/`git diff --check` bestanden. Zusätzlich **echtes electron-builder26.18.0-Linux-Verzeichnispaket** mit Electron44.9.3 erzeugt und dessen tatsächliches ASAR gegen71 Ressourcen verifiziert: [Dateihashes](references/r1/linux-asar-files.json). Diese frühe Linux-ASAR-Vorprüfung verwendete den Runtime-Basisstand5e642b4 vor dem späteren Host-Recovery-Patch; der endgültige Windowslauf muss sein eigenes Paket gegen seinen exakten Checkout prüfen. Das Linuxpaket ist kein Windowsinstaller und wird nicht als solcher angeboten.
 
 ## Echte Electron-GUI und Vorher-/Nachherbilder
 
@@ -49,7 +49,7 @@ Geprüft: neue Profile Modern; Notes-Save/Home-Liveupdate; Finder/Home/Reminders
 |1650×930|646/862/358/68|0|717.578125/0/214.84375/38.671875|0|
 |390×600|16/532/358/68|0|117/0/156/36|0|
 
-Beide endgültigen Läufe Exit0: je26 Registryeinträge erfasst,25 interne Appfenster tatsächlich gestartet/geschlossen, externes Spotify ausdrücklich nicht gestartet. Beide Profile-/Neustart-/WebGL-Fallbackprüfungen bestanden. Alle gemessenen Dock-/Islandboxen zwischen Electron32 und44 exakt gleich. [Vorher-Rohdaten](visual/r1-before/r1-gui-report.json) · [Nachher-Rohdaten](visual/r1-after/r1-gui-report.json). Root-Styles/Dock/Island/Home/Notes/M1/M2/Auth sind bytegleich zur Basis. Keine neue60fps-/Originalpixel-/Hardwarebehauptung.
+Beide endgültigen Läufe Exit0: je26 Registryeinträge erfasst,25 interne Appfenster tatsächlich gestartet/geschlossen, externes Spotify ausdrücklich nicht gestartet. Beide Profile-/Neustart-/WebGL-Fallbackprüfungen bestanden. Alle gemessenen Dock-/Islandboxen zwischen Electron32 und44 exakt gleich. [Vorher-Rohdaten](visual/r1-before/r1-gui-report.json) · [Nachher-Rohdaten](visual/r1-after/r1-gui-report.json). Root-Styles/Dock/Island/Home/Notes/M1/M2 und Authentifizierungslogik sind bytegleich zur Basis; der gesondert dokumentierte Host-WebGL-Schalter ändert ausschließlich die optionale native3D-Fähigkeit. Keine neue60fps-/Originalpixel-/Hardwarebehauptung.
 
 Testhelferkorrekturen sind keine verschwiegenen Produkterfolge: erste rohe CDP-Eingaben bzw. Navigationserwartungen waren unvollständig; native Oberfläche musste statt nur virtueller Metriken vergrößert werden; Accounts müssen nach asynchronem Laden bereit sein; Auth darf nicht künstlich auf Animationsende warten. CLI-WebGL-Deaktivierung wirkte im Legacy-32-Pfad nicht zuverlässig, deshalb vorhandener nativer Fallback-Testentry. Abgebrochene/fehlgeschlagene Versuche gelten nicht als bestandene Abnahme. Finale Nachweise werden getrennt ausgewiesen.
 
@@ -89,3 +89,9 @@ Nächste Einheit erst nach abgeschlossenem R1 und neuem Auftrag: **L1C.1 öffent
 | 390px / Air Home | ![Vorher Air Home 390](visual/r1-before/r1-home-390.png) | ![Nachher Air Home 390](visual/r1-after/r1-home-390.png) |
 | 390px / Classic | ![Vorher Classic 390](visual/r1-before/r1-classic-390.png) | ![Nachher Classic 390](visual/r1-after/r1-classic-390.png) |
 | 390px / nativer WebGL-Ausfall | ![Vorher CSS-Fallback](visual/r1-before/r1-webgl-fallback-390.png) | ![Nachher CSS-Fallback](visual/r1-after/r1-webgl-fallback-390.png) |
+
+## Konkreter Windows-GUI-Befund und gezielte Recovery-Korrektur
+
+Dritter Lauf [40176469206](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40176469206), Commit64895556ac865e59486ef34f4410603328a3cd1f: Toolchain/Audit/Tests/Paketierung/ASAR-/Hashprüfung und NSIS-Installation wieder grün. Öffentliche neue Fehlerannotation belegt **AssertionError bei check-windows-package.cjs:85:147**, also `getContext('webgl2')===null` bei der nativen Fallbackprobe. Die zuvor ausgeführten normalen Windows-GUI-/Profil-/Appprüfungen waren bis zu dieser Stelle erfolgreich; der Gesamtsmoke blieb korrekt rot. Ursache: Chromium-Startflags allein sperren WebGL im eingebetteten Electron-Windowsfenster nicht zuverlässig. Kein bestätigter Auth-/Profil-/Appstartfehler.
+
+Gezielter Produktfix: der vorhandene Standard-Startschalter `--disable-webgl` setzt nun zusätzlich die native Electron-Fensterpräferenz. Default bleibttrue; Sandbox/ContextIsolation/WebSecurity bleibentrue, NodeIntegrationfalse, Fenster1440×900/min760×540 unverändert. Keine neue Preference/Bridge/Library. Die Probe verlangt weiterhin einen tatsächlich fehlenden nativen WebGL2-Kontext; kein Renderer-Mock/gelockerter Test. Nutzer mit Grafikproblemen können die installierte EXE ausdrücklich mit `--disable-webgl` starten. Neuer vollständiger Lauf wird vor einer Windows-GUI-Erfolgsmeldung geprüft.

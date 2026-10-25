@@ -36,9 +36,9 @@
             "height": 1080,
             "dpr": 1,
             "clockRect": {
-              "x": 705.378125,
+              "x": 708.51875,
               "y": 16.206249999999997,
-              "width": 510,
+              "width": 503,
               "height": 350
             },
             "fieldRect": {
@@ -173,7 +173,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 5,
+          "frames": 6,
           "tileBuilds": 1,
           "maskRebuilds": 2,
           "sceneRebuilds": 2,
@@ -183,9 +183,9 @@
             "height": 930,
             "dpr": 1,
             "clockRect": {
-              "x": 605.7375,
+              "x": 608.45625,
               "y": 14.706249999999997,
-              "width": 439,
+              "width": 434,
               "height": 302
             },
             "fieldRect": {
@@ -320,7 +320,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 5,
+          "frames": 6,
           "tileBuilds": 1,
           "maskRebuilds": 2,
           "sceneRebuilds": 2,
@@ -330,9 +330,9 @@
             "height": 600,
             "dpr": 1,
             "clockRect": {
-              "x": 25.231250000000003,
+              "x": 25.746875000000003,
               "y": 2.809375000000003,
-              "width": 340,
+              "width": 339,
               "height": 233
             },
             "fieldRect": {

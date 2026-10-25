@@ -88,7 +88,10 @@ function createWindow() {
     backgroundColor: '#142847', title: 'Air-OS – Anmeldung', show: false, autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(app.getAppPath(), 'preload.cjs'),
-      nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true
+      nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true,
+      // Chromium switches alone do not reliably disable WebGL in Electron on
+      // Windows. Honor the explicit recovery flag at the native window boundary.
+      webgl: !app.commandLine?.hasSwitch('disable-webgl')
     }
   });
   mainWindow.once('ready-to-show', () => mainWindow.show());

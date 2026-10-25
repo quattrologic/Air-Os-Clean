@@ -55,3 +55,15 @@ test('R1 Windows autocrlf checkout preserves original shader, QML, font and wall
   for(const file of files)assert.deepEqual(fs.readFileSync(path.join(destination,file)),fs.readFileSync(path.join(root,file)),file+' must remain byte exact');
  }finally{fs.rmSync(destination,{recursive:true,force:true})}
 });
+test('R1 native recovery flag disables WebGL without changing security or window geometry',()=>{
+ const source=fs.readFileSync(path.join(__dirname,'../main.cjs'),'utf8').split('function createWindow() {')[1].split('function requirePreferenceUser')[0];
+ for(const disabled of [false,true]){
+  let options;
+  const BrowserWindow=function(o){options=o;this.once=()=>{};this.on=()=>{};this.webContents={setWindowOpenHandler(){},on(){}}};
+  require('node:vm').runInNewContext('let mainWindow;function createWindow() {'+source+';createWindow()',{
+   BrowserWindow,app:{getAppPath:()=>'/app',commandLine:{hasSwitch:key=>{assert.equal(key,'disable-webgl');return disabled}}},path,openLogin(){},shell:{},localAppFile(){},airAppRuntime:{closeAll(){}}
+  });
+  assert.equal(options.webPreferences.webgl,!disabled);assert.equal(options.webPreferences.sandbox,true);assert.equal(options.webPreferences.contextIsolation,true);assert.equal(options.webPreferences.webSecurity,true);assert.equal(options.webPreferences.nodeIntegration,false);
+  assert.equal(options.width,1440);assert.equal(options.height,900);assert.equal(options.minWidth,760);assert.equal(options.minHeight,540);
+ }
+});
