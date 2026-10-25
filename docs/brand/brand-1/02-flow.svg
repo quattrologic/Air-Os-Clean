@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Air-OS Markenentwurf 2: Strömung</title>
+  <defs>
+    <linearGradient id="body" x1=".12" y1=".05" x2=".85" y2="1"><stop stop-color="#fff"/><stop offset=".3" stop-color="#e1e5e9"/><stop offset=".6" stop-color="#444c55"/><stop offset="1" stop-color="#151b22"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity=".8"/></linearGradient>
+  </defs>
+  <g transform="translate(2 2) scale(.9375)">
+  <path d="M9 21C16 7 33 4 46 12 58 20 61 34 54 46 48 56 34 60 22 54L29 43C37 47 44 43 46 37 49 29 43 21 35 20 29 19 23 22 20 27H34C38 27 41 30 41 34S38 41 34 41H15C9 41 6 37 6 32 6 28 7 24 9 21Z" fill="url(#body)" stroke="#131920" stroke-width="1.3" stroke-linejoin="round"/>
+  <path d="M10 22C18 8 34 6 46 14 56 21 59 32 54 43" fill="none" stroke="url(#rim)" stroke-width="1" stroke-linecap="round"/>
+  <path d="M20 27H34C38 27 41 30 41 34S38 41 34 41H15C11 41 8 39 7 35" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width=".7" stroke-linecap="round"/>
+  <path d="M46 37C45 45 38 49 29 45L25 52C36 56 48 51 53 43" fill="none" stroke="#9fa9b4" stroke-opacity=".58" stroke-width=".8" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,317 @@
+[
+  {
+    "file": "png/flow-16.png",
+    "sha256": "0a5c628ffd2f9f33822c3fd270b97d6b6c4d7562d085198e801a11ab44a96c63",
+    "size": [
+      16,
+      16
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      1,
+      1,
+      15,
+      15
+    ],
+    "visiblePixels": 140
+  },
+  {
+    "file": "png/flow-256.png",
+    "sha256": "dece3adbbae899fd160172b3e03e06c488a91f4b6a750fd7652530b64ff00491",
+    "size": [
+      256,
+      256
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      28,
+      34,
+      227,
+      224
+    ],
+    "visiblePixels": 24937
+  },
+  {
+    "file": "png/flow-32.png",
+    "sha256": "2f88ff619a876c78e0d3629fa9a99ed7446644299f50e0e509398c920b94f54e",
+    "size": [
+      32,
+      32
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      3,
+      4,
+      29,
+      29
+    ],
+    "visiblePixels": 453
+  },
+  {
+    "file": "png/flow-512.png",
+    "sha256": "4e6e7a5c6a94a89d33c08023fee818d6ac4a119fcc8fafd47e721d2826905598",
+    "size": [
+      512,
+      512
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      56,
+      68,
+      454,
+      447
+    ],
+    "visiblePixels": 98634
+  },
+  {
+    "file": "png/flow-64.png",
+    "sha256": "0e8e8d221f129a8fa17d8e1327b09795804997b7ddb0c046b69cb14c2485e7b0",
+    "size": [
+      64,
+      64
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      7,
+      8,
+      57,
+      56
+    ],
+    "visiblePixels": 1640
+  },
+  {
+    "file": "png/fold-16.png",
+    "sha256": "88f2e615e047e57ac021a6ce25fae94e401d9f74af8d438088f9a0d752a020df",
+    "size": [
+      16,
+      16
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      1,
+      1,
+      15,
+      15
+    ],
+    "visiblePixels": 145
+  },
+  {
+    "file": "png/fold-256.png",
+    "sha256": "9960e4c4b004d504ec10cc39faae2caea74f1fa93af3a4cbc71ab7dfdbcb8b44",
+    "size": [
+      256,
+      256
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      31,
+      32,
+      229,
+      229
+    ],
+    "visiblePixels": 26592
+  },
+  {
+    "file": "png/fold-32.png",
+    "sha256": "0c7027b3f94ad55240487173f19d64fa321bf77ce4eb6e8c21868e631ca0ed00",
+    "size": [
+      32,
+      32
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      3,
+      3,
+      29,
+      29
+    ],
+    "visiblePixels": 476
+  },
+  {
+    "file": "png/fold-512.png",
+    "sha256": "f905ed22881be6949dece063b5fb1a724bfe29a25525b965a269c508f95df9a6",
+    "size": [
+      512,
+      512
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      62,
+      64,
+      458,
+      457
+    ],
+    "visiblePixels": 105649
+  },
+  {
+    "file": "png/fold-64.png",
+    "sha256": "173d37faca7e8496259972aef79dde686cd156a870a86d75952549f28441cd56",
+    "size": [
+      64,
+      64
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      7,
+      8,
+      58,
+      57
+    ],
+    "visiblePixels": 1731
+  },
+  {
+    "file": "png/prism-16.png",
+    "sha256": "d54df51d188ddfdcd3c1a0eee9528cc049937b94a8b41551d21ee23112a7b8bf",
+    "size": [
+      16,
+      16
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      2,
+      1,
+      14,
+      15
+    ],
+    "visiblePixels": 108
+  },
+  {
+    "file": "png/prism-256.png",
+    "sha256": "2cff18a1809aec56c463558cc394cf9898fae71d3380fcfcc141f9f658964277",
+    "size": [
+      256,
+      256
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      39,
+      22,
+      217,
+      234
+    ],
+    "visiblePixels": 22378
+  },
+  {
+    "file": "png/prism-32.png",
+    "sha256": "0448645e04cd858171da0c110fc75211218b64539758b5b73db3d044b0faeced",
+    "size": [
+      32,
+      32
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      4,
+      2,
+      28,
+      30
+    ],
+    "visiblePixels": 380
+  },
+  {
+    "file": "png/prism-512.png",
+    "sha256": "cb7fc209e80b2d4d23919cb0e045f4bc904364e32461866c015f4bba1da42faa",
+    "size": [
+      512,
+      512
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      78,
+      45,
+      434,
+      468
+    ],
+    "visiblePixels": 89035
+  },
+  {
+    "file": "png/prism-64.png",
+    "sha256": "13fef06c38941aafd9e1217f3b26b8761de456dccf553a06b367e5da12e55f9e",
+    "size": [
+      64,
+      64
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bbox": [
+      9,
+      5,
+      55,
+      59
+    ],
+    "visiblePixels": 1451
+  }
+]

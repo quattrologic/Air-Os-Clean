@@ -1,0 +1,31 @@
+{
+  "phase": "BRAND-1",
+  "status": "DRAFT_AWAITING_USER_SELECTION",
+  "recommended": "fold",
+  "activeLogoUnchanged": true,
+  "sizes": [
+    16,
+    32,
+    64,
+    256,
+    512
+  ],
+  "source": "Original hand-authored SVG; no external assets/fonts",
+  "designs": [
+    {
+      "id": "fold",
+      "file": "01-fold.svg",
+      "sha256": "7c637cb0ce5462ee95572c2938bf110729bdfbccddbdedbf3f04c48d7ac0844a"
+    },
+    {
+      "id": "flow",
+      "file": "02-flow.svg",
+      "sha256": "2c1e845309fe2b3ea247d24265d03035d874123c24dbb6d0a5376eb65cc6523c"
+    },
+    {
+      "id": "prism",
+      "file": "03-prism.svg",
+      "sha256": "35b0d59af8cfd20c1c1ec78681d87d7085e663e2af7ccef93fdf22bec5be3c14"
+    }
+  ]
+}

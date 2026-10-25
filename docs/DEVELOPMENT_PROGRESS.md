@@ -1,3 +1,15 @@
+# BRAND-1 – drei eigenständige Markensymbole zur Auswahl
+
+25.Oktober2026 (Europe/Berlin). Verifizierte aktuelle Basis/Remote **0df1a30426b205e6cde5d998e0154f42de968c2c**, eigener Branch **design/air-os-brand-1-20261025**. Drei neue selbst erstellte SVG-Zeichen ohne Schrift/Apple-/Birnenkopie/Fremdassets: **01Faltkern (Empfehlung)**,02Strömung,03Prisma. Keine Auswahl vorweggenommen und keine aktive Birne/App-Icons ersetzt.19 echte Electron44/Linux-PNGs, darunter15 transparente Größenexporte16/32/64/256/512 und helle/dunkle Vergleichsblätter. [Vorschauen/SVGs/Iconpfadprüfung](brand/brand-1/README.md).
+
+[Verbindliches Produktziel](AIR_OS_ULTIMATE_PRODUCT_SPEC.md) kompakt festgehalten: Electron Windows/macOS, iPad zunächst installierbarePWA mit gemeinsamerUI; StartLockscreen, persönlichesCloudkonto/benutzerbezogeneSyncdaten/Dateien nur explizit/Offline/Konflikte/Logout/sichereKonfiguration, unveränderlicheDock-/Islandstruktur und bestehendeApps/Classic/Profile/M1/M2; MacShell-Funktionen langfristig innerhalbAir-OS, keineOS-Fakes. Keine Cloud-/PWA-/MacShellfunktion implementiert oder als vorhanden behauptet.
+
+**5/5 gezielte Tests bestanden**,0 Fehler/Skips (vier neue plus bestehenderBirne-/Classic-Test). XML3, PNG-Abmessungen/RGBA/transparenteRänder/Hashintegrität15,19 echteRendererbilder/Sichtprüfung, JS-Syntax/Markdownlinks/Diff bestanden. NativeIconpfade geprüft: kein explizitesWinICO/MacICNS/BrowserWindowicon, keinePWA-Manifest-/Touchicon-/Serviceworkerintegration; vorhandeneUI-SVGpfade dokumentiert. NeueVektoren nurinDocs, Produkt/Packaging/Design/Signierworkflow unverändert. Keine neueVollsuite/nativePlattform-/Build-/CI-Abnahme behauptet. R1.1 und parallelerL1C.1-Branch45fa967 bleiben unangetastet, keine altenStände darübergeschrieben.
+
+Nächste drei kleine Einheiten ausschließlich nach Nutzerwahl/neuem Auftrag: **einen Entwurf bestätigen**, **gewählten SVG-Master finalisieren**, **gemeinsame UI-/Windows-/macOS-/PWA-Iconableitungen separat integrieren/testen**. BestehendeSignier-/Hardware-/Performanceblocker bleiben offen. Commit/Push und SHA im Abschlussbericht; danach STOP.
+
+---
+
 # R1.1 – optionale Authenticode-Signierung; signierter Build BLOCKIERT
 
 25.Oktober2026 (Europe/Berlin). Verifizierte R1-Basis **7c90367c3489408940a2c773aa9c58a38a041b52**, eigener Branch **build/air-windows-authenticode-r11-20261025**. Ausschließlich Signier-/Buildpolicy, native Windows-Prüfer und gezielte Tests; eingefrorene26.18.0/44.9.3, R1-Workflow/Produkt/Auth/Design/andere Entwicklungsbranches unverändert. Optional geschützter manueller Zertifikat-/Microsoft-Artifact-Signing-Workflow, forceCodeSigning, SHA256/RFC3161, EXE/DLL/NODE/Installer/Uninstaller, native SignTool-/Chain-/Timestamp-/Publisherprüfung vor Upload, private Temp-/Schlüsselcleanup, finaler Dateihash. Niemals unsignierter Ersatz oder behauptete SAC-Freigabe.
