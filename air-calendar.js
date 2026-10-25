@@ -4,6 +4,7 @@
 (function(root){
  function cells(year,month,today=new Date(),weekStart=1){const off=(new Date(year,month,1).getDay()-weekStart+7)%7;return Array.from({length:42},(_,i)=>{const d=new Date(year,month,1-off+i,12);return {n:d.getDate(),cur:d.getMonth()===month,today:d.getFullYear()===today.getFullYear()&&d.getMonth()===today.getMonth()&&d.getDate()===today.getDate()};});}
  if(typeof module==='object'){module.exports={cells};return;}
+ root.airCalendarMath=Object.freeze({cells});
  const clock=document.querySelector('#clock');if(!clock)return;const clockParent=clock.parentNode,clockNext=clock.nextSibling;let button=null,panel=null,year,month,timer=null;
  const modern=()=>document.documentElement.dataset.desktopTheme==='modern';
  function close(focus=true){if(!panel)return;panel.remove();panel=null;clearInterval(timer);timer=null;button?.setAttribute('aria-expanded','false');if(focus&&button?.isConnected)button.focus();}

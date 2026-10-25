@@ -26,5 +26,10 @@
   return Object.freeze(entries.filter(entry=>entry&&typeof entry.id==='string'&&typeof entry.title==='string'&&normalize(entry.title).includes(needle))
    .slice(0,limit).map(entry=>Object.freeze({id:entry.id,title:entry.title||'Ohne Titel',type:'note'})));
  }
- return Object.freeze({findApps,findNotes});
+ // MacBar.qml searchApps score ladder, MIT Copyright (c) 2026 Rickky.
+ function rankApps(registry,input,limit=24){
+  const q=normalize(input);if(!q)return findApps(registry,input,limit);
+  return Object.freeze(registry.list().map(e=>{const n=normalize(e.name);let score=n===q?100:n.startsWith(q)?80:n.includes(' '+q)?60:n.includes(q)?40:normalize(e.id).includes(q)?25:0;return {e,score};}).filter(h=>h.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(h=>Object.freeze({id:h.e.id,name:h.e.name,iconClass:h.e.iconClass})));
+ }
+ return Object.freeze({findApps,findNotes,rankApps});
 });

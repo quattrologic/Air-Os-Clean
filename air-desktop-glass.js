@@ -1,10 +1,10 @@
 'use strict';
 // Shared demand-driven WebGL2 renderer. Original MacShell equations in separate shader.
 (() => {
- const selectors='.dock,#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window,.deep-widget,.deep-history';
+ const selectors='.dock,#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window,.deep-widget,.deep-history,.deep-dock-menu';
  const canvas=document.createElement('canvas');let gl,program,texture,buffer,failed=false,pending=false,draws=0,scene=null,disposed=false,painting=false,dirty=false;
  const tiles=new Map(),media=matchMedia('(prefers-reduced-transparency: reduce)'),forced=matchMedia('(forced-colors: active)');
- function release(){for(const [el,t]of tiles){t.remove();el.classList.remove('deep-glass-host');}tiles.clear();if(gl){if(texture)gl.deleteTexture(texture);if(buffer)gl.deleteBuffer(buffer);if(program)gl.deleteProgram(program);gl.getExtension('WEBGL_lose_context')?.loseContext();}gl=null;scene=null;program=texture=buffer=null;}
+ function release(){for(const [el,t]of tiles){t.remove();el.classList.remove('deep-glass-host');}tiles.clear();if(gl){if(texture)gl.deleteTexture(texture);if(buffer)gl.deleteBuffer(buffer);if(program)gl.deleteProgram(program);canvas.width=canvas.height=1;}gl=null;scene=null;program=texture=buffer=null;}
  function init(){
   gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:true,preserveDrawingBuffer:true,powerPreference:'low-power'});if(!gl)throw Error('webgl-unavailable');
   const ext=gl.getExtension('WEBGL_debug_renderer_info');if(ext&&/swiftshader|llvmpipe|software/i.test(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)))throw Error('software-gpu');
@@ -35,7 +35,7 @@
   }catch(error){failed=true;release();document.documentElement.dataset.desktopGlassFallback=error.message;}finally{painting=false;if(dirty){dirty=false;schedule();}}
  }
  function schedule(){if(!pending&&!disposed){pending=true;requestAnimationFrame(paint);}}
- const observer=new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&!n.matches?.('.deep-glass-tile'))))schedule();});observer.observe(document.body,{childList:true,subtree:true});
+ const observer=new MutationObserver(records=>{if(records.some(r=>r.type==='attributes'?r.target.matches?.(selectors):[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&!n.matches?.('.deep-glass-tile'))))schedule();});observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','hidden','class']});
  const theme=new MutationObserver(schedule);theme.observe(document.documentElement,{attributes:true,attributeFilter:['class','data-desktop-theme']});
  for(const type of ['resize','pointerup','focus'])window.addEventListener(type,schedule);document.addEventListener('air-settings-changed',schedule);media.addEventListener('change',schedule);forced.addEventListener('change',schedule);
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failed=true;release();});

@@ -98,7 +98,9 @@
       "air-desktop-glass.js",
       "air-deep-port.css",
       "src/core/macshell-math.js",
-      "third_party/deep-port/**/*"
+      "third_party/deep-port/**/*",
+      "air-deep-desktop.js",
+      "air-dock-actions.js"
     ],
     "mac": {
       "target": [

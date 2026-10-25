@@ -34,7 +34,7 @@
  function render(){
   if(fileTimer!==null){clearTimeout(fileTimer);fileTimer=null;}
   const current=++requestVersion,query=input.value;
-  const apps=search.findApps(registry,query,25);
+  const apps=document.documentElement.dataset.desktopTheme==='modern'&&search.rankApps?search.rankApps(registry,query,25):search.findApps(registry,query,25);
   let notes=[],files=[];
   const refresh=()=>{
    if(current!==requestVersion||overlay.hidden)return;

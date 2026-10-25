@@ -1,13 +1,22 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetPositions:{},controlOrder:[0,1,2,3]});
 const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
  const result={};
  for(const [key,value] of Object.entries(patch)){
   if(!Object.prototype.hasOwnProperty.call(DEFAULTS,key)||key==='schemaVersion')throw new TypeError('Unbekannte Einstellung.');
+  if(key==='desktopWidgets'&&typeof value!=='boolean')throw new TypeError('Ungültige Widgets.');
+  if(key==='controlOrder'){
+   if(!Array.isArray(value)||value.length!==4||new Set(value).size!==4||value.some(i=>!Number.isInteger(i)||i<0||i>3))throw new TypeError('Ungültige Kachelreihenfolge.');
+   result[key]=[...value];continue;
+  }
+  if(key==='widgetPositions'){
+   if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(k=>!['clock','calendar'].includes(k)))throw new TypeError('Ungültige Widgetposition.');
+   const positions={};for(const [k,v]of Object.entries(value)){if(!v||Object.keys(v).length!==2||!Number.isFinite(v.x)||!Number.isFinite(v.y)||v.x<0||v.y<0||v.x>10000||v.y>10000)throw new TypeError('Ungültige Widgetposition.');positions[k]={x:v.x,y:v.y};}result[key]=positions;continue;
+  }
   if(key==='wallpaper'&&(!WALLPAPERS.has(value)))throw new TypeError('Ungültiges Hintergrundbild.');
   if(key==='accent'&&(typeof value!=='string'||!/^#[0-9a-fA-F]{6}$/.test(value)))throw new TypeError('Ungültige Akzentfarbe.');
   if(key==='dockTheme'&&!['classic','modern'].includes(value))throw new TypeError('Ungültiges Dock-Theme.');
