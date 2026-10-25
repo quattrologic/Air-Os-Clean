@@ -1,0 +1,109 @@
+{
+  "browser": "154.0.8037.57",
+  "transport": "HTTPS loopback /Air-Os-Clean/, ephemeral self-signed test certificate pinned only to test Chromium process",
+  "browserProcessRestart": true,
+  "webkit": "BLOCKED: runtime absent, browser download HTTP 403 Domain forbidden",
+  "publicDeployment": "NOT RUN: owner approval required",
+  "engine": "Chromium Linux, NOT Safari/iPadOS",
+  "geometry": [
+    {
+      "w": 1024,
+      "h": 1366,
+      "dock": {
+        "x": 333,
+        "y": 1298,
+        "width": 358,
+        "height": 68,
+        "top": 1298,
+        "right": 691,
+        "bottom": 1366,
+        "left": 333
+      },
+      "island": {
+        "x": 434,
+        "y": 0,
+        "width": 156,
+        "height": 36,
+        "top": 0,
+        "right": 590,
+        "bottom": 36,
+        "left": 434
+      }
+    },
+    {
+      "w": 1366,
+      "h": 1024,
+      "dock": {
+        "x": 504,
+        "y": 956,
+        "width": 358,
+        "height": 68,
+        "top": 956,
+        "right": 862,
+        "bottom": 1024,
+        "left": 504
+      },
+      "island": {
+        "x": 594.0625,
+        "y": 0,
+        "width": 177.859375,
+        "height": 36,
+        "top": 0,
+        "right": 771.921875,
+        "bottom": 36,
+        "left": 594.0625
+      }
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "dock": {
+        "x": 781,
+        "y": 1012,
+        "width": 358,
+        "height": 68,
+        "top": 1012,
+        "right": 1139,
+        "bottom": 1080,
+        "left": 781
+      },
+      "island": {
+        "x": 835,
+        "y": 0,
+        "width": 250,
+        "height": 45,
+        "top": 0,
+        "right": 1085,
+        "bottom": 45,
+        "left": 835
+      }
+    }
+  ],
+  "viewports": [
+    [
+      1024,
+      1366
+    ],
+    [
+      1366,
+      1024
+    ],
+    [
+      1920,
+      1080
+    ]
+  ],
+  "offlineRestart": true,
+  "workerUpdate": true,
+  "cacheCleanup": true,
+  "installability": {
+    "installabilityErrors": []
+  },
+  "notesPersisted": 4,
+  "offlineEditDelete": true,
+  "unsupportedFinderBlocked": true,
+  "errors": [],
+  "cache": [
+    "air-os-pwa-539f089c2af9dba4:https%3A%2F%2F127.0.0.1%3A36371%2FAir-Os-Clean%2F"
+  ]
+}

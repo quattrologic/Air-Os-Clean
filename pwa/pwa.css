@@ -2,3 +2,9 @@ html,body{overscroll-behavior:none}button,a,input,textarea{touch-action:manipula
 @media(pointer:coarse){.air-note-item,.air-home-card button,.air-launchpad-row button{min-height:44px}.app-window .traffic button{min-width:24px;min-height:24px}.app-window .traffic{gap:3px}.air-notes textarea{font-size:16px}.air-cloud-panel{display:none}}
 @media(max-width:600px){.air-home-nav{overflow:auto}.air-notes .note-actions{flex-wrap:wrap;gap:8px}}
 @media(prefers-reduced-transparency:reduce){.dock,#air-island-toggle{backdrop-filter:none!important;background:#182023!important}}
+
+/* WebKit glass support and editor ergonomics; no dock/island bounds override. */
+.dock,#air-island-toggle{-webkit-backdrop-filter:blur(20px) saturate(1.1)}
+@media(pointer:coarse){.air-notes input,.air-notes textarea{font-size:16px}.note-workspace{scroll-padding-block:16px}.note-actions{position:sticky;bottom:0;background:#f8f7f3;z-index:1}.pwa-local-label{max-width:35vw;text-align:right}}
+@supports(height:100dvh){body{min-height:100dvh}}
+@media(prefers-reduced-transparency:reduce){.dock,#air-island-toggle{-webkit-backdrop-filter:none!important}}

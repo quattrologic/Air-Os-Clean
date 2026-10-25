@@ -1,0 +1,45 @@
+name: Air-OS PWA public HTTPS test (manual approval only)
+on:
+  workflow_dispatch:
+    inputs:
+      public_confirmation:
+        description: 'Public Pages site has NO private access protection. Type publish-public-pwa-test only after owner approval.'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: air-os-pwa-public-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/feat/air-ipad-pwa2-20261025' && inputs.public_confirmation == 'publish-public-pwa-test'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run build:pwa
+      - run: node scripts/check-pwa-package.cjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/pwa
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: pwa-public-preview
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish only the audited PWA artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
