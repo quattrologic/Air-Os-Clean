@@ -93,7 +93,12 @@
       "src/core/notes-format.js",
       "air-calendar.js",
       "air-calendar.css",
-      "third_party/macbar/**/*"
+      "third_party/macbar/**/*",
+      "macshell-material-shader.js",
+      "air-desktop-glass.js",
+      "air-deep-port.css",
+      "src/core/macshell-math.js",
+      "third_party/deep-port/**/*"
     ],
     "mac": {
       "target": [

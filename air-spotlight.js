@@ -12,6 +12,7 @@
  function close(){requestVersion++;if(fileTimer!==null){clearTimeout(fileTimer);fileTimer=null;}if(overlay.hidden)return;overlay.hidden=true;input.value='';results.replaceChildren();before?.focus?.();trigger.setAttribute('aria-expanded','false')}
  function choose(index){
   const chosen=options[index];if(!chosen)return;close();
+  if(chosen.type==='calculation'){openApp('calculator');return;}
   if(chosen.type==='note'){openApp('notes');window.airNotes?.focusNote(chosen.id)}
   else if(chosen.type==='file'){openApp('finder');Promise.resolve(window.airFinder?.revealFile(chosen.path,chosen.kind)).catch(()=>{});}
   else openApp(chosen.id);
@@ -22,10 +23,11 @@
   options.forEach((item,i)=>{
    const b=document.createElement('button');b.type='button';b.className='air-search-result';b.setAttribute('role','option');b.setAttribute('aria-selected',String(i===selected));b.dataset.index=String(i);
    const glyph=document.createElement('span');glyph.className='air-search-result-icon';
-   if(item.type==='note')glyph.textContent='✎';
+   if(item.type==='calculation')glyph.textContent='=';
+   else if(item.type==='note')glyph.textContent='✎';
    else if(item.type==='file')glyph.textContent=item.kind==='folder'?'▱':'▤';
    else{const dock=item.iconClass?document.querySelector('.dock-icon.'+item.iconClass):null;if(dock?.querySelector('svg'))glyph.append(dock.querySelector('svg').cloneNode(true));else glyph.textContent=registry.get(item.id)?.glyph||'◇'}
-   const name=document.createElement('span');name.textContent=item.type==='note'?'Notiz: '+item.title:item.type==='file'?'Datei: '+item.name+' · '+item.path:item.name;b.append(glyph,name);
+   const name=document.createElement('span');name.textContent=item.type==='calculation'?item.name:item.type==='note'?'Notiz: '+item.title:item.type==='file'?'Datei: '+item.name+' · '+item.path:item.name;b.append(glyph,name);
    b.addEventListener('click',()=>choose(i));results.append(b);
   });
  }
@@ -36,7 +38,9 @@
   let notes=[],files=[];
   const refresh=()=>{
    if(current!==requestVersion||overlay.hidden)return;
-   options=[...apps,...notes,...files];selected=0;paint();
+   const value=window.airMacShellMath?.calcValue(query);
+   const calculation=value!==null&&value!==undefined?[{type:'calculation',name:query+' = '+value,id:'calculator'}]:[];
+   options=[...calculation,...apps,...notes,...files];selected=0;paint();
   };
   refresh();
   if(query.trim().length<2)return;
@@ -62,6 +66,7 @@
  }
  function highlight(){results.querySelectorAll('button').forEach((b,i)=>{b.setAttribute('aria-selected',String(i===selected));if(i===selected)b.scrollIntoView({block:'nearest'})})}
  function open(){before=document.activeElement;overlay.hidden=false;trigger.setAttribute('aria-expanded','true');render();input.focus()}
+ document.addEventListener('air-profile-changing',close);window.addEventListener('pagehide',close);
  trigger.setAttribute('aria-expanded','false');trigger.addEventListener('click',()=>overlay.hidden?open():close());
  overlay.addEventListener('pointerdown',e=>{if(e.target===overlay)close()});
  input.addEventListener('input',render);

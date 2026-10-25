@@ -1,0 +1,66 @@
+    function calcValue(expr) {
+        var t=String(expr || "").replace(/[xX×]/g, "*").replace(/÷/g, "/");
+        if (!/^[0-9+\-*/%.()\s]+$/.test(t) || !/[0-9]/.test(t)) return null;
+        var i=0;
+        function ws(){ while(i<t.length && /\s/.test(t[i])) i++; }
+        function atom(){ ws(); if(t[i]==="+"){i++;return atom();} if(t[i]==="-"){i++;return -atom();} if(t[i]==="("){i++;var v=sum();ws();if(t[i]!==")")throw 0;i++;return v;} var m=t.substring(i).match(/^(?:\d+(?:\.\d*)?|\.\d+)/);if(!m)throw 0;i+=m[0].length;return Number(m[0]); }
+        function term(){ var v=atom(); for(;;){ws();var op=t[i];if(op!=="*"&&op!=="/"&&op!=="%")break;i++;var r=atom();if((op==="/"||op==="%")&&r===0)throw 0;v=op==="*"?v*r:(op==="/"?v/r:v%r);}return v; }
+        function sum(){var v=term();for(;;){ws();var op=t[i];if(op!=="+"&&op!=="-")break;i++;var r=term();v=op==="+"?v+r:v-r;}return v;}
+        try { var v=sum(); ws(); return i===t.length && isFinite(v) ? v : null; } catch(e){ return null; }
+    }
+
+    function notifIndex(model, id) {
+        for (var i = 0; i < model.count; i++) if (model.get(i).nid === id) return i;
+        return -1;
+    }
+    // System notifications get the UI sound; apps (Discord, Spotify, browsers…) play their own, so they stay silent here
+    readonly property var systemNotifApps: ["", "macbar", "macshell", "settings", "system", "notify-send", "networkmanager", "network",
+        "power", "upower", "battery", "udiskie", "udisks", "disks", "polkit", "systemd", "screenshot", "grim", "hyprland", "bluetooth", "blueman", "updates", "pacman"]
+    function isSystemNotif(n) {
+        var app = (n.appName || "").toLowerCase();
+        try { if (n.hints && (n.hints["sound-file"] || n.hints["sound-name"])) return false; } catch (e) {}
+        return systemNotifApps.indexOf(app) >= 0;
+    }
+    function notifReceive(n) {
+        n.tracked = true;
+        var id = ++root.notifSeq;
+        root.notifRefs[id] = n;
+        var ic = "";
+        if (n.image && n.image !== "") ic = n.image;
+        else if (n.appIcon && n.appIcon !== "") ic = Quickshell.iconPath(n.appIcon, true);
+        var urg = 1;
+        if (n.urgency === NotificationUrgency.Critical) urg = 2;
+        else if (n.urgency === NotificationUrgency.Low) urg = 0;
+        var rec = {
+            nid: id, app: n.appName || "", summary: n.summary || "", body: n.body || "",
+            icon: ic || "", urgency: urg, time: Date.now(),
+            timeout: n.expireTimeout > 0 ? Math.round(n.expireTimeout * 1000) : 0
+        };
+        notifHist.insert(0, rec);
+        while (notifHist.count > 60) {
+            var old = notifHist.get(notifHist.count - 1).nid;
+            notifHist.remove(notifHist.count - 1);
+            delete root.notifRefs[old];
+        }
+        if ((!root.notifDnd || urg === 2) && !root.notifOpen) {
+            // the screenshot has its own shutter sound
+            if (root.isSystemNotif(n) && !(rec.app === "macbar" && rec.summary.indexOf("Screenshot") === 0)) root.playSound("glass", 0.7);
+            notifToasts.insert(0, rec);
+            while (notifToasts.count > 4) notifToasts.remove(notifToasts.count - 1);
+        }
+        if (!root.notifOpen) root.notifUnread++;
+        try { n.closed.connect(function () { root.notifToastRemove(id); }); } catch (e) {}
+        // apps that update a notification in place (progress, now playing…): push the new text into the popup and
+        // the history, the popup then blur-morphs to it
+        function upd(role, val) {
+            var i = notifIndex(notifToasts, id); if (i >= 0) notifToasts.setProperty(i, role, val || "");
+            var j = notifIndex(notifHist, id); if (j >= 0) notifHist.setProperty(j, role, val || "");
+        }
+        try { n.summaryChanged.connect(function () { upd("summary", n.summary); }); } catch (e) {}
+        try { n.bodyChanged.connect(function () { upd("body", n.body); }); } catch (e) {}
+    }
+    // ── lock screen: the unread notifications, privacy-safe (app name, app icon, time — never the text) ──
+    // written to ~/.cache/macshell/lock-notifs.json, which MacLock watches
+    onNotifUnreadChanged: lockNotifSave.restart()
+    Connections { target: notifHist; function onCountChanged() { lockNotifSave.restart(); } }
+    Timer { id: lockNotifSave; interval: 300; onTriggered: root.lockNotifWrite() }
