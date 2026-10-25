@@ -1,0 +1,148 @@
+                function calCells() {
+                    var first = new Date(calYear, calMonth, 1);
+                    var off = (first.getDay() - (root.weekStartsMonday ? 1 : 0) + 7) % 7;
+                    var today = new Date(), out = [];
+                    for (var i = 0; i < 42; i++) {
+                        var d = new Date(calYear, calMonth, 1 - off + i);
+                        out.push({ n: d.getDate(), cur: d.getMonth() === calMonth,
+                                   today: d.getFullYear() === today.getFullYear() && d.getMonth() === today.getMonth() && d.getDate() === today.getDate() });
+                    }
+                    return out;
+                }
+                function shiftMonth(delta) {
+                    var d = new Date(calYear, calMonth + delta, 1);
+                    calYear = d.getFullYear(); calMonth = d.getMonth();
+                }
+                readonly property var calData: { clock.date; return calCells(); }
+                // ═════════ calendar ═════════
+                Item {
+                    id: cal
+                    z: 10
+                    width: 310
+                    height: calCol.height + 28
+                    x: Math.max(6, ui.width - width - 8)
+                    y: root.barH + 6
+                    opacity: ui.pop === "cal" ? 1 : 0
+                    visible: opacity > 0
+                    scale: root.barPopupScale * (ui.pop === "cal" ? 1 : 0.96)
+                    transformOrigin: Item.TopRight
+                    Behavior on opacity { NumberAnimation { duration: 110 } }
+                    Behavior on scale { NumberAnimation { duration: 140; easing.type: Easing.OutCubic } }
+
+                    LGlass {
+                        anchors.fill: parent
+                        backdrop: ui.glassSrc
+                        shaderUrl: root.glassShaderUrl
+                        liquid: root.liquidActive
+                        dark: root.effDark
+                        bx: cal.x; by: cal.y
+                        cornerR: 24
+                        tint: root.glassOpacity
+                        thickness: 22
+                        strength: 0.55 * root.glassLiquid
+                        rim: root.glassRim
+                        grain: root.glassGrain
+                        blur: 42
+                        debug: root.glassDebug
+                        onShaderError: root.glassState = "failed"
+                        shadowAmt: 0
+                        flatInner: 1
+                        rimTint: 1
+                        ringW: 1.4
+                    }
+                    MenuBorder {
+                        z: 2
+                        anchors.fill: parent
+                        cornerR: 24
+                        dark: root.effDark
+                        tint: root.menuBorderColor
+                    }
+                    Column {
+                        id: calCol
+                        x: 16; y: 14
+                        width: parent.width - 32
+                        spacing: 8
+
+                        Text {
+                            text: I18n.locale().toString(clock.date, "dddd")
+                            color: pal.fg2
+                            font.family: root.fontForWeight(font.weight, pal.fam); font.pixelSize: 12; font.weight: Font.DemiBold
+                        }
+                        Text {
+                            text: I18n.locale().toString(clock.date, I18n.tr("d MMMM yyyy"))
+                            color: pal.fg
+                            font.family: root.fontForWeight(font.weight, pal.fam); font.pixelSize: 22; font.weight: Font.DemiBold
+                        }
+                        Item { width: 1; height: 2 }
+                        Item {
+                            width: parent.width; height: 26
+                            Text {
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: I18n.locale().monthName(ui.calMonth, Locale.LongFormat) + " " + ui.calYear
+                                color: pal.fg
+                                font.family: root.fontForWeight(font.weight, pal.fam); font.pixelSize: 14; font.weight: Font.DemiBold
+                            }
+                            Row {
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                spacing: 2
+                                Repeater {
+                                    model: [{ k: "chevL", d: -1 }, { k: "chevR", d: 1 }]
+                                    delegate: Rectangle {
+                                        required property var modelData
+                                        width: 26; height: 26; radius: 13
+                                        color: cna.containsMouse ? pal.hover : "transparent"
+                                        Glyph { anchors.centerIn: parent; width: 13; height: 13; kind: parent.modelData.k; color: pal.fg }
+                                        MouseArea { id: cna; anchors.fill: parent; hoverEnabled: true; onClicked: ui.shiftMonth(parent.modelData.d) }
+                                    }
+                                }
+                            }
+                        }
+                        Row {
+                            Repeater {
+                                model: 7
+                                delegate: Text {
+                                    required property int index
+                                    width: calCol.width / 7
+                                    horizontalAlignment: Text.AlignHCenter
+                                    text: I18n.locale().dayName((index + (root.weekStartsMonday ? 1 : 0)) % 7, Locale.ShortFormat).substring(0, 2)
+                                    color: pal.fg2
+                                    font.family: root.fontForWeight(font.weight, pal.fam); font.pixelSize: 11; font.weight: Font.DemiBold
+                                }
+                            }
+                        }
+                        Grid {
+                            columns: 7
+                            Repeater {
+                                model: ui.calData
+                                delegate: Item {
+                                    required property var modelData
+                                    width: calCol.width / 7
+                                    height: 32
+                                    Rectangle {
+                                        anchors.centerIn: parent
+                                        width: 28; height: 28; radius: 14
+                                        color: parent.modelData.today ? root.accent : "transparent"
+                                    }
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: parent.modelData.n
+                                        color: parent.modelData.today ? "white" : (parent.modelData.cur ? pal.fg : pal.fg3)
+                                        font.family: root.fontForWeight(font.weight, pal.fam)
+                                        font.pixelSize: 13
+                                        font.weight: parent.modelData.today ? Font.DemiBold : Font.Normal
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // ═════════ Control Center ═════════
+                // No panel behind it: every tile and every button is its own piece of Liquid Glass.
+                Item {
+                    id: cc
+                    z: 10
+                    width: 300
+                    height: ui.ccPage === "" ? ccCol.height : (ui.ccPage === "wifi" ? ccWifiPage.height : ccBtPage.height)
+                    x: Math.max(8, ui.width - width - 10)

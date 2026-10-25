@@ -1,3 +1,13 @@
+# MS-UI1 – MacShell-Uhr-/Kalender-Popover
+
+25.Oktober2026 Europe/Berlin. Verifizierte Basis **8a2824ed7b4e285fa0f41308c53a6258b5476577**, eigener Branch **feat/air-menubar-calendar-msui1-20261025**. Bestehende rechte Uhr für Modern als zugänglicher Popover-Auslöser umgehängt; Classic erhält unveränderte ursprüngliche Uhr zurück. MacShell-Pin1bdb518: calCells/shiftMonth,310px/Radius24/Padding16×14/Raster32/Heute28/26px-Navigation/Open-Runde und140ms-OutCubic portiert. Lokales Datum/42 Zellen/Schaltjahre/Monatsnavigation, Tastatur/Escape/Fokus/Outside-Click, Cleanup und Reduced-Motion/-Glass/Fallback. Keine Termine/Systemwerte erfunden. [Quellenzuordnung, MIT/OFL, Bilder und Unterschiede](AIR_MENUBAR_MS_UI1.md).
+
+**350/350 Tests bestanden**,130 Laufzeitdateien/Syntax/Diff geprüft. Echte Linux-Electron44-Vorher/Nachher1920×1080,1650×930,390×600 mit isolierten synthetischen Profilen: bisherige R1-Apps/Profile/Classic/Modern/M1/M2/K3/ReducedMotion/WebGL-Fallback und neue Kalendernavigation/Escape/Fokus/Outside-Click/Tab/Space bestanden. Dock-/Island-Rechtecke exaktgleich zum Ausgangsstand; native Windows/macOS/Safari/iPad offen. Original-QML nicht ausführbar verglichen, kein Pixel-/Shadergleichheitsanspruch; CSS-Material, unmittelbares Schließen und deutscher Montagbeginn sind dokumentierte Portabweichungen. Linksmenüs/Suche/Account/Dock/Island/MacLock/Cloud/Auth/Build-/Signierworkflows erhalten; Paketliste ergänzt nur Kalenderressourcen/Lizenz. Keine PWA-Veröffentlichung/Cloudanmeldung.
+
+Nächste drei kleine Einheiten nur nach Auftrag: native visuelle Abnahme, MS-UI2, MS-UI3. Keine Folgephase gestartet. Commit/Push, SHA im Abschlussbericht; danach STOP.
+
+---
+
 # PWA-2 – manueller Pages-Testweg, HTTPS-Unterverzeichnis und Safari-Vorbereitung
 
 25.Oktober2026, Europe/Berlin. Verifizierte Basis/Remote **e3b19d62d72a3bc024c0d8a5ea7df232ee864b52**, eigener Branch **feat/air-ipad-pwa2-20261025**. Ausschließlich manuell bestätigbarer Pages-Workflow (kein Pushtrigger), getrennte Build-/Deployrechte, vollständiges Testgate und geprüfter Upload nur dist/pwa. Keine Veröffentlichung/Pages-Konfigurationsänderung/Workflowauslösung; **keine öffentliche URL**. Defaultbranch-Workflowregistrierung/Pages-Aktivierung/Environmentreview und ausdrückliche Veröffentlichungsgenehmigung sind Voraussetzungen, main bleibt unverändert. [PWA-2-Anleitung, Bilder und Grenzen](PWA_2.md).

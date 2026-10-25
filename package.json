@@ -90,7 +90,10 @@
       "src/main/cloud-notes.cjs",
       "air-cloud.js",
       "air-cloud.css",
-      "src/core/notes-format.js"
+      "src/core/notes-format.js",
+      "air-calendar.js",
+      "air-calendar.css",
+      "third_party/macbar/**/*"
     ],
     "mac": {
       "target": [
