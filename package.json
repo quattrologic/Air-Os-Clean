@@ -100,7 +100,11 @@
       "src/core/macshell-math.js",
       "third_party/deep-port/**/*",
       "air-deep-desktop.js",
-      "air-dock-actions.js"
+      "air-dock-actions.js",
+      "air-glass2.css",
+      "src/core/glass-geometry.js",
+      "macshell-glass2-shaders.js",
+      "third_party/glass2/**/*"
     ],
     "mac": {
       "target": [

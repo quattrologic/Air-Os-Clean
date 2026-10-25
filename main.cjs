@@ -118,6 +118,11 @@ function createWindow() {
   openLogin();
 }
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
+// Non-production software rendering is allowed only for an explicitly isolated GUI diagnostic.
+ipcMain.handle('air-os:glass:test-policy',event=>{
+ requirePreferenceUser(event);
+ return {isolatedDiagnostic:process.env.AIR_GUI_TEST_ISOLATED==='1'&&app.commandLine.hasSwitch('glass-integration-test')&&path.basename(app.getPath('userData')).startsWith('air-r1-gui-')};
+});
 ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);return spotifyLauncher.launch()});
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch,expectedSession)=>{
