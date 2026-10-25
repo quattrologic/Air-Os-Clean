@@ -31,7 +31,7 @@ Lizenzen der ausgewählten Werkzeuge geprüft: Electron MIT (Electron contributo
 
 ## Tatsächlich lokale Tests und Paketprüfung
 
-**309/309 Tests bestanden**,0 Fehler/Skips;9 gezielte neue R1-Regressionen: Runtime-/Legacytrennung, tatsächliche ASAR-Dateien, fehlender Font, veralteter Shader, ungebündeltes HTML-Script, unerwartete Runtimeabhängigkeit, falsche Musikversion, x64-only Checksum-/Stale-Outputvertrag und geschütztes Dependencylinking. Synthetische PE-/Installerfixtures sind ausdrücklich **keine lauffähigen Installer** und werden nie als Download hochgeladen.
+**310/310 Tests bestanden**,0 Fehler/Skips;10 gezielte neue R1-Regressionen: Runtime-/Legacytrennung, tatsächliche ASAR-Dateien, fehlender Font, veralteter Shader, ungebündeltes HTML-Script, unerwartete Runtimeabhängigkeit, falsche Musikversion, x64-only Checksum-/Stale-Outputvertrag und geschütztes Dependencylinking sowie bytegleichen Git-Checkout trotz Windows-`autocrlf`. Synthetische PE-/Installerfixtures sind ausdrücklich **keine lauffähigen Installer** und werden nie als Download hochgeladen.
 
 Alle71 Runtime-Ressourcen gefunden und sämtliche JS/CJS-Dateien syntaktisch geprüft; YAML/`check:catalina`/`git diff --check` bestanden. Zusätzlich **echtes electron-builder26.18.0-Linux-Verzeichnispaket** mit Electron44.9.3 erzeugt und dessen tatsächliches ASAR gegen71 Ressourcen verifiziert: [Dateihashes](references/r1/linux-asar-files.json). Das ist kein Windowsinstaller und wird nicht als solcher angeboten.
 
@@ -55,7 +55,11 @@ Testhelferkorrekturen sind keine verschwiegenen Produkterfolge: erste rohe CDP-E
 
 ## Windows-CI und Download
 
-**STATUS: eigener Workflow implementiert; der tatsächliche neue CI-Lauf und etwaige Artefakte werden nach Push verifiziert und hier nachgetragen.** Kein alter Run#99/Installer wird als aktueller Build ausgegeben. GitHub-REST-/GraphQL-API liefert derzeit Forbidden, öffentliche Actions-/Release-/PR-Seiten sind lesbar. Workflow wird über Push auf genau diesen eigenen Branch ausgelöst; bestehende PRs/main/Installerbranch bleiben unverändert.
+Erster tatsächlicher Windowslauf [40175663014](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40175663014), Buildcommit **7040b35dc7815de97b253bc1297041e1add25581**: Windows-x64-Runner, eingefrorene Installation, Audit und vollständige Quellenprüfung erfolgreich; **Testsuite fehlgeschlagen**, Packaging/Installation/GUI übersprungen, kein Artefakt. Öffentliche Stepstatus geprüft. Direkter API-Logzugriff Forbidden, öffentlich verlinkte Step-Logs404; die exakten ursprünglichen Windows-Testfehler nicht geraten.
+
+Ein konkreter plattformübergreifender Fehler wurde separat reproduziert: CRLF-Checkout der Original-QML-/Shaderdateien lässt zwei bestehende Originalintegritätstests scheitern. Neue `.gitattributes` erzwingt kanonisches LF für Text und unveränderte Binärfonts/-assets. Keine Originalhashes oder Tests aufgeweicht. Neue Regression führt `git -c core.autocrlf=true checkout-index` aus und vergleicht Shader/QML/Font/Wallpaper bytegenau. Der Testgate startet weiter sämtliche Tests; Fehlernamen/details werden begrenzt in öffentliche Actions-Annotationen und als TAP-Diagnose geschrieben, statt nur Exit1 zu zeigen.
+
+**STATUS: korrigierter Windowslauf nach Push zu verifizieren; noch kein erfolgreicher neuer Installer/Dateihash behauptet.** Kein alter Run#99/Installer wird als aktueller Build ausgegeben. GitHub-REST-/GraphQL-API liefert derzeit Forbidden, öffentliche Actions-/Release-/PR-Seiten sind lesbar. Workflow wird über Push auf genau diesen eigenen Branch ausgelöst; bestehende PRs/main/Installerbranch bleiben unverändert.
 
 Aktuell keine behauptete Windowsinstallation, kein erfundener Download, keine geratene Prüfsumme. Ein erfolgreicher Windows-CI-Build wäre lediglich ein unsigniertes technisches Testartefakt. Eine eventuelle unbeaufsichtigte Windows-Runner-GUI-Prüfung wäre echte Windowssoftware, aber **keine physische Hardware-/GPU-Abnahme**. Native macOS-Abnahme, Windows-Signing, macOS-Signing/Notarisierung, CB-03, weitere Sicherheits-/Releaseblocker und MacLock-Softwareperformance bleiben offen.
 

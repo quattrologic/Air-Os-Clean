@@ -38,7 +38,7 @@ jobs:
           npm run check:catalina
           node scripts/windows-test-build.cjs validate
       - name: Complete regression suite on native Windows
-        run: npm test
+        run: node scripts/run-test-gate.cjs
       - name: Prepare exact source identity and modern runtime metadata
         run: node scripts/windows-test-build.cjs prepare
       - name: Build unsigned x64 NSIS installer from this commit only

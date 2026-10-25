@@ -1,0 +1,21 @@
+# Keep original MacLock hashes, JS template literals and packaged text identical
+# on Windows and Unix. Do not weaken the original-source integrity tests.
+* text=auto
+*.js text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.qml text eol=lf
+*.frag text eol=lf
+*.vert text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+third_party/maclock/LICENSE text eol=lf
+*.otf binary
+*.png binary
+*.jpg binary
+*.airapp binary

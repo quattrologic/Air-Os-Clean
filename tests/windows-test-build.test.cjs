@@ -47,3 +47,11 @@ test('R1 single-x64 collection has installer SHA256, honest hardware status and 
 test('R1 dependency junction never overwrites an existing installation',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'air-r1-link-'));try{fs.mkdirSync(path.join(root,'build/windows-x64/node_modules'),{recursive:true});fs.mkdirSync(path.join(root,'node_modules'));assert.throws(()=>api.linkDependencies(root),/Refusing to replace/);assert.ok(fs.statSync(path.join(root,'node_modules')).isDirectory())}finally{fs.rmSync(root,{recursive:true,force:true})}
 });
+test('R1 Windows autocrlf checkout preserves original shader, QML, font and wallpaper bytes',()=>{
+ const root=path.resolve(__dirname,'..'),destination=fs.mkdtempSync(path.join(os.tmpdir(),'air-r1-eol-'));
+ const files=['third_party/maclock/original/liquidglass.frag','third_party/maclock/original/MorphText.qml','third_party/maclock/fonts/OpenRunde-Regular.otf','maclock-wallpaper.svg'];
+ try{
+  require('node:child_process').execFileSync('git',['-c','core.autocrlf=true','checkout-index','--prefix='+destination.replace(/\\/g,'/')+'/','--stdin'],{cwd:root,input:files.join('\n')+'\n'});
+  for(const file of files)assert.deepEqual(fs.readFileSync(path.join(destination,file)),fs.readFileSync(path.join(root,file)),file+' must remain byte exact');
+ }finally{fs.rmSync(destination,{recursive:true,force:true})}
+});
