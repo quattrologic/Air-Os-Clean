@@ -1,0 +1,110 @@
+{
+  "observedAt": "2026-10-25T12:01:22.058254+00:00",
+  "sourceCommit": "0c343b01914d1829869a6cb50f24d0653a7b25eb",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653",
+  "job": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653/job/121162094702",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Require a native Windows x64 runner",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install frozen modern toolchain without changing Catalina",
+      "conclusion": "success"
+    },
+    {
+      "name": "Gate on actual production and development dependency audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Link isolated dependencies and download verified Electron runtime",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete regression suite on native Windows",
+      "conclusion": "success"
+    },
+    {
+      "name": "Prepare exact source identity and modern runtime metadata",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build unsigned x64 NSIS installer from this commit only",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify actual ASAR bytes, MacLock assets, licenses, architecture and installer checksum",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install the actual NSIS test package on this Windows runner",
+      "conclusion": "success"
+    },
+    {
+      "name": "Actual installed Electron login, profiles, desktop, apps and fallback smoke",
+      "conclusion": "success"
+    },
+    {
+      "name": "Record actual installation and GUI outcomes without granting release approval",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload current technical test installer, not a public release",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload actual GUI evidence and diagnostics",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "12597937309",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653/artifacts/12597937309",
+      "text": "Air-OS-R1-GUI-diagnostics-0c343b01914d1829869a6cb50f24d0653a7b25eb-1 7.64 MB sha256:c30420f38aafbc2155332a6746c8cd174cea7150cee7d8c8988fa9308c47aeeb"
+    },
+    {
+      "id": "12597932217",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40191099653/artifacts/12597932217",
+      "text": "Air-OS-Ultimate-Windows-x64-R1-0c343b01914d1829869a6cb50f24d0653a7b25eb-aacaf5994f8c1ac29bf5a6926b8686ee22c69d2bb8602d6cdb9498324ceb0792-121043907bytes-1 115 MB sha256:435dada9a9814851712be2715691832848f4a6a8502692882091973d518d893d"
+    }
+  ],
+  "source": "Public GitHub HTML; no authenticated local artifact download; runner GUI is not physical hardware acceptance",
+  "installer": {
+    "sha256": "aacaf5994f8c1ac29bf5a6926b8686ee22c69d2bb8602d6cdb9498324ceb0792",
+    "bytes": 121043907,
+    "artifactId": "12597932217",
+    "artifactZipSha256": "435dada9a9814851712be2715691832848f4a6a8502692882091973d518d893d",
+    "buildDate": "2026-10-25",
+    "signed": false,
+    "productionReleaseApproved": false,
+    "file": "Air-OS-1.0.3-dev.5.sha0c343b01914d-Windows-x64.exe",
+    "fileNameEvidence": "Configured productName/version/Windows-x64 artifactName, successful same-commit collection; artifact not independently downloaded"
+  },
+  "hardwareAcceptance": "BLOCKED: no physical Windows GPU or macOS hardware available",
+  "runNumber": 5
+}
