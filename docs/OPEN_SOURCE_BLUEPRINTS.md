@@ -12,6 +12,10 @@ Air-OS behält seine einzige Electron-Laufzeit, App Registry, Fensterverwaltung 
 
 AM1 ist ausschließlich Analyse/Dokumentation. Der aktuelle Air-Music-Bestand verwendet weiterhin AmplitudeJS; eine Migration hat noch nicht stattgefunden. L1B.3 bleibt als abgeschlossener Commit erhalten, L1C bleibt ein separat beauftragter MacLock-Arbeitsstrang.
 
+## MacShell-Funktionen innerhalb der Air-OS-Struktur
+
+Der [MacShell-Masterplan mit vollständiger Funktionsmatrix](MACSHELL_INTEGRATION_ROADMAP.md) ist für spätere Integrationsaufträge maßgeblich. MacShell bleibt Code-/Interaktionsvorlage für technisch und rechtlich geeignete Funktionen, **ersetzt aber weder Air-OS-Taskleiste, Dynamic Island noch Dock**. Positionen, Grundgeometrien, konkave Randübergänge, Birne/Originalicons/Divider, Profile, Classic und M1/M2 bleiben geschützt. Zusätze verwenden vorhandene Pop-ups/Islandansichten/Kontextmenüs, separate Registry-Apps oder ausdrücklich beauftragte Widgets. Keine neue Quickshell-/Hyprland-/Qt-Laufzeit, zweite Registry oder Fensterverwaltung. Echte Musikdaten stammen später ausschließlich aus dem separaten NewAmp-Port; keine privaten Medien-/Benachrichtigungsdaten auf der unauthentifizierten Logoutseite.
+
 ## Air-Musik-Roadmap
 
 1. **AM1:** Code-, Lizenz- und Architekturprüfung sowie konkrete Originalübernahmekandidaten. Mit diesem Dokumentationscheckpoint vorbereitet; keine Produktimplementierung.

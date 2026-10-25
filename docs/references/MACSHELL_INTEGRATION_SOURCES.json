@@ -1,0 +1,1645 @@
+{
+  "upstream": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "air_os_base": "3b3b87ae5d308aacc6d8024353d2b68f95cc74da",
+  "scope": "All tracked paths inventoried; feature-level static analysis, not security or asset-rights certification",
+  "tracked_files": 129,
+  "features": 100,
+  "uninstantiated_in_entry": [
+    "MacShell/ExtraWidgets.qml",
+    "MacShell/CardWidget.qml",
+    "MacShell/Desktop.qml",
+    "MacShell/WindowBar.qml",
+    "MacShell/Installer.qml",
+    "MacShell/MinimizeFx.qml"
+  ],
+  "archive_duplicates": [
+    {
+      "path": "scripts/macshell-wallpause.sh",
+      "matches_tracked_copy": true
+    },
+    {
+      "path": "scripts/macshell-wallpaper.sh",
+      "matches_tracked_copy": true
+    },
+    {
+      "path": "scripts/macshell-dynwall.sh",
+      "matches_tracked_copy": true
+    },
+    {
+      "path": "scripts/macshell-gaming.sh",
+      "matches_tracked_copy": true
+    },
+    {
+      "path": "scripts/macshell-setwall.sh",
+      "matches_tracked_copy": true
+    },
+    {
+      "path": "scripts/macshell-make-sounds.py",
+      "matches_tracked_copy": true
+    }
+  ],
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1063,
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/LICENSE",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/ClockGlyph.qml",
+      "bytes": 3109,
+      "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/ClockGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/ContourGlow.qml",
+      "bytes": 1079,
+      "sha256": "cee641011698c21d089d9937457d3e03c2dc698af7b73d586bde624d214c9e87",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/ContourGlow.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/Glass.qml",
+      "bytes": 2750,
+      "sha256": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/Glass.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/Glyph.qml",
+      "bytes": 14979,
+      "sha256": "e12373fe51ccef66380673fbf6145df8d1275caa925adffeea0f1efec880cfc7",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/Glyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/I18n.js",
+      "bytes": 1289,
+      "sha256": "86caa100d7a4b6e0680a733aa20eb582465437d75552af58719c9c1a4874419b",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/I18n.js",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/LockScreen.qml",
+      "bytes": 95509,
+      "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/LockScreen.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L01",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09",
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "N04",
+        "P05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/MorphGlyph.qml",
+      "bytes": 1984,
+      "sha256": "e77b8eca1525ef4887c77a5bb29ba18d306cf46d2492d49555147189eec8cde0",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/MorphGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/MorphText.qml",
+      "bytes": 7158,
+      "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/MorphText.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/README.md",
+      "bytes": 2342,
+      "sha256": "ba763147d98f4e73e6ff5b5f86ff5e85fc80d0aed8ea1f4566bee387d4387734",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/README.md",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/__pycache__/spotify-canvas.cpython-314.pyc",
+      "bytes": 6065,
+      "sha256": "9e18bc2fe6bc44d23cb7576e826a28827b46b3874e5b76ef871a9f2cb528605c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/__pycache__/spotify-canvas.cpython-314.pyc",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/build-shaders.sh",
+      "bytes": 307,
+      "sha256": "c8a11ec8889026d7e9f94e29b6174a6e923f857e89dd814ca35816d17e024378",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/build-shaders.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/burn.frag",
+      "bytes": 2146,
+      "sha256": "cb398e32c09db79e52e1bd7c08a140762f5b17f5f8b859b79272de0dbab08fe2",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/burn.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L08"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/burn.frag.qsb",
+      "bytes": 4206,
+      "sha256": "f7057c1e8af670f60070a7b2635d06c84276cf69c13c7d7f9470949833b20a69",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/burn.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/contourglow.frag",
+      "bytes": 1757,
+      "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/contourglow.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/contourglow.frag.qsb",
+      "bytes": 2847,
+      "sha256": "5fd314b9c433fd7890e810129d9d07cd0b9146bb7464cc26122393a44f06f5f8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/contourglow.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/enable-sleep-lock.sh",
+      "bytes": 2902,
+      "sha256": "521d4dbc568acc3704141409c897bcb7615fd39e936e27c5cba48770157f93c5",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/enable-sleep-lock.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L16"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/fade.frag",
+      "bytes": 746,
+      "sha256": "c613824a8e60f06b7e1361b8e4ddf56b05cd2e8bf6ec8469f3a9481e46e97ed5",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/fade.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L07"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/fade.frag.qsb",
+      "bytes": 1513,
+      "sha256": "4750978bad3058392990b3caff9498b54e03d8d72a7ebeb3c476e6294890601a",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/fade.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/fonts/OpenRunde-Regular.otf",
+      "bytes": 312956,
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/fonts/OpenRunde-Regular.otf",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/fonts/OpenRunde-Semibold.otf",
+      "bytes": 315896,
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/fonts/OpenRunde-Semibold.otf",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/genius-lyrics.py",
+      "bytes": 5351,
+      "sha256": "ea5cd6d986920e52b06f579bdceff9f0f26837724e9910411f6dcf8451170501",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/genius-lyrics.py",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L11"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/glasstext.frag",
+      "bytes": 4782,
+      "sha256": "2f4feef2797fefaef9eae8cf6822ceb060257d6f8f13a26b55a76e0e26fa9dd8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/glasstext.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/glasstext.frag.qsb",
+      "bytes": 6204,
+      "sha256": "e58211227bf1a395a687169b6cdb8f05ae54332de891150a5614c1e3dbdf660e",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/glasstext.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/hyprland.lua",
+      "bytes": 305,
+      "sha256": "730c699c26738fa41adc89ddca5d09015056d95d7303615f86ed63bf6b72b3fd",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/hyprland.lua",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L16"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/liquidglass.frag",
+      "bytes": 8333,
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/liquidglass.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/liquidglass.frag.qsb",
+      "bytes": 11450,
+      "sha256": "d0b03039be856592b1bcbc54f1ff694e2dbb1ea91187e5aadcb4a67f401f6155",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/liquidglass.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/lock-via-ipc.sh",
+      "bytes": 1445,
+      "sha256": "8cd8f4c9fcb113a618776135d801d17f0b6ca57736ac4b0763104de34ae3d6ab",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/lock-via-ipc.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L16"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/ripple.frag",
+      "bytes": 1559,
+      "sha256": "cd0121c3c770a3494538270d1ad485eabfc3d8c5dbc4a98c08c145ccbf912fe6",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/ripple.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L08"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/shell.qml",
+      "bytes": 13946,
+      "sha256": "9483a3f0aae4ed553ecd7a78c5926a967a364cc33f163e4225452e102eee1f13",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/shell.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L01",
+        "L09",
+        "L15",
+        "L16"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacLock/spotify-canvas.py",
+      "bytes": 6225,
+      "sha256": "7c9ba761ddf634187e76ab177239a313236607b1bb3b90c0a8af6cd3528e80d8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacLock/spotify-canvas.py",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L12"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/AboutApp.qml",
+      "bytes": 17845,
+      "sha256": "68801741a941044672552357b08224a9c08b199ad8d209ec1b62e614606d2299",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/AboutApp.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "B02",
+        "B09"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/CalendarWidget.qml",
+      "bytes": 19037,
+      "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/CalendarWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "B04",
+        "W03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/CardWidget.qml",
+      "bytes": 12015,
+      "sha256": "2b0361107403e8d896b7919e33ac44a7a790da5b198d003e97305c153b46a202",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/CardWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W07"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/ClockApp.qml",
+      "bytes": 63948,
+      "sha256": "2697f5910f03d33057951fd6de5bcb9bdb0f2bad711032cbe45ac9599c372101",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/ClockApp.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L14",
+        "N04",
+        "W11",
+        "T01",
+        "T02",
+        "T03",
+        "I02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/ClockGlyph.qml",
+      "bytes": 3109,
+      "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/ClockGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "T01",
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/ClockWidget.qml",
+      "bytes": 15939,
+      "sha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/ClockWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/CornerBorder.qml",
+      "bytes": 3239,
+      "sha256": "9dea2f400dbc1700cfad57eeb93af84b34c843b05cbd7c4b0189f3d3882728fd",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/CornerBorder.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Desktop.qml",
+      "bytes": 22595,
+      "sha256": "6b52536bfe788e63dcd6524c0a4102af9f7822b6efb29fc3bb1313a6b073574d",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Desktop.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "X05",
+        "U07"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Dissolve.qml",
+      "bytes": 1570,
+      "sha256": "1ba63950619e50df1bf710bcff87a37eb04cdb9b238bcb405742b6eb65447770",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Dissolve.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "N03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/EdgeBlur.qml",
+      "bytes": 1578,
+      "sha256": "2b92a4e68383060560b455efb3f2d14a0e017da0cf66a46e527ecdf2f9f8f418",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/EdgeBlur.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/EmojiData.js",
+      "bytes": 70904,
+      "sha256": "756d20c194929668ba505129a4d502567045572c3786e4d3bf59318726738fc1",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/EmojiData.js",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "U03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/ExtraWidgets.qml",
+      "bytes": 46684,
+      "sha256": "368c8544399deefcff100736be6b3f06d76df16af8916565adea012774002de3",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/ExtraWidgets.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W07",
+        "W08",
+        "W09",
+        "W10",
+        "W11",
+        "W12"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/FeatherBlur.qml",
+      "bytes": 6366,
+      "sha256": "a90258c0a3b02394e78ebda1ab535d39ab4b38b7e626841cf8c4b5b37c874deb",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/FeatherBlur.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Fonts.js",
+      "bytes": 466,
+      "sha256": "51a7ae8e1cd5c522b6014bc1a4bb57416f8fe1e2d969e5405512710fe165eb6b",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Fonts.js",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P06"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/GlassSegmented.qml",
+      "bytes": 13375,
+      "sha256": "36c7edb71ecd1dac1d84aef1f71ac21519aa0bf53616e935f7d37f20456536c0",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/GlassSegmented.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/GlassSlab.qml",
+      "bytes": 4921,
+      "sha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/GlassSlab.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/GlassSlider.qml",
+      "bytes": 9223,
+      "sha256": "4e414a0bcff5f8ea778de3acf5ee0657647f38b0c27828463b2c53eb0d3f6344",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/GlassSlider.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/GlassSwitch.qml",
+      "bytes": 10272,
+      "sha256": "270a1452b3cc26c2534041b408e8f509dbc44aa9844dcfe811ced7b1af2054fa",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/GlassSwitch.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/I18n.js",
+      "bytes": 1053,
+      "sha256": "fb7970352e287179669c9e651f545ee5aea5a4d938da8537d3a6741462a2ca35",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/I18n.js",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P06"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/ImageWidget.qml",
+      "bytes": 3006,
+      "sha256": "aeea6af41f8c5ad95dface4f5d1b76e28d9cc1b182384ffb47e6b2a345af5c5e",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/ImageWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W06"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Installer.qml",
+      "bytes": 24258,
+      "sha256": "2f5a3add8c7d8c1fe94a25836a1a9d337002d0d0bde0307c403022129566b037",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Installer.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/LiquidKnob.qml",
+      "bytes": 4920,
+      "sha256": "4f0706643b8afe970a32fddc2b3796d18155a9e5ca89c9b0053b8eeaea8de5c8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/LiquidKnob.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/LiquidScrollBar.qml",
+      "bytes": 4075,
+      "sha256": "de4ad3a8d505dba5d58cd76f236e2af2852c26b65b607655800022938237ab3e",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/LiquidScrollBar.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/LiquidSlider.qml",
+      "bytes": 3875,
+      "sha256": "4bd489e6e03deab610939c47d5b7a441776fd95ce6137987484c0074cfbb98a0",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/LiquidSlider.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/LiquidSwitch.qml",
+      "bytes": 4296,
+      "sha256": "8ec89e8e5915ef0982bd58f1ebd9b89ed6f60281129f7e3c6675f14dc22fdb86",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/LiquidSwitch.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/LiveWall.qml",
+      "bytes": 1965,
+      "sha256": "a10afb2fd44e58fa3ac51e01c73ae0a9e3c6c6f9ce7052ec63aef56f4d706887",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/LiveWall.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MacBar.qml",
+      "bytes": 594501,
+      "sha256": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MacBar.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L13",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "X01",
+        "X03",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "G01",
+        "I02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MacDock.qml",
+      "bytes": 334777,
+      "sha256": "89ff98bfa058659abdc0924bb8287a8c0e0cea0197446cc5cf159bee4785bacc",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MacDock.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D10",
+        "B06",
+        "B10",
+        "C02",
+        "C03",
+        "C05",
+        "X02",
+        "X03",
+        "P01",
+        "P05",
+        "P06",
+        "U06",
+        "U07",
+        "G01",
+        "I02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MacWidgets.qml",
+      "bytes": 41324,
+      "sha256": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MacWidgets.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W01",
+        "W02",
+        "W03",
+        "W04",
+        "W06",
+        "I02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MarqueeText.qml",
+      "bytes": 3144,
+      "sha256": "7e48fc3d4ad74878a4a7fde71b9e2f1e1361b6756c6c4c027c9523910521095d",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MarqueeText.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W05",
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MenuBorder.qml",
+      "bytes": 1634,
+      "sha256": "d91fdd3487e358c8649f62f609202c6e6ad3259d6860f0c393454954dbf227ad",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MenuBorder.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MinimizeFx.qml",
+      "bytes": 7114,
+      "sha256": "0d5a776bf50d8415f23152b9e0cfa012ec6718520bdb73cd2a50cfb0d14a2edc",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MinimizeFx.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "D09"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MorphGlyph.qml",
+      "bytes": 1985,
+      "sha256": "6a7c0fd34d5712fd65558beee481d722976068fec7c026ba215c1a57bddd02f4",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MorphGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/MorphText.qml",
+      "bytes": 7158,
+      "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/MorphText.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/PlayerArt.qml",
+      "bytes": 6940,
+      "sha256": "7550f300d043fb476b7b655dbffdfcd6c00a5c6a858276c1072f38375cc3121e",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/PlayerArt.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W05",
+        "G05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/PlayerBtn.qml",
+      "bytes": 3769,
+      "sha256": "89e7dddab38c6fd16efe6e28c27156cc9edc11ebdb34240b84d8fa9ed62720bc",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/PlayerBtn.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "C12",
+        "W05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/PlayerGlyph.qml",
+      "bytes": 5179,
+      "sha256": "9072d438b29a5b4328de8820869059997a4eb350998dac2a875358fcc764ca00",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/PlayerGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "C12",
+        "W05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/PlayerWidget.qml",
+      "bytes": 35591,
+      "sha256": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/PlayerWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/SPopUp.qml",
+      "bytes": 5367,
+      "sha256": "82bd3e7425b95266e1ee6d8a57bc192a6641d48769e5d9dd577cd4bd8c6e9e23",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/SPopUp.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "D03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Spring.qml",
+      "bytes": 3028,
+      "sha256": "10cb444d65ac6a51628e525d9287d656146aba479d52105bcb9eb707b10789ae",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Spring.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/TLGlyph.qml",
+      "bytes": 1828,
+      "sha256": "c9180fd8f207fff3de21bbfbf19c1f642dcd0707838d786f64f757e409048e7a",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/TLGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/VERSION",
+      "bytes": 6,
+      "sha256": "40b8eb4000a913a7791090535f291d3d369874162a89ef3c9e3d4e887a1b9e79",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/VERSION",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WGlyph.qml",
+      "bytes": 15501,
+      "sha256": "dc8385d2f8a69c7c835890e52b34e270c2e508708506471042edb19403d6a539",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WGlyph.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WeatherHourCol.qml",
+      "bytes": 1034,
+      "sha256": "6081f46fd0a38f53257ee764e30281ace3386f8b190aabab64cac3328697765c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WeatherHourCol.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WeatherIcon.qml",
+      "bytes": 5473,
+      "sha256": "d291c095abca784c7a26147ca0053b3e10eb34baa510c15d4a683b8cc6478d7f",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WeatherIcon.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WeatherWidget.qml",
+      "bytes": 20319,
+      "sha256": "147abcd117d0d59edcf0601cccc8d0c474b3e85f3bcabb41b6afebca915c7d1f",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WeatherWidget.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/Wheel.qml",
+      "bytes": 1691,
+      "sha256": "2f832fc93600265c61bde55982326b976b4a7619565f4f2229dcee12b11fcce8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/Wheel.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "T01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WidgetVisual.qml",
+      "bytes": 8803,
+      "sha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WidgetVisual.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "W01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/WindowBar.qml",
+      "bytes": 9016,
+      "sha256": "2a484a74738b07a41649edfb6ba0a9e5810b2057932b7fc56b35fdc111668bcd",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/WindowBar.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "X04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/__pycache__/genius-lyrics.cpython-314.pyc",
+      "bytes": 9668,
+      "sha256": "21ff8b0fd17df1dbd446cbbc0135b17b51dbf102443e7843dfb3540fe91d6433",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/__pycache__/genius-lyrics.cpython-314.pyc",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/apple-logo-black.svg",
+      "bytes": 675,
+      "sha256": "7f5fa66d02c85f8664be7bc10b3e04751d2dbea35e4494df50eac41e0f9cd1ff",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/apple-logo-black.svg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [
+        "I04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/apple-logo-white.svg",
+      "bytes": 675,
+      "sha256": "347bb2985675dafb25e95730503539ba843140fc6ca75004eddb5abbd389cc55",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/apple-logo-white.svg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [
+        "I04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/about-info.sh",
+      "bytes": 5145,
+      "sha256": "1cdc824712160d0b6a7d29578d15d53c79f33a15e9441e38ab96f46d311b607c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/about-info.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "B09"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/check-update.sh",
+      "bytes": 3489,
+      "sha256": "d082cde401cfa8958d0ea58f7bd55e6f3e5a85ca2ab3928cb9785ad0fd0faf69",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/check-update.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/credits/0-ss.jpg",
+      "bytes": 9180,
+      "sha256": "cf4e03e99f180faef8fa3369a3fae40ae22e2bf7fdff46c93c4e0cdd99527e6b",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/credits/0-ss.jpg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/credits/vsoultann.png",
+      "bytes": 54057,
+      "sha256": "2bf85eb42b8bf603af9b56af4c6d81937f7273d6acbba5411e824adbf9bca552",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/credits/vsoultann.png",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/fonts/OpenRunde-Regular.otf",
+      "bytes": 312956,
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/fonts/OpenRunde-Regular.otf",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/fonts/OpenRunde-Semibold.otf",
+      "bytes": 315896,
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/fonts/OpenRunde-Semibold.otf",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/idle-music-note.png",
+      "bytes": 191082,
+      "sha256": "30270ddde51d71d9df5053eb0683d6a29f198b3f5f0c6c6d9350ddb9b1733391",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/idle-music-note.png",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/macshell-logo.png",
+      "bytes": 215746,
+      "sha256": "25b92b21e537282cad539266aee0515176374d112a55349e777a4d047feb9f53",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/macshell-logo.png",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [
+        "I04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/music-app.svg",
+      "bytes": 5449,
+      "sha256": "dc8f1e4942cf4d3adb155b2dcd9c9a600448cd629d961cef26d96462b0e118fd",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/music-app.svg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/music-note.svg",
+      "bytes": 4040,
+      "sha256": "14d6cdfdaa6ddbfdb85326973b1a8748d561232adc0db7aa4cbae965258f9217",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/music-note.svg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/assets/tone.sh",
+      "bytes": 1986,
+      "sha256": "55aa758b0164c2e929f7eede0411caa7ffa44a7f840f9d09f70c0bc989a13a43",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/assets/tone.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "B08",
+        "P04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/burn.frag",
+      "bytes": 2146,
+      "sha256": "cb398e32c09db79e52e1bd7c08a140762f5b17f5f8b859b79272de0dbab08fe2",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/burn.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/burn.frag.qsb",
+      "bytes": 4206,
+      "sha256": "f7057c1e8af670f60070a7b2635d06c84276cf69c13c7d7f9470949833b20a69",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/burn.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/contourglow.frag",
+      "bytes": 1757,
+      "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/contourglow.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "S06",
+        "G02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/contourglow.frag.qsb",
+      "bytes": 2847,
+      "sha256": "5fd314b9c433fd7890e810129d9d07cd0b9146bb7464cc26122393a44f06f5f8",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/contourglow.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/dockglass.frag",
+      "bytes": 9186,
+      "sha256": "f1ebcf553c2dfb007050799f6c44d74556c2b49e4aac661c77f39b94ded0a631",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/dockglass.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/dockglass.frag.qsb",
+      "bytes": 11516,
+      "sha256": "6d253bea1eea5c21479786bd21eb6c1459b5f0ad0d30bf2e6d3fbae9b59f2477",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/dockglass.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/dust.frag",
+      "bytes": 2012,
+      "sha256": "df220fb441294153943d3aff37aeeb56bced5763b94a9bdd6068981fdd891a3d",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/dust.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "N03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/dust.frag.qsb",
+      "bytes": 3848,
+      "sha256": "b486a2a264e49fb89c99c70176cdb08a2f529287ef435c5662631843a52a7c66",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/dust.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/fade.frag",
+      "bytes": 746,
+      "sha256": "c613824a8e60f06b7e1361b8e4ddf56b05cd2e8bf6ec8469f3a9481e46e97ed5",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/fade.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/fade.frag.qsb",
+      "bytes": 1513,
+      "sha256": "4750978bad3058392990b3caff9498b54e03d8d72a7ebeb3c476e6294890601a",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/fade.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/folder.svg",
+      "bytes": 665,
+      "sha256": "cb015a281fcb60505f1c1d7b0d2cbd8e8d698dd2c6c21f23088252643dc58932",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/folder.svg",
+      "kind": "asset; own rights/brand review required",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/genie.frag",
+      "bytes": 746,
+      "sha256": "1c3420c589a04d6d80001e02b52970830cc160cb32dd2719a1cb6e1cf7b9f3a3",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/genie.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "D09"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/genie.frag.qsb",
+      "bytes": 1555,
+      "sha256": "5deec8dc6863280c0afd51620f5450a1c18ed2a42af63e27fc8563465a00f7ee",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/genie.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/genie.vert",
+      "bytes": 2104,
+      "sha256": "8d849b55b4364507b789a4f47feaf9874363ef92aa1bdd0ca4a966838007efef",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/genie.vert",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "D09"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/genie.vert.qsb",
+      "bytes": 2582,
+      "sha256": "a6e9fac09d8079d718b017d8ac8cb298dba1166bec3941773d838d0ea8aa3268",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/genie.vert.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/genius-lyrics.py",
+      "bytes": 5351,
+      "sha256": "ea5cd6d986920e52b06f579bdceff9f0f26837724e9910411f6dcf8451170501",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/genius-lyrics.py",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L11"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/lang/ru.js",
+      "bytes": 46944,
+      "sha256": "12dcab4c263461e693cb65c2286eaa96fd1b1ef373c6a1b0cbd1d34653874333",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/lang/ru.js",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P06"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/liquidglass-fixed.frag.qsb",
+      "bytes": 14506,
+      "sha256": "198f55bfc0dadbc1a31785f54eb54d65b57129cd321cfbf5f2a68da5144588fb",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/liquidglass-fixed.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/liquidglass.frag",
+      "bytes": 10145,
+      "sha256": "17c803e919d156cfff3c285fc2b11a59548b8b757e191190269ee0b81b2f336b",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/liquidglass.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/liquidglass.frag.qsb",
+      "bytes": 12212,
+      "sha256": "4e4d7e4410829859b25a832c40c510fbd2aafdfc42639b1ff3d59973955676f0",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/liquidglass.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/macshell-update",
+      "bytes": 7569,
+      "sha256": "9d1d5c0281c7c628e43366601149a576271a739e668975693a4d94f183978fe6",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/macshell-update",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/macshell.lua",
+      "bytes": 3395,
+      "sha256": "0f82cea545ca02e75602af905f3d60925e581fb8c7fe775e52d12e2d7515f783",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/macshell.lua",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/shell.qml",
+      "bytes": 22172,
+      "sha256": "3df070f6302a1f8dbd03a56a8f925888a1625b43856e7fa627e2b1fccd60c0d1",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/shell.qml",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "L13",
+        "D05",
+        "B07",
+        "N02",
+        "X02",
+        "I01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/tintcard.frag",
+      "bytes": 1306,
+      "sha256": "fcb5040b7dee6bd3bace55ce8f5295b6d1fd3903772b2d357ea5d712da5f53c5",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/tintcard.frag",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "G05"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "MacShell/tintcard.frag.qsb",
+      "bytes": 2540,
+      "sha256": "7b5e5c627cd42c9acbec0ba2cb1c48860a4c9dd84313ec7d343034d545dd212c",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/MacShell/tintcard.frag.qsb",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "README.md",
+      "bytes": 28907,
+      "sha256": "b9a899be06aa3fd5fc314aecdfdb7d9ecdf310e12018fdaa55bfe13fcc788179",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/README.md",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/75-apple-emoji.conf",
+      "bytes": 831,
+      "sha256": "150d9a73b175e4704169d1b89c6230f3a59a09f63c9a646c296ec46f02bbd675",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/75-apple-emoji.conf",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts.zip",
+      "bytes": 10149,
+      "sha256": "16c5d7a23ae9aea64295eb63347d7877b836742df2ed2109b31d7568c42f6664",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts.zip",
+      "kind": "binary/audit-only; do not ship",
+      "feature_ids": [
+        "I04"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-dynwall.sh",
+      "bytes": 2522,
+      "sha256": "ff4d7b1eb89cebc3c5669efd4909835289357d04f49b8ac206f22bd84b8bc447",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-dynwall.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P02"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-gaming.sh",
+      "bytes": 1907,
+      "sha256": "d9d7b8d7298cbd1c40b70ceed4bb5b62b66b5b5ae0c44098f9e4798ed7996ee6",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-gaming.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "C11"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-make-sounds.py",
+      "bytes": 8340,
+      "sha256": "de2c652e00e35a1b37c0ee04f6424f407309b86e0f1391bb81acc131d668ee03",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-make-sounds.py",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "B08"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-setwall.sh",
+      "bytes": 7660,
+      "sha256": "da592ffb14097fee3739184ac26488e2fbf5c3773b3a59c852c5826a6f29589b",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-setwall.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-wallpaper.sh",
+      "bytes": 838,
+      "sha256": "06adb78309638b37ffb3b6323fb3f6c1e4b48a5c7a5743ef0f6c8902f2307ed5",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-wallpaper.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P01"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "hypr-macshell/scripts/macshell-wallpause.sh",
+      "bytes": 497,
+      "sha256": "abceb68d3a7d99fa4a8a6b1a817e49a3ea353b3baa7f1f1e32ed344db61ee073",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/hypr-macshell/scripts/macshell-wallpause.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "P03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    },
+    {
+      "path": "install.sh",
+      "bytes": 99787,
+      "sha256": "4d305fcea838e154ca8332003cdccf9b0ae66fb1d15d9b5200130e66bbf52201",
+      "source_url": "https://github.com/0-ss/MacShell/blob/1bdb51870b621100fd2709f66c8f8e00ab17b9c4/install.sh",
+      "kind": "source/config/license/documentation",
+      "feature_ids": [
+        "I03"
+      ],
+      "review": "feature/static source review; no upstream execution",
+      "copied_in_this_phase": false
+    }
+  ]
+}
