@@ -32,7 +32,7 @@ function createStore({root}){
   if(index<0&&notes.length>=200)throw new Error('Höchstens 200 Notizen erlaubt.');
   if(index>=0&&input.expectedSnapshot&&JSON.stringify(notes[index])!==JSON.stringify(input.expectedSnapshot))throw new Error('Notiz wurde inzwischen synchronisiert oder geändert. Bitte Notiz erneut auswählen; ungespeicherte Eingaben vorher sichern.');
   const now=new Date().toISOString();
-  const note={id:index>=0?id:crypto.randomUUID(),title,body,createdAt:index>=0?notes[index].createdAt:now,updatedAt:now};
+  const note=require('../core/notes-format.js').make(input,index>=0?notes[index]:null,now,crypto.randomUUID());
   if(index>=0)notes[index]=note;else notes.unshift(note);
   persist(user,notes);return {...note};
  }

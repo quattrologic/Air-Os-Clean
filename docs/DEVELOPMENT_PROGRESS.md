@@ -1,3 +1,13 @@
+# PWA-1 – eigenständiger lokaler Browser-/iPad-Einstieg
+
+25.Oktober2026, Europe/Berlin. Verifizierte Basis/Remote **3b1bc37d844b986c385c115ace36e67491e15305**, eigener Branch **feat/air-ipad-pwa1-20261025**. Statischer HTTPS-fähiger PWA-Build aus gemeinsamer UI, offizielles BRAND-2-Logo/Manifest/Touchicons, lokaler MacLock-Einstieg ohne Passwort-/Cloudbehauptung, separater IndexedDB-Adapter mit gemeinsamem Notes-Format, offline CRUD, ehrliche native Fähigkeitsgrenzen und Touch-/Safe-Area-CSS. Hashversionierter Allowlist-Service-Worker mit bewusster Updateaktivierung und nur eigener pfadbezogener Cache-Bereinigung. Keine Cloud-Anmeldung/Schlüssel/private Dateien/Änderung bestehender Profile. Keine Veröffentlichung. [Build, Screenshots, Tests und Grenzen](PWA_1.md).
+
+**345/345 Tests bestanden**,3 neue PWA-Regressionen;125 Electron-Laufzeitdateien/Syntax/Diff bestanden. Echter isolierter Chromium154/Linux-Browser in1024×1366,1366×1024,1920×1080, Touchaktionen/Notizen erstellen-bearbeiten-löschen/Offline-Neuladen/Persistenz/Logout/Service-Worker-Update/Cachebereinigung geprüft,0 JavaScriptfehler. Manifest-Installierbarkeitsdiagnose ohne Fehler, keine tatsächliche Home-Screen-Installation. Dock358×68/bottom0 und Islandtop0 in allen Ansichten gemessen. **Safari/iPadOS, echte Touchhardware/Safe Areas/Bildschirmtastatur und HTTPS-Deployment offen.** Desktop-Design/M1/M2/MacLock/Auth/Build-/Signierlogik unverändert; gemeinsamer Notizkonstruktor hält Datenformat konsistent. Cloud für PWA-1 abgeschaltet.
+
+Nächste drei kleine Einheiten nur nach neuem Auftrag: native Safari-/iPadOS-Installationsabnahme; Bildschirmtastatur/Safe-Area-/Speicherprüfung auf eigenem Gerät; spätere gesonderte sichere Cloud-Anbindung. Commit/Push, SHA im Abschlussbericht; danach STOP.
+
+---
+
 # CLOUD-1 – optionale Supabase-Profilverknüpfung und Notes-Abgleich
 
 25.Oktober2026, Europe/Berlin. Verifizierte BRAND-2-Basis/Remote **1491eaab6d12a31cf0e5f989e439e3fde9b45b9e**, eigener Branch **feat/air-cloud-notes-cloud1-20261025**. Tatsächlicher Hauptprozess-REST/Auth-Adapter, freiwillige Cloud-Verknüpfung in bestehenden Einstellungen, OS-verschlüsselte Refresh-Sitzung, Logout-/Profilgrenzen, bestehender lokaler Notes-Store, atomarer Versions-CAS/3-Wege-Abgleich/Löschungen und Schutz veralteter Editorwrites. Eventgetrieben ohne Polling; Konflikte/Fehler behalten Daten. Keine Cloud-Daten im Lockscreen, keine neue lokale Kontoverwaltung/Dependencies. [Implementierung, Setup, SQL/RLS, Bilder und Grenzen](cloud/CLOUD_1.md).

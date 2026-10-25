@@ -13,7 +13,8 @@
     "check:catalina": "node scripts/check-catalina.cjs",
     "test": "node --test tests/*.test.cjs",
     "check:modern": "node scripts/check-modern.cjs",
-    "pack:mac:modern": "npm run check:modern && electron-builder --publish never --mac dmg zip --universal --config.mac.minimumSystemVersion=13.0.0"
+    "pack:mac:modern": "npm run check:modern && electron-builder --publish never --mac dmg zip --universal --config.mac.minimumSystemVersion=13.0.0",
+    "build:pwa": "node scripts/build-pwa.cjs"
   },
   "devDependencies": {
     "electron": "32.3.3",
@@ -88,7 +89,8 @@
       "assets/brand/**/*",
       "src/main/cloud-notes.cjs",
       "air-cloud.js",
-      "air-cloud.css"
+      "air-cloud.css",
+      "src/core/notes-format.js"
     ],
     "mac": {
       "target": [
