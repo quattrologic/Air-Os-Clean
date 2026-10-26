@@ -7,7 +7,7 @@
   const key=base+':profile:'+encodeURIComponent(owner.username.toLocaleLowerCase('en-US'));let active=true;
   const end=()=>{active=false;};events?.addEventListener('air-profile-changing',end,{once:true});
   const valid=()=>{if(!active)throw Error('Sitzung beendet.');};
-  return {read(){valid();const raw=storage.getItem(key);return raw===null?JSON.parse(JSON.stringify(empty)):JSON.parse(raw);},write(value){valid();storage.setItem(key,JSON.stringify(value));},legacy:storage.getItem(base)!==null,dispose(){active=false;events?.removeEventListener('air-profile-changing',end);}};
+  return {session:owner.preferenceSession,read(){valid();const raw=storage.getItem(key);return raw===null?JSON.parse(JSON.stringify(empty)):JSON.parse(raw);},write(value){valid();storage.setItem(key,JSON.stringify(value));},legacy:storage.getItem(base)!==null,dispose(){active=false;events?.removeEventListener('air-profile-changing',end);}};
  }
  return Object.freeze({open});
 });

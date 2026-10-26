@@ -1,7 +1,7 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false,todaySize:'compact'});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false,todaySize:'compact',widgetSet:null,widgetLayout:{},widgetImage:''});
 const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
@@ -9,6 +9,9 @@ function validate(patch){
  for(const [key,value] of Object.entries(patch)){
   if(!Object.prototype.hasOwnProperty.call(DEFAULTS,key)||key==='schemaVersion')throw new TypeError('Unbekannte Einstellung.');
   if(key==='controlTiles'){if(value!==null&&(!Array.isArray(value)||value.length>12||new Set(value).size!==value.length||value.some(id=>!require('../core/macshell-math.js').ccCatalog.some(d=>d.id===id))))throw new TypeError('Ungültiger Kachelkatalog.');result[key]=value===null?null:[...value];continue;}
+  if(key==='widgetSet'){if(value!==null&&(!Array.isArray(value)||value.length>7||new Set(value).size!==value.length||value.some(id=>!require('../core/desktop-widgets.js').ids.includes(id))))throw new TypeError('Ungültige Widgets.');result[key]=value===null?null:[...value];continue;}
+  if(key==='widgetLayout'){if(!value||typeof value!=='object'||Array.isArray(value))throw new TypeError('Ungültiges Widgetlayout.');const clean={};for(const [id,layout]of Object.entries(value)){if(!require('../core/desktop-widgets.js').ids.includes(id)||!layout||Object.keys(layout).some(k=>!['size','style'].includes(k))||!['small','medium','large'].includes(layout.size)||!['digital','dial'].includes(layout.style))throw new TypeError('Ungültiges Widgetlayout.');clean[id]={size:layout.size,style:layout.style};}result[key]=clean;continue;}
+  if(key==='widgetImage'&&(typeof value!=='string'||value.length>3*1024*1024||(value!==''&&!/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(value))))throw new TypeError('Ungültiges Widgetbild.');
   if(key==='todaySize'&&!['compact','expanded'].includes(value))throw new TypeError('Ungültige Widgetgröße.');
   if(key==='focusMode'&&typeof value!=='boolean')throw new TypeError('Ungültiger Fokusmodus.');
   if(key==='desktopWidgets'&&typeof value!=='boolean')throw new TypeError('Ungültige Widgets.');
@@ -17,7 +20,7 @@ function validate(patch){
    result[key]=[...value];continue;
   }
   if(key==='widgetPositions'){
-   if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(k=>!['clock','calendar'].includes(k)))throw new TypeError('Ungültige Widgetposition.');
+   if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(k=>!require('../core/desktop-widgets.js').ids.includes(k)))throw new TypeError('Ungültige Widgetposition.');
    const positions={};for(const [k,v]of Object.entries(value)){if(!v||Object.keys(v).length!==2||!Number.isFinite(v.x)||!Number.isFinite(v.y)||v.x<0||v.y<0||v.x>10000||v.y>10000)throw new TypeError('Ungültige Widgetposition.');positions[k]={x:v.x,y:v.y};}result[key]=positions;continue;
   }
   if(key==='wallpaper'&&(!WALLPAPERS.has(value)))throw new TypeError('Ungültiges Hintergrundbild.');

@@ -1,0 +1,81 @@
+/* Tahoe 4: existing shell hosts and GLASS-3 canvases remain authoritative. */
+html[data-desktop-theme="modern"]:not(.air-reduced-glass) :is(.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:radial-gradient(ellipse at 25% 0,#ffffff12,transparent 60%),linear-gradient(170deg,#ffffff09,transparent 40%,#00000020),rgba(8,16,24,.65);border-color:#dce9ff45;box-shadow:inset 0 1px #ffffff35,inset 0 -8px 20px #00000026,0 9px 24px #00101c35}
+html[data-desktop-theme="modern"].air-reduced-glass :is(.deep-widget,.deep-history,.deep-dock-menu,.deep-toast){background:#101517!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme="modern"] :is(.deep-widget,.deep-history,.deep-dock-menu,.deep-toast){background:#101517!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+html[data-desktop-theme="modern"] .deep-widget[data-widget-size]:not([data-widget-size="legacy"]){border-radius:28px;padding:12px;box-sizing:border-box}
+html[data-desktop-theme="modern"] .deep-widget .deep-widget-content{min-height:0;max-height:calc(100% - 22px);overflow:auto;scrollbar-width:thin;position:relative}
+html[data-desktop-theme="modern"] .deep-widget header{margin-bottom:6px;line-height:16px;cursor:grab}
+html[data-desktop-theme="modern"] .deep-widget header:active{cursor:grabbing}
+html[data-desktop-theme="modern"] .deep-widget :is(button,select){font:inherit;color:inherit;border:1px solid #ffffff30;background:#ffffff0c;border-radius:var(--tahoe-button-radius);min-height:24px;padding:3px 6px;cursor:pointer}
+html[data-desktop-theme="modern"] .deep-widget button:hover{background:#ffffff20}
+html[data-desktop-theme="modern"] .deep-widget :is(button,header,input):focus-visible{outline:2px solid #9cdaa1;outline-offset:1px}
+html[data-desktop-theme="modern"] .deep-widget :is(p,li){font-size:12px;line-height:1.4;margin:6px 0;color:#e6ece8}
+html[data-desktop-theme="modern"] .deep-widget ul{padding:0;list-style:none;margin:0 0 6px}
+html[data-desktop-theme="modern"] .deep-widget li button{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;width:100%}
+html[data-desktop-theme="modern"] .deep-widget li small{font-size:11px;color:#b5c1ba}
+html[data-desktop-theme="modern"] .deep-widget progress{width:100%;height:8px;accent-color:#9cdaa1}
+html[data-desktop-theme="modern"] .deep-widget .widget-song{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px}
+html[data-desktop-theme="modern"] .deep-widget .widget-artist{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html[data-desktop-theme="modern"] .deep-widget [data-media-action]{min-width:32px;margin:4px}
+html[data-desktop-theme="modern"] .widget-photo{width:100%;height:calc(100% - 30px);max-height:280px;object-fit:cover;display:block;border-radius:var(--tahoe-menu-radius)}
+html[data-desktop-theme="modern"] .widget-image-picker{display:block;font-size:12px;margin-top:6px}
+html[data-desktop-theme="modern"] .widget-image-picker input{display:block;max-width:100%;font:inherit;font-size:11px;margin-top:4px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=image] .deep-widget-content{display:flex;flex-direction:column;height:calc(100% - 22px)}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=image] .widget-photo{flex:1;min-height:0;height:auto;max-height:none}
+html[data-desktop-theme="modern"] .deep-widget [data-media-action]{font-variant-emoji:text}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .widget-calendar-grid button{min-height:12px;line-height:12px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .widget-calendar-grid{gap:1px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .deep-widget-content>p{display:none}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) button{min-height:20px;font-size:10px}
+html[data-desktop-theme="modern"] .widget-month-nav{display:flex;align-items:center;justify-content:space-between;gap:3px;font-size:12px}
+html[data-desktop-theme="modern"] .widget-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;font-size:10px;margin-top:4px;text-align:center}
+html[data-desktop-theme="modern"] .widget-calendar-grid button{border:0;min-height:14px;padding:0;font-size:10px;line-height:16px}
+html[data-desktop-theme="modern"] .widget-calendar-grid .outside{opacity:.5}
+html[data-desktop-theme="modern"] .widget-calendar-grid [aria-current=date]{background:#9cdaa1;color:#101517}
+html[data-desktop-theme="modern"] .deep-widget[data-widget-size=large] .widget-calendar-grid button{min-height:25px;font-size:12px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=clock][data-widget-size=small] .today-week,
+html[data-desktop-theme="modern"] .deep-widget[data-widget=clock][data-widget-size=small] .today-meta{display:none}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=clock][data-widget-size=small] .today-actions{gap:4px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=clock][data-widget-size=small] .today-actions button{font-size:10px;padding:3px}
+html[data-desktop-theme="modern"] .widget-ticks{width:100%;height:100%;position:absolute;inset:0;pointer-events:none;color:#f2f5f3}
+html[data-desktop-theme="modern"] .deep-widget[data-clock-style=dial][data-widget=clock] .deep-widget-content{display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;height:calc(100% - 22px)}
+html[data-desktop-theme="modern"] .deep-widget .widget-dial-time{font:600 32px/1.2 'Air Calendar Runde',system-ui,sans-serif}
+html[data-desktop-theme="modern"] .deep-widget[data-widget-size=large] .widget-dial-time{font-size:64px}
+.tahoe4-gallery nav{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:8px 0}
+.tahoe4-gallery>div{display:flex;gap:6px;flex-wrap:wrap}
+.tahoe4-gallery select{font:inherit;max-width:100%;background:#171e21;color:#f2f5f3;border:1px solid #b5c1ba66;padding:6px;border-radius:6px}
+.tahoe4-gallery p{font-size:12px}
+html[data-desktop-theme="modern"] .tahoe4-result-kind{margin-left:auto;color:#b5c1ba;font-size:11px;flex-shrink:0}
+html[data-desktop-theme="modern"] .air-search-result{min-height:46px;gap:12px}
+html[data-desktop-theme="modern"] .air-search-result>span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html[data-desktop-theme="modern"] .dock[data-theme=modern] .dock-app[data-window-state=minimized] .dock-icon{opacity:.82}
+html[data-desktop-theme="modern"] .dock[data-theme=modern] .dock-app[data-window-state=minimized]::after{background:transparent;border:1px solid #f2f5f3;box-sizing:border-box}
+html[data-desktop-theme="modern"] .dock[data-theme=modern] .dock-app:hover .dock-icon{filter:brightness(1.08) contrast(1.03)}
+html[data-desktop-theme="modern"] .dock[data-theme=modern] .dock-app:active .dock-icon{filter:brightness(.88)}
+html[data-desktop-theme="modern"] .tahoe4-window-overview{width:560px;max-height:calc(100vh - 130px);overflow:auto}
+html[data-desktop-theme="modern"] .tahoe4-window-overview h2{font-size:17px;margin:0 0 8px}
+html[data-desktop-theme="modern"] .tahoe4-window-row{display:grid;grid-template-columns:28px minmax(80px,1fr) auto auto;gap:6px;align-items:center;padding:8px 0;border-top:1px solid #ffffff20}
+html[data-desktop-theme="modern"] .tahoe4-window-icon{width:28px;height:28px}
+html[data-desktop-theme="modern"] .tahoe4-window-row strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html[data-desktop-theme="modern"] .tahoe4-window-row small{grid-column:2;font-size:11px;color:#b5c1ba}
+html[data-desktop-theme="modern"] .tahoe4-window-row button{font-size:12px;border:1px solid #ffffff30;grid-row:1/3;min-height:28px}
+html[data-desktop-theme="modern"] .tahoe4-window-row button:nth-last-child(2){grid-column:3}
+html[data-desktop-theme="modern"] .tahoe4-window-row button:last-child{grid-column:4}
+/* MacBar NotifBody: 340px, min74px, 44px icon, 14/15px insets; existing60/4 caps retained. */
+html[data-desktop-theme="modern"] .tahoe4-notice-card{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:start;min-height:74px;padding:15px 14px;border-radius:14px}
+html[data-desktop-theme="modern"] .deep-toast.tahoe4-notice-card{width:340px;max-width:calc(100vw - 16px);pointer-events:auto}
+html[data-desktop-theme="modern"] .tahoe4-notice-icon{width:44px;height:44px;display:block}
+html[data-desktop-theme="modern"] .tahoe4-notice-copy{min-width:0}
+html[data-desktop-theme="modern"] .tahoe4-notice-copy strong{font-size:12px}
+html[data-desktop-theme="modern"] .tahoe4-notice-copy p{display:block;overflow-wrap:anywhere;font-size:13px;margin:4px 0;color:#f2f5f3}
+html[data-desktop-theme="modern"] .tahoe4-notice-copy time{font-size:11px;color:#b5c1ba}
+html[data-desktop-theme="modern"] .tahoe4-notice-card>button{color:inherit;background:transparent;border:1px solid #ffffff30;border-radius:6px;min-width:24px;min-height:24px;cursor:pointer}
+html[data-desktop-theme="modern"] .tahoe4-notice-actions{grid-column:2/-1;display:flex;gap:6px;flex-wrap:wrap}
+html[data-desktop-theme="modern"] .tahoe4-notice-group h3{font-size:13px;margin:16px 0 4px}
+html[data-desktop-theme="modern"] .tahoe4-notice-group article{border-top:1px solid #ffffff20}
+html[data-desktop-theme="modern"] .deep-history h2{font-size:17px}
+.tahoe4-widget-pager{position:fixed;left:20px;top:62px;z-index:1;display:flex;gap:6px;align-items:center;background:#101517dd;color:#f2f5f3;padding:4px;border-radius:8px;font:12px system-ui}
+.tahoe4-widget-pager[hidden]{display:none}
+.tahoe4-widget-pager button{background:transparent;color:inherit;border:1px solid #ffffff50;border-radius:6px;min-width:28px;min-height:24px}
+@media(prefers-reduced-motion:reduce){.tahoe4-gallery,.tahoe4-widget-pager{animation:none;transition:none}}
+@media(forced-colors:active){html[data-desktop-theme="modern"] :is(.deep-widget,.deep-history,.deep-dock-menu,.deep-toast),.tahoe4-widget-pager{background:Canvas!important;color:CanvasText!important;border-color:CanvasText;box-shadow:none}}

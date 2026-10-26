@@ -116,7 +116,11 @@
       "air-settings-tahoe.js",
       "air-tahoe-apps.js",
       "src/core/profile-local.js",
-      "src/core/tahoe-app-model.js"
+      "src/core/tahoe-app-model.js",
+      "air-tahoe-desktop.css",
+      "air-widget-views.js",
+      "src/core/desktop-widgets.js",
+      "src/core/widget-data.js"
     ],
     "mac": {
       "target": [

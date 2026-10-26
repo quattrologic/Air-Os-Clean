@@ -110,10 +110,12 @@
   const AIR_EVENTS_KEY='air-os-calendar-events-v1';
   let calendarStore=null,calendarOpening=null;
   function calendarRead() { if(!calendarStore)return [];const data=calendarStore.read();if(!Array.isArray(data))throw Error('Kalenderdaten sind ungültig.');return data; }
-  function calendarWrite(events) { if(!calendarStore)throw Error('Kalender benötigt eine gültige Sitzung.');calendarStore.write(events); }
+  function calendarWrite(events) { if(!calendarStore)throw Error('Kalender benötigt eine gültige Sitzung.');calendarStore.write(events);document.dispatchEvent(new Event('air-calendar-changed')); }
+  async function calendarSource(){try{calendarOpening??=window.airProfileLocal.open({api:window.airOS,storage:localStorage,base:AIR_EVENTS_KEY,empty:[],events:document});calendarStore=await calendarOpening;if((await window.airOS.currentUser())?.preferenceSession!==calendarStore.session)throw Error('Sitzung geändert.');return calendarRead();}catch(error){calendarStore?.dispose();calendarStore=null;calendarOpening=null;throw error;}}
+  window.airCalendarData=Object.freeze({list:calendarSource});
   async function mountCalendar(win){
    const form=win.querySelector('#air-calendar-form');if(!form||win.dataset.calendarMounted)return;win.dataset.calendarMounted='1';const controls=[...form.elements];controls.forEach(c=>c.disabled=true);
-   try{calendarOpening??=window.airProfileLocal.open({api:window.airOS,storage:localStorage,base:AIR_EVENTS_KEY,empty:[],events:document});calendarStore=await calendarOpening;if(!win.isConnected)return;calendarRender(win);controls.forEach(c=>c.disabled=false);if(calendarStore.legacy)win.querySelector('.air-calendar-foot').textContent='Profilbezogener Kalender. Ältere nicht zugeordnete lokale Termine bleiben unverändert gespeichert; automatische Übernahme ist aus Datenschutzgründen ausgesetzt.';}
+   try{await calendarSource();if(!win.isConnected)return;calendarRender(win);controls.forEach(c=>c.disabled=false);if(calendarStore.legacy)win.querySelector('.air-calendar-foot').textContent='Profilbezogener Kalender. Ältere nicht zugeordnete lokale Termine bleiben unverändert gespeichert; automatische Übernahme ist aus Datenschutzgründen ausgesetzt.';}
    catch{win.querySelector('.air-calendar-foot').textContent='Kalender konnte nicht geladen werden. Fenster erneut öffnen.';calendarOpening=null;}
   }
   function calendarRender(win) {
