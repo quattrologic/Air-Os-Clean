@@ -11,7 +11,9 @@
         try { var v=sum(); ws(); return i===t.length && isFinite(v) ? v : null; } catch(e){ return null; }
     }
 
-const ccCellH=66,ccGap=6,ccSliderGap=10;const ccDef=id=>Number.isInteger(id)&&id>=0&&id<4?{id,w:2,h:1}:null;
+const ccCatalog=Object.freeze([{"id": "wifi", "label": "Wi-Fi", "glyph": "wifi", "w": 2, "h": 1}, {"id": "bluetooth", "label": "Bluetooth", "glyph": "bluetooth", "w": 2, "h": 1}, {"id": "airplane", "label": "Airplane Mode", "glyph": "airplane", "w": 1, "h": 1}, {"id": "focus", "label": "Focus", "glyph": "moon", "w": 2, "h": 1}, {"id": "nightshift", "label": "Night Shift", "glyph": "nightshift", "w": 1, "h": 1}, {"id": "keepawake", "label": "Keep Awake", "glyph": "coffee", "w": 1, "h": 1}, {"id": "darkmode", "label": "Dark Mode", "glyph": "contrast", "w": 1, "h": 1}, {"id": "gaming", "label": "Game Mode", "glyph": "gamepad", "w": 2, "h": 1}, {"id": "record", "label": "Screen Recording", "glyph": "record", "w": 2, "h": 1}, {"id": "nowplaying", "label": "Now Playing", "glyph": "note", "w": 2, "h": 2}, {"id": "display", "label": "Display", "glyph": "sun", "w": 4, "h": 1}, {"id": "sound", "label": "Sound", "glyph": "speaker", "w": 4, "h": 1}].map(Object.freeze));
+const ccDefault=Object.freeze(["wifi","nowplaying","bluetooth","airplane","focus","record","nightshift","keepawake","display","sound"]);
+const ccCellH=66,ccGap=6,ccSliderGap=10;const ccDef=id=>ccCatalog.find(d=>d.id===id)||(Number.isInteger(id)&&id>=0&&id<4?{id,w:2,h:1}:null);
     function ccLayout(ids) {
         var cols = 4, occ = [], out = [], seen = {}, rows = 0;
         function isFree(r, c, w, h) {
@@ -54,4 +56,4 @@ const ccCellH=66,ccGap=6,ccSliderGap=10;const ccDef=id=>Number.isInteger(id)&&id
     }
 
 function clockTime(now){var hour=now.getHours()%12;if(hour===0)hour=12;return hour+':'+('0'+now.getMinutes()).slice(-2);}
-if(typeof module==='object')module.exports={calcValue,ccLayout,clockTime};else root.airMacShellMath={calcValue,ccLayout,clockTime};})(typeof window==='object'?window:null);
+if(typeof module==='object')module.exports={calcValue,ccLayout,clockTime,ccCatalog,ccDefault};else root.airMacShellMath={calcValue,ccLayout,clockTime,ccCatalog,ccDefault};})(typeof window==='object'?window:null);

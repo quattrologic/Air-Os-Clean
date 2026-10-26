@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  control: Object.freeze({status:owner=>ipcRenderer.invoke('air-os:control:status',owner),setKeepAwake:(enabled,owner)=>ipcRenderer.invoke('air-os:control:awake',enabled,owner)}),
   glass: Object.freeze({testPolicy:()=>ipcRenderer.invoke('air-os:glass:test-policy')}),
   launchSpotify: () => ipcRenderer.invoke('air-os:spotify:launch'),
   appStore: Object.freeze({

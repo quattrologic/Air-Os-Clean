@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "source": "MacShell/MacBar.qml",
+  "sha256": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+  "license": "MIT, Copyright (c) 2026 Rickky; LICENSE in this directory",
+  "ports": {
+    "src/core/macshell-math.js": "ccCatalog/ccDefault/ccLayout and numeric legacy adapter",
+    "src/core/control-glyphs.js": "Glyph helpers and only 12 CC path branches, Canvas2D wrapper; no arch or other logo branches",
+    "air-control-macshell.css": "CCTile 34px/26px, 0.97 press, 200ms OutBack 2.4, 320ms OutCubic; CCPill 28/14, slider labels 12px",
+    "air-deep-desktop.js": "CC add/remove/order with native keyboard buttons rather than QML drag gesture",
+    "air-desktop-glass.js": "Existing contour shader, tile hover 320ms and spread max(40,min(w,h)*.9)"
+  }
+}

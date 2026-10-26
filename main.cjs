@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage, powerSaveBlocker } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
@@ -29,6 +29,8 @@ const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
  publicKeys:{demo:fs.readFileSync(path.join(__dirname,'store','keys','demo-publisher-public.txt'),'utf8')}
 });
 const airAppRuntime=require('./src/main/airapp-runtime.cjs').createRuntime({BrowserWindow,protocol:require('electron').protocol,session,manager:airAppManager});
+const keepAwake=require('./src/main/keep-awake.cjs').createController(powerSaveBlocker,{available:process.env.AIR_GUI_TEST_ISOLATED!=='1'});
+app.on('before-quit',()=>keepAwake.release());
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -71,6 +73,7 @@ function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
 function openLogin() {
+  keepAwake.release();
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
   activeUser = null;
@@ -81,6 +84,7 @@ function openLogin() {
   }
 }
 function openDesktop(account) {
+  keepAwake.release();
   activeUser = {...publicAccount(account),preferenceSession:crypto.randomBytes(16).toString('hex')};
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.loadFile(path.join(app.getAppPath(), 'index.html'));
@@ -114,10 +118,15 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.on('closed', () => { airAppRuntime.closeAll(); mainWindow = null; });
+  mainWindow.webContents.on('render-process-gone',()=>keepAwake.release());
+  mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame)keepAwake.release();});
+  mainWindow.on('closed', () => { keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
+function requireControlSession(event,owner){requirePreferenceUser(event);if(owner!==activeUser.preferenceSession||event.sender!==mainWindow?.webContents||event.senderFrame!==event.sender.mainFrame||fileURLToPath(event.senderFrame.url)!==path.join(app.getAppPath(),'index.html'))throw Error('Die Sitzung hat sich geändert.');return owner;}
+ipcMain.handle('air-os:control:status',(event,owner)=>keepAwake.status(requireControlSession(event,owner)));
+ipcMain.handle('air-os:control:awake',(event,enabled,owner)=>keepAwake.set(enabled,requireControlSession(event,owner)));
 // Non-production software rendering is allowed only for an explicitly isolated GUI diagnostic.
 ipcMain.handle('air-os:glass:test-policy',event=>{
  requirePreferenceUser(event);
@@ -202,7 +211,7 @@ ipcMain.handle('air-os:logout', event => {
 });
 ipcMain.handle('air-os:restart-app', event => {
   requireTrusted(event);
-  setImmediate(() => { app.relaunch(); app.exit(0); });
+  setImmediate(() => { keepAwake.release(); app.relaunch(); app.exit(0); });
   return { ok: true };
 });
 ipcMain.handle('air-os:quit-app', event => {

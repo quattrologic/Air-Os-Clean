@@ -643,6 +643,14 @@ function persistAirDockTheme(dockTheme){
  airSettingsWrites=save.catch(()=>{}); // A failed request must not block a later retry.
  return save;
 }
+// Confirmed control-center accessibility switches use the existing appearance queue.
+function persistAirControlAppearance(patch,owner){
+ if(typeof owner!=='string'||!owner||!patch||Object.keys(patch).some(k=>!['reduceGlass','reduceMotion'].includes(k)||typeof patch[k]!=='boolean'))return Promise.reject(new TypeError('Ungültige Darstellung.'));
+ const save=airSettingsWrites.then(()=>airSettingsLoad).then(()=>window.airOS.preferences.update(patch,owner)).then(async saved=>{
+  if((await window.airOS.currentUser())?.preferenceSession!==owner)throw new Error('Die Sitzung hat sich geändert.');
+  airSettingsCache={...readAirSettings(),reduceGlass:saved.reduceGlass,reduceMotion:saved.reduceMotion};applyAirSettings(airSettingsCache);return saved;
+ });airSettingsWrites=save.catch(()=>{});return save;
+}
 // Desktop and dock are independent fields in the same authenticated store/queue.
 function persistAirDesktopTheme(desktopTheme){
  const save=airSettingsWrites.then(()=>airSettingsLoad).then(()=>{

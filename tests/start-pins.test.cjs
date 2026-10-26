@@ -65,7 +65,7 @@ test('profile change after disk commit suppresses stale renderer response',async
  }finally{h.close()}
 });
 test('production Main creates a new ephemeral preference session on each login, including the same account',()=>{
- const main=fs.readFileSync(require.resolve('../main.cjs'),'utf8'),context={crypto,mainWindow:null,activeUser:null,publicAccount:account=>({username:account.username})};
+ const main=fs.readFileSync(require.resolve('../main.cjs'),'utf8'),context={crypto,keepAwake:{release(){}},mainWindow:null,activeUser:null,publicAccount:account=>({username:account.username})};
  vm.runInNewContext(main.slice(main.indexOf('function openDesktop('),main.indexOf('function createWindow(')),context);
  context.openDesktop({username:'alice'});const first=context.activeUser.preferenceSession;context.openDesktop({username:'alice'});
  assert.match(first,/^[a-f0-9]{32}$/);assert.notEqual(first,context.activeUser.preferenceSession);

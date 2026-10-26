@@ -104,7 +104,10 @@
       "air-glass2.css",
       "src/core/glass-geometry.js",
       "macshell-glass2-shaders.js",
-      "third_party/glass2/**/*"
+      "third_party/glass2/**/*",
+      "src/main/keep-awake.cjs",
+      "air-control-macshell.css",
+      "src/core/control-glyphs.js"
     ],
     "mac": {
       "target": [

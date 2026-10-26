@@ -1,7 +1,7 @@
 'use strict';
 // Shared MacShell WebGL2 materials; only wallpaper pixels enter GPU memory.
 (() => {
- const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast';
+ const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast,.dp2-tile,.dp2-detail,.dp2-editor';
  const events=new AbortController(),signal=events.signal,tiles=new Map(),media=[matchMedia('(prefers-reduced-transparency: reduce)'),matchMedia('(prefers-contrast: more)'),matchMedia('(forced-colors: active)')];
  const canvas=document.createElement('canvas');let gl=null,programs={},buffer=null,texture=null,scene=null,epoch=0,disposed=false,failed=false,reason='',painting=false,dirty=false,frame=null,settle=null,lastPaint=0,fallbackAt=0,software=false,diagnostic=false,diagnosticRefraction=true;
  let draws=0,sceneBuilds=0,transfers=0,paintMs=0,decodeCount=0,bufferResizes=0,transferMs=0,contextLosses=0,maxTexture=4096,gpuType='unknown',decoded=null,diagnosticDialog=null;const programsLive=new Set(),shadersLive=new Set();
@@ -57,14 +57,14 @@
   Object.assign(t.canvas.style,{left:(scrolling?0:-e-borderX)+'px',top:(scrolling?0:-borderY)+'px',width:width+'px',height:h+'px',transform:'translateY('+el.scrollTop+'px)'});
   const radiusSource=el.matches('.window-titlebar')?getComputedStyle(el.parentElement):style;
   let corners=['borderTopLeftRadius','borderTopRightRadius','borderBottomRightRadius','borderBottomLeftRadius'].map(k=>parseFloat(radiusSource[k])||0);if(el.matches('.window-titlebar'))corners=[corners[0],corners[1],0,0];
-  const p=Math.min(1,Math.max(0,(now-t.start)/200));t.amount=motionReduced()?t.target:t.from+(t.target-t.from)*(1-Math.pow(1-p,3));
+  const p=Math.min(1,Math.max(0,(now-t.start)/(el.classList.contains('dp2-tile')?320:200)));t.amount=motionReduced()?t.target:t.from+(t.target-t.from)*(1-Math.pow(1-p,3));
   const key=JSON.stringify([w,h,pw,ph,r.x,r.y,r.width,r.height,sceneBuilds,corners,t.amount.toFixed(4),t.amount>.002?t.mouse:null,diagnosticRefraction]);
   if(t.key===key)return;
   if(canvas.width<pw||canvas.height<ph){let cw=Math.max(canvas.width,pw),ch=Math.max(canvas.height,ph);if(cw*ch>(diagnostic?32768:1000000)){cw=pw;ch=ph;}canvas.width=cw;canvas.height=ch;bufferResizes++;}gl.viewport(0,0,pw,ph);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.disable(gl.BLEND);gl.bindTexture(gl.TEXTURE_2D,texture);
   const values={src:0,qt_Opacity:1,itemSize:[width,h],glassSize:[w,h],srcSize:[innerWidth,innerHeight],srcOffset:[r.x+(scrolling?borderX:-e)*scaleX,r.y+(scrolling?borderY:0)*scaleY],airSourceScale:[scaleX,scaleY],airEdgeMode:edge,airEdgeInset:e,airCorners:corners,pad:0,radius:corners[0],bezel:Math.min(26,h*.36),thickness:edge?30:22,dispersion:.11,blurPx:1.5,tintMix:edge===1?.45:edge===2?.60:.70,saturation:1.25,dark:1,debug:0,rim:edge?.55:.45,grain:.006,magnify:edge?.08:.04,shadowAmt:0,rimTint:0,ringW:1.1,flatInner:1};
   if(diagnostic&&!diagnosticRefraction){values.thickness=0;values.magnify=0;values.dispersion=0;}
   use(edge?programs.dock:programs.liquid,values);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);draws++;
-  if(t.amount>.002){gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);use(programs.contour,{...values,mouse:[t.mouse[0]+e,t.mouse[1]],cornerR:corners[0],amount:t.amount,spread:Math.max(70,w*.5),tint:[.86,.94,1,1]});gl.drawArrays(gl.TRIANGLE_STRIP,0,4);draws++;}
+  if(t.amount>.002){gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);use(programs.contour,{...values,mouse:[t.mouse[0]+e,t.mouse[1]],cornerR:corners[0],amount:t.amount,spread:el.classList.contains('dp2-tile')?Math.max(40,Math.min(w,h)*.9):Math.max(70,w*.5),tint:[.86,.94,1,1]});gl.drawArrays(gl.TRIANGLE_STRIP,0,4);draws++;}
   if(gl.getError()!==gl.NO_ERROR)throw Error('material-draw');
   const transferStart=performance.now();if(t.canvas.width!==pw||t.canvas.height!==ph){t.canvas.width=pw;t.canvas.height=ph;}const ctx=t.canvas.getContext('2d');ctx.clearRect(0,0,pw,ph);ctx.drawImage(canvas,0,canvas.height-ph,pw,ph,0,0,pw,ph);transferMs+=performance.now()-transferStart;t.key=key;transfers++;
  }

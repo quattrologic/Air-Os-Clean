@@ -102,6 +102,7 @@
   function quickAction(event,action){event.stopPropagation();close(false,true);action()}
 
   function notesSaved() {
+    if(window.airFocusMode?.active)return;
     const now = new Date();
     // No note title/body, event payload or history is retained.
     noteNoticeMessage.textContent = 'Notiz im Air-OS-Profil gespeichert.';
@@ -219,6 +220,7 @@
   }
   function keydown(event) {
     if (!panel.hidden && event.key === 'Escape') {
+      if(window.airControlCenter?.back?.()){event.preventDefault();event.stopImmediatePropagation();return;}
       event.preventDefault();
       event.stopPropagation();
       close(true);
