@@ -1,0 +1,110 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "pattern": "clouds",
+      "geometry": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      },
+      "material": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 1373,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "idleDraws": 0
+    }
+  ],
+  "control": [
+    {
+      "width": 428,
+      "height": 382,
+      "scrollHeight": 382
+    }
+  ],
+  "winbox": {
+    "rejected": {
+      "accepted": false,
+      "blockers": [
+        "active-air-os-dom-owner",
+        "m2-owns-transform-display-and-completion"
+      ]
+    },
+    "moved": {
+      "x": 50,
+      "y": 60,
+      "width": 600,
+      "height": 400,
+      "maximized": false,
+      "ended": false
+    },
+    "resized": {
+      "x": 50,
+      "y": 60,
+      "width": 700,
+      "height": 420,
+      "maximized": false,
+      "ended": false
+    },
+    "maximized": {
+      "x": 50,
+      "y": 60,
+      "width": 700,
+      "height": 420,
+      "maximized": true,
+      "ended": false
+    },
+    "restored": {
+      "x": 50,
+      "y": 60,
+      "width": 700,
+      "height": 420,
+      "maximized": false,
+      "ended": false
+    },
+    "lifecycleUnchanged": true
+  }
+}

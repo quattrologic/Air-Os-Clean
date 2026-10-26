@@ -20,3 +20,6 @@ third_party/glass2/LICENSE text eol=lf
 *.png binary
 *.jpg binary
 *.airapp binary
+
+# Preserve pinned upstream distribution byte hashes, including CRLF.
+third_party/winbox-0.2.82/* -text whitespace=cr-at-eol

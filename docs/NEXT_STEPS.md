@@ -1,3 +1,11 @@
+# WinBox 0.2.82 – isolated window adapter evaluation
+
+26.Oktober2026, base **30aef2bc89d212f1c0992547a2263a1841c783c8**, branch **feat/air-winbox-evaluation**. [Report, blockers, licensing and screenshots](AIR_WINBOX_EVALUATION.md). Pinned Apache-2.0 vendor/integrity and small adapter added; real move/resize/focus/max/restore APIs tested in isolated Electron fixture against Settings structure. Live registered Settings adoption rejected: outer WinBox DOM/focus ownership conflicts with existing registered section and M2. No forced production migration or duplicate control; no production code savings claimed.
+
+**390/390 tests**,155 shipping runtime resources, syntax/diff passed. Genuine sandboxed Linux-Electron44/multiple apps/before-after screenshots and actual Settings M2 reversal, isolated WinBox API measurements. Clone disabled, not a migrated functioning app; WinBox drag/migrated M2 and native platforms remain unaccepted. Registry/lifecycle/product UI/profile/Cloud/PWA/builds unchanged; no private data. Next three bounded checks only on request: outer-node ownership seam; delegated z-index/focus; migrated-M2 compatibility. Commit/push, then STOP.
+
+---
+
 # UI-REFINE-1 – kompakte Proportionen, Kontrollseiten und echtes Heute
 
 26.Oktober2026 Europe/Berlin. Verifizierte Basis **7c48ba8f12690b22b592dc757cd10b4cd589c947**, Branch **feat/air-ui-refine-1**, Produktcode **bb4cec88e3ccac44edfc56dfb92376128256089f**. [Bericht/Messwerte/echte Bilder](AIR_UI_REFINE_1.md). Dock358×68→325×62, gerade Basis bottom0/konkave Anschlüsse/48px-Klickflächen erhalten; zentrale Island220×40 bei1920,189,078×36 bei1650,144×36 bei390/top0. CC-Radien14px, echte maximal3-Rasterzeilen-Seiten und6 Editorseiten statt überlanger Ansicht. Alle ausgewählten12-Katalogfunktionen/Reihenfolge, Fokus/Keep-Awake/Audio-/Darstellungswege erhalten. Nur zentrale obere Uhr sichtbar, Kalender über Panel/Widget, rechter Verlaufsknopf transparent32px. Heute ersetzt denselben Clock-Widgetschlüssel: Uhr/Datum/Woche, echter Reminders-Titel/Fälligkeit/offene Anzahl, Notes-/Reminders-Aktionen, profilgespeicherte kompakte/große Variante und vorhandene Drag-/Tastaturpositionen. Bestehende API/Vorschaufunktion, Request-/Sessiongrenzen/Logout-Cleanup, kein zweiter Store oder Datenpolling.
