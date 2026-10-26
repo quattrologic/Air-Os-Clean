@@ -26,6 +26,7 @@
    if(item.type==='calculation')glyph.textContent='=';
    else if(item.type==='note')glyph.textContent='✎';
    else if(item.type==='file')glyph.textContent=item.kind==='folder'?'▱':'▤';
+   else if(typeof paintAirAppIcon==='function'&&paintAirAppIcon(glyph,item.id)){}
    else{const dock=item.iconClass?document.querySelector('.dock-icon.'+item.iconClass):null;if(dock?.querySelector('svg'))glyph.append(dock.querySelector('svg').cloneNode(true));else glyph.textContent=registry.get(item.id)?.glyph||'◇'}
    const name=document.createElement('span');name.textContent=item.type==='calculation'?item.name:item.type==='note'?'Notiz: '+item.title:item.type==='file'?'Datei: '+item.name+' · '+item.path:item.name;b.append(glyph,name);
    b.addEventListener('click',()=>choose(i));results.append(b);

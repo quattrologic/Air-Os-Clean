@@ -109,7 +109,10 @@
       "air-control-macshell.css",
       "src/core/control-glyphs.js",
       "air-ui-refine.css",
-      "src/core/today-widget.js"
+      "src/core/today-widget.js",
+      "src/core/tahoe-icons.js",
+      "air-tahoe.css",
+      "third_party/tahoe/**/*"
     ],
     "mac": {
       "target": [

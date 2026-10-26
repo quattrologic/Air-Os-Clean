@@ -64,7 +64,8 @@
       art.className='air-island-quick-icon';art.setAttribute('aria-hidden','true');
       // Home has no icon metadata; the user selected the existing Air-OS start logo for this card only.
       const original=id==='home'?document.querySelector('.dock .launchpad-icon svg'):app?.iconClass?document.querySelector('.dock-icon.'+app.iconClass+' svg'):null;
-      if(original)art.append(original.cloneNode(true));
+      if(typeof paintAirAppIcon==='function'&&paintAirAppIcon(art,id)){}
+      else if(original)art.append(original.cloneNode(true));
       else if(typeof vectorIcon==='object'&&vectorIcon[id==='home'?'launchpad':id])art.innerHTML=vectorIcon[id==='home'?'launchpad':id]; // Existing trusted static icon data, never registry HTML.
       else art.textContent=app?.glyph||'';
       name.textContent=app?.name||'App nicht verfügbar';detail.textContent=app?description:'Nicht registriert';

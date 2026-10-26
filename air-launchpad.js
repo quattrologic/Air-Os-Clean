@@ -16,7 +16,8 @@
    for(const app of apps){
     const b=document.createElement('button');b.type='button';b.className='alp-app';b.dataset.app=app.id;b.title=app.name;
     const art=document.createElement('span');art.className='alp-icon';const dock=app.iconClass?document.querySelector('.dock-icon.'+app.iconClass):null;
-    if(dock&&dock.querySelector('svg'))art.append(dock.querySelector('svg').cloneNode(true));else art.textContent=app.glyph||'◇';
+    if(typeof paintAirAppIcon==='function'&&paintAirAppIcon(art,app.id)){}
+    else if(dock&&dock.querySelector('svg'))art.append(dock.querySelector('svg').cloneNode(true));else art.textContent=app.glyph||'◇';
     const name=document.createElement('span');name.textContent=app.name;
     const state=window.airAppLifecycle?.get(app.id);if(state&&state!=='closed'){const dot=document.createElement('i');dot.className='alp-running';dot.title='Läuft';art.append(dot)}
     b.append(art,name);grid.append(b);
@@ -99,7 +100,8 @@
    button.type='button';button.dataset.startApp=app.id;button.disabled=busy;button.setAttribute('aria-label',app.name);
    art.className='air-start-icon';name.textContent=app.name;
    const original=app.iconClass?document.querySelector('.dock-icon.'+app.iconClass+' svg'):null;
-   if(original)art.append(original.cloneNode(true));
+   if(typeof paintAirAppIcon==='function'&&paintAirAppIcon(art,app.id)){}
+   else if(original)art.append(original.cloneNode(true));
    else if(vectorIcon[app.id])art.innerHTML=vectorIcon[app.id]; // trusted, existing static icon data only
    else art.textContent=app.glyph||'';
    const entry=document.createElement('div'),label=document.createElement('span'),badge=document.createElement('small');

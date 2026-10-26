@@ -1,0 +1,148 @@
+{
+  "macshell": {
+    "repository": "https://github.com/0-ss/MacShell",
+    "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+    "license": "MIT",
+    "existingPort": true
+  },
+  "gtk": {
+    "repository": "https://github.com/vinceliuice/MacTahoe-gtk-theme",
+    "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+    "license": "MIT",
+    "files": [
+      "_variables.scss",
+      "_colors.scss",
+      "_colors-palette.scss",
+      "_gtk-base.scss",
+      "gtk/_common-3.0.scss",
+      "gtk/_common-4.0.scss"
+    ]
+  },
+  "icons": {
+    "repository": "https://github.com/vinceliuice/MacTahoe-icon-theme",
+    "commit": "839848b9a8a38a92a6936e30c4abe35cc6f2546d",
+    "license": "GPL-3.0",
+    "assets": [
+      {
+        "key": "finder",
+        "source": "src/places/scalable/folder.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder.svg",
+        "sha256": "271858210d1482efdf989a7a4fc4ea09410c5b50247949054b68179f5f964c42",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "browser",
+        "source": "src/categories/32/applications-internet.svg",
+        "asset": "third_party/tahoe/icons/source/categories/32/applications-internet.svg",
+        "sha256": "615354705ca42ad4d97a6a6591a5af5b3c57ed294a9a64f9b5254b9e66f5fc7c",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "notes",
+        "source": "src/apps/scalable/accessories-text-editor.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",
+        "sha256": "b09c8146a6d358c481503edc3caa8bb135cbc97420bbb0d00cbf39413dccee19",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "reminders",
+        "source": "src/apps/scalable/evolution-tasks.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/evolution-tasks.svg",
+        "sha256": "8725dbc1a62194f6ca996fdcfcca539bffbe73678556a0adee110213967c9c1c",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "calendar",
+        "source": "src/apps/scalable/calendar.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/calendar.svg",
+        "sha256": "c767f07a84992e28a5bf81c95e9e7020acbb6cc27d2424145b65304a11f23789",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "settings",
+        "source": "src/apps/scalable/preferences-system.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/preferences-system.svg",
+        "sha256": "8ff99c6c70c0a33282aa351e3de4f0fc29bb4437d3cfe6c6ae6cfda4a7b97632",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "music",
+        "source": "src/apps/scalable/gnome-music.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/gnome-music.svg",
+        "sha256": "dc8f1e4942cf4d3adb155b2dcd9c9a600448cd629d961cef26d96462b0e118fd",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "photos",
+        "source": "src/apps/scalable/accessories-camera.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/accessories-camera.svg",
+        "sha256": "40d8ec9854d5c01a380d8e1b4c9d05485dc11c590d1ab14bc38456939717f2ce",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "mail",
+        "source": "src/apps/scalable/internet-mail.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/internet-mail.svg",
+        "sha256": "a55db5fe761f3b5dadbeea41cbd9575a23d75952117cd49b24cb586a717465b0",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "downloads",
+        "source": "src/places/scalable/folder-download.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-download.svg",
+        "sha256": "64714924e6d005faf00e1ef5befcde3372c5b636946a89311dafe005d59fa28f",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "trash",
+        "source": "src/places/scalable/user-trash.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/user-trash.svg",
+        "sha256": "4ca95dd5934d278e37d281dd8d97d32542412f054b752d50e1301f687f1f9f8b",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "calculator",
+        "source": "src/apps/scalable/calc.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/calc.svg",
+        "sha256": "2e35d5e0074fa24fff4e94d00da8a729265aaed875657435cf9693c2d5424597",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "airwrite",
+        "source": "src/apps/scalable/text-editor.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/text-editor.svg",
+        "sha256": "3756a88005181fb71f434b01b956cb3ef70185d1e24c11e33e90f96b3df8bedf",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "folder",
+        "source": "src/places/scalable/folder.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder.svg",
+        "sha256": "271858210d1482efdf989a7a4fc4ea09410c5b50247949054b68179f5f964c42",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "pictures",
+        "source": "src/places/scalable/folder-images.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-images.svg",
+        "sha256": "ad497498c88e9d1a9f995f78b3e3a2deebbfe6aafc5ef96b0a4f82c969e0fe7d",
+        "license": "GPL-3.0",
+        "modified": false
+      }
+    ]
+  }
+}

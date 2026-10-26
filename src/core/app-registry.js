@@ -5,6 +5,7 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.airAppRegistry = api;
 })(typeof window !== 'undefined' ? window : null, function () {
+  const tahoe=typeof module==='object'&&module.exports?require('./tahoe-icons.js'):window.airTahoeIcons;
   const names = Object.assign(Object.create(null), {home:"Air Home",airwrite:"AirWrite",finder:"Finder",browser:"Safari",tagesschau:"tagesschau",mail:"Mail",calendar:"Kalender",photos:"Fotos",music:"Air Music",spotify:"Spotify",aircard:"AirCard Lite",notes:"Notizen",weather:"Wetter",football:"Fußball",stocks:"Aktien",calculator:"Air-Rechner",translator:"Air-Übersetzer",ai:"Air-KI",settings:"Einstellungen",downloads:"Downloads",trash:"Papierkorb",about:"Über Air-OS"});
   const iconClasses = Object.assign(Object.create(null), {airwrite:"airwrite-icon",finder:"finder-icon",browser:"browser-icon",tagesschau:"tagesschau-icon",mail:"mail-icon",calendar:"calendar-icon",photos:"photos-icon",music:"music-icon",spotify:"spotify-icon",aircard:"aircard-icon",notes:"notes-icon",weather:"weather-icon",football:"football-icon",stocks:"stocks-icon",calculator:"calc-icon",translator:"translator-icon",ai:"ai-icon",settings:"settings-icon",downloads:"downloads-icon",trash:"trash-icon"});
   const iconGlyphs = Object.assign(Object.create(null), {airwrite:"✎",finder:"◧",browser:"◎",tagesschau:"ts",mail:"✉",calendar:"31",photos:"✿",music:"♫",spotify:"●",aircard:"▤",notes:"≡",weather:"☀",football:"⚽",stocks:"⌁",calculator:"＋",settings:"⚙",downloads:"↓",trash:"▤"});
@@ -29,7 +30,7 @@
     if (typeof id !== 'string') return null;
     if(installedApps.has(id))return installedApps.get(id);
     if(!has(names,id))return null;
-    return Object.freeze({id, name:names[id], iconClass:has(iconClasses,id)?iconClasses[id]:'', glyph:has(iconGlyphs,id)?iconGlyphs[id]:'',origin:'builtin'});
+    return Object.freeze({id, name:names[id], iconClass:has(iconClasses,id)?iconClasses[id]:'', glyph:has(iconGlyphs,id)?iconGlyphs[id]:'',...(tahoe?.[id]?{iconAsset:tahoe[id]}:{}),origin:'builtin'});
   }
   function list() { return Object.freeze([...Object.keys(names),...installedApps.keys()].sort().map(get)); }
   function register(id, meta) {
