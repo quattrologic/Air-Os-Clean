@@ -1,3 +1,11 @@
+# GLASS-3 – GPU-Pfad, DPR, Pufferwiederverwendung und lokale Diagnose
+
+26.Oktober2026 Europe/Berlin, Basis **f816618f0c5f7f5eba6abb0b55b089b37882c966**, eigener Branch **feat/air-liquid-glass-3**. [Implementierung, Originalzuordnung, Bilder und Messungen](AIR_LIQUID_GLASS_3.md). Keine neue Roadmap/Engine/Apps. Konservative GPU-Klassifikation auch ohne optionale Debug-Erweiterung; Software/Unbekannt bleiben Fallback. DPR3 für kleine Materialien, begrenzte Retina-Szenentextur, Decoder-/Backbuffer-/2D-Pufferreuse und keine pauschale GPU-Neuanlage bei Settingsänderungen. Ruhigere Konturen/200ms-OutCubic-Materialreaktion, dunklerer CSS-Fallback, lokaler manueller Diagnosedialog ohne vertrauliche Rohdaten. Sichere Livefensterquelle nicht nachgewiesen, daher weiterhin nur Wallpaper-Refraktion und keine Capturefunktion.
+
+**367/367 Tests**,149 Runtime-Ressourcen/Syntax/Diff bestanden. Echte Linux-Electron44-Vorher-/Nachher-/integrierte Diagnose bei1920×1080,1650×930,390×600 plus DPR2; normale Software bleibt CSS, isolierte16K-WebGL-Diagnose ausdrücklich kein Hardwareerfolg. Refraktionsbildvergleich/konkave Maske/identische Geometrien/0 Idle-Draws/Context Loss/Cleanup bestanden. Voller vorhandener App-/Zwei-Profil-/Neustart-/Classic-/M1-/M2-/K3-/Reduced-Motion-/WebGL-Ausfalllauf Exit0.107 Backbuffergrößenänderungen für272 Transfers und6 Dekodierungen bei8 Szenenaufbauten im Diagnoseablauf; keine Hardware-/FPS-Leistungsfreigabe. Native Windows/macOS-/GPU-/Retina-Abnahme offen. PR-/CI-API HTTP403, kein neuer CI-Erfolg behauptet. main/PRs/Installer/Cloud/PWA/MacLock/Apps/geschützte Geometrien unverändert. Nächste drei kleine Prüfeinheiten nur auf neuen Auftrag: physische GPU-Abnahme; Retina-/Transferkosten auf Hardware; separate sichere Backdropbewertung. Neuer SHA im Abschlussbericht, nach Commit/Push STOP.
+
+---
+
 # GLASS-2 – originale Materialien sichtbar integriert und geprüft
 
 26.Oktober2026 Europe/Berlin. Verifizierte Basis **1ac6c3adedcfa8a1df1013ab2980c2a7d718b24d**, eigener Branch **feat/air-liquid-glass-2**. Angefangene lokale Arbeit erhalten; Teilcommit **673ffa3** plus geprüfter Material-/Layer-/Cleanup-Abschluss. [Bericht mit Originalzuordnung, Kalibrierung, Bildern und Messwerten](AIR_LIQUID_GLASS_2.md).

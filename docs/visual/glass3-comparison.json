@@ -1,0 +1,169 @@
+{
+  "contrastSidebandSamples": [
+    {
+      "mode": "after",
+      "width": 1920,
+      "minimumSampledRatio": 11.08,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "after",
+      "width": 1650,
+      "minimumSampledRatio": 11.05,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "after",
+      "width": 390,
+      "minimumSampledRatio": 11.75,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 1920,
+      "minimumSampledRatio": 6.56,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 1650,
+      "minimumSampledRatio": 6.48,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 390,
+      "minimumSampledRatio": 7.17,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    }
+  ],
+  "hardwareAcceptance": false,
+  "pipeline": "actual sandboxed Electron app, isolated host policy, 16384 material pixels per tile; no source patch or getContext spoofing",
+  "measurements": [
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1920,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 4.742,
+      "pixelsChangedMoreThan8": 10093,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1920,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 2.561,
+      "pixelsChangedMoreThan8": 296,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 1920,
+      "meanAbsoluteChannelDifference": 17.577,
+      "pixelsChangedMoreThan8": 1324,
+      "pixels": 1800
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1650,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 4.754,
+      "pixelsChangedMoreThan8": 10074,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1650,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 2.407,
+      "pixelsChangedMoreThan8": 51,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 1650,
+      "meanAbsoluteChannelDifference": 15.819,
+      "pixelsChangedMoreThan8": 1527,
+      "pixels": 1800
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 390,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 4.783,
+      "pixelsChangedMoreThan8": 10189,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 390,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 2.526,
+      "pixelsChangedMoreThan8": 113,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 390,
+      "meanAbsoluteChannelDifference": 4.779,
+      "pixelsChangedMoreThan8": 624,
+      "pixels": 1800
+    }
+  ],
+  "mask": {
+    "gap": 0,
+    "foot": 255,
+    "base": 255
+  },
+  "geometry": "exactly equal before / software fallback / diagnostic for both wallpapers at all three sizes",
+  "idle": "zero additional material GPU draws in recorded 650ms settled windows",
+  "performance": {
+    "failed": false,
+    "reason": "",
+    "diagnostic": true,
+    "software": true,
+    "diagnosticRefraction": true,
+    "draws": 435,
+    "sceneBuilds": 8,
+    "transfers": 272,
+    "tiles": 6,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 12833,
+    "programs": 3,
+    "textures": 1,
+    "gpuType": "software",
+    "renderPath": "isolated-diagnostic",
+    "contextLosses": 0,
+    "decodeCount": 6,
+    "bufferResizes": 107,
+    "transferWallTimeMs": 60,
+    "dpr": 1,
+    "backdrop": "wallpaper-only"
+  },
+  "retina": {
+    "failed": false,
+    "reason": "",
+    "diagnostic": true,
+    "software": true,
+    "diagnosticRefraction": true,
+    "draws": 440,
+    "sceneBuilds": 9,
+    "transfers": 276,
+    "tiles": 6,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 12850,
+    "programs": 3,
+    "textures": 1,
+    "gpuType": "software",
+    "renderPath": "isolated-diagnostic",
+    "contextLosses": 0,
+    "decodeCount": 6,
+    "bufferResizes": 110,
+    "transferWallTimeMs": 61,
+    "dpr": 2,
+    "backdrop": "wallpaper-only"
+  },
+  "privacy": "only public cloud artwork and generated synthetic PNG, synthetic local accounts and notes"
+}
