@@ -6,7 +6,7 @@
  let disposed=false,session=null,prefs=null,saveVersion=0,history=[],seq=0,toastTimers=new Map(),widgetTimer=null,historyPanel=null,button=null;
  const widgets=new Map(),events=new AbortController(),signal=events.signal,grid=document.querySelector('.air-control-grid'),originalTiles=grid?[...grid.children]:[];
  const settings=document.createElement('details');settings.className='deep-settings air-control-modern';const summary=document.createElement('summary');summary.textContent='Anordnung & Desktopwidgets';settings.append(summary);
- const status=document.createElement('p');status.setAttribute('role','status');const toggle=document.createElement('button');toggle.type='button';settings.append(toggle);
+ const status=document.createElement('p');status.setAttribute('role','status');const toggle=document.createElement('button');toggle.type='button';settings.append(toggle);const materialCheck=document.createElement('button');materialCheck.type='button';materialCheck.textContent='Materialdiagnose';materialCheck.onclick=()=>window.airDesktopGlass?.showDiagnostics();settings.append(materialCheck);
  const reorder=document.createElement('div');settings.append(reorder,status);document.querySelector('#air-island-controls')?.append(settings);
  const alive=()=>!disposed&&session;
  async function save(patch){if(!alive())return;try{const owner=session,version=++saveVersion;const result=await api.preferences.update(patch,owner);if(disposed||session!==owner||version!==saveVersion)return;prefs={...prefs,...result};status.textContent='Im Profil gespeichert.';refresh();}catch{if(!disposed)status.textContent='Speichern fehlgeschlagen. Aktion erneut ausführen; lokale Darstellung ist noch nicht gesichert.';}}

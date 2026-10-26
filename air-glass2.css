@@ -42,3 +42,12 @@ html:not([data-desktop-theme="modern"]) .deep-glass-tile,html.air-reduced-glass 
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){.deep-glass-tile{visibility:hidden}}
 
 .glass2-positioned{position:relative}
+
+/* GLASS-3: quiet MacDock CornerBorder-style hairline and deeper transparent fallbacks. */
+html[data-desktop-theme="modern"] :is(.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){border-color:#c6d9ed30;box-shadow:inset 0 1px #ffffff38,inset 0 -12px 22px #00000030,0 9px 24px #00101c35;background-color:rgba(5,13,22,.65)}
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]:not(.glass2-active){background:radial-gradient(ellipse 160px 65px at var(--glass2-x,50%) var(--glass2-y,0%),#ffffff15,transparent),linear-gradient(180deg,#ffffff20,transparent 22%,#00071148),rgba(5,13,22,.51)!important}
+.glass3-diagnostics{max-width:min(480px,calc(100vw - 32px));max-height:80vh;overflow:auto;box-sizing:border-box;background:#101820;color:#f2f5f3;border:1px solid #9cdaa1;border-radius:18px;padding:20px;font:13px system-ui}
+.glass3-diagnostics pre{white-space:pre-wrap;overflow-wrap:anywhere}.glass3-diagnostics button{font:inherit;color:inherit;background:#253b32;border:1px solid #9cdaa1;border-radius:8px;padding:8px;margin:4px}.glass3-diagnostics button:focus-visible{outline:2px solid white;outline-offset:2px}.glass3-diagnostics::backdrop{background:#0006}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#101820!important;color:#f2f5f3!important}}
+@media(forced-colors:active){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:Canvas!important;color:CanvasText!important}}
+html.air-reduced-glass[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#101820!important}

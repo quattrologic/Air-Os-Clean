@@ -12,5 +12,7 @@
  }
  function layers(value){const out=[];let level=0,start=0;for(let i=0;i<value.length;i++){if(value[i]==='(')level++;if(value[i]===')')level--;if(value[i]===','&&level===0){out.push(value.slice(start,i).trim());start=i+1;}}out.push(value.slice(start).trim());return out;}
  function gradient(ctx,value,w,h){if(!value.startsWith('linear-gradient('))return false;const parts=layers(value.slice(16,-1));let angle=180;if(parts[0].endsWith('deg'))angle=parseFloat(parts.shift());const theta=angle*Math.PI/180,ux=Math.sin(theta),uy=-Math.cos(theta),length=Math.abs(w*ux)+Math.abs(h*uy),g=ctx.createLinearGradient(w/2-ux*length/2,h/2-uy*length/2,w/2+ux*length/2,h/2+uy*length/2);for(let i=0;i<parts.length;i++){const match=parts[i].match(/^(.*?)\s+(-?\d+(?:\.\d+)?)%$/);g.addColorStop(match?Math.max(0,Math.min(1,Number(match[2])/100)):i/(parts.length-1),match?match[1]:parts[i]);}ctx.fillStyle=g;ctx.fillRect(0,0,w,h);return true;}
- return {distance,rectDistance,cover,layers,gradient};
+ function gpu(renderer){const name=String(renderer||'');if(/swiftshader|llvmpipe|software|softpipe|lavapipe|warp|microsoft basic render/i.test(name))return 'software';if(/nvidia|geforce|radeon|\bAMD\b|intel|apple|adreno|mali|powervr/i.test(name))return 'hardware-candidate';return 'unknown';}
+ function resolution(w,h,dpr,budget,limit=4096){const ratio=Math.min(Math.max(1,Number(dpr)||1),3,Math.sqrt(budget/(w*h)),limit/w,limit/h);return {width:Math.max(1,Math.floor(w*ratio)),height:Math.max(1,Math.floor(h*ratio)),ratio};}
+ return {distance,rectDistance,cover,layers,gradient,gpu,resolution};
 });
