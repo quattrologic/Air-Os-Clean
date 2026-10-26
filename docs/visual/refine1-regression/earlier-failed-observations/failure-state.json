@@ -1,0 +1,126 @@
+{
+  "page": "/workspace/Air-Os-Clean/index.html",
+  "active": "air-island-close",
+  "events": [
+    {
+      "type": "pointerdown",
+      "id": "desktop"
+    },
+    {
+      "type": "click",
+      "id": "desktop"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "air-start-search"
+    },
+    {
+      "type": "click",
+      "id": "air-start-search"
+    },
+    {
+      "type": "input",
+      "id": "air-start-search"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "air-start-search"
+    },
+    {
+      "type": "click",
+      "id": "air-start-search"
+    },
+    {
+      "type": "input",
+      "id": "air-start-search"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "note-title"
+    },
+    {
+      "type": "click",
+      "id": "note-title"
+    },
+    {
+      "type": "input",
+      "id": "note-title"
+    },
+    {
+      "type": "pointerdown",
+      "id": "note-body"
+    },
+    {
+      "type": "click",
+      "id": "note-body"
+    },
+    {
+      "type": "input",
+      "id": "note-body"
+    },
+    {
+      "type": "pointerdown",
+      "id": "save-note"
+    },
+    {
+      "type": "click",
+      "id": "save-note"
+    },
+    {
+      "type": "pointerdown",
+      "id": "deep-history-toggle"
+    },
+    {
+      "type": "click",
+      "id": "deep-history-toggle"
+    },
+    {
+      "type": "pointerdown",
+      "id": "air-island-clock"
+    },
+    {
+      "type": "click",
+      "id": "air-island-clock"
+    }
+  ]
+}

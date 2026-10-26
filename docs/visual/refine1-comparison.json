@@ -1,0 +1,238 @@
+{
+  "hardwareAcceptance": false,
+  "geometry": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "before": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        }
+      },
+      "after": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      }
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "before": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        }
+      },
+      "after": {
+        "dock": {
+          "x": 662.5,
+          "y": 868,
+          "width": 325,
+          "height": 62,
+          "top": 868,
+          "right": 987.5,
+          "bottom": 930,
+          "left": 662.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      }
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "before": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        }
+      },
+      "after": {
+        "dock": {
+          "x": 32.5,
+          "y": 538,
+          "width": 325,
+          "height": 62,
+          "top": 538,
+          "right": 357.5,
+          "bottom": 600,
+          "left": 32.5
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      }
+    }
+  ],
+  "mainPage": "all three sizes: scrollHeight equals clientHeight (within 1px)",
+  "clock": "real GUI asserts #clock and header clock have no client rectangles in Modern, central clock retained",
+  "rightSymbol": "real GUI computed background rgba(0,0,0,0)",
+  "mask": {
+    "gap": 0,
+    "foot": 255,
+    "base": 255
+  },
+  "idleDraws": 0,
+  "cleanup": {
+    "classic": {
+      "failed": false,
+      "reason": "",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 750,
+      "sceneBuilds": 9,
+      "transfers": 513,
+      "tiles": 0,
+      "pending": false,
+      "disposed": false,
+      "paintWallTimeMs": 14152,
+      "programs": 0,
+      "textures": 0,
+      "gpuType": "software",
+      "renderPath": "css-fallback",
+      "contextLosses": 0,
+      "decodeCount": 6,
+      "bufferResizes": 170,
+      "transferWallTimeMs": 102,
+      "dpr": 1,
+      "backdrop": "wallpaper-only"
+    },
+    "lost": {
+      "failed": true,
+      "reason": "context-lost",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 754,
+      "sceneBuilds": 10,
+      "transfers": 517,
+      "tiles": 0,
+      "pending": false,
+      "disposed": false,
+      "paintWallTimeMs": 14433,
+      "programs": 0,
+      "textures": 0,
+      "gpuType": "software",
+      "renderPath": "css-fallback",
+      "contextLosses": 1,
+      "decodeCount": 7,
+      "bufferResizes": 174,
+      "transferWallTimeMs": 103,
+      "dpr": 1,
+      "backdrop": "wallpaper-only"
+    },
+    "ended": {
+      "failed": true,
+      "reason": "context-lost",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 754,
+      "sceneBuilds": 10,
+      "transfers": 517,
+      "tiles": 0,
+      "pending": false,
+      "disposed": true,
+      "paintWallTimeMs": 14433,
+      "programs": 0,
+      "textures": 0,
+      "gpuType": "software",
+      "renderPath": "disposed",
+      "contextLosses": 1,
+      "decodeCount": 7,
+      "bufferResizes": 174,
+      "transferWallTimeMs": 103,
+      "dpr": 1,
+      "backdrop": "wallpaper-only"
+    }
+  }
+}
