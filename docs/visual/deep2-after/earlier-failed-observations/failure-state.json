@@ -1,0 +1,54 @@
+{
+  "page": "/workspace/Air-Os-Clean/index.html",
+  "active": "",
+  "events": [
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    },
+    {
+      "type": "pointerdown",
+      "id": "air-island-clock"
+    },
+    {
+      "type": "click",
+      "id": "air-island-clock"
+    },
+    {
+      "type": "pointerdown",
+      "id": "dp2-appearance"
+    },
+    {
+      "type": "click",
+      "id": "dp2-appearance"
+    },
+    {
+      "type": "pointerdown",
+      "id": "dp2-glass-test"
+    },
+    {
+      "type": "click",
+      "id": "dp2-glass-test"
+    },
+    {
+      "type": "pointerdown",
+      "id": "dp2-glass-test"
+    },
+    {
+      "type": "click",
+      "id": "dp2-glass-test"
+    },
+    {
+      "type": "pointerdown",
+      "id": ""
+    },
+    {
+      "type": "click",
+      "id": ""
+    }
+  ]
+}
