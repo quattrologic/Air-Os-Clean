@@ -1,3 +1,11 @@
+# TAHOE 3 – fünf gemeinsame Apps integriert
+
+26. Oktober2026, Basis **adf6c9eb13081e0d79fc15ff4da39a86a2982d47**, Branch **feat/air-os-tahoe-3-apps**, Produktcommit **0610ca5b36493ec1d3d23e410c9a19022dc9ebc6**. [Bericht/Quellen/Bildvergleiche/Grenzen](AIR_OS_TAHOE_3.md). Finder/Notes/Reminders/Kalender/Musik über bestehende Controller mit gemeinsamen Tahoe-Komponenten; echte Notizsuche/Aufgabenfilter, Kalender-Monat/Tag, Datei-Kontextaktionen/Dialoge und vorhandener Musiktransport. Keine zweite Engine/Registry/DB. Unowned Kalender-/Playlist-Bestandskeys erhalten und nicht automatisch zugeordnet; neue Browserdaten profilgebunden, UI-Hinweis auf offene Legacy-Zuordnung.
+
+**407/407 Tests**,187 Runtime-Ressourcen/Syntax, PWA-Build176 Assets. Echte Linux-Electron-5-App-Vorher/Nachher1920/1650/390, mehrere Fenster, Notes/Reminders/Kalender-/Audio-/Playlistabläufe, zwei Profile. Native Picker-Abnahme blockiert; separat ausdrücklich markierter Picker-Fixture-Host bestätigt echte Main-Dateirechte/Datei-I/O/Editor/Umbenennen/Duplizieren, keine simulierten Dateidaten oder Produktionsfreigabe. Bestands-Profil-/Neustart-/Classic-/M1/M2-/Reduced-Motion-/WebGL-Lauf; Shellrechtecke unverändert. Regulärer Software-/CSS-Pfad, keine native Plattform-/Hardwareabnahme. CI-/PR-API403, kein neuer CI-Erfolg behauptet. main/PRs/Installer/Main-/Preload-/Cloud-/PWA-/Signinglogik geschützt, keine privaten Daten oder Cloudanmeldung. Nächste drei getrennte Prüfungen nur nach Auftrag: native Picker-/Plattformabnahme; ausdrücklich autorisierte Legacy-Zuordnung; Medienmetadaten-/Codecabnahme. Dokumentationsabschluss-SHA im Abschlussbericht. Danach STOP.
+
+---
+
 # TAHOE 2 – Einstellungen vollständig kategorisiert
 
 26. Oktober2026. Basis **a420dd3ef89243fbc75a9baecb00b0d05d65fa3c**, Branch **feat/air-os-tahoe-2**, Produktcommit **59dd9d44dce478aa431cd622df1ecd77bc75ebf7**. [Bericht/Bilder](AIR_OS_TAHOE_2.md). Genau eine App: bestehende Einstellungen mit dunkler Kategorienavigation, heller Arbeitsfläche, Suchtoolbar/Leerzustand, nativen Schaltern und bestätigtem Speichern/Fehler/Retry. Originalnodes/Handler, Classic-Rückbau, sitzungsgeprüfte Queue, keine zweite Datenhaltung. Bestehende Tahoe-Tokens/Icons/GLASS-3 weiterverwendet. Keine Finder-/Notes-/Reminders-Neugestaltung begonnen.

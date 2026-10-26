@@ -1,0 +1,92 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "geometry": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      }
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "geometry": {
+        "dock": {
+          "x": 662.5,
+          "y": 868,
+          "width": 325,
+          "height": 62,
+          "top": 868,
+          "right": 987.5,
+          "bottom": 930,
+          "left": 662.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "geometry": {
+        "dock": {
+          "x": 32.5,
+          "y": 538,
+          "width": 325,
+          "height": 62,
+          "top": 538,
+          "right": 357.5,
+          "bottom": 600,
+          "left": 32.5
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      }
+    }
+  ],
+  "finderNative": false,
+  "finderBlocker": "GUI condition timed out: document.querySelectorAll('.air-file-entry').length===2",
+  "finderStatus": "Bereit",
+  "audioDecodedAndPlayed": true,
+  "calendarMusicProfileIsolation": true
+}
