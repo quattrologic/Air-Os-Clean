@@ -20,9 +20,9 @@ html[data-desktop-theme="modern"] .air-island-panel>header{background:rgba(8,16,
 html[data-desktop-theme="modern"] .app-window{box-shadow:inset 0 1px #ffffff66,0 18px 50px #132e5140,0 3px 10px #17365b20}
 html[data-desktop-theme="modern"] .app-window:not(.air-notes-window):not(.air-home-window)>.window-titlebar{color:#f2f5f3;background:linear-gradient(160deg,#ffffff13,transparent 45%,#0000001c),rgba(13,23,33,.68);backdrop-filter:blur(20px);box-shadow:inset 0 1px #ffffff35}
 /* Canvas paints above only its host background and below all existing content. */
-html[data-desktop-theme="modern"] .glass2-active{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;isolation:isolate}
-html[data-desktop-theme="modern"] .glass2-active::before,
-html[data-desktop-theme="modern"] .glass2-active::after{opacity:0;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html[data-desktop-theme="modern"] .deep-glass-host.glass2-active{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;isolation:isolate}
+html[data-desktop-theme="modern"] .deep-glass-host.glass2-active::before,
+html[data-desktop-theme="modern"] .deep-glass-host.glass2-active::after{opacity:0;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 html[data-desktop-theme="modern"] .glass2-active.glass2-tinted{background:#9cdaa1!important}
 html[data-desktop-theme="modern"] .glass2-tinted>.deep-glass-tile{opacity:.18}
 .deep-glass-tile{position:absolute;inset:auto;z-index:0;border-radius:0;pointer-events:none;display:block;max-width:none}
@@ -40,3 +40,5 @@ html[data-desktop-theme="modern"] .app-window:not(.air-notes-window):not(.air-ho
 
 html:not([data-desktop-theme="modern"]) .deep-glass-tile,html.air-reduced-glass .deep-glass-tile{visibility:hidden}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active){.deep-glass-tile{visibility:hidden}}
+
+.glass2-positioned{position:relative}

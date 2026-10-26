@@ -1,0 +1,22 @@
+{
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "repository": "https://github.com/0-ss/MacShell",
+  "sources": [
+    {
+      "file": "third_party/deep-port/liquidglass.frag",
+      "sha256": "17c803e919d156cfff3c285fc2b11a59548b8b757e191190269ee0b81b2f336b"
+    },
+    {
+      "file": "third_party/glass2/dockglass.frag",
+      "sha256": "f1ebcf553c2dfb007050799f6c44d74556c2b49e4aac661c77f39b94ded0a631"
+    },
+    {
+      "file": "third_party/glass2/contourglow.frag",
+      "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579"
+    },
+    {
+      "file": "third_party/glass2/LICENSE",
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    }
+  ]
+}
