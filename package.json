@@ -112,7 +112,8 @@
       "src/core/today-widget.js",
       "src/core/tahoe-icons.js",
       "air-tahoe.css",
-      "third_party/tahoe/**/*"
+      "third_party/tahoe/**/*",
+      "air-settings-tahoe.js"
     ],
     "mac": {
       "target": [

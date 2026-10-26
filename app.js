@@ -554,7 +554,7 @@ function openApp(id){
  $("#browser-form",win)?.addEventListener("submit",e=>{e.preventDefault();let q=$("#browser-query",win).value.trim();if(!q)return;let url=/^https?:\/\//i.test(q)?q:/^[\w-]+\.[a-z]{2,}/i.test(q)?"https://"+q:"https://www.google.com/search?q="+encodeURIComponent(q);window.open(url,"_blank","noopener,noreferrer")});
  if(id==="notes")window.airNotes?.mount(win);
  if(id==='reminders')window.airReminders?.mount(win);
- if(id==="settings"){initAirSettings(win);window.airCloudUI?.mount(win);}
+ if(id==="settings"){initAirSettings(win);window.airCloudUI?.mount(win);window.airTahoeSettings?.mount(win);}
  $("#music-play",win)?.addEventListener("click",()=>{const audio=$("#air-music-audio",win);if(audio&&audio.src){audio.paused?audio.play().catch(()=>toast("Audiodatei konnte nicht abgespielt werden.")):audio.pause()}else toast("Wähle zuerst eine Musikdatei aus.")});
  if(id==="tagesschau")tsLoadNews(win,"homepage");
  if(id==="stocks")initStocksApp(win);
@@ -718,6 +718,17 @@ function applyAirSettings(settings=readAirSettings()){
  }
  document.querySelectorAll("[data-wallpaper]").forEach(button=>button.classList.toggle("selected",(settings.wallpaper||"clouds")===button.dataset.wallpaper&&!settings.customWallpaper));
 }
+// Settings-only confirmed writes; existing queue and authenticated store stay authoritative.
+function persistAirSettingsConfirmed(patch){
+ const owner=window.airOS?.currentUser?.();
+ const save=airSettingsWrites.then(()=>airSettingsLoad).then(async()=>{
+  const session=(await owner)?.preferenceSession;
+  if(!session||(await window.airOS.currentUser())?.preferenceSession!==session)throw Error('Die Sitzung hat sich geändert.');
+  const saved=await window.airOS.preferences.update(patch,session);
+  if((await window.airOS.currentUser())?.preferenceSession!==session)throw Error('Die Sitzung hat sich geändert.');
+  airSettingsCache={...readAirSettings(),...saved};applyAirSettings(airSettingsCache);return saved;
+ });airSettingsWrites=save.catch(()=>{});return save;
+}
 function initAirSettings(win){
  const s=readAirSettings();
  const desktopTheme=win.querySelector("#air-desktop-theme");
@@ -729,7 +740,10 @@ function initAirSettings(win){
  if(glass)glass.checked=!!s.reduceGlass;
  if(motion)motion.checked=!!s.reduceMotion;
  if(clock)clock.checked=s.clock24!==false;
- const announce=message=>{if(status)status.textContent=message};
+ const announce=message=>{if(status&&win.isConnected)status.textContent=message};
+ const retry=document.createElement('button');retry.type='button';retry.className='secondary-button';retry.textContent='Erneut speichern';retry.hidden=true;status?.after(retry);
+ async function save(patch,message){retry.hidden=true;announce('Wird gespeichert …');try{await persistAirSettingsConfirmed(patch);if(!win.isConnected)return;announce(message);initAirSettingsValuesReset(win);}catch{if(!win.isConnected)return;initAirSettingsValuesReset(win);announce('Speichern fehlgeschlagen. Bitte erneut versuchen.');retry.hidden=false;retry.onclick=()=>save(patch,message);}}
+
  desktopTheme?.addEventListener('change',async()=>{
   if(desktopTheme.disabled)return;
   const requested=desktopTheme.value;
@@ -740,20 +754,19 @@ function initAirSettings(win){
   finally{desktopTheme.value=readAirSettings().desktopTheme==='modern'?'modern':'classic';desktopTheme.disabled=false;}
  });
  win.querySelectorAll("[data-wallpaper]").forEach(button=>button.addEventListener("click",()=>{
-  persistAirSettings({wallpaper:button.dataset.wallpaper,customWallpaper:""});
-  announce("Hintergrund gespeichert.");toast("Hintergrund geändert");
+  void save({wallpaper:button.dataset.wallpaper,customWallpaper:""},"Hintergrund gespeichert.");
  }));
- accent?.addEventListener("input",e=>{persistAirSettings({accent:e.target.value});announce("Akzentfarbe gespeichert.")});
- theme?.addEventListener("change",e=>{persistAirSettings({dockTheme:e.target.value});announce("Dock-Design ausgewählt.")});
- dockSize?.addEventListener("input",e=>{persistAirSettings({dockSize:Number(e.target.value)});announce("Dock-Größe gespeichert.")});
- glass?.addEventListener("change",e=>{persistAirSettings({reduceGlass:e.target.checked});announce("Darstellung gespeichert.")});
- motion?.addEventListener("change",e=>{persistAirSettings({reduceMotion:e.target.checked});announce("Animationseinstellung gespeichert.")});
- clock?.addEventListener("change",e=>{persistAirSettings({clock24:e.target.checked});announce("Uhrformat gespeichert.")});
+ accent?.addEventListener("change",e=>{void save({accent:e.target.value},"Akzentfarbe gespeichert.")});
+ theme?.addEventListener("change",e=>{void save({dockTheme:e.target.value},"Dock-Design ausgewählt.")});
+ dockSize?.addEventListener("change",e=>{void save({dockSize:Number(e.target.value)},"Dock-Größe gespeichert.")});
+ glass?.addEventListener("change",e=>{void save({reduceGlass:e.target.checked},"Darstellung gespeichert.")});
+ motion?.addEventListener("change",e=>{void save({reduceMotion:e.target.checked},"Animationseinstellung gespeichert.")});
+ clock?.addEventListener("change",e=>{void save({clock24:e.target.checked},"Uhrformat gespeichert.")});
  win.querySelector("#air-custom-wallpaper")?.addEventListener("change",e=>{
   const file=e.target.files&&e.target.files[0];if(!file)return;
   if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){announce("Bitte PNG, JPG, WEBP oder GIF auswählen.");return}
   if(file.size>5*1024*1024){announce("Das Bild darf höchstens 5 MB groß sein.");return}
-  const reader=new FileReader();reader.onload=()=>{persistAirSettings({customWallpaper:reader.result,wallpaper:""});announce("Eigenes Hintergrundbild gespeichert.")};reader.onerror=()=>announce("Bild konnte nicht gelesen werden.");reader.readAsDataURL(file);
+  const reader=new FileReader();reader.onload=()=>{void save({customWallpaper:reader.result,wallpaper:""},"Eigenes Hintergrundbild gespeichert.")};reader.onerror=()=>announce("Bild konnte nicht gelesen werden.");reader.readAsDataURL(file);
  });
  win.querySelector("#reset-settings")?.addEventListener("click",()=>{
   if(window.airOS?.preferences){
@@ -770,7 +783,7 @@ function initAirSettingsValuesReset(win){
  const desktopTheme=win.querySelector("#air-desktop-theme");if(desktopTheme)desktopTheme.value=s.desktopTheme==='modern'?'modern':'classic';
  const theme=win.querySelector("#air-dock-theme");if(theme)theme.value=s.dockTheme==='modern'?'modern':'classic';
  const accent=win.querySelector("#accent-color"),dockSize=win.querySelector("#air-dock-size"),glass=win.querySelector("#reduce-glass"),motion=win.querySelector("#air-reduce-motion"),clock=win.querySelector("#air-clock-24");
- if(accent)accent.value=s.accent||"#75aeea";if(dockSize)dockSize.value="48";if(glass)glass.checked=false;if(motion)motion.checked=false;if(clock)clock.checked=true;
+ if(accent)accent.value=s.accent||"#75aeea";if(dockSize)dockSize.value=String(s.dockSize||48);if(glass)glass.checked=!!s.reduceGlass;if(motion)motion.checked=!!s.reduceMotion;if(clock)clock.checked=s.clock24!==false;
 }
 document.addEventListener("click",e=>{
  const external=e.target.closest("[data-url]");if(external){const url=external.dataset.url;if(/^https:\/\//i.test(url))window.open(url,"_blank","noopener,noreferrer")}

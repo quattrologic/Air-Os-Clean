@@ -4,6 +4,7 @@
  * Dark laptop variant; light/cream workspaces deliberately retained by Air-OS.
  */
 html[data-desktop-theme="modern"]{
+ --tahoe-padding:4px;--tahoe-spacing:4px;--tahoe-row:28px;
  --tahoe-base:#242424;--tahoe-header:#333333;--tahoe-text:#dedede;
  --tahoe-secondary:#afafaf;--tahoe-workspace:#f8f7f3;--tahoe-ink:#363636;
  --tahoe-accent:#0088ff;--tahoe-divider:rgba(255,255,255,.1);
@@ -12,6 +13,47 @@ html[data-desktop-theme="modern"]{
  --tahoe-short:100ms;--tahoe-long:150ms;
  --tahoe-ease:cubic-bezier(0,0,.2,1);--tahoe-button-ease:cubic-bezier(.25,.46,.45,.94);
 }
+/* Tahoe 2: original laptop spacing (4px), menu row (28px), 6/8/12px radii.
+ * Responsive category navigation is an Electron adaptation, not a GTK layout claim. */
+html[data-desktop-theme="modern"] .tahoe-settings [hidden]{display:none!important}
+html[data-desktop-theme="modern"] .air-settings.tahoe-settings{display:grid;grid-template-columns:176px minmax(0,1fr);height:100%;padding:0;overflow:hidden;background:var(--tahoe-workspace);color:var(--tahoe-ink)}
+html[data-desktop-theme="modern"] .window-content:has(>.tahoe-settings){overflow:hidden}
+html[data-desktop-theme="modern"] .app-window:has(.tahoe-settings)>.window-titlebar:not(.glass2-active){background:var(--tahoe-header)!important;color:var(--tahoe-text)}
+html[data-desktop-theme="modern"] .tahoe-settings-nav{background:var(--tahoe-base);padding:calc(var(--tahoe-padding)*3);display:flex;flex-direction:column;gap:var(--tahoe-spacing);overflow:auto}
+html[data-desktop-theme="modern"] .tahoe-settings-nav button{display:flex;align-items:center;gap:8px;min-height:var(--tahoe-row);padding:8px;border:0;border-radius:var(--tahoe-button-radius);background:transparent;color:var(--tahoe-text);text-align:left;cursor:pointer}
+html[data-desktop-theme="modern"] .tahoe-settings-nav button:hover{background:#ffffff19}
+html[data-desktop-theme="modern"] .tahoe-settings-nav button[aria-pressed="true"]{background:#ffffff29;color:#fff}
+html[data-desktop-theme="modern"] .tahoe-category-icon{width:24px;height:24px;flex:0 0 24px}
+html[data-desktop-theme="modern"] .tahoe-settings-main{overflow:auto;min-width:0;padding:calc(var(--tahoe-padding)*5)}
+html[data-desktop-theme="modern"] .tahoe-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-bottom:12px;border-bottom:1px solid #0000001f}
+html[data-desktop-theme="modern"] .tahoe-toolbar .app-heading h2{font-size:20px;margin:0}
+html[data-desktop-theme="modern"] .tahoe-toolbar .app-heading p{display:none}
+html[data-desktop-theme="modern"] .tahoe-toolbar input{max-width:100%;min-height:28px;padding:6px 8px;border:1px solid #00000030;background:#fff;color:var(--tahoe-ink)}
+html[data-desktop-theme="modern"] .tahoe-settings-group h2{font-size:17px;margin:20px 0 12px}
+html[data-desktop-theme="modern"] .tahoe-settings-group .setting-row{gap:16px;min-height:36px;padding:12px 0;flex-wrap:wrap}
+html[data-desktop-theme="modern"] .tahoe-settings-group :is(select,input[type=range]){max-width:100%}
+html[data-desktop-theme="modern"] .tahoe-settings-group select{padding:6px 8px;border:1px solid #00000030;background:#fff;color:var(--tahoe-ink)}
+html[data-desktop-theme="modern"] .tahoe-settings-group input[role=switch]{appearance:none;width:36px;height:22px;border-radius:9999px;background:#777;position:relative;cursor:pointer;flex-shrink:0}
+html[data-desktop-theme="modern"] .tahoe-settings-group input[role=switch]::before{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff}
+html[data-desktop-theme="modern"] .tahoe-settings-group input[role=switch]:checked{background:var(--tahoe-accent)}
+html[data-desktop-theme="modern"] .tahoe-settings-group input[role=switch]:checked::before{left:17px}
+html[data-desktop-theme="modern"] .tahoe-settings-footer{margin-top:20px;border-top:1px solid #0000001f;padding-top:12px}
+html[data-desktop-theme="modern"] .tahoe-settings-footer .app-heading{display:none}
+html[data-desktop-theme="modern"] .tahoe-settings .air-wallpaper-choices{grid-template-columns:repeat(auto-fit,minmax(92px,1fr))}
+html[data-desktop-theme="modern"] .tahoe-settings .air-wallpaper-choices{display:grid;gap:8px}
+html[data-desktop-theme="modern"] .tahoe-settings .air-wallpaper-choice{padding:8px;border:1px solid #00000030;border-radius:var(--tahoe-button-radius);background:#fff;color:var(--tahoe-ink);cursor:pointer;min-height:32px}
+html[data-desktop-theme="modern"] .tahoe-settings .air-wallpaper-choice.selected{background:#0088ff14;outline:2px solid var(--tahoe-accent);outline-offset:0}
+html[data-desktop-theme="modern"] .tahoe-settings .secondary-button{border:1px solid #00000030;border-radius:var(--tahoe-button-radius);background:#fff;color:var(--tahoe-ink);padding:6px 12px;min-height:28px;cursor:pointer}
+html[data-desktop-theme="modern"] .tahoe-settings :is(.muted,.air-settings-status){color:#565656}
+html[data-desktop-theme="modern"] .tahoe-settings .air-cloud-panel{margin:0;padding:0;border:0;background:transparent}
+@media(max-width:650px){
+ html[data-desktop-theme="modern"] .air-settings.tahoe-settings{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+ html[data-desktop-theme="modern"] .tahoe-settings-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:4px}
+ html[data-desktop-theme="modern"] .tahoe-settings-nav button{flex-shrink:0;padding:6px;font-size:12px}
+ html[data-desktop-theme="modern"] .tahoe-category-icon{width:20px;height:20px;flex-basis:20px}
+ html[data-desktop-theme="modern"] .tahoe-settings-main{padding:12px}
+}
+@media(forced-colors:active){html[data-desktop-theme="modern"] .tahoe-settings-group input[role=switch]{appearance:auto}}
 /* Original SVG viewboxes/padding are preserved. No independent icon registry or recoloring. */
 .air-tahoe-icon{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
 html[data-desktop-theme="modern"] :is(.dock-icon,.app-icon,.air-start-icon,.alp-icon,.air-search-result-icon,.air-island-quick-icon):has(>.air-tahoe-icon){background:transparent;box-shadow:none;border:0}
