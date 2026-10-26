@@ -1,3 +1,11 @@
+# TAHOE 2 – Einstellungen vollständig kategorisiert
+
+26. Oktober2026. Basis **a420dd3ef89243fbc75a9baecb00b0d05d65fa3c**, Branch **feat/air-os-tahoe-2**, Produktcommit **59dd9d44dce478aa431cd622df1ecd77bc75ebf7**. [Bericht/Bilder](AIR_OS_TAHOE_2.md). Genau eine App: bestehende Einstellungen mit dunkler Kategorienavigation, heller Arbeitsfläche, Suchtoolbar/Leerzustand, nativen Schaltern und bestätigtem Speichern/Fehler/Retry. Originalnodes/Handler, Classic-Rückbau, sitzungsgeprüfte Queue, keine zweite Datenhaltung. Bestehende Tahoe-Tokens/Icons/GLASS-3 weiterverwendet. Keine Finder-/Notes-/Reminders-Neugestaltung begonnen.
+
+**400/400 Tests**,184 Runtime-Dateien/Syntax, echter Linux-Electron-Vorher/Nachherlauf1920/1650/390 mit Kategorien/Suche/gespeicherter Accessibility; voller Bestands-App-/Zwei-Profil-/Logout-/Neustart-/M1-/M2-/Classic-/Reduced-Motion-/WebGL-Ausfalllauf bestanden. Shellgeometrien unverändert. Native Plattform-/Hardwareabnahme offen; kein neuer CI-Erfolg behauptet. Keine Cloudanmeldung/private Daten, main/PRs/Installer/Cloud-/PWA- und Signinglogik erhalten. Nächste drei getrennte Einheiten nur nach Auftrag: native Einstellungen-Abnahme; Finder; danach Notes/Reminders. SHA im Abschlussbericht. Nach Sicherung STOP.
+
+---
+
 # TAHOE MASTER – budgetbegrenztes Design-/Iconpaket
 
 26. Oktober 2026, Basis **1f240274d773cd0eee75d515ca6c59e9f626b35f**, Branch **feat/air-os-tahoe-master**, Produktcode **578bddac8e9575da07a10149224ad4c47d08e132**. [Bericht, Quellen/Lizenzen, echte Bildvergleiche](AIR_OS_TAHOE_MASTER.md). Auf ausdrückliche Budgetkorrektur: gemeinsame Modern-Tahoe-Tokens/Komponenten, **14 unveränderte GPL-Original-SVGs / 13 App-Zuordnungen**, zentrale Registry-Iconmetadaten und tatsächliche Dock-/Startmenü-/große Launchpad-/Spotlight-/Schnellzugriff-Pfade. MIT-Sass und GPL-Bildquellen getrennt mit vollständigen Nachweisen; Apple-Monitor/Finder-Gesicht/Safari-Kompass ausgeschlossen. Classic-Artwork, Logo, helle Arbeitsflächen und GLASS-3-/M1-/M2-Ownership erhalten. Keine neuen Widgets/App-Umbauten/Lockscreenfunktionen.
