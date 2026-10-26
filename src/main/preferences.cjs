@@ -1,7 +1,7 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false,todaySize:'compact'});
 const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
@@ -9,6 +9,7 @@ function validate(patch){
  for(const [key,value] of Object.entries(patch)){
   if(!Object.prototype.hasOwnProperty.call(DEFAULTS,key)||key==='schemaVersion')throw new TypeError('Unbekannte Einstellung.');
   if(key==='controlTiles'){if(value!==null&&(!Array.isArray(value)||value.length>12||new Set(value).size!==value.length||value.some(id=>!require('../core/macshell-math.js').ccCatalog.some(d=>d.id===id))))throw new TypeError('Ungültiger Kachelkatalog.');result[key]=value===null?null:[...value];continue;}
+  if(key==='todaySize'&&!['compact','expanded'].includes(value))throw new TypeError('Ungültige Widgetgröße.');
   if(key==='focusMode'&&typeof value!=='boolean')throw new TypeError('Ungültiger Fokusmodus.');
   if(key==='desktopWidgets'&&typeof value!=='boolean')throw new TypeError('Ungültige Widgets.');
   if(key==='controlOrder'){

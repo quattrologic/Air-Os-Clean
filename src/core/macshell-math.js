@@ -55,5 +55,6 @@ const ccCellH=66,ccGap=6,ccSliderGap=10;const ccDef=id=>ccCatalog.find(d=>d.id==
         return { items: out, rows: rows, total: rows > 0 ? ys[rows - 1] + ccCellH : 0 };
     }
 
+function controlPages(ids,maxRows=3){const pages=[];let current=[];for(const id of [...new Set(ids)]){if(!ccCatalog.some(d=>d.id===id))continue;const candidate=[...current,id];if(current.length&&ccLayout(candidate).rows>maxRows){pages.push(current);current=[id];}else current=candidate;}if(current.length)pages.push(current);return pages.length?pages:[[]];}
 function clockTime(now){var hour=now.getHours()%12;if(hour===0)hour=12;return hour+':'+('0'+now.getMinutes()).slice(-2);}
-if(typeof module==='object')module.exports={calcValue,ccLayout,clockTime,ccCatalog,ccDefault};else root.airMacShellMath={calcValue,ccLayout,clockTime,ccCatalog,ccDefault};})(typeof window==='object'?window:null);
+if(typeof module==='object')module.exports={calcValue,ccLayout,clockTime,ccCatalog,ccDefault,controlPages};else root.airMacShellMath={calcValue,ccLayout,clockTime,ccCatalog,ccDefault,controlPages};})(typeof window==='object'?window:null);
