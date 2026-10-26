@@ -1,0 +1,1 @@
+Earlier failed diagnostic observations, retained for traceability. These are NOT passing screenshots; the final successful report is ../report.json. Causes and corrections are recorded in docs/AIR_LIQUID_GLASS_2.md.

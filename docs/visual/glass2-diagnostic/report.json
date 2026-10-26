@@ -1,0 +1,328 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "pattern": "clouds",
+      "geometry": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 73,
+        "sceneBuilds": 2,
+        "transfers": 48,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4666,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "pattern": "grid",
+      "geometry": {
+        "dock": {
+          "x": 781,
+          "y": 1012,
+          "width": 358,
+          "height": 68,
+          "top": 1012,
+          "right": 1139,
+          "bottom": 1080,
+          "left": 781
+        },
+        "island": {
+          "x": 835,
+          "y": 0,
+          "width": 250,
+          "height": 45,
+          "top": 0,
+          "right": 1085,
+          "bottom": 45,
+          "left": 835
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 143,
+        "sceneBuilds": 3,
+        "transfers": 94,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 7646,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "pattern": "clouds",
+      "geometry": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 207,
+        "sceneBuilds": 5,
+        "transfers": 137,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9930,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "pattern": "grid",
+      "geometry": {
+        "dock": {
+          "x": 646,
+          "y": 862,
+          "width": 358,
+          "height": 68,
+          "top": 862,
+          "right": 1004,
+          "bottom": 930,
+          "left": 646
+        },
+        "island": {
+          "x": 717.578125,
+          "y": 0,
+          "width": 214.84375,
+          "height": 38.671875,
+          "top": 0,
+          "right": 932.421875,
+          "bottom": 38.671875,
+          "left": 717.578125
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 278,
+        "sceneBuilds": 6,
+        "transfers": 183,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 12455,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "pattern": "clouds",
+      "geometry": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 356,
+        "sceneBuilds": 8,
+        "transfers": 236,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 13425,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "pattern": "grid",
+      "geometry": {
+        "dock": {
+          "x": 16,
+          "y": 532,
+          "width": 358,
+          "height": 68,
+          "top": 532,
+          "right": 374,
+          "bottom": 600,
+          "left": 16
+        },
+        "island": {
+          "x": 117,
+          "y": 0,
+          "width": 156,
+          "height": 36,
+          "top": 0,
+          "right": 273,
+          "bottom": 36,
+          "left": 117
+        }
+      },
+      "material": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 425,
+        "sceneBuilds": 9,
+        "transfers": 281,
+        "tiles": 6,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 14242,
+        "programs": 3,
+        "textures": 1
+      },
+      "idleDraws": 0
+    }
+  ],
+  "mask": {
+    "gap": 0,
+    "foot": 255,
+    "base": 255
+  },
+  "cleanup": {
+    "classic": {
+      "failed": false,
+      "reason": "",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 425,
+      "sceneBuilds": 9,
+      "transfers": 281,
+      "tiles": 0,
+      "pending": false,
+      "disposed": false,
+      "paintWallTimeMs": 14242,
+      "programs": 0,
+      "textures": 0
+    },
+    "lost": {
+      "failed": true,
+      "reason": "context-lost",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 429,
+      "sceneBuilds": 10,
+      "transfers": 285,
+      "tiles": 0,
+      "pending": false,
+      "disposed": false,
+      "paintWallTimeMs": 14442,
+      "programs": 0,
+      "textures": 0
+    },
+    "ended": {
+      "failed": true,
+      "reason": "context-lost",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 429,
+      "sceneBuilds": 10,
+      "transfers": 285,
+      "tiles": 0,
+      "pending": false,
+      "disposed": true,
+      "paintWallTimeMs": 14442,
+      "programs": 0,
+      "textures": 0
+    }
+  }
+}

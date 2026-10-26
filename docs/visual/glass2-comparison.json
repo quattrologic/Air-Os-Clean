@@ -1,0 +1,121 @@
+{
+  "contrastSidebandSamples": [
+    {
+      "mode": "after",
+      "width": 1920,
+      "minimumSampledRatio": 10.63,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "after",
+      "width": 1650,
+      "minimumSampledRatio": 10.48,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "after",
+      "width": 390,
+      "minimumSampledRatio": 11.14,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 1920,
+      "minimumSampledRatio": 6.47,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 1650,
+      "minimumSampledRatio": 6.48,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    },
+    {
+      "mode": "diagnostic",
+      "width": 390,
+      "minimumSampledRatio": 7.09,
+      "method": "empty material sidebands excluding clock glyphs and outer edge, conservative foreground #f2f5f3; not a whole UI WCAG audit"
+    }
+  ],
+  "hardwareAcceptance": false,
+  "pipeline": "actual sandboxed Electron app, isolated host policy, 16384 material pixels per tile; no source patch or getContext spoofing",
+  "measurements": [
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1920,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 18.669,
+      "pixelsChangedMoreThan8": 19028,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1920,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 8.799,
+      "pixelsChangedMoreThan8": 12676,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 1920,
+      "meanAbsoluteChannelDifference": 17.993,
+      "pixelsChangedMoreThan8": 1327,
+      "pixels": 1800
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1650,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 18.709,
+      "pixelsChangedMoreThan8": 19020,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 1650,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 8.4,
+      "pixelsChangedMoreThan8": 12131,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 1650,
+      "meanAbsoluteChannelDifference": 16.28,
+      "pixelsChangedMoreThan8": 1533,
+      "pixels": 1800
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 390,
+      "wallpaper": "clouds",
+      "meanAbsoluteChannelDifference": 18.787,
+      "pixelsChangedMoreThan8": 19070,
+      "pixels": 28860
+    },
+    {
+      "type": "CSS fallback before/after (NOT proof of refraction)",
+      "width": 390,
+      "wallpaper": "grid",
+      "meanAbsoluteChannelDifference": 8.677,
+      "pixelsChangedMoreThan8": 12369,
+      "pixels": 28860
+    },
+    {
+      "type": "actual product diagnostic WebGL refraction on/off, clear top band excluding icons",
+      "width": 390,
+      "meanAbsoluteChannelDifference": 4.99,
+      "pixelsChangedMoreThan8": 643,
+      "pixels": 1800
+    }
+  ],
+  "mask": {
+    "gap": 0,
+    "foot": 255,
+    "base": 255
+  },
+  "geometry": "exactly equal before / software fallback / diagnostic for both wallpapers at all three sizes",
+  "idle": "zero additional material GPU draws in recorded 650ms settled windows",
+  "privacy": "only public cloud artwork and generated synthetic PNG, synthetic local accounts and notes"
+}

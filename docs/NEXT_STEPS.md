@@ -1,3 +1,15 @@
+# GLASS-2 – originale Materialien sichtbar integriert und geprüft
+
+26.Oktober2026 Europe/Berlin. Verifizierte Basis **1ac6c3adedcfa8a1df1013ab2980c2a7d718b24d**, eigener Branch **feat/air-liquid-glass-2**. Angefangene lokale Arbeit erhalten; Teilcommit **673ffa3** plus geprüfter Material-/Layer-/Cleanup-Abschluss. [Bericht mit Originalzuordnung, Kalibrierung, Bildern und Messwerten](AIR_LIQUID_GLASS_2.md).
+
+Originale `liquidglass.frag`, `dockglass.frag` und `contourglow.frag` nach GLSL ES300 portiert, gemeinsamer bedarfsabhängiger Kontext für bestehende Dock-/Island-/Panel-/Kalender-/Spotlight-/Widget-/Banner-/Titelleistenflächen. Tatsächliches eingebautes Wolken-SVG/URL-Parsing, Texturkoordinaten/Overlays, positive Materialebene unter dem Inhalt, statische Hostanker und Scrollflächen korrigiert. Konkave SDF-Füße, gerade Dockbasis und alle Hostgeometrien erhalten. Begrenztes Hover-/Fokuslicht, Caching und hochwertigerer dunkler Software-/Reduced-Transparency-Fallback. Keine neuen Apps/Cloud-/iPad-Aufgaben, keine Livefenster-/Systemaufnahme; ausschließlich aktive Wallpaper-Refraktion. MIT/OFL erhalten.
+
+**363/363 Tests bestanden**, sieben neue Regressionen; **149 Laufzeitressourcen**, Syntax/Diff geprüft. Echte Linux-Electron44-Vorher/Nachher bei1920×1080,1650×930,390×600, normales Wolkenwallpaper und synthetisches Streifenraster. Voller vorhandener App-/Profil-/Neustart-/Classic-/M1-/M2-/K3-/Reduced-Motion-/WebGL-Ausfalllauf bestanden. Reguläre Software-GPU bleibt CSS; integrierter WebGL-Pfad nur im dreifach abgesicherten isolierten Diagnosehost mit16.384 Pixeln/Kachel geprüft, keine Shader-Fixture als Hardwareabnahme ausgegeben. Echte Refraktion-ein/aus-Pixelvergleiche, Alpha0/255/255 für inverse Maske, exaktgleiche Dock358×68/bottom0-/Islandtop0-Boxen,0 weitere Materialdraws in650ms Ruhe. Kontextverlust/Classic/Profile/Logout bereinigen Ressourcen. Kalender-/Verlaufs-Neuaufbau und scrollfreie Materialverankerung zusätzlich geprüft.
+
+**Offen:** physische Windows-/macOS-GPU/Retina-/Treiber-/Animationsabnahme, sicherer eigener Livefensterbackdrop; keine Pixelgleichheit/60fps behauptet. GitHub-PR-/CI-API hier HTTP403; Remote-Git-Basis geprüft, kein neuer grüner CI-Lauf behauptet. main/PRs/Installer/Build-/Signinglogik/geschützte Apps und Daten unverändert; keine Veröffentlichung. Nächste drei kleine Einheiten nur nach neuem Auftrag: reale Hardware-Materialabnahme; Retina-/Transferkosten messen; sichere eigene Backdropquelle separat bewerten. Neuer SHA im Abschlussbericht. Nach Commit/Push STOP.
+
+---
+
 # MACSHELL DEEP PORT 1 – geprüftes Integrationspaket, kein vollständiger MacShell-Port
 
 25.Oktober2026 Europe/Berlin. Verifizierte Basis **616e5030fc03579b62f7ee0b1fc93e3f3cb9fc6e**, eigener Branch **feat/macshell-deep-port-1-20261025**. Teilcommits d6c6eaa (originaler Liquid-Glass-Rechenkörper/WebGL2 + Rechnerparser),b736a2c (Originalpacking/Ranking, Layouts/Verlauf/Dockaktionen), danach geprüfte Stacking-/Fokus-/Uniform-/Performancekorrekturen. [Kompakter Bericht mit Quellen-/Matrixzuordnung und Bildern](MACSHELL_DEEP_PORT_1.md).
