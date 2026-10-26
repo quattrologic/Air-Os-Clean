@@ -1,3 +1,11 @@
+# TAHOE MASTER – budgetbegrenztes Design-/Iconpaket
+
+26. Oktober 2026, Basis **1f240274d773cd0eee75d515ca6c59e9f626b35f**, Branch **feat/air-os-tahoe-master**, Produktcode **578bddac8e9575da07a10149224ad4c47d08e132**. [Bericht, Quellen/Lizenzen, echte Bildvergleiche](AIR_OS_TAHOE_MASTER.md). Auf ausdrückliche Budgetkorrektur: gemeinsame Modern-Tahoe-Tokens/Komponenten, **14 unveränderte GPL-Original-SVGs / 13 App-Zuordnungen**, zentrale Registry-Iconmetadaten und tatsächliche Dock-/Startmenü-/große Launchpad-/Spotlight-/Schnellzugriff-Pfade. MIT-Sass und GPL-Bildquellen getrennt mit vollständigen Nachweisen; Apple-Monitor/Finder-Gesicht/Safari-Kompass ausgeschlossen. Classic-Artwork, Logo, helle Arbeitsflächen und GLASS-3-/M1-/M2-Ownership erhalten. Keine neuen Widgets/App-Umbauten/Lockscreenfunktionen.
+
+**396/396 Tests**, 183 Runtime-Dateien/Syntax/Diff, PWA-Build172 Assets bestanden. Echte sandboxed Linux-Electron44-Vorher/Nachher1920×1080/1650×930/390×600, geladene identische Iconquellen, großes Launchpad/helle-dunkle Preview/Classic, unveränderte Dock-/Islandmaße; vollständiger Bestands-App-/Zwei-Profil-/Logout-/Neustart-/M1-/M2-/Reduced-Motion-/WebGL-Ausfalllauf bestanden. Nur Software-GPU/CSS-Fallback, keine native Windows/macOS/Safari-/Hardwareabnahme. PR-/CI-API403, kein neuer CI-Erfolg behauptet. Main/PRs/Installer/Auth-/Cloud-/PWA-/Build-Signinglogik nicht geändert; Paketliste enthält nur neue statische Ressourcen/Lizenzen. Nächste drei begrenzte Einzelaufgaben nur nach neuem Auftrag: native visuelle Abnahme; separate Appintegration; spätere Widget-/MacLock-Fortsetzung. SHA im Abschlussbericht. Nach Sicherung STOP.
+
+---
+
 # WinBox 0.2.82 – isolated window adapter evaluation
 
 26.Oktober2026, base **30aef2bc89d212f1c0992547a2263a1841c783c8**, branch **feat/air-winbox-evaluation**. [Report, blockers, licensing and screenshots](AIR_WINBOX_EVALUATION.md). Pinned Apache-2.0 vendor/integrity and small adapter added; real move/resize/focus/max/restore APIs tested in isolated Electron fixture against Settings structure. Live registered Settings adoption rejected: outer WinBox DOM/focus ownership conflicts with existing registered section and M2. No forced production migration or duplicate control; no production code savings claimed.

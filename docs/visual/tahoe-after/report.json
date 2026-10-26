@@ -1,0 +1,165 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "geometry": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      },
+      "material": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 293,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      }
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "geometry": {
+        "dock": {
+          "x": 662.5,
+          "y": 868,
+          "width": 325,
+          "height": 62,
+          "top": 868,
+          "right": 987.5,
+          "bottom": 930,
+          "left": 662.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      },
+      "material": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 294,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      }
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "geometry": {
+        "dock": {
+          "x": 32.5,
+          "y": 538,
+          "width": 325,
+          "height": 62,
+          "top": 538,
+          "right": 357.5,
+          "bottom": 600,
+          "left": 32.5
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      },
+      "material": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 294,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      }
+    }
+  ],
+  "startIcon": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",
+  "spotlightIcon": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",
+  "classic": {
+    "header": "rgba(0, 0, 0, 0)",
+    "icons": 22
+  }
+}
