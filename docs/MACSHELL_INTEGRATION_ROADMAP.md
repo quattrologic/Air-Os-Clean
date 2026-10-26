@@ -2,6 +2,22 @@
 
 25. Oktober 2026. **Nur Inventur und Planung; keine neue Produktfunktion implementiert.** Air-OS-Basis/Remote-HEAD: `3b3b87ae5d308aacc6d8024353d2b68f95cc74da` (AM1, enthält L1B.3). Eigener Branch: `docs/macshell-integration-roadmap-20261025`. MacShell-Remote-HEAD erneut geprüft und fixiert auf **`1bdb51870b621100fd2709f66c8f8e00ab17b9c4`**. Alle Originalverweise unten verwenden diesen unveränderlichen Stand.
 
+## Umsetzungsnachtrag Tahoe 4 – 26. Oktober2026
+
+Die100er-Matrix bleibt bestehen. [Tatsächliche Ausführungspfade, Bildvergleich und Abnahme](AIR_OS_TAHOE_4.md), Produktcheckpoint2111a0e. Keine pauschale Fertigstellung aller Matrixpunkte:
+
+| Bestehende IDs | Neuer geprüfter Fortschritt | Weiter offen |
+|---|---|---|
+| W01 | Originalgrößen/Raster/Distanz-Kollisionen, Galerie, Größe/Position je Profil, Neustart, native Maus-/Tastaturbedienung und schmale Seiten | Mehrere Instanzen/Typ, vollständiger Original-Editmodus/Widgetstile |
+| W03/W04 | Bestehender Kalenderdienst/Datum/Termine/Tagesöffner; Original60-Strich-Zifferblatt plus Today/echte Reminders | Analoge Zeiger/volle Originalstile,33ms-Schleife absichtlich nicht übernommen |
+| W05/W06 | Echter gemeinsamer Air-Music-Transport/Fortschritt/Controls; explizit gewähltes Rasterbild im lokalen Profil | Coverquelle/Lyrics/voller PlayerWidget-Port und Bildbibliothek |
+| W08/W09 | Echte profilgebundene Notes-/Reminders-Projektionen, Aktionen, Fehler/Retry/Session-Cleanup | Keine ExtraWidgets-Markdownspeicher oder deren Demo-Inhalte |
+| W02 | Ehrlicher Nichtverfügbarkeitszustand ohne Netz-/Standortzugriff | Wetterquelle und tatsächliche Wetterdarstellung vollständig offen |
+| D01/D02/D03 | Bestehende Dockaktionen/Pinvertrag, Lifecycle-Marker und eigene Fenster-Metadatenübersicht | Keine Live-Fenstercaptures/volle MacDock-Magnifikation oder Bounce |
+| S01/S04/S05/S06 (teilweise) | Bestehende Registry-/Rechner-/Note-/Main-Dateisuche, Profilprüfung, stabile Auswahl und Ergebnisanimation | Keine native systemweite Indizierung |
+| N01/N03 | Original-NotifBody-Abmessungen/Zeitformel, echte Appbestätigungen, gruppiert/gelesen/entfernen/clear | OS-Listener, Dissolve-/Staubeffekt und Lock-Bridge bleiben offen |
+| CC1–CC4/Material | Bestehender Zwölfkatalog/First-Fit/Focus/Keep-Awake erhalten, gemeinsamer Musiktransport/Unterseiten; dieselbe GLASS-3 mit Restore | Keine nicht unterstützten nativen Aktionen, Wallpaper-only statt Fenstercapture |
+
 ## 1. Verbindliche Strukturentscheidung
 
 **MacShell-Funktionen werden in Air-OS integriert; MacShell ersetzt nicht die Air-OS-Shell.** Unveränderlich bleiben obere Air-OS-Leiste samt Position/Grundaufbau, Dynamic-Island-Geometrie und Öffnungslogik, Dockposition/-grundgröße/-grundform, gerade Randbasis und konkave Seiten, weiße Air-OS-Birne, Originalicons, grauer Divider, Pinning/Suche/Fokus/Fensterverwaltung, Profile/Preferences und eigenständiges Classic. Kein MacShell-Dock, keine zusätzliche Taskleiste, keine zweite Navigation, Registry, Fensterverwaltung oder Quickshell-/Hyprland-/Qt-Laufzeit.

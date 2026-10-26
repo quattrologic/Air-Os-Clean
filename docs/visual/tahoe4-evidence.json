@@ -1,0 +1,1116 @@
+{
+  "basis": "b17b45a8d81bf7a6b12fd01e854e195c3ff9601b",
+  "productCommit": "a60b12bff10b0d0d45208eea4bbcc66971ca548d",
+  "platform": "Linux x64 Electron 44.9.3, Xvfb, SwiftShader; not hardware/native Windows/macOS acceptance",
+  "testSuite": {
+    "passed": 419,
+    "failed": 0,
+    "skipped": 0,
+    "preservedBaseline": 407
+  },
+  "runtimeResources": 192,
+  "pwaBuildAssets": 181,
+  "geometryBeforeAfterIdentical": true,
+  "geometries": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "geometry": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      }
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "geometry": {
+        "dock": {
+          "x": 662.5,
+          "y": 868,
+          "width": 325,
+          "height": 62,
+          "top": 868,
+          "right": 987.5,
+          "bottom": 930,
+          "left": 662.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "geometry": {
+        "dock": {
+          "x": 32.5,
+          "y": 538,
+          "width": 325,
+          "height": 62,
+          "top": 538,
+          "right": 357.5,
+          "bottom": 600,
+          "left": 32.5
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      }
+    }
+  ],
+  "guiChecks": {
+    "tahoe4-integrated": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "largeCalendarRealEvent": true,
+      "keyboardPositionSaved": true,
+      "selectedImageRendered": true,
+      "calendarDayNavigation": true,
+      "narrowWidgetPages": 4,
+      "narrowWidgetPointerActions": 5,
+      "compositionFixtureRestored": true,
+      "focusAndNotificationActions": true,
+      "overviewRestoredExistingWindow": true,
+      "reloadPersistence": true,
+      "processRestartPersistence": true,
+      "profileIsolation": true
+    },
+    "tahoe4-search": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "authenticatedRelativeFileResult": true,
+      "registryFocusWithoutDuplicate": true,
+      "profileIsolation": true
+    },
+    "tahoe4-pages": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "nativePointerDragSaved": true,
+      "collisionFree": true,
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lastPageDisabled": true
+    },
+    "tahoe4-diagnostic": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "idleDraws": 0,
+      "active": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 9,
+        "sceneBuilds": 1,
+        "transfers": 7,
+        "tiles": 4,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 807,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 3,
+        "transferWallTimeMs": 1,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "reduced": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 9,
+        "sceneBuilds": 1,
+        "transfers": 7,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 810,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 3,
+        "transferWallTimeMs": 1,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "contextLoss": {
+        "failed": true,
+        "reason": "context-lost",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 13,
+        "sceneBuilds": 2,
+        "transfers": 11,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 900,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 2,
+        "bufferResizes": 6,
+        "transferWallTimeMs": 2,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "restored": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 17,
+        "sceneBuilds": 3,
+        "transfers": 15,
+        "tiles": 4,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 995,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 3,
+        "bufferResizes": 9,
+        "transferWallTimeMs": 3,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "logout": true
+    }
+  },
+  "images": [
+    {
+      "path": "tahoe4-after/apps-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 636488,
+      "sha256": "03d1b303ae61f5e8908709e17d89549b5ec1eb3e1c801343cc6677cacde20d74"
+    },
+    {
+      "path": "tahoe4-after/apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 823283,
+      "sha256": "057770516ff43b20b78c1a775e55d95795c3c8d6070558e7c64f54251ed000b4"
+    },
+    {
+      "path": "tahoe4-after/apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 99551,
+      "sha256": "98d1d73347c9124ea43f5d541aa89910535d67613ef444c0f7bbe64bef48e2c6"
+    },
+    {
+      "path": "tahoe4-after/control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 675760,
+      "sha256": "7ca93c3335645c05db63a31ffe458d5ee9b3422c88c6ee9f050f3bf22b11e398"
+    },
+    {
+      "path": "tahoe4-after/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 825689,
+      "sha256": "604eace86b586381b326c7481a01e3b37d0186630962c1618689f6b75546dfd3"
+    },
+    {
+      "path": "tahoe4-after/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 133686,
+      "sha256": "3b7fbfd12cce3e3b4b0ea7ed4087e44a33213ef4f3877a287100907bf5a65a8a"
+    },
+    {
+      "path": "tahoe4-after/desktop-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 663575,
+      "sha256": "0d82de6089d0f9b1d68b86bbf36e7b3c559c84431743466f7556d72aeacdd283"
+    },
+    {
+      "path": "tahoe4-after/desktop-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 798703,
+      "sha256": "b7d34dae554e17a06d69f01e6d6ddab5d8742f2e807c66249a66d54e9ce92d11"
+    },
+    {
+      "path": "tahoe4-after/desktop-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 164517,
+      "sha256": "e14f5795afffcd5c74ec5079fd38929bf550a94c0e0364fb7c2fa97f942fbd79"
+    },
+    {
+      "path": "tahoe4-after/gallery-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 669085,
+      "sha256": "78e4ecd4dd4c3457ccab71533ed4649f76a3cc1543f2fe39784e832e34fca57e"
+    },
+    {
+      "path": "tahoe4-after/gallery-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 821249,
+      "sha256": "ef4034fdd6bf20253bc04385a35f8a595a7065f2a2d0bae0353ac97e29748523"
+    },
+    {
+      "path": "tahoe4-after/gallery-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 123781,
+      "sha256": "051d2d23121f09049cfdc5401ce2f50329c50842a0976470d14ab10d8e3315e9"
+    },
+    {
+      "path": "tahoe4-after/notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 621290,
+      "sha256": "a0fe7e742a4c0adb4aff7d53bbbd43d76187126e66c127de40598e6ff5db09f6"
+    },
+    {
+      "path": "tahoe4-after/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 818885,
+      "sha256": "e3bce7fa6738dad0937a0ce89c5568d3f2bd8b75c996c891b93f9ff324ed3494"
+    },
+    {
+      "path": "tahoe4-after/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 129428,
+      "sha256": "2e1b58c1fc6455bf2f49b4511a959d6c9cbf4405b9653e42b23cfbf7238f37a9"
+    },
+    {
+      "path": "tahoe4-after/spotlight-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 234785,
+      "sha256": "5025e0cdcdb9a3b90760dbbb379d35b795517499f98fc9e149f9b23150c6ea88"
+    },
+    {
+      "path": "tahoe4-after/spotlight-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 239841,
+      "sha256": "5e83e08034d7513b596000c747ec1f9d4ea06ff78496d4e7fd335eef2ae37e94"
+    },
+    {
+      "path": "tahoe4-after/spotlight-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 90905,
+      "sha256": "592d721f17035fa7d1849530df6620d9a0e2726585b98b9c8a285a38a6722d0c"
+    },
+    {
+      "path": "tahoe4-before/apps-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 624127,
+      "sha256": "49c44c5e157f126635aa89778f0e05ee5cdf47990a68c71078ec8e946f8988c1"
+    },
+    {
+      "path": "tahoe4-before/apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 803815,
+      "sha256": "28bfc568b7a414047f4eef5304c9a3326c02d8d4ce040f4b6d5fcc1902f88b90"
+    },
+    {
+      "path": "tahoe4-before/apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 95126,
+      "sha256": "ed69ced7895d336f4bc1101fea922ba2c152197bd63cd014a556c7efe7338cfd"
+    },
+    {
+      "path": "tahoe4-before/control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 671362,
+      "sha256": "53f9d8491b74b22862ac8a94b5a6989ca2f886df5a5317dbf8429ac653f3246f"
+    },
+    {
+      "path": "tahoe4-before/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 814934,
+      "sha256": "075de3f028977274ebc43b0b58022d4c874ac2ad151c6759dbc641a1ba6c49b2"
+    },
+    {
+      "path": "tahoe4-before/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 137977,
+      "sha256": "00ad55f8a424c9f3faae90e585ac1a1c88436482ebf421aa0219661b6b20d550"
+    },
+    {
+      "path": "tahoe4-before/desktop-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 649151,
+      "sha256": "af4e9e5279bd015aa1bcf087521df5f2265afdd16bedc265f1ce86ec1f9796bb"
+    },
+    {
+      "path": "tahoe4-before/desktop-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 778889,
+      "sha256": "4b7c0b0738512d3554ca78c9633c447ff6aef44e2fb2b05cae9a6fee2646392f"
+    },
+    {
+      "path": "tahoe4-before/desktop-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 157664,
+      "sha256": "6e03af741b460f641778f88fdbb0a57e8b1d75c3fc72f03b92c093a342b09082"
+    },
+    {
+      "path": "tahoe4-before/gallery-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 658590,
+      "sha256": "f18730465454daf9f4fde2031a010ddbdd5fc67dc74f747e9e7ad2fd8891a214"
+    },
+    {
+      "path": "tahoe4-before/gallery-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 796790,
+      "sha256": "d61983eeb068f5bc6f62c8a35f201ec2fc4f3fef898f5899018a5464ab90a4b1"
+    },
+    {
+      "path": "tahoe4-before/gallery-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 137420,
+      "sha256": "2d64af082dcadbb894cf97c42058493d10a7cf5c6721bc28a9e459dc7eec46e7"
+    },
+    {
+      "path": "tahoe4-before/notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 615371,
+      "sha256": "30fef70f75c3a8952e23430b96e5c7b330b2dd54c94c50b4b1f979079e8fbc7b"
+    },
+    {
+      "path": "tahoe4-before/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 801025,
+      "sha256": "47db8d4c40af3dbdb707829129898302a86f1216ea92bc97c53937380afcad3d"
+    },
+    {
+      "path": "tahoe4-before/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 123353,
+      "sha256": "76064c9b374a436fd91f9995948686bfd6a1f2d9299a72da27cb3161170e5ad1"
+    },
+    {
+      "path": "tahoe4-before/spotlight-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 224702,
+      "sha256": "30fda227f0e67aedc46cc73b262bcc9eaf0bfdf38a6d1c07ecdde2aac1a4d6b8"
+    },
+    {
+      "path": "tahoe4-before/spotlight-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 237444,
+      "sha256": "f900e81365a61fa2db3de0e58da202181f66360135754f1b3d9ef04ec7e45e22"
+    },
+    {
+      "path": "tahoe4-before/spotlight-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 88468,
+      "sha256": "1692c855e3653e0cc254c7a300b41b443ff07837f65040251ac1ad382bd3a504"
+    },
+    {
+      "path": "tahoe4-diagnostic/context-loss-css-fallback.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 152438,
+      "sha256": "54bb553edfe78c823b77092619b8f0867e2ee9ff0ba62bea0bd0e7bea6f824bc"
+    },
+    {
+      "path": "tahoe4-diagnostic/context-restored.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 177728,
+      "sha256": "782ab9cf6d502a47b50eb7978b46cf1a6606c22e14c5a034a140b65561d558b6"
+    },
+    {
+      "path": "tahoe4-diagnostic/integrated-diagnostic.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 177927,
+      "sha256": "32b6b4afc2d29aed8c1375f1826bad53432ff1d7a611f53371f29904dbc165fd"
+    },
+    {
+      "path": "tahoe4-diagnostic/reduced-transparency.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 115372,
+      "sha256": "53577abc7bb278216d6a175a85edb9cca28f89f4b38b9a6dd7b9c034d071ccad"
+    },
+    {
+      "path": "tahoe4-integrated/apps-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 657670,
+      "sha256": "25635229961839a0fd1cb33d32b9d038b5b95efddd26cd5b66584bb7e47d71ac"
+    },
+    {
+      "path": "tahoe4-integrated/apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 876054,
+      "sha256": "881fae079b91b53d2397ccd2cabb7318871c502aa9202ec38fa7a6625e4c06ca"
+    },
+    {
+      "path": "tahoe4-integrated/apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 99630,
+      "sha256": "967ba89aba3df1b4978654670dda0323f45d50f791b305fc8f6981957f80679d"
+    },
+    {
+      "path": "tahoe4-integrated/control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 771171,
+      "sha256": "666192646f35f11c30d98b61380ccb9b5ab47215cd742ce235f184b3bbb0c9dd"
+    },
+    {
+      "path": "tahoe4-integrated/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 941329,
+      "sha256": "d904e6c4e230b9543ac4231d577bf8d9ed094d32d3f92a6bb184e262a3581b15"
+    },
+    {
+      "path": "tahoe4-integrated/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 140220,
+      "sha256": "0f32fb5ee696b266b8416665302090f0927b285247222899c971a9c282932e6e"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 773828,
+      "sha256": "2ceb92fd2e2505335e1cab3e4f6c9dc5f9d154517d357d59d5678fdefa263065"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 928374,
+      "sha256": "9ff38d746f507183b42fd9fa0b9b799dc773699d1b79d07c56f2ee7d28a46237"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 129829,
+      "sha256": "e0581aeb04901e99153b9aafe7abca1bc73ece4d0ade0c460af20b23607e4857"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-composition.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 865741,
+      "sha256": "86eaf3608f2644ef6d8a79f13407df9f9791b2f4e0fab6153d2d0df43877b9f2"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-large-dial.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 936323,
+      "sha256": "616cfbc0776a92aa7cd2715cfd73890a96d9c8e16ddc845fe9ea3cce86544e3d"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-real-data.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 938055,
+      "sha256": "a15302c17a822f16dc9c5b5f4faa5dee2bef16cd92f8c392c1f8c7386a240003"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-seven-widgets.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 932980,
+      "sha256": "6890450ed2048cd1c3a1c60583164377697f93f8fa90fbbac78dddfa1fc84e89"
+    },
+    {
+      "path": "tahoe4-integrated/desktop-workspace.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 825660,
+      "sha256": "318c2b052fb17b545523eac049676cb9ba653b4c02f6bafd572a36f30a751d7c"
+    },
+    {
+      "path": "tahoe4-integrated/dock-menu.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 919958,
+      "sha256": "69bcf1fe32115c4b9178b765052b2decd8d44d2147a50e2b994ccbc9a6ecd78d"
+    },
+    {
+      "path": "tahoe4-integrated/editor-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 750411,
+      "sha256": "9e6afc38027ac620f2d9c64c0d04713170f1b1cb01a37f420545fed6d810105e"
+    },
+    {
+      "path": "tahoe4-integrated/editor-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 918993,
+      "sha256": "60dbf0bb95e9751865b0fc6665bb39e0da02d4b1bafa1e906db510ea04192354"
+    },
+    {
+      "path": "tahoe4-integrated/editor-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 116981,
+      "sha256": "3832c98db925baf4d929598c0320457ea233e1dc365dbfc082ae95c56442d860"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-calendar.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 842578,
+      "sha256": "ec8447efa195c2643c2249329db861ecb38ca8ee1eaf9f7658526a4e44f61c7f"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-clock.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 824031,
+      "sha256": "51acc9bce8655c514480c96d377e4c8f1cf7e2e3bf823e203d5aefbff1977de5"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-image.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 929631,
+      "sha256": "36f61a9056d7a619f2c0dd4caba3a20ffc8ba7cd1c3947c826796c2cbdb503fc"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-large-dial.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 940358,
+      "sha256": "4dfa974807c112c24bb3fa46fcbdb27f791f57437b19747432de6cd72299cef5"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-music.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 913584,
+      "sha256": "f025bef4137b5b2fc6032241d87353b4857b8a0f6d3e4e05ce5591de2d6ae54d"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-notes.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 885238,
+      "sha256": "5eb9b35ba0dbff2525ff5f3e9a58e6722ab26cc85daa82d69ac6baf562ba6ada"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-reminders.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 896992,
+      "sha256": "0d219b40a3a7ccef264101a0e48c6df5cfae1b1adcfd3c175c675e53d97dea36"
+    },
+    {
+      "path": "tahoe4-integrated/gallery-weather.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 939947,
+      "sha256": "5aa4ea8c7809819598f0df2de63c851929fa2e741343a2348bf73d78afe8bdb0"
+    },
+    {
+      "path": "tahoe4-integrated/large-calendar-real-event.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 878962,
+      "sha256": "c986572c7f97499e7bb9e0ac753e33c36baf2b9127ddebb744738a3cd25af69a"
+    },
+    {
+      "path": "tahoe4-integrated/notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 631664,
+      "sha256": "b27494111ccefc21e95b2d119a4bc1323b069a62da15ee9b1d299339baa11919"
+    },
+    {
+      "path": "tahoe4-integrated/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 871182,
+      "sha256": "a05a40cb01de80f5d768b4f478432896bdd456363b336132b03c35538385bf3f"
+    },
+    {
+      "path": "tahoe4-integrated/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 127398,
+      "sha256": "b965f7290e36e5da38f7370e5d83e83ca91e05d934724301b2fc03cf09b53940"
+    },
+    {
+      "path": "tahoe4-integrated/spotlight-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 294918,
+      "sha256": "62aed01944759875b09aa1d6cdc0ee52c5223180c4a03efe88937d5c334180cf"
+    },
+    {
+      "path": "tahoe4-integrated/spotlight-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 302015,
+      "sha256": "dbde97e4c0528bcd90b0167193f6877c2f723ae7734c056db692ce373ec8f04a"
+    },
+    {
+      "path": "tahoe4-integrated/spotlight-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 86398,
+      "sha256": "756f75afa72d01b0af480c27adaf13981df80094fb2937817b14293ffa007d6a"
+    },
+    {
+      "path": "tahoe4-integrated/widgets-page-1-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 129829,
+      "sha256": "e0581aeb04901e99153b9aafe7abca1bc73ece4d0ade0c460af20b23607e4857"
+    },
+    {
+      "path": "tahoe4-integrated/widgets-page-2-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 161453,
+      "sha256": "74986f0ec8fa1d04117e85670100ce9ab433c1ac6d4d879c283b3116f6f62784"
+    },
+    {
+      "path": "tahoe4-integrated/widgets-page-3-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 151182,
+      "sha256": "3644d92f781c22b747352c06abbc87d62969ccd4e24424db23c928b6c703355e"
+    },
+    {
+      "path": "tahoe4-integrated/widgets-page-4-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 152966,
+      "sha256": "9d36c30a822c3842e4e40cb2aa7a957ffb51ed62d03eaca04df9214ef0426ae6"
+    },
+    {
+      "path": "tahoe4-integrated/window-overview.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 893987,
+      "sha256": "6cc68e725fd2ec2e368a8f18fe65eb582288575f05bc2b2d1e3b7a2d3a749f70"
+    },
+    {
+      "path": "tahoe4-pages/page-1.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 166106,
+      "sha256": "04519fd07c99b796f144b8ef7674683627674ce94530c1dcbdf6be785e750794"
+    },
+    {
+      "path": "tahoe4-pages/page-2.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 149266,
+      "sha256": "5f85644dac2ec4bae2ff5d727ec768d3b2e6d15b9198d88ad05ac9f2b1b1c798"
+    },
+    {
+      "path": "tahoe4-pages/page-3.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 149565,
+      "sha256": "548d2b812c20c293e44fd73abe3b222e866abffd272d0642498983f344e1fd1e"
+    },
+    {
+      "path": "tahoe4-pages/page-4.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 147725,
+      "sha256": "2af9f7c5473b6ef1703e035f90f82078409e2133b7fe20de6b5054b0dd1ad14f"
+    },
+    {
+      "path": "tahoe4-regression/calendar-open-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 649657,
+      "sha256": "b6d53e9691158f6f52954f8067e4022ba2788b64123d791536ff8d1ea9f34348"
+    },
+    {
+      "path": "tahoe4-regression/calendar-open-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 789818,
+      "sha256": "a08c45fac67071ab2e5ae161ab7b9686144ab06d873c042546818ecfd2f74172"
+    },
+    {
+      "path": "tahoe4-regression/calendar-open-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 130809,
+      "sha256": "ace7e976088f5d8edf2cff7e9613ec7c231d7d29f21976ed7a66bba734fa4fc4"
+    },
+    {
+      "path": "tahoe4-regression/cloud1-settings-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 623479,
+      "sha256": "d6e9d2d36b490959a029cbbb8b1edaa1f552730f68a0ca202ef623bf8c8c56be"
+    },
+    {
+      "path": "tahoe4-regression/cloud1-settings-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 740715,
+      "sha256": "271f6ec0e6865f7a6a37238b16e9a893ff8104983581629f1951a6817813a718"
+    },
+    {
+      "path": "tahoe4-regression/cloud1-settings-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 91758,
+      "sha256": "453b581ba85f859c808410ae198a86175aaab395990320478c06105220f4736e"
+    },
+    {
+      "path": "tahoe4-regression/deep-control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 635119,
+      "sha256": "87c5083535f4fa4a1a5a9398cee973fad58d9fef37bf3027fae53b3f406bd9f5"
+    },
+    {
+      "path": "tahoe4-regression/deep-control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 826748,
+      "sha256": "6f399c808c4dcd3eade798b57d8d8f9888af91c407c77db66a0cd661ba2e7054"
+    },
+    {
+      "path": "tahoe4-regression/deep-control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 111373,
+      "sha256": "d5c51b751e1730647a74bda1c359080168bbd9cddaf88df125268665dd92e8cc"
+    },
+    {
+      "path": "tahoe4-regression/deep-dock-menu-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 682661,
+      "sha256": "4bec2d31a07a851155598b65e04903593f80093f7d83d495f4e3e7da52100453"
+    },
+    {
+      "path": "tahoe4-regression/deep-dock-menu-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 875166,
+      "sha256": "d153a445074b6632e18a328004f49cb0aa4430265d90646ba32f27ce4d79af79"
+    },
+    {
+      "path": "tahoe4-regression/deep-dock-menu-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 121643,
+      "sha256": "085dad99636312e531c0544a90bf2ccf779fc64a73018ce95fa7906246f21b95"
+    },
+    {
+      "path": "tahoe4-regression/deep-notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 624503,
+      "sha256": "40a4752a082e9b325dae57bd3e5523a4a18e9a35af93b8f1f9981f764dade547"
+    },
+    {
+      "path": "tahoe4-regression/deep-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 777994,
+      "sha256": "327af5ecb49eaf71f0fd731909f4795171f47ed5dea3d6fd2f6b1f0177290f2a"
+    },
+    {
+      "path": "tahoe4-regression/deep-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 123216,
+      "sha256": "a7f86be785300041ba762658e06025f1fe18532cdb4df7f6396f3967bab8b159"
+    },
+    {
+      "path": "tahoe4-regression/deep-spotlight-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 270788,
+      "sha256": "11bba43e3da776c1767b5958a0dabb2ddc5412b0d3ae747f5e8c5f63e439e3b1"
+    },
+    {
+      "path": "tahoe4-regression/deep-spotlight-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 283714,
+      "sha256": "939139586c7d83b24cbd4e6d572e3adbc19a4c799d6a4f16dd25f187b2a03cc1"
+    },
+    {
+      "path": "tahoe4-regression/deep-spotlight-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 89023,
+      "sha256": "beb507f2613838e948921772246b9a96cc492834e7623e6d63d88c446240209f"
+    },
+    {
+      "path": "tahoe4-regression/deep-widgets-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 632790,
+      "sha256": "8eea04721889bbcfe5ff03ff5d0c3c9dcd7d802578e68384722dc8a35b757d3d"
+    },
+    {
+      "path": "tahoe4-regression/deep-widgets-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 821311,
+      "sha256": "b9186376dc7398bb3bdd13a5d27c1b76a0739238e221916e4fe1d9b05d6d1b6a"
+    },
+    {
+      "path": "tahoe4-regression/deep-widgets-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 111931,
+      "sha256": "395ff2edb857ba35a785b9d9eecb15a2403fdcd955b7050fd3da3d1e5e6a45db"
+    },
+    {
+      "path": "tahoe4-regression/r1-classic-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 600626,
+      "sha256": "d0aff170a3d81507362808c60f57153f9647ccfcd103141f3393fff3e3e1a7be"
+    },
+    {
+      "path": "tahoe4-regression/r1-classic-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 734350,
+      "sha256": "6c6def061b2272e51d0facc870fcd548fe793b56dfd7db5360da2e02c8d0a52c"
+    },
+    {
+      "path": "tahoe4-regression/r1-classic-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 134477,
+      "sha256": "470c454435271bf94c674faee96efdbc0c886455366752f0fb013888b4deba5c"
+    },
+    {
+      "path": "tahoe4-regression/r1-desktop-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 625593,
+      "sha256": "9bb5677844a0720c97faaff734af6e8ac5b2b584bc1cafdca84d92c79050a982"
+    },
+    {
+      "path": "tahoe4-regression/r1-desktop-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 734902,
+      "sha256": "2fff79c6c2ac869c2fbced588fdb233ebac2bca871a13cd3eceea66e6bd08202"
+    },
+    {
+      "path": "tahoe4-regression/r1-desktop-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 103123,
+      "sha256": "e76d04b8f28763dfbe1eaf29c770fb9cc7e7565e1034514846b71120ca072a57"
+    },
+    {
+      "path": "tahoe4-regression/r1-dock-1650.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 20617,
+      "sha256": "abc7b99aa815c5b7a6afcbb8a34a9e0bcfbd4c28978bc5921e28ab5f98aecd42"
+    },
+    {
+      "path": "tahoe4-regression/r1-dock-1920.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 20256,
+      "sha256": "1023a561aef88981935e08916bbe038576ecf66ae4f0f5749c7a3f419b7074fb"
+    },
+    {
+      "path": "tahoe4-regression/r1-dock-390.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 22132,
+      "sha256": "a49856697b0ab13e4c8fe3e4640a0d20fb67794d8522a7695ab8f513cb32ebed"
+    },
+    {
+      "path": "tahoe4-regression/r1-home-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 440133,
+      "sha256": "a6568a332d1d63565be57fb879917c28a7d126a11b1be0c8e42065b2d3f74b0c"
+    },
+    {
+      "path": "tahoe4-regression/r1-home-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 534053,
+      "sha256": "cd2417ffc95a6940d174051a8617820e2b38430d9a7cbd24770313874cb7989e"
+    },
+    {
+      "path": "tahoe4-regression/r1-home-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 86102,
+      "sha256": "503714631858fb9da2f5c59034c81c91306116744e46d698cf34a6b0e27cc5ef"
+    },
+    {
+      "path": "tahoe4-regression/r1-lockscreen-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 529362,
+      "sha256": "3066b058c76006c671d33c985b7af0534b47916e26cd9244d09925b6b7d60194"
+    },
+    {
+      "path": "tahoe4-regression/r1-lockscreen-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 650871,
+      "sha256": "7cf641304c05ba7dc909a5f5882547e389becd94f604d57c7a5a97fa77e15b6e"
+    },
+    {
+      "path": "tahoe4-regression/r1-lockscreen-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 140095,
+      "sha256": "00db5d3c8cc87f1f5c4732549d0972ead63e52b488c6099c6d75d46c4f6e3ca7"
+    },
+    {
+      "path": "tahoe4-regression/r1-notes-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 616790,
+      "sha256": "f7c9886979387af69d7414bb5977303096943fcc2b54c8ef5cb239c27581e447"
+    },
+    {
+      "path": "tahoe4-regression/r1-notes-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 740937,
+      "sha256": "9c74a25658ad5a845ad93597083b91f9562c1acc7ee9334aeac59c1df5fa4499"
+    },
+    {
+      "path": "tahoe4-regression/r1-notes-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 94364,
+      "sha256": "fec6a39dbdade565d221f77123309b45bb3ef52fc272af7c293ad53e8e487b09"
+    },
+    {
+      "path": "tahoe4-regression/r1-webgl-fallback-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 140872,
+      "sha256": "17fb0c0a0d4c76415cd6417379ed1820ecc5ca627107b8c8e2b45c3cff94010d"
+    },
+    {
+      "path": "tahoe4-search/calculator.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 239326,
+      "sha256": "232bddf1c06b6f8538a7094258bac3a4c6410efb72d2a5e7e6e4219d1102c279"
+    },
+    {
+      "path": "tahoe4-search/real-note-and-file-results.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 241847,
+      "sha256": "a5b6563fcfd14f0330b236eac288f88a93b59792f3bec7ede9c79f20b2e55618"
+    }
+  ]
+}
