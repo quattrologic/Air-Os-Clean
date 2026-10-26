@@ -17,7 +17,7 @@
 
   // Content-free confirmation belongs to this mounted app and its original login session.
   const owner=Promise.resolve(window.airOS?.currentUser?.()).then(user=>user?.preferenceSession).catch(()=>null);
-  let notifyActive=true;
+  let notifyActive=true,loadVersion=0;
   const closeButton=win.querySelector('.close');
   function stopNotifications(){
    notifyActive=false;document.removeEventListener('air-profile-changing',stopNotifications);
@@ -34,31 +34,33 @@
   }
   let notes=[],selected=null,loading=false,saving=false;
   const announce=text=>status.textContent=text;
+  const search=document.createElement('input');search.type='search';search.className='tahoe-note-search';search.placeholder='Notizen suchen';search.setAttribute('aria-label','Notiztitel suchen');list.before(search);search.addEventListener('input',()=>render());
   function render(){
    list.replaceChildren();
-   for(const note of notes){
+   for(const note of notes.filter(note=>!search.value||window.airTahoeAppModel.matches(note,search.value))){
     const button=document.createElement('button');button.type='button';button.className='air-note-item'+(selected===note.id?' selected':'');button.textContent=note.title.trim()||'Ohne Titel';
-    button.title=new Date(note.updatedAt).toLocaleString('de-DE');
+    button.title=note.title+' · '+new Date(note.updatedAt).toLocaleString('de-DE');button.setAttribute('aria-pressed',String(selected===note.id));
     button.addEventListener('click',()=>{if(!loading&&!saving)select(note)});list.append(button);
    }
+   if(!list.children.length){const empty=document.createElement('p');empty.className='tahoe-note-empty';empty.textContent=notes.length?'Keine passenden Notizen.':'Noch keine Notizen.';list.append(empty);}
   }
   function select(note){
    selected=note?.id||null;title.value=note?.title||'';body.value=note?.body||'';announce(selected?'Notiz geladen.':'Neue Notiz');render();
   }
   async function refresh(preferredId){
-   loading=true;announce('Notizen werden geladen …');
-   try{notes=await api.list();const chosen=notes.find(n=>n.id===preferredId)||notes[0]||null;select(chosen)}
+   if(!notifyActive||!win.isConnected)return;const version=++loadVersion;loading=true;announce('Notizen werden geladen …');
+   try{const loaded=await api.list();if(!notifyActive||!win.isConnected||version!==loadVersion)return;notes=loaded;const chosen=notes.find(n=>n.id===preferredId)||notes[0]||null;select(chosen)}
    catch(error){announce('Notizen konnten nicht geladen werden.');console.error(error)}
    finally{loading=false}
   }
   async function save(){
-   if(loading||saving)return;
+   if(loading||saving||!notifyActive||!win.isConnected)return;
    saving=true;saveButton.disabled=true;announce('Speichere …');
    try{
     const expectedSnapshot=notes.find(n=>n.id===selected);
     const saved=await api.save({id:selected,title:title.value,body:body.value,...(expectedSnapshot?{expectedSnapshot}: {})});
     // Only acknowledged saves emit a fixed, content-free local notification.
-    await notifyChange('air-notes-saved');
+    await notifyChange('air-notes-saved');if(!notifyActive||!win.isConnected)return;
     // A save acknowledges its submitted snapshot, not edits made while waiting.
     // Update the list from that acknowledgement without reloading the editor.
     const index=notes.findIndex(note=>note.id===saved.id);

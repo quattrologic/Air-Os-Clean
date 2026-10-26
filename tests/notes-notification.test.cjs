@@ -5,7 +5,7 @@ function fixture(save) {
   const events=[],elements=new Map();
   function element(){
     const listeners=new Map();
-    return {dataset:{},value:'',textContent:'',disabled:false,
+    return {before(){},setAttribute(){},dataset:{},value:'',textContent:'',disabled:false,
       addEventListener(type,fn){listeners.set(type,fn);},
       removeEventListener(type){listeners.delete(type);},
       emit(type){return listeners.get(type)?.();},replaceChildren(){},append(){}};

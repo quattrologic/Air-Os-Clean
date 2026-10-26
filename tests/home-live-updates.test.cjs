@@ -7,7 +7,7 @@ class El extends EventTarget{
  addEventListener(type,fn,options){super.addEventListener(type,fn,options);if(!this.handlers.has(type))this.handlers.set(type,new Set());this.handlers.get(type).add(fn)}
  removeEventListener(type,fn,options){super.removeEventListener(type,fn,options);this.handlers.get(type)?.delete(fn)}
  async emit(type){await Promise.all([...this.handlers.get(type)||[]].map(fn=>fn({preventDefault(){}})))}
- replaceChildren(){this.children=[]}append(...nodes){this.children.push(...nodes)}setAttribute(){}focus(){}
+ before(){}replaceChildren(){this.children=[]}append(...nodes){this.children.push(...nodes)}setAttribute(){}focus(){}
  classList={add(){}};
 }
 class Doc extends EventTarget{
@@ -25,7 +25,7 @@ function fixture(options={}){
  for(const type of ['air-notes-saved','air-notes-changed','air-reminders-changed'])document.addEventListener(type,e=>events.push(e));
  const write=async(kind,action,input)=>{const owner=user;if(gate)await gate();if(fail)throw Error('Write failed');return(kind==='notes'?notes:reminders)[action](owner,input)};
  window.airOS={currentUser:async()=>session?{preferenceSession:session}:null,notes:{list:async()=>notes.list(user),save:input=>write('notes','save',input),remove:id=>write('notes','remove',id)},reminders:{list:async()=>reminders.list(user),save:input=>write('reminders','save',input),remove:id=>write('reminders','remove',id)}};
- window.airAppRegistry={register(){}};
+ window.airAppRegistry={register(){}};window.airTahoeAppModel=require('../src/core/tahoe-app-model.js');
  class MutationObserver{observe(){}disconnect(){}}
  vm.createContext(window.context={window,document,MutationObserver,Event,Date,confirm:()=>true,console:{error(){}},openApp(){}});
  for(const file of ['air-notes.js','air-reminders.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'..',file),'utf8'),window.context);

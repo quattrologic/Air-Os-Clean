@@ -108,13 +108,19 @@
     return '<div class="air-mail-app"><div class="air-mail-mark">✉</div><h2>Mail verbinden</h2><p>Öffne deinen vorhandenen E-Mail-Dienst. Air-OS fragt keine Mail-Passwörter ab und zeigt keine erfundenen Nachrichten.</p><div class="air-mail-links"><button type="button" data-url="https://mail.google.com/">Gmail öffnen ↗</button><button type="button" data-url="https://outlook.live.com/mail/">Outlook öffnen ↗</button><button type="button" data-url="https://www.icloud.com/mail/">iCloud Mail öffnen ↗</button></div><p class="air-calendar-foot">Ein eingebauter Posteingang mit synchronisierten Nachrichten benötigt später eine sichere OAuth-Anbindung an deinen Anbieter.</p></div>';
   }
   const AIR_EVENTS_KEY='air-os-calendar-events-v1';
-  function calendarRead() { try { const data=JSON.parse(localStorage.getItem(AIR_EVENTS_KEY)||'[]');return Array.isArray(data)?data:[] } catch { return [] } }
-  function calendarWrite(events) { localStorage.setItem(AIR_EVENTS_KEY,JSON.stringify(events)); }
+  let calendarStore=null,calendarOpening=null;
+  function calendarRead() { if(!calendarStore)return [];const data=calendarStore.read();if(!Array.isArray(data))throw Error('Kalenderdaten sind ungültig.');return data; }
+  function calendarWrite(events) { if(!calendarStore)throw Error('Kalender benötigt eine gültige Sitzung.');calendarStore.write(events); }
+  async function mountCalendar(win){
+   const form=win.querySelector('#air-calendar-form');if(!form||win.dataset.calendarMounted)return;win.dataset.calendarMounted='1';const controls=[...form.elements];controls.forEach(c=>c.disabled=true);
+   try{calendarOpening??=window.airProfileLocal.open({api:window.airOS,storage:localStorage,base:AIR_EVENTS_KEY,empty:[],events:document});calendarStore=await calendarOpening;if(!win.isConnected)return;calendarRender(win);controls.forEach(c=>c.disabled=false);if(calendarStore.legacy)win.querySelector('.air-calendar-foot').textContent='Profilbezogener Kalender. Ältere nicht zugeordnete lokale Termine bleiben unverändert gespeichert; automatische Übernahme ist aus Datenschutzgründen ausgesetzt.';}
+   catch{win.querySelector('.air-calendar-foot').textContent='Kalender konnte nicht geladen werden. Fenster erneut öffnen.';calendarOpening=null;}
+  }
   function calendarRender(win) {
     const list=win.querySelector('#air-calendar-list');if(!list)return;
     const events=calendarRead().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));list.replaceChildren();
-    if(!events.length){const empty=document.createElement('p');empty.className='air-calendar-empty';empty.textContent='Noch keine Termine. Füge oben deinen ersten Termin hinzu.';list.appendChild(empty);return}
-    for(const event of events){const row=document.createElement('article');row.className='air-calendar-event';const date=document.createElement('time');date.textContent=new Date(event.date+'T'+(event.time||'00:00')).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short',year:'numeric'})+' · '+event.time;const body=document.createElement('div');const title=document.createElement('strong');title.textContent=event.title;body.append(title);if(event.note){const note=document.createElement('p');note.textContent=event.note;body.append(note)}const remove=document.createElement('button');remove.type='button';remove.textContent='Entfernen';remove.setAttribute('aria-label','Termin '+event.title+' entfernen');remove.addEventListener('click',()=>{calendarWrite(calendarRead().filter(item=>item.id!==event.id));calendarRender(win)});row.append(date,body,remove);list.appendChild(row)}
+    if(!events.length){const empty=document.createElement('p');empty.className='air-calendar-empty';empty.textContent='Noch keine Termine. Füge oben deinen ersten Termin hinzu.';list.appendChild(empty);win.dispatchEvent(new Event('air-calendar-rendered'));return}
+    for(const event of events){const row=document.createElement('article');row.className='air-calendar-event';row.dataset.eventDate=event.date;const date=document.createElement('time');date.textContent=new Date(event.date+'T'+(event.time||'00:00')).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short',year:'numeric'})+' · '+event.time;const body=document.createElement('div');const title=document.createElement('strong');title.textContent=event.title;body.append(title);if(event.note){const note=document.createElement('p');note.textContent=event.note;body.append(note)}const remove=document.createElement('button');remove.type='button';remove.textContent='Entfernen';remove.setAttribute('aria-label','Termin '+event.title+' entfernen');remove.addEventListener('click',()=>{calendarWrite(calendarRead().filter(item=>item.id!==event.id));calendarRender(win)});row.append(date,body,remove);list.appendChild(row)}win.dispatchEvent(new Event('air-calendar-rendered'));
   }
   function calendarExport(win) {
     const events=calendarRead();if(!events.length){toast('Noch keine Termine zum Exportieren.');return}
@@ -197,7 +203,7 @@
     if(openDownloads){const win=openDownloads.closest('.app-window');const finder=document.querySelector('.dock-app[data-app="finder"]');if(finder)finder.click();const choose=win&&win.querySelector('[data-air-action="choose-folder"]');if(choose)setTimeout(()=>choose.click(),0);}
   });
 
-  document.addEventListener('click',event=>{const cal=event.target.closest('.app-window');if(cal&&cal.querySelector('#air-calendar-list')&&!cal.dataset.calendarReady){cal.dataset.calendarReady='1';calendarRender(cal)}});
+  document.addEventListener('click',event=>{const cal=event.target.closest('.app-window');if(calendarStore&&cal&&cal.querySelector('#air-calendar-list')&&!cal.dataset.calendarReady){cal.dataset.calendarReady='1';calendarRender(cal)}});
 
   function setFileStatus(win, message) {
     const label = win.querySelector('#air-files-status-text');
@@ -220,9 +226,11 @@
   }
   async function loadDirectory(win, relativePath) {
     const state = fileStates.get(win);
-    if (!state) return;
+    if (!state||!win.isConnected) return;const version=state.loadVersion=(state.loadVersion||0)+1;
+    setFileStatus(win,'Ordner wird geladen …');
     try {
       const result = await window.airOS.files.listDirectory(relativePath || '');
+      if(!win.isConnected||version!==state.loadVersion)return;
       state.currentPath = result.path || '';
       state.parentPath = result.parentPath || '';
       state.rootName = result.rootName || 'Ordner';
@@ -230,8 +238,8 @@
       const location = win.querySelector('#air-files-location');
       if (location) location.textContent = [state.rootName, state.currentPath].filter(Boolean).join(' › ');
       const up = win.querySelector('[data-air-action="up"]');
-      if (up) up.disabled = !state.currentPath;
       setWorkspaceUI(win, true);
+      if (up) up.disabled = !state.currentPath;
       renderFileEntries(win);
       const editor = win.querySelector('#air-files-editor');
       if (editor && !editor.hidden && state.editorPath) {
@@ -240,7 +248,8 @@
       }
       setFileStatus(win, state.items.length + (state.items.length === 1 ? ' Objekt' : ' Objekte'));
     } catch (error) {
-      setWorkspaceUI(win, false);
+      if(!win.isConnected||version!==state.loadVersion)return;setWorkspaceUI(win, false);
+      const retry=win.querySelector('[data-air-action=refresh]');if(retry&&state.rootName)retry.disabled=false;
       setFileStatus(win, error && error.message ? error.message : 'Der Ordner konnte nicht geöffnet werden.');
     }
   }
@@ -260,6 +269,7 @@
       </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button><button type="button" class="air-file-duplicate" data-air-action="rename-item" data-path="${escapeHTML(item.path)}" title="Datei umbenennen" aria-label="${escapeHTML(item.name)} umbenennen">✎</button>` : ''}</div>`).join('');
     if (noResults) noResults.hidden = items.length > 0;
     container.hidden = false;
+    window.airTahoeApps?.paintFiles(win);
   }
   function closeFileEditor(win) {
     const state = fileStates.get(win);
@@ -316,7 +326,7 @@
   async function createTextFile(win) {
     const state = fileStates.get(win);
     if (!state || state.rootName == null) return;
-    let name = window.prompt('Name der neuen Textdatei:', 'Neue Notiz.txt');
+    let name = await window.airTahoeApps.prompt('Name der neuen Textdatei:', 'Neue Notiz.txt');
     if (name == null) return;
     name = name.trim();
     if (!name || name === '.' || name === '..' || /[\\/]/.test(name) || name.length > 120) {
@@ -392,7 +402,7 @@
         } else if (action === 'rename-item') {
           const source=control.dataset.path;
           const name=source.split('/').pop();
-          const requested=window.prompt('Neuer Dateiname:',name);
+          const requested=await window.airTahoeApps.prompt('Neuer Dateiname:',name);
           if(requested===null)return;
           if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
           const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
@@ -402,7 +412,7 @@
         } else if (action === 'duplicate-item') {
           const source=control.dataset.path;
           const name=source.split('/').pop();
-          const requested=window.prompt('Name der Dateikopie:', 'Kopie von '+name);
+          const requested=await window.airTahoeApps.prompt('Name der Dateikopie:', 'Kopie von '+name);
           if(requested===null)return;
           if(!requested.trim())throw new Error('Bitte einen gültigen Dateinamen angeben.');
           const destination=[state.currentPath,requested.trim()].filter(Boolean).join('/');
@@ -410,7 +420,7 @@
           await loadDirectory(win,state.currentPath);
           setFileStatus(win,'Datei kopiert.');
         } else if (action === 'new-folder') {
-          const folderName=window.prompt('Name des neuen Ordners:');
+          const folderName=await window.airTahoeApps.prompt('Name des neuen Ordners:');
           if(folderName===null)return;
           if(!folderName.trim())throw new Error('Bitte einen Ordnernamen angeben.');
           const relative=[state.currentPath,folderName.trim()].filter(Boolean).join('/');
@@ -643,6 +653,7 @@
 
   function initializeWindow(win) {
     if (!(win instanceof HTMLElement)) return;
+    if (win.querySelector('.air-calendar-app')) mountCalendar(win);
     if (win.querySelector('.airmusic')) window.airMusic?.mount(win);
     if (win.querySelector('.air-files-app')) mountFiles(win);
     if (win.querySelector('.arcade-library')) window.airArcadeGames?.mount(win);

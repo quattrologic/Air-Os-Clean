@@ -33,7 +33,8 @@ test('Tahoe icon painter uses safe images only in Modern and leaves Classic to o
 test('Tahoe is a Modern component layer without shell geometry or animation ownership',()=>{
  const css=fs.readFileSync('air-tahoe.css','utf8');a.match(css,/prefers-reduced-motion/);a.match(css,/forced-colors/);a.match(css,/glass2-active\{background:transparent/);
  a.doesNotMatch(css,/\.(?:dock|air-island-toggle)\s*\{/);
- a.doesNotMatch(css,/animation:|setInterval|z-index:/);a.match(css,/not\(\.air-home-window\)/);a.match(css,/--tahoe-workspace:#f8f7f3/);
+ // Menus own a bounded overlay layer, never the window or shell stacking.
+ a.doesNotMatch(css.replace(/html\[data-desktop-theme="modern"\] \.tahoe-context-menu\{[^}]*\}/g,''),/animation:|setInterval|z-index:/);a.match(css,/not\(\.air-home-window\)/);a.match(css,/--tahoe-workspace:#f8f7f3/);
 });
 test('Tahoe originals, licenses, metadata and UI dependencies are packaged for offline Electron/PWA use',()=>{
  const files=require('../scripts/windows-test-build.cjs').runtimeFiles(process.cwd());

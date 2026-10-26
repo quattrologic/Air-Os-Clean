@@ -12,7 +12,7 @@ function fixture(initial=[]){
  const inputs=[],events=[],elements=new Map();let finish,fail,listCalls=0,removals=0;
  function element(){
   const listeners=new Map();
-  return {dataset:{},value:'',textContent:'',disabled:false,children:[],
+  return {before(){},setAttribute(){},dataset:{},value:'',textContent:'',disabled:false,children:[],
    addEventListener:(type,fn)=>listeners.set(type,fn),removeEventListener:(type)=>listeners.delete(type),emit:type=>listeners.get(type)?.(),
    replaceChildren(){this.children=[]},append(node){this.children.push(node)}};
  }

@@ -31,7 +31,9 @@
    }catch{ /* A stale/unavailable session must never publish a change into another profile. */ }
   }
   let entries=[],selected=null,busy=false;
-  function inform(message){status.textContent=message}
+  const search=document.createElement('input');search.type='search';search.className='tahoe-reminder-search';search.placeholder='Aufgaben suchen';search.setAttribute('aria-label','Aufgaben suchen');
+  const filter=document.createElement('select');filter.className='tahoe-reminder-filter';filter.setAttribute('aria-label','Aufgaben filtern');for(const [value,label]of [['all','Alle Aufgaben'],['open','Offen'],['done','Erledigt'],['today','Heute'],['overdue','Überfällig']]){const o=document.createElement('option');o.value=value;o.textContent=label;filter.append(o);}filter.value='all';list.before(search,filter);search.oninput=()=>draw();filter.onchange=()=>draw();
+  function inform(message){if(notifyActive&&win.isConnected)status.textContent=message}
   function select(item){
    selected=item?.id||null;title.value=item?.title||'';details.value=item?.details||'';
    date.value=item?.dueDate||'';priority.value=item?.priority||'none';done.checked=!!item?.completed;del.disabled=!selected;
@@ -39,7 +41,7 @@
   }
   function draw(){
    list.replaceChildren();
-   const sorted=[...entries].sort((a,b)=>Number(a.completed)-Number(b.completed)||(a.dueDate||'9999').localeCompare(b.dueDate||'9999')||a.title.localeCompare(b.title,'de-DE'));
+   const sorted=[...entries].filter(item=>window.airTahoeAppModel.reminder(item,filter.value,search.value)).sort((a,b)=>Number(a.completed)-Number(b.completed)||(a.dueDate||'9999').localeCompare(b.dueDate||'9999')||a.title.localeCompare(b.title,'de-DE'));
    for(const item of sorted){
     const row=document.createElement('div');row.className='arem-row'+(selected===item.id?' selected':'');
     const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=!!item.completed;checkbox.setAttribute('aria-label',item.title+' als erledigt markieren');
@@ -50,7 +52,7 @@
      catch(e){checkbox.checked=!checkbox.checked;inform(e.message||'Speichern fehlgeschlagen.')}
      finally{busy=false;checkbox.disabled=false;draw()}
     });
-    const button=document.createElement('button');button.type='button';button.className='arem-item';
+    const button=document.createElement('button');button.type='button';button.className='arem-item';button.setAttribute('aria-pressed',String(selected===item.id));
     const name=document.createElement('strong');name.textContent=item.title;
     const info=document.createElement('small');info.textContent=item.dueDate?'Fällig: '+new Date(item.dueDate+'T12:00:00').toLocaleDateString('de-DE'):'Ohne Fälligkeitsdatum';
     if(item.completed)name.classList.add('arem-crossed');
@@ -58,10 +60,10 @@
     row.append(checkbox,button);list.append(row);
    }
    count.textContent=entries.filter(e=>!e.completed).length+' offen · '+entries.length+' insgesamt';
-   if(!entries.length){const p=document.createElement('p');p.className='arem-empty';p.textContent='Noch keine Aufgaben. Erstelle deine erste Erinnerung.';list.append(p)}
+   if(!sorted.length){const p=document.createElement('p');p.className='arem-empty';p.textContent=entries.length?'Keine Aufgaben für diesen Filter.':'Noch keine Aufgaben. Erstelle deine erste Erinnerung.';list.append(p)}
   }
   async function refresh(id){
-   entries=await api.list();const item=entries.find(e=>e.id===id)||null;select(item);
+   if(!notifyActive||!win.isConnected)return;const loaded=await api.list();if(!notifyActive||!win.isConnected)return;entries=loaded;const item=entries.find(e=>e.id===id)||null;select(item);
   }
   q('.arem-new').addEventListener('click',()=>{select(null);inform('Neue Erinnerung.');title.focus()});
   form.addEventListener('submit',async event=>{
