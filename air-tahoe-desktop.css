@@ -19,14 +19,15 @@ html[data-desktop-theme="modern"] .deep-widget .widget-artist{overflow:hidden;te
 html[data-desktop-theme="modern"] .deep-widget [data-media-action]{min-width:32px;margin:4px}
 html[data-desktop-theme="modern"] .widget-photo{width:100%;height:calc(100% - 30px);max-height:280px;object-fit:cover;display:block;border-radius:var(--tahoe-menu-radius)}
 html[data-desktop-theme="modern"] .widget-image-picker{display:block;font-size:12px;margin-top:6px}
-html[data-desktop-theme="modern"] .widget-image-picker input{display:block;max-width:100%;font:inherit;font-size:11px;margin-top:4px}
+html[data-desktop-theme="modern"] .widget-image-picker input{display:block;max-width:100%;font:inherit;font-size:11px;margin-top:4px;color:inherit}
+html[data-desktop-theme="modern"] .widget-image-picker input::file-selector-button{color:inherit;background:#ffffff0c;border:1px solid #ffffff30;border-radius:var(--tahoe-button-radius);font:inherit;padding:4px 6px;cursor:pointer}
 html[data-desktop-theme="modern"] .deep-widget[data-widget=image] .deep-widget-content{display:flex;flex-direction:column;height:calc(100% - 22px)}
 html[data-desktop-theme="modern"] .deep-widget[data-widget=image] .widget-photo{flex:1;min-height:0;height:auto;max-height:none}
 html[data-desktop-theme="modern"] .deep-widget [data-media-action]{font-variant-emoji:text}
-html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .widget-calendar-grid button{min-height:12px;line-height:12px}
-html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .widget-calendar-grid{gap:1px}
-html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) .deep-widget-content>p{display:none}
-html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=legacy]) button{min-height:20px;font-size:10px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=medium],[data-widget-size=legacy]) .widget-calendar-grid button{min-height:12px;line-height:12px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=medium],[data-widget-size=legacy]) .widget-calendar-grid{gap:1px}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=medium],[data-widget-size=legacy]) .deep-widget-content>p{display:none}
+html[data-desktop-theme="modern"] .deep-widget[data-widget=calendar]:is([data-widget-size=small],[data-widget-size=medium],[data-widget-size=legacy]) button{min-height:20px;font-size:10px}
 html[data-desktop-theme="modern"] .widget-month-nav{display:flex;align-items:center;justify-content:space-between;gap:3px;font-size:12px}
 html[data-desktop-theme="modern"] .widget-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;font-size:10px;margin-top:4px;text-align:center}
 html[data-desktop-theme="modern"] .widget-calendar-grid button{border:0;min-height:14px;padding:0;font-size:10px;line-height:16px}

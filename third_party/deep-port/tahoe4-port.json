@@ -1,0 +1,27 @@
+{
+  "upstream": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT; Copyright (c) 2026 Rickky; LICENSE in this directory",
+  "sources": {
+    "MacShell/MacWidgets.qml": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be",
+    "MacShell/WidgetVisual.qml": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8",
+    "MacShell/ClockWidget.qml": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+    "MacShell/CalendarWidget.qml": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9",
+    "MacShell/PlayerWidget.qml": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a",
+    "MacShell/ImageWidget.qml": "aeea6af41f8c5ad95dface4f5d1b76e28d9cc1b182384ffb47e6b2a345af5c5e",
+    "MacShell/MacBar.qml": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500"
+  },
+  "ported": {
+    "src/core/desktop-widgets.js": "MacWidgets dims/gridInfo/overlaps/nearestFreeSlot numerical bodies; bounds adapted for dock, firstLeft reverses scan preference, existing manual 8px movement retained. ClockWidget tickGeo ray/corner formula ported to SVG.",
+    "air-tahoe-desktop.css": "MacBar NotifBody 340px/min74px/44px/14px/15px; MacBar result46px and 160ms/4px stagger entrance in air-spotlight.js. Widget28px radius via existing GLASS-3.",
+    "air-deep-desktop.js": "MacBar NotifBody agoText thresholds localized; native Air-OS history/group actions; original existing control catalog/first-fit reused."
+  },
+  "adapted_not_full_ports": {
+    "WidgetVisual.qml": "Existing engine targets same widget hosts; no Qt component loader or QML execution.",
+    "CalendarWidget.qml": "Existing calendar month/date model and Air-OS profile service reused; not original ShaderEffect calendar implementation.",
+    "PlayerWidget.qml": "Existing real Air Music transport only; no MPRIS, no full original cover/lyrics/marquee.",
+    "ImageWidget.qml": "Explicit local raster selection replaces original file URL path; no automatic file reads."
+  },
+  "original_assets_added": 0,
+  "unchanged_licenses": "Existing MIT/OFL/GPL notices and upstream pins retained; no new third-party fonts/icons."
+}
