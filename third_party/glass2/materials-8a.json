@@ -1,6 +1,6 @@
 {
   "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
-  "license": "MIT; existing LICENSE and NOTICE retained",
+  "license": "MIT; existing LICENSE retained; NOTICE documents the8A adaptation",
   "sources": [
     {
       "source": "MacShell/MacDock.qml",

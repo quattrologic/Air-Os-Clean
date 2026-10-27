@@ -17,7 +17,7 @@ Nicht betroffene Popovers behalten ihre bisherigen Materialien. Bewusste Notes-/
 
 ## Originalparameter und Ausführungspfad
 
-MacShell **[1bdb51870b621100fd2709f66c8f8e00ab17b9c4](https://github.com/0-ss/MacShell/tree/1bdb51870b621100fd2709f66c8f8e00ab17b9c4)**, MIT, Copyright2026 Rickky. [Genaue Originalpfade, Zeilenbereiche, Hashes, Auszüge und Anpassungen](../third_party/glass2/materials-8a.json); bestehende [LICENSE](../third_party/glass2/LICENSE)/[NOTICE](../third_party/glass2/NOTICE) unverändert. Die vorhandenen originalen Shader und ihr reproduzierbarer GLSL-ES-Port wurden **nicht neu geschrieben**.
+MacShell **[1bdb51870b621100fd2709f66c8f8e00ab17b9c4](https://github.com/0-ss/MacShell/tree/1bdb51870b621100fd2709f66c8f8e00ab17b9c4)**, MIT, Copyright2026 Rickky. [Genaue Originalpfade, Zeilenbereiche, Hashes, Auszüge und Anpassungen](../third_party/glass2/materials-8a.json); bestehende [LICENSE](../third_party/glass2/LICENSE) unverändert, ergänzte [NOTICE](../third_party/glass2/NOTICE) für8A. Die vorhandenen originalen Shader und ihr reproduzierbarer GLSL-ES-Port wurden **nicht neu geschrieben**.
 
 `src/core/glass-geometry.js:material(kind,height)` → `air-desktop-glass.js:draw()` → derselbe Uniformbinder/Renderer. Diagnose-Snapshots enthalten nur Profilnamen und numerische Werte, keine Profil-/Fenster-/Notiztexte oder Gerätenamen.
 
@@ -47,7 +47,7 @@ Die bestehende gecachte WebGL-Wallpaper-Vorverarbeitung verwendet2px-Blur. Qt-Mu
 
 **467/467 Node-Tests bestanden,0Fehler/Skips**, einschließlich aller463 bisherigen Tests. Neue Regressionen prüfen Callsiteprofile, höhenabhängige Magnify-Werte, Originalauszüge/MIT-Hashes, echte Uniformbindung, sichere GPU-Guards, Wallpaperinvalidierung, Fallbackkonsolidierung und reduzierte Transparenz. Die erste neue Floatprüfung wurde auf eine numerisch sinnvolle Toleranz korrigiert; fehlgeschlagene Zwischenversuche werden nicht als Erfolg gezählt.
 
-**285 Runtime-Ressourcen** validiert; PWA mit273 allowlisted Assets gebaut, nicht veröffentlicht. [Test-TAP, Buildprüfungen und Messungen](visual/tahoe8a-evidence/).
+**286 Runtime-Ressourcen** validiert; PWA mit274 allowlisted Assets gebaut, nicht veröffentlicht. [Test-TAP, Buildprüfungen und Messungen](visual/tahoe8a-evidence/).
 
 Echte sandboxed Linux-x64-Electron44.9.3-Läufe bei **1920×1080,1650×930,390×600**, jeweils Vorher/Nachher mit demselben Preset und eigenen synthetischen Daten. Bei390 werden alle fünf Widgets über die echten drei Widgetseiten aufgenommen;390 ist ein schmaler CDP-Renderer bei nativer Mindestfensterbreite760, kein physisches390px-/iPad-Fenster. Normaler SwiftShader-Pfad: CSS-Fallback. Isolierte Shaderdiagnose: dieselbe Produktengine, drei kompilierte Programme, keine vorgetäuschte Hardwarefreigabe.
 

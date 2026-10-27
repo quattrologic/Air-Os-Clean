@@ -1,0 +1,10 @@
+MacShell — MIT Copyright (c) 2026 Rickky.
+https://github.com/0-ss/MacShell
+Pinned commit: 1bdb51870b621100fd2709f66c8f8e00ab17b9c4.
+The original LICENSE, dockglass.frag and contourglow.frag remain unmodified.
+Tahoe8A adds byte-preserved material-callsite excerpts from MacDock.qml,
+GlassSlab.qml, ClockWidget.qml, MacWidgets.qml and WidgetVisual.qml.
+See materials-8a.json for original paths, line ranges, hashes and adaptations.
+Actual material formulas are ported to the existing Air-OS WebGL2 renderer;
+CSS fallback adapts the original tint/gradient for Chromium compositing.
+No Qt/Hyprland runtime, system capture, or upstream endorsement implied.
