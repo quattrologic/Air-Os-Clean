@@ -1,0 +1,103 @@
+{
+  "run": "40556537389",
+  "job": "122373987725",
+  "steps": [
+    {
+      "name": "Set up job",
+      "outcome": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Require native Windows x64 and isolated R3 branch",
+      "outcome": "success"
+    },
+    {
+      "name": "Install unchanged frozen R1 modern toolchain",
+      "outcome": "success"
+    },
+    {
+      "name": "Mandatory dependency audit including development dependencies",
+      "outcome": "success"
+    },
+    {
+      "name": "Validate pinned Tahoe-7 source and all runtime assets",
+      "outcome": "success"
+    },
+    {
+      "name": "All regression and security tests",
+      "outcome": "success"
+    },
+    {
+      "name": "Prepare R3 identity from exact checkout",
+      "outcome": "success"
+    },
+    {
+      "name": "Build unsigned R3 Windows x64 NSIS without publishing",
+      "outcome": "success"
+    },
+    {
+      "name": "Verify all ASAR source bytes, x64 architecture, runtime payload and SHA256",
+      "outcome": "success"
+    },
+    {
+      "name": "Install actual R3 installer only into runner temporary directory",
+      "outcome": "success"
+    },
+    {
+      "name": "Installed native Electron profiles, Tahoe apps, M1 M2, audio, MRU, lock and fallback",
+      "outcome": "success"
+    },
+    {
+      "name": "Record actual outcomes without claiming physical hardware or SAC approval",
+      "outcome": "success"
+    },
+    {
+      "name": "Upload real R3 installer, checksum, metadata and instructions",
+      "outcome": "success"
+    },
+    {
+      "name": "Upload test logs, Windows screenshots, audit and failure evidence",
+      "outcome": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Complete job",
+      "outcome": "success"
+    }
+  ],
+  "commit": "a9971ccce381824f75dcd85383783a2b5b894457",
+  "productRuntimeCheckpoint": "cf004a2a905fd2c75fe5a6ae2e0b3911a529bdea",
+  "runUrl": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389",
+  "artifacts": [
+    {
+      "id": "12758730006",
+      "name": "Air-OS-R3-Windows-evidence-a9971ccce381824f75dcd85383783a2b5b894457-1",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389/artifacts/12758730006",
+      "archiveSha256": "ce5891dee72b36fcaf313b394c80b937dfab0b7c1aa06adc3df2ecadf4a3efeb"
+    },
+    {
+      "id": "12758625139",
+      "name": "Air-OS-Ultimate-Windows-x64-R3-a9971ccce381824f75dcd85383783a2b5b894457-967b4e482c0789279587bf903f822916121a917ac8363f374c31718e339feaf6-1",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389/artifacts/12758625139",
+      "archiveSha256": "407ddbfad6460f5fb5d34c7eeeec4843680258fe778179b06786828ff1ba64a4"
+    }
+  ],
+  "unsigned": true,
+  "physicalHardwareAccepted": false,
+  "proof": "Public GitHub job step conclusions and artifact rows; not a substituted Linux run",
+  "installerSha256": "967b4e482c0789279587bf903f822916121a917ac8363f374c31718e339feaf6"
+}

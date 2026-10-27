@@ -63,7 +63,24 @@ Vorher325×62, jetzt mit6 Standardbuttons auf großen Flächen377×69; untere Ba
 
 Eigener Workflow [build-windows-r3.yml](../.github/workflows/build-windows-r3.yml), neue R3-Komposition über **unveränderte** R1/R2-Packagingverifier. Frozen Electron44.9.3/builder26.18.0, native Windows2022-x64, mandatory Audit, gesamter Testgate, alle Runtimebytes/ASAR/PE-x64/Installerhash, vollständige installierte Payloadbytes, echter installierter Login/Desktop/Apps/Presets/Pages/Restart/Fallback-GUI-Lauf. Keine automatische Veröffentlichung. Installer/BUILD-INFO/SHA256/Anleitung und separate Windows-PNGs/Logs/Audit als14-Tage-Artefakte.
 
-**Zwischenstand: [nativer R3-Lauf40556537389](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389), Audit/Source/Tests/NSIS/ASAR/Installation bestanden; abschließender installierter GUI-Lauf noch in Prüfung.** Ungesignierter technischer Testbuild; Smart App Control kann blockieren. Keine Empfehlung zum Abschalten von Defender/SAC, keine Produktionsfreigabe. Native Dateipicker/Consentdialoge, Audioausgabe, physische GPU/Windows-Hardware, macOS und Safari/iPadOS bleiben offen. CDP-Auswahl einer eigenen Testdatei ist kein manueller Picker-/Zustimmungsnachweis.
+**Abgeschlossen: [nativer Windows-x64-R3-Lauf #6](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389) vollständig grün**, einschließlich sämtlicher Pflichtprüfungen und installiertem GUI-Lauf. Buildcommit `a9971ccce381824f75dcd85383783a2b5b894457`; Produktdateien entsprechen dem geprüften Tahoe7-Checkpoint `cf004a2a905fd2c75fe5a6ae2e0b3911a529bdea`. Ungesignierter technischer Testbuild; Smart App Control kann blockieren. Keine Empfehlung zum Abschalten von Defender/SAC, keine Produktionsfreigabe. Native Dateipicker/Consentdialoge, Audioausgabe, physische GPU/Windows-Hardware, macOS und Safari/iPadOS bleiben offen. CDP-Auswahl einer eigenen Testdatei ist kein manueller Picker-/Zustimmungsnachweis.
+
+
+
+- [Aktueller Windows-x64-R3-Testbuild](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389/artifacts/12758625139) · [Windows-Screenshots/Logs/TAP/Audit](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389/artifacts/12758730006) · [öffentliche Artefaktliste](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40556537389#artifacts).
+- Installer: `Air-OS-Ultimate-R3-1.0.3-dev.6.shaa9971ccce381-Windows-x64.exe` (R3-Workflowlauf6, Buildidentität/NSIS-Name durch den unveränderten Verifier geprüft), gebaut am27.10.2026.
+- **Installer-SHA-256:** `967b4e482c0789279587bf903f822916121a917ac8363f374c31718e339feaf6`.
+- Installer-Artefaktname: `Air-OS-Ultimate-Windows-x64-R3-a9971ccce381824f75dcd85383783a2b5b894457-967b4e482c0789279587bf903f822916121a917ac8363f374c31718e339feaf6-1`. GitHub zeigt rund117MB für das **ZIP-Artefakt**, nicht die genaue EXE-Größe; diese steht zusammen mit vollständiger Payloadinventur in `BUILD-INFO.json`.
+- **ZIP-Artefaktdigest** (anderer Gegenstand als die EXE): `407ddbfad6460f5fb5d34c7eeeec4843680258fe778179b06786828ff1ba64a4`. Windows-Evidenzarchiv: `ce5891dee72b36fcaf313b394c80b937dfab0b7c1aa06adc3df2ecadf4a3efeb`.
+- [Maschinenlesbarer öffentlicher CI-Nachweis](visual/tahoe7-evidence/r3-windows-ci.json): alle19 sichtbaren Jobschritte erfolgreich; Checkout, Audit, Sourcechecks, gesamter Testgate, NSIS,279Runtimeassets/ASAR, PE-x64/Hash, vollständige installierte Payload und GUI. Letzterer umfasst echte synthetische Profile, Apps, Notes, M1/M2, Kontrollzentrum, Dock/Preset/Pinseiten, kleinen Player, gemeinsamen Audiotransport, MRU/Snap, Lock/Logout/Neustart, Classic und WebGL1+2-null.
+- **Actions-Downloads benötigen GitHub-Anmeldung und laufen nach14Tagen ab.** Die öffentliche Run-/Artefaktliste wurde tatsächlich gelesen; der anonyme direkte Archivdownload liefert hier404. Deshalb werden keine heruntergeladenen ZIP-Bytes oder hier eingebetteten Windowsbilder behauptet. Die Windows-PNGs wurden vom erfolgreichen Windows-GUI-Schritt erstellt und liegen im verlinkten42.6MB-Evidenzarchiv. Alle im Vergleich unten eingebetteten Bilder sind ausdrücklich Linux-Electron.
+
+### Später auf dem eigenen Windows-PC testen
+
+1. Bei GitHub anmelden, das R3-Artefakt aus genau Lauf6 herunterladen und entpacken. `BUILD-INFO.json`, `SHA256SUMS.txt` und `INSTALL-R3.txt` behalten.
+2. Mit `Get-FileHash -Algorithm SHA256` die oben genannte EXE-Prüfsumme prüfen.
+3. Nur auf dem eigenen Testgerät manuell installieren. Ein fehlender vertrauenswürdiger Herausgeber bzw. Smart App Control bleibt eine reale Blockade; Defender/SAC **nicht deaktivieren**. Dieser unsignierte Testbuild erhält keine SAC-Freigabe durch den grünen Serverlauf.
+4. Isoliertes synthetisches lokales Testprofil verwenden; keine Cloudanmeldung und keine privaten Dateien importieren. Login/Desktop, Notes, Finder, Musik, Widgets, CC, Dock, M1/M2, Lock/Logout und Neustart prüfen. Native Ordnerpicker, Zustimmungsdialoge, Audioausgabe und physische GPU separat protokollieren.
 
 ## Bewusst offen
 
