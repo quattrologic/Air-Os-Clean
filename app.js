@@ -319,6 +319,7 @@ function normalizeAppWindow(win){
  win._airOSPositioned=true;
 }
 function appDockRect(id){
+ const live=typeof window!=='undefined'?window.airDockLayout?.targetRect(id):null;if(live)return live;
  const button=document.querySelector(".dock-app[data-app='"+id+"']");
  if(button&&!button.hidden)return button.getBoundingClientRect();
  const dock=document.querySelector(".dock");
@@ -358,8 +359,9 @@ function animateModernDockWindow(win,id,targetDock,done){
  if(!state){
   clearDockMotion(win);
   if(!targetDock&&!wasHidden){win.style.transform='none';win.style.opacity='1';win.style.pointerEvents='auto';return}
+  const dockRelease=window.airDockLayout?.beginMotion();
   const v=dockMotionValues(win,id);
-  state={targetDock,done,version:0,transition:win.style.transition,pointerEvents:win.style.pointerEvents};
+  state={dockRelease,targetDock,done,version:0,transition:win.style.transition,pointerEvents:win.style.pointerEvents};
   win._airOSDockMotion=state;win.style.transition='none';
   win.classList.add('dock-animating');
   if(windowMotionAllowed(win)){
@@ -398,7 +400,7 @@ window.addEventListener('pagehide',()=>{
 },{once:true});
 function clearDockMotion(win){
  const state=win._airOSDockMotion;
- if(state){win._airOSDockMotion=null;state.version++;win.style.transition=state.transition;win.style.pointerEvents=state.pointerEvents;}
+ if(state){win._airOSDockMotion=null;state.dockRelease?.();state.version++;win.style.transition=state.transition;win.style.pointerEvents=state.pointerEvents;}
  const motion=win._airOSMotion;
  if(motion){win._airOSMotion=null;motion.onfinish=null;try{motion.cancel()}catch(e){}}
  win.classList.remove("dock-animating","is-opening","is-minimizing");
@@ -888,6 +890,8 @@ function airDockPinUpdate(registry,pins,id,pinned,canPin){
 }
 function airDockSelection(registry,pins,width,iconSize){
  const candidates=[...new Set(['launchpad',...airDockReferences(pins)])].filter(id=>registry.get(id)?.iconClass);
+ // The original compact selector remains the Classic/legacy fallback. Tahoe7 owns paging.
+ if(typeof window!=='undefined'&&window.airMacShell7)return {visible:candidates,overflow:0};
  const icon=Math.max(30,Math.min(42,(Number(iconSize)||48)-6));
  const capacity=Math.max(1,Math.floor((Math.min(440,Math.max(0,width-24))-22)/(icon+14)));
  return {visible:candidates.slice(0,capacity),overflow:Math.max(0,candidates.length-capacity)};

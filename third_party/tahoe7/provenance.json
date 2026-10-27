@@ -1,0 +1,56 @@
+{
+  "macshell": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "sources": [
+    {
+      "file": "MacShell/Spring.qml",
+      "sha256": "10cb444d65ac6a51628e525d9287d656146aba479d52105bcb9eb707b10789ae",
+      "local": "third_party/tahoe7/original/Spring.qml"
+    },
+    {
+      "file": "MacShell/GlassSlider.qml",
+      "sha256": "4e414a0bcff5f8ea778de3acf5ee0657647f38b0c27828463b2c53eb0d3f6344",
+      "local": "third_party/tahoe7/original/GlassSlider.qml"
+    },
+    {
+      "file": "MacShell/GlassSwitch.qml",
+      "sha256": "270a1452b3cc26c2534041b408e8f509dbc44aa9844dcfe811ced7b1af2054fa",
+      "local": "third_party/tahoe7/original/GlassSwitch.qml"
+    },
+    {
+      "file": "MacShell/GlassSegmented.qml",
+      "sha256": "36c7edb71ecd1dac1d84aef1f71ac21519aa0bf53616e935f7d37f20456536c0",
+      "local": "third_party/tahoe7/original/GlassSegmented.qml"
+    },
+    {
+      "file": "MacShell/PlayerWidget.qml",
+      "sha256": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a",
+      "local": "third_party/tahoe7/original/PlayerWidget.qml"
+    },
+    {
+      "file": "MacShell/PlayerGlyph.qml",
+      "sha256": "9072d438b29a5b4328de8820869059997a4eb350998dac2a875358fcc764ca00",
+      "local": "third_party/tahoe7/original/PlayerGlyph.qml"
+    },
+    {
+      "file": "MacShell/WGlyph.qml",
+      "sha256": "dc8385d2f8a69c7c835890e52b34e270c2e508708506471042edb19403d6a539",
+      "local": "third_party/tahoe7/original/WGlyph.qml",
+      "scope": "Eight generic onPaint branches (moon, speaker, folder, layers, clipboard, lock, close, gear); other provider marks excluded."
+    }
+  ],
+  "dock": "MacDock.qml default52/magnification1.7/spacing6/hPad10/topPad8/bottomPad9; totalW0/c0/refLeft/cosine cell widths in macshell-shell7.js; Spring140ms response presentation; M2 motion lease retains original WAAPI reversal; no OS window management",
+  "controls": "Spring.qml complete integrator drives Dock retargeting; GlassSlider pos/14px inset/4px track/21x14->27x17 knob,45/55 velocity/jig/70ms idle; GlassSwitch46x21 geometry with independent300/440ms OutBack edges and1200ms owner recheck. Native inputs retain actual values/keyboard/drag. Individual knob lens shader and switch drag gesture are not ported; host GLASS-3 remains owner.",
+  "player": "PlayerWidget RU composition and PlayerGlyph onPaint path commands actually used by the existing media widget; no MPRIS/lyrics provider/audio engine added",
+  "gtkPin": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+  "iconsPin": "839848b9a8a38a92a6936e30c4abe35cc6f2546d",
+  "listedNotPorted": [
+    "PlayerArt.qml",
+    "PlayerBtn.qml",
+    "GlassSlab.qml",
+    "WindowBar.qml",
+    "MenuBorder.qml",
+    "TLGlyph.qml",
+    "ExtraWidgets.qml",
+    "CardWidget.qml"
+  ]
+}

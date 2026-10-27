@@ -1,0 +1,72 @@
+/* Shared MacShell/GTK component layer. MIT source parameters and port matrix:
+ * third_party/tahoe7/. Scope is Modern; original silhouette remains below. */
+html[data-desktop-theme=modern] .dock[data-theme=modern].t7-dock{gap:6px!important;padding:0 9px 8px!important;box-sizing:border-box;overflow:visible!important;align-items:flex-end;border-radius:18px 18px 0 0!important;width:var(--t7-width)!important;height:var(--t7-height)!important;max-width:calc(100vw - 28px)!important;align-items:flex-end!important}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app{width:var(--t7-cell,52px)!important;min-width:0!important;height:52px!important;flex:0 0 var(--t7-cell,52px)!important;margin:0!important;padding:0!important;overflow:visible;position:relative}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app.t7-first{margin-right:15px!important}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-icon,html[data-desktop-theme=modern] .dock.t7-dock .dock-app:hover .dock-icon{position:absolute!important;left:50%;bottom:0;width:var(--t7-icon,52px)!important;height:var(--t7-icon,52px)!important;min-width:0!important;min-height:0!important;transform:translateX(-50%)!important;transition:filter 100ms!important;flex:none!important;background:transparent;box-shadow:none}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app.is-open::after{bottom:-6px!important;width:4px;height:4px;left:calc(50% - 2px)}
+html[data-desktop-theme=modern] .dock.t7-dock .t7-offpage{display:none!important}
+html[data-desktop-theme=modern] .dock.t7-dock .t7-dock-page{width:28px;height:44px;flex:0 0 28px;padding:0;border:0;background:transparent;color:inherit;font:22px system-ui}
+html[data-desktop-theme=modern] .dock.t7-dock .t7-dock-page[hidden]{display:none}
+html[data-desktop-theme=modern] .dock.t7-dock .t7-first:before{right:-10px!important;height:44px!important;background:#ffffff47!important}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app{border-radius:8px!important;background:transparent!important;box-shadow:none!important}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app:active .dock-icon{filter:brightness(.75)}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app[data-window-state=focused]{box-shadow:inset 0 0 0 1px #ffffff29!important;background:#ffffff0b!important}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app.is-open::after{border-radius:2px;background:#ffffffd6!important;box-shadow:0 0 3px #ffffff30}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app[data-window-state=minimized]::after{background:transparent!important;border-color:#ffffffa0}
+/* GlassSlider.qml native semantics, original4px track /14px inset /22px body. */
+html[data-desktop-theme=modern] input[type=range].t7-slider{-webkit-appearance:none;appearance:none;height:22px!important;min-height:22px!important;background:transparent;padding:0 14px;box-sizing:border-box;accent-color:#dedede;cursor:ew-resize}
+html[data-desktop-theme=modern] .t7-slider::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(to right,currentColor var(--t7-fill,0%),#ffffff33 var(--t7-fill,0%))}
+html[data-desktop-theme=modern] .t7-slider::-webkit-slider-thumb{-webkit-appearance:none;width:21px;height:14px;margin-top:-5px;border-radius:7px;background:#dcddda;box-shadow:0 1px 3px #0005;transition:transform 300ms cubic-bezier(.34,1.56,.64,1)}
+
+html[data-desktop-theme=modern] .t7-slider:disabled{opacity:.4;cursor:default}
+html[data-desktop-theme=modern] input[type=checkbox].t7-switch{appearance:none;width:46px!important;height:21px!important;min-height:21px!important;border-radius:11px!important;background:#ffffff38!important;border:0!important;position:relative;padding:0!important;flex:0 0 46px;cursor:pointer}
+html[data-desktop-theme=modern] .t7-switch:before{content:'';position:absolute;left:2px;top:2px;width:27px;height:17px;border-radius:9px;background:#dcddda;transform:translateX(var(--switch-x,0px));box-shadow:0 1px 3px #0004}
+html[data-desktop-theme=modern] .t7-switch:disabled{opacity:.45}
+html[data-desktop-theme=modern] :is(.t7-slider,.t7-switch):focus-visible{outline:2px solid var(--tahoe-accent);outline-offset:3px}
+/* GlassSegmented28px/inset2 and owner-confirmed aria-pressed state. */
+html[data-desktop-theme=modern] :is(.air-island-views,.refine-nav){background:#ffffff19;border:1px solid #ffffff1f;border-radius:8px;padding:2px;gap:2px}
+html[data-desktop-theme=modern] :is(.air-island-views,.refine-nav) button{border:0;border-radius:6px;min-height:24px;background:transparent}
+html[data-desktop-theme=modern] :is(.air-island-views,.refine-nav) button[aria-pressed=true]{background:#636366;color:#f5f5f7;box-shadow:0 1px 3px #0003}
+/* PlayerWidget reference units actually set by its existing data view. */
+html[data-desktop-theme=modern] .deep-widget[data-widget=music] .t7-player{position:relative;height:calc(100% - 22px);max-height:none;overflow:hidden}
+html[data-desktop-theme=modern] .t7-player .widget-music-art{position:absolute;left:var(--player-artX);top:var(--player-artY);width:var(--player-artS);height:var(--player-artS);float:none;margin:0;object-fit:cover;border-radius:12px}
+html[data-desktop-theme=modern] .t7-player .widget-song{position:absolute;left:var(--player-textX);right:12px;top:var(--player-titleY);transform:translateY(-50%);font-size:calc(20px * var(--player-k));line-height:1.2}
+html[data-desktop-theme=modern] .t7-player .widget-artist{position:absolute;left:var(--player-textX);right:12px;top:var(--player-subY);transform:translateY(-50%);margin:0;font-size:calc(16px * var(--player-k))}
+html[data-desktop-theme=modern] .t7-player>progress{position:absolute;left:5%;width:90%;top:var(--player-barY);height:4px;accent-color:#ffffff94}
+html[data-desktop-theme=modern] .t7-player>div{position:absolute;top:var(--player-ctlY);transform:translateY(-50%);left:10%;width:80%;display:flex;justify-content:space-evenly}
+html[data-desktop-theme=modern] .t7-player [data-media-action]{border:0;background:transparent;min-width:28px;margin:0}
+html[data-desktop-theme=modern] .t7-player .widget-music-volume{position:absolute;bottom:0;height:16px!important;opacity:.65}
+html[data-desktop-theme=modern] .deep-widget:has(.t7-player) header{font-size:11px}
+/* GTK scrollbar/range/tab/selection states, from the existing laptop Sass. */
+html[data-desktop-theme=modern]{scrollbar-color:#afafaf66 transparent;scrollbar-width:thin}
+html[data-desktop-theme=modern] .tahoe-app ::-webkit-scrollbar{width:8px;height:8px}
+html[data-desktop-theme=modern] .tahoe-app ::-webkit-scrollbar-thumb{background:#8a8a8a80;border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+html[data-desktop-theme=modern] .tahoe-app :is(button,input,select){transition:background 100ms cubic-bezier(0,0,.2,1),border-color 100ms}
+html[data-desktop-theme=modern] .tahoe-app button:disabled{opacity:.45;cursor:default}
+html[data-desktop-theme=modern] .tahoe-app button:active:not(:disabled){filter:brightness(.94)}
+html[data-desktop-theme=modern] .tahoe-app input:focus-visible{border-color:#0088ff}
+@media(prefers-reduced-motion:reduce){html[data-desktop-theme=modern] :is(.t7-slider,.t7-switch){transition:none!important}}
+@media(forced-colors:active){html[data-desktop-theme=modern] .t7-switch{appearance:auto}html[data-desktop-theme=modern] .t7-switch:before{display:none}html[data-desktop-theme=modern] .t7-slider{appearance:auto}}
+.t7-action-icon{width:16px;height:16px;object-fit:contain;vertical-align:-3px;margin-right:7px;pointer-events:none}
+html[data-desktop-theme=modern] .t6-menu-popup .t7-action-icon,html[data-desktop-theme=modern] .tahoe-context-menu .t7-action-icon{filter:brightness(0) invert(1)}
+html[data-desktop-theme=modern] .t7-player:not(:has(.widget-song)){display:grid;align-content:center;justify-items:center;gap:8px}
+html[data-desktop-theme=modern] .t7-player:not(:has(.widget-song))>button{background:#ffffff10;border:1px solid #ffffff25;min-height:28px}
+.t7-menu-glyph{vertical-align:-3px;margin-right:8px;pointer-events:none}
+.t7-icon-library{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-height:250px;overflow:auto;margin-top:10px}
+.t7-icon-library figure{margin:0;text-align:center;min-width:0}.t7-icon-library img{width:32px;height:32px;object-fit:contain}.t7-icon-library figcaption{font:9px system-ui;overflow-wrap:anywhere}
+html[data-desktop-theme=modern] #t7-date-status{width:auto;min-width:110px;font-size:11px;white-space:nowrap}
+html[data-desktop-theme=modern] #t7-focus-status[aria-pressed=true]{background:#ffffff26!important}
+@media(max-width:1100px){#t7-date-status{display:none!important}}
+@media(max-width:700px){#t7-media-status,#t7-focus-status{display:none!important}}
+.widget-month-nav .t7-action-icon{margin:0;display:block;filter:brightness(0) invert(1)}
+html[data-desktop-theme=modern] .t7-slider::-webkit-slider-thumb{transform:translateX(calc(var(--jig,0) * -3px)) rotate(calc(var(--jig,0) * 7deg)) scale(var(--jig-x,1),var(--jig-y,1))}
+html[data-desktop-theme=modern] .t7-switch:before{left:calc(2px + var(--switch-x,0px));width:var(--switch-w,27px);transform:none}
+html[data-desktop-theme=modern] input[type=checkbox].t7-switch{background:color-mix(in srgb,#30d158 var(--t7-on,0%),#ffffff38)!important}
+html[data-desktop-theme=modern] .t7-slider:active::-webkit-slider-thumb{width:27px;height:17px;margin-top:-6.5px;border-radius:8.5px;transition:transform 420ms cubic-bezier(.34,1.56,.64,1);transform:translateX(calc(var(--jig,0) * -3px)) rotate(calc(var(--jig,0) * 7deg)) scale(var(--jig-x,1),var(--jig-y,1))}
+html[data-desktop-theme=modern] .t7-segmented{position:relative;isolation:isolate}
+html[data-desktop-theme=modern] .t7-segmented:before{content:'';position:absolute;left:var(--seg-left,2px);top:2px;bottom:2px;width:var(--seg-width,0);border-radius:6px;background:linear-gradient(#ffffff10,#00000010),#636366;box-shadow:inset 0 1px #ffffff25,0 1px 3px #0003;pointer-events:none;z-index:0}
+html[data-desktop-theme=modern] .t7-segmented button{position:relative;z-index:1;background:transparent!important;box-shadow:none!important}
+html[data-desktop-theme=modern] .t7-art-placeholder{position:absolute;left:var(--player-artX);top:var(--player-artY);width:var(--player-artS);height:var(--player-artS);display:grid;place-items:center;background:#ffffff12;border-radius:12px}
+html[data-desktop-theme=modern] .t7-art-placeholder[hidden]{display:none}
+html[data-desktop-theme=modern] .t6-status button:disabled{opacity:.4;cursor:default}

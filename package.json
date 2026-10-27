@@ -131,7 +131,16 @@
       "src/core/tahoe6-shell.js",
       "src/core/tahoe6-glyphs.js",
       "air-tahoe6-shell.js",
-      "third_party/tahoe6/**/*"
+      "third_party/tahoe6/**/*",
+      "src/core/macshell-shell7.js",
+      "src/core/player-glyphs.js",
+      "air-macshell-controls.js",
+      "air-macshell-dock.js",
+      "air-macshell-components.css",
+      "air-tahoe7-icons.js",
+      "third_party/tahoe7/**/*",
+      "src/core/macshell-glyphs7.js",
+      "air-macshell-status.js"
     ],
     "mac": {
       "target": [

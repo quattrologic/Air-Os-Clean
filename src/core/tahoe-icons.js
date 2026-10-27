@@ -1,5 +1,5 @@
 'use strict';
-// Unmodified GPL-3.0 SVG resources, separately licensed: third_party/tahoe/icons/COPYING.
+// GPL-3.0 resources (symbolic browser exports add xmlns only), separately licensed: third_party/tahoe/icons/COPYING.
 // Metadata only; applications, launch authorization and lifecycle remain in app-registry.
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.airTahoeIcons=api;})(typeof window==='object'?window:null,function(){return Object.freeze({
   "finder": "third_party/tahoe/icons/source/places/scalable/folder.svg",
@@ -16,5 +16,45 @@
   "calculator": "third_party/tahoe/icons/source/apps/scalable/calc.svg",
   "airwrite": "third_party/tahoe/icons/source/apps/scalable/text-editor.svg",
   "folder": "third_party/tahoe/icons/source/places/scalable/folder.svg",
-  "pictures": "third_party/tahoe/icons/source/places/scalable/folder-images.svg"
+  "pictures": "third_party/tahoe/icons/source/places/scalable/folder-images.svg",
+  "actions.edit-copy": "third_party/tahoe/icons/source/actions/16/edit-copy.svg",
+  "actions.edit-paste": "third_party/tahoe/icons/source/actions/16/edit-paste.svg",
+  "actions.edit-cut": "third_party/tahoe/icons/source/actions/16/edit-cut.svg",
+  "actions.edit-undo": "third_party/tahoe/icons/source/actions/16/edit-undo.svg",
+  "actions.edit-redo": "third_party/tahoe/icons/source/actions/16/edit-redo.svg",
+  "actions.edit-delete": "third_party/tahoe/icons/source/actions/16/edit-delete.svg",
+  "actions.document-save": "third_party/tahoe/icons/source/actions/16/document-save.svg",
+  "actions.document-open": "third_party/tahoe/icons/source/actions/16/document-open.svg",
+  "actions.document-new": "third_party/tahoe/icons/source/actions/16/document-new.svg",
+  "actions.list-add": "third_party/tahoe/icons/source/actions/16/list-add.svg",
+  "actions.list-remove": "third_party/tahoe/icons/source/actions/16/list-remove.svg",
+  "actions.view-refresh": "third_party/tahoe/icons/source/actions/16/view-refresh.svg",
+  "actions.go-next": "third_party/tahoe/icons/source/actions/16/go-next.svg",
+  "actions.go-previous": "third_party/tahoe/icons/source/actions/16/go-previous.svg",
+  "actions.go-up": "third_party/tahoe/icons/source/actions/16/go-up.svg",
+  "actions.go-home": "third_party/tahoe/icons/source/actions/16/go-home.svg",
+  "actions.system-search": "third_party/tahoe/icons/source/actions/32/system-search.svg",
+  "actions.window-close": "third_party/tahoe/icons/source/actions/16/window-close.svg",
+  "actions.media-playback-start": "third_party/tahoe/icons/source/actions/16/media-playback-start.svg",
+  "actions.media-playback-pause": "third_party/tahoe/icons/source/actions/16/media-playback-pause.svg",
+  "actions.media-skip-forward": "third_party/tahoe/icons/source/actions/16/media-skip-forward.svg",
+  "actions.media-skip-backward": "third_party/tahoe/icons/source/actions/16/media-skip-backward.svg",
+  "places.folder-documents": "third_party/tahoe/icons/source/places/scalable/folder-documents.svg",
+  "places.folder-music": "third_party/tahoe/icons/source/places/scalable/folder-music.svg",
+  "places.folder-videos": "third_party/tahoe/icons/source/places/scalable/folder-videos.svg",
+  "places.user-home": "third_party/tahoe/icons/source/places/scalable/user-home.svg",
+  "devices.computer": "third_party/tahoe/icons/source/devices/scalable/computer.svg",
+  "devices.drive-harddisk": "third_party/tahoe/icons/source/devices/scalable/drive-harddisk.svg",
+  "devices.drive-removable-media": "third_party/tahoe/icons/source/devices/scalable/drive-removable-media.svg",
+  "devices.audio-headphones": "third_party/tahoe/icons/source/devices/scalable/audio-headphones.svg",
+  "devices.input-keyboard": "third_party/tahoe/icons/source/devices/scalable/input-keyboard.svg",
+  "status.dialog-warning": "third_party/tahoe/icons/source/status/32/dialog-warning.svg",
+  "status.task-complete": "third_party/tahoe/icons/source/status/16/task-complete.svg",
+  "symbolic.edit-copy": "third_party/tahoe/icons/browser/edit-copy-symbolic.svg",
+  "symbolic.edit-paste": "third_party/tahoe/icons/browser/edit-paste-symbolic.svg",
+  "symbolic.edit-delete": "third_party/tahoe/icons/browser/edit-delete-symbolic.svg",
+  "symbolic.go-next": "third_party/tahoe/icons/browser/go-next-symbolic.svg",
+  "symbolic.go-previous": "third_party/tahoe/icons/browser/go-previous-symbolic.svg",
+  "symbolic.go-up": "third_party/tahoe/icons/browser/go-up-symbolic.svg",
+  "symbolic.document-save": "third_party/tahoe/icons/browser/document-save-symbolic.svg"
 });});

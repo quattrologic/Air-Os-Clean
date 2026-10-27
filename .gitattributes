@@ -31,3 +31,4 @@ third_party/deep-port/** -text
 third_party/macbar/** -text
 # Tahoe 6 source excerpts and copyright remain byte-stable on Windows.
 third_party/tahoe6/** -text
+third_party/tahoe7/** -text
