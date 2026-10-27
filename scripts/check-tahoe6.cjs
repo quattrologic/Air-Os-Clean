@@ -53,6 +53,12 @@ async function run(){
  async function close(id){await evaluate(`(()=>{const w=openApps.get(${JSON.stringify(id)});w.dataset.r1Closing='true'})()`);await click('[data-r1-closing="true"] .close');await wait(`!openApps.has(${JSON.stringify(id)})`)}
  async function stop(){if(client){try{await evaluate('void airOS.quit()')}catch{}client.close();client=null}if(child){for(let i=0;i<40&&child.exitCode===null;i++)await delay(100);if(process.platform!=='win32'){try{process.kill(-child.pid,'SIGTERM')}catch(e){if(e.code!=='ESRCH')throw e}}else if(child.exitCode===null)execFileSync('taskkill',['/pid',String(child.pid),'/T','/F']);child=null}await delay(300)}
  try{
+  if(process.env.AIR_TAHOE6_WIDGETS_ONLY==='1'){
+   await start();await viewport(1920,1080);await create(alice,'Public Tahoe Widgets');await delay(600);for(const id of await evaluate('[...openApps.keys()]'))await close(id);
+   await evaluate("airOS.preferences.update({desktopWidgets:true,widgetSet:['clock','calendar'],widgetLayout:{clock:{size:'medium',style:'digital'},calendar:{size:'medium',style:'digital'}}}).then(applyAirSettings)");
+   for(const [width,height]of [[1920,1080],[1650,930],[390,600]]){await viewport(width,height);await delay(700);await shot('widgets-'+width);report.modes.push({width,height,widgets:await evaluate("[...document.querySelectorAll('.deep-widget')].map(e=>({id:e.dataset.widget,rect:e.getBoundingClientRect().toJSON(),hidden:e.hidden,scroll:e.querySelector('.deep-widget-content').scrollHeight,client:e.querySelector('.deep-widget-content').clientHeight}))")});}
+   fs.writeFileSync(path.join(output,'widget-report.json'),JSON.stringify(report,null,2));console.log('PASS actual isolated widget composition, all three sizes');return;
+  }
   await start();await viewport(1920,1080);await create(alice,'R1 Test Alice');await wait("document.documentElement.dataset.desktopTheme==='modern'");
   report.userAgent=await evaluate('navigator.userAgent');const expectedElectron=process.env.AIR_R1_EXPECT_ELECTRON||'44.9.3';assert.ok(report.userAgent.includes('Electron/'+expectedElectron),'actual Electron runtime matches test channel');
   report.registeredApps=await evaluate('airAppRegistry.list().map(({id,name,origin})=>({id,name,origin,internalHandler:typeof appNames[id]==="string"}))');
