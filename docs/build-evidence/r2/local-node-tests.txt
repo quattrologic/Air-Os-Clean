@@ -6,4 +6,4 @@ Local Linux Node test summary, not Windows CI:
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2932.125522
+# duration_ms 2229.432924

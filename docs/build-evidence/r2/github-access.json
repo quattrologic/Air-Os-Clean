@@ -2,5 +2,8 @@
   "actionsPermissions": "HTTP 403 Forbidden",
   "actionsRuns": "HTTP 403 Forbidden",
   "nativeWindowsAvailableLocally": false,
-  "buildStatus": "UNVERIFIED; no installer or Windows GUI claimed"
+  "initialBuildStatus": "UNVERIFIED; no installer or Windows GUI claimed",
+  "publicWebVerification": "Public workflow, job step outcomes and artifact metadata are accessible without the blocked API",
+  "finalBuildStatus": "SUCCESS verified through public GitHub Windows job and artifact table",
+  "verifiedRun": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556"
 }

@@ -2,11 +2,32 @@
 
 27. Oktober 2026. Tahoe-5-Ausgangscommit **e71aa3bd71094ba6597dc8eb073181f374f8428e**, eigener Branch **build/air-ultimate-windows-x64-r2-20261027**. Der genaue Buildcommit wird aus dem tatsächlichen CI-Checkout in `BUILD-INFO.json` geschrieben; der abschließende Quellcommit steht im Branchverlauf und Abschlussbericht.
 
-## Status und Grenzen
+## Tatsächliches Windows-Ergebnis
 
-**Ein erfolgreicher Windows-Installer und eine Windows-GUI-Abnahme sind derzeit nicht nachgewiesen.** Die Actions-API dieser Arbeitsumgebung verweigert bereits das Lesen von Workflowrechten und Läufen mit **HTTP 403 Forbidden**. Lokal steht ausschließlich Linux zur Verfügung. Ein Push kann den vorbereiteten Workflow auslösen, ersetzt aber keinen prüfbaren CI-Erfolgsnachweis. Deshalb hier kein erfundener Download, Installerhash oder Windows-Screenshot. [Gesicherter API-Status](build-evidence/r2/github-access.json).
+**R2 erfolgreich gebaut, geprüft, auf dem nativen Windows-x64-Runner installiert und als installierte Anwendung GUI-getestet.** [Erfolgreicher Lauf #3](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556), [nativer Job](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556/job/122173588777), [gesicherte Schritt-/Artefaktnachweise](build-evidence/r2/windows-ci-final.json).
 
-[Vorbereiteter R2-Workflow auf GitHub](https://github.com/quattrologic/Air-Os-Clean/actions/workflows/build-windows-r2.yml). Er startet ausschließlich auf Push des R2-Branches oder manuell mit diesem Branch; keine automatische Veröffentlichung. **main, R1, R1.1/Signing und Legacykanäle bleiben unverändert.**
+| Feld | Tatsächlicher Stand |
+|---|---|
+| Tahoe-5-Basis | `e71aa3bd71094ba6597dc8eb073181f374f8428e` |
+| Exakter Buildcommit | `8f6ced850cf7fb2d4cb5e0c728e159f333c1e870` |
+| Builddatum | 27. Oktober 2026; präzise Buildzeit in `BUILD-INFO.json` |
+| Installername | `Air-OS-Ultimate-R2-1.0.3-dev.3.sha8f6ced850cf7-Windows-x64.exe` |
+| Installer-SHA-256 | `3d98a66ad0e70d55df1a887dd0d9266264f9ec2277dc6c86d894363d4872c68f` |
+| Installer / SHA256SUMS / BUILD-INFO / Anleitung | [Tatsächlich hochgeladenes R2-Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556/artifacts/12732018578) |
+| Echte Windows-GUI-PNGs, Prozess-/Fehlerlogs, TAP, Audit, Authenticode-Status | [Tatsächlich hochgeladene Windows-Evidenz](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556/artifacts/12732258173) |
+| Security- und Sourcechecks, Tests | Windows-Job erfolgreich; alle439 vorhandenen/neuen Tests bleiben mandatory; keine Skips konfiguriert. Lokal439/439. |
+| Paket / x64 / Installerhash | Erfolgreich; alle erwarteten ASAR-Runtimeassets geprüft, vollständiger Payload inventarisiert. |
+| Tatsächliche NSIS-Installation / installierte Bytes | Erfolgreich; jedes erwartete Payloadfile und installiertes ASAR gegen Buildstand geprüft. |
+| Installierte EXE / Profile / Desktop / Apps / M1/M2 / Fallback | Gesamter nativer Windows-GUI-Schritt erfolgreich. |
+| Signierung / SAC / Produktion | **UNSIGNED / NOT TESTED / NOT APPROVED** |
+
+Artefakte sind 14 Tage aufbewahrt. [Öffentlich erreichbare Artefakttabelle](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40499579556#artifacts); zum Download **bei GitHub anmelden**. Anonyme HEAD-Abfragen der direkten Downloadrouten liefern hier404; Existenz, Name, ID und ZIP-Digest sind in der öffentlichen Artefakttabelle belegt. Ein unabhängiger Download aus dieser Sitzung war nicht möglich. Die genaue Installergröße, File-by-File-Hashes und Testergebnisse stehen in der mitgelieferten `BUILD-INFO.json`. Keine öffentliche GitHub-Releasefreigabe. Die ZIP-Artefaktdigests im Evidenz-JSON sind **andere** Werte als der oben genannte EXE-SHA-256. Die Binärprüfung fand tatsächlich im Windows-Runner statt; kein zusätzlicher unabhängiger lokaler ZIP-Download wurde behauptet.
+
+Die Actions-API dieser Umgebung bleibt mit HTTP403 gesperrt; **die öffentliche Workflow-/Jobseite lieferte jedoch den tatsächlichen Nachweis sämtlicher erfolgreichen Schritte und beider existierender Artefakte.** [API-Grenze](build-evidence/r2/github-access.json). Lokal steht ausschließlich Linux zur Verfügung. Windows-PNGs liegen im ausdrücklich verlinkten Windows-Evidenzartefakt; die unten gespeicherten lokalen Linuxbilder werden nicht als Windowsbilder ausgegeben.
+
+Vorläufe offen dokumentiert: [#1](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40498593077) scheiterte vor Packaging an einer POSIX-Datei-URL in der bestehenden Main-Bridge-Testfixture. Jetzt native `path.resolve()`/`pathToFileURL()`, gleiche Sicherheitsassertions. [#2](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40498832934) baute/installierte erfolgreich, GUI scheiterte am nicht aktivierten Schnellzugriff nach Pointereingabe. Der finale Test aktiviert animierte Island-Buttons nach Motion-Ende per echter fokussierter Tastatureingabe, mit unveränderten vier-Karten-/Escape-/M1-Assertions. Kein Produktcode geändert; erfolglose Vorläufe werden nicht als Gesamtfreigabe gezählt.
+
+[Eigener R2-Workflow](https://github.com/quattrologic/Air-Os-Clean/actions/workflows/build-windows-r2.yml). **main, R1, R1.1/Signing und Legacykanäle bleiben unverändert.** Der spätere Dokumentationscommit verändert den tatsächlich gebauten Commit nicht und löst wegen `paths-ignore` keinen neuen Build aus.
 
 ## Tatsächlich eingerichteter Ausführungspfad
 
@@ -23,7 +44,7 @@ Enthalten sind sämtliche tatsächlich integrierten Tahoe-1–5-Module: original
 
 **Konkreter Windows-Quellcheck behoben:** Ein `core.autocrlf=true`-Checkout veränderte 13 bereits gehashte originale Sass-/Lizenz-/NOTICE-Dateien in Tahoe/MacBar/Deep Port. Eng begrenzte `-text`-Attribute erhalten jetzt die tatsächlichen Upstreambytes unverändert. Neue Regression prüft alle betroffenen Originaldateien gegen einen echten Windows-Zeilenendencheckout. Kein Originalasset wurde umgeschrieben.
 
-## Erwartete Artefakte – erst nach tatsächlich erfolgreichem Build vorhanden
+## Erzeugte Artefakte und Namensvertrag
 
 - Installer: `Air-OS-Ultimate-R2-<version>-Windows-x64.exe` (`<version>` enthält Runnummer und Checkout-SHA).
 - `SHA256SUMS.txt`, `BUILD-INFO.json` mit vollem Commit, Basis, Toolchain, Buildzeit, CI-Link, Größe und echtem SHA-256 sowie Payload-/Runtimeinventar; `INSTALL-R2.txt`.
