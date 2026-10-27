@@ -38,3 +38,10 @@ html.air-reduced-motion .app-window>.window-titlebar{transition:none}
 .maclock-system{color-scheme:dark;scrollbar-color:#ffffff44 transparent}html[data-desktop-theme=modern] body:has(#air-island-panel:not([hidden])) .tahoe4-widget-pager{visibility:hidden}.system-lock-note{font:12px/1.4 system-ui;color:#d1d9e0}
 
 @media(max-width:500px){.maclock-media-card{min-height:calc(150px * var(--maclock-u,1));padding:10px;gap:10px}.maclock-media-card strong{font-size:13px;line-height:1.25}.maclock-media-card p{font-size:12px;line-height:1.25;margin:4px 0}.maclock-media-card small{font-size:10.5px;line-height:1.25}.maclock-safe-notice{font-size:11px;line-height:1.25;padding:10px}.maclock-safe-notice p{margin-top:4px}}
+
+body[data-maclock-glass=reduced] :is(.maclock-media-card,.maclock-safe-notice){background:#101517!important;backdrop-filter:none!important;box-shadow:none}
+@media(prefers-reduced-transparency:reduce){.maclock-media-card,.maclock-safe-notice,.system-switcher{background:#101517!important;color:#f2f5f3!important;backdrop-filter:none!important;box-shadow:none}}
+@media(forced-colors:active){.maclock-media-card,.maclock-safe-notice,.system-switcher{background:Canvas!important;color:CanvasText!important;border-color:CanvasText!important}.maclock-media-card :is(strong,p,small),.maclock-safe-notice :is(strong,p),.system-switcher :is(button,small){color:CanvasText!important}.maclock-media-art{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
+
+@media(forced-colors:active){body[data-maclock-glass=reduced] :is(.maclock-media-card,.maclock-safe-notice){background:Canvas!important;color:CanvasText!important}}
+.maclock-media-card{border-radius:calc(28px * var(--maclock-u,1))}.maclock-safe-notice{border-radius:calc(20px * var(--maclock-u,1))}
