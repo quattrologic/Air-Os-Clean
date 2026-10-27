@@ -1,0 +1,2503 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 81,
+          "width": 1920,
+          "height": 205.40625,
+          "top": 81,
+          "right": 1920,
+          "bottom": 286.40625,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 4,
+          "tileBuilds": 1,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1920,
+            "height": 1080,
+            "dpr": 1,
+            "clockRect": {
+              "x": 667.815625,
+              "y": 16.206249999999997,
+              "width": 585,
+              "height": 350
+            },
+            "fieldRect": {
+              "x": 865.5,
+              "y": 955.421875,
+              "width": 189,
+              "height": 32.390625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 6.84,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 79.2,
+                "heightRadius": 6.336
+              },
+              "field": {
+                "pad": 10,
+                "radius": 16.1953125,
+                "bezel": 11.660625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "extraRects": [],
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 771.5,
+          "y": 1011,
+          "width": 377,
+          "height": 69,
+          "top": 1011,
+          "right": 1148.5,
+          "bottom": 1080,
+          "left": 771.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 69.75,
+          "width": 1650,
+          "height": 178.15625,
+          "top": 69.75,
+          "right": 1650,
+          "bottom": 247.90625,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 5,
+          "tileBuilds": 1,
+          "maskRebuilds": 1,
+          "sceneRebuilds": 1,
+          "pendingFrame": false,
+          "last": {
+            "width": 1650,
+            "height": 930,
+            "dpr": 1,
+            "clockRect": {
+              "x": 578.909375,
+              "y": 14.706249999999997,
+              "width": 493,
+              "height": 302
+            },
+            "fieldRect": {
+              "x": 743.625,
+              "y": 822.921875,
+              "width": 162.75,
+              "height": 27.890625
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 5.89,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 68.2,
+                "heightRadius": 5.456
+              },
+              "field": {
+                "pad": 10,
+                "radius": 13.9453125,
+                "bezel": 10.040625,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "extraRects": [],
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 636.5,
+          "y": 861,
+          "width": 377,
+          "height": 69,
+          "top": 861,
+          "right": 1013.5,
+          "bottom": 930,
+          "left": 636.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "lock": {
+        "clock": {
+          "x": 0,
+          "y": 45,
+          "width": 390,
+          "height": 137.609375,
+          "top": 45,
+          "right": 390,
+          "bottom": 182.609375,
+          "left": 0
+        },
+        "font": "\"Open Runde\", \"Segoe UI\", Arial, sans-serif",
+        "fontReady": true,
+        "glass": {
+          "status": "webgl",
+          "reason": "ready",
+          "disposed": false,
+          "software": true,
+          "frames": 6,
+          "tileBuilds": 2,
+          "maskRebuilds": 3,
+          "sceneRebuilds": 2,
+          "pendingFrame": false,
+          "last": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1,
+            "clockRect": {
+              "x": 0.29375000000000284,
+              "y": 2.809375000000003,
+              "width": 390,
+              "height": 233
+            },
+            "fieldRect": {
+              "x": 90,
+              "y": 497.203125,
+              "width": 210,
+              "height": 36
+            },
+            "params": {
+              "scene": {
+                "scale": 0.5,
+                "blurMax": 32,
+                "blur": 0.35
+              },
+              "clock": {
+                "mode": 1,
+                "intensity": 0.6,
+                "refractPx": 4.56,
+                "bevel": 4.5,
+                "tint": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "lightDir": [
+                  -0.6,
+                  -0.8
+                ],
+                "padding": 52.8,
+                "heightRadius": 4.224
+              },
+              "field": {
+                "pad": 10,
+                "radius": 18,
+                "bezel": 12.959999999999999,
+                "thickness": 28.8,
+                "dispersion": 0.078,
+                "magnify": 0.08000000000000002,
+                "rim": 0.5,
+                "grain": 0.006,
+                "blurPx": 1.5,
+                "tintMix": 0.275,
+                "saturation": 1.25,
+                "dark": 1,
+                "debug": 0,
+                "shadowAmt": 0.4
+              }
+            },
+            "sceneState": {
+              "opacity": 1,
+              "zoom": 1,
+              "clockPosition": 0.075,
+              "clockOpacity": 1,
+              "loginBottom": 78,
+              "loginOpacity": 1,
+              "blur": 0,
+              "blurOpacity": 0,
+              "fieldWidth": 210,
+              "avatarScale": 0.94
+            },
+            "extraRects": [],
+            "validate": true
+          },
+          "renderer": {
+            "disposed": false,
+            "software": true,
+            "contextAlive": true,
+            "resources": {
+              "shader": 0,
+              "program": 4,
+              "texture": 3,
+              "buffer": 1,
+              "framebuffer": 1,
+              "vertexArray": 1
+            }
+          }
+        }
+      },
+      "desktop": {
+        "dock": {
+          "x": 49,
+          "y": 545.171875,
+          "width": 292,
+          "height": 54.828125,
+          "top": 545.171875,
+          "right": 341,
+          "bottom": 600,
+          "left": 49
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      },
+      "checks": [
+        "real create/login/error/retry",
+        "new profile Modern",
+        "Notes save",
+        "Home live notes",
+        "Finder/Home/Reminders GUI starts",
+        "M2 minimize/reverse/close",
+        "Island K3/Escape/focus/rapid reopen",
+        "Classic/Modern roundtrip",
+        "Reduced Motion",
+        "unchanged shell rectangles"
+      ]
+    }
+  ],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) air-os-desktop/1.0.3 Chrome/152.0.7977.167 Electron/44.9.3 Safari/537.36",
+  "registeredApps": [
+    {
+      "id": "about",
+      "name": "Über Air-OS",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "ai",
+      "name": "Air-KI",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "aircard",
+      "name": "AirCard Lite",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "airwrite",
+      "name": "AirWrite",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "browser",
+      "name": "Safari",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "calculator",
+      "name": "Air-Rechner",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "calendar",
+      "name": "Kalender",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "downloads",
+      "name": "Downloads",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "finder",
+      "name": "Finder",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "football",
+      "name": "Fußball",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "home",
+      "name": "Air Home",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "launchpad",
+      "name": "Launchpad",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "mail",
+      "name": "Mail",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "music",
+      "name": "Air Music",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "notes",
+      "name": "Notizen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "photos",
+      "name": "Fotos",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "reminders",
+      "name": "Air Erinnerungen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "settings",
+      "name": "Einstellungen",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "stocks",
+      "name": "Aktien",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "store",
+      "name": "Air App Store",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "tagesschau",
+      "name": "tagesschau",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "translator",
+      "name": "Air-Übersetzer",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "trash",
+      "name": "Papierkorb",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "weather",
+      "name": "Wetter",
+      "origin": "builtin",
+      "internalHandler": true
+    }
+  ],
+  "appShellStarts": [
+    {
+      "id": "about",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "ai",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "aircard",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "airwrite",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "browser",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "calculator",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "calendar",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "downloads",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "finder",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "football",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "home",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "launchpad",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "mail",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "music",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "notes",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "photos",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "reminders",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "settings",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "spotify",
+      "status": "NOT TESTED: external native Spotify launcher; no Spotify installation assumed"
+    },
+    {
+      "id": "stocks",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "store",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "tagesschau",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "translator",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "trash",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "weather",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    }
+  ],
+  "tahoe7": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "rest": {
+        "layout": {
+          "page": 0,
+          "strength": 0,
+          "leases": 0,
+          "running": false,
+          "width": 783
+        },
+        "dock": {
+          "x": 568.5,
+          "y": 1011,
+          "width": 783,
+          "height": 69,
+          "top": 1011,
+          "right": 1351.5,
+          "bottom": 1080,
+          "left": 568.5
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 578.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 630.5,
+              "bottom": 1071,
+              "left": 578.5
+            },
+            "icon": {
+              "x": 578.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 630.234375,
+              "bottom": 1071,
+              "left": 578.765625
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 651.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 703.5,
+              "bottom": 1071,
+              "left": 651.5
+            },
+            "icon": {
+              "x": 651.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 703.234375,
+              "bottom": 1071,
+              "left": 651.765625
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 709.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 761.5,
+              "bottom": 1071,
+              "left": 709.5
+            },
+            "icon": {
+              "x": 709.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 761.234375,
+              "bottom": 1071,
+              "left": 709.765625
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 767.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 819.5,
+              "bottom": 1071,
+              "left": 767.5
+            },
+            "icon": {
+              "x": 767.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 819.234375,
+              "bottom": 1071,
+              "left": 767.765625
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 825.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 877.5,
+              "bottom": 1071,
+              "left": 825.5
+            },
+            "icon": {
+              "x": 825.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 877.234375,
+              "bottom": 1071,
+              "left": 825.765625
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 883.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 935.5,
+              "bottom": 1071,
+              "left": 883.5
+            },
+            "icon": {
+              "x": 883.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 935.234375,
+              "bottom": 1071,
+              "left": 883.765625
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 941.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 993.5,
+              "bottom": 1071,
+              "left": 941.5
+            },
+            "icon": {
+              "x": 941.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 993.234375,
+              "bottom": 1071,
+              "left": 941.765625
+            }
+          },
+          {
+            "id": "music",
+            "cell": {
+              "x": 999.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1051.5,
+              "bottom": 1071,
+              "left": 999.5
+            },
+            "icon": {
+              "x": 999.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1051.234375,
+              "bottom": 1071,
+              "left": 999.765625
+            }
+          },
+          {
+            "id": "photos",
+            "cell": {
+              "x": 1057.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1109.5,
+              "bottom": 1071,
+              "left": 1057.5
+            },
+            "icon": {
+              "x": 1057.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1109.234375,
+              "bottom": 1071,
+              "left": 1057.765625
+            }
+          },
+          {
+            "id": "mail",
+            "cell": {
+              "x": 1115.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1167.5,
+              "bottom": 1071,
+              "left": 1115.5
+            },
+            "icon": {
+              "x": 1115.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1167.234375,
+              "bottom": 1071,
+              "left": 1115.765625
+            }
+          },
+          {
+            "id": "downloads",
+            "cell": {
+              "x": 1173.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1225.5,
+              "bottom": 1071,
+              "left": 1173.5
+            },
+            "icon": {
+              "x": 1173.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1225.234375,
+              "bottom": 1071,
+              "left": 1173.765625
+            }
+          },
+          {
+            "id": "trash",
+            "cell": {
+              "x": 1231.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1283.5,
+              "bottom": 1071,
+              "left": 1231.5
+            },
+            "icon": {
+              "x": 1231.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1283.234375,
+              "bottom": 1071,
+              "left": 1231.765625
+            }
+          },
+          {
+            "id": "calculator",
+            "cell": {
+              "x": 1289.5,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1341.5,
+              "bottom": 1071,
+              "left": 1289.5
+            },
+            "icon": {
+              "x": 1289.765625,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1341.234375,
+              "bottom": 1071,
+              "left": 1289.765625
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "hover": {
+        "layout": {
+          "page": 0,
+          "strength": 1,
+          "leases": 0,
+          "running": false,
+          "width": 878
+        },
+        "dock": {
+          "x": 521.0703125,
+          "y": 1011,
+          "width": 877.859375,
+          "height": 69,
+          "top": 1011,
+          "right": 1398.9296875,
+          "bottom": 1080,
+          "left": 521.0703125
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 531.0703125,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 583.0703125,
+              "bottom": 1071,
+              "left": 531.0703125
+            },
+            "icon": {
+              "x": 531.3359375,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 582.8046875,
+              "bottom": 1071,
+              "left": 531.3359375
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 604.0703125,
+              "y": 1019,
+              "width": 56.5625,
+              "height": 52,
+              "top": 1019,
+              "right": 660.6328125,
+              "bottom": 1071,
+              "left": 604.0703125
+            },
+            "icon": {
+              "x": 604.3515625,
+              "y": 1015,
+              "width": 56,
+              "height": 56,
+              "top": 1015,
+              "right": 660.3515625,
+              "bottom": 1071,
+              "left": 604.3515625
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 666.6328125,
+              "y": 1019,
+              "width": 76.640625,
+              "height": 52,
+              "top": 1019,
+              "right": 743.2734375,
+              "bottom": 1071,
+              "left": 666.6328125
+            },
+            "icon": {
+              "x": 667.0078125,
+              "y": 995.125,
+              "width": 75.875,
+              "height": 75.875,
+              "top": 995.125,
+              "right": 742.8828125,
+              "bottom": 1071,
+              "left": 667.0078125
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 749.2734375,
+              "y": 1019,
+              "width": 88.390625,
+              "height": 52,
+              "top": 1019,
+              "right": 837.6640625,
+              "bottom": 1071,
+              "left": 749.2734375
+            },
+            "icon": {
+              "x": 749.703125,
+              "y": 983.484375,
+              "width": 87.515625,
+              "height": 87.515625,
+              "top": 983.484375,
+              "right": 837.21875,
+              "bottom": 1071,
+              "left": 749.703125
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 843.6640625,
+              "y": 1019,
+              "width": 76.640625,
+              "height": 52,
+              "top": 1019,
+              "right": 920.3046875,
+              "bottom": 1071,
+              "left": 843.6640625
+            },
+            "icon": {
+              "x": 844.0390625,
+              "y": 995.125,
+              "width": 75.875,
+              "height": 75.875,
+              "top": 995.125,
+              "right": 919.9140625,
+              "bottom": 1071,
+              "left": 844.0390625
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 926.3046875,
+              "y": 1019,
+              "width": 56.5625,
+              "height": 52,
+              "top": 1019,
+              "right": 982.8671875,
+              "bottom": 1071,
+              "left": 926.3046875
+            },
+            "icon": {
+              "x": 926.5859375,
+              "y": 1015,
+              "width": 56,
+              "height": 56,
+              "top": 1015,
+              "right": 982.5859375,
+              "bottom": 1071,
+              "left": 926.5859375
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 988.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1040.8671875,
+              "bottom": 1071,
+              "left": 988.8671875
+            },
+            "icon": {
+              "x": 989.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1040.6015625,
+              "bottom": 1071,
+              "left": 989.1328125
+            }
+          },
+          {
+            "id": "music",
+            "cell": {
+              "x": 1046.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1098.8671875,
+              "bottom": 1071,
+              "left": 1046.8671875
+            },
+            "icon": {
+              "x": 1047.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1098.6015625,
+              "bottom": 1071,
+              "left": 1047.1328125
+            }
+          },
+          {
+            "id": "photos",
+            "cell": {
+              "x": 1104.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1156.8671875,
+              "bottom": 1071,
+              "left": 1104.8671875
+            },
+            "icon": {
+              "x": 1105.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1156.6015625,
+              "bottom": 1071,
+              "left": 1105.1328125
+            }
+          },
+          {
+            "id": "mail",
+            "cell": {
+              "x": 1162.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1214.8671875,
+              "bottom": 1071,
+              "left": 1162.8671875
+            },
+            "icon": {
+              "x": 1163.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1214.6015625,
+              "bottom": 1071,
+              "left": 1163.1328125
+            }
+          },
+          {
+            "id": "downloads",
+            "cell": {
+              "x": 1220.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1272.8671875,
+              "bottom": 1071,
+              "left": 1220.8671875
+            },
+            "icon": {
+              "x": 1221.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1272.6015625,
+              "bottom": 1071,
+              "left": 1221.1328125
+            }
+          },
+          {
+            "id": "trash",
+            "cell": {
+              "x": 1278.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1330.8671875,
+              "bottom": 1071,
+              "left": 1278.8671875
+            },
+            "icon": {
+              "x": 1279.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1330.6015625,
+              "bottom": 1071,
+              "left": 1279.1328125
+            }
+          },
+          {
+            "id": "calculator",
+            "cell": {
+              "x": 1336.8671875,
+              "y": 1019,
+              "width": 52,
+              "height": 52,
+              "top": 1019,
+              "right": 1388.8671875,
+              "bottom": 1071,
+              "left": 1336.8671875
+            },
+            "icon": {
+              "x": 1337.1328125,
+              "y": 1019.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 1019.53125,
+              "right": 1388.6015625,
+              "bottom": 1071,
+              "left": 1337.1328125
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "pages": []
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "rest": {
+        "layout": {
+          "page": 0,
+          "strength": 0,
+          "leases": 0,
+          "running": false,
+          "width": 783
+        },
+        "dock": {
+          "x": 433.5,
+          "y": 861,
+          "width": 783,
+          "height": 69,
+          "top": 861,
+          "right": 1216.5,
+          "bottom": 930,
+          "left": 433.5
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 443.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 495.5,
+              "bottom": 921,
+              "left": 443.5
+            },
+            "icon": {
+              "x": 443.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 495.234375,
+              "bottom": 921,
+              "left": 443.765625
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 516.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 568.5,
+              "bottom": 921,
+              "left": 516.5
+            },
+            "icon": {
+              "x": 516.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 568.234375,
+              "bottom": 921,
+              "left": 516.765625
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 574.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 626.5,
+              "bottom": 921,
+              "left": 574.5
+            },
+            "icon": {
+              "x": 574.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 626.234375,
+              "bottom": 921,
+              "left": 574.765625
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 632.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 684.5,
+              "bottom": 921,
+              "left": 632.5
+            },
+            "icon": {
+              "x": 632.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 684.234375,
+              "bottom": 921,
+              "left": 632.765625
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 690.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 742.5,
+              "bottom": 921,
+              "left": 690.5
+            },
+            "icon": {
+              "x": 690.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 742.234375,
+              "bottom": 921,
+              "left": 690.765625
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 748.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 800.5,
+              "bottom": 921,
+              "left": 748.5
+            },
+            "icon": {
+              "x": 748.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 800.234375,
+              "bottom": 921,
+              "left": 748.765625
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 806.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 858.5,
+              "bottom": 921,
+              "left": 806.5
+            },
+            "icon": {
+              "x": 806.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 858.234375,
+              "bottom": 921,
+              "left": 806.765625
+            }
+          },
+          {
+            "id": "music",
+            "cell": {
+              "x": 864.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 916.5,
+              "bottom": 921,
+              "left": 864.5
+            },
+            "icon": {
+              "x": 864.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 916.234375,
+              "bottom": 921,
+              "left": 864.765625
+            }
+          },
+          {
+            "id": "photos",
+            "cell": {
+              "x": 922.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 974.5,
+              "bottom": 921,
+              "left": 922.5
+            },
+            "icon": {
+              "x": 922.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 974.234375,
+              "bottom": 921,
+              "left": 922.765625
+            }
+          },
+          {
+            "id": "mail",
+            "cell": {
+              "x": 980.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1032.5,
+              "bottom": 921,
+              "left": 980.5
+            },
+            "icon": {
+              "x": 980.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1032.234375,
+              "bottom": 921,
+              "left": 980.765625
+            }
+          },
+          {
+            "id": "downloads",
+            "cell": {
+              "x": 1038.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1090.5,
+              "bottom": 921,
+              "left": 1038.5
+            },
+            "icon": {
+              "x": 1038.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1090.234375,
+              "bottom": 921,
+              "left": 1038.765625
+            }
+          },
+          {
+            "id": "trash",
+            "cell": {
+              "x": 1096.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1148.5,
+              "bottom": 921,
+              "left": 1096.5
+            },
+            "icon": {
+              "x": 1096.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1148.234375,
+              "bottom": 921,
+              "left": 1096.765625
+            }
+          },
+          {
+            "id": "calculator",
+            "cell": {
+              "x": 1154.5,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1206.5,
+              "bottom": 921,
+              "left": 1154.5
+            },
+            "icon": {
+              "x": 1154.765625,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1206.234375,
+              "bottom": 921,
+              "left": 1154.765625
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "hover": {
+        "layout": {
+          "page": 0,
+          "strength": 1,
+          "leases": 0,
+          "running": false,
+          "width": 878
+        },
+        "dock": {
+          "x": 386.0703125,
+          "y": 861,
+          "width": 877.859375,
+          "height": 69,
+          "top": 861,
+          "right": 1263.9296875,
+          "bottom": 930,
+          "left": 386.0703125
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 396.0703125,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 448.0703125,
+              "bottom": 921,
+              "left": 396.0703125
+            },
+            "icon": {
+              "x": 396.3359375,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 447.8046875,
+              "bottom": 921,
+              "left": 396.3359375
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 469.0703125,
+              "y": 869,
+              "width": 56.5625,
+              "height": 52,
+              "top": 869,
+              "right": 525.6328125,
+              "bottom": 921,
+              "left": 469.0703125
+            },
+            "icon": {
+              "x": 469.3515625,
+              "y": 865,
+              "width": 56,
+              "height": 56,
+              "top": 865,
+              "right": 525.3515625,
+              "bottom": 921,
+              "left": 469.3515625
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 531.6328125,
+              "y": 869,
+              "width": 76.640625,
+              "height": 52,
+              "top": 869,
+              "right": 608.2734375,
+              "bottom": 921,
+              "left": 531.6328125
+            },
+            "icon": {
+              "x": 532.0078125,
+              "y": 845.125,
+              "width": 75.875,
+              "height": 75.875,
+              "top": 845.125,
+              "right": 607.8828125,
+              "bottom": 921,
+              "left": 532.0078125
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 614.2734375,
+              "y": 869,
+              "width": 88.390625,
+              "height": 52,
+              "top": 869,
+              "right": 702.6640625,
+              "bottom": 921,
+              "left": 614.2734375
+            },
+            "icon": {
+              "x": 614.703125,
+              "y": 833.484375,
+              "width": 87.515625,
+              "height": 87.515625,
+              "top": 833.484375,
+              "right": 702.21875,
+              "bottom": 921,
+              "left": 614.703125
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 708.6640625,
+              "y": 869,
+              "width": 76.640625,
+              "height": 52,
+              "top": 869,
+              "right": 785.3046875,
+              "bottom": 921,
+              "left": 708.6640625
+            },
+            "icon": {
+              "x": 709.0390625,
+              "y": 845.125,
+              "width": 75.875,
+              "height": 75.875,
+              "top": 845.125,
+              "right": 784.9140625,
+              "bottom": 921,
+              "left": 709.0390625
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 791.3046875,
+              "y": 869,
+              "width": 56.5625,
+              "height": 52,
+              "top": 869,
+              "right": 847.8671875,
+              "bottom": 921,
+              "left": 791.3046875
+            },
+            "icon": {
+              "x": 791.5859375,
+              "y": 865,
+              "width": 56,
+              "height": 56,
+              "top": 865,
+              "right": 847.5859375,
+              "bottom": 921,
+              "left": 791.5859375
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 853.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 905.8671875,
+              "bottom": 921,
+              "left": 853.8671875
+            },
+            "icon": {
+              "x": 854.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 905.6015625,
+              "bottom": 921,
+              "left": 854.1328125
+            }
+          },
+          {
+            "id": "music",
+            "cell": {
+              "x": 911.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 963.8671875,
+              "bottom": 921,
+              "left": 911.8671875
+            },
+            "icon": {
+              "x": 912.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 963.6015625,
+              "bottom": 921,
+              "left": 912.1328125
+            }
+          },
+          {
+            "id": "photos",
+            "cell": {
+              "x": 969.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1021.8671875,
+              "bottom": 921,
+              "left": 969.8671875
+            },
+            "icon": {
+              "x": 970.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1021.6015625,
+              "bottom": 921,
+              "left": 970.1328125
+            }
+          },
+          {
+            "id": "mail",
+            "cell": {
+              "x": 1027.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1079.8671875,
+              "bottom": 921,
+              "left": 1027.8671875
+            },
+            "icon": {
+              "x": 1028.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1079.6015625,
+              "bottom": 921,
+              "left": 1028.1328125
+            }
+          },
+          {
+            "id": "downloads",
+            "cell": {
+              "x": 1085.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1137.8671875,
+              "bottom": 921,
+              "left": 1085.8671875
+            },
+            "icon": {
+              "x": 1086.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1137.6015625,
+              "bottom": 921,
+              "left": 1086.1328125
+            }
+          },
+          {
+            "id": "trash",
+            "cell": {
+              "x": 1143.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1195.8671875,
+              "bottom": 921,
+              "left": 1143.8671875
+            },
+            "icon": {
+              "x": 1144.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1195.6015625,
+              "bottom": 921,
+              "left": 1144.1328125
+            }
+          },
+          {
+            "id": "calculator",
+            "cell": {
+              "x": 1201.8671875,
+              "y": 869,
+              "width": 52,
+              "height": 52,
+              "top": 869,
+              "right": 1253.8671875,
+              "bottom": 921,
+              "left": 1201.8671875
+            },
+            "icon": {
+              "x": 1202.1328125,
+              "y": 869.53125,
+              "width": 51.46875,
+              "height": 51.46875,
+              "top": 869.53125,
+              "right": 1253.6015625,
+              "bottom": 921,
+              "left": 1202.1328125
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "pages": []
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "rest": {
+        "layout": {
+          "page": 0,
+          "strength": 0,
+          "leases": 0,
+          "running": false,
+          "width": 315
+        },
+        "dock": {
+          "x": 37.3125,
+          "y": 557.8125,
+          "width": 315.375,
+          "height": 42.1875,
+          "top": 557.8125,
+          "right": 352.6875,
+          "bottom": 600,
+          "left": 37.3125
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 81.3125,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 106.5,
+              "bottom": 591,
+              "left": 81.3125
+            },
+            "icon": {
+              "x": 81.4375,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 106.375,
+              "bottom": 591,
+              "left": 81.4375
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 127.5,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 152.6875,
+              "bottom": 591,
+              "left": 127.5
+            },
+            "icon": {
+              "x": 127.625,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 152.5625,
+              "bottom": 591,
+              "left": 127.625
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 158.6875,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 183.875,
+              "bottom": 591,
+              "left": 158.6875
+            },
+            "icon": {
+              "x": 158.8125,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 183.75,
+              "bottom": 591,
+              "left": 158.8125
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 189.875,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 215.0625,
+              "bottom": 591,
+              "left": 189.875
+            },
+            "icon": {
+              "x": 190,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 214.9375,
+              "bottom": 591,
+              "left": 190
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 221.0625,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 246.25,
+              "bottom": 591,
+              "left": 221.0625
+            },
+            "icon": {
+              "x": 221.1875,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 246.125,
+              "bottom": 591,
+              "left": 221.1875
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 252.25,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 277.4375,
+              "bottom": 591,
+              "left": 252.25
+            },
+            "icon": {
+              "x": 252.375,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 277.3125,
+              "bottom": 591,
+              "left": 252.375
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 283.4375,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 308.625,
+              "bottom": 591,
+              "left": 283.4375
+            },
+            "icon": {
+              "x": 283.5625,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 308.5,
+              "bottom": 591,
+              "left": 283.5625
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "hover": {
+        "layout": {
+          "page": 0,
+          "strength": 1,
+          "leases": 0,
+          "running": false,
+          "width": 361
+        },
+        "dock": {
+          "x": 14.328125,
+          "y": 557.8125,
+          "width": 361.34375,
+          "height": 42.1875,
+          "top": 557.8125,
+          "right": 375.671875,
+          "bottom": 600,
+          "left": 14.328125
+        },
+        "icons": [
+          {
+            "id": "launchpad",
+            "cell": {
+              "x": 58.328125,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 83.515625,
+              "bottom": 591,
+              "left": 58.328125
+            },
+            "icon": {
+              "x": 58.453125,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 83.390625,
+              "bottom": 591,
+              "left": 58.453125
+            }
+          },
+          {
+            "id": "finder",
+            "cell": {
+              "x": 104.515625,
+              "y": 539,
+              "width": 27.421875,
+              "height": 52,
+              "top": 539,
+              "right": 131.9375,
+              "bottom": 591,
+              "left": 104.515625
+            },
+            "icon": {
+              "x": 104.6484375,
+              "y": 563.859375,
+              "width": 27.140625,
+              "height": 27.140625,
+              "top": 563.859375,
+              "right": 131.7890625,
+              "bottom": 591,
+              "left": 104.6484375
+            }
+          },
+          {
+            "id": "browser",
+            "cell": {
+              "x": 137.9375,
+              "y": 539,
+              "width": 37.140625,
+              "height": 52,
+              "top": 539,
+              "right": 175.078125,
+              "bottom": 591,
+              "left": 137.9375
+            },
+            "icon": {
+              "x": 138.109375,
+              "y": 554.21875,
+              "width": 36.78125,
+              "height": 36.78125,
+              "top": 554.21875,
+              "right": 174.890625,
+              "bottom": 591,
+              "left": 138.109375
+            }
+          },
+          {
+            "id": "notes",
+            "cell": {
+              "x": 181.078125,
+              "y": 539,
+              "width": 42.828125,
+              "height": 52,
+              "top": 539,
+              "right": 223.90625,
+              "bottom": 591,
+              "left": 181.078125
+            },
+            "icon": {
+              "x": 181.28125,
+              "y": 548.59375,
+              "width": 42.40625,
+              "height": 42.40625,
+              "top": 548.59375,
+              "right": 223.6875,
+              "bottom": 591,
+              "left": 181.28125
+            }
+          },
+          {
+            "id": "reminders",
+            "cell": {
+              "x": 229.90625,
+              "y": 539,
+              "width": 37.125,
+              "height": 52,
+              "top": 539,
+              "right": 267.03125,
+              "bottom": 591,
+              "left": 229.90625
+            },
+            "icon": {
+              "x": 230.09375,
+              "y": 554.25,
+              "width": 36.75,
+              "height": 36.75,
+              "top": 554.25,
+              "right": 266.84375,
+              "bottom": 591,
+              "left": 230.09375
+            }
+          },
+          {
+            "id": "calendar",
+            "cell": {
+              "x": 273.03125,
+              "y": 539,
+              "width": 27.40625,
+              "height": 52,
+              "top": 539,
+              "right": 300.4375,
+              "bottom": 591,
+              "left": 273.03125
+            },
+            "icon": {
+              "x": 273.171875,
+              "y": 563.875,
+              "width": 27.125,
+              "height": 27.125,
+              "top": 563.875,
+              "right": 300.296875,
+              "bottom": 591,
+              "left": 273.171875
+            }
+          },
+          {
+            "id": "settings",
+            "cell": {
+              "x": 306.4375,
+              "y": 539,
+              "width": 25.1875,
+              "height": 52,
+              "top": 539,
+              "right": 331.625,
+              "bottom": 591,
+              "left": 306.4375
+            },
+            "icon": {
+              "x": 306.5625,
+              "y": 566.0625,
+              "width": 24.9375,
+              "height": 24.9375,
+              "top": 566.0625,
+              "right": 331.5,
+              "bottom": 591,
+              "left": 306.5625
+            }
+          }
+        ],
+        "all": [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings",
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ],
+        "broken": []
+      },
+      "pages": [
+        [
+          "launchpad",
+          "finder",
+          "browser",
+          "notes",
+          "reminders",
+          "calendar",
+          "settings"
+        ],
+        [
+          "music",
+          "photos",
+          "mail",
+          "downloads",
+          "trash",
+          "calculator"
+        ]
+      ]
+    }
+  ],
+  "tahoe5": {
+    "mru": true,
+    "snap": true,
+    "sharedAudioPosition": 15.555335,
+    "neutralArtwork": true,
+    "lockLogoutLogin": true,
+    "consentDialog": "NOT_TESTED; no simulated consent",
+    "nativePicker": "NOT_TESTED; CDP sets explicit synthetic file",
+    "audioOutput": "NOT_TESTED; decoder position only",
+    "hardwareGPU": "NOT_TESTED"
+  },
+  "fallbackContextsNull": {
+    "webgl": true,
+    "webgl2": true
+  },
+  "profileIsolation": true,
+  "processRestartPersistence": true,
+  "nativeWebGLDisabledFallback": true
+}

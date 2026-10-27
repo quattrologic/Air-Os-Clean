@@ -1,0 +1,30 @@
+{
+  "base": "87cb80eaedc93793423420109f87e9bf1aca872a",
+  "productCommit": "cf004a2a905fd2c75fe5a6ae2e0b3911a529bdea",
+  "protectedByteIdentical": {
+    "air-modern-dock.css": "a9843d8d78274bb0253035c8be77c6ace849430a3e0e7a6decd21605ab2096e1",
+    "air-island.js": "8571dcd1f2acb1028ef747a52ae594f9870084e42e30b562aeea6513dcb27a30",
+    "air-island.css": "022b0b782ab1f12966493b4cf1aff2504ecff26eaebebf304ae73424b54d6480",
+    "main.cjs": "e89f6c0f3d851bc0b475535fea3036acdb71c67a53c49ae602cb3f209e4d8b27",
+    "preload.cjs": "622cd7665deeaa47c7c9001e328b664f0d09da8341e5c3e30528f8b79a78d183",
+    "login.js": "9c4eeb18a769e17c73708e81cced8e89b8df9edfbb9cbec39fc50bbd69ed5ab4",
+    "maclock-glass.js": "33f80088776f7fc9d635574335a78922cb0279a4b2357fa6420a1f8619b2bc95",
+    "air-desktop-glass.js": "bbebd3b1a0cdafbf45316d5d89c15d0785f145b16415266216feaeec0fb6cef5",
+    "macshell-glass2-shaders.js": "0c731605529302e2e28a690f810ff46d97e1f3c2592518da243b4173f3d72e69",
+    ".github/workflows/build-windows-r1.yml": "5cb67029a41cab2345266cc7b1927cf3e96266b58dc54dc6e932b1faae24d0f2",
+    ".github/workflows/build-windows-r2.yml": "a1720d4fcc521f139ffda8ebd827fada500fa04de0c3f3fb36f5c62abb002f91",
+    "scripts/windows-test-build.cjs": "7172244b369f11f7e23ea21d8c4a4238a34d9f62973dfd57a998177ffd99cb18",
+    "scripts/windows-r2-build.cjs": "a105864e8e4eb0d4bf551c63ce7cf0c301382142343515e1fcc93dc06ec68dc7",
+    "build/windows-x64/package.json": "2275fa0b06a1589c9837d0e16d93106e8deec3f567bb02ef5b4bfb82c549862b",
+    "build/windows-x64/package-lock.json": "eea324e51f020ee1894c61bfb1869034712b34e977338cb400c2a40d45a399e1",
+    "src/main/preferences.cjs": "b2c862fae67aef4028f3e9c658b48b72a1c8e4f84e41e0bef65286cd315a435a"
+  },
+  "tests": {
+    "passed": 463,
+    "failed": 0,
+    "skipped": 0
+  },
+  "gui": "Linux x64 Electron44.9.3;1920x1080/1650x930/390x600; see actual renderer JSON",
+  "hardwareGpuAccepted": false,
+  "guiLauncherCommit": "a9971ccce381824f75dcd85383783a2b5b894457"
+}

@@ -1,5 +1,7 @@
 # MacShell-Integration: vollständige Funktionsmatrix und Masterplan
 
+Tahoe7-Präzisierung: [ausgeführte Source-Port-Matrix und Nachweise](AIR_OS_TAHOE_7.md). D01–D04: gekoppelte Zellen/Originalmagnifikation, flexible Breite, vorhandenes Pinning plus responsive Seiten. B01/B03: echte Fensteruntermenüs, originale generische Glyphen, Datum ohne zweite Uhr. W01/W05: explizites Widgetpreset, Player-RU-Komposition/Canvas-Controls. Gemeinsame Slider-/Switch-/Segmentkantenbewegung;54 eindeutige GPL-Originalicons. Das ersetzt keine offenen nativen Adapter, Qt-Linsenshader, Live-Previews oder vollständigen Player-/Widgetports. Die frühere325px-Dockbindung ist für Tahoe7 ausdrücklich aufgehoben; Air-OS-Silhouette/M1/M2 bleiben geschützt.
+
 Tahoe6-Fortschritt (27.10.2026): [tatsächlicher Port und Nachweise](AIR_OS_TAHOE_6.md) ergänzt MacBar-Appmenüs und3 originale Statusglyphen, MacDock-Kosinus, originalclock-basierte Darstellung und gemeinsame Tahoe-Titel-/Popupkomponenten. Bestehende Matrix bleibt maßgeblich; native Systemadapter und vollständige MacShell-Untermenüs werden dadurch nicht als fertig markiert.
 
 25. Oktober 2026. **Nur Inventur und Planung; keine neue Produktfunktion implementiert.** Air-OS-Basis/Remote-HEAD: `3b3b87ae5d308aacc6d8024353d2b68f95cc74da` (AM1, enthält L1B.3). Eigener Branch: `docs/macshell-integration-roadmap-20261025`. MacShell-Remote-HEAD erneut geprüft und fixiert auf **`1bdb51870b621100fd2709f66c8f8e00ab17b9c4`**. Alle Originalverweise unten verwenden diesen unveränderlichen Stand.

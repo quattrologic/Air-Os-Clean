@@ -1,0 +1,266 @@
+[
+  {
+    "file": "docs/visual/tahoe7-comparison/before-dock-1920.png",
+    "source": "docs/visual/tahoe7-before/t7-many-dock-1920.png",
+    "crop": [
+      410,
+      920,
+      1510,
+      1080
+    ],
+    "sha256": "7d75cbf0098b00b84878db016a3553374bcf60e07fc40bb885280272077b873f"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-hover-1920.png",
+    "source": "docs/visual/tahoe7-before/t7-many-hover-1920.png",
+    "crop": [
+      410,
+      920,
+      1510,
+      1080
+    ],
+    "sha256": "eb0e9e059a4564b67b402e5849ca4048b047f0cb71cb661e10c24e04d6c6f701"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-bar-1920.png",
+    "source": "docs/visual/tahoe7-before/t6-desktop-1920.png",
+    "crop": [
+      0,
+      0,
+      1920,
+      64
+    ],
+    "sha256": "92412d73e6f4839caf11a8d26315dfa745683c716997bcd949ddae6f3bf48569"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-widgets-1920.png",
+    "source": "docs/visual/tahoe7-before/t7-preset-1920.png",
+    "crop": [
+      0,
+      60,
+      430,
+      730
+    ],
+    "sha256": "281026e7bbd1f1b3515d7584415447baa97034a34a8b16684c33a617dfd80a96"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-dock-1650.png",
+    "source": "docs/visual/tahoe7-before/t7-many-dock-1650.png",
+    "crop": [
+      275,
+      770,
+      1375,
+      930
+    ],
+    "sha256": "f6017d30f8454dc6e9243bde6334d25c3d281b19fad91acbec7b4a35a568d693"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-hover-1650.png",
+    "source": "docs/visual/tahoe7-before/t7-many-hover-1650.png",
+    "crop": [
+      275,
+      770,
+      1375,
+      930
+    ],
+    "sha256": "e9cc0b27ea34f44f0b1675c6215e8277647015050c3c634ce5ea33c0c69db2e9"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-bar-1650.png",
+    "source": "docs/visual/tahoe7-before/t6-desktop-1650.png",
+    "crop": [
+      0,
+      0,
+      1650,
+      64
+    ],
+    "sha256": "26716b234d21940b57472627d0a3304cbe4516b31a4ea2098af0b5f2d4a95799"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-widgets-1650.png",
+    "source": "docs/visual/tahoe7-before/t7-preset-1650.png",
+    "crop": [
+      0,
+      60,
+      430,
+      730
+    ],
+    "sha256": "210aa6f0c978690d25e87d7d095030ae6c8d7db43ae7a678bf188403727f1783"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-dock-390.png",
+    "source": "docs/visual/tahoe7-before/t7-many-dock-390.png",
+    "crop": [
+      0,
+      440,
+      390,
+      600
+    ],
+    "sha256": "c1be6ec5619393565258f494bbfa6cc6dbd7fc0cd115d90c72c176236dbb67f1"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-hover-390.png",
+    "source": "docs/visual/tahoe7-before/t7-many-hover-390.png",
+    "crop": [
+      0,
+      440,
+      390,
+      600
+    ],
+    "sha256": "fc0b331536c76d43367a8682cb243f42ca81bf64050a4e8c8a7a2e7f7362b34d"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-bar-390.png",
+    "source": "docs/visual/tahoe7-before/t6-desktop-390.png",
+    "crop": [
+      0,
+      0,
+      390,
+      64
+    ],
+    "sha256": "338948a8e85c3224a096d0bffcda2bc7cb7ab71bf1e127600dc214bb3cc1d5c7"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/before-widgets-390.png",
+    "source": "docs/visual/tahoe7-before/t7-preset-390.png",
+    "crop": [
+      0,
+      60,
+      390,
+      600
+    ],
+    "sha256": "b55220d8feb6579c4f34f4946a1d16f99ff892c268401d8d1aa7caaa0e5fbf12"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-dock-1920.png",
+    "source": "docs/visual/tahoe7-after/t7-many-dock-1920.png",
+    "crop": [
+      410,
+      920,
+      1510,
+      1080
+    ],
+    "sha256": "d1ce553fc70b16dc108e296b111b737ad04f3de99b44ba682d0a465cf0234d94"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-hover-1920.png",
+    "source": "docs/visual/tahoe7-after/t7-many-hover-1920.png",
+    "crop": [
+      410,
+      920,
+      1510,
+      1080
+    ],
+    "sha256": "51072a50403e3fe4e63c56207dbbcb193dfe4de36b207e06fd0de5991bd2863e"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-bar-1920.png",
+    "source": "docs/visual/tahoe7-after/t6-desktop-1920.png",
+    "crop": [
+      0,
+      0,
+      1920,
+      64
+    ],
+    "sha256": "a9cdbd586357c041d794c49b453eccfb2792256b7fbf5993119cdbfac48725ab"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-widgets-1920.png",
+    "source": "docs/visual/tahoe7-after/t7-preset-1920.png",
+    "crop": [
+      0,
+      60,
+      430,
+      730
+    ],
+    "sha256": "35bc649cf59b1afb97664dbbf32de76b796e8c3dd74846b84c96bf555fdffeb0"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-dock-1650.png",
+    "source": "docs/visual/tahoe7-after/t7-many-dock-1650.png",
+    "crop": [
+      275,
+      770,
+      1375,
+      930
+    ],
+    "sha256": "8fbdd287a47d58ee54f62c971edb1ceedb3c7a6a4445051a3bd3d1502f93118c"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-hover-1650.png",
+    "source": "docs/visual/tahoe7-after/t7-many-hover-1650.png",
+    "crop": [
+      275,
+      770,
+      1375,
+      930
+    ],
+    "sha256": "87ae41340be38e93c4eeddeb3475a0f418ab6f6c7d20a7cbf5d067578797bf79"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-bar-1650.png",
+    "source": "docs/visual/tahoe7-after/t6-desktop-1650.png",
+    "crop": [
+      0,
+      0,
+      1650,
+      64
+    ],
+    "sha256": "12232bbcb0c940163179866b179037b038792528f71cb60fbdf07ae22d73b51b"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-widgets-1650.png",
+    "source": "docs/visual/tahoe7-after/t7-preset-1650.png",
+    "crop": [
+      0,
+      60,
+      430,
+      730
+    ],
+    "sha256": "936de050b0700da31aa1780b38bbb23ebb42cb8785a07eddc40b898af61d2fc6"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-dock-390.png",
+    "source": "docs/visual/tahoe7-after/t7-many-dock-390.png",
+    "crop": [
+      0,
+      440,
+      390,
+      600
+    ],
+    "sha256": "966c0069ddbf34b8ddafafb58b4de2e53fcfdab9c2171794d3277ed95bf81ce7"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-hover-390.png",
+    "source": "docs/visual/tahoe7-after/t7-many-hover-390.png",
+    "crop": [
+      0,
+      440,
+      390,
+      600
+    ],
+    "sha256": "5518a242fc96e92c541e12a85f81d58cc0354f5816b7501ecb0a0d5b3de9aa77"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-bar-390.png",
+    "source": "docs/visual/tahoe7-after/t6-desktop-390.png",
+    "crop": [
+      0,
+      0,
+      390,
+      64
+    ],
+    "sha256": "89a4723a08bf322b8372edbea8cfb9858b70cbdab36553f3dd75650f2c321065"
+  },
+  {
+    "file": "docs/visual/tahoe7-comparison/after-widgets-390.png",
+    "source": "docs/visual/tahoe7-after/t7-preset-390.png",
+    "crop": [
+      0,
+      60,
+      390,
+      600
+    ],
+    "sha256": "eae48e79d51780741add31891629003fe9041b54d54415af5e0684ac71ce7157"
+  }
+]
