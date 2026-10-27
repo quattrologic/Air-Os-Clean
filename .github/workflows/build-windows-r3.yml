@@ -8,7 +8,7 @@ permissions:
   contents: read
 concurrency:
   group: air-os-windows-r3-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   windows-x64-r3:
     runs-on: windows-2022
