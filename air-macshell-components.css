@@ -1,7 +1,7 @@
 /* Shared MacShell/GTK component layer. MIT source parameters and port matrix:
  * third_party/tahoe7/. Scope is Modern; original silhouette remains below. */
 html[data-desktop-theme=modern] .dock[data-theme=modern].t7-dock{gap:6px!important;padding:0 9px 8px!important;box-sizing:border-box;overflow:visible!important;align-items:flex-end;border-radius:18px 18px 0 0!important;width:var(--t7-width)!important;height:var(--t7-height)!important;max-width:calc(100vw - 28px)!important;align-items:flex-end!important}
-html[data-desktop-theme=modern] .dock.t7-dock .dock-app{width:var(--t7-cell,52px)!important;min-width:0!important;height:52px!important;flex:0 0 var(--t7-cell,52px)!important;margin:0!important;padding:0!important;overflow:visible;position:relative}
+html[data-desktop-theme=modern] .dock.t7-dock .dock-app{width:var(--t7-cell,52px)!important;min-width:0!important;height:52px!important;flex:0 0 var(--t7-cell,52px)!important;margin:0!important;padding:0!important;overflow:visible;position:relative;transform:none!important}
 html[data-desktop-theme=modern] .dock.t7-dock .dock-app.t7-first{margin-right:15px!important}
 html[data-desktop-theme=modern] .dock.t7-dock .dock-icon,html[data-desktop-theme=modern] .dock.t7-dock .dock-app:hover .dock-icon{position:absolute!important;left:50%;bottom:0;width:var(--t7-icon,52px)!important;height:var(--t7-icon,52px)!important;min-width:0!important;min-height:0!important;transform:translateX(-50%)!important;transition:filter 100ms!important;flex:none!important;background:transparent;box-shadow:none}
 html[data-desktop-theme=modern] .dock.t7-dock .dock-app.is-open::after{bottom:-6px!important;width:4px;height:4px;left:calc(50% - 2px)}
