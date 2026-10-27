@@ -40,7 +40,7 @@
   ],
   "dock": "MacDock.qml default52/magnification1.7/spacing6/hPad10/topPad8/bottomPad9; totalW0/c0/refLeft/cosine cell widths in macshell-shell7.js; Spring140ms response presentation; M2 motion lease retains original WAAPI reversal; no OS window management",
   "controls": "Spring.qml complete integrator drives Dock retargeting; GlassSlider pos/14px inset/4px track/21x14->27x17 knob,45/55 velocity/jig/70ms idle; GlassSwitch46x21 geometry with independent300/440ms OutBack edges and1200ms owner recheck. Native inputs retain actual values/keyboard/drag. Individual knob lens shader and switch drag gesture are not ported; host GLASS-3 remains owner.",
-  "player": "PlayerWidget RU composition and PlayerGlyph onPaint path commands actually used by the existing media widget; no MPRIS/lyrics provider/audio engine added",
+  "player": "PlayerWidget RU composition, source21/24 title and18/21 subtitle, small top-right46RU play button; PlayerGlyph onPaint path commands used by existing media widget. Small card adapts away the extra Air-OS header to retain square content. No MPRIS/lyrics provider/audio engine added.",
   "gtkPin": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
   "iconsPin": "839848b9a8a38a92a6936e30c4abe35cc6f2546d",
   "listedNotPorted": [

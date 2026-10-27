@@ -31,8 +31,8 @@ html[data-desktop-theme=modern] :is(.air-island-views,.refine-nav) button[aria-p
 /* PlayerWidget reference units actually set by its existing data view. */
 html[data-desktop-theme=modern] .deep-widget[data-widget=music] .t7-player{position:relative;height:calc(100% - 22px);max-height:none;overflow:hidden}
 html[data-desktop-theme=modern] .t7-player .widget-music-art{position:absolute;left:var(--player-artX);top:var(--player-artY);width:var(--player-artS);height:var(--player-artS);float:none;margin:0;object-fit:cover;border-radius:12px}
-html[data-desktop-theme=modern] .t7-player .widget-song{position:absolute;left:var(--player-textX);right:12px;top:var(--player-titleY);transform:translateY(-50%);font-size:calc(20px * var(--player-k));line-height:1.2}
-html[data-desktop-theme=modern] .t7-player .widget-artist{position:absolute;left:var(--player-textX);right:12px;top:var(--player-subY);transform:translateY(-50%);margin:0;font-size:calc(16px * var(--player-k))}
+html[data-desktop-theme=modern] .t7-player .widget-song{position:absolute;left:var(--player-textX);right:12px;top:var(--player-titleY);transform:translateY(-50%);font-size:var(--player-titleFont);line-height:1.2}
+html[data-desktop-theme=modern] .t7-player .widget-artist{position:absolute;left:var(--player-textX);right:12px;top:var(--player-subY);transform:translateY(-50%);margin:0;font-size:var(--player-artistFont)}
 html[data-desktop-theme=modern] .t7-player>progress{position:absolute;left:5%;width:90%;top:var(--player-barY);height:4px;accent-color:#ffffff94}
 html[data-desktop-theme=modern] .t7-player>div{position:absolute;top:var(--player-ctlY);transform:translateY(-50%);left:10%;width:80%;display:flex;justify-content:space-evenly}
 html[data-desktop-theme=modern] .t7-player [data-media-action]{border:0;background:transparent;min-width:28px;margin:0}
@@ -70,3 +70,10 @@ html[data-desktop-theme=modern] .t7-segmented button{position:relative;z-index:1
 html[data-desktop-theme=modern] .t7-art-placeholder{position:absolute;left:var(--player-artX);top:var(--player-artY);width:var(--player-artS);height:var(--player-artS);display:grid;place-items:center;background:#ffffff12;border-radius:12px}
 html[data-desktop-theme=modern] .t7-art-placeholder[hidden]{display:none}
 html[data-desktop-theme=modern] .t6-status button:disabled{opacity:.4;cursor:default}
+
+/* PlayerWidget.qml small branch: top-right46RU toggle; no wide-card transport row. */
+html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] header{display:none}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] .t7-player{height:100%}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] .t7-player>progress,html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] .widget-music-volume,html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] [data-media-action]:not([data-media-action=toggle]){display:none}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] .t7-player>div{left:var(--player-smallPlayX);top:var(--player-smallPlayY);width:var(--player-smallPlayS);height:var(--player-smallPlayS);transform:none}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music][data-widget-size=small] [data-media-action=toggle]{width:100%;height:100%;padding:0;display:grid;place-items:center}
