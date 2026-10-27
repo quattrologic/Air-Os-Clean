@@ -81,10 +81,10 @@
    try{await api.remove(selected,notes.find(n=>n.id===selected));await notifyChange('air-notes-changed');await notifyChange('air-notes-deleted');selected=null;await refresh();announce('Notiz gelöscht.')}
    catch(error){announce('Löschen fehlgeschlagen.');console.error(error)}
   });
-  activeNote={win,select:id=>{if(!loading&&!saving)refresh(id)}};
+  activeNote={win,select:id=>{if(!loading&&!saving)refresh(id)},hasUnsaved:()=>{const stored=notes.find(n=>n.id===selected);return loading||saving||(stored?title.value!==stored.title||body.value!==stored.body:!!(title.value||body.value));}};
   refresh(pendingNote);pendingNote=null;
  }
- window.airNotes={mount,focusNote};
+ window.airNotes={mount,focusNote,hasUnsaved:()=>!!activeNote?.win.isConnected&&activeNote.hasUnsaved()};
 })();
 
 // Read-only Home summary. No note bodies or persistent secondary cache are retained.

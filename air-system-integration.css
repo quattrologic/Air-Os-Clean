@@ -34,3 +34,7 @@ html[data-desktop-theme=modern] .system-switcher{top:42%;gap:0;padding:9px 14px 
 html[data-desktop-theme=modern] .app-window>.window-titlebar{transition:filter 160ms cubic-bezier(.215,.61,.355,1)}
 html.air-reduced-motion .app-window>.window-titlebar{transition:none}
 @media(prefers-reduced-motion:reduce){html[data-desktop-theme=modern] .app-window>.window-titlebar{transition:none}}
+
+.maclock-system{color-scheme:dark;scrollbar-color:#ffffff44 transparent}html[data-desktop-theme=modern] body:has(#air-island-panel:not([hidden])) .tahoe4-widget-pager{visibility:hidden}.system-lock-note{font:12px/1.4 system-ui;color:#d1d9e0}
+
+@media(max-width:500px){.maclock-media-card{min-height:calc(150px * var(--maclock-u,1));padding:10px;gap:10px}.maclock-media-card strong{font-size:13px;line-height:1.25}.maclock-media-card p{font-size:12px;line-height:1.25;margin:4px 0}.maclock-media-card small{font-size:10.5px;line-height:1.25}.maclock-safe-notice{font-size:11px;line-height:1.25;padding:10px}.maclock-safe-notice p{margin-top:4px}}
