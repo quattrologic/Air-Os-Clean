@@ -1,0 +1,123 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "widgets": [
+        {
+          "id": "clock",
+          "rect": {
+            "x": 20,
+            "y": 100,
+            "width": 395,
+            "height": 185,
+            "top": 100,
+            "right": 415,
+            "bottom": 285,
+            "left": 20
+          },
+          "hidden": false,
+          "scroll": 121,
+          "client": 121
+        },
+        {
+          "id": "calendar",
+          "rect": {
+            "x": 20,
+            "y": 290,
+            "width": 395,
+            "height": 185,
+            "top": 290,
+            "right": 415,
+            "bottom": 475,
+            "left": 20
+          },
+          "hidden": false,
+          "scroll": 130,
+          "client": 130
+        }
+      ]
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "widgets": [
+        {
+          "id": "clock",
+          "rect": {
+            "x": 20,
+            "y": 100,
+            "width": 395,
+            "height": 185,
+            "top": 100,
+            "right": 415,
+            "bottom": 285,
+            "left": 20
+          },
+          "hidden": false,
+          "scroll": 121,
+          "client": 121
+        },
+        {
+          "id": "calendar",
+          "rect": {
+            "x": 20,
+            "y": 290,
+            "width": 395,
+            "height": 185,
+            "top": 290,
+            "right": 415,
+            "bottom": 475,
+            "left": 20
+          },
+          "hidden": false,
+          "scroll": 130,
+          "client": 130
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "widgets": [
+        {
+          "id": "clock",
+          "rect": {
+            "x": 21,
+            "y": 96,
+            "width": 348,
+            "height": 163,
+            "top": 96,
+            "right": 369,
+            "bottom": 259,
+            "left": 21
+          },
+          "hidden": false,
+          "scroll": 112,
+          "client": 112
+        },
+        {
+          "id": "calendar",
+          "rect": {
+            "x": 21,
+            "y": 271,
+            "width": 348,
+            "height": 163,
+            "top": 271,
+            "right": 369,
+            "bottom": 434,
+            "left": 21
+          },
+          "hidden": false,
+          "scroll": 112,
+          "client": 112
+        }
+      ]
+    }
+  ]
+}

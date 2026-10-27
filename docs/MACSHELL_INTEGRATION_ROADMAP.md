@@ -1,5 +1,7 @@
 # MacShell-Integration: vollständige Funktionsmatrix und Masterplan
 
+Tahoe6-Fortschritt (27.10.2026): [tatsächlicher Port und Nachweise](AIR_OS_TAHOE_6.md) ergänzt MacBar-Appmenüs und3 originale Statusglyphen, MacDock-Kosinus, originalclock-basierte Darstellung und gemeinsame Tahoe-Titel-/Popupkomponenten. Bestehende Matrix bleibt maßgeblich; native Systemadapter und vollständige MacShell-Untermenüs werden dadurch nicht als fertig markiert.
+
 25. Oktober 2026. **Nur Inventur und Planung; keine neue Produktfunktion implementiert.** Air-OS-Basis/Remote-HEAD: `3b3b87ae5d308aacc6d8024353d2b68f95cc74da` (AM1, enthält L1B.3). Eigener Branch: `docs/macshell-integration-roadmap-20261025`. MacShell-Remote-HEAD erneut geprüft und fixiert auf **`1bdb51870b621100fd2709f66c8f8e00ab17b9c4`**. Alle Originalverweise unten verwenden diesen unveränderlichen Stand.
 
 ## Umsetzungsnachtrag Tahoe 4 – 26. Oktober2026

@@ -1,0 +1,13 @@
+Final local Linux Node regression summary:
+# tests 448
+# suites 0
+# pass 448
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2411.952362
+Runtime resources:214
+PWA assets:202
+Full GUI/core, final cold widgets and isolated GL diagnostic:PASS
+Hardware/Windows/macOS/iPad acceptance for Tahoe6:NOT TESTED
