@@ -1,0 +1,12 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "minimizeKeyboardFallback": 1,
+  "reference": true,
+  "nativeConsentAcceptance": false,
+  "consentFixture": false
+}

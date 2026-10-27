@@ -1,0 +1,49 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [
+    {
+      "width": 390,
+      "height": 600,
+      "snapped": [
+        {
+          "id": "notes",
+          "x": 0,
+          "y": 91,
+          "width": 390,
+          "height": 433,
+          "right": 390,
+          "bottom": 524
+        },
+        {
+          "id": "finder",
+          "x": 0,
+          "y": 91,
+          "width": 390,
+          "height": 433,
+          "right": 390,
+          "bottom": 524
+        }
+      ]
+    }
+  ],
+  "profileIsolation": true,
+  "exactGeometryRestored": {
+    "left": 12,
+    "top": 14,
+    "width": 350,
+    "height": 390
+  },
+  "processRestart": true,
+  "savedWindowLayouts": [
+    "finder",
+    "notes",
+    "music"
+  ],
+  "reference": false,
+  "nativeConsentAcceptance": false,
+  "consentFixture": true
+}

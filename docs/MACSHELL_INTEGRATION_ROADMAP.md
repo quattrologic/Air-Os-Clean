@@ -18,6 +18,16 @@ Die100er-Matrix bleibt bestehen. [Tatsächliche Ausführungspfade, Bildvergleich
 | N01/N03 | Original-NotifBody-Abmessungen/Zeitformel, echte Appbestätigungen, gruppiert/gelesen/entfernen/clear | OS-Listener, Dissolve-/Staubeffekt und Lock-Bridge bleiben offen |
 | CC1–CC4/Material | Bestehender Zwölfkatalog/First-Fit/Focus/Keep-Awake erhalten, gemeinsamer Musiktransport/Unterseiten; dieselbe GLASS-3 mit Restore | Keine nicht unterstützten nativen Aktionen, Wallpaper-only statt Fenstercapture |
 
+## Umsetzungsnachtrag Tahoe 5 – 27. Oktober2026
+
+[Tatsächliche neue Ausführungspfade, Quellen und Abnahme](AIR_OS_TAHOE_5.md); keine neue Inventur oder pauschale Fertigstellung:
+
+- **L01–L04:** bestehende Auth/Clock/Shader/Morphs erhalten; zusätzliche öffentliche Karten verwenden denselben Materialrenderer. **L05/L09 nur teilweise:** originale kompakte Medienmaße/Einblendung, neutrale oder ausdrücklich60s freigegebene gestoppte Vorschau. Kein Liveplayer vor Auth, keine große Cover-/Lyrics-/Drag-/Dissolvefertigmeldung; sichere Audiositzung bleibt offen.
+- **W05/CC2:** tatsächlicher gemeinsamer vorhandener Musiktransport mit lokalen Metadaten/Covers, Progress/Seeking/Appvolume/Skip; keine neue Engine/Spotify/MPRIS. Bestehende Widgets/12CC-Kacheln erhalten.
+- **N01–N03 teilweise:** dieselbe History mit echten Appaktionen, gelesen/entfernen/clear/CC-Zugang; MacLock nur neutrale Datenschutzkarte. Keine OS-/Lock-Bridge für private Meldungen.
+- **Fensterwechsel/S03/Fensterbereich:** originale MacBar-MRU-/Switcherregeln und Timing, kanonischer Lifecyclefokus, interne Tastatur, Snap/Restore, profilgebundene Geometrie. Nur bestehendes `openApps`; keine globale OS-Steuerung, Livecapturing oder WinBox-Migration. Dock/M1/M2/Logo unverändert.
+- Native Plattform-/Hardware-/Consentabnahmen und vollständige originale System-/Lockmedienfunktion bleiben offen. Software-WebGL-Diagnose ist ausdrücklich keine Hardwarefreigabe.
+
 ## 1. Verbindliche Strukturentscheidung
 
 **MacShell-Funktionen werden in Air-OS integriert; MacShell ersetzt nicht die Air-OS-Shell.** Unveränderlich bleiben obere Air-OS-Leiste samt Position/Grundaufbau, Dynamic-Island-Geometrie und Öffnungslogik, Dockposition/-grundgröße/-grundform, gerade Randbasis und konkave Seiten, weiße Air-OS-Birne, Originalicons, grauer Divider, Pinning/Suche/Fokus/Fensterverwaltung, Profile/Preferences und eigenständiges Classic. Kein MacShell-Dock, keine zusätzliche Taskleiste, keine zweite Navigation, Registry, Fensterverwaltung oder Quickshell-/Hyprland-/Qt-Laufzeit.

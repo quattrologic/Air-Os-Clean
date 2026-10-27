@@ -1,0 +1,1322 @@
+{
+  "base": "4b31a6382ed00a98b5c0d1b64a31ca90711ad76a",
+  "productCommit": "e85aea7615f3d9572e530afdd864736d824ba16e",
+  "hardwareAcceptance": false,
+  "platform": "Linux x64 Electron44.9.3, Xvfb, DPR1, SwiftShader",
+  "tests": {
+    "pass": 434,
+    "fail": 0,
+    "skip": 0,
+    "preserved": 419
+  },
+  "runtimeResources": 200,
+  "pwaAssets": 188,
+  "geometryEqual": true,
+  "geometries": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "geometry": {
+        "dock": {
+          "x": 797.5,
+          "y": 1018,
+          "width": 325,
+          "height": 62,
+          "top": 1018,
+          "right": 1122.5,
+          "bottom": 1080,
+          "left": 797.5
+        },
+        "island": {
+          "x": 850,
+          "y": 0,
+          "width": 220,
+          "height": 40,
+          "top": 0,
+          "right": 1070,
+          "bottom": 40,
+          "left": 850
+        }
+      }
+    },
+    {
+      "width": 1650,
+      "height": 930,
+      "geometry": {
+        "dock": {
+          "x": 662.5,
+          "y": 868,
+          "width": 325,
+          "height": 62,
+          "top": 868,
+          "right": 987.5,
+          "bottom": 930,
+          "left": 662.5
+        },
+        "island": {
+          "x": 730.453125,
+          "y": 0,
+          "width": 189.078125,
+          "height": 36,
+          "top": 0,
+          "right": 919.53125,
+          "bottom": 36,
+          "left": 730.453125
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 600,
+      "geometry": {
+        "dock": {
+          "x": 32.5,
+          "y": 538,
+          "width": 325,
+          "height": 62,
+          "top": 538,
+          "right": 357.5,
+          "bottom": 600,
+          "left": 32.5
+        },
+        "island": {
+          "x": 123,
+          "y": 0,
+          "width": 144,
+          "height": 36,
+          "top": 0,
+          "right": 267,
+          "bottom": 36,
+          "left": 123
+        }
+      }
+    }
+  ],
+  "protectedSourceHashes": {
+    "air-island.js": "8571dcd1f2acb1028ef747a52ae594f9870084e42e30b562aeea6513dcb27a30",
+    "air-modern-dock.css": "a9843d8d78274bb0253035c8be77c6ace849430a3e0e7a6decd21605ab2096e1",
+    "maclock-layout.js": "41265c8701f4da7e0ef7ab6e8250662fd2cb11782595683994ac88f0173ea837",
+    "maclock-motion.js": "8470b967410dcef634dbb20152daec8a120916178571268fe02368b73934b095",
+    "maclock-morph.js": "83c279f840cc9f3735356d1e649bf5fa1f2da73d8538ef97bfbc32200b25da00",
+    "maclock-shaders.js": "7ac2706e75b6acd774aa2fe49bbfbc5ec7ffc3b58a311d3d07688f8f5e05b595",
+    "M2 timeline block": "24540f07877fc9f0b30d42f642def9285345d79571110073c7eb37aef0c01f2c"
+  },
+  "guiChecks": {
+    "after": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "modes": [
+        {
+          "width": 1920,
+          "height": 1080,
+          "snapped": [
+            {
+              "id": "notes",
+              "x": 0,
+              "y": 93,
+              "width": 960,
+              "height": 911,
+              "right": 960,
+              "bottom": 1004
+            },
+            {
+              "id": "finder",
+              "x": 960,
+              "y": 93,
+              "width": 960,
+              "height": 911,
+              "right": 1920,
+              "bottom": 1004
+            }
+          ]
+        },
+        {
+          "width": 1650,
+          "height": 930,
+          "snapped": [
+            {
+              "id": "notes",
+              "x": 0,
+              "y": 93,
+              "width": 825,
+              "height": 761,
+              "right": 825,
+              "bottom": 854
+            },
+            {
+              "id": "finder",
+              "x": 825,
+              "y": 93,
+              "width": 825,
+              "height": 761,
+              "right": 1650,
+              "bottom": 854
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "height": 600,
+          "snapped": [
+            {
+              "id": "notes",
+              "x": 0,
+              "y": 91,
+              "width": 390,
+              "height": 433,
+              "right": 390,
+              "bottom": 524
+            },
+            {
+              "id": "finder",
+              "x": 0,
+              "y": 91,
+              "width": 390,
+              "height": 433,
+              "right": 390,
+              "bottom": 524
+            }
+          ]
+        }
+      ],
+      "unsavedNoteLockGuard": true,
+      "playlistCreated": true,
+      "profileIsolation": true,
+      "exactGeometryRestored": {
+        "left": 12,
+        "top": 14,
+        "width": 350,
+        "height": 390
+      },
+      "processRestart": true,
+      "playlistRestartPersistence": true,
+      "savedWindowLayouts": [
+        "finder",
+        "notes",
+        "music"
+      ],
+      "reference": false,
+      "nativeConsentAcceptance": false,
+      "consentFixture": true
+    },
+    "final390": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "modes": [
+        {
+          "width": 390,
+          "height": 600,
+          "snapped": [
+            {
+              "id": "notes",
+              "x": 0,
+              "y": 91,
+              "width": 390,
+              "height": 433,
+              "right": 390,
+              "bottom": 524
+            },
+            {
+              "id": "finder",
+              "x": 0,
+              "y": 91,
+              "width": 390,
+              "height": 433,
+              "right": 390,
+              "bottom": 524
+            }
+          ]
+        }
+      ],
+      "profileIsolation": true,
+      "exactGeometryRestored": {
+        "left": 12,
+        "top": 14,
+        "width": 350,
+        "height": 390
+      },
+      "processRestart": true,
+      "savedWindowLayouts": [
+        "finder",
+        "notes",
+        "music"
+      ],
+      "reference": false,
+      "nativeConsentAcceptance": false,
+      "consentFixture": true
+    },
+    "persistence": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "modes": [
+        {
+          "width": 1920,
+          "height": 1080,
+          "snapped": [
+            {
+              "id": "notes",
+              "x": 0,
+              "y": 93,
+              "width": 960,
+              "height": 911,
+              "right": 960,
+              "bottom": 1004
+            },
+            {
+              "id": "finder",
+              "x": 960,
+              "y": 93,
+              "width": 960,
+              "height": 911,
+              "right": 1920,
+              "bottom": 1004
+            }
+          ]
+        }
+      ],
+      "unsavedNoteLockGuard": true,
+      "playlistCreated": true,
+      "profileIsolation": true,
+      "exactGeometryRestored": {
+        "left": 12,
+        "top": 14,
+        "width": 350,
+        "height": 390
+      },
+      "processRestart": true,
+      "playlistRestartPersistence": true,
+      "savedWindowLayouts": [
+        "finder",
+        "notes",
+        "music"
+      ],
+      "reference": false,
+      "nativeConsentAcceptance": false,
+      "consentFixture": true
+    },
+    "diagnostic": {
+      "os": "linux",
+      "osRelease": "6.18.55",
+      "arch": "x64",
+      "hardwareAcceptance": false,
+      "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+      "modes": [],
+      "idleDraws": 0,
+      "active": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 42,
+        "sceneBuilds": 1,
+        "transfers": 27,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3241,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 7,
+        "transferWallTimeMs": 5,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "reduced": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 42,
+        "sceneBuilds": 1,
+        "transfers": 27,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3246,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 7,
+        "transferWallTimeMs": 5,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "contextLoss": {
+        "failed": true,
+        "reason": "context-lost",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 50,
+        "sceneBuilds": 2,
+        "transfers": 35,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3368,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 2,
+        "bufferResizes": 13,
+        "transferWallTimeMs": 6,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "restored": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 58,
+        "sceneBuilds": 3,
+        "transfers": 43,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3493,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 3,
+        "bufferResizes": 19,
+        "transferWallTimeMs": 8,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "switcherReducedMotion": true,
+      "logout": true,
+      "lockReducedTransparency": true,
+      "lockForcedColors": true
+    }
+  },
+  "nativeConsentAcceptance": false,
+  "images": [
+    {
+      "path": "tahoe5-after/control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 705050,
+      "sha256": "58597d3ad5ebe1f1e023cce6b327f42dbb029d2ae3d546b0b9f3a59ca99b8870"
+    },
+    {
+      "path": "tahoe5-after/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 870657,
+      "sha256": "75077066aae73adee2a71bac4c6b2ebcecb40d68219ed5ff164c683c07374d1b"
+    },
+    {
+      "path": "tahoe5-after/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 128832,
+      "sha256": "06accd3fcd098cfa090cf826c6d4e47602bddece96768b8d9cdb27f7632884c6"
+    },
+    {
+      "path": "tahoe5-after/control-notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 691388,
+      "sha256": "e4fc3a810d5d0429bb9ba0dc75b8b33f4cbc0884722a03e2807eebf078cda46d"
+    },
+    {
+      "path": "tahoe5-after/control-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 851641,
+      "sha256": "1fd18b850f0ff474cfabe9680f5e743c17bb4c11c2f22ac47e9457401115cc05"
+    },
+    {
+      "path": "tahoe5-after/control-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 105231,
+      "sha256": "786bb91945a1304843457c589f0b261a6c14c4985706f637ea9e6c8d8850cfbe"
+    },
+    {
+      "path": "tahoe5-after/desktop-apps-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 476887,
+      "sha256": "b6f96458cd48cae995851d401daa403501fc25a9fff9ca3e485981abc39f42e9"
+    },
+    {
+      "path": "tahoe5-after/desktop-apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 747342,
+      "sha256": "3688c817e252f19ac8027b76b49880d155fb86665f568aeaf5bf0e0fc7e87daa"
+    },
+    {
+      "path": "tahoe5-after/desktop-apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 86547,
+      "sha256": "009148687ace7d6379a663c00cc906e22829653426e847ca5dc0026fc7a70397"
+    },
+    {
+      "path": "tahoe5-after/lock-approved-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 598257,
+      "sha256": "7e315ba045f280672f8df154312abd297589c96a6bc84f540022cb32f42e1031"
+    },
+    {
+      "path": "tahoe5-after/lock-approved-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 722123,
+      "sha256": "eaf41a2f00bd967ea47fb30eda02cdd5c1357d06467de0b15f4d61fd770a0a45"
+    },
+    {
+      "path": "tahoe5-after/lock-approved-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 168306,
+      "sha256": "b5eb1b6353f49f82f005c88697bfeff53c44c6cb57c4c536a7817701ccd0af01"
+    },
+    {
+      "path": "tahoe5-after/lock-neutral-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 603320,
+      "sha256": "0d7dfdd785698785ef4ce17acb4ff67da9b195c89d704554952bb2bb2e8a83f5"
+    },
+    {
+      "path": "tahoe5-after/lock-neutral-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 731805,
+      "sha256": "ce0abeeab082639c77d5287cce7378f654ded8165841a26ee9d76bc94ba44766"
+    },
+    {
+      "path": "tahoe5-after/lock-neutral-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 161425,
+      "sha256": "d5d732e8a33a2a489061dc23678db0fb802d06526af44311fef1ec28ef20e1cd"
+    },
+    {
+      "path": "tahoe5-after/lock-notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 603320,
+      "sha256": "0d7dfdd785698785ef4ce17acb4ff67da9b195c89d704554952bb2bb2e8a83f5"
+    },
+    {
+      "path": "tahoe5-after/lock-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 727422,
+      "sha256": "afc50ae662d6a224447b481a1aa8adeb52a44d31e67e963a1424e4db1ad1468f"
+    },
+    {
+      "path": "tahoe5-after/lock-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 161425,
+      "sha256": "d5d732e8a33a2a489061dc23678db0fb802d06526af44311fef1ec28ef20e1cd"
+    },
+    {
+      "path": "tahoe5-after/music-widget-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 623121,
+      "sha256": "7dbc55b6b7a795e9b01a3ea1ea878d4249e2c1080c177d3d1ec196b5fc4401a7"
+    },
+    {
+      "path": "tahoe5-after/music-widget-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 825658,
+      "sha256": "d7cdfb0a0cafb48bab91ea228efde677c68e433bc0b2d92d49a3fb2eddda87c6"
+    },
+    {
+      "path": "tahoe5-after/music-widget-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 74648,
+      "sha256": "f734d8b45eb4dc2e25120374c371d44262a085740569a5d353bb5ca551fe3052"
+    },
+    {
+      "path": "tahoe5-after/notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 709322,
+      "sha256": "401ef715dc968d03e7d77665a5dc313e13cf7bf759df7c8fdc9f50f2c2f62769"
+    },
+    {
+      "path": "tahoe5-after/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 864959,
+      "sha256": "6f48237ef0357ca1f36e9b250cc1ab7de34379af7ddd8cb15ee0752cd85e6c13"
+    },
+    {
+      "path": "tahoe5-after/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 147720,
+      "sha256": "ba42c800a68481d90fb10345bfb4340e4801c2135c7d1166436f67a8354e033d"
+    },
+    {
+      "path": "tahoe5-after/shared-media-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 699485,
+      "sha256": "a2ea9f898c95075a0e7c22662071ef9489b4e573670dc4ca759c03e521ec691e"
+    },
+    {
+      "path": "tahoe5-after/shared-media-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 852025,
+      "sha256": "c611851bc707d6316155c339bc08ca2cbe144ca7f7611677cf04edb4103276a8"
+    },
+    {
+      "path": "tahoe5-after/shared-media-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 110416,
+      "sha256": "70bca9e6c906faf6f28f7aa950572b43381e27f6af7f871081a3f4427a6d9eb5"
+    },
+    {
+      "path": "tahoe5-after/side-by-side-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 223713,
+      "sha256": "d51c06678483d9ec6e21d69375e59d23e5a9871f0060279e04e6105d0e34d836"
+    },
+    {
+      "path": "tahoe5-after/side-by-side-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 236241,
+      "sha256": "8d9ff41aca653764487f2dbcfeb9a51595c48850289e21f211d9e6a9bfa494e6"
+    },
+    {
+      "path": "tahoe5-after/side-by-side-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 108760,
+      "sha256": "63b008e842d1e5b7d469e1b498bb191da93aa89341250c09a9155178cb2b7429"
+    },
+    {
+      "path": "tahoe5-after/switcher-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 498210,
+      "sha256": "59818a867384155d73a588a575aa1fc2df0731e9219ba86e1743794144c257a6"
+    },
+    {
+      "path": "tahoe5-after/switcher-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 762388,
+      "sha256": "1adf9b7c8eecb415b6c66d094374925ac055fdad315cab6c98a31084ddc1af83"
+    },
+    {
+      "path": "tahoe5-after/switcher-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 103886,
+      "sha256": "13bd5d28ae43310d97de4d3fa138262fc9f7bf91ed36dcb1bae5b9cb19791ecf"
+    },
+    {
+      "path": "tahoe5-before/control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 703625,
+      "sha256": "7d74ad0a967bef0ba5a4f9a3b65f1d018f6d493eaff6f8f81b020b12bd29d5da"
+    },
+    {
+      "path": "tahoe5-before/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 859536,
+      "sha256": "2a5daa68cea0d925124a29f311116668359e840d2c383dd3e209ba54b63e2137"
+    },
+    {
+      "path": "tahoe5-before/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 126992,
+      "sha256": "647928d5368746a9163bdedfb3de2a207e3f99e5fd5182fc110b111676fd9979"
+    },
+    {
+      "path": "tahoe5-before/desktop-apps-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 640503,
+      "sha256": "a1c119225263ac713dade1d034d813a8d322ecc613c34bb2ba86bbbf1013d665"
+    },
+    {
+      "path": "tahoe5-before/desktop-apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 732785,
+      "sha256": "0f81753068f3fce7b9af5af2f92a61c06463ed9a6d1120bac81384a6b5b8ee9a"
+    },
+    {
+      "path": "tahoe5-before/desktop-apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 93109,
+      "sha256": "7537981cc48f424bf2603fc536d2227b4ebc478e0cdd6ab6349db4c2ffbd4b5d"
+    },
+    {
+      "path": "tahoe5-before/lock-approved-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 534632,
+      "sha256": "0a3005de2a147a04f5ad4e9b00a26a04a7c88dbd524f5cf984b017c33a0c58cf"
+    },
+    {
+      "path": "tahoe5-before/lock-approved-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 659282,
+      "sha256": "c259ab9e2d9cf8461a6d5ea55eb84af8cbc7e180d193423c77beb9d9aa799f4d"
+    },
+    {
+      "path": "tahoe5-before/lock-approved-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 142567,
+      "sha256": "17323fc46d415253881ea8032e1b2d55771ab6db26f2810aa47fedc1bb6b1e64"
+    },
+    {
+      "path": "tahoe5-before/lock-neutral-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 534632,
+      "sha256": "0a3005de2a147a04f5ad4e9b00a26a04a7c88dbd524f5cf984b017c33a0c58cf"
+    },
+    {
+      "path": "tahoe5-before/lock-neutral-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 659282,
+      "sha256": "c259ab9e2d9cf8461a6d5ea55eb84af8cbc7e180d193423c77beb9d9aa799f4d"
+    },
+    {
+      "path": "tahoe5-before/lock-neutral-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 141844,
+      "sha256": "e60e439801dc865568662ce686819777fcc8e7d6118efca17b7211cbd9c222f3"
+    },
+    {
+      "path": "tahoe5-before/lock-notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 534632,
+      "sha256": "0a3005de2a147a04f5ad4e9b00a26a04a7c88dbd524f5cf984b017c33a0c58cf"
+    },
+    {
+      "path": "tahoe5-before/lock-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 659285,
+      "sha256": "6450534c97099a83f8e10b8d9420a08d6560f8b02e36122aa10fbad78d15628a"
+    },
+    {
+      "path": "tahoe5-before/lock-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 141844,
+      "sha256": "e60e439801dc865568662ce686819777fcc8e7d6118efca17b7211cbd9c222f3"
+    },
+    {
+      "path": "tahoe5-before/music-widget-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 654210,
+      "sha256": "de43570a67ba7f10ae0da792a77f2f01dda5f5827c1d001aa795e0d57baefb83"
+    },
+    {
+      "path": "tahoe5-before/music-widget-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 819418,
+      "sha256": "0e911e30e3e8e373ba1688782a74257a0a41445620397c7132b92a7afd0d37f0"
+    },
+    {
+      "path": "tahoe5-before/music-widget-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 91250,
+      "sha256": "b9960e6e16786e55bc89e633b5cf786461d96bf06c141811bc43c34a446cf978"
+    },
+    {
+      "path": "tahoe5-before/notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 710659,
+      "sha256": "31702dbafb2477fe21a62ecbff0435c9bc37cd97891a1c37c24048d49481ec7e"
+    },
+    {
+      "path": "tahoe5-before/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 858857,
+      "sha256": "e0c1bf85276db70d83d98fafc8d0bb5f00ef288165ed731c5b2f8c60cddbfc23"
+    },
+    {
+      "path": "tahoe5-before/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 149523,
+      "sha256": "687f398a38e90bf0bb15932aeddfcb3c91b09cb2990864929fa5323e85cfbf4f"
+    },
+    {
+      "path": "tahoe5-before/side-by-side-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 637538,
+      "sha256": "1daee37f4a666fadda161f9cd3e5e06117a82e52e035b22e7461629ac43896a1"
+    },
+    {
+      "path": "tahoe5-before/side-by-side-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 732565,
+      "sha256": "3c68b68b78101fc217a2e4e8984e30fc7221a4e60c634158fe81d3ebabcb0ada"
+    },
+    {
+      "path": "tahoe5-before/side-by-side-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 90509,
+      "sha256": "0924d4187eb5721a4982a0bd766e2cfdd0a76f9d8d0cec5fb4faaad0fee2922a"
+    },
+    {
+      "path": "tahoe5-before/switcher-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 637538,
+      "sha256": "1daee37f4a666fadda161f9cd3e5e06117a82e52e035b22e7461629ac43896a1"
+    },
+    {
+      "path": "tahoe5-before/switcher-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 732565,
+      "sha256": "3c68b68b78101fc217a2e4e8984e30fc7221a4e60c634158fe81d3ebabcb0ada"
+    },
+    {
+      "path": "tahoe5-before/switcher-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 91960,
+      "sha256": "8b9f1456edc6d92164cbd2bce4749c99b1933d1efab985a059794f3ce82f67b3"
+    },
+    {
+      "path": "tahoe5-diagnostic/context-loss-css-fallback.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 112306,
+      "sha256": "e24c5d09c15330e8897b375db1fe78c3b42250b48d16e03ceaf0ad26c022e6b6"
+    },
+    {
+      "path": "tahoe5-diagnostic/context-restored.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 138554,
+      "sha256": "c673c1d2edfe05e8962247a1970abff1e5bf313c07a44700cf07d34ea028a4c5"
+    },
+    {
+      "path": "tahoe5-diagnostic/integrated-diagnostic.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 138578,
+      "sha256": "69f0ad3f844359a92dd5e3bfb856422fd3d0c6148ad65aa8bc1827eadb905b6a"
+    },
+    {
+      "path": "tahoe5-diagnostic/maclock-forced-colors.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 92664,
+      "sha256": "240bfc058f53e1d41d2966febb4c12ec0c8ab492d2b5a22ddaec133872029c72"
+    },
+    {
+      "path": "tahoe5-diagnostic/maclock-reduced-transparency.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 139129,
+      "sha256": "67144eb60ca47a95422744ea4da4d84b23d166a332b116ba9292e51a82afe32b"
+    },
+    {
+      "path": "tahoe5-diagnostic/reduced-transparency.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 101143,
+      "sha256": "7de80f7ba063579271ad70a03dc997164cadf5e2ee145215f6fa9f1cf1f80325"
+    },
+    {
+      "path": "tahoe5-diagnostic/switcher-reduced-motion.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 139973,
+      "sha256": "34d852217117275d32ee70b33759b2ddbe6a35139632700f370b67cd08ec6b59"
+    },
+    {
+      "path": "tahoe5-final390/control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 128833,
+      "sha256": "92b74f61ebcfc25039ec82fcda1e3e95ee90a4701d15792ac224172f5cceabc1"
+    },
+    {
+      "path": "tahoe5-final390/control-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 110896,
+      "sha256": "66c6f66be204f82ea0271f477710baf9ac6cfd7c9c15da2be8526b7be8efba57"
+    },
+    {
+      "path": "tahoe5-final390/desktop-apps-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 92430,
+      "sha256": "e1b166600fbf2cf44c9d2b086e50b991bdd7f61a1d82d41ac512151db97f9a84"
+    },
+    {
+      "path": "tahoe5-final390/lock-approved-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 167310,
+      "sha256": "6dcbb3dd3eabb22524926791a5bad5225b7826b3ed205a8438c0c859b2052efd"
+    },
+    {
+      "path": "tahoe5-final390/lock-neutral-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 163097,
+      "sha256": "d4416356989d5bac9b33f29ef2aa3377f4507d1d2f64554ecd4eeb591c53aae6"
+    },
+    {
+      "path": "tahoe5-final390/lock-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 163097,
+      "sha256": "d4416356989d5bac9b33f29ef2aa3377f4507d1d2f64554ecd4eeb591c53aae6"
+    },
+    {
+      "path": "tahoe5-final390/music-widget-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 80202,
+      "sha256": "e1ed84768011169811d8732d2c562979fa3d0d014e2bf9e03226bf6c61d77012"
+    },
+    {
+      "path": "tahoe5-final390/notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 146910,
+      "sha256": "b4562a709235ad4ea9d9809383d91cc65d62f8bfe187e8408ce59d97d2248d18"
+    },
+    {
+      "path": "tahoe5-final390/shared-media-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 110416,
+      "sha256": "96e5d290bb464aece51f08f346ab4846e2dd885daf2cb216caffa338eafacc23"
+    },
+    {
+      "path": "tahoe5-final390/side-by-side-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 108387,
+      "sha256": "4d1622e3c2bb0c3c6725c6d6947a1e31a989e69e47f34f879fecf1ec12813b9e"
+    },
+    {
+      "path": "tahoe5-final390/switcher-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 108783,
+      "sha256": "493192be5c6127cb57cc3231e14662813e2a202020f853be71dacb25ad34e887"
+    },
+    {
+      "path": "tahoe5-persistence/control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 870462,
+      "sha256": "3007b4d64eb99b871b55fdea89d8fe32113b92c724c4109995346f9b22d092d4"
+    },
+    {
+      "path": "tahoe5-persistence/control-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 851676,
+      "sha256": "7ca34725a9d79955b724b1e2a9cd9cbf5c551ffad31626e7652979bd81fe3788"
+    },
+    {
+      "path": "tahoe5-persistence/desktop-apps-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 747882,
+      "sha256": "a9ebfa2084ad90e90b3736943721f230c15e53e6321b52459ae7d74b66f34b20"
+    },
+    {
+      "path": "tahoe5-persistence/lock-approved-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 691223,
+      "sha256": "100854ed88de4a60a30498f566478301fdace30c93f1a3481ad15d4115d86d9c"
+    },
+    {
+      "path": "tahoe5-persistence/lock-neutral-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 725631,
+      "sha256": "837ab34fae819594718be0149caf59ed0c0f3836bcfa291eed6aa35d651f51b6"
+    },
+    {
+      "path": "tahoe5-persistence/lock-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 725631,
+      "sha256": "837ab34fae819594718be0149caf59ed0c0f3836bcfa291eed6aa35d651f51b6"
+    },
+    {
+      "path": "tahoe5-persistence/music-widget-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 825793,
+      "sha256": "12e8bed2d53883bf1ab16e9e040c7152e5535c45217a99a8253ea2f16eadfc09"
+    },
+    {
+      "path": "tahoe5-persistence/notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 864989,
+      "sha256": "3270aecc7e48538f27ff78439373c5bc7428c2b2022c81a832598f797ad68e2b"
+    },
+    {
+      "path": "tahoe5-persistence/shared-media-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 852027,
+      "sha256": "444dd2d3384217519ef878c4a46093829627ed45e7cc72e2c20f18870e338d57"
+    },
+    {
+      "path": "tahoe5-persistence/side-by-side-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 235135,
+      "sha256": "0b08e7a01c5d0d5044229e559a66fe3c78bcf43bbc7f13ab479b87077b2552d4"
+    },
+    {
+      "path": "tahoe5-persistence/switcher-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 762388,
+      "sha256": "1adf9b7c8eecb415b6c66d094374925ac055fdad315cab6c98a31084ddc1af83"
+    },
+    {
+      "path": "tahoe5-regression/calendar-open-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 639336,
+      "sha256": "f09dcbaee81d43f8955e0bcdbf72d4ab1df3d42e1de9045c628f56efffa37997"
+    },
+    {
+      "path": "tahoe5-regression/calendar-open-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 790659,
+      "sha256": "9f0b4ecc7760e57d65f8a745cb71d44ce6d4585fb3eccf9eebb88f7bb4b1c085"
+    },
+    {
+      "path": "tahoe5-regression/calendar-open-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 125053,
+      "sha256": "18f009bfb293b9371e40f3ec80b497f4191f16318aac1e0726dab8074202c47e"
+    },
+    {
+      "path": "tahoe5-regression/cloud1-settings-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 613436,
+      "sha256": "024dc790f5c39cbdd819922ab5890c3998ace27bb8328af029a310fd986053ea"
+    },
+    {
+      "path": "tahoe5-regression/cloud1-settings-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 741324,
+      "sha256": "e871e5d22ad6287499393457a9b5cd860ed68a55b824ca5d116c92ae8352ef38"
+    },
+    {
+      "path": "tahoe5-regression/cloud1-settings-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 84445,
+      "sha256": "4838cdb0cc359fe50127eb87221f5dc84399d159171c110031d17ec72bb6d79a"
+    },
+    {
+      "path": "tahoe5-regression/deep-control-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 618743,
+      "sha256": "d2001f106c6fe9721f210e89fb3bd69346f99655171cc6d11da9a9d4e8bde669"
+    },
+    {
+      "path": "tahoe5-regression/deep-control-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 825987,
+      "sha256": "eb7564e33f1668407e235f37d5c74dc9032077d08be9404aa76085993359cbf9"
+    },
+    {
+      "path": "tahoe5-regression/deep-control-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 106532,
+      "sha256": "e09d54eaca9dc081ff2745c784d56e0f9b945beca7f4d14a8c9c3cd96579d5a1"
+    },
+    {
+      "path": "tahoe5-regression/deep-dock-menu-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 662180,
+      "sha256": "aed2c91cf4c393bd279bc943753b249ff1fde067ef4dc165ed0632368d56200b"
+    },
+    {
+      "path": "tahoe5-regression/deep-dock-menu-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 871240,
+      "sha256": "60d10de9ad7667e9059cc5ee7b4fc9450ca4e29e807b7e361e81e46d978f227f"
+    },
+    {
+      "path": "tahoe5-regression/deep-dock-menu-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 131720,
+      "sha256": "188fcca84a2d6f43e61d3b162e916e91463eadfa673cc3ebf53d76655c55c4c8"
+    },
+    {
+      "path": "tahoe5-regression/deep-notifications-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 624441,
+      "sha256": "0e9f1ff14fec37b5633ffa1cb46272cdec9a2e11a277fba6de64bb33d7e18c21"
+    },
+    {
+      "path": "tahoe5-regression/deep-notifications-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 779229,
+      "sha256": "aefb3d4e78a577f26fde6afa49f163ebbbd8db1325fbea5b9e5dbc89b77fd232"
+    },
+    {
+      "path": "tahoe5-regression/deep-notifications-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 116794,
+      "sha256": "fcd199de2d8093e8db18895ee5a8010901ba47f65874268f575eb37075854425"
+    },
+    {
+      "path": "tahoe5-regression/deep-spotlight-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 255480,
+      "sha256": "bb0c9010855165bde4588684b7018f2915f8363fcc120519b7d46bb291da30e6"
+    },
+    {
+      "path": "tahoe5-regression/deep-spotlight-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 284040,
+      "sha256": "2a54c2e45ed891d297a97447af7e17cd0a988be9b2b02fcaf4dbf17a256db4a1"
+    },
+    {
+      "path": "tahoe5-regression/deep-spotlight-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 86842,
+      "sha256": "d8087270382f9cc9642a05b3538f520663fc7e557a3a09f04d7a8d31a55fcf86"
+    },
+    {
+      "path": "tahoe5-regression/deep-widgets-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 619045,
+      "sha256": "77a36dff81d3ff6e3bb90a5a2a7edd54a365d5727885cb1c088c80b0926ba62a"
+    },
+    {
+      "path": "tahoe5-regression/deep-widgets-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 819447,
+      "sha256": "abc1c18a4fbd2656c1c62ecdfa6ba7654291588cc9cdb48f45ee868a69bafd0c"
+    },
+    {
+      "path": "tahoe5-regression/deep-widgets-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 106386,
+      "sha256": "c330a3182ba9ef23041576072df621e51903fcbd02cecaaa9d66734ca64c56ee"
+    },
+    {
+      "path": "tahoe5-regression/r1-classic-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 607225,
+      "sha256": "c646222452f74463d07219e63a54d2896d1926e6e09f86938d3e4ba38ab52ac1"
+    },
+    {
+      "path": "tahoe5-regression/r1-classic-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 742079,
+      "sha256": "9330816b574aae28e6c1581beda13d2096b5c68a4aa0b933e8ef600f128248f2"
+    },
+    {
+      "path": "tahoe5-regression/r1-classic-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 139674,
+      "sha256": "c1e4d8d246c579f633ef4a2906f3fb231fed4e045e52d13928c6cc969f05dc21"
+    },
+    {
+      "path": "tahoe5-regression/r1-desktop-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 613303,
+      "sha256": "a565af75f1b1e039e7433a272cfaeac5c5eb86bbddb8b59411ed5a486ac8da80"
+    },
+    {
+      "path": "tahoe5-regression/r1-desktop-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 735508,
+      "sha256": "569104e3b734749f1639b64070a8161e6065255829a3a5fca68d0f7ee7aa7b5f"
+    },
+    {
+      "path": "tahoe5-regression/r1-desktop-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 96033,
+      "sha256": "29b06e916bd5d2e90224a06f896aa5a3e4ed237cf7bff5111c596231e1b5ad47"
+    },
+    {
+      "path": "tahoe5-regression/r1-dock-1650.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 20617,
+      "sha256": "abc7b99aa815c5b7a6afcbb8a34a9e0bcfbd4c28978bc5921e28ab5f98aecd42"
+    },
+    {
+      "path": "tahoe5-regression/r1-dock-1920.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 20256,
+      "sha256": "1023a561aef88981935e08916bbe038576ecf66ae4f0f5749c7a3f419b7074fb"
+    },
+    {
+      "path": "tahoe5-regression/r1-dock-390.png",
+      "width": 353,
+      "height": 72,
+      "bytes": 22089,
+      "sha256": "577147a565aebf8dfbee95f271c462e446b3a448a6a9d5010226abf275e7a06a"
+    },
+    {
+      "path": "tahoe5-regression/r1-home-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 325588,
+      "sha256": "f637a678598caa6771eb387bc2581d2e7842d7d015499143f14854e6daedf13e"
+    },
+    {
+      "path": "tahoe5-regression/r1-home-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 534809,
+      "sha256": "6733de312ea398ad0f210f631a7a9dce1294e443148b76836ed8c8c3144a6d84"
+    },
+    {
+      "path": "tahoe5-regression/r1-home-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 72606,
+      "sha256": "d4ef0bd85f9d325e89d529764702180c6f83b6519015359e541f4c5ed56bff24"
+    },
+    {
+      "path": "tahoe5-regression/r1-lockscreen-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 591479,
+      "sha256": "af1a0aec8fbfb49b6a854745fe3d4d3f85df6e9cf3ce872a3d1b8d2ba4b2bd7a"
+    },
+    {
+      "path": "tahoe5-regression/r1-lockscreen-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 710487,
+      "sha256": "60721097bff9986d84dbb58c72f6587952da01d8f622fc87f54ac726faf11dac"
+    },
+    {
+      "path": "tahoe5-regression/r1-lockscreen-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 152376,
+      "sha256": "c4e1464f2a76749236081f6c0c136eebebf95c2bedf0a174a12db5cb589d20b3"
+    },
+    {
+      "path": "tahoe5-regression/r1-notes-1650.png",
+      "width": 1650,
+      "height": 930,
+      "bytes": 607186,
+      "sha256": "305aac397245b3fa0f24e6e17a5c84df7e23a6b9390937605247ba7a14751e08"
+    },
+    {
+      "path": "tahoe5-regression/r1-notes-1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 739263,
+      "sha256": "64de87ef2a7a8259f5a31a15c640568876548b573b0752722b988482490bc945"
+    },
+    {
+      "path": "tahoe5-regression/r1-notes-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 87433,
+      "sha256": "0aaac9888c1f7136990f91f030b38d551fcffc43e509d241493f1243cb911a97"
+    },
+    {
+      "path": "tahoe5-regression/r1-webgl-fallback-390.png",
+      "width": 390,
+      "height": 600,
+      "bytes": 157060,
+      "sha256": "999ca1fee0d4a4929de4f0d27741d504053657f712e53cd112082adc302e5d55"
+    }
+  ]
+}
