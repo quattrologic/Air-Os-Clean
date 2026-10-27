@@ -1,0 +1,1821 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "kind": "normal software GPU CSS fallback",
+  "surfaces": [
+    {
+      "name": "initial",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 760,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "desktop-1920",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 760,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "island-open-1920",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 760,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 745,
+            "y": -5,
+            "width": 430,
+            "height": 453.8125,
+            "top": -5,
+            "right": 1175,
+            "bottom": 448.8125,
+            "left": 745
+          },
+          "background": "radial-gradient(180px 75px at 50% 0%, rgba(255, 255, 255, 0.043), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(155deg, rgba(255, 255, 255, 0.063), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.125)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "stripes-1920",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "desktop-1650",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "island-open-1650",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 610,
+            "y": -2.671875,
+            "width": 430,
+            "height": 453.8125,
+            "top": -2.671875,
+            "right": 1040,
+            "bottom": 451.140625,
+            "left": 610
+          },
+          "background": "radial-gradient(180px 75px at -173.256% 1.10178%, rgba(255, 255, 255, 0.043), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(155deg, rgba(255, 255, 255, 0.063), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.125)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "stripes-1650",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "desktop-390",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "widgets-390-page2",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "widgets-390-page3",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 96,
+            "width": 348,
+            "height": 163,
+            "top": 96,
+            "right": 369,
+            "bottom": 259,
+            "left": 21
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "island-open-390",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 12,
+            "y": 44,
+            "width": 366,
+            "height": 453.8125,
+            "top": 44,
+            "right": 378,
+            "bottom": 497.8125,
+            "left": 12
+          },
+          "background": "radial-gradient(180px 75px at -141.86% 0.588762%, rgba(255, 255, 255, 0.043), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(155deg, rgba(255, 255, 255, 0.063), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.125)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 96,
+            "width": 348,
+            "height": 163,
+            "top": 96,
+            "right": 369,
+            "bottom": 259,
+            "left": 21
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "stripes-390",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "reduced-transparency",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "reduced-glass",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "classic",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 117,
+            "y": 37,
+            "width": 156,
+            "height": 38,
+            "top": 37,
+            "right": 273,
+            "bottom": 75,
+            "left": 117
+          },
+          "background": "rgb(8, 9, 12) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 16,
+            "y": 526,
+            "width": 358,
+            "height": 68,
+            "top": 526,
+            "right": 374,
+            "bottom": 594,
+            "left": 16
+          },
+          "background": "rgb(9, 11, 12) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(18px) saturate(1.2)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "modern-restored",
+      "glass": {
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 761,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at -204.642% -1465.22%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    }
+  ]
+}

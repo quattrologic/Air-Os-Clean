@@ -1,0 +1,2383 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "kind": "isolated SwiftShader shader diagnostic; NOT hardware",
+  "surfaces": [
+    {
+      "name": "initial",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 15,
+        "sceneBuilds": 1,
+        "transfers": 12,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 2782,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 4,
+        "transferWallTimeMs": 2,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "desktop-1920",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 15,
+        "sceneBuilds": 1,
+        "transfers": 12,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 2782,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 4,
+        "transferWallTimeMs": 2,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "island-open-1920",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 45,
+        "sceneBuilds": 1,
+        "transfers": 37,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3395,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 14,
+        "transferWallTimeMs": 5,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 745,
+            "y": -5,
+            "width": 430,
+            "height": 453.8125,
+            "top": -5,
+            "right": 1175,
+            "bottom": 448.8125,
+            "left": 745
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-1920",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 57,
+        "sceneBuilds": 2,
+        "transfers": 46,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4298,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 2,
+        "bufferResizes": 17,
+        "transferWallTimeMs": 6,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-no-refraction-1920",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 65,
+        "sceneBuilds": 2,
+        "transfers": 53,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4313,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 2,
+        "bufferResizes": 20,
+        "transferWallTimeMs": 7,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "desktop-1650",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 89,
+        "sceneBuilds": 4,
+        "transfers": 74,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 5888,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 3,
+        "bufferResizes": 29,
+        "transferWallTimeMs": 9,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "island-open-1650",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 115,
+        "sceneBuilds": 4,
+        "transfers": 95,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 6337,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 3,
+        "bufferResizes": 32,
+        "transferWallTimeMs": 16,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 610,
+            "y": -2.671875,
+            "width": 430,
+            "height": 453.8125,
+            "top": -2.671875,
+            "right": 1040,
+            "bottom": 451.140625,
+            "left": 610
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-1650",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 129,
+        "sceneBuilds": 5,
+        "transfers": 105,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 6691,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 4,
+        "bufferResizes": 33,
+        "transferWallTimeMs": 18,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-no-refraction-1650",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 137,
+        "sceneBuilds": 5,
+        "transfers": 112,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 6702,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 4,
+        "bufferResizes": 36,
+        "transferWallTimeMs": 18,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 20,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 205,
+            "bottom": 281,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 217,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 402,
+            "bottom": 281,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 20,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 205,
+            "bottom": 478,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 217,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 402,
+            "bottom": 478,
+            "left": 217
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 20,
+            "y": 490,
+            "width": 395,
+            "height": 185,
+            "top": 490,
+            "right": 415,
+            "bottom": 675,
+            "left": 20
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 636.5,
+            "y": 861,
+            "width": 377,
+            "height": 69,
+            "top": 861,
+            "right": 1013.5,
+            "bottom": 930,
+            "left": 636.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "desktop-390",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 158,
+        "sceneBuilds": 7,
+        "transfers": 130,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 7926,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 5,
+        "bufferResizes": 44,
+        "transferWallTimeMs": 21,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "widgets-390-page2",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 165,
+        "sceneBuilds": 7,
+        "transfers": 135,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 7938,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 5,
+        "bufferResizes": 46,
+        "transferWallTimeMs": 22,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "widgets-390-page3",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 166,
+        "sceneBuilds": 7,
+        "transfers": 136,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 7940,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 5,
+        "bufferResizes": 47,
+        "transferWallTimeMs": 22,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 96,
+            "width": 348,
+            "height": 163,
+            "top": 96,
+            "right": 369,
+            "bottom": 259,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "island-open-390",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 185,
+        "sceneBuilds": 7,
+        "transfers": 151,
+        "tiles": 13,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8197,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 5,
+        "bufferResizes": 48,
+        "transferWallTimeMs": 24,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "air-island-panel",
+          "rect": {
+            "x": 12,
+            "y": 44,
+            "width": 366,
+            "height": 453.8125,
+            "top": 44,
+            "right": 378,
+            "bottom": 497.8125,
+            "left": 12
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 96,
+            "width": 348,
+            "height": 163,
+            "top": 96,
+            "right": 369,
+            "bottom": 259,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-390",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 197,
+        "sceneBuilds": 8,
+        "transfers": 159,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8407,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 6,
+        "bufferResizes": 49,
+        "transferWallTimeMs": 25,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-no-refraction-390",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 201,
+        "sceneBuilds": 8,
+        "transfers": 163,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8449,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 6,
+        "bufferResizes": 51,
+        "transferWallTimeMs": 25,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "context-loss",
+      "glass": {
+        "failed": true,
+        "reason": "context-lost",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 209,
+        "sceneBuilds": 9,
+        "transfers": 171,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8514,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 7,
+        "bufferResizes": 55,
+        "transferWallTimeMs": 26,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "linear-gradient(175deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.15)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.65) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "linear-gradient(rgba(56, 57, 61, 0.44) 0%, rgba(48, 49, 53, 0.4) 55%, rgba(36, 37, 41, 0.6)) repeat scroll 0% 0% / auto padding-box border-box, rgba(12, 16, 23, 0.32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.25)",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "radial-gradient(160px 65px at 50% 0%, rgba(255, 255, 255, 0.082), rgba(0, 0, 0, 0)) repeat scroll 0% 0% / auto padding-box border-box, linear-gradient(rgba(255, 255, 255, 0.125), rgba(0, 0, 0, 0) 22%, rgba(0, 7, 17, 0.282)) repeat scroll 0% 0% / auto padding-box border-box, rgba(5, 13, 22, 0.51) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(22px) saturate(1.32)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "context-restored",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 213,
+        "sceneBuilds": 10,
+        "transfers": 175,
+        "tiles": 4,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8675,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 8,
+        "bufferResizes": 58,
+        "transferWallTimeMs": 27,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "reduced-transparency",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 213,
+        "sceneBuilds": 10,
+        "transfers": 175,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 8797,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 8,
+        "bufferResizes": 58,
+        "transferWallTimeMs": 27,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "reduced-glass",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 217,
+        "sceneBuilds": 11,
+        "transfers": 179,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9376,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 9,
+        "bufferResizes": 61,
+        "transferWallTimeMs": 28,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgb(16, 24, 32) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "classic",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 221,
+        "sceneBuilds": 12,
+        "transfers": 183,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9747,
+        "programs": 0,
+        "textures": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 1,
+        "decodeCount": 10,
+        "bufferResizes": 64,
+        "transferWallTimeMs": 29,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 117,
+            "y": 37,
+            "width": 156,
+            "height": 38,
+            "top": 37,
+            "right": 273,
+            "bottom": 75,
+            "left": 117
+          },
+          "background": "rgb(8, 9, 12) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 16,
+            "y": 526,
+            "width": 358,
+            "height": 68,
+            "top": 526,
+            "right": 374,
+            "bottom": 594,
+            "left": 16
+          },
+          "background": "rgb(9, 11, 12) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "blur(18px) saturate(1.2)",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "modern-restored",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 225,
+        "sceneBuilds": 13,
+        "transfers": 187,
+        "tiles": 4,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9856,
+        "programs": 3,
+        "textures": 1,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 11,
+        "bufferResizes": 67,
+        "transferWallTimeMs": 29,
+        "dpr": 1,
+        "backdrop": "wallpaper-only"
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 102.5,
+            "y": 96,
+            "width": 185,
+            "height": 185,
+            "top": 96,
+            "right": 287.5,
+            "bottom": 281,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 102.5,
+            "y": 293,
+            "width": 185,
+            "height": 185,
+            "top": 293,
+            "right": 287.5,
+            "bottom": 478,
+            "left": 102.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 49,
+            "y": 545.171875,
+            "width": 292,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 341,
+            "bottom": 600,
+            "left": 49
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    }
+  ],
+  "idleDraws": 0
+}

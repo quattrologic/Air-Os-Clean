@@ -1,0 +1,304 @@
+{
+  "source": "Actual Electron screenshots; isolated SwiftShader shader diagnostic, not hardware",
+  "refraction": [
+    {
+      "width": 1920,
+      "kind": "dock",
+      "crop": [
+        785,
+        1073,
+        1134,
+        1078
+      ],
+      "meanAbsRGBRefractionOnOff": 7.4649
+    },
+    {
+      "width": 1920,
+      "kind": "widget",
+      "crop": [
+        24,
+        102,
+        34,
+        275
+      ],
+      "meanAbsRGBRefractionOnOff": 4.6175
+    },
+    {
+      "width": 1920,
+      "kind": "island",
+      "crop": [
+        854,
+        6,
+        864,
+        34
+      ],
+      "meanAbsRGBRefractionOnOff": 16.8821
+    },
+    {
+      "width": 1650,
+      "kind": "dock",
+      "crop": [
+        650,
+        923,
+        999,
+        928
+      ],
+      "meanAbsRGBRefractionOnOff": 5.3238
+    },
+    {
+      "width": 1650,
+      "kind": "widget",
+      "crop": [
+        24,
+        102,
+        34,
+        275
+      ],
+      "meanAbsRGBRefractionOnOff": 15.6039
+    },
+    {
+      "width": 1650,
+      "kind": "island",
+      "crop": [
+        734,
+        6,
+        744,
+        30
+      ],
+      "meanAbsRGBRefractionOnOff": 11.3389
+    },
+    {
+      "width": 390,
+      "kind": "dock",
+      "crop": [
+        63,
+        593,
+        327,
+        598
+      ],
+      "meanAbsRGBRefractionOnOff": 2.2972
+    },
+    {
+      "width": 390,
+      "kind": "widget",
+      "crop": [
+        106,
+        102,
+        116,
+        275
+      ],
+      "meanAbsRGBRefractionOnOff": 12.7158
+    },
+    {
+      "width": 390,
+      "kind": "island",
+      "crop": [
+        127,
+        6,
+        137,
+        30
+      ],
+      "meanAbsRGBRefractionOnOff": 27.0361
+    }
+  ],
+  "crops": [
+    {
+      "file": "docs/visual/tahoe8a-details/before-dock-1920.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1920.png",
+      "crop": [
+        690,
+        965,
+        1230,
+        1080
+      ],
+      "sha256": "2e397df59faf50240b8c11ff8d0c0bcbfb3cc9f2cc0154b6588e67ea2d15ebe9"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-widgets-1920.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1920.png",
+      "crop": [
+        0,
+        60,
+        430,
+        700
+      ],
+      "sha256": "99b5d387b1ca1f266158f0fdc7c99515ab9f08ddb79d437376dfbc3966688e0a"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-island-1920.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1920.png",
+      "crop": [
+        790,
+        0,
+        1130,
+        60
+      ],
+      "sha256": "a0343c0ae88247daa937c3cfdce82df54c261bceca128b97f865422b2e21ca3e"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-dock-1920.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1920.png",
+      "crop": [
+        690,
+        965,
+        1230,
+        1080
+      ],
+      "sha256": "c08c515364a9fe5fe9929bc4689e6bba1581309c2757c75204e40c5564b1e6e0"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-widgets-1920.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1920.png",
+      "crop": [
+        0,
+        60,
+        430,
+        700
+      ],
+      "sha256": "7090eb291b7cfeb40f218320ebcec8c8d89934717f582f27021798ce69edc95e"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-island-1920.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1920.png",
+      "crop": [
+        790,
+        0,
+        1130,
+        60
+      ],
+      "sha256": "f52c4e48b2e9c9395c2035571df3553cbb9014f2fb554ec30086ed5be6a4942e"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-dock-1650.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1650.png",
+      "crop": [
+        555,
+        815,
+        1095,
+        930
+      ],
+      "sha256": "bccd660df70607b828bdb9241c755ad5211e069a71c5ef710e09b7ae63cc3847"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-widgets-1650.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1650.png",
+      "crop": [
+        0,
+        60,
+        430,
+        700
+      ],
+      "sha256": "4832d72f994a495f7c75ffad81c0c13dc3c21f5a8a9f0d8cfd598139cca20ee8"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-island-1650.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-1650.png",
+      "crop": [
+        655,
+        0,
+        995,
+        60
+      ],
+      "sha256": "9b39926cd3ca7918ab82cc190f5978c022728c1a181ae3e7a6cffb155a8ed6bc"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-dock-1650.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1650.png",
+      "crop": [
+        555,
+        815,
+        1095,
+        930
+      ],
+      "sha256": "481af55d43fe8facc20e13fbbacdb57893e0920955861dca16c5ab55aa111584"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-widgets-1650.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1650.png",
+      "crop": [
+        0,
+        60,
+        430,
+        700
+      ],
+      "sha256": "d740d2d7d5955e69f9aa276428f7358144ee31944b29c42eb1c39f5503b4facd"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-island-1650.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-1650.png",
+      "crop": [
+        655,
+        0,
+        995,
+        60
+      ],
+      "sha256": "5195d7b534046c899fe1477bff4a3b7d41f6b38806dfff2f7f7bfc457f7ebb5c"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-dock-390.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-390.png",
+      "crop": [
+        0,
+        485,
+        390,
+        600
+      ],
+      "sha256": "5874d217f69b8be54fda5f0d83ea9bdbd9626c47c9c0b5cd1d72aba0fa127ab5"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-widgets-390.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-390.png",
+      "crop": [
+        0,
+        60,
+        390,
+        600
+      ],
+      "sha256": "3910574cbe635af299ec09071c76d16b08c2c7e82015ac80012e6b490054e9bf"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/before-island-390.png",
+      "source": "docs/visual/tahoe8a-before-css/desktop-390.png",
+      "crop": [
+        25,
+        0,
+        365,
+        60
+      ],
+      "sha256": "92da5a97b9c63aaa2d588d33e8f090e303aa4e921827b8787648812e27f3734f"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-dock-390.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-390.png",
+      "crop": [
+        0,
+        485,
+        390,
+        600
+      ],
+      "sha256": "be1a62c0e73b53520f06fdae6e424d3f685eebcf4d522fd3f5644432839bb200"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-widgets-390.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-390.png",
+      "crop": [
+        0,
+        60,
+        390,
+        600
+      ],
+      "sha256": "6e2c6c1a34b7174ab0ddb1cbece342dae9e931cd969a7e1c2e4f4275aa34f4a3"
+    },
+    {
+      "file": "docs/visual/tahoe8a-details/after-island-390.png",
+      "source": "docs/visual/tahoe8a-after-css/desktop-390.png",
+      "crop": [
+        25,
+        0,
+        365,
+        60
+      ],
+      "sha256": "adb768825596676676044814eafacd7e2244c4ec9713786b71a70db80d8d56cb"
+    }
+  ]
+}
