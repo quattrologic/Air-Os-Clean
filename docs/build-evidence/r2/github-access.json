@@ -1,0 +1,6 @@
+{
+  "actionsPermissions": "HTTP 403 Forbidden",
+  "actionsRuns": "HTTP 403 Forbidden",
+  "nativeWindowsAvailableLocally": false,
+  "buildStatus": "UNVERIFIED; no installer or Windows GUI claimed"
+}

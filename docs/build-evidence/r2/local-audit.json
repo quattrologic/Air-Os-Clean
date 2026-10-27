@@ -1,0 +1,12 @@
+{
+  "toolchain": "build/windows-x64/package-lock.json",
+  "platform": "linux",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  }
+}

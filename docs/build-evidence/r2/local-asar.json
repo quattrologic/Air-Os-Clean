@@ -1,0 +1,1037 @@
+{
+  "kind": "LOCAL SOURCE ASAR VERIFICATION ONLY; NOT a Windows installer",
+  "base": "e71aa3bd71094ba6597dc8eb073181f374f8428e",
+  "build": {
+    "commit": "e71aa3bd71094ba6597dc8eb073181f374f8428e",
+    "version": "1.0.3-dev.1.shae71aa3bd7109",
+    "testOnly": true,
+    "unsigned": true,
+    "notarized": false,
+    "limitations": [
+      "UNSIGNED technical test build; Smart App Control may block it; NOT production approved",
+      "Native physical Windows/macOS, trusted signing, native dialogs and hardware GPU remain unaccepted",
+      "Tahoe 1\u20135 integrated; MacLock only neutral or explicitly approved stopped public preview, not native OS lock",
+      "No cloud login/sync or external Spotify service tested; legacy Catalina audit remains separate"
+    ],
+    "channel": "windows-x64-modern-test",
+    "electron": "44.9.3",
+    "builder": "26.18.0",
+    "builtAt": "2026-10-27T11:40:18.065Z",
+    "releaseChannel": "R2",
+    "tahoeBase": "e71aa3bd71094ba6597dc8eb073181f374f8428e",
+    "branch": "build/air-ultimate-windows-x64-r2-20261027",
+    "ciRun": null,
+    "features": [
+      "Tahoe 1\u20135",
+      "Settings/Finder/Notes/Reminders/Calendar/Music",
+      "Widgets/Control Center/Spotlight",
+      "GLASS-3/CSS fallback/MacLock",
+      "Shared local media/metadata/notifications",
+      "MRU/snap/profile window geometry",
+      "M1/M2 reverse/Classic/Modern"
+    ]
+  },
+  "verifiedFiles": 200,
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 13062,
+      "sha256": "2fd0847423e9cc2d6bf7204c0ac5bf6f53b547eaa29478ec158828fbc8f2a1d1"
+    },
+    {
+      "file": "air-app-bootstrap.js",
+      "bytes": 419,
+      "sha256": "a1cadb03a9a343b19cdc6615058e8a79f4ba475fa5ba25375b7e59acde5134bb"
+    },
+    {
+      "file": "air-app-store.css",
+      "bytes": 1273,
+      "sha256": "2558ae6cdf1b2c0dd52d84cb0566973d4ea4eae4c92c847eb7102a54d5702f8b"
+    },
+    {
+      "file": "air-app-store.js",
+      "bytes": 3711,
+      "sha256": "42a509fc6c02c07563d8537c2c9438a01b82f5582d54d05f99ece6f2f8dee5ab"
+    },
+    {
+      "file": "air-arcade-games.css",
+      "bytes": 2338,
+      "sha256": "0ee9398c08f767899bccf688d302d6328e353e3423ba469af8c76d9fff5f2c4e"
+    },
+    {
+      "file": "air-arcade-games.js",
+      "bytes": 13101,
+      "sha256": "631e7aa164e9df23a3e679bc012e56d668256f3da533421f7439e2e35c5682d4"
+    },
+    {
+      "file": "air-calendar.css",
+      "bytes": 3028,
+      "sha256": "bb76eb37650e7ea27f3cc98151c28dd81629ade72cbee40901135a1a9a1fffea"
+    },
+    {
+      "file": "air-calendar.js",
+      "bytes": 5038,
+      "sha256": "82a70fceb6ca132cfb7d2ecc62b36b7c79f934802c7ef279927dc040ae402043"
+    },
+    {
+      "file": "air-cloud.css",
+      "bytes": 318,
+      "sha256": "168a869bb999cf1cb3966d50a181d69b8b1517a28c481353147aaee443a878a4"
+    },
+    {
+      "file": "air-cloud.js",
+      "bytes": 3898,
+      "sha256": "a6da6f08e92ad7bef3784fd2cf34f15dc1ea6ec6cf8c0b4adab3f03a57992497"
+    },
+    {
+      "file": "air-control-macshell.css",
+      "bytes": 5524,
+      "sha256": "b625efe8239ba82605e16521285b3d2dbef1f79eadc695678e042507802b1a17"
+    },
+    {
+      "file": "air-deep-desktop.js",
+      "bytes": 39358,
+      "sha256": "f40e7990b4d47fc593be2e53ecb7abe473d7fe531c9d72219dcd730110a41ae5"
+    },
+    {
+      "file": "air-deep-port.css",
+      "bytes": 4124,
+      "sha256": "c09b5a6f180603eae6fd57243a7386639982ff771474b13fe0a50670e3fff9ee"
+    },
+    {
+      "file": "air-desktop-glass.js",
+      "bytes": 18949,
+      "sha256": "bbebd3b1a0cdafbf45316d5d89c15d0785f145b16415266216feaeec0fb6cef5"
+    },
+    {
+      "file": "air-dock-actions.js",
+      "bytes": 4897,
+      "sha256": "d12d2208fa071f9f958846f491621ffcf734f76436d9b169a57cda437d1ea406"
+    },
+    {
+      "file": "air-extra-apps.css",
+      "bytes": 2622,
+      "sha256": "42670994b74e8ac84f19f77de8409cce8959d6fc5815f976c5f32085a95b15e0"
+    },
+    {
+      "file": "air-extra-apps.js",
+      "bytes": 8359,
+      "sha256": "0b15f8d92a6ee72d83792b25972523b64a509357317e0cc0cb024d3967faf6cd"
+    },
+    {
+      "file": "air-glass2.css",
+      "bytes": 8206,
+      "sha256": "a2e4a9b1124dd2abb273dc2a1d5e83e192b5e719d1c29e115392b3dad9e2133a"
+    },
+    {
+      "file": "air-island.css",
+      "bytes": 15859,
+      "sha256": "022b0b782ab1f12966493b4cf1aff2504ecff26eaebebf304ae73424b54d6480"
+    },
+    {
+      "file": "air-island.js",
+      "bytes": 16995,
+      "sha256": "8571dcd1f2acb1028ef747a52ae594f9870084e42e30b562aeea6513dcb27a30"
+    },
+    {
+      "file": "air-launchpad.css",
+      "bytes": 7440,
+      "sha256": "f20731c49b04da347ffa0bcc686cd111bdc1070dd3956fee7d3e813b5d6486bd"
+    },
+    {
+      "file": "air-launchpad.js",
+      "bytes": 12569,
+      "sha256": "3bc2b999aca7748b9f3250334776c3d755f889596499bd2af4a8dca2bef25ad7"
+    },
+    {
+      "file": "air-modern-dock.css",
+      "bytes": 6278,
+      "sha256": "a9843d8d78274bb0253035c8be77c6ace849430a3e0e7a6decd21605ab2096e1"
+    },
+    {
+      "file": "air-music.css",
+      "bytes": 3474,
+      "sha256": "06353785377381eff31f6fc1882d79f35891340703794615d67afa3ce2be78bf"
+    },
+    {
+      "file": "air-music.js",
+      "bytes": 14156,
+      "sha256": "2cf5a8947bf6355764226d5f29a6534540ec94810fdfc33d2dabb6620e5de46e"
+    },
+    {
+      "file": "air-notes.js",
+      "bytes": 9424,
+      "sha256": "6cac362adc9c0678ab7fa9eab129008ca66a8121983dc7c84f844f42b0763bd7"
+    },
+    {
+      "file": "air-os-enhancements.css",
+      "bytes": 19598,
+      "sha256": "0df008a48d0052658e1ec4aa04eea495c9bf089970e007fa85f6c38a7168819a"
+    },
+    {
+      "file": "air-os-enhancements.js",
+      "bytes": 45095,
+      "sha256": "7e0285fb75fd5dc235a2b4448231e3411f951db091fcdb52e65a1033621fa420"
+    },
+    {
+      "file": "air-reminders.css",
+      "bytes": 2755,
+      "sha256": "d50847b1928853aa84269300da5048125cfbe21119d0cf04d329f097deda3137"
+    },
+    {
+      "file": "air-reminders.js",
+      "bytes": 12967,
+      "sha256": "703a42ea5aad52c3aebc6caa0922f283b0bd8579943958e3203b531b2c691472"
+    },
+    {
+      "file": "air-settings-tahoe.js",
+      "bytes": 4163,
+      "sha256": "367aaea8743cb5ffce8ad2073db2ec217d0da6f4dbd8c74ffd7ccc86106e6123"
+    },
+    {
+      "file": "air-spotlight.css",
+      "bytes": 1455,
+      "sha256": "4e11a4ebf1bd4de2195a4eddfc2b578024635d6db0c9b93e26382db5c52f463a"
+    },
+    {
+      "file": "air-spotlight.js",
+      "bytes": 7445,
+      "sha256": "07a3958b85b5773febc023e277f59649d3cd86c631ca09ae79fa6e56bc37919c"
+    },
+    {
+      "file": "air-system-integration.css",
+      "bytes": 7728,
+      "sha256": "0fb16e20467cff52634b291122725c3806103c2c4d50896fe196b2cc4004c1a7"
+    },
+    {
+      "file": "air-system-integration.js",
+      "bytes": 4960,
+      "sha256": "16619c0b3e1eac3338b81de77ebc9be23716fb93ad5082a1665bdbf54974b4e1"
+    },
+    {
+      "file": "air-tahoe-apps.js",
+      "bytes": 8416,
+      "sha256": "a2ca5668c028b38e14c115f00edb50c10dd0efc04887c49d4c91a34d34ea11bd"
+    },
+    {
+      "file": "air-tahoe-desktop.css",
+      "bytes": 10809,
+      "sha256": "8c9f7701e75c6bd75860bb6045e370a8b099bf7f95664466a867f1c7afb23f58"
+    },
+    {
+      "file": "air-tahoe.css",
+      "bytes": 24173,
+      "sha256": "3f7801e1d89d2f3deec1c6f1ee44e18d42e401d4b68e55f55fadad43a93a82f7"
+    },
+    {
+      "file": "air-ui-refine.css",
+      "bytes": 5095,
+      "sha256": "ec383d25f3a454c22bcdeeb473d8fddf738e36c87328b2e0aa0e3dd7bd70d8b9"
+    },
+    {
+      "file": "air-widget-views.js",
+      "bytes": 7549,
+      "sha256": "09a2ae9eb2c4ab85679f709c09c80ae7c8070e2bf4d79fcf014b0cdf1084a532"
+    },
+    {
+      "file": "air-window-system.js",
+      "bytes": 11332,
+      "sha256": "ab035442cd327d152c1723ed8c48aa387a5157123fa10c9d1e04222c4dbebda7"
+    },
+    {
+      "file": "aircard-lite.js",
+      "bytes": 13908,
+      "sha256": "1a265357cbe42e89baf59d66aee0c963288d39177e7f0fdc4fe1e7f4d6f7861f"
+    },
+    {
+      "file": "airwrite.css",
+      "bytes": 5885,
+      "sha256": "5160e7794af28be3861adc1a086288ff5e9a192558e980cff1490716f27e3fcc"
+    },
+    {
+      "file": "airwrite.js",
+      "bytes": 11256,
+      "sha256": "0fb0eb4129132e006ed5b0e19d5e77d725dd4a4dfeb25369585b6e48ff830e47"
+    },
+    {
+      "file": "app.js",
+      "bytes": 93395,
+      "sha256": "518e0bbe5652b1d6933f9aaab8432bd4c9a08a6e5e4781e0b25e03f419c8c60b"
+    },
+    {
+      "file": "assets/brand/air-os-app.svg",
+      "bytes": 558,
+      "sha256": "834c111a49cb149697aadcd53138d3e8d1f50bffaa5f64b9abdb296d8054aab6"
+    },
+    {
+      "file": "assets/brand/air-os-black.svg",
+      "bytes": 261,
+      "sha256": "2715dfc486376d9b46dc9d9f8e3c5adf3d209e0c10b53c5de6f8402a77a3205f"
+    },
+    {
+      "file": "assets/brand/air-os-maskable.svg",
+      "bytes": 556,
+      "sha256": "e9d213f9c8574545da12bff13793adb4f0331b56c2d5527425d38ecb311dd4b5"
+    },
+    {
+      "file": "assets/brand/air-os-master.json",
+      "bytes": 327,
+      "sha256": "5a8cc30af35ff262a234d20d2fed29018744875465994982b1069ea20d4fcfbc"
+    },
+    {
+      "file": "assets/brand/air-os-master.svg",
+      "bytes": 261,
+      "sha256": "2715dfc486376d9b46dc9d9f8e3c5adf3d209e0c10b53c5de6f8402a77a3205f"
+    },
+    {
+      "file": "assets/brand/air-os-white.svg",
+      "bytes": 261,
+      "sha256": "fd316dc5f0846e0bed41c3f3b5a2a0dcff4ca8f32ef4faa1803d80f5fe916ae6"
+    },
+    {
+      "file": "assets/brand/air-os.icns",
+      "bytes": 617440,
+      "sha256": "f57cde9ba1e76cfc28d3ff9e58005d9f298d8c16a928e8b5206a131be7a39a36"
+    },
+    {
+      "file": "assets/brand/air-os.ico",
+      "bytes": 51478,
+      "sha256": "8cac215da8186702e1024a6fc97af814191f13d20761d03f362b4aaa87f3f55b"
+    },
+    {
+      "file": "assets/brand/png/app-1024.png",
+      "bytes": 324319,
+      "sha256": "ded32e3b01539b4d8eacb308e81738329e9d3c2dace37aaece6b17c4b3ec253b"
+    },
+    {
+      "file": "assets/brand/png/app-128.png",
+      "bytes": 10785,
+      "sha256": "b5b6f4406e7fdbd0a015aacd9334846b69456faf2dbadc38581c7edcfddfa330"
+    },
+    {
+      "file": "assets/brand/png/app-16.png",
+      "bytes": 718,
+      "sha256": "aba4a33749ef8a37fbb931ab2009c7a37f3c2e0b35dcfdbcd63d47faeed05e53"
+    },
+    {
+      "file": "assets/brand/png/app-180.png",
+      "bytes": 17838,
+      "sha256": "e74367fdf2286743d8274918113943ec44c5b356c33df59d23e1421e94ad0577"
+    },
+    {
+      "file": "assets/brand/png/app-192.png",
+      "bytes": 19338,
+      "sha256": "ff0147cc80c8427eb2ced5b736adce9d776dac8998bd59f724d94e543ad59e72"
+    },
+    {
+      "file": "assets/brand/png/app-256.png",
+      "bytes": 32539,
+      "sha256": "a2c08a0ecc153053442faaeef44e290fb90bc2ef119c5d6f56d3af6b374c0c8c"
+    },
+    {
+      "file": "assets/brand/png/app-32.png",
+      "bytes": 1603,
+      "sha256": "af3f8034d5c65dd9a3482555ed7f570bd486b7cdf577ba9bd25a8553e16305e0"
+    },
+    {
+      "file": "assets/brand/png/app-48.png",
+      "bytes": 2349,
+      "sha256": "2021b441bb69be37eecf12dae95acd50b9a53fd2cf1ab1521e08277a5141713d"
+    },
+    {
+      "file": "assets/brand/png/app-512.png",
+      "bytes": 103237,
+      "sha256": "69b64d445e2736016dde20c1f49f570348e037cacc368cf335f3961015bf88d3"
+    },
+    {
+      "file": "assets/brand/png/app-64.png",
+      "bytes": 3382,
+      "sha256": "fdd191ea07cbd81a49a445d7cf904557f4b1de4a21226d8b03a4da31ecdd49a0"
+    },
+    {
+      "file": "assets/brand/png/apple-touch-icon.png",
+      "bytes": 17838,
+      "sha256": "e74367fdf2286743d8274918113943ec44c5b356c33df59d23e1421e94ad0577"
+    },
+    {
+      "file": "assets/brand/png/black-1024.png",
+      "bytes": 22092,
+      "sha256": "00601228da5df5f7d9b239890294add296f575cc4c0396cd8fb041c8b5173599"
+    },
+    {
+      "file": "assets/brand/png/black-128.png",
+      "bytes": 2213,
+      "sha256": "2682a0825c0399662ea571b2bb8630246925fd1c37e90030953bc25a6d130d9f"
+    },
+    {
+      "file": "assets/brand/png/black-16.png",
+      "bytes": 367,
+      "sha256": "596128001ed68dd7f22f93d84a626138a508e583a0db757acff118616082df1b"
+    },
+    {
+      "file": "assets/brand/png/black-180.png",
+      "bytes": 3205,
+      "sha256": "046ca37f2ad229cf0f55a3b64da67b3154211b6e372815ba2c261e68768f2cad"
+    },
+    {
+      "file": "assets/brand/png/black-192.png",
+      "bytes": 3484,
+      "sha256": "389fb65a324e6018b7d861b84767745e884cdbf512e78c1126eae51a47d4e876"
+    },
+    {
+      "file": "assets/brand/png/black-256.png",
+      "bytes": 4672,
+      "sha256": "1a52dc8b065484a183b163b6ed40f6930aaad128c33e04bc57ccf1b873fc4fc4"
+    },
+    {
+      "file": "assets/brand/png/black-32.png",
+      "bytes": 701,
+      "sha256": "5776eb3e22f8d4fc827651251ac4f74a00ec109342d4783613b07a9cc9639f3d"
+    },
+    {
+      "file": "assets/brand/png/black-48.png",
+      "bytes": 935,
+      "sha256": "759f4b9b11c4faeb87018a37085f025a800b0fb1e469173a1ea61c3d7662c4b6"
+    },
+    {
+      "file": "assets/brand/png/black-512.png",
+      "bytes": 9670,
+      "sha256": "92d3752e22cbfbf20e003a14893655c0f113e437303beb052804a809342a9d31"
+    },
+    {
+      "file": "assets/brand/png/black-64.png",
+      "bytes": 1263,
+      "sha256": "cf3ac90bb710e56f620fbd3a08ff1fa156b9695119f26ac4b71effe1f7444c5b"
+    },
+    {
+      "file": "assets/brand/png/maskable-1024.png",
+      "bytes": 288568,
+      "sha256": "4962264fe17724454ab70674ec46f7138f7a919986e4b110836c03f1b43032c5"
+    },
+    {
+      "file": "assets/brand/png/maskable-128.png",
+      "bytes": 8506,
+      "sha256": "94d53b0de87777747c827c1481e803cf5d2d9b5b7293223eef77fc673ff18f9f"
+    },
+    {
+      "file": "assets/brand/png/maskable-16.png",
+      "bytes": 536,
+      "sha256": "ce4175f64a3fce77b58746a97d4372cc6368108592b2ea15bc9f5cd9527fef00"
+    },
+    {
+      "file": "assets/brand/png/maskable-180.png",
+      "bytes": 14025,
+      "sha256": "cf97b5df54c0b13f2c5cc0dc3e4465466d8c0f5c05bbd9ae94a6c17ec5788cbc"
+    },
+    {
+      "file": "assets/brand/png/maskable-192.png",
+      "bytes": 14919,
+      "sha256": "d0c06054403c1baa9c166e373f8517edf14f1f9c91e9754ef62c4e4ba8f33e01"
+    },
+    {
+      "file": "assets/brand/png/maskable-256.png",
+      "bytes": 26642,
+      "sha256": "4c0a4e516598f3e89fd3ae50f0610a28c40097ec06440b1512c86a89b2c2dfb9"
+    },
+    {
+      "file": "assets/brand/png/maskable-32.png",
+      "bytes": 1184,
+      "sha256": "9fbd3d02f6551b7306c9d21f1a55237888337a3fc68aa4f129e0ae101f3ec23e"
+    },
+    {
+      "file": "assets/brand/png/maskable-48.png",
+      "bytes": 1909,
+      "sha256": "9d321197375cce2a8dd05e75a693f1e4ea2209c3fe38c63ee7efb906b63a44ec"
+    },
+    {
+      "file": "assets/brand/png/maskable-512.png",
+      "bytes": 85556,
+      "sha256": "47bef224c4b8a18d345dee408c2d72de4f5995c21106fff1a34c63e835806505"
+    },
+    {
+      "file": "assets/brand/png/maskable-64.png",
+      "bytes": 2482,
+      "sha256": "236b8c668c86f4c1f93e385c8c4160926802999719d66ca60a88c7837b0e7cb0"
+    },
+    {
+      "file": "assets/brand/png/white-1024.png",
+      "bytes": 23958,
+      "sha256": "c6634eed49dcf30ef87e4dd38ea61512fa3a048c94f250cce260f0df861b0e30"
+    },
+    {
+      "file": "assets/brand/png/white-128.png",
+      "bytes": 2320,
+      "sha256": "bfb556e8cd80d61a1d28decbed6bde290adb6a444fc642fef72264a3f640cec5"
+    },
+    {
+      "file": "assets/brand/png/white-16.png",
+      "bytes": 381,
+      "sha256": "98722b7e15e7c0d3fe7c969f4c3db02b3e1639d11a93e7be84e0d7a081cb5f6d"
+    },
+    {
+      "file": "assets/brand/png/white-180.png",
+      "bytes": 3421,
+      "sha256": "abf85ea78edc0cf07924f366c9e17f47f03e581b8cf8f92370d6108216b68fd3"
+    },
+    {
+      "file": "assets/brand/png/white-192.png",
+      "bytes": 3584,
+      "sha256": "882c172b6354473d412bb029a840ca5f1f145d063e5c7a12cc34ac51b1bb51a1"
+    },
+    {
+      "file": "assets/brand/png/white-256.png",
+      "bytes": 4956,
+      "sha256": "66a51b5e085a3258a8783c7d9afae79437d693baccd450a5761223ea81bf0a77"
+    },
+    {
+      "file": "assets/brand/png/white-32.png",
+      "bytes": 727,
+      "sha256": "f0ae736b4c6543fb2beec04229f39b9c130c0564e18c796228f389d0a7329555"
+    },
+    {
+      "file": "assets/brand/png/white-48.png",
+      "bytes": 949,
+      "sha256": "00d396ebde907d66738a88bb671d1dd3e0d7f376de3a74fc0206b227157b3853"
+    },
+    {
+      "file": "assets/brand/png/white-512.png",
+      "bytes": 10367,
+      "sha256": "10dcc0a7bb58c69f76db6c9d568814b6796821809cb8bea880889d1d3f60f179"
+    },
+    {
+      "file": "assets/brand/png/white-64.png",
+      "bytes": 1338,
+      "sha256": "553d4690b64dcdbf79646f4cf6cf25617bef507e6e16dc41c2c526bba07cbea9"
+    },
+    {
+      "file": "assets/brand/pwa-icons.json",
+      "bytes": 397,
+      "sha256": "71da5a3d7b79278e0244a02b733b6cb0cd54d2fb3f8c1d5588683ba5228855fc"
+    },
+    {
+      "file": "index.html",
+      "bytes": 19186,
+      "sha256": "4999623361efc2245200dfc2c73c0c23299bc584cd518659b3b27ab6646fe26b"
+    },
+    {
+      "file": "login.css",
+      "bytes": 22697,
+      "sha256": "fa0995bf3aa61f49b073571d86c8f29163554570b1e9a1dd683e6562aaa7f4a1"
+    },
+    {
+      "file": "login.html",
+      "bytes": 6902,
+      "sha256": "1ffaea72c921552bb6f5b64e22304ca0752961f034bdb4df1e8934fe974c3a12"
+    },
+    {
+      "file": "login.js",
+      "bytes": 10015,
+      "sha256": "9c4eeb18a769e17c73708e81cced8e89b8df9edfbb9cbec39fc50bbd69ed5ab4"
+    },
+    {
+      "file": "maclock-glass.js",
+      "bytes": 19755,
+      "sha256": "33f80088776f7fc9d635574335a78922cb0279a4b2357fa6420a1f8619b2bc95"
+    },
+    {
+      "file": "maclock-layout.js",
+      "bytes": 1476,
+      "sha256": "41265c8701f4da7e0ef7ab6e8250662fd2cb11782595683994ac88f0173ea837"
+    },
+    {
+      "file": "maclock-morph.js",
+      "bytes": 16995,
+      "sha256": "83c279f840cc9f3735356d1e649bf5fa1f2da73d8538ef97bfbc32200b25da00"
+    },
+    {
+      "file": "maclock-motion.js",
+      "bytes": 7587,
+      "sha256": "8470b967410dcef634dbb20152daec8a120916178571268fe02368b73934b095"
+    },
+    {
+      "file": "maclock-shaders.js",
+      "bytes": 14098,
+      "sha256": "7ac2706e75b6acd774aa2fe49bbfbc5ec7ffc3b58a311d3d07688f8f5e05b595"
+    },
+    {
+      "file": "maclock-system.js",
+      "bytes": 4727,
+      "sha256": "2d804b23593a7fa53318d63063b4fb8f8457cf8cda824d79df3764a7057eab55"
+    },
+    {
+      "file": "maclock-wallpaper.svg",
+      "bytes": 1280,
+      "sha256": "13d818b78850c55b72a100f8cbb4dbc16f8f5254c8b6db320759f03e960849b3"
+    },
+    {
+      "file": "macshell-glass2-shaders.js",
+      "bytes": 22210,
+      "sha256": "0c731605529302e2e28a690f810ff46d97e1f3c2592518da243b4173f3d72e69"
+    },
+    {
+      "file": "macshell-material-shader.js",
+      "bytes": 9325,
+      "sha256": "35b5df1b62641dcd9470ad78d80b97dc44aa4185e08b614d3297fadae7a60446"
+    },
+    {
+      "file": "main.cjs",
+      "bytes": 30887,
+      "sha256": "e89f6c0f3d851bc0b475535fea3036acdb71c67a53c49ae602cb3f209e4d8b27"
+    },
+    {
+      "file": "node_modules/amplitudejs/LICENSE",
+      "bytes": 1081,
+      "sha256": "7db9cdb985800a66e27705b3dce57143e68706519e1e72bbe07e2348e3701155"
+    },
+    {
+      "file": "node_modules/amplitudejs/dist/amplitude.min.js",
+      "bytes": 97356,
+      "sha256": "93dca7ce6633162642feb998d08f5560358ec0578e0dd244ce5b8434de692dc8"
+    },
+    {
+      "file": "node_modules/amplitudejs/package.json",
+      "bytes": 925,
+      "sha256": "5397188d2c7f9ef90847234163cab0cd561f8beb594f9b5fe31fba1d2dafd294"
+    },
+    {
+      "file": "package.json",
+      "bytes": 1305,
+      "sha256": "1d773800ef48e23810dbff72799ee819a58cb94d71906c53b92ece7bef78bba9"
+    },
+    {
+      "file": "preload.cjs",
+      "bytes": 4022,
+      "sha256": "622cd7665deeaa47c7c9001e328b664f0d09da8341e5c3e30528f8b79a78d183"
+    },
+    {
+      "file": "src/core/app-lifecycle.js",
+      "bytes": 1729,
+      "sha256": "25bde01336777dd62db68a4e86dd88f4630c59a17fe773f78ccf600ce0879fa8"
+    },
+    {
+      "file": "src/core/app-registry.js",
+      "bytes": 4743,
+      "sha256": "970e47cee295bad9d3d85a882b97395d673d596db86dc27ace5ffb913d798a41"
+    },
+    {
+      "file": "src/core/control-glyphs.js",
+      "bytes": 6297,
+      "sha256": "60bdaef6d104880d704ea477494a055027adc8547efafbb5202c06fff7d19f08"
+    },
+    {
+      "file": "src/core/desktop-widgets.js",
+      "bytes": 2783,
+      "sha256": "97e751a9f62e68c2a029ce95a3bbbf031d7240c263d539e6a9663af7eacd210a"
+    },
+    {
+      "file": "src/core/glass-geometry.js",
+      "bytes": 3156,
+      "sha256": "d2f5c89624e339c2da57312a7fe4cb21b1af2800c24df14c9de11ef44a05e0c6"
+    },
+    {
+      "file": "src/core/macshell-math.js",
+      "bytes": 5064,
+      "sha256": "1497c64ad67c3d97b6dcb7111d87278e3de9fa3e0b72b51ec51a838d8ed88dcd"
+    },
+    {
+      "file": "src/core/music-metadata.js",
+      "bytes": 3919,
+      "sha256": "b4e8d5e588a5c766fc1d22eabf1621b809a895a41b5897ed2e1b52505e53164b"
+    },
+    {
+      "file": "src/core/notes-format.js",
+      "bytes": 542,
+      "sha256": "702cb7da8e9f70815fb295c3e99825e5fc56e7e1e3a4d2de8c815efb3b667969"
+    },
+    {
+      "file": "src/core/profile-local.js",
+      "bytes": 1266,
+      "sha256": "850f2201f8df489bb033d6445bc0f93dd8699a565201c9828dd31da49c3b96b1"
+    },
+    {
+      "file": "src/core/search-service.js",
+      "bytes": 2271,
+      "sha256": "0258afeee6896e6aff2b1cbc3895f8a8f4cde40234bdb6eb9e57b506ea5bfb41"
+    },
+    {
+      "file": "src/core/tahoe-app-model.js",
+      "bytes": 1158,
+      "sha256": "969ad1c1bddbd635d90c491ac46c0abf13fb7d200fd4380b17dfee5bbbd138cf"
+    },
+    {
+      "file": "src/core/tahoe-icons.js",
+      "bytes": 1605,
+      "sha256": "6a69d9b4f580a333b34ff782d99268ec6b39345ca2b6f0963dcf8e85dbdbe082"
+    },
+    {
+      "file": "src/core/today-widget.js",
+      "bytes": 1215,
+      "sha256": "67eef6dcbb4f63b511271ed79853872776031ac6f0d3dc66799cfee10b356d58"
+    },
+    {
+      "file": "src/core/widget-data.js",
+      "bytes": 1818,
+      "sha256": "ce4f0955651253342b99f90699f1832c75e2ded14dd7cd7cc8320e3b5f1b0ce2"
+    },
+    {
+      "file": "src/core/window-system.js",
+      "bytes": 846,
+      "sha256": "b2a182659a8183ebf03d29c97588a6510f0e8e2ab47c30b077fce919a322ecef"
+    },
+    {
+      "file": "src/main/airapp-manager.cjs",
+      "bytes": 9304,
+      "sha256": "e8d32c1831f256430bc60722f45ce7ac92b2360610b9449292c2adf26085e980"
+    },
+    {
+      "file": "src/main/airapp-package.cjs",
+      "bytes": 3579,
+      "sha256": "10315ac5e361688af1904d6af5e506f65d8d100b1b6fb9e0659d7321ce50d95c"
+    },
+    {
+      "file": "src/main/airapp-runtime.cjs",
+      "bytes": 6218,
+      "sha256": "f23e7725b11dec209806cb4926fd26b9bb123da7dd6520ec07c129149afa413e"
+    },
+    {
+      "file": "src/main/chatgpt-installation.cjs",
+      "bytes": 1335,
+      "sha256": "e7c941d8799649f5d396420ff99a0fc1db76f72f803891dae610e1511b112a7a"
+    },
+    {
+      "file": "src/main/cloud-notes.cjs",
+      "bytes": 8145,
+      "sha256": "844bbe5488a35b092e8240410625f521058715e504782237a9edc13ac145cb33"
+    },
+    {
+      "file": "src/main/file-ops.cjs",
+      "bytes": 4373,
+      "sha256": "0b29995efb0136824b71488bff97ee0fc51596d720052a56f469f00d84d3cadf"
+    },
+    {
+      "file": "src/main/file-search.cjs",
+      "bytes": 2768,
+      "sha256": "1651099518d4c784df8db1315df47f78064e75c3592fa5fe3fc8d5561c4d7601"
+    },
+    {
+      "file": "src/main/keep-awake.cjs",
+      "bytes": 889,
+      "sha256": "9a017e081f758b83dfb69c364e2d5d26fa588c470fad6cc5e1fe4ab52b7d4ef5"
+    },
+    {
+      "file": "src/main/lock-presentation.cjs",
+      "bytes": 1560,
+      "sha256": "a247e46e72417af89355759553a8c7f53067f0943cec284a08424f914e1ba07f"
+    },
+    {
+      "file": "src/main/notes-store.cjs",
+      "bytes": 3256,
+      "sha256": "fc22318b6068b96a345a5f08af980569e879bce8c744340e2071631a1d722b28"
+    },
+    {
+      "file": "src/main/preferences.cjs",
+      "bytes": 8541,
+      "sha256": "b2c862fae67aef4028f3e9c658b48b72a1c8e4f84e41e0bef65286cd315a435a"
+    },
+    {
+      "file": "src/main/reminders-store.cjs",
+      "bytes": 3154,
+      "sha256": "e550a7bdceda341a98341b61caeb751103810882bef00b113b7643b4d7e01aad"
+    },
+    {
+      "file": "src/main/spotify-launcher.cjs",
+      "bytes": 1759,
+      "sha256": "7b564032a310136b8d764fc53a5aa06155b72e6723fbe24a77881106eb6204ab"
+    },
+    {
+      "file": "store/catalog/demo-timer.airapp",
+      "bytes": 3805,
+      "sha256": "0024f1223d976904069150af8ba29b5ad33df13a93a004728045ba662c752b0a"
+    },
+    {
+      "file": "store/keys/demo-publisher-public.txt",
+      "bytes": 113,
+      "sha256": "d0d467c8274a15c325354af411c3222743990583cf304047d4e40eddaa799925"
+    },
+    {
+      "file": "styles.css",
+      "bytes": 71807,
+      "sha256": "09f5fe572e758b0def129174d2504a04b741f7c16935bc2e6c3fd730875179c7"
+    },
+    {
+      "file": "third_party/deep-port/ClockWidget.qml",
+      "bytes": 15939,
+      "sha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f"
+    },
+    {
+      "file": "third_party/deep-port/LICENSE",
+      "bytes": 1063,
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    },
+    {
+      "file": "third_party/deep-port/MacBar-algorithms.txt",
+      "bytes": 6270,
+      "sha256": "ce624072e77ed8d9d8f490e7cfb779235a650882bafad22f2ce0b10b7f8da9b5"
+    },
+    {
+      "file": "third_party/deep-port/SPopUp.qml",
+      "bytes": 5367,
+      "sha256": "82bd3e7425b95266e1ee6d8a57bc192a6641d48769e5d9dd577cd4bd8c6e9e23"
+    },
+    {
+      "file": "third_party/deep-port/control-center-port.json",
+      "bytes": 884,
+      "sha256": "b4da93041ba272749188655816d5b278c00bd885be3cfcd40bc17324de8dd67c"
+    },
+    {
+      "file": "third_party/deep-port/liquidglass.frag",
+      "bytes": 10145,
+      "sha256": "17c803e919d156cfff3c285fc2b11a59548b8b757e191190269ee0b81b2f336b"
+    },
+    {
+      "file": "third_party/deep-port/source-review.json",
+      "bytes": 3094,
+      "sha256": "115bc183b53aa8720a3478bfbb8581106465fe39f919ec38522bba522dee54d4"
+    },
+    {
+      "file": "third_party/deep-port/tahoe4-port.json",
+      "bytes": 2207,
+      "sha256": "b3234ec7f45a6be2cbb8bcc7b2cb474cfded907d15dff15ec04d1e9939d53081"
+    },
+    {
+      "file": "third_party/deep-port/tahoe5-port.json",
+      "bytes": 1794,
+      "sha256": "9f16b3244b1c98ff73e8844d1fc8391c5b20846d29fb5584bf87960261e72fe0"
+    },
+    {
+      "file": "third_party/glass2/LICENSE",
+      "bytes": 1063,
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    },
+    {
+      "file": "third_party/glass2/contourglow.frag",
+      "bytes": 1757,
+      "sha256": "4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579"
+    },
+    {
+      "file": "third_party/glass2/dockglass.frag",
+      "bytes": 9186,
+      "sha256": "f1ebcf553c2dfb007050799f6c44d74556c2b49e4aac661c77f39b94ded0a631"
+    },
+    {
+      "file": "third_party/glass2/provenance.json",
+      "bytes": 718,
+      "sha256": "c9b30f7154b2ea9dd1347d23c1061445cc2f5e845cfe525a55393900dd3a35c4"
+    },
+    {
+      "file": "third_party/macbar/CalendarWidget.qml",
+      "bytes": 19037,
+      "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9"
+    },
+    {
+      "file": "third_party/macbar/LICENSE",
+      "bytes": 1063,
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    },
+    {
+      "file": "third_party/macbar/MacBar-calendar.qml.txt",
+      "bytes": 8017,
+      "sha256": "aeb100a7e0520ef3ddea43e7b1c4bf169c93b9e789aaa0e6803695239721cba3"
+    },
+    {
+      "file": "third_party/maclock/LICENSE",
+      "bytes": 1063,
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    },
+    {
+      "file": "third_party/maclock/NOTICE.md",
+      "bytes": 4268,
+      "sha256": "e61824a7c16738df5c38885051a0eff244750218baf48d40bbfe263ff69a842b"
+    },
+    {
+      "file": "third_party/maclock/OpenRunde-LICENSE.txt",
+      "bytes": 4380,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    {
+      "file": "third_party/maclock/SOURCE_MANIFEST.json",
+      "bytes": 8722,
+      "sha256": "1f5c82471e9b7f55ea6df8ac9ab11a3a9ac5e8e27a16d79084709882587472e3"
+    },
+    {
+      "file": "third_party/maclock/fonts/OpenRunde-Regular.otf",
+      "bytes": 312956,
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc"
+    },
+    {
+      "file": "third_party/maclock/fonts/OpenRunde-Semibold.otf",
+      "bytes": 315896,
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c"
+    },
+    {
+      "file": "third_party/maclock/original/ClockGlyph.qml",
+      "bytes": 3109,
+      "sha256": "c6d5aee900e241a088f94447a8db850d29999548d09f637a31186bcc6655ffad"
+    },
+    {
+      "file": "third_party/maclock/original/MorphGlyph.qml",
+      "bytes": 1984,
+      "sha256": "e77b8eca1525ef4887c77a5bb29ba18d306cf46d2492d49555147189eec8cde0"
+    },
+    {
+      "file": "third_party/maclock/original/MorphText.qml",
+      "bytes": 7158,
+      "sha256": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096"
+    },
+    {
+      "file": "third_party/maclock/original/glasstext.frag",
+      "bytes": 4782,
+      "sha256": "2f4feef2797fefaef9eae8cf6822ceb060257d6f8f13a26b55a76e0e26fa9dd8"
+    },
+    {
+      "file": "third_party/maclock/original/liquidglass.frag",
+      "bytes": 8333,
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35"
+    },
+    {
+      "file": "third_party/tahoe/gtk/COPYING",
+      "bytes": 1063,
+      "sha256": "47508b7d79f238a7e7225c21d2c9234b860c6d1931d8f9f2d545a2db0e26a25f"
+    },
+    {
+      "file": "third_party/tahoe/gtk/NOTICE",
+      "bytes": 273,
+      "sha256": "51b14f20b0b01df48e8dded0b852c47de21feadc3bbe915e0aba3aca059e696f"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/_colors-palette.scss",
+      "bytes": 605,
+      "sha256": "4a4756fb89d15bd3e4ccfa796c6eabfb3a9ebd0245ec254e9903898bc5f28314"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/_colors.scss",
+      "bytes": 16869,
+      "sha256": "b1de81a22c64d71c6b195b528a72f9fb37eab6a89c1fe70e437b55b023d4d83d"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/_gtk-base.scss",
+      "bytes": 177,
+      "sha256": "4c6b975cedd0f4819b2ece37f855f878cd8ff3940675e03a107e697b4ecd7019"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/_variables.scss",
+      "bytes": 4154,
+      "sha256": "0584fc58ab15a3a02232c2c628e0d3f80afcd2b7a2ddd394f01eb088e0beca33"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/gtk/_common-3.0.scss",
+      "bytes": 101349,
+      "sha256": "aa2238bec05115ad296023501f0a57a5076d9708c257076ee6c1fef0ebcab4bc"
+    },
+    {
+      "file": "third_party/tahoe/gtk/source/gtk/_common-4.0.scss",
+      "bytes": 122627,
+      "sha256": "731c72dac198c910885ddd0e212a07faf78efd9ed4dae485f597b2062635761a"
+    },
+    {
+      "file": "third_party/tahoe/icons/AUTHORS",
+      "bytes": 346,
+      "sha256": "d34b5f4936a292d6cd7cbb7cab5f94576f3ae8d8f6ca84a35144c7695060555f"
+    },
+    {
+      "file": "third_party/tahoe/icons/COPYING",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "file": "third_party/tahoe/icons/NOTICE",
+      "bytes": 461,
+      "sha256": "76f5ce138c20a4a79632c35a9edcb27ecb33063ca1188b336a8ae97a2408aadd"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/accessories-camera.svg",
+      "bytes": 26784,
+      "sha256": "40d8ec9854d5c01a380d8e1b4c9d05485dc11c590d1ab14bc38456939717f2ce"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",
+      "bytes": 1610,
+      "sha256": "b09c8146a6d358c481503edc3caa8bb135cbc97420bbb0d00cbf39413dccee19"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/calc.svg",
+      "bytes": 8979,
+      "sha256": "2e35d5e0074fa24fff4e94d00da8a729265aaed875657435cf9693c2d5424597"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/calendar.svg",
+      "bytes": 4508,
+      "sha256": "c767f07a84992e28a5bf81c95e9e7020acbb6cc27d2424145b65304a11f23789"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/evolution-tasks.svg",
+      "bytes": 6495,
+      "sha256": "8725dbc1a62194f6ca996fdcfcca539bffbe73678556a0adee110213967c9c1c"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/gnome-music.svg",
+      "bytes": 5449,
+      "sha256": "dc8f1e4942cf4d3adb155b2dcd9c9a600448cd629d961cef26d96462b0e118fd"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/internet-mail.svg",
+      "bytes": 11083,
+      "sha256": "a55db5fe761f3b5dadbeea41cbd9575a23d75952117cd49b24cb586a717465b0"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/preferences-system.svg",
+      "bytes": 59975,
+      "sha256": "8ff99c6c70c0a33282aa351e3de4f0fc29bb4437d3cfe6c6ae6cfda4a7b97632"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/apps/scalable/text-editor.svg",
+      "bytes": 3221,
+      "sha256": "3756a88005181fb71f434b01b956cb3ef70185d1e24c11e33e90f96b3df8bedf"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/categories/32/applications-internet.svg",
+      "bytes": 1665,
+      "sha256": "615354705ca42ad4d97a6a6591a5af5b3c57ed294a9a64f9b5254b9e66f5fc7c"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/places/scalable/folder-download.svg",
+      "bytes": 4105,
+      "sha256": "64714924e6d005faf00e1ef5befcde3372c5b636946a89311dafe005d59fa28f"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/places/scalable/folder-images.svg",
+      "bytes": 3370,
+      "sha256": "ad497498c88e9d1a9f995f78b3e3a2deebbfe6aafc5ef96b0a4f82c969e0fe7d"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/places/scalable/folder.svg",
+      "bytes": 2306,
+      "sha256": "271858210d1482efdf989a7a4fc4ea09410c5b50247949054b68179f5f964c42"
+    },
+    {
+      "file": "third_party/tahoe/icons/source/places/scalable/user-trash.svg",
+      "bytes": 2402,
+      "sha256": "4ca95dd5934d278e37d281dd8d97d32542412f054b752d50e1301f687f1f9f8b"
+    },
+    {
+      "file": "third_party/tahoe/provenance.json",
+      "bytes": 5614,
+      "sha256": "3885b90b2977010a1990a60394d494e08abd543213df67d223f1eca96afacf1b"
+    },
+    {
+      "file": "wallpaper.jpg",
+      "bytes": 11978,
+      "sha256": "7efc15e29cfb8e00a75713c46feb62bcc2c46c34ae845e41e2ac7913313f3579"
+    },
+    {
+      "file": "wallpaper.svg",
+      "bytes": 4373,
+      "sha256": "0f345ccc3fdcf44b02abd7851543d90db3528708b730e00ab3fe7457e4d5d5e4"
+    }
+  ]
+}

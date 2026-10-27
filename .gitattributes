@@ -23,3 +23,9 @@ third_party/glass2/LICENSE text eol=lf
 
 # Preserve pinned upstream distribution byte hashes, including CRLF.
 third_party/winbox-0.2.82/* -text whitespace=cr-at-eol
+
+# R2: preserve pinned Tahoe Sass and license/NOTICE bytes on Windows checkouts.
+# These upstream assets are hashed verbatim, including any original line endings.
+third_party/tahoe/** -text
+third_party/deep-port/** -text
+third_party/macbar/** -text
