@@ -32,3 +32,6 @@ third_party/macbar/** -text
 # Tahoe 6 source excerpts and copyright remain byte-stable on Windows.
 third_party/tahoe6/** -text
 third_party/tahoe7/** -text
+
+# Preserve pinned material-callsite excerpts on Windows.
+third_party/glass2/** -text

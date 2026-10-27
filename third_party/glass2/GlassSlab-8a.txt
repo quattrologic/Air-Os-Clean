@@ -1,0 +1,32 @@
+    property real thickness: 16         // same meaning as GGlass.thickness in MacBar.qml
+    property real strengthMul: 1.0
+    property real liquid: 1.0           // the global "Liquid strength" setting
+    property real rim: 0.1125           // Control Center value: glassRim * 0.25
+    property real grain: 0.03
+    property real tint: 0.42            // the global translucency setting (glassOpacity)
+    property real tintMul: 1.0
+    property real shadowAmt: 0
+    property real flatInner: 1
+    property real blurPx: 1.5
+            property vector2d srcSize: gs.own ? Qt.vector2d(ownLayer.width, ownLayer.height)
+                                              : Qt.vector2d(gs.srcSize.width, gs.srcSize.height)
+            property vector2d srcOffset: gs.own ? Qt.vector2d(gs.ownM - gs.pad, gs.ownM - gs.pad)
+                                                : Qt.vector2d(gs.origin.x - gs.pad, gs.origin.y - gs.pad)
+            property real pad: gs.pad
+            property real radius: gs.cornerR
+            property real bezel: Math.min(gs.height * 0.36, 26)
+            property real thickness: gs.thickness * gs.liquid * gs.strengthMul * 1.6
+            property real dispersion: 0.06 * gs.liquid * gs.strengthMul * 1.3
+            property real magnify: 0.05 * gs.liquid * gs.strengthMul * 1.6
+            property real rim: gs.rim
+            property real grain: gs.grain * 0.2
+            property real blurPx: gs.blurPx
+            property real tintMix: gs.tint * 0.55 * gs.tintMul
+            property real saturation: 1.25
+            property real dark: gs.dark ? 1 : 0
+            property real debug: 0
+            property real shadowAmt: gs.shadowAmt
+            property real flatInner: gs.flatInner
+            property real rimTint: 1
+            property real ringW: 0
+        }

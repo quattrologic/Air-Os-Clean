@@ -1,0 +1,63 @@
+    readonly property real tint:
+        Math.min(0.92,
+                 dark ? 0.25 + glassOpacity * 0.8
+                      : 0.45 + glassOpacity * 0.9)
+    // Liquid style fallback and Settings preview.
+    Rectangle {
+        anchors.fill: parent
+        visible: w.style === "liquid" && !w.glassOn
+        radius: w.radiusPx
+
+        gradient: Gradient {
+            GradientStop {
+                position: 0.0
+                color: w.dark
+                    ? Qt.rgba(0.22, 0.22, 0.25, 0.82)
+                    : Qt.rgba(1.0, 1.0, 1.0, 0.88)
+            }
+            GradientStop {
+                position: 1.0
+                color: w.dark
+                    ? Qt.rgba(0.13, 0.13, 0.15, 0.82)
+                    : Qt.rgba(0.92, 0.92, 0.95, 0.88)
+            }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: parent.radius
+
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.0
+                    color: Qt.rgba(1, 1, 1, w.dark ? 0.10 : 0.35)
+                }
+                GradientStop {
+                    position: 0.6
+                    color: Qt.rgba(1, 1, 1, 0.0)
+                }
+            }
+        }
+    }
+
+    // Live wallpaper backdrop and refraction shader.
+
+                property real pad: gl.padPx
+                property real radius: w.radiusPx
+                property real bezel:
+                    Math.min(Math.min(w.width, w.height) * 0.36, 26)
+                property real thickness: 30 * w.glassLiquid
+                property real dispersion: 0.06 * w.glassLiquid
+                property real magnify:
+                    0.08 * w.glassLiquid * Math.min(1, 90 / w.height)
+                property real rim: w.glassRim
+                property real grain: w.glassGrain * 0.15
+                property real blurPx: 1.0
+                property real tintMix: w.tint
+                property real saturation: 1.25
+                property real dark: w.dark ? 1 : 0
+                property real debug: 0
+                property real shadowAmt: 0           // no drop shadow
+                property real flatInner: 1           // no darker inner edge (needs the rebuilt liquidglass shader)
+                property real rimTint: 1
+                property real ringW: 0

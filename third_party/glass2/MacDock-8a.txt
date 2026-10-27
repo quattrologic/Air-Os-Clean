@@ -1,0 +1,84 @@
+    // Liquid Glass tuning (settings.json): rim = edge highlight, grain = noise, liquid = refraction depth
+    property real glassRim: 0.45
+    property real glassGrain: 0.03
+    property real glassLiquid: 1.0
+    // The Dock's own real-time switch (Dock Preferences -> Appearance). It used to follow the Menu Bar's "Real-time glass" toggle, which is OFF by
+    // default, so the Dock glass was a 15 fps, pause-while-windows-open snapshot unless that was found and switched on.
+    property bool glassLive: true
+    readonly property bool glassRT: glassLive
+    property real glassBlur: 5            // Liquid Glass backdrop blur radius, px (settings slider)
+    readonly property real dockBlurBoost: 8    // extra px of blur added on top of glassBlur for the Dock glass only
+    property bool glassDebug: false       // settings.json only: draw the raw Liquid Glass backdrop texture
+    property string wallpaperPath: ""    // optional override for the wallpaper the Liquid Glass refracts
+    property real glassOpacity: 0.42     // 0 = fully clear; below the layerrule's ignore_alpha (0.2) the blur turns off
+                            ShaderEffectSource {
+                                id: bblur2
+                                // the 2nd pass is a pure copy unless the blur radius exceeds one pass: skip it then (same pixels, one GPU pass less)
+                                sourceItem: dg.bn > 1.0 ? bblur2Fx : null
+                                live: !ui.tucked
+                                visible: false
+                            }
+                            ShaderEffect {
+                                id: glassFx
+                                x: -padPx; y: -padPx
+                                width: dock.width + 2 * padPx
+                                height: dock.height + 2 * padPx
+                                fragmentShader: root.dockGlassUrl
+                                onStatusChanged: {
+                                    console.log("[macdock-glass] shader status:", status, "(0 = compiled, 1 = uncompiled, 2 = error)", log);
+                                    if (status === ShaderEffect.Error) {
+                                        // the Dock's own shader failed to load: drop back to the shared one; only if THAT fails too, give up on Liquid Glass
+                                        if (root.dockGlassNew) root.dockGlassState = "failed";
+                                        else root.glassState = "failed";
+                                    }
+                                }
+                                // dockglass.frag only (ignored by liquidglass.frag): rgb = wallpaper colour, a = how strongly the edge light follows it
+                                property vector4d edgeTint: Qt.vector4d(dg.edgeCol.r, dg.edgeCol.g, dg.edgeCol.b, root.dockGlassNew ? 0.5 : 0)
+
+                                property variant src: dg.bn > 1.0 ? bblur2 : bblur
+                                property real padPx: parent.padPx
+                                property vector2d itemSize: Qt.vector2d(width, height)
+                                property vector2d glassSize: Qt.vector2d(dock.width, dock.height)
+                                property vector2d srcSize: Qt.vector2d(bsrc.sourceRect.width, bsrc.sourceRect.height)
+                                property vector2d srcOffset: Qt.vector2d(parent.margin, parent.margin)
+                                property real pad: padPx
+                                property real radius: root.cornerRadius
+                                property real bezel: Math.min(dock.height * 0.36, 26)
+                                property real thickness: 30 * root.glassLiquid
+                                property real dispersion: 0.06 * root.glassLiquid
+                                property real magnify: 0.08 * root.glassLiquid
+                                property real rim: root.glassRim * 0.20
+                                property real grain: root.glassGrain * 0.3     // quieter noise on the Dock glass
+                                property real blurPx: 1.5            // tiny residual smoothing; the real blur is the MultiEffect pre-pass
+                                property real tintMix: root.glassOpacity * 0.55
+                                property real saturation: 1.25
+                                property real dark: root.dockDark ? 1 : 0
+                                property real debug: root.glassDebug ? 1 : 0
+                                // Keep the Dock glass clean: no drop shadow.
+                                property real shadowAmt: 0
+                                property real rimTint: 0
+                                property real ringW: 0
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        visible: !root.liquidActive
+                        anchors.fill: parent
+                        radius: root.cornerRadius
+                        color: root.dockDark ? Qt.rgba(0.10, 0.10, 0.11, root.glassOpacity)
+                                             : Qt.rgba(1, 1, 1, root.glassOpacity * 0.55)
+                        border.width: 0      // dark outer border removed
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: 0
+                            radius: parent.radius - 0.35
+                            color: "transparent"
+                            border.width: 0.25
+                            border.color: root.dockDark ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(1, 1, 1, 0.12)
+                        }
+                    }
+
+                    // same extra edge detail as the top-bar menus: faint dominant-colour edge (no dark hairline)
+                    MenuBorder {

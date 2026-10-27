@@ -1,0 +1,91 @@
+{
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT; existing LICENSE and NOTICE retained",
+  "sources": [
+    {
+      "source": "MacShell/MacDock.qml",
+      "upstreamSha256": "89ff98bfa058659abdc0924bb8287a8c0e0cea0197446cc5cf159bee4785bacc",
+      "ranges": [
+        [
+          169,
+          181
+        ],
+        [
+          5390,
+          5460
+        ]
+      ],
+      "file": "third_party/glass2/MacDock-8a.txt",
+      "sha256": "6c150a89151dfc1391017e472cf81c19f7d4170cb60f0be01fd1f6611def1aed"
+    },
+    {
+      "source": "MacShell/GlassSlab.qml",
+      "upstreamSha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca",
+      "ranges": [
+        [
+          25,
+          34
+        ],
+        [
+          85,
+          106
+        ]
+      ],
+      "file": "third_party/glass2/GlassSlab-8a.txt",
+      "sha256": "ff390a72ae4693f380a8288eb234cb0bc7edfa813246789e72098f93ea661986"
+    },
+    {
+      "source": "MacShell/ClockWidget.qml",
+      "upstreamSha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+      "ranges": [
+        [
+          61,
+          64
+        ],
+        [
+          122,
+          160
+        ],
+        [
+          296,
+          315
+        ]
+      ],
+      "file": "third_party/glass2/ClockWidget-8a.txt",
+      "sha256": "fd8db1e9e5f62c1d628a12568d441c7d1293f30ca952b1c66785bf04357f8b2c"
+    },
+    {
+      "source": "MacShell/MacWidgets.qml",
+      "upstreamSha256": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be",
+      "ranges": [
+        [
+          38,
+          47
+        ]
+      ],
+      "file": "third_party/glass2/MacWidgets-8a.txt",
+      "sha256": "8fa7e482dbcebc71ec235d4b990636e7f75b5de6a26fafd87ae3b83529fccf05"
+    },
+    {
+      "source": "MacShell/WidgetVisual.qml",
+      "upstreamSha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8",
+      "ranges": [
+        [
+          85,
+          105
+        ]
+      ],
+      "file": "third_party/glass2/WidgetVisual-8a.txt",
+      "sha256": "888e521049a3a221a8c8fc73c121086dd941e1fa8f63b736bb3e5499fd40d17a"
+    }
+  ],
+  "target": "src/core/glass-geometry.js material() \u2192 air-desktop-glass.js actual uniforms; air-glass2.css single-pass compositor fallback",
+  "adaptations": [
+    "Island uses GlassSlab material, preserving Air-OS silhouette.",
+    "Notes/Reminders reuse WidgetVisual\u2192Clock material.",
+    "Widget fallback retains original RGB gradient but uses actual widget shader tint.586 alpha instead of Qt preview alpha.82.",
+    "Dock adaptive wallpaper edgeTint disabled (zero strength), not falsely replaced by fabricated wallpaper colour.",
+    "Cached wallpaper preprocessing remains2px; QML per-surface MultiEffect blur13/16px is not reproduced in WebGL prepass. CSS uses one13/16px compositor blur.",
+    "No new shader code, capture, renderer/GPU overrides or runtime dependency."
+  ]
+}

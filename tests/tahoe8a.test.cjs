@@ -1,0 +1,13 @@
+'use strict';
+const test=require('node:test'),a=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+const {material}=require('../src/core/glass-geometry.js');
+test('8A uses actual Dock, WidgetVisual and GlassSlab callsite material profiles',()=>{
+ const d=material('dock',69),w=material('widget',185),i=material('island',40);
+ a.equal(d.thickness,30);a.equal(d.dispersion,.06);a.equal(d.tintMix,.42*.55);a.equal(d.rim,.45*.2);a.equal(d.grain,.03*.3);a.equal(d.blurPx,1.5);a.equal(d.magnify,.08);a.deepEqual(d.edgeTint,[0,0,0,0]);
+ a.equal(w.tintMix,.25+.42*.8);a.equal(w.blurPx,1);a.equal(w.grain,.03*.15);a.ok(Math.abs(w.magnify-.08*90/185)<1e-12);a.equal(material('widget',40).magnify,.08);
+ a.equal(i.thickness,16*1.6);a.equal(i.dispersion,.06*1.3);a.equal(i.rim,.1125);a.equal(i.magnify,.05*1.6);
+ for(const p of [d,w,i]){a.equal(p.shadowAmt,0);a.equal(p.flatInner,1);a.equal(p.ringW,0);a.equal(p.saturation,1.25);}a.equal(material('other',200),null);
+});
+test('8A records fixed original calls and retains exact source excerpt bytes',()=>{const m=require('../third_party/glass2/materials-8a.json');a.equal(m.commit,'1bdb51870b621100fd2709f66c8f8e00ab17b9c4');for(const e of m.sources)a.equal(crypto.createHash('sha256').update(fs.readFileSync(e.file)).digest('hex'),e.sha256);a.match(fs.readFileSync('third_party/glass2/LICENSE','utf8'),/Rickky/);});
+test('8A binds profiles in the shared draw, retains safe GPU guard and exposes numeric material diagnostics',()=>{const s=fs.readFileSync('air-desktop-glass.js','utf8');a.match(s,/Object.assign\(values,material\)/);a.ok(s.includes("selectors+',.app-window,.wallpaper'"));a.match(s,/edge===1\?programs.dock:programs.liquid/);a.match(s,/if\(software&&!diagnostic\)throw Error\('software-gpu'\)/);a.match(s,/if\(gpuType==='unknown'&&!diagnostic\)/);a.match(s,/kind:t.kind,values:t.material/);a.doesNotMatch(s,/desktopCapturer|getDisplayMedia|readPixels/);for(const kind of ['dock','widget','island'])for(const v of Object.values(material(kind,185)))a.ok(typeof v==='number'||Array.isArray(v));});
+test('8A centralizes translucent fallbacks and leaves header blur and prior blue widget layers absent',()=>{const css=fs.readFileSync('air-glass2.css','utf8'),t=fs.readFileSync('air-tahoe.css','utf8');a.doesNotMatch(t,/\.deep-widget:not\(\.glass2-active\)\{background:/);a.match(css,/rgba\(26,26,28,\.42\)/);a.match(css,/blur\(13px\)/);a.match(css,/blur\(16px\)/);a.doesNotMatch(css,/rgba\(8,16,24,\.85\)/);a.match(css,/prefers-reduced-transparency/);a.match(css,/background:Canvas!important/);a.match(css,/backdrop-filter:none!important/);});

@@ -14,5 +14,13 @@
  function gradient(ctx,value,w,h){if(!value.startsWith('linear-gradient('))return false;const parts=layers(value.slice(16,-1));let angle=180;if(parts[0].endsWith('deg'))angle=parseFloat(parts.shift());const theta=angle*Math.PI/180,ux=Math.sin(theta),uy=-Math.cos(theta),length=Math.abs(w*ux)+Math.abs(h*uy),g=ctx.createLinearGradient(w/2-ux*length/2,h/2-uy*length/2,w/2+ux*length/2,h/2+uy*length/2);for(let i=0;i<parts.length;i++){const match=parts[i].match(/^(.*?)\s+(-?\d+(?:\.\d+)?)%$/);g.addColorStop(match?Math.max(0,Math.min(1,Number(match[2])/100)):i/(parts.length-1),match?match[1]:parts[i]);}ctx.fillStyle=g;ctx.fillRect(0,0,w,h);return true;}
  function gpu(renderer){const name=String(renderer||'');if(/swiftshader|llvmpipe|software|softpipe|lavapipe|warp|microsoft basic render/i.test(name))return 'software';if(/nvidia|geforce|radeon|\bAMD\b|intel|apple|adreno|mali|powervr/i.test(name))return 'hardware-candidate';return 'unknown';}
  function resolution(w,h,dpr,budget,limit=4096){const ratio=Math.min(Math.max(1,Number(dpr)||1),3,Math.sqrt(budget/(w*h)),limit/w,limit/h);return {width:Math.max(1,Math.floor(w*ratio)),height:Math.max(1,Math.floor(h*ratio)),ratio};}
- return {distance,rectDistance,cover,layers,gradient,gpu,resolution};
+ // MacShell1bdb518: actual MacDock/ClockWidget/GlassSlab callsites, not GLSL defaults.
+ function material(kind,height){
+  const common={saturation:1.25,dark:1,shadowAmt:0,flatInner:1,ringW:0};
+  if(kind==='dock')return {...common,thickness:30,dispersion:.06,blurPx:1.5,tintMix:.42*.55,rim:.45*.20,grain:.03*.3,magnify:.08,rimTint:0,edgeTint:[0,0,0,0]};
+  if(kind==='widget')return {...common,thickness:30,dispersion:.06,blurPx:1,tintMix:.25+.42*.8,rim:.45,grain:.03*.15,magnify:.08*Math.min(1,90/Math.max(1,height)),rimTint:1};
+  if(kind==='island')return {...common,thickness:16*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
+  return null;
+ }
+ return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material};
 });

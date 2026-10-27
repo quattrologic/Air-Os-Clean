@@ -6,17 +6,17 @@ html[data-desktop-theme="modern"] :is(.air-island-toggle,.air-island-panel,.air-
  backdrop-filter:blur(22px) saturate(1.25);-webkit-backdrop-filter:blur(22px) saturate(1.25);
 }
 html[data-desktop-theme="modern"] .dock[data-theme="modern"]{
- background:radial-gradient(ellipse 120px 55px at var(--glass2-x,50%) var(--glass2-y,0%),#ffffff13,transparent),linear-gradient(180deg,#ffffff17 0,#ffffff05 18%,transparent 47%,#02080e35 100%),rgba(8,16,24,.49)!important;
+ background:radial-gradient(ellipse 120px 55px at var(--glass2-x,50%) var(--glass2-y,0%),#ffffff13,transparent),linear-gradient(180deg,#ffffff17 0,#ffffff05 18%,transparent 47%,#02080e35 100%),rgba(26,26,28,.42)!important;
  border-top-color:#e4f2ff70!important;
  box-shadow:inset 0 1px #ffffff44,inset 0 -9px 17px #00000025,0 -5px 18px #00101c25!important;
- backdrop-filter:blur(22px) saturate(1.32)!important;-webkit-backdrop-filter:blur(22px) saturate(1.32)!important;
+ backdrop-filter:blur(5px) saturate(1.25)!important;-webkit-backdrop-filter:blur(5px) saturate(1.25)!important;
 }
-html[data-desktop-theme="modern"] .air-island-toggle{background:linear-gradient(175deg,#ffffff14,transparent 45%,#00000026),rgba(7,15,23,.64)}
-html[data-desktop-theme="modern"] .air-island-toggle:hover{background-color:rgba(7,15,23,.67)}
+html[data-desktop-theme="modern"] .air-island-toggle{background:linear-gradient(175deg,#ffffff14,transparent 45%,#00000026),rgba(26,26,28,.42)}
+html[data-desktop-theme="modern"] .air-island-toggle:hover{background-color:rgba(26,26,28,.42)}
 html[data-desktop-theme="modern"] :is(.air-island-toggle,.dock[data-theme="modern"])::before,
-html[data-desktop-theme="modern"] :is(.air-island-toggle,.dock[data-theme="modern"])::after{background:rgba(8,16,24,.52);backdrop-filter:blur(22px) saturate(1.25);-webkit-backdrop-filter:blur(22px) saturate(1.25)}
+html[data-desktop-theme="modern"] :is(.air-island-toggle,.dock[data-theme="modern"])::after{background:rgba(26,26,28,.42);backdrop-filter:blur(5px) saturate(1.25);-webkit-backdrop-filter:blur(5px) saturate(1.25)}
 html[data-desktop-theme="modern"] :is(.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.deep-widget) :is(small,p,[data-date],.outside){color:#e6ece8}
-html[data-desktop-theme="modern"] .air-island-panel>header{background:rgba(8,16,24,.85);backdrop-filter:blur(14px);border-radius:6px}
+html[data-desktop-theme="modern"] .air-island-panel>header{background:transparent;backdrop-filter:none;border-radius:6px}
 html[data-desktop-theme="modern"] .app-window{box-shadow:inset 0 1px #ffffff66,0 18px 50px #132e5140,0 3px 10px #17365b20}
 html[data-desktop-theme="modern"] .app-window:not(.air-notes-window):not(.air-home-window)>.window-titlebar{color:#f2f5f3;background:linear-gradient(160deg,#ffffff13,transparent 45%,#0000001c),rgba(13,23,33,.68);backdrop-filter:blur(20px);box-shadow:inset 0 1px #ffffff35}
 /* Canvas paints above only its host background and below all existing content. */
@@ -27,7 +27,17 @@ html[data-desktop-theme="modern"] .glass2-active.glass2-tinted{background:#9cdaa
 html[data-desktop-theme="modern"] .glass2-tinted>.deep-glass-tile{opacity:.18}
 .deep-glass-tile{position:absolute;inset:auto;z-index:0;border-radius:0;pointer-events:none;display:block;max-width:none}
 .glass2-content{z-index:1}.glass2-static-content{position:relative}
-@supports not (backdrop-filter:blur(1px)){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast){background-color:rgba(8,16,24,.88)!important}}
+/* Existing non-target popover material is unchanged in8A. */
+html[data-desktop-theme="modern"] :is(.air-calendar-panel,.air-search-dialog,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){border-color:#c6d9ed30;box-shadow:inset 0 1px #ffffff38,inset 0 -12px 22px #00000030,0 9px 24px #00101c35;background-color:rgba(5,13,22,.65)}
+/* TAHOE8A: MacDock .42 tint /5+8 blur; WidgetVisual→Clock .586 tint /5+11 blur.
+   Widget fallback RGB gradient is original; alpha uses shader tint instead of Qt's .82 preview.
+   One compositor blur per host; this is not Snell refraction. Geometry stays in its owner. */
+html[data-desktop-theme="modern"] .dock[data-theme="modern"]:not(.glass2-active){background:linear-gradient(180deg,#ffffff1a,transparent 60%),rgba(26,26,28,.42)!important;backdrop-filter:blur(13px) saturate(1.25)!important;-webkit-backdrop-filter:blur(13px) saturate(1.25)!important;box-shadow:inset 0 1px #ffffff24,inset 0 -1px #ffffff0f!important}
+html[data-desktop-theme="modern"] .deep-widget:not(.glass2-active){background:linear-gradient(180deg,#ffffff1a,transparent 60%),linear-gradient(180deg,rgba(56,56,64,.586),rgba(33,33,38,.586))!important;backdrop-filter:blur(16px) saturate(1.25)!important;-webkit-backdrop-filter:blur(16px) saturate(1.25)!important;border-color:#ffffff24;box-shadow:inset 0 1px #ffffff24,0 8px 22px #00000025}
+html[data-desktop-theme="modern"] :is(.air-island-toggle,.air-island-panel):not(.glass2-active){background:radial-gradient(ellipse at var(--glass2-x,50%) var(--glass2-y,0%),#ffffff1f,transparent 60%),rgba(26,26,28,.42)!important;backdrop-filter:blur(5px) saturate(1.25)!important;-webkit-backdrop-filter:blur(5px) saturate(1.25)!important;box-shadow:inset 0 1px #ffffff24,inset 0 -1px #ffffff0f}
+html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle):not(.glass2-active)::before,html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle):not(.glass2-active)::after{background:rgba(26,26,28,.42);backdrop-filter:inherit;-webkit-backdrop-filter:inherit}
+html[data-desktop-theme="modern"] .deep-widget{color:#f5f5f7;text-shadow:0 1px 2px #0008}
+@supports not (backdrop-filter:blur(1px)){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#242529!important}}
 html[data-desktop-theme="modern"].air-reduced-glass :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast){background:#101820!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 0 1px #ffffff22}
 html[data-desktop-theme="modern"].air-reduced-glass :is(.dock[data-theme="modern"],.air-island-toggle)::before,
 html[data-desktop-theme="modern"].air-reduced-glass :is(.dock[data-theme="modern"],.air-island-toggle)::after{background:#101820!important;backdrop-filter:none!important}
@@ -44,10 +54,8 @@ html:not([data-desktop-theme="modern"]) .deep-glass-tile,html.air-reduced-glass 
 .glass2-positioned{position:relative}
 
 /* GLASS-3: quiet MacDock CornerBorder-style hairline and deeper transparent fallbacks. */
-html[data-desktop-theme="modern"] :is(.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){border-color:#c6d9ed30;box-shadow:inset 0 1px #ffffff38,inset 0 -12px 22px #00000030,0 9px 24px #00101c35;background-color:rgba(5,13,22,.65)}
-html[data-desktop-theme="modern"] .dock[data-theme="modern"]:not(.glass2-active){background:radial-gradient(ellipse 160px 65px at var(--glass2-x,50%) var(--glass2-y,0%),#ffffff15,transparent),linear-gradient(180deg,#ffffff20,transparent 22%,#00071148),rgba(5,13,22,.51)!important}
 .glass3-diagnostics{max-width:min(480px,calc(100vw - 32px));max-height:80vh;overflow:auto;box-sizing:border-box;background:#101820;color:#f2f5f3;border:1px solid #9cdaa1;border-radius:18px;padding:20px;font:13px system-ui}
 .glass3-diagnostics pre{white-space:pre-wrap;overflow-wrap:anywhere}.glass3-diagnostics button{font:inherit;color:inherit;background:#253b32;border:1px solid #9cdaa1;border-radius:8px;padding:8px;margin:4px}.glass3-diagnostics button:focus-visible{outline:2px solid white;outline-offset:2px}.glass3-diagnostics::backdrop{background:#0006}
-@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#101820!important;color:#f2f5f3!important}}
-@media(forced-colors:active){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:Canvas!important;color:CanvasText!important}}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#101820!important;color:#f2f5f3!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+@media(forced-colors:active){html[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:Canvas!important;color:CanvasText!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 html.air-reduced-glass[data-desktop-theme="modern"] :is(.dock[data-theme="modern"],.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast):not(.glass2-active){background:#101820!important}
