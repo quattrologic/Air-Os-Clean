@@ -83,7 +83,7 @@
    if(disposed)throw Error('renderer-disposed');
    gl.bindVertexArray(vao);drop('texture',mask);drop('texture',hmap);mask=texture(image.width,image.height,image);hmap=blur(mask,image.width,image.height,radius);
   }
-  function draw({width,height,dpr=1,clockRect,fieldRect,params,sceneState,validate=true}){
+  function draw({width,height,dpr=1,clockRect,fieldRect,params,sceneState,extraRects=[],validate=true}){
    if(disposed||!scene||!mask||!hmap||gl.isContextLost())throw Error('renderer-not-ready');
    let backdrop=scene;
    if(sceneState&&programs.motion&&(Math.abs(sceneState.zoom-1)>1e-7||sceneState.blur>1e-7)){
@@ -107,6 +107,8 @@
    const p=params.field.pad,field={x:fieldRect.x-p,y:fieldRect.y-p,width:fieldRect.width+2*p,height:fieldRect.height+2*p};
    viewport(field);bind(backdrop,0);
    use(programs.field,{toScreen:1,qt_Opacity:sceneState?sceneState.opacity*sceneState.loginOpacity:1,itemSize:[field.width,field.height],glassSize:[fieldRect.width,fieldRect.height],srcSize:[width,height],srcOffset:[field.x,field.y],src:0,...params.field});gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+   // Original MacLock Glass parameters for additional public cards, same program/backdrop.
+   for(const r of extraRects){const pad=params.field.pad,box={x:r.x-pad,y:r.y-pad,width:r.width+pad*2,height:r.height+pad*2};viewport(box);bind(backdrop,0);use(programs.field,{toScreen:1,qt_Opacity:1,itemSize:[box.width,box.height],glassSize:[r.width,r.height],srcSize:[width,height],srcOffset:[box.x,box.y],src:0,...params.field,radius:r.radius,thickness:26*1.6,tintMix:.48*.55,shadowAmt:.55});gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
    if(validate&&gl.getError()!==gl.NO_ERROR)throw Error('webgl-draw');
   }
   return Object.freeze({setScene,setMask,draw,destroy,snapshot:()=>({disposed,software,contextAlive:!disposed&&!gl.isContextLost(),resources:Object.fromEntries(Object.entries(live).map(([k,v])=>[k,v.size]))})});
@@ -120,7 +122,7 @@
   function status(value,reason){const changed=state.status!==value||state.reason!==reason;state={status:value,reason};body.dataset.maclockGlass=value;if(changed)doc.dispatchEvent(new win.CustomEvent('air-maclock-material-state',{detail:{status:value,reason}}))}
   function release(value,reason){
    generation++;if(frame!==null)win.cancelAnimationFrame(frame);frame=null;
-   body.classList.remove('has-maclock-glass','maclock-software-material');
+   body.classList.remove('has-maclock-glass','has-maclock-card-glass','maclock-software-material');
    surfaceEvents?.abort();surfaceEvents=null;
    if(renderer){renderer.destroy();renderer=null}if(canvas){canvas.remove();canvas=null}
    sceneKey=maskKey=tileKey='';tile=null;status(value,reason);
@@ -161,7 +163,8 @@
     if(maskKey!==nextMask){renderer.setMask(makeMask(r,style,params.clock.padding,dpr),params.clock.heightRadius*dpr);maskKey=nextMask;maskRebuilds++}
     const padding=params.clock.padding,clockRect={x:r.x-padding,y:r.y-padding,width:Math.ceil((r.width+2*padding)*dpr)/dpr,height:Math.ceil((r.height+2*padding)*dpr)/dpr},fieldRect={x:f.x,y:f.y,width:f.width,height:f.height};
     const motion=win.airMacLockMotionController?.snapshot(),sceneState=motion?.values,validate=!motion?.active||frames===0;
-    renderer.draw({width,height,dpr,clockRect,fieldRect,params,sceneState,validate});last={width,height,dpr,clockRect,fieldRect,params,sceneState,validate};frames++;
+    const extraRects=renderer.snapshot().software?[]:[...doc.querySelectorAll('.maclock-media-card,.maclock-safe-notice')].filter(el=>el.getClientRects().length&&!el.closest('[hidden]')).map(el=>{const b=el.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height,radius:parseFloat(win.getComputedStyle(el).borderRadius)||20};});body.classList.toggle('has-maclock-card-glass',extraRects.length>0);
+    renderer.draw({width,height,dpr,clockRect,fieldRect,params,sceneState,extraRects,validate});last={width,height,dpr,clockRect,fieldRect,params,sceneState,extraRects,validate};frames++;
     body.classList.add('has-maclock-glass');body.classList.toggle('maclock-software-material',renderer.snapshot().software);status('webgl','ready');
     if(win.airMacLockMorphController&&!motion?.active&&!body.classList.contains('maclock-field-morph')&&(!sceneState||sceneState.opacity===1)){
      const key=[maskKey,clockRect.x,clockRect.y,sceneState?.zoom,sceneState?.blur,sceneState?.blurOpacity,fieldRect.width,fieldRect.height].join('|');
@@ -184,7 +187,7 @@
   let oldTime=clock.textContent;const textObserver=new win.MutationObserver(()=>{if(clock.textContent!==oldTime){oldTime=clock.textContent;schedule()}});textObserver.observe(clock,{childList:true,characterData:true,subtree:true});
   const resize=new win.ResizeObserver(schedule);for(const e of [clock,field,doc.querySelector('#login-stage')])resize.observe(e);
   for(const m of media)listen(m,'change',()=>{failed=false;schedule()});
-  listen(doc,'air-maclock-visual-settled',schedule);
+  listen(doc,'air-maclock-visual-settled',schedule);listen(doc,'air-maclock-cards-changed',schedule);
   listen(doc,'air-maclock-frame',()=>{if(disposed)return;if(frame!==null)win.cancelAnimationFrame(frame);frame=null;render()});
   listen(win,'resize',schedule);listen(doc,'visibilitychange',schedule);
   listen(toggle,'click',()=>{manual=!manual;failed=false;schedule()});

@@ -26,5 +26,5 @@
   for(const fn of Array.from(listeners)){try{fn(event)}catch(error){if(typeof console!=='undefined')console.error('Lifecycle observer error:',error)}}
   return true;
  }
- return Object.freeze({get,list,transition,onChange});
+ return Object.freeze({get,list,transition,onChange,focused:()=>focusedApp});
 });

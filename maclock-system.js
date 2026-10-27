@@ -1,0 +1,21 @@
+'use strict';
+// MacLock media geometry/timing port; public neutral cards or an expiring approved snapshot only.
+// MIT Copyright (c) 2026 Rickky; third_party/maclock/LICENSE.
+(() => {
+ const events=new AbortController(),signal=events.signal,body=document.body;
+ const host=document.createElement('aside');host.className='maclock-system';host.setAttribute('aria-label','Air-OS Anmeldeinformationen');
+ const media=document.createElement('section');media.className='maclock-media-card';media.setAttribute('aria-label','Medienvorschau');
+ const art=document.createElement('div');art.className='maclock-media-art';art.textContent='♫';const copy=document.createElement('div'),title=document.createElement('strong'),artist=document.createElement('p'),state=document.createElement('small');copy.append(title,artist,state);media.append(art,copy);
+ const notice=document.createElement('section');notice.className='maclock-safe-notice';const heading=document.createElement('strong');heading.textContent='Air-OS · Geschützter Anmeldebereich';const text=document.createElement('p');text.textContent='Private Benachrichtigungen bleiben verborgen. Melde dich an, um deine Apps zu öffnen.';notice.append(heading,text);host.append(media,notice);body.append(host);
+ let disposed=false,version=0,timer=null;
+ function neutral(){art.replaceChildren();art.textContent='♫';title.textContent='Deine Musik bleibt privat';artist.textContent='Musiksteuerung nach der Anmeldung';state.textContent='Keine aktive Wiedergabe';host.dataset.preview='neutral';}
+ async function refresh(){const v=++version;clearTimeout(timer);neutral();if(disposed||!window.airOS?.lockPresentation)return;const username=document.querySelector('#login-username')?.value;if(!username)return;let data;try{data=await window.airOS.lockPresentation(username);}catch{return;}if(disposed||version!==v||!data||!data.publicPreview||data.playing!==false)return;title.textContent=data.title;artist.textContent=data.artist;state.textContent='Einmalig freigegebene Vorschau · Wiedergabe beendet';host.dataset.preview='approved';if(data.artwork){art.textContent='';const img=document.createElement('img');img.src=data.artwork;img.alt='Ausdrücklich freigegebenes Cover';img.onerror=()=>{img.remove();art.textContent='♫';};art.append(img);}timer=setTimeout(()=>{if(!disposed)neutral();},Math.max(0,Math.min(60000,data.remainingMs)));}
+ document.addEventListener('air-login-account-changed',refresh,{signal});document.addEventListener('visibilitychange',()=>{if(document.hidden){version++;clearTimeout(timer);neutral();}else void refresh();},{signal});
+ // Original card entrance 500/650ms OutQuint. No additional animation of clock/login or GPU loop.
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(!reduced())host.animate([{opacity:0,transform:'translateX(-50%) translateY(12px) scale(.94)'},{opacity:1,transform:'translateX(-50%) translateY(0) scale(1)'}],{duration:650,easing:'cubic-bezier(.23,1,.32,1)'});
+ function layout(){const clock=document.querySelector('.maclock-clock')?.getBoundingClientRect(),login=document.querySelector('.login-stage')?.getBoundingClientRect();const top=clock?clock.bottom+22:innerHeight*.3,bottom=login?login.top-16:innerHeight-260;host.style.top=Math.max(0,top)+'px';host.style.maxHeight=Math.max(0,bottom-top)+'px';host.style.overflow=bottom-top<250?'auto':'visible';host.hidden=body.classList.contains('is-creating')||bottom-top<80;document.dispatchEvent(new Event('air-maclock-cards-changed'));}
+ let creating=body.classList.contains('is-creating');const observer=new MutationObserver(()=>{const next=body.classList.contains('is-creating');if(next!==creating){creating=next;layout();}});observer.observe(body,{attributes:true,attributeFilter:['class']});window.addEventListener('resize',layout,{signal});
+ Promise.resolve(document.fonts.ready).then(()=>{if(!disposed)layout();});layout();neutral();void refresh();
+ window.addEventListener('pagehide',()=>{disposed=true;version++;clearTimeout(timer);for(const a of host.getAnimations())a.cancel();events.abort();observer.disconnect();neutral();host.remove();},{once:true});
+})();

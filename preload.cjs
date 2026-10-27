@@ -5,6 +5,8 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   createAccount: data => ipcRenderer.invoke('air-os:create-account', data),
   login: data => ipcRenderer.invoke('air-os:login', data),
   currentUser: () => ipcRenderer.invoke('air-os:current-user'),
+  lock: (preview,owner) => ipcRenderer.invoke('air-os:lock',preview,owner),
+  lockPresentation: username => ipcRenderer.invoke('air-os:lock-presentation',username),
   logout: () => ipcRenderer.invoke('air-os:logout'),
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),

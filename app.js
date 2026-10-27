@@ -455,6 +455,10 @@ function clampAppWindow(win){
  win.style.top=Math.max(0,Math.min(Math.max(0,host.height-h),parseFloat(win.style.top)||0))+"px";
 }
 
+function focusAirWindow(id,win){
+ win.style.zIndex=++zIndex;for(const [other,w]of openApps)w.dataset.active=String(other===id);
+ lifecycle?.transition(id,'focused');$('#active-app').textContent=appNames[id];
+}
 function openApp(id){
  if(id==='spotify'){
   if(!window.airOS?.launchSpotify){const error='Spotify-Desktop-Start ist nur in der Air-OS Desktop-App verfügbar.';toast(error);return {ok:false,error}}
@@ -466,7 +470,7 @@ function openApp(id){
   return window.airOS.appStore.launch(id).then(()=>({ok:true})).catch(error=>{const message=error.message||'App konnte nicht geöffnet werden.';toast(message);return {ok:false,error:message}});
  }
  if(!appNames[id])return {ok:false,error:'Diese App ist nicht verfügbar.'};
- if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none"||w._airOSDockMotion?.targetDock)animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id];return {ok:true}}
+ if(openApps.has(id)){const w=openApps.get(id);if(w.style.display==="none"||w._airOSDockMotion?.targetDock)animateAppWindowFromDock(w,id);else w.style.zIndex=++zIndex;focusAirWindow(id,w);return {ok:true}}
  const win=document.createElement("section");win.className="app-window"+(id==="tagesschau"?" tagesschau-window":"")+(id==="stocks"?" stocks-window":"")+(id==="home"?" air-home-window":"")+(id==="notes"?" air-notes-window":"");win.style.zIndex=++zIndex;
  let body;
  try { body = appBody(id); }
@@ -477,7 +481,8 @@ function openApp(id){
  }
  win.innerHTML=`<div class="window-titlebar"><div class="traffic"><button class="close" aria-label="Fenster schließen"></button><button class="minimize" aria-label="Minimieren"></button><button class="maximize" aria-label="Maximieren"></button></div><div class="window-title">${id==="finder"?"Dokumente":appNames[id]}</div></div><div class="window-content">${body}</div>`; paintAppIcons(win); const resizeHandle=document.createElement("div");resizeHandle.className="window-resize-handle";resizeHandle.setAttribute("role","separator");resizeHandle.setAttribute("aria-label","Fenstergröße ändern");win.appendChild(resizeHandle);
  windows.appendChild(win);if(id==="airwrite")window.airWriteApp?.init(win);if(id==="launchpad")window.airLaunchpad?.mount(win);if(id==="store")window.airAppStore?.mount(win);normalizeAppWindow(win);if(id==="home")mountAirHome(win);openApps.set(id,win);lifecycle?.transition(id,'focused');$(".dock-app[data-app='"+id+"']")?.classList.add("is-open");$("#active-app").textContent=appNames[id];animateAppWindowFromDock(win,id);
- win.addEventListener("pointerdown",()=>{win.style.zIndex=++zIndex;lifecycle?.transition(id,'focused');$("#active-app").textContent=appNames[id]});
+ focusAirWindow(id,win);
+ win.addEventListener("pointerdown",()=>focusAirWindow(id,win));
  $(".close",win).onclick=()=>animateAppWindowIntoDock(win,id,()=>{win.remove();openApps.delete(id);lifecycle?.transition(id,'closed');$(".dock-app[data-app='"+id+"']")?.classList.remove("is-open");$("#active-app").textContent="Finder"});
  $(".minimize",win).onclick=()=>{animateAppWindowIntoDock(win,id);lifecycle?.transition(id,'minimized');toast(appNames[id]+" ins Dock minimiert")};
  $(".maximize",win).onclick=()=>{
@@ -857,6 +862,7 @@ if (window.airOS) {
   });
   signOut?.addEventListener("click", async () => {
     closeProfileMenu();
+    await window.airWindowSystem?.flush();
     document.dispatchEvent(new Event('air-profile-changing'));
     try { await window.airOS.logout(); } catch (error) { toast("Abmelden ist fehlgeschlagen."); }
   });

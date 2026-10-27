@@ -1,7 +1,7 @@
 'use strict';
 // Shared MacShell WebGL2 materials; only wallpaper pixels enter GPU memory.
 (() => {
- const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.deep-history,.deep-dock-menu,.deep-toast,.dp2-tile,.dp2-detail,.dp2-editor';
+ const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.system-switcher,.deep-history,.deep-dock-menu,.deep-toast,.dp2-tile,.dp2-detail,.dp2-editor';
  const events=new AbortController(),signal=events.signal,tiles=new Map(),media=[matchMedia('(prefers-reduced-transparency: reduce)'),matchMedia('(prefers-contrast: more)'),matchMedia('(forced-colors: active)')];
  const canvas=document.createElement('canvas');let gl=null,programs={},buffer=null,texture=null,scene=null,epoch=0,disposed=false,failed=false,reason='',painting=false,dirty=false,frame=null,settle=null,lastPaint=0,fallbackAt=0,software=false,diagnostic=false,diagnosticRefraction=true;
  let draws=0,sceneBuilds=0,transfers=0,paintMs=0,decodeCount=0,bufferResizes=0,transferMs=0,contextLosses=0,maxTexture=4096,gpuType='unknown',decoded=null,diagnosticDialog=null;const programsLive=new Set(),shadersLive=new Set();

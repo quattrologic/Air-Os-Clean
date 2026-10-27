@@ -11,7 +11,7 @@ function setup(options={}){
  function win(id='notes'){
   const classes=new Set(),style={display:'flex',transition:'',pointerEvents:'auto',removeProperty(k){delete this[k]}};
   const close={focus(){focused=close},isConnected:true};
-  const w={style,isConnected:true,classList:{contains:c=>classes.has(c),add(...c){c.forEach(v=>classes.add(v))},remove(...c){c.forEach(v=>classes.delete(v))}},contains:e=>e===close,querySelector:()=>close,getBoundingClientRect:()=>({left:100,top:100,width:800,height:500})};
+  const w={style,dataset:{},isConnected:true,classList:{contains:c=>classes.has(c),add(...c){c.forEach(v=>classes.add(v))},remove(...c){c.forEach(v=>classes.delete(v))}},contains:e=>e===close,querySelector:()=>close,getBoundingClientRect:()=>({left:100,top:100,width:800,height:500})};
   if(options.animate!==false)w.animate=(frames,config)=>{const a={frames,config,playbackRate:1,pause(){},play(){},reverse(){this.playbackRate*=-1},cancel(){this.cancelled=true},finish(){this.onfinish?.()}};motions.push(a);return a};
   openApps.set(id,w);return w;
  }
@@ -48,6 +48,6 @@ test('Classic retains original 410ms minimization frames and synchronous restore
  const h=setup({settings:{desktopTheme:'classic'}}),w=h.win();h.animateAppWindowIntoDock(w,'notes');assert.equal(w._airOSDockMotion,undefined);assert.equal(h.motions[0].config.duration,410);assert.equal(h.motions[0].frames[1].borderRadius,'24px');h.motions[0].finish();assert.equal(w.style.display,'none');h.animateAppWindowFromDock(w,'notes');assert.equal(w.style.display,'flex');assert.equal(h.raf.length,1);
 });
 test('existing openApp restores an in-flight minimized window, lifecycle focused; repeated restore launch does not reverse',()=>{
- const h=setup(),w=h.win();vm.runInContext(source.slice(source.indexOf('function openApp(id){'),source.indexOf(' const win=document.createElement("section");'))+'return {ok:false};}',h.context);
+ const h=setup(),w=h.win();vm.runInContext(source.slice(source.indexOf('function focusAirWindow('),source.indexOf('function openApp(id){')),h.context);vm.runInContext(source.slice(source.indexOf('function openApp(id){'),source.indexOf(' const win=document.createElement("section");'))+'return {ok:false};}',h.context);
  h.animateAppWindowIntoDock(w,'notes');const a=h.motions[0];a.currentTime=200;h.context.openApp('notes');assert.equal(a.playbackRate,-1);assert.equal(w.style.pointerEvents,'auto');assert.equal(h.events.at(-1).state,'focused');h.context.openApp('notes');assert.equal(a.playbackRate,-1);assert.equal(h.motions.length,1);
 });

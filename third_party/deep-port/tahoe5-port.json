@@ -1,0 +1,19 @@
+{
+  "upstream": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT, Copyright (c) 2026 Rickky; existing third_party/maclock and deep-port LICENSE/NOTICE retained",
+  "sourceSha256": {
+    "MacShell/MacBar.qml": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+    "MacLock/LockScreen.qml": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006",
+    "MacLock/Glass.qml": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a",
+    "MacLock/MorphText.qml": "97acb9c29bec3dec066c1ded186e18827337436b8c32826b07beb3624fa8f096"
+  },
+  "new_ports": {
+    "src/core/window-system.js": "MacBar swTrack max60 and swBuild active/mru/all unique ordering adapted to existing openApps IDs",
+    "air-window-system.js": "MacBar swNext direction/index, Ctrl release commit instead of global Alt binding; 92px cells, icon .7, pad14/padY9, cellH .8, y.42, radius26/17; opacity220 OutCubic, scale .92/420 OutQuint, blur300 OutCubic. Min72px cell/scroll for narrow readability; instant close to avoid delayed Air-OS focus.",
+    "maclock-system.js": "Existing MacLock layout and 372u x150u /r28 media host; neutral cards or explicit expiring approved paused preview instead of insecure MPRIS payload",
+    "maclock-glass.js": "Same existing field program draws public card rectangles: original Glass thickness26 *1.6, tint.48 *.55, shadow.55, no extra programs/textures. Software extra cards use CSS."
+  },
+  "reused": "Existing MorphText/Motion/Clock/GLSL/GLASS-3/Tahoe icon paths; no new shader engine, no new original assets",
+  "not_ported": "No new Dissolve shader, PAM/Hyprland/global shortcuts, live-window captures or unauthenticated audio session. Existing original MorphText remains authoritative."
+}

@@ -72,8 +72,10 @@ function localAppFile(url) {
 function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
-function openLogin() {
+const lockPresentation=require('./src/main/lock-presentation.cjs').create();
+function openLogin(preservePreview=false) {
   keepAwake.release();
+  if(!preservePreview)lockPresentation.clear();
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
   activeUser = null;
@@ -84,6 +86,7 @@ function openLogin() {
   }
 }
 function openDesktop(account) {
+  lockPresentation.clear();
   keepAwake.release();
   activeUser = {...publicAccount(account),preferenceSession:crypto.randomBytes(16).toString('hex')};
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -118,9 +121,9 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.webContents.on('render-process-gone',()=>keepAwake.release());
+  mainWindow.webContents.on('render-process-gone',()=>{lockPresentation.clear();keepAwake.release();});
   mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame)keepAwake.release();});
-  mainWindow.on('closed', () => { keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
+  mainWindow.on('closed', () => { lockPresentation.clear(); keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
@@ -203,6 +206,14 @@ ipcMain.handle('air-os:login', (event, input = {}) => {
 ipcMain.handle('air-os:current-user', event => {
   requireTrusted(event);
   return activeUser;
+});
+ipcMain.handle('air-os:lock',async(event,preview,owner)=>{
+ requireControlSession(event,owner);const user=activeUser.username;lockPresentation.clear();
+ if(preview!==null){const safe=lockPresentation.prepare(preview);const result=await dialog.showMessageBox(mainWindow,{type:'question',title:'Öffentliche Medienvorschau',message:'Titel, Künstler und ggf. Cover für 60 Sekunden auf der Air-OS-Anmeldeseite zeigen?',detail:'Öffentlich sichtbar: Titel '+safe.title+' · Künstler '+safe.artist+' · Cover '+(safe.artwork?'ja':'nein')+'. Diese Angaben sind dann ohne Passwort sichtbar. Die Wiedergabe wird beim Sperren beendet. Es werden keine Musikdateien, Notizen oder Benachrichtigungen freigegeben.',buttons:['Nur sperren','Vorschau einmalig freigeben'],defaultId:0,cancelId:0,noLink:true});requireControlSession(event,owner);if(result.response===1)lockPresentation.approve(user,safe);}
+ openLogin(true);return {ok:true};
+});
+ipcMain.handle('air-os:lock-presentation',(event,username)=>{
+ requireTrusted(event);if(activeUser||event.sender!==mainWindow?.webContents||event.senderFrame!==event.sender.mainFrame||fileURLToPath(event.senderFrame.url)!==path.join(app.getAppPath(),'login.html'))throw Error('Vorschau nur auf der Anmeldeseite.');return lockPresentation.get(username);
 });
 ipcMain.handle('air-os:logout', event => {
   requireTrusted(event);
