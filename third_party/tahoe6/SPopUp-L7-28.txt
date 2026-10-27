@@ -1,0 +1,22 @@
+
+Item {
+    id: pu
+    required property var t
+    property var model: []
+    property int current: 0
+    signal picked(int index)
+    width: 220; height: 26
+    Rectangle {
+        anchors.fill: parent; radius: 6
+        color: puMa.containsMouse || menu.visible ? pu.t.hover : "transparent"
+        Behavior on color { ColorAnimation { duration: 160 } }
+    }
+    Text {
+        anchors.right: chev.left; anchors.rightMargin: 7; anchors.verticalCenter: parent.verticalCenter
+        width: parent.width - 30; horizontalAlignment: Text.AlignRight; elide: Text.ElideRight
+        text: pu.model[pu.current] !== undefined ? pu.model[pu.current] : ""
+        color: pu.t.text; font.family: pu.t.fam; font.pixelSize: 13
+    }
+    Canvas {
+        id: chev
+        anchors.right: parent.right; anchors.rightMargin: 7; anchors.verticalCenter: parent.verticalCenter

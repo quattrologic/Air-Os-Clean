@@ -1,0 +1,9 @@
+
+                ctx.beginPath(); ctx.moveTo(3.4, 12.9);
+                ctx.bezierCurveTo(4.6, 11.8, 5.0, 10.6, 5.0, 8.2);
+                ctx.bezierCurveTo(5.0, 5.6, 6.8, 3.9, 9.0, 3.9);
+                ctx.bezierCurveTo(11.2, 3.9, 13.0, 5.6, 13.0, 8.2);
+                ctx.bezierCurveTo(13.0, 10.6, 13.4, 11.8, 14.6, 12.9);
+                ctx.closePath(); ctx.stroke();
+                line(9, 2.2, 9, 3.9);
+                ctx.beginPath(); ctx.arc(9, 14.3, 1.7, 0.25, PI - 0.25); ctx.stroke();

@@ -45,3 +45,12 @@ body[data-maclock-glass=reduced] :is(.maclock-media-card,.maclock-safe-notice){b
 
 @media(forced-colors:active){body[data-maclock-glass=reduced] :is(.maclock-media-card,.maclock-safe-notice){background:Canvas!important;color:CanvasText!important}}
 .maclock-media-card{border-radius:calc(28px * var(--maclock-u,1))}.maclock-safe-notice{border-radius:calc(20px * var(--maclock-u,1))}
+
+/* Tahoe 6: active system surfaces sit above1400 notification banners.
+ * This is the existing compositor's overlay ordering, not window/lifecycle ownership. */
+html[data-desktop-theme=modern] #air-start-menu,
+html[data-desktop-theme=modern] .air-search-overlay,
+html[data-desktop-theme=modern] .air-calendar-panel{z-index:1700}
+/* Island stays in the existing desktop stacking context. Lower transient banners
+ * while it is open; history and critical events are retained by their sole service. */
+html[data-desktop-theme=modern]:has(#air-island-panel:not([hidden])) .deep-toast{z-index:0}

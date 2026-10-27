@@ -29,3 +29,5 @@ third_party/winbox-0.2.82/* -text whitespace=cr-at-eol
 third_party/tahoe/** -text
 third_party/deep-port/** -text
 third_party/macbar/** -text
+# Tahoe 6 source excerpts and copyright remain byte-stable on Windows.
+third_party/tahoe6/** -text

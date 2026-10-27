@@ -127,7 +127,11 @@
       "air-tahoe-desktop.css",
       "air-widget-views.js",
       "src/core/desktop-widgets.js",
-      "src/core/widget-data.js"
+      "src/core/widget-data.js",
+      "src/core/tahoe6-shell.js",
+      "src/core/tahoe6-glyphs.js",
+      "air-tahoe6-shell.js",
+      "third_party/tahoe6/**/*"
     ],
     "mac": {
       "target": [

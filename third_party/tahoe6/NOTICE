@@ -1,0 +1,3 @@
+MacShell MIT, Copyright (c) 2026 Rickky. Source https://github.com/0-ss/MacShell commit 1bdb51870b621100fd2709f66c8f8e00ab17b9c4.
+Original Glyph path commands and source excerpts retained. QML scene/Hyprland services replaced by existing Air-OS DOM/lifecycle APIs. No Apple logos or OS automation imported.
+MacTahoe GTK MIT tokens and GPL-3.0 icons reused from third_party/tahoe with their existing COPYING/NOTICE/AUTHORS.

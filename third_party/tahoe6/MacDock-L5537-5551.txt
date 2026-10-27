@@ -1,0 +1,15 @@
+                                enabled: !leavingCell
+
+                                readonly property real c0: modelData.nA * (root.iconSize + root.spacing)
+                                                           + modelData.nS * (root.sepWidth + root.spacing)
+                                                           + (isSep ? root.sepWidth : root.iconSize) / 2
+                                readonly property real s: {
+                                    if (isSep) return 1;
+                                    var dist = Math.abs(ui.mx - ui.refLeft - cell.c0);
+                                    var R = root.magRadius;
+                                    var f = dist < R ? 0.5 * (1 + Math.cos(Math.PI * dist / R)) : 0;
+                                    return 1 + (root.effMag - 1) * f * ui.strength;
+                                }
+
+                                width: isSep ? root.sepWidth * appear : root.iconSize * s * appear
+                                height: root.iconSize

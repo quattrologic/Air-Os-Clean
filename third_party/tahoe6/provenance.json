@@ -1,0 +1,87 @@
+{
+  "macshellCommit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "sources": [
+    {
+      "source": "MacDock.qml",
+      "lines": [
+        5537,
+        5551
+      ],
+      "originalSha256": "89ff98bfa058659abdc0924bb8287a8c0e0cea0197446cc5cf159bee4785bacc",
+      "excerpt": "MacDock-L5537-5551.txt",
+      "excerptSha256": "196ade961470b0e6646e30300081e05cb0bf8ae4598dba3c79af98ebff2bba41"
+    },
+    {
+      "source": "MacBar.qml",
+      "lines": [
+        1858,
+        1891
+      ],
+      "originalSha256": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+      "excerpt": "MacBar-L1858-1891.txt",
+      "excerptSha256": "7713710c8ff080ba4cdf4a13ae2b1a684a6d348a19b06cc91bb3b6e0f9f23aa1"
+    },
+    {
+      "source": "ClockWidget.qml",
+      "lines": [
+        47,
+        69
+      ],
+      "originalSha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+      "excerpt": "ClockWidget-L47-69.txt",
+      "excerptSha256": "a2e9d794cff91ec2cbcf24b417ec732abf55d5e3d61c1bcff8cf02ea902d1a7d"
+    },
+    {
+      "source": "ClockWidget.qml",
+      "lines": [
+        391,
+        426
+      ],
+      "originalSha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f",
+      "excerpt": "ClockWidget-L391-426.txt",
+      "excerptSha256": "5308847659de2584ee641e66a5b705f88bd7ec13f22a0a5bb6efd5aa68bfc828"
+    },
+    {
+      "source": "SPopUp.qml",
+      "lines": [
+        7,
+        28
+      ],
+      "originalSha256": "82bd3e7425b95266e1ee6d8a57bc192a6641d48769e5d9dd577cd4bd8c6e9e23",
+      "excerpt": "SPopUp-L7-28.txt",
+      "excerptSha256": "1c7f68b7101c71e169bfee98c7b1c179989187c4391263f3e2601a9e66c3e129"
+    }
+  ],
+  "glyphs": {
+    "source": "MacBar.qml",
+    "branches": [
+      "search",
+      "cc",
+      "bell"
+    ],
+    "change": "original Canvas commands copied; HTML Canvas event-based redraw, computed theme ink",
+    "fragments": [
+      {
+        "kind": "search",
+        "file": "MacBar-Glyph-search.txt",
+        "sha256": "8d6795d5b2aa3aa3e35f2bae8ba2cdec2744577d2d0378dcb4f8f8915ff4f7ce"
+      },
+      {
+        "kind": "cc",
+        "file": "MacBar-Glyph-cc.txt",
+        "sha256": "ed72303ff5076d156361a33e8993b370b583856830838b039fba9cd4e4f55521"
+      },
+      {
+        "kind": "bell",
+        "file": "MacBar-Glyph-bell.txt",
+        "sha256": "14711ef496b1d82c88d1ab7f0ebf6554b8ff92300606634e43495a53b65898fc"
+      }
+    ]
+  },
+  "algorithms": {
+    "dock": "cosine radius (icon+spacing)*2.6; original peak1.7, clamped to fixed Air-OS cell/icon width instead of QML cell resizing",
+    "clock": "min(width,height)/158 and64u feed the existing dial text; .94/1.14 transform copied. Date/tint/radius comparison values are retained but do not replace the GLASS-3 uniforms or existing Today data layout.",
+    "menus": "MacBar menu order, active app model; SPopUp focus/Escape/outside semantics; existing Air-OS actions instead of Hyprland commands"
+  },
+  "tahoe": "existing third_party/tahoe/provenance.json pins and14 original SVGs; no extra asset or dependency"
+}

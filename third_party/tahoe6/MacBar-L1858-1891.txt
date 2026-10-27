@@ -1,0 +1,34 @@
+    readonly property string appName: {
+        if (activeAppId === "") return I18n.tr("Desktop");
+        // MacShell's own windows (all "org.quickshell")
+        if (activeAppId === "org.quickshell") return (activeTl.title === "Clock" || activeTl.title === "App Store") ? I18n.tr(activeTl.title)
+                                                     : (activeTl.title === "macshell Settings" ? I18n.tr("System Settings") : "MacShell");
+        var e = lookup(activeAppId);
+        return e ? e.name : activeAppId;
+    }
+    // Hyprland's view of the focused window (floating / fullscreen / pinned / pid ...), refreshed when a menu opens
+    property var activeWin: null
+    function refreshActive() { if (!awProc.running) awProc.running = true; }
+    onActiveTlChanged: { refreshActive(); swTrack(); }      // swTrack = window-switcher recent-app order
+    Process {
+        id: awProc
+        command: ["hyprctl", "-j", "activewindow"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                var o = null;
+                try { o = JSON.parse(text); } catch (err) { o = null; }
+                root.activeWin = (o && o.address) ? o : null;
+            }
+        }
+    }
+    readonly property var menuTitles: [
+        { id: "apple", label: "" },
+        { id: "app", label: appName, bold: true },
+        { id: "file", label: I18n.tr("File") },
+        { id: "edit", label: I18n.tr("Edit") },
+        { id: "view", label: I18n.tr("View") },
+        { id: "window", label: I18n.tr("Window") },
+        { id: "help", label: I18n.tr("Help") }
+    ]
+
+    // audio

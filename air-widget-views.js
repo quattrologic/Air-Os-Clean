@@ -8,6 +8,7 @@
   const focus=document.activeElement?.closest('[data-widget]')===area.parentElement?document.activeElement?.getAttribute('aria-label'):null;
   area.replaceChildren();const m=c.model||{phase:'empty',items:[]};
   if(id==='clock'){
+   if(window.airTahoe6Math){const m=airTahoe6Math.clockMaterial(c.box.width-24,c.box.height-44,c.box.size);area.style.setProperty('--t6-clock-time',m.timeFont+'px');}
    const box=c.box,W=box.width-24,H=box.height-44,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('aria-hidden','true');svg.classList.add('widget-ticks');
    for(const [i,t]of airWidgetMath.ticks(W,H).entries()){const a=t.angle*Math.PI/180,dx=Math.sin(a)*t.length/2,dy=-Math.cos(a)*t.length/2,line=document.createElementNS(svg.namespaceURI,'line');for(const [k,v]of Object.entries({x1:t.x-dx,y1:t.y-dy,x2:t.x+dx,y2:t.y+dy,stroke:'currentColor','stroke-width':1.7,opacity:i<=c.now.getSeconds()?0.75:0.2}))line.setAttribute(k,String(v));svg.append(line);}
    const time=e('time',c.now.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',hour12:c.prefs.clock24===false}));time.className='widget-dial-time';area.append(svg,time,e('p',c.now.toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short'})));return;
