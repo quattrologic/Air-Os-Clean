@@ -155,7 +155,10 @@
       "air-player-art.js",
       "air-scroll-feather.js",
       "hyprland-shaders.js",
-      "third_party/hyprland/**/*"
+      "third_party/hyprland/**/*",
+      "src/core/hyprland-layout.js",
+      "air-r6-desktop.js",
+      "air-r6.css"
     ],
     "mac": {
       "target": [

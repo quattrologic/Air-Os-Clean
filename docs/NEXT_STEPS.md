@@ -1,3 +1,9 @@
+# R6 checkpoint B
+
+A08d4737 pushed. ExistingwindowSystem now executes Hyprland-derived Dwindle/Master/Monocle math,finite original linear interpolation and4internal workspaces,profile-bound acknowledged config.516/516 tests,actual1536px layout/workspaceGUI passed. No secondregistry/no nativeforeignwindowcontrol. Next authorized:referencepreset/weather,visual corrections/full regression,WindowsR6. [Source report](AIR_OS_R6_HYPRLAND_SOURCE_PORT.md).
+
+---
+
 # R6 checkpoint A
 
 Branch feat/air-os-r6-macshell-hyprland,base7c3fc8d. OriginalHyprlandAcrylic/DualKawase/GlassFinish actually rendered in existingGLowner.514/514Node tests,realLinuxElectron4material compile/render passed. Source hashes/BSD bundled. Next authorized phases:internal layouts,referencepreset/weather,visual/full regression/R6nativebuild. No hardware/Hyprland native claim. [Report](AIR_OS_R6_REFERENCE_MATCH.md).
