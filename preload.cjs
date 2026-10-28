@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  windowState: Object.freeze({toggle:owner=>ipcRenderer.invoke('air-os:window:fullscreen-toggle',owner),fullscreen:owner=>ipcRenderer.invoke('air-os:window:fullscreen-state',owner),onFullscreen:callback=>{if(typeof callback!=='function')throw Error('Listener required');const listener=(_event,value)=>callback(value);ipcRenderer.on('air-os:window:fullscreen',listener);return()=>ipcRenderer.removeListener('air-os:window:fullscreen',listener);}}),
   weather: Object.freeze({request:(action,data,owner)=>ipcRenderer.invoke('air-os:weather',action,data,owner)}),
   system: Object.freeze({
     snapshot: owner=>ipcRenderer.invoke('air-os:system:snapshot',owner),

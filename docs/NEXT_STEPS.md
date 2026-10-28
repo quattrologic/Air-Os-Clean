@@ -1,3 +1,9 @@
+# R6.1 — Fenstergrenzen-Hotfix geprüft
+
+Basis2e43327423abcce56da464789e01bf92ff7345f0; Branch fix/r6-window-bounds. Modern-Host ohne62pxIsland-/76pxDockreserve; Menü24px, maximierte Fenster bis Unterkante, Dockoverlay. Authentifiziertes natives F11 mit Main/Preload und Geometrieschutz; Classic/M1/M2/Layouts erhalten.535/535 Tests und echte Linux-Electron-Abnahme3Größen/F11/Randdrags/Restore/Layout-M2 bestanden. [Bericht und Screenshots](AIR_OS_R6_1_WINDOW_BOUNDS.md). Keine Installerpipeline geändert/kein Hotfixinstaller gebaut. Nächste drei kleinen Abnahmen nur nach Auftrag: Windows-F11/nativeTitelleiste, DPI/Monitorwechsel, Hotfix in aktuellen Testbuild übernehmen. Aktuelle Sitzung beendet,STOP.
+
+---
+
 # R6 — geprüft und gesichert
 
 Branch feat/air-os-r6-macshell-hyprland; Basis7c3fc8d; Produkt-/Build58e395966d2699a707eac6fa5a8fa5860bb4ce66; Windows-Bildcommit762707f. A08d4737/B8374257/Cd1e9ca5/D7d1f447 abgeschlossen. 533/533 lokale Tests, moderner Audit0,365Runtimeassets,350PWA-Buildassets. Echte Linux-GUI4Größen/volle bestehende Suite, Profile-/Neustartprobe, Pixelnachweis und M2-Fokuskorrektur bestanden.

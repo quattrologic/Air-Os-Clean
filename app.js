@@ -451,7 +451,7 @@ function animateAppWindowIntoDock(win,id,done){
  };
 }
 function clampAppWindow(win){
- if(!win.isConnected||win.style.display==="none"||win.classList.contains("maximized"))return;
+ if(document.documentElement.classList.contains('air-native-fullscreen')||!win.isConnected||win.style.display==="none"||win.classList.contains("maximized"))return;
  const host=appWindowHostRect(),w=win.offsetWidth,h=win.offsetHeight;
  win.style.left=Math.max(0,Math.min(Math.max(0,host.width-w),parseFloat(win.style.left)||0))+"px";
  win.style.top=Math.max(0,Math.min(Math.max(0,host.height-h),parseFloat(win.style.top)||0))+"px";
@@ -501,7 +501,7 @@ function openApp(id){
  };
  const bar=$(".window-titlebar",win);let drag=null;
  bar.addEventListener("pointerdown",e=>{
-  if(e.button!==0||e.target.closest(".traffic")||e.target.closest("button")||win.classList.contains("maximized"))return;
+  if(document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||e.target.closest(".traffic")||e.target.closest("button")||win.classList.contains("maximized"))return;
   clearDockMotion(win);
   const r=win.getBoundingClientRect();
   drag={pointerId:e.pointerId,x:e.clientX-r.left,y:e.clientY-r.top};
@@ -518,7 +518,7 @@ function openApp(id){
  bar.addEventListener("pointerup",stopWindowDrag);bar.addEventListener("pointercancel",stopWindowDrag);bar.addEventListener("lostpointercapture",stopWindowDrag);
  const resizeGrip=$(".window-resize-handle",win);let resizing=null;
  resizeGrip.addEventListener("pointerdown",e=>{
-  if(e.button!==0||win.classList.contains("maximized"))return;
+  if(document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||win.classList.contains("maximized"))return;
   e.preventDefault();e.stopPropagation();clearDockMotion(win);
   const host=appWindowHostRect();
   resizing={pointerId:e.pointerId,startX:e.clientX,startY:e.clientY,startWidth:win.offsetWidth,startHeight:win.offsetHeight,hostWidth:host.width,hostHeight:host.height};

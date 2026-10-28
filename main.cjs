@@ -88,6 +88,7 @@ const lockPresentation=require('./src/main/lock-presentation.cjs').create();
 function openLogin(preservePreview=false) {
   keepAwake.release();
   weatherService.cancelAll();hyprland.stop();
+  if(mainWindow&&!mainWindow.isDestroyed()&&mainWindow.isFullScreen())mainWindow.setFullScreen(false);
   if(!preservePreview)lockPresentation.clear();
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
@@ -121,6 +122,16 @@ function createWindow() {
     }
   });
   mainWindow.once('ready-to-show', () => mainWindow.show());
+  // Native F11 intent only; never accepts arbitrary renderer window commands.
+  mainWindow.webContents.on('before-input-event',(event,input)=>{
+    if(input.key!=='F11')return;event.preventDefault();
+    if(input.type!=='keyDown'||input.isAutoRepeat||!activeUser)return;
+    if(fileURLToPath(mainWindow.webContents.mainFrame.url)!==path.join(app.getAppPath(),'index.html'))return;
+    mainWindow.setFullScreen(!mainWindow.isFullScreen());
+  });
+  const fullscreenChanged=()=>{if(activeUser&&mainWindow&&!mainWindow.isDestroyed())mainWindow.webContents.send('air-os:window:fullscreen',{owner:activeUser.preferenceSession,fullscreen:mainWindow.isFullScreen()});};
+  mainWindow.on('enter-full-screen',fullscreenChanged);mainWindow.on('leave-full-screen',fullscreenChanged);
+
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     // Only open well-formed HTTPS URLs. Reject embedded credentials and deceptive schemes.
     try {
@@ -142,6 +153,9 @@ function createWindow() {
 function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw new Error('Bitte zuerst anmelden.');return activeUser.username}
 function requireControlSession(event,owner){requirePreferenceUser(event);if(owner!==activeUser.preferenceSession||event.sender!==mainWindow?.webContents||event.senderFrame!==event.sender.mainFrame||fileURLToPath(event.senderFrame.url)!==path.join(app.getAppPath(),'index.html'))throw Error('Die Sitzung hat sich geändert.');return owner;}
 ipcMain.handle('air-os:control:status',(event,owner)=>keepAwake.status(requireControlSession(event,owner)));
+ipcMain.handle('air-os:window:fullscreen-state',(event,owner)=>{requireControlSession(event,owner);return mainWindow.isFullScreen();});
+ipcMain.handle('air-os:window:fullscreen-toggle',(event,owner)=>{requireControlSession(event,owner);mainWindow.setFullScreen(!mainWindow.isFullScreen());});
+
 ipcMain.handle('air-os:control:awake',(event,enabled,owner)=>keepAwake.set(enabled,requireControlSession(event,owner)));
 ipcMain.handle('air-os:system:snapshot',(event,owner)=>{requireControlSession(event,owner);return system().snapshot();});
 ipcMain.handle('air-os:system:settings',async(event,kind,owner)=>{requireControlSession(event,owner);await system().openSettings(kind);requireControlSession(event,owner);return{opened:true,kind};});

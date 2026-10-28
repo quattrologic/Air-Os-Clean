@@ -1,0 +1,120 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "rendererClock": "2026-10-28T12:34:30Z test-only; Main clock and performance.now unchanged",
+  "bounds": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "maximized": {
+        "x": 0,
+        "y": 24,
+        "width": 1920,
+        "height": 1056,
+        "top": 24,
+        "right": 1920,
+        "bottom": 1080,
+        "left": 0
+      },
+      "restored": {
+        "x": 525,
+        "y": 238.0625,
+        "width": 870,
+        "height": 480,
+        "top": 238.0625,
+        "right": 1395,
+        "bottom": 718.0625,
+        "left": 525
+      }
+    },
+    {
+      "viewport": [
+        1650,
+        930
+      ],
+      "maximized": {
+        "x": 0,
+        "y": 24,
+        "width": 1650,
+        "height": 906,
+        "top": 24,
+        "right": 1650,
+        "bottom": 930,
+        "left": 0
+      },
+      "restored": {
+        "x": 0,
+        "y": 450,
+        "width": 870,
+        "height": 480,
+        "top": 450,
+        "right": 870,
+        "bottom": 930,
+        "left": 0
+      }
+    },
+    {
+      "viewport": [
+        390,
+        600
+      ],
+      "maximized": {
+        "x": 0,
+        "y": 24,
+        "width": 390,
+        "height": 576,
+        "top": 24,
+        "right": 390,
+        "bottom": 600,
+        "left": 0
+      },
+      "restored": {
+        "x": 0,
+        "y": 120,
+        "width": 390,
+        "height": 480,
+        "top": 120,
+        "right": 390,
+        "bottom": 600,
+        "left": 0
+      }
+    }
+  ],
+  "hyprlandLayouts": true,
+  "fullscreen": {
+    "native": true,
+    "box": {
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1080,
+        "left": 0
+      },
+      "w": 1920,
+      "h": 1080
+    },
+    "restored": {
+      "x": 0,
+      "y": 120,
+      "width": 390,
+      "height": 480,
+      "top": 120,
+      "right": 390,
+      "bottom": 600,
+      "left": 0
+    }
+  },
+  "m1m2": "layout M2 reverse passed; existing full suite separately"
+}

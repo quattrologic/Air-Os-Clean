@@ -812,6 +812,15 @@ html[data-desktop-theme="modern"] .air-system-toggle span {display:none}
 html[data-desktop-theme="modern"] .air-system-toggle:hover {text-decoration:underline;text-underline-offset:4px}
 html[data-desktop-theme="modern"] .air-system-toggle:focus-visible {outline:2px solid #9cdaa1;outline-offset:2px}
 
+/* R6.1: Modern workspace fills the viewport below the compact menu. Dock overlays it. */
+html[data-desktop-theme=modern] .desktop{inset:24px 0 0!important}
+html[data-desktop-theme=modern] .desktop .windows{inset:0!important}
+html.air-native-fullscreen .desktop,html.air-native-fullscreen .desktop .windows{inset:0!important}
+html.air-native-fullscreen :is(.menubar,.air-modern-shell,.t6-menu-bar,.t6-status,.air-island,.dock){display:none!important}
+html.air-native-fullscreen .app-window[data-active=true]{left:0!important;top:0!important;width:100%!important;height:100%!important;max-width:none;max-height:none;border-radius:0!important;transform:none}
+html[data-desktop-theme=modern] .app-window.maximized{border-radius:0!important}
+
+html.air-native-fullscreen .window-resize-handle{display:none!important}
 /* F1: Notes only, opt-in to the existing desktop theme. Classic rules remain above. */
 html[data-desktop-theme="modern"] .air-notes-window{background:#9cdaa1;color:#2c3b31;border:0;border-radius:20px;box-shadow:0 18px 48px #183b3929;backdrop-filter:none;font-family:system-ui,sans-serif}
 html[data-desktop-theme="modern"] .air-notes-window .window-titlebar{height:36px;flex-basis:36px;padding:0 14px;background:#9cdaa1;border:0}
