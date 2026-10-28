@@ -16,7 +16,7 @@ A-Abnahme: **496/496 Tests**, echter Linux-Electron44.9.3-Drei-Größen-Lauf ink
 
 MacShell fixiert auf `1bdb51870b621100fd2709f66c8f8e00ab17b9c4`. Bestehende Originalquellen und MIT/OFL/GPL bleiben erhalten; neue originale Quellen/Bytehashes: [Manifest](../third_party/r5/provenance.json), [MIT](../third_party/r5/LICENSE), [NOTICE](../third_party/r5/NOTICE). QML-Referenzen zählen allein nicht als Integration. Tatsächlich laufende Zielpfade: `scripts/build-glass2-shaders.cjs`, `air-desktop-glass.js`, `air-glass-controls.js`, `src/core/macshell-fidelity.js`. Neue Randdetailmischung ist eine dokumentierte Electron-Compositoranpassung, keine behauptete originale Qt-Callsite.
 
-B/C/D/E werden nach ihren tatsächlichen Prüfungen ergänzt. Noch kein R5-Installer gebaut.
+CheckpointA300d984,CheckpointB/C7184d63. Der abschließende nativeR5-Installer wird nach tatsächlicher CI-Abnahme unten dokumentiert.
 
 ## B — Widget/PlayerArt und Scroll-under
 
@@ -52,3 +52,28 @@ Originalreferenzbilder aus dem Upstream-README wurden angefragt; der verfügbare
 B/C-Nachweis: echte Electron44.9.3-Läufe bei1920×1080,1650×930,390×600 mit tatsächlich eingelesenen CC0-MP3s/64px-PNG-Covern. [Shaderlauf](visual/r5/B/material-report.json): max5Programme inklusive tintcard,aktiveLinsen,0IdleDraws im700ms-Fenster,ContextLoss/Restore,erfolgreiche native Range-/Switchbedienung mit bestätigter Speicherung,komplementärer Scrollmaskenlauf(scrollTop38,1aktiveinertKopie). [Normaler CSS-Lauf](visual/r5/C/material-report.json):0GL-Programme,echter Softwareguard. [Vergleichsbasisszenen](visual/r5/before-final/),[Nachher](visual/r5/C/),[echte Shaderbilder](visual/r5/B/). Identischer synthetischer Rendererzeitpunkt2026-10-28T12:34:30Z,identische ausgewählte Widgetpositionen,Main-/Performanceuhr unverändert. Diagnose ist SwiftShader,keine Hardwareabnahme.
 
 Im festen Dock-Rechteck(755,1013–1167,1080) beträgt die mittlere absolute RGB-Abweichung von Refraktion an/aus beim R4-Diagnosebild1.949 und nachR5-A3.986(8bit-Kanalwerte). Das ist ein Bildnachweis stärkerer sichtbarer Wirkung im isolierten synthetischen Renderpfad,keine FPS-/Hardware-/Pixelgleichheitsbewertung. R5 nutzt hier ein64K- statt16K-Diagnosebudget; dieser Unterschied ist Teil der dokumentierten Kantenqualitätskorrektur.
+
+## D — Regression und Grenzen
+
+Vollständige Testsuite jetzt **510/510**(491Ausgangsregressionen erhalten),moderner eingefrorener44.9.3/26.18.0-Toolchainaudit **0Befunde**;Legacy-Catalina-Kanal separat und unverändert. Sourceprüfung enthält318lokale Runtime-/Lizenzassets;gemeinsamer PWA-Build304allowlistAssets,kein Deployment/Cloudlogin.
+
+Der unveränderte vollständige Electron-Harness lief zusätzlich erfolgreich durch: zwei Profile,echte Notes-Speicherung,Neustartpersistenz,Finder/Apps,Kontrollzentrum,Notifikationen,MRU/Snap,M1/M2vorwärts/rückwärts,Classic/Modern,WebGL/WebGL2wirklichnull im deaktivierten Host. [Protokoll](visual/r5/D/r1-gui-report.json),[Bewegungszustände](visual/r5/D/t7-motion-state.json),[vollständige Tests](visual/r5/D/tests.tap),[moderner Audit](visual/r5/D/modern-audit.json). Keine Änderungen an Main-/Preloadberechtigungen,Auth/Dateiroots,Cloud/PWA-Code,Dock-/Islandgeometrie oder R1–R4-Workflows.
+
+Gezielte DPI-Nachprüfung: native Linsen-Rastercache und beide vorhandenen Renderer reagieren auf reine Auflösungs-/DPR-Mediaänderungen mit einem wieder registrierten,abortierbaren Listener;kein Polling. Numeric-Tracktexture bleibt bei unverändertem Inhalt gecacht,Canvasraster folgtDPR1/2/3. Lokale Texturdiagnostik zählt nur tatsächlich alloziierte GL-Texturen,nicht CSS-Quellcanvas. Settings-Linsen verwenden den vorhandenen Tahoe-Workspace-Farbtoken als eigene Trackbasis statt einer pauschalen dunklen Fläche.
+
+Performancedaten sind **kumulierte reale performance.now-Walltimes** über den gesamten synthetischen Lauf,keine Frametime-/FPS-Garantie: im Linux-SwiftShaderlauf max5Programme,0Draws im700ms-Idlefenster,150msakkumulierteCanvastransferzeit,ca45.2sakkumuliertePaintzeit einschließlich vieler Zustands-/Viewport-/Contextänderungen. Softwarediagnose bleibt deshalb ausdrücklich isoliert;kein produktiver Software-Liquid-Schalter. DPR/Textures/Prepasszählung stehen im jeweiligen Materialreport. Hardwarebudget500K bleibt unverändert;Diagnose64K. CSS-Fallback führt0Materialprogramme aus.
+
+Bewusst offen: nativeHardware-GPU/Windows11/SAC/macOS/Hyprland,echtePicker-/Zustimmungsdialoge,hörbareAudioausgabe,vertrauenswürdigesSigning,volleLive-Fensterrefraktion. Kein physischerHardwaretest aus CI abgeleitet. Ganze Qt-Scenegraph-/MultiEffectpipeline ist keine bytegleiche Chromiumimplementierung. `LiquidScrollBar.qml` liegt nur als referenzierte Originalquelle vor und zählt **nicht** als integriert;Switchdrag/Knobgesten,kompletteLyrics/Playeransichten und vollständigeQt-Covereffekte bleiben offen. Bestehender MacLock-Shader-/Authentifizierungspfad bleibt eigenständig und wurde übergreifend geprüft,aber nicht ersetzt. Keine neuen MacTahoe-Assets inR5;vorhandene14GPL-Icons/MIT-GTK-Tokens/OFL-Schriften unverändert lizenzkonform gebündelt.
+
+## Bildvergleich
+
+Identische kontrollierte Linux-Szenen,normaler CSS-Produktpfad:
+
+| Szene | R4 unverändert | R5 nach Korrektur |
+|---|---|---|
+| Desktop1920 | ![R4 Desktop](visual/r5/before-final/desktop-1920.png) | ![R5 Desktop](visual/r5/C/desktop-1920.png) |
+| Dock | ![R4 Dock](visual/r5/before-final/dock-detail-1920.png) | ![R5 Dock](visual/r5/C/dock-detail-1920.png) |
+| Player mit echtem eigenem Cover | ![R4 Player](visual/r5/before-final/player-art-1920.png) | ![R5 Player](visual/r5/C/player-art-1920.png) |
+| Kontrollzentrum | ![R4 Island](visual/r5/before-final/island-open-1920.png) | ![R5 Island](visual/r5/C/island-open-1920.png) |
+
+[1650px](visual/r5/C/desktop-1650.png),[390px](visual/r5/C/desktop-390.png),[Slider](visual/r5/C/glass-slider-held.png),[Feather](visual/r5/C/scroll-under.png),[Forced Colors](visual/r5/C/forced-colors.png),[Reduced Transparency](visual/r5/C/reduced-transparency.png),[Lockscreen](visual/r5/C/lockscreen-1920.png). [D: Appfenster](visual/r5/D/t6-apps-1920.png),[Launchpad](visual/r5/D/t7-launchpad-1920.png),[Spotlight](visual/r5/D/deep-spotlight-1920.png),[Notifications](visual/r5/D/deep-notifications-1920.png),[Dock unter Hover](visual/r5/D/t7-many-hover-1920.png).

@@ -1,0 +1,403 @@
+{
+  "width": 390,
+  "rest": {
+    "layout": {
+      "page": 0,
+      "strength": 0,
+      "leases": 0,
+      "running": false,
+      "width": 315
+    },
+    "dock": {
+      "x": 37.3125,
+      "y": 557.8125,
+      "width": 315.375,
+      "height": 42.1875,
+      "top": 557.8125,
+      "right": 352.6875,
+      "bottom": 600,
+      "left": 37.3125
+    },
+    "icons": [
+      {
+        "id": "launchpad",
+        "cell": {
+          "x": 81.3125,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 106.5,
+          "bottom": 591,
+          "left": 81.3125
+        },
+        "icon": {
+          "x": 81.4375,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 106.375,
+          "bottom": 591,
+          "left": 81.4375
+        }
+      },
+      {
+        "id": "finder",
+        "cell": {
+          "x": 127.5,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 152.6875,
+          "bottom": 591,
+          "left": 127.5
+        },
+        "icon": {
+          "x": 127.625,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 152.5625,
+          "bottom": 591,
+          "left": 127.625
+        }
+      },
+      {
+        "id": "browser",
+        "cell": {
+          "x": 158.6875,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 183.875,
+          "bottom": 591,
+          "left": 158.6875
+        },
+        "icon": {
+          "x": 158.8125,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 183.75,
+          "bottom": 591,
+          "left": 158.8125
+        }
+      },
+      {
+        "id": "notes",
+        "cell": {
+          "x": 189.875,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 215.0625,
+          "bottom": 591,
+          "left": 189.875
+        },
+        "icon": {
+          "x": 190,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 214.9375,
+          "bottom": 591,
+          "left": 190
+        }
+      },
+      {
+        "id": "reminders",
+        "cell": {
+          "x": 221.0625,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 246.25,
+          "bottom": 591,
+          "left": 221.0625
+        },
+        "icon": {
+          "x": 221.1875,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 246.125,
+          "bottom": 591,
+          "left": 221.1875
+        }
+      },
+      {
+        "id": "calendar",
+        "cell": {
+          "x": 252.25,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 277.4375,
+          "bottom": 591,
+          "left": 252.25
+        },
+        "icon": {
+          "x": 252.375,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 277.3125,
+          "bottom": 591,
+          "left": 252.375
+        }
+      },
+      {
+        "id": "settings",
+        "cell": {
+          "x": 283.4375,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 308.625,
+          "bottom": 591,
+          "left": 283.4375
+        },
+        "icon": {
+          "x": 283.5625,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 308.5,
+          "bottom": 591,
+          "left": 283.5625
+        }
+      }
+    ],
+    "all": [
+      "launchpad",
+      "finder",
+      "browser",
+      "notes",
+      "reminders",
+      "calendar",
+      "settings",
+      "music",
+      "photos",
+      "mail",
+      "downloads",
+      "trash",
+      "calculator"
+    ],
+    "broken": []
+  },
+  "hover": {
+    "layout": {
+      "page": 0,
+      "strength": 1,
+      "leases": 0,
+      "running": false,
+      "width": 361
+    },
+    "dock": {
+      "x": 14.328125,
+      "y": 557.8125,
+      "width": 361.34375,
+      "height": 42.1875,
+      "top": 557.8125,
+      "right": 375.671875,
+      "bottom": 600,
+      "left": 14.328125
+    },
+    "icons": [
+      {
+        "id": "launchpad",
+        "cell": {
+          "x": 58.328125,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 83.515625,
+          "bottom": 591,
+          "left": 58.328125
+        },
+        "icon": {
+          "x": 58.453125,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 83.390625,
+          "bottom": 591,
+          "left": 58.453125
+        }
+      },
+      {
+        "id": "finder",
+        "cell": {
+          "x": 104.515625,
+          "y": 539,
+          "width": 27.421875,
+          "height": 52,
+          "top": 539,
+          "right": 131.9375,
+          "bottom": 591,
+          "left": 104.515625
+        },
+        "icon": {
+          "x": 104.6484375,
+          "y": 563.859375,
+          "width": 27.140625,
+          "height": 27.140625,
+          "top": 563.859375,
+          "right": 131.7890625,
+          "bottom": 591,
+          "left": 104.6484375
+        }
+      },
+      {
+        "id": "browser",
+        "cell": {
+          "x": 137.9375,
+          "y": 539,
+          "width": 37.140625,
+          "height": 52,
+          "top": 539,
+          "right": 175.078125,
+          "bottom": 591,
+          "left": 137.9375
+        },
+        "icon": {
+          "x": 138.109375,
+          "y": 554.21875,
+          "width": 36.78125,
+          "height": 36.78125,
+          "top": 554.21875,
+          "right": 174.890625,
+          "bottom": 591,
+          "left": 138.109375
+        }
+      },
+      {
+        "id": "notes",
+        "cell": {
+          "x": 181.078125,
+          "y": 539,
+          "width": 42.828125,
+          "height": 52,
+          "top": 539,
+          "right": 223.90625,
+          "bottom": 591,
+          "left": 181.078125
+        },
+        "icon": {
+          "x": 181.28125,
+          "y": 548.59375,
+          "width": 42.40625,
+          "height": 42.40625,
+          "top": 548.59375,
+          "right": 223.6875,
+          "bottom": 591,
+          "left": 181.28125
+        }
+      },
+      {
+        "id": "reminders",
+        "cell": {
+          "x": 229.90625,
+          "y": 539,
+          "width": 37.125,
+          "height": 52,
+          "top": 539,
+          "right": 267.03125,
+          "bottom": 591,
+          "left": 229.90625
+        },
+        "icon": {
+          "x": 230.09375,
+          "y": 554.25,
+          "width": 36.75,
+          "height": 36.75,
+          "top": 554.25,
+          "right": 266.84375,
+          "bottom": 591,
+          "left": 230.09375
+        }
+      },
+      {
+        "id": "calendar",
+        "cell": {
+          "x": 273.03125,
+          "y": 539,
+          "width": 27.40625,
+          "height": 52,
+          "top": 539,
+          "right": 300.4375,
+          "bottom": 591,
+          "left": 273.03125
+        },
+        "icon": {
+          "x": 273.171875,
+          "y": 563.875,
+          "width": 27.125,
+          "height": 27.125,
+          "top": 563.875,
+          "right": 300.296875,
+          "bottom": 591,
+          "left": 273.171875
+        }
+      },
+      {
+        "id": "settings",
+        "cell": {
+          "x": 306.4375,
+          "y": 539,
+          "width": 25.1875,
+          "height": 52,
+          "top": 539,
+          "right": 331.625,
+          "bottom": 591,
+          "left": 306.4375
+        },
+        "icon": {
+          "x": 306.5625,
+          "y": 566.0625,
+          "width": 24.9375,
+          "height": 24.9375,
+          "top": 566.0625,
+          "right": 331.5,
+          "bottom": 591,
+          "left": 306.5625
+        }
+      }
+    ],
+    "all": [
+      "launchpad",
+      "finder",
+      "browser",
+      "notes",
+      "reminders",
+      "calendar",
+      "settings",
+      "music",
+      "photos",
+      "mail",
+      "downloads",
+      "trash",
+      "calculator"
+    ],
+    "broken": []
+  },
+  "reduced": {
+    "media": false,
+    "setting": false
+  }
+}

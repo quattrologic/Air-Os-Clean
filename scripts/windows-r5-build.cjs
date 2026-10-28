@@ -21,7 +21,7 @@ function prepare(root,run){
 function collect(root,asar){
  const pkg=json(path.join(root,'package.json'));if(pkg.airOSDevelopmentBuild?.releaseChannel!=='R5'||pkg.airOSDevelopmentBuild.tahoeBase!==BASE)throw Error('Not a prepared R5 build.');
  const info=r1.collect(root,asar);if(!info.file.startsWith('Air-OS-Ultimate-R5-'))throw Error('Wrong R5 installer name.');
- info.payload=r3.inventory(path.join(root,'dist/win-unpacked'));Object.assign(info.evidence,{runnerInstallation:'NOT_RUN',runnerGui:'NOT_RUN',capabilitiesGui:'NOT_RUN',smartAppControl:'NOT_TESTED'});
+ info.payload=r3.inventory(path.join(root,'dist/win-unpacked'));Object.assign(info.evidence,{runnerInstallation:'NOT_RUN',runnerGui:'NOT_RUN',capabilitiesGui:'NOT_RUN',diagnosticGui:'NOT_RUN',smartAppControl:'NOT_TESTED'});
  const dir=path.join(root,'dist/test-artifacts/windows-x64');fs.writeFileSync(path.join(dir,'BUILD-INFO.json'),JSON.stringify(info,null,2)+'\n');
  fs.writeFileSync(path.join(dir,'INSTALL-R5.txt'),'Air-OS Ultimate R5 — UNSIGNED technical Windows x64 test build.\nCompare Get-FileHash -Algorithm SHA256 with SHA256SUMS.txt.\nDo not disable Defender or Smart App Control; unsigned publisher blocking remains open.\nInstall manually on your own test PC only, create synthetic local profiles. No cloud sync.\nCI results in BUILD-INFO.json are not physical hardware approval.\n');return info;
 }

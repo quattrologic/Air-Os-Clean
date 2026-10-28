@@ -1,3 +1,9 @@
+# R5 — Checkpoint D / finaler nativer R5-Lauf
+
+A300d984,B/C7184d63 gesichert. 510/510 Tests,modernerAudit0,vollständiger Linux-Electron-End-to-Endlauf und Shader-/CSS-Abnahme3Größen bestanden. Gezielte echte DPR1/2/3-Rasterprüfung nach Skalierungskorrektur bestanden. Erster nativerR5-Lauf40664553791: NSIS/318Runtimebytes/Payload/Installation/alle3GUI-Läufe erfolgreich;abschließendes Outcome-JSON scheiterte am nicht vordeklarierten diagnosticGui-Feld. Feld ergänzt,Regression hinzugefügt;finalerBuild wird erneut ausgeführt. Kein fehlgeschlagenerLauf als vollständig grün ausgegeben. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Noch autorisiert: finalerWindows-R5-Installer/installierteGUI,Evidenz/Hash,Abschluss. Hardware/SAC/macOS bleiben offen.
+
+---
+
 # R5 — Checkpoint B/C, native Abnahme vorbereitet
 
 A300d984 gepusht. Originale PlayerArt-Note, echte Coverpalette und lazy Original-Tintcard im gemeinsamen GL-Kontext; komplementärer bounded FeatherBlur-Scroll-under; Originalticks/RU-Widgetkomposition; klarerer CSS-Fallback. Erste Bildprüfung führte zu echten Korrekturen an Uhrzentrum, Reglerabständen, Glyphunterbrechung und sticky Toolbar. Vollständiger Arbeitsbaum506/506 Tests, modernes Audit0. Echte Linux-Electron-CSS- und Shaderdiagnoseläufe3Größen, native Controlspeicherung, Original-Tintcard5Programme,Idle0,ContextLoss/Restore,Reduced/Classic/Logout bestanden. Separater R5-Windowsworkflow vorbereitet; Installation/Windows-R5 bisher NICHT als bestanden behauptet. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Nächste drei Einheiten innerhalb des laufenden Auftrags: finale GUI/Stabilität, nativer R5-Installer/installierte GUI, Evidenz/Downloadabschluss. Keine Hardware-/SAC-/macOS-Freigabe.
