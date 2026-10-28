@@ -59,6 +59,19 @@
           "width": 1688,
           "height": 896,
           "dpr": 1
+        },
+        "maximizedDock": {
+          "rect": {
+            "x": 626.984375,
+            "y": 827,
+            "width": 434.03125,
+            "height": 69,
+            "top": 827,
+            "right": 1061.015625,
+            "bottom": 896,
+            "left": 626.984375
+          },
+          "clip": "inset(calc(100% - 4px) -32px 0px)"
         }
       },
       "maximized": {
@@ -160,6 +173,19 @@
           "width": 1920,
           "height": 1080,
           "dpr": 1
+        },
+        "maximizedDock": {
+          "rect": {
+            "x": 742.984375,
+            "y": 1011,
+            "width": 434.03125,
+            "height": 69,
+            "top": 1011,
+            "right": 1177.015625,
+            "bottom": 1080,
+            "left": 742.984375
+          },
+          "clip": "inset(calc(100% - 4px) -32px 0px)"
         }
       },
       "maximized": {
@@ -261,6 +287,19 @@
           "width": 1650,
           "height": 930,
           "dpr": 1
+        },
+        "maximizedDock": {
+          "rect": {
+            "x": 607.984375,
+            "y": 861,
+            "width": 434.03125,
+            "height": 69,
+            "top": 861,
+            "right": 1042.015625,
+            "bottom": 930,
+            "left": 607.984375
+          },
+          "clip": "inset(calc(100% - 4px) -32px 0px)"
         }
       },
       "maximized": {
@@ -274,14 +313,14 @@
         "left": 0
       },
       "restored": {
-        "x": 0,
-        "y": 450,
+        "x": 390,
+        "y": 237,
         "width": 870,
         "height": 480,
-        "top": 450,
-        "right": 870,
-        "bottom": 930,
-        "left": 0
+        "top": 237,
+        "right": 1260,
+        "bottom": 717,
+        "left": 390
       },
       "snap": {
         "left": {
@@ -362,6 +401,19 @@
           "width": 1536,
           "height": 864,
           "dpr": 1
+        },
+        "maximizedDock": {
+          "rect": {
+            "x": 550.984375,
+            "y": 795,
+            "width": 434.03125,
+            "height": 69,
+            "top": 795,
+            "right": 985.015625,
+            "bottom": 864,
+            "left": 550.984375
+          },
+          "clip": "inset(calc(100% - 4px) -32px 0px)"
         }
       },
       "maximized": {
@@ -375,14 +427,14 @@
         "left": 0
       },
       "restored": {
-        "x": 0,
-        "y": 384,
+        "x": 390,
+        "y": 237,
         "width": 870,
         "height": 480,
-        "top": 384,
-        "right": 870,
-        "bottom": 864,
-        "left": 0
+        "top": 237,
+        "right": 1260,
+        "bottom": 717,
+        "left": 390
       },
       "snap": {
         "left": {
@@ -450,19 +502,32 @@
           "left": 0
         },
         "dock": {
-          "x": 29.1875,
+          "x": 29.2109375,
           "y": 545.171875,
-          "width": 331.625,
+          "width": 331.578125,
           "height": 54.828125,
           "top": 545.171875,
-          "right": 360.8125,
+          "right": 360.7890625,
           "bottom": 600,
-          "left": 29.1875
+          "left": 29.2109375
         },
         "viewport": {
           "width": 390,
           "height": 600,
           "dpr": 1
+        },
+        "maximizedDock": {
+          "rect": {
+            "x": 29.15625,
+            "y": 545.171875,
+            "width": 331.6875,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 360.84375,
+            "bottom": 600,
+            "left": 29.15625
+          },
+          "clip": "inset(calc(100% - 4px) -32px 0px)"
         }
       },
       "maximized": {
@@ -477,12 +542,12 @@
       },
       "restored": {
         "x": 0,
-        "y": 120,
+        "y": 72,
         "width": 390,
         "height": 480,
-        "top": 120,
+        "top": 72,
         "right": 390,
-        "bottom": 600,
+        "bottom": 552,
         "left": 0
       },
       "snap": {
@@ -538,12 +603,12 @@
     },
     "restored": {
       "x": 0,
-      "y": 120,
+      "y": 72,
       "width": 390,
       "height": 480,
-      "top": 120,
+      "top": 72,
       "right": 390,
-      "bottom": 600,
+      "bottom": 552,
       "left": 0
     }
   },

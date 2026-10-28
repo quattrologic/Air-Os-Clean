@@ -6,7 +6,7 @@ Branch:fix/air-os-r6-true-fullscreen. Verbindliche Basis2e43327423abcce56da46478
 
 Im aktiven R6 kombinieren sich Desktop31px, Island-Hostverschiebung62px und untere76px-Reserve. Die ältere8/12/86px-Regel ist zusätzlich noch in styles.css vorhanden, aber nachfolgende Overrides bestimmen die tatsächliche Box. Maximieren100% bezog sich auf diesen verkleinerten Host. Der nachgereichte Windows-Screenshot zeigt genau diesen Effekt; native Windows-Titelleiste und internes Maximieren waren zudem unterschiedliche Zustände.
 
-Modern arbeitet jetzt mit24px Menüzeile und danach voller Breite/Höhe ohne Dockreserve. Gemeinsamer Vertrag src/core/window-system.js workArea → app.js appWindowHostRect wird für Drag/Clamp/Snap, Maximize/Restore sowie die vorhandenen Hyprland-Layouts verwendet. CSS setzt denselben Host. Classic außerhalb Vollbild bleibt beim bisherigen Host. Dock ist Overlay, nicht Layoutreserve; Island bleibt fest oben mit ihrer eigenen Höhe/Kontur. Dwindle/Master behalten nur innere8px-Gaps, äußere Ränder0; Monocle füllt die Fläche.
+Modern arbeitet jetzt mit24px Menüzeile und danach voller Breite/Höhe ohne Dockreserve. Gemeinsamer Vertrag src/core/window-system.js workArea → app.js appWindowHostRect wird für Drag/Clamp/Snap, Maximize/Restore sowie die vorhandenen Hyprland-Layouts verwendet. CSS setzt denselben Host. Classic außerhalb Vollbild bleibt beim bisherigen Host. Dock ist keine Layoutreserve: bei maximierten/gekachelten Fenstern Autohide mit4px-Hotedge und Tastaturfokus, bei Floating normal sichtbar; Island bleibt fest oben mit ihrer eigenen Höhe/Kontur. Dwindle/Master behalten nur innere8px-Gaps, äußere Ränder0; Monocle füllt die Fläche.
 
 Normal: frei beweglich/skalierbar, am Rand weiterhin greifbar. Grün und Titelleisten-Doppelklick maximieren/restaurieren denselben vorhandenen Controller. Gesicherte normale Geometrie bleibt maßgeblich.
 
@@ -14,7 +14,7 @@ Echtes Vollbild: BrowserWindow.setFullScreen über Main/preload; keine dauerhaft
 
 ## Gemessene Linux-Electron-Abnahme
 
-539/539 Node-Tests bestanden, alle533 ursprünglichen R6-Tests erhalten. Echte sandboxerhaltende Electron44.9.3-GUI mit synthetischem Profil, fünf Renderergrößen:
+540/540 Node-Tests bestanden, alle533 ursprünglichen R6-Tests erhalten. Echte sandboxerhaltende Electron44.9.3-GUI mit synthetischem Profil, fünf Renderergrößen:
 
 | Viewport | Maximierter Finder x/y | Größe | Kantenabweichung |
 |---|---|---|---|
@@ -56,13 +56,24 @@ Eigener eindeutig benannter technischer R6.1-Testkanal auf Grundlage der unverä
 
 Kein Codesigning/Produktionsrelease. Physisches Windows11/SAC, echte Mehrmonitor-/DPI-Hardware und macOS bleiben separat abzunehmen. Kein Schutzmechanismus wird umgangen.
 
-Produktcheckpoint:1b1f7d74dc1d07394ac54c01fe8b30138cb36e52; native Windows-R6.1-Abnahme läuft. Der Installer wird nur nach tatsächlichem erfolgreichen CI-/Installations-/GUI-Nachweis verlinkt.
+Erster Produktcheckpoint:1b1f7d74dc1d07394ac54c01fe8b30138cb36e52; korrigierter Produkt-/Buildcheckpoint0204bd5c38a9d90908dc33c5cff0a17369606dcf; native Windows-R6.1-Abnahme läuft. Der Installer wird nur nach tatsächlichem erfolgreichen CI-/Installations-/GUI-Nachweis verlinkt.
 
 
 ## Korrektur nach erstem nativen Lauf
 
 Lauf40773273220 baute/installierte den technischen Installer, bestand aber die alte vollständige GUI-Suite nicht. Er wird **nicht** als erfolgreiche Windowsfreigabe angeboten. Die390px-Notes-Speicheraktion traf nach Viewportwechsel das darüberliegende Settings-Dockicon.
 
-Reproduziert und im Produkt behoben: Beim initialen Restore werden nur außerhalb des neuen Viewports liegende gespeicherte Fenster mittig erreichbar eingesetzt; bereits gültige Positionen bleiben exakt erhalten. Manuelles Ziehen/Clamping bis zur Unterkante bleibt erlaubt. Maximierte/gegatchelte Flächen verwenden Dock-Autohide über eine4px-Hotedge; Hover/Fokus legt das ursprüngliche Dock wieder frei. Clip statt Transform: keine Änderung an Dockabmessungen, Pins, Magnifikation oder M2-Zielrechtecken. Floating-Dock bleibt normal sichtbar.
+Reproduziert und im Produkt behoben: Beim initialen Restore werden nur außerhalb des neuen Viewports liegende gespeicherte Fenster mittig erreichbar eingesetzt; bereits gültige Positionen bleiben exakt erhalten. Manuelles Ziehen/Clamping bis zur Unterkante bleibt erlaubt. Maximierte/gekachelte Flächen verwenden Dock-Autohide über eine4px-Hotedge; Hover/Fokus legt das ursprüngliche Dock wieder frei. Clip statt Transform: keine Änderung an Dockabmessungen, Pins, Magnifikation oder M2-Zielrechtecken. Floating-Dock bleibt normal sichtbar.
 
-Die vollständige bestehende Linux-GUI-Suite besteht danach wieder einschließlich Notes-Speichern, Profil-/Neustartprüfung, Apps, M1/M2 und WebGL-Fallback.539/539 Node-Tests bestanden. Native R6.1-Abnahme wird mit den tatsächlichen korrigierten Bytes erneut durchgeführt.
+Die vollständige bestehende Linux-GUI-Suite besteht danach wieder einschließlich Notes-Speichern, Profil-/Neustartprüfung, Apps, M1/M2 und WebGL-Fallback.540/540 Node-Tests bestanden. Native R6.1-Abnahme wird mit den tatsächlichen korrigierten Bytes erneut durchgeführt.
+
+Auch die explizite Dock-Hotedgeprüfung besteht: maximiert zunächst geclippt, über echte Pointerbewegung an die Unterkante wieder vollständig sichtbar, danach erneut verborgen. [Dock eingeblendet](visual/r61/full-screen/finder-maximized-dock-revealed-1688.png). DOMRect und M2-Ziel bleiben dabei unverändert.
+
+
+## Snap nach Tiling und native Checkpoints
+
+Checkpoint0204bd5 bestand die native Windows-Abnahme40775736880 vollständig (23/23Schritte): Installation und alle5GUI-/Diagnosepfade, echtes Fullscreen1024×768 ohne CDP-Metrikoverride und erfolgreiche Notes-Speicherung. Windows-Bildcheckpointd1b0825. Ein anschließend explizit geprüfter Dwindle→Snap-Übergang war jedoch noch fehlerhaft: die asynchrone Floating-Restaurierung überschrieb den zuerst gesetzten Snap.
+
+Korrigiert: Snap wird erst nach bestätigtem Floatingwechsel angewandt. Resize löst im Tiling keine alten Snapaktionen aus. Ein Regressionstest bestätigt keinerlei Geometriewrite vor ACK; echte5-Größen-GUI mit2Apps/Dwindle→Snap besteht.540/540 Node-Tests bestanden. Der abschließende Installer wird auch diesen Fix enthalten und deshalb aus dem neuen Commit erneut nativ gebaut.
+
+[Zwei echte Apps in Dwindle](visual/r61/full-screen/dwindle-two-apps.png) · [Snap nach Dwindle](visual/r61/full-screen/snap-from-dwindle.png).
