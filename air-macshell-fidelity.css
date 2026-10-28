@@ -8,3 +8,43 @@ html:not([data-desktop-theme=modern]) .r5-local-lens{display:none!important}
 .r5-segment-lens{z-index:0;box-shadow:0 1px 3px #0003}
 html[data-desktop-theme=modern] .r5-native-segment:before{background:transparent!important;box-shadow:none!important}
 @media(forced-colors:active){html[data-desktop-theme=modern] .r5-native-segment:before{background:Highlight!important}}
+/* Liquid style fallbacks use original global glassOpacity / Slab tint, not Qt's opaque preview. */
+html[data-desktop-theme=modern] .dock[data-theme=modern]:not(.glass2-active){background:linear-gradient(180deg,#ffffff1a,transparent 24%,#00000008),rgba(26,26,28,.231)!important;box-shadow:inset 0 1px #ffffff42,inset 0 -1px #ffffff18,0 -2px 14px #0002!important}
+html[data-desktop-theme=modern] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::before,html[data-desktop-theme=modern] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::after{background:rgba(26,26,28,.231)}
+html[data-desktop-theme=modern] .deep-widget:not(.glass2-active){background:linear-gradient(180deg,#ffffff1a,transparent 60%),linear-gradient(180deg,rgba(56,56,64,.42),rgba(33,33,38,.42))!important;border-color:#ffffff38;box-shadow:inset 0 1px #ffffff3d,inset 0 -1px #00000018,0 7px 18px #0003;backdrop-filter:blur(16px) saturate(1.25)!important}
+html[data-desktop-theme=modern] :is(.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.t6-menu-popup):not(.glass2-active){background:linear-gradient(180deg,#ffffff16,transparent 50%),rgba(26,26,28,.42)!important;border-color:#ffffff38}
+.r5-player-material{isolation:isolate}.r5-player-material>.r5-player-tint{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;pointer-events:none;z-index:0}.r5-player-material>header,.r5-player-material>.deep-widget-content{position:relative;z-index:1}
+.r5-player-material.glass2-active.r5-has-cover>.r5-player-tint{visibility:hidden}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music] .deep-widget-content{position:absolute;inset:0;height:100%!important;overflow:hidden;padding:0}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music]>header{position:absolute;left:12px;right:12px;top:0;height:16px;line-height:16px;z-index:3;font-size:9px;opacity:.65}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music] .t7-player{height:100%}
+.r5-player-placeholder{position:absolute;left:var(--player-artX);top:var(--player-artY);width:var(--player-artS);height:var(--player-artS);border-radius:calc(12px * var(--player-k,1));box-shadow:inset 0 0 0 1px #ffffff24,0 2px 7px #0004}
+.r5-player-placeholder[hidden]{display:none}.r5-art-border{outline:1px solid #ffffff24;outline-offset:-1px;box-shadow:0 2px 7px #0004}
+html[data-desktop-theme=modern] .t7-player [data-media-action]{position:relative;display:grid;place-items:center;transition:transform 180ms cubic-bezier(.34,1.56,.64,1),opacity 180ms;min-height:32px}
+html[data-desktop-theme=modern] .t7-player [data-media-action]:active:not(:disabled){transform:scale(.86);opacity:.6}
+.t7-player [data-media-action] canvas{grid-area:1/1;pointer-events:none}.t7-player .widget-song,.t7-player .widget-artist{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r5-music-open{position:absolute;right:15px;bottom:16px;font-size:10px!important;z-index:2}
+html[data-desktop-theme=modern] .r5-clock .widget-dial-time{position:absolute;left:50%;top:50%;font-size:var(--r5-clock-font)!important;letter-spacing:var(--r5-clock-letter)!important;margin:0;line-height:1;transform:translate(-50%,-50%) scale(.94,1.14);opacity:.96}
+.r5-clock-day{position:absolute;top:17%;left:12%;right:12%;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;text-align:center;color:#ffffff8c}.r5-clock-date{position:absolute;bottom:14%;left:10%;right:10%;margin:0;text-align:center;font-size:11px;color:#ffffffa8}
+html[data-desktop-theme=modern] .widget-calendar-grid button[aria-current=date]{background:#ff453a!important;border-radius:50%;color:white;font-weight:700}
+html[data-desktop-theme=modern] .widget-calendar-grid button:hover{background:#ffffff14;outline:1px solid #ffffff30}
+html[data-desktop-theme=modern] .deep-widget:is([data-widget=notes],[data-widget=reminders]) ul{padding:2px 0;margin:4px 0;list-style:none}
+html[data-desktop-theme=modern] .deep-widget:is([data-widget=notes],[data-widget=reminders]) li{border-bottom:1px solid #ffffff1f;padding:5px 0}
+html[data-desktop-theme=modern] .deep-widget:is([data-widget=notes],[data-widget=reminders]) li button{border:0;background:transparent;box-shadow:none;text-align:left;width:100%;font-weight:550}
+html[data-desktop-theme=modern].air-reduced-glass :is(.dock[data-theme=modern],.deep-widget,.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.t6-menu-popup):not(.glass2-active){background:#242529!important;backdrop-filter:none!important}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme=modern] :is(.dock[data-theme=modern],.deep-widget,.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.t6-menu-popup):not(.glass2-active){background:#242529!important;color:#f5f5f7!important;backdrop-filter:none!important}.r5-player-tint{display:none!important}}
+.r5-feather-parent{position:relative}.r5-scroll-content{display:flow-root}.air-search-results>.r5-scroll-content{display:grid;gap:4px}
+.r5-feather-layer{filter:blur(9px);position:absolute;pointer-events:none!important;overflow:hidden;z-index:2;contain:layout paint}.r5-feather-layer[hidden]{display:none!important}.r5-feather-copy{position:absolute;pointer-events:none!important;transform:translateZ(0)}
+.r5-feather-copy .r5-field-placeholder{display:inline-block;background:#ffffff30;border:1px solid #ffffff24;border-radius:6px;vertical-align:middle}
+html[data-desktop-theme=modern] .tahoe-settings-main>.tahoe-toolbar{position:sticky;top:0;min-height:52px;box-sizing:border-box;z-index:4;background:rgba(247,247,244,.90);backdrop-filter:none}
+@media(prefers-reduced-motion:reduce){.r5-player-material *{transition:none!important}.r5-player-tint{transition:none!important}}
+/* First integrated image correction: out-rank the prior dial rule, retain original center. */
+html[data-desktop-theme=modern] .deep-widget[data-clock-style=dial] .r5-clock .widget-dial-time{transform:translate(-50%,-50%) scale(.94,1.14)}
+html[data-desktop-theme=modern] .t7-player .widget-music-volume{left:5%;width:90%;bottom:7px;accent-color:#ffffffb0}
+html[data-desktop-theme=modern] .t7-player>progress{appearance:none;border:0;border-radius:2px;overflow:hidden}
+html[data-desktop-theme=modern] .t7-player>progress::-webkit-progress-bar{background:#ffffff33}
+html[data-desktop-theme=modern] .t7-player>progress::-webkit-progress-value{background:#ffffffe0}
+html[data-desktop-theme=modern] .t7-player [data-media-action]:disabled{opacity:.35}
+.r5-music-open{bottom:40px}
+
+@media(forced-colors:active){html[data-desktop-theme=modern] :is(.dock[data-theme=modern],.deep-widget,.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.t6-menu-popup){background:Canvas!important;color:CanvasText!important;backdrop-filter:none!important}.r5-player-tint{display:none!important}}

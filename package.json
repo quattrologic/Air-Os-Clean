@@ -150,7 +150,10 @@
       "src/core/macshell-fidelity.js",
       "air-glass-controls.js",
       "air-macshell-fidelity.css",
-      "third_party/r5/**/*"
+      "third_party/r5/**/*",
+      "src/core/player-art-path.js",
+      "air-player-art.js",
+      "air-scroll-feather.js"
     ],
     "mac": {
       "target": [

@@ -1,0 +1,1 @@
+Air-OS synthetic fixtures, CC0-1.0. Own220Hz quiet tone and64px geometric covers; no music, speech, lyrics, brand or personal data. Generated for Electron file-import/metadata/audio tests, not application runtime. Command parameters documented in R5 report.

@@ -1,0 +1,13 @@
+{
+  "license": "CC0-1.0",
+  "files": [
+    {
+      "file": "tests/fixtures/r5/PUBLIC-R5-red.mp3",
+      "sha256": "f6ef85e91b2d58e8a870b71def87d5e6deb8b3adc91152c13b4d69ba47dd5afd"
+    },
+    {
+      "file": "tests/fixtures/r5/PUBLIC-R5-blue.mp3",
+      "sha256": "552192c36af1d830e63e39f4ea9fdba3448be791eb3e7baa2f23bff95c78d78d"
+    }
+  ]
+}

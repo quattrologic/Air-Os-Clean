@@ -1,0 +1,135 @@
+name: Air-OS Ultimate Windows x64 R5 MacShell Fidelity test
+on:
+  push:
+    branches: [feat/air-os-r5-macshell-fidelity]
+    paths-ignore: ['docs/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: air-os-windows-r5-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows-x64-r5:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Require native Windows x64 and isolated R5 branch
+        run: node -e "if(process.platform!=='win32'||process.arch!=='x64')throw Error('Native Windows x64 required')"
+      - name: Install unchanged frozen R1 modern toolchain
+        run: npm ci --prefix build/windows-x64 --no-audit --no-fund
+      - name: Mandatory dependency audit including development dependencies
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist/r5-evidence | Out-Null
+          npm audit --prefix build/windows-x64 --audit-level=high --json > dist/r5-evidence/dependency-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Dependency audit failed; packaging blocked' }
+      - name: Validate pinned R5 source and all runtime assets
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          node scripts/windows-test-build.cjs link
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+          node build/windows-x64/node_modules/electron/install.js
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+          node scripts/windows-r5-build.cjs source
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+          npm run check:modern
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+          npm run check:catalina
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+          node scripts/windows-test-build.cjs validate
+          if ($LASTEXITCODE -ne 0) { throw 'Mandatory source/toolchain validation failed' }
+      - name: All regression and security tests
+        run: node scripts/run-test-gate.cjs
+      - name: Prepare R5 identity from exact checkout
+        run: node scripts/windows-r5-build.cjs prepare
+      - name: Build unsigned R5 Windows x64 NSIS without publishing
+        env:
+          CSC_LINK: ''
+          WIN_CSC_LINK: ''
+        run: node build/windows-x64/node_modules/electron-builder/cli.js --win nsis --x64 --publish never --config.electronVersion=44.9.3 --config.npmRebuild=false
+      - name: Verify all ASAR source bytes, x64 architecture, runtime payload and SHA256
+        id: collect
+        run: node scripts/windows-r5-build.cjs collect
+      - name: Install actual R5 installer only into runner temporary directory
+        id: install
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem dist/test-artifacts/windows-x64/Air-OS-Ultimate-R5-*-Windows-x64.exe)
+          if ($files.Count -ne 1) { throw 'Exactly one R5 installer required' }
+          $destination = Join-Path $env:RUNNER_TEMP 'air-os-r5-installed'
+          $result = Start-Process -FilePath $files[0].FullName -ArgumentList '/S', "/D=$destination" -Wait -PassThru
+          if ($result.ExitCode -ne 0) { throw "Installer exited $($result.ExitCode)" }
+          $exe = Join-Path $destination 'Air-OS.exe'
+          if (!(Test-Path $exe)) { throw 'Installed application missing' }
+          node scripts/windows-r5-build.cjs installed $destination
+          if ($LASTEXITCODE -ne 0) { throw 'Installed payload verification failed' }
+          @($files[0].FullName, $exe) | ForEach-Object { Get-AuthenticodeSignature $_ | Select-Object Path,Status,StatusMessage } | ConvertTo-Json | Set-Content dist/r5-evidence/authenticode-status.json
+          "AIR_R1_EXE=$exe" >> $env:GITHUB_ENV
+      - name: Installed native Electron profiles, Tahoe apps, M1 M2, audio, MRU, lock and fallback
+        id: gui
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_OUTPUT: dist/r5-gui
+          AIR_TAHOE7_WINDOWS: '1'
+        run: node scripts/check-tahoe7.cjs
+      - name: Installed native capabilities and material fallback across three viewports
+        id: capabilities
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_OUTPUT: dist/r5-capabilities
+          AIR_TAHOE7_WINDOWS: '1'
+        run: node scripts/check-r5.cjs
+      - name: Installed isolated shader diagnostics (not hardware acceptance)
+        id: diagnostic
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_GLASS_DIAGNOSTIC: '1'
+          AIR_R1_OUTPUT: dist/r5-diagnostic
+          AIR_TAHOE7_WINDOWS: '1'
+        run: node scripts/check-r5.cjs
+      - name: Record actual outcomes without claiming physical hardware or SAC approval
+        if: always() && steps.collect.outcome == 'success'
+        shell: pwsh
+        run: |
+          $file = 'dist/test-artifacts/windows-x64/BUILD-INFO.json'
+          $info = Get-Content $file -Raw | ConvertFrom-Json
+          $info.evidence.runnerInstallation = '${{ steps.install.outcome }}'
+          $info.evidence.runnerGui = '${{ steps.gui.outcome }}'
+          $info.evidence.capabilitiesGui = '${{ steps.capabilities.outcome }}'
+          $info.evidence.diagnosticGui = '${{ steps.diagnostic.outcome }}'
+          $info | ConvertTo-Json -Depth 30 | Set-Content $file -Encoding utf8
+          "R5 native runner installation: ${{ steps.install.outcome }}; GUI: ${{ steps.gui.outcome }}. Unsigned. Smart App Control / physical hardware: NOT TESTED. NOT a production release." >> $env:GITHUB_STEP_SUMMARY
+      - name: Commit only verified synthetic Windows PNGs on unchanged feature branch
+        if: success() && steps.gui.outcome == 'success' && steps.capabilities.outcome == 'success'
+        run: node scripts/publish-r5-evidence.cjs
+      - name: Upload real R5 installer, checksum, metadata and instructions
+        if: always() && steps.collect.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Ultimate-Windows-x64-R5-${{ github.sha }}-${{ steps.collect.outputs.sha256 }}-${{ github.run_attempt }}
+          path: dist/test-artifacts/windows-x64/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload test logs, Windows screenshots, audit and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-R5-Windows-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            dist/r5-gui/*
+            dist/r5-capabilities/*
+            dist/r5-evidence/*
+            dist/r5-diagnostic/*
+            dist/r1-gui/node-tests.tap
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,3 +1,9 @@
+# R5 — Checkpoint B/C, native Abnahme vorbereitet
+
+A300d984 gepusht. Originale PlayerArt-Note, echte Coverpalette und lazy Original-Tintcard im gemeinsamen GL-Kontext; komplementärer bounded FeatherBlur-Scroll-under; Originalticks/RU-Widgetkomposition; klarerer CSS-Fallback. Erste Bildprüfung führte zu echten Korrekturen an Uhrzentrum, Reglerabständen, Glyphunterbrechung und sticky Toolbar. Vollständiger Arbeitsbaum506/506 Tests, modernes Audit0. Echte Linux-Electron-CSS- und Shaderdiagnoseläufe3Größen, native Controlspeicherung, Original-Tintcard5Programme,Idle0,ContextLoss/Restore,Reduced/Classic/Logout bestanden. Separater R5-Windowsworkflow vorbereitet; Installation/Windows-R5 bisher NICHT als bestanden behauptet. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Nächste drei Einheiten innerhalb des laufenden Auftrags: finale GUI/Stabilität, nativer R5-Installer/installierte GUI, Evidenz/Downloadabschluss. Keine Hardware-/SAC-/macOS-Freigabe.
+
+---
+
 # R5 — Checkpoint A
 
 Basis a5e17ec, Branch feat/air-os-r5-macshell-fidelity. Originale Kantenrefraktion mit Detail-/Preblur-Kombination, gemeinsame lokale Tracklinsen und LiquidKnob-Fallback, keine zusätzliche Engine/IPC.496/496 Tests; echter Linux-Electron-Lauf3Größen inkl. echter Controls/gespeicherter Prefs/M1/M2/ContextLoss/Reduced/Classic/Logout bestanden. Keine Hardware-/Windows-R5-Abnahme. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Nächste autorisierte Einheiten: PlayerArt/Tintcard/Feather, sichtbare Korrekturrunde, Regression und nativer R5-Build. Laufender großer Nutzerauftrag, nach A weiterarbeiten.

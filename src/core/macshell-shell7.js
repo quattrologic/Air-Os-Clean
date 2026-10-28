@@ -9,6 +9,6 @@
   const width=Math.min(available,x+20+(paged?68:0));return{cells,width,size,height:size+17,paged,capacity:n,refLeft};
  }
  function player(width,height,size){const small=size==='small',large=size==='large',k=small?width/202:large?width/446:height/202,wr=width/k,hr=height/k,mx=23,artS=small?110:large?hr-218:hr-142;return{k,titleFont:small?21:24,artistFont:small?18:21,smallPlay:{x:wr-mx-46,y:23,size:46},art:{x:large?(wr-artS)/2:mx,y:23,size:Math.max(20,artS)},textX:small?mx:large?mx:mx+artS+18,titleCY:small?hr-60:large?hr-165:23+artS/2-16,subCY:small?hr-31:large?hr-137.5:23+artS/2+16,barCY:hr-95.5,timeCY:hr-75.2,ctlCY:hr-44};}
- function preset(){return{desktopWidgets:true,widgetSet:['clock','calendar','notes','reminders','music'],widgetLayout:{clock:{size:'small',style:'dial'},calendar:{size:'small',style:'digital'},notes:{size:'small',style:'digital'},reminders:{size:'small',style:'digital'},music:{size:'medium',style:'digital'}},widgetPositions:{clock:{x:20,y:96},calendar:{x:217,y:96},notes:{x:20,y:293},reminders:{x:217,y:293},music:{x:20,y:490}}};}
+ function preset(){return{desktopWidgets:true,widgetSet:['clock','calendar','notes','reminders','music'],widgetLayout:{clock:{size:'small',style:'dial'},calendar:{size:'small',style:'digital'},notes:{size:'small',style:'digital'},reminders:{size:'small',style:'digital'},music:{size:'medium',style:'digital'}},widgetPositions:{clock:{x:21,y:56},calendar:{x:228,y:56},notes:{x:21,y:258},reminders:{x:228,y:258},music:{x:21,y:460}}};}
  return Object.freeze({step,dock,player,preset});
 });
