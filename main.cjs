@@ -34,7 +34,7 @@ const keepAwake=require('./src/main/keep-awake.cjs').createController(powerSaveB
 app.on('before-quit',()=>keepAwake.release());
 let systemService=null;
 const weatherService=require('./src/main/weather-service.cjs').create();
-app.on('before-quit',()=>weatherService.cancelAll());
+app.on('before-quit',()=>{weatherService.cancelAll();hyprland.stop();});
 const hyprland=require('./src/main/hyprland-adapter.cjs').create();
 function system(){
  if(!systemService)systemService=require('./src/main/system-capabilities.cjs').create({platform:process.platform,screen,powerMonitor,net,shell,clipboard,hyprland,onChange:value=>{
@@ -87,7 +87,7 @@ function requireTrusted(event) {
 const lockPresentation=require('./src/main/lock-presentation.cjs').create();
 function openLogin(preservePreview=false) {
   keepAwake.release();
-  weatherService.cancelAll();
+  weatherService.cancelAll();hyprland.stop();
   if(!preservePreview)lockPresentation.clear();
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
@@ -135,7 +135,7 @@ function createWindow() {
     if (!localAppFile(url)) event.preventDefault();
   });
   mainWindow.webContents.on('render-process-gone',()=>{lockPresentation.clear();keepAwake.release();});
-  mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame){keepAwake.release();weatherService.cancelAll();}});
+  mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame){keepAwake.release();weatherService.cancelAll();hyprland.stop();}});
   mainWindow.on('closed', () => { lockPresentation.clear(); keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
@@ -152,6 +152,14 @@ ipcMain.handle('air-os:system:hyprland',async(event,owner)=>{
  const result=await dialog.showMessageBox(mainWindow,{type:'question',buttons:['Abbrechen','Einmal Status lesen'],defaultId:0,cancelId:0,title:'Hyprland-Freigabe',message:'Aktive Arbeitsbereichsnummer und Fensteranzahl einmal lesen?',detail:'Keine Fenstertitel, Dateien oder Steuerbefehle. Diese Freigabe gilt nur für diese Abfrage.'});
  requireControlSession(event,owner);if(result.response!==1)return{cancelled:true};
  const value=await hyprland.read(true);requireControlSession(event,owner);return value;
+});
+ipcMain.handle('air-os:system:hyprland-watch',async(event,enabled,owner)=>{
+ requireControlSession(event,owner);if(typeof enabled!=='boolean')throw Error('Ungültige Hyprland-Aktion.');
+ if(!enabled){hyprland.stop();return{watching:false};}
+ if(!hyprland.supported)throw Error('Hyprland nicht verfügbar.');
+ const result=await dialog.showMessageBox(mainWindow,{type:'question',buttons:['Abbrechen','Bis zur Abmeldung freigeben'],defaultId:0,cancelId:0,title:'Hyprland-Ereignisse',message:'Arbeitsbereichsnummer und Monitoränderungen bis zur Abmeldung empfangen?',detail:'Nur lesend über den privaten lokalen IPC-Socket. Der gemeinsame Eventstream kann Fensterereignisse enthalten; sie werden sofort verworfen. Nur Arbeitsbereichsnummer/Monitoränderungen werden angezeigt. Jederzeit hier beendbar.'});
+ requireControlSession(event,owner);if(result.response!==1)return{cancelled:true};
+ return hyprland.watch(true,value=>{try{requireControlSession(event,owner);event.sender.send('air-os:hyprland:changed',{owner,value});}catch{hyprland.stop();}});
 });
 ipcMain.handle('air-os:weather',async(event,action,data,owner)=>{
  requireControlSession(event,owner);const user=activeUser.username;

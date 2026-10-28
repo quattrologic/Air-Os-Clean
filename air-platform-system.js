@@ -1,6 +1,6 @@
 'use strict';
 // A view of the bounded authenticated capability service, not a second system store.
-(()=>{if(!window.airOS?.system)return;const api=airOS.system,events=new AbortController(),signal=events.signal;let owner=null,disposed=false,state=null,panel=null,opener=null,sequence=0,unsubscribe=null,button=null;
+(()=>{if(!window.airOS?.system)return;const api=airOS.system,events=new AbortController(),signal=events.signal;let owner=null,disposed=false,state=null,panel=null,opener=null,sequence=0,unsubscribe=null,unsubscribeHypr=null,button=null;
  const alive=()=>!disposed&&owner;
  async function current(){return alive()&&(await airOS.currentUser())?.preferenceSession===owner;}
  async function refresh(){if(!alive())return;const ticket=++sequence;try{const result=await api.snapshot(owner);if(!await current()||ticket!==sequence)return;accept(result);}catch{if(panel)message('Systemstatus konnte nicht aktualisiert werden. Erneut versuchen.');}}
@@ -15,6 +15,7 @@
   const dl=element('dl');for(const [label,value]of rows)dl.append(element('dt',label),element('dd',value));panel.append(dl);
   const settings=element('div');settings.className='system-native-actions';for(const kind of state.settings){const labels={network:'Netzwerkeinstellungen',bluetooth:'Bluetooth-Einstellungen',display:'Anzeigeeinstellungen',sound:'Soundeinstellungen',power:'Energieeinstellungen'},b=action(labels[kind],()=>openSetting(kind));b.dataset.action=kind;settings.append(b);}if(!state.settings.length)settings.append(element('p','Native Einstellungen für diese Plattform nicht angebunden.'));panel.append(settings);
   if(state.capabilities.hyprland==='permission-required')panel.append(action('Hyprland-Status einmal freigeben …',async()=>{const v=await api.hyprland(owner);if(await current())message(v.cancelled?'Abgebrochen.':'Arbeitsbereich '+v.workspace+' · '+v.windowCount+' Fenster · nur lesend');}));
+  if(state.capabilities.hyprland==='permission-required'&&api.hyprlandWatch)panel.append(action('Hyprland-Ereignisse freigeben …',async()=>{const value=await api.hyprlandWatch(true,owner);if(await current())message(value.cancelled?'Abgebrochen.':'Nur lesende Hyprland-Verbindung freigegeben.');}),action('Hyprland-Freigabe beenden',async()=>{await api.hyprlandWatch(false,owner);if(await current())message('Hyprland-Verbindung beendet.');}));
   panel.append(action('Aktualisieren',refresh),action('Status kopieren',async()=>{if(await current()){await api.copy(JSON.stringify(state,null,2),owner);if(await current())message('Status kopiert.');}}),action('Schließen',()=>close()));
   if(focused)panel.querySelector('[data-action="'+focused+'"]')?.focus();window.airDesktopGlass?.refresh();
  }
@@ -24,8 +25,8 @@
  document.addEventListener('keydown',e=>{if(!panel)return;if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();close();}else if(e.key==='Tab'){const a=[...panel.querySelectorAll('button:not(:disabled)')],i=a.indexOf(document.activeElement);e.preventDefault();a[(i+(e.shiftKey?a.length-1:1))%a.length]?.focus();}},{capture:true,signal});
  document.addEventListener('pointerdown',e=>{if(panel&&!panel.contains(e.target)&&e.target!==button&&!button?.contains(e.target))close(false);},{signal});
  for(const name of ['online','offline','focus'])window.addEventListener(name,refresh,{signal});document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();},{signal});document.addEventListener('air-settings-changed',()=>{if(document.documentElement.dataset.desktopTheme!=='modern')close(false);},{signal});
- function end(){disposed=true;owner=null;sequence++;state=null;close(false);button?.remove();unsubscribe?.();observer.disconnect();events.abort();}
+ function end(){disposed=true;owner=null;sequence++;state=null;close(false);button?.remove();unsubscribe?.();unsubscribeHypr?.();observer.disconnect();events.abort();}
  document.addEventListener('air-profile-changing',end,{once:true});window.addEventListener('pagehide',end,{once:true});
  window.airSystem=Object.freeze({snapshot:()=>alive()?structuredClone(state):null,refresh,open,openSettings:openSetting,copy:async text=>{if(!await current())throw Error('Keine Sitzung');return api.copy(text,owner);},paste:async()=>{if(!await current())throw Error('Keine Sitzung');const text=await api.paste(owner);if(!await current())throw Error('Sitzung geändert');return text;}});
- (async()=>{const user=await airOS.currentUser();if(disposed||!user?.preferenceSession)return;owner=user.preferenceSession;unsubscribe=api.onChange(e=>{if(alive()&&e?.owner===owner)accept(e.value);});await refresh();})().catch(()=>{});
+ (async()=>{const user=await airOS.currentUser();if(disposed||!user?.preferenceSession)return;owner=user.preferenceSession;unsubscribeHypr=api.onHyprlandChange?.(e=>{if(alive()&&e?.owner===owner)message(e.value.type==='workspace'?'Hyprland-Arbeitsbereich '+e.value.workspace:e.value.type==='connected'?'Hyprland-Ereignisse verbunden.':e.value.type==='disconnected'?'Hyprland-Verbindung beendet.':'Hyprland-Monitoränderung.');});unsubscribe=api.onChange(e=>{if(alive()&&e?.owner===owner)accept(e.value);});await refresh();})().catch(()=>{});
 })();

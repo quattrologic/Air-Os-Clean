@@ -18,6 +18,8 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     copy: (text,owner)=>ipcRenderer.invoke('air-os:system:copy',text,owner),
     paste: owner=>ipcRenderer.invoke('air-os:system:paste',owner),
     hyprland: owner=>ipcRenderer.invoke('air-os:system:hyprland',owner),
+    hyprlandWatch: (enabled,owner)=>ipcRenderer.invoke('air-os:system:hyprland-watch',enabled,owner),
+    onHyprlandChange: callback=>{if(typeof callback!=='function')throw Error('Listener required');const listener=(_event,value)=>callback(value);ipcRenderer.on('air-os:hyprland:changed',listener);return()=>ipcRenderer.removeListener('air-os:hyprland:changed',listener);},
     onChange: callback=>{if(typeof callback!=='function')throw Error('Listener required');const listener=(_event,value)=>callback(value);ipcRenderer.on('air-os:system:changed',listener);return()=>ipcRenderer.removeListener('air-os:system:changed',listener);}
   }),
   control: Object.freeze({status:owner=>ipcRenderer.invoke('air-os:control:status',owner),setKeepAwake:(enabled,owner)=>ipcRenderer.invoke('air-os:control:awake',enabled,owner)}),

@@ -127,6 +127,16 @@
       "source": "src/config/values/ConfigValues.cpp",
       "local": "third_party/hyprland/original/src/config/values/ConfigValues.cpp",
       "sha256": "19e60dacf41d1cde34633cd55fb8b6d7fe3750c3a83f22aaa6afa2a2d7696560"
+    },
+    {
+      "source": "src/ipc/s2/S2.cpp",
+      "local": "third_party/hyprland/original/src/ipc/s2/S2.cpp",
+      "sha256": "92de778bba40151dba6df475952de11e7395fe1c9ba487eaec86fb5765d6cc57"
+    },
+    {
+      "source": "src/ipc/s2/Unix.cpp",
+      "local": "third_party/hyprland/original/src/ipc/s2/Unix.cpp",
+      "sha256": "cfc8174f5ada3652b787be83159fb96fc3e12ce8543955a1c0658741293e0ad0"
     }
   ]
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "family": "acrylic",
+    "region": "dock incl unchanged icons",
+    "bounds": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGBDifference": 1.167,
+    "changedPixelsAbove3": 4337,
+    "pixels": 61028,
+    "programs": 7,
+    "textures": 4,
+    "estimatedTextureBytes": 16588800
+  },
+  {
+    "family": "hybrid",
+    "region": "dock incl unchanged icons",
+    "bounds": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGBDifference": 2.195,
+    "changedPixelsAbove3": 8322,
+    "pixels": 61028,
+    "programs": 7,
+    "textures": 6,
+    "estimatedTextureBytes": 22118400
+  },
+  {
+    "family": "hyprglass",
+    "region": "dock incl unchanged icons",
+    "bounds": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGBDifference": 2.898,
+    "changedPixelsAbove3": 11731,
+    "pixels": 61028,
+    "programs": 8,
+    "textures": 6,
+    "estimatedTextureBytes": 22118400
+  }
+]

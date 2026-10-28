@@ -1,3 +1,9 @@
+# R6 checkpoint D
+
+A08d4737/B8374257/Cd1e9ca5 gesichert. 531/531 Tests, moderner Audit0, vollständige bestehende Linux-GUI und gezielte Layout/M2-Fokusprüfung bestanden. Originalmaterialien auf echten synthetischen Streifen pixelgemessen. Freiwilliger begrenzter Linux-Socket2-Adapter mit Tests; nativer Hyprlandhost fehlt. Als Nächstes: Windows-R6/Installation/GUI, Abschlussbelege. Laufenden finalen R6-CSS-Lauf prüfen.
+
+---
+
 # R6 checkpoint C
 
 A08d4737 und B8374257 gesichert. Bestätigtes Reference-Preset, reversible Profilkonfiguration, Original-Wetterglyphen, echter freiwilliger Wetteradapter und Material-/Fokuskorrekturen. 521/521 Tests. Live-Wetter hier HTTP403-blockiert; DEMO-Screens explizit markiert. Als Nächstes im autorisierten Auftrag: finale GUI/Regression, optionaler Linux-Eventadapter, WindowsR6/Installation/Evidenz.

@@ -1505,3 +1505,7 @@ App Registry und Lifecycle, Launchpad, Spotlight-App-/Notizsuche, profilbezogene
 ## R6 Checkpoint C
 
 Reference-Preset, Original-Wetterglyphen, sicherer Wetteradapter und zwei sichtbare Produktkorrekturen; 521/521 Tests. A08d4737/B8374257 gesichert. Vollständige finale GUI/WindowsR6 folgen; Wetterlive lokal403-blockiert.
+
+## R6 Checkpoint D
+
+531/531 Tests, moderner Audit0, vollständige Linux-Electron-Suite bestanden. M2-Fokusregression im Layoutadapter korrigiert und gezielt nachgeprüft. Materialeffekte mit synthetischen Linien pixelgemessen. Begrenzter optionaler Socket2-Adapter; kein nativer Hyprlandhost. WindowsR6 vorbereitet, noch nicht gebaut.

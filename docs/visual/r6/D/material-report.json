@@ -1,0 +1,3737 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "rendererClock": "2026-10-28T12:34:30Z test-only; Main clock and performance.now unchanged",
+  "kind": "isolated SwiftShader shader diagnostic; NOT hardware",
+  "surfaces": [
+    {
+      "name": "initial",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 11,
+        "sceneBuilds": 1,
+        "transfers": 10,
+        "tiles": 8,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 3536,
+        "programs": 4,
+        "materialPrograms": 3,
+        "prepassDraws": 8,
+        "prepassWallTimeMs": 755,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 24883200,
+        "textures": 7,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 3,
+        "transferWallTimeMs": 2,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 25.6,
+              "dispersion": 0.078,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.08000000000000002,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.09000000000000001,
+              "grain": 0.009,
+              "magnify": 0.08,
+              "rimTint": 0,
+              "edgeTint": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "notes",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 185,
+            "height": 185,
+            "top": 258,
+            "right": 206,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "reminders",
+          "rect": {
+            "x": 228,
+            "y": 258,
+            "width": 185,
+            "height": 185,
+            "top": 258,
+            "right": 413,
+            "bottom": 443,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 771.5,
+            "y": 1011,
+            "width": 377,
+            "height": 69,
+            "top": 1011,
+            "right": 1148.5,
+            "bottom": 1080,
+            "left": 771.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "reference-weather-setup",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 25,
+        "sceneBuilds": 1,
+        "transfers": 22,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4278,
+        "programs": 5,
+        "materialPrograms": 4,
+        "prepassDraws": 8,
+        "prepassWallTimeMs": 755,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 24883200,
+        "textures": 7,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 5,
+        "transferWallTimeMs": 7,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hybrid",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "reference-desktop",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 25,
+        "sceneBuilds": 1,
+        "transfers": 22,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4280,
+        "programs": 5,
+        "materialPrograms": 4,
+        "prepassDraws": 8,
+        "prepassWallTimeMs": 755,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 24883200,
+        "textures": 7,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 5,
+        "transferWallTimeMs": 7,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hybrid",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "material-acrylic",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 32,
+        "sceneBuilds": 1,
+        "transfers": 29,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4358,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 10,
+        "prepassWallTimeMs": 773,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 27648000,
+        "textures": 8,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 8,
+        "transferWallTimeMs": 7,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "acrylic",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "material-hybrid",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 39,
+        "sceneBuilds": 1,
+        "transfers": 36,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4404,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 10,
+        "prepassWallTimeMs": 773,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 27648000,
+        "textures": 8,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 11,
+        "transferWallTimeMs": 8,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hybrid",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "material-hyprglass",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 46,
+        "sceneBuilds": 1,
+        "transfers": 43,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4496,
+        "programs": 8,
+        "materialPrograms": 7,
+        "prepassDraws": 10,
+        "prepassWallTimeMs": 773,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 27648000,
+        "textures": 8,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 14,
+        "transferWallTimeMs": 9,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hyprglass",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "material-macshell",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 53,
+        "sceneBuilds": 1,
+        "transfers": 50,
+        "tiles": 9,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4514,
+        "programs": 8,
+        "materialPrograms": 7,
+        "prepassDraws": 10,
+        "prepassWallTimeMs": 773,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 27648000,
+        "textures": 8,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 17,
+        "transferWallTimeMs": 9,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 25.6,
+              "dispersion": 0.078,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.08000000000000002,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.09000000000000001,
+              "grain": 0.009,
+              "magnify": 0.08,
+              "rimTint": 0,
+              "edgeTint": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.038918918918918924,
+              "rimTint": 1
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "acrylic-reduced-transparency",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 60,
+        "sceneBuilds": 1,
+        "transfers": 57,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 4780,
+        "programs": 0,
+        "materialPrograms": 0,
+        "prepassDraws": 10,
+        "prepassWallTimeMs": 773,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 0,
+        "textures": 0,
+        "localTextureBytes": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 20,
+        "transferWallTimeMs": 10,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "acrylic",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": []
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgb(36, 37, 41) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": false
+        }
+      ]
+    },
+    {
+      "name": "acrylic-context-restored",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 74,
+        "sceneBuilds": 3,
+        "transfers": 71,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 6382,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 14,
+        "prepassWallTimeMs": 809,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 16588800,
+        "textures": 4,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 3,
+        "bufferResizes": 28,
+        "transferWallTimeMs": 14,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "acrylic",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-acrylic",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 102,
+        "sceneBuilds": 6,
+        "transfers": 99,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9885,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 26,
+        "prepassWallTimeMs": 3970,
+        "uploadWallTimeMs": 17,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 16588800,
+        "textures": 4,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 6,
+        "bufferResizes": 40,
+        "transferWallTimeMs": 18,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "acrylic",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "acrylic",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-acrylic-no-refraction",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 109,
+        "sceneBuilds": 6,
+        "transfers": 106,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 9896,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 26,
+        "prepassWallTimeMs": 3970,
+        "uploadWallTimeMs": 17,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 16588800,
+        "textures": 4,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 6,
+        "bufferResizes": 43,
+        "transferWallTimeMs": 19,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "acrylic",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 0,
+              "dispersion": 0,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "acrylic",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "dual-kawase"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-hybrid",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 130,
+        "sceneBuilds": 8,
+        "transfers": 127,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 12243,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 38,
+        "prepassWallTimeMs": 6181,
+        "uploadWallTimeMs": 18,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 22118400,
+        "textures": 6,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 8,
+        "bufferResizes": 52,
+        "transferWallTimeMs": 22,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hybrid",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hybrid",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-hybrid-no-refraction",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 137,
+        "sceneBuilds": 8,
+        "transfers": 134,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 12487,
+        "programs": 7,
+        "materialPrograms": 6,
+        "prepassDraws": 38,
+        "prepassWallTimeMs": 6181,
+        "uploadWallTimeMs": 18,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 22118400,
+        "textures": 6,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 8,
+        "bufferResizes": 55,
+        "transferWallTimeMs": 23,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hybrid",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 0,
+              "dispersion": 0,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hybrid",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-hyprglass",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 158,
+        "sceneBuilds": 10,
+        "transfers": 155,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 15008,
+        "programs": 8,
+        "materialPrograms": 7,
+        "prepassDraws": 50,
+        "prepassWallTimeMs": 8251,
+        "uploadWallTimeMs": 18,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 22118400,
+        "textures": 6,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 10,
+        "bufferResizes": 64,
+        "transferWallTimeMs": 25,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hyprglass",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 21.76,
+              "dispersion": 0.0663,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0.068,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 24,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    },
+    {
+      "name": "stripes-hyprglass-no-refraction",
+      "glass": {
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": false,
+        "draws": 165,
+        "sceneBuilds": 10,
+        "transfers": 162,
+        "tiles": 7,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 15197,
+        "programs": 8,
+        "materialPrograms": 7,
+        "prepassDraws": 50,
+        "prepassWallTimeMs": 8251,
+        "uploadWallTimeMs": 18,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1920,
+          1080
+        ],
+        "estimatedTextureBytes": 22118400,
+        "textures": 6,
+        "localTextureBytes": 236096,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 1,
+        "decodeCount": 10,
+        "bufferResizes": 67,
+        "transferWallTimeMs": 26,
+        "dpr": 1,
+        "backdrop": "wallpaper-only",
+        "family": "hyprglass",
+        "localLenses": 1,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "island",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "local-lens",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0.5,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 0,
+              "dispersion": 0,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.1125,
+              "grain": 0.006,
+              "magnify": 0,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "family": "hyprglass",
+              "refraction": 0,
+              "bulb": 48,
+              "clarity": 0.82,
+              "aberration": 0.025,
+              "tintDepth": 0.08167803101426713,
+              "blur": "cached-gaussian"
+            }
+          }
+        ]
+      },
+      "surface": [
+        {
+          "kind": "air-island-toggle",
+          "rect": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "clock",
+          "rect": {
+            "x": 21,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 206,
+            "bottom": 241,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "calendar",
+          "rect": {
+            "x": 228,
+            "y": 56,
+            "width": 185,
+            "height": 185,
+            "top": 56,
+            "right": 413,
+            "bottom": 241,
+            "left": 228
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "music",
+          "rect": {
+            "x": 21,
+            "y": 460,
+            "width": 395,
+            "height": 185,
+            "top": 460,
+            "right": 416,
+            "bottom": 645,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "weather",
+          "rect": {
+            "x": 21,
+            "y": 258,
+            "width": 395,
+            "height": 185,
+            "top": 258,
+            "right": 416,
+            "bottom": 443,
+            "left": 21
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        },
+        {
+          "kind": "dock",
+          "rect": {
+            "x": 542.5,
+            "y": 1007,
+            "width": 835,
+            "height": 73,
+            "top": 1007,
+            "right": 1377.5,
+            "bottom": 1080,
+            "left": 542.5
+          },
+          "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+          "blur": "none",
+          "canvas": true
+        }
+      ]
+    }
+  ]
+}

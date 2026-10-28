@@ -9,3 +9,25 @@ test('R6 weather service uses fixed TLS origins, redirect rejection, bounded JSO
 test('R6 Reference backup cannot mutate profiles, file grants or another subsystem',()=>{const p=require('../src/main/preferences.cjs');a.ok(p.validate({referenceBackup:{dockPins:null,dockSize:48,widgetSet:['clock']}}));a.throws(()=>p.validate({referenceBackup:{username:'other'}}));a.throws(()=>p.validate({referenceBackup:{referenceBackup:{}}}));});
 test('R6 weather cancellation and response bounds do not retain private profile state',async()=>{const s=require('../src/main/weather-service.cjs').create({fetchImpl:async()=>new Response('x'.repeat(524289))});await a.rejects(()=>s.search('Berlin'),/Cache bleibt erhalten/);s.cancelAll();const main=fs.readFileSync('main.cjs','utf8');a.match(main,/requireControlSession\(event,owner\);const user=activeUser.username/);a.match(main,/'weatherCache' in patch/);a.match(main,/weatherService.cancelAll/);});
 test('R6 Acrylic displacement remains in logical pixels across bounded DPR raster sizes',()=>{const c={window:{}};vm.runInNewContext(fs.readFileSync('hyprland-shaders.js','utf8'),c);a.match(c.window.airHyprShaders.acrylic,/dFdx\(v_texcoord\)\*airPixelScale.x/);const g=fs.readFileSync('air-desktop-glass.js','utf8');a.match(g,/airPixelScale:\[pw\/width,ph\/h\]/);});
+
+test('R6 Hyprland event socket requires Linux consent, private owner path and rejects unbounded streams',()=>{
+ const {EventEmitter}=require('node:events'),adapter=require('../src/main/hyprland-adapter.cjs');let socket,events=[];
+ const env={XDG_CURRENT_DESKTOP:'Hyprland',HYPRLAND_INSTANCE_SIGNATURE:'safe-instance',XDG_RUNTIME_DIR:'/run/user/1000'};
+ const stat=p=>({uid:1000,mode:0o700,isDirectory:()=>!p.endsWith('.sock'),isSocket:()=>p.endsWith('.sock'),isSymbolicLink:()=>false});
+ const create=extra=>adapter.create({platform:'linux',env,uid:1000,exists:()=>true,stat,connect:()=>{socket=new EventEmitter();socket.destroy=()=>{socket.destroyed=true};return socket;},...extra});
+ const s=create();a.throws(()=>s.watch(false,()=>{}),/Freigabe/);s.watch(true,v=>events.push(v));socket.emit('connect');socket.emit('data',Buffer.from('workspacev2>>3,private-name\nwindowtitlev2>>0x123,SECRET TITLE\nmonitoradded>>SECRET DEVICE\n'));a.equal(events.length,3);a.equal(events[1].workspace,3);a.ok(!JSON.stringify(events).includes('SECRET'));a.ok(!JSON.stringify(events).includes('private-name'));s.stop();a.equal(socket.destroyed,true);a.equal(socket.listenerCount('data'),0);
+ s.watch(true,()=>{});socket.emit('data',Buffer.alloc(65537));a.equal(socket.destroyed,true);
+ a.throws(()=>create({stat:p=>({...stat(p),uid:1001})}).watch(true),/Unsicher/);
+ a.throws(()=>create({stat:p=>({...stat(p),mode:0o777})}).watch(true),/Unsicher/);
+ a.throws(()=>create({stat:p=>({...stat(p),isSymbolicLink:()=>true})}).watch(true),/Unsicher/);
+ a.throws(()=>create({platform:'win32'}).watch(true),/nicht verfügbar/);
+ a.throws(()=>create({env:{...env,XDG_RUNTIME_DIR:'/tmp/not-private'}}).watch(true),/Runtime-Pfad/);
+});
+test('R6 native events remain session gated and stop on logout, navigation and app quit',()=>{
+ const main=fs.readFileSync('main.cjs','utf8'),preload=fs.readFileSync('preload.cjs','utf8');
+ a.match(main,/hyprland-watch',async\(event,enabled,owner\)=>\{\s*requireControlSession/);
+ a.match(main,/requireControlSession\(event,owner\);event.sender.send\('air-os:hyprland:changed'/);
+ a.ok((main.match(/hyprland\.stop\(\)/g)||[]).length>=4);
+ a.match(preload,/removeListener\('air-os:hyprland:changed'/);
+ const css=fs.readFileSync('air-r6.css','utf8');a.match(css,/prefers-reduced-transparency:reduce[\s\S]*?\[data-glass-family\][\s\S]*?backdrop-filter:none/);
+});
