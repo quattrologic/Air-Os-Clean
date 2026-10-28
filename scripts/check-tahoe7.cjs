@@ -22,7 +22,7 @@ async function run(){
   const args=[...(process.env.AIR_R1_APP?[path.resolve(process.env.AIR_R1_APP)]:[]),'--user-data-dir='+profile,'--remote-debugging-address=127.0.0.1','--remote-debugging-port='+port];
   if(fallback&&process.env.AIR_R1_EXPECT_ELECTRON==='32.3.3'&&process.env.AIR_R1_APP)args[0]=path.join(process.env.AIR_R1_APP,'scripts/start-maclock-no-webgl.cjs');
   if(fallback)args.push('--disable-3d-apis','--disable-webgl','--disable-webgl2');
-  if(process.platform==='linux'){args.push('--disable-setuid-sandbox');if(!fallback)args.push('--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader')}
+  if(process.platform==='linux'&&!fallback)args.push('--use-gl=angle','--use-angle=swiftshader');
   const env={...process.env,XDG_CONFIG_HOME:path.join(profile,'config'),APPDATA:path.join(profile,'roaming'),LOCALAPPDATA:path.join(profile,'local')};delete env.ELECTRON_RUN_AS_NODE;env.electron_config_cache=path.join(profile,'electron-cache');
   const log=fs.openSync(path.join(output,fallback?'fallback-process.log':'process.log'),'a');child=spawn(exe,args,{env,detached:process.platform!=='win32',stdio:['ignore','ignore',log]});fs.closeSync(log);
   let target;for(let i=0;i<240;i++){if(child.exitCode!==null)throw Error('Electron exited before CDP: '+child.exitCode);try{target=(await(await fetch('http://127.0.0.1:'+port+'/json')).json()).find(x=>x.type==='page'&&x.url.includes('login.html'));if(target)break}catch{}await delay(250)}

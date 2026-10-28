@@ -55,13 +55,13 @@ Im festen Dock-Rechteck(755,1013–1167,1080) beträgt die mittlere absolute RGB
 
 ## D — Regression und Grenzen
 
-Vollständige Testsuite jetzt **510/510**(491Ausgangsregressionen erhalten),moderner eingefrorener44.9.3/26.18.0-Toolchainaudit **0Befunde**;Legacy-Catalina-Kanal separat und unverändert. Sourceprüfung enthält318lokale Runtime-/Lizenzassets;gemeinsamer PWA-Build304allowlistAssets,kein Deployment/Cloudlogin.
+Vollständige Testsuite jetzt **511/511**(491Ausgangsregressionen erhalten),moderner eingefrorener44.9.3/26.18.0-Toolchainaudit **0Befunde**;Legacy-Catalina-Kanal separat und unverändert. Sourceprüfung enthält318lokale Runtime-/Lizenzassets;gemeinsamer PWA-Build304allowlistAssets,kein Deployment/Cloudlogin.
 
 Der unveränderte vollständige Electron-Harness lief zusätzlich erfolgreich durch: zwei Profile,echte Notes-Speicherung,Neustartpersistenz,Finder/Apps,Kontrollzentrum,Notifikationen,MRU/Snap,M1/M2vorwärts/rückwärts,Classic/Modern,WebGL/WebGL2wirklichnull im deaktivierten Host. [Protokoll](visual/r5/D/r1-gui-report.json),[Bewegungszustände](visual/r5/D/t7-motion-state.json),[vollständige Tests](visual/r5/D/tests.tap),[moderner Audit](visual/r5/D/modern-audit.json). Keine Änderungen an Main-/Preloadberechtigungen,Auth/Dateiroots,Cloud/PWA-Code,Dock-/Islandgeometrie oder R1–R4-Workflows.
 
 Gezielte DPI-Nachprüfung: native Linsen-Rastercache und beide vorhandenen Renderer reagieren auf reine Auflösungs-/DPR-Mediaänderungen mit einem wieder registrierten,abortierbaren Listener;kein Polling. Numeric-Tracktexture bleibt bei unverändertem Inhalt gecacht,Canvasraster folgtDPR1/2/3. Lokale Texturdiagnostik zählt nur tatsächlich alloziierte GL-Texturen,nicht CSS-Quellcanvas. Settings-Linsen verwenden den vorhandenen Tahoe-Workspace-Farbtoken als eigene Trackbasis statt einer pauschalen dunklen Fläche.
 
-Performancedaten sind **kumulierte reale performance.now-Walltimes** über den gesamten synthetischen Lauf,keine Frametime-/FPS-Garantie: im Linux-SwiftShaderlauf max5Programme,0Draws im700ms-Idlefenster,150msakkumulierteCanvastransferzeit,ca45.2sakkumuliertePaintzeit einschließlich vieler Zustands-/Viewport-/Contextänderungen. Softwarediagnose bleibt deshalb ausdrücklich isoliert;kein produktiver Software-Liquid-Schalter. DPR/Textures/Prepasszählung stehen im jeweiligen Materialreport. Hardwarebudget500K bleibt unverändert;Diagnose64K. CSS-Fallback führt0Materialprogramme aus.
+Performancedaten sind **kumulierte reale performance.now-Walltimes** über den gesamten synthetischen Lauf,keine Frametime-/FPS-Garantie: im Linux-SwiftShaderlauf max5Programme,0Draws im700ms-Idlefenster,218msakkumulierteCanvastransferzeit,ca42.2sakkumuliertePaintzeit einschließlich vieler Zustands-/Viewport-/Contextänderungen. Softwarediagnose bleibt deshalb ausdrücklich isoliert;kein produktiver Software-Liquid-Schalter. DPR/Textures/Prepasszählung stehen im jeweiligen Materialreport. Hardwarebudget500K bleibt unverändert;Diagnose64K. CSS-Fallback führt0Materialprogramme aus.
 
 Bewusst offen: nativeHardware-GPU/Windows11/SAC/macOS/Hyprland,echtePicker-/Zustimmungsdialoge,hörbareAudioausgabe,vertrauenswürdigesSigning,volleLive-Fensterrefraktion. Kein physischerHardwaretest aus CI abgeleitet. Ganze Qt-Scenegraph-/MultiEffectpipeline ist keine bytegleiche Chromiumimplementierung. `LiquidScrollBar.qml` liegt nur als referenzierte Originalquelle vor und zählt **nicht** als integriert;Switchdrag/Knobgesten,kompletteLyrics/Playeransichten und vollständigeQt-Covereffekte bleiben offen. Bestehender MacLock-Shader-/Authentifizierungspfad bleibt eigenständig und wurde übergreifend geprüft,aber nicht ersetzt. Keine neuen MacTahoe-Assets inR5;vorhandene14GPL-Icons/MIT-GTK-Tokens/OFL-Schriften unverändert lizenzkonform gebündelt.
 
@@ -77,3 +77,20 @@ Identische kontrollierte Linux-Szenen,normaler CSS-Produktpfad:
 | Kontrollzentrum | ![R4 Island](visual/r5/before-final/island-open-1920.png) | ![R5 Island](visual/r5/C/island-open-1920.png) |
 
 [1650px](visual/r5/C/desktop-1650.png),[390px](visual/r5/C/desktop-390.png),[Slider](visual/r5/C/glass-slider-held.png),[Feather](visual/r5/C/scroll-under.png),[Forced Colors](visual/r5/C/forced-colors.png),[Reduced Transparency](visual/r5/C/reduced-transparency.png),[Lockscreen](visual/r5/C/lockscreen-1920.png). [D: Appfenster](visual/r5/D/t6-apps-1920.png),[Launchpad](visual/r5/D/t7-launchpad-1920.png),[Spotlight](visual/r5/D/deep-spotlight-1920.png),[Notifications](visual/r5/D/deep-notifications-1920.png),[Dock unter Hover](visual/r5/D/t7-many-hover-1920.png).
+
+## Wiederverwendete Originalbytes
+
+Die folgenden lokal gebündelten Originale wurden zusätzlich bytegleich gegen den fixierten MacShell-Checkout geprüft. Weitere neue Quelldateien stehen im R5-Hashmanifest; adaptierte JS-/GLES-Zielpfade sind bewusst separate Dateien.
+
+| Original | SHA-256 | Lokale Lizenzquelle |
+|---|---|---|
+| liquidglass.frag | `17c803e919d156cfff3c285fc2b11a59548b8b757e191190269ee0b81b2f336b` | [third_party/deep-port/liquidglass.frag](../third_party/deep-port/liquidglass.frag) |
+| dockglass.frag | `f1ebcf553c2dfb007050799f6c44d74556c2b49e4aac661c77f39b94ded0a631` | [third_party/glass2/dockglass.frag](../third_party/glass2/dockglass.frag) |
+| contourglow.frag | `4677f7224000a835d0251e491fd8790048de51878bddb0c8d635c7b8b679e579` | [third_party/glass2/contourglow.frag](../third_party/glass2/contourglow.frag) |
+| tintcard.frag | `fcb5040b7dee6bd3bace55ce8f5295b6d1fd3903772b2d357ea5d712da5f53c5` | [third_party/evolution1/original/tintcard.frag](../third_party/evolution1/original/tintcard.frag) |
+| GlassSlab.qml | `91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca` | [third_party/evolution1/original/GlassSlab.qml](../third_party/evolution1/original/GlassSlab.qml) |
+| FeatherBlur.qml | `a90258c0a3b02394e78ebda1ab535d39ab4b38b7e626841cf8c4b5b37c874deb` | [third_party/evolution1/original/FeatherBlur.qml](../third_party/evolution1/original/FeatherBlur.qml) |
+| PlayerWidget.qml | `14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a` | [third_party/tahoe7/original/PlayerWidget.qml](../third_party/tahoe7/original/PlayerWidget.qml) |
+
+
+Letzte sichtbare Korrektur: Der ältere kompakte Tahoe-Selektor begrenzte Titel/Künstler trotz gesetzter Originalvariablen auf15/12px. R5setzt jetzt die tatsächlichen24/21RU-Werte(21.98/19.23px bei185px-Kartenhöhe) mit600/500Gewicht durch. Echte GUI-Assertions vergleichen computedStyle mit den Original-RU-Werten. Linux-GUI-Launcher verwenden jetzt weder `--disable-setuid-sandbox` noch `--enable-unsafe-swiftshader`/`--no-sandbox`. Der erste zusätzliche Legacy-Lauf wurde wegen des alten Flags automatisch abgelehnt; nach Entfernen der Ausnahmen liefen der direkte vollständige Electron-End-to-Endtest und beide R5-Materialpfade erfolgreich. Keine offene Sicherheitsausnahme für die Abnahme.

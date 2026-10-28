@@ -48,3 +48,6 @@ html[data-desktop-theme=modern] .t7-player [data-media-action]:disabled{opacity:
 .r5-music-open{bottom:40px}
 
 @media(forced-colors:active){html[data-desktop-theme=modern] :is(.dock[data-theme=modern],.deep-widget,.air-island-toggle,.air-island-panel,.air-calendar-panel,.air-search-dialog,.deep-history,.t6-menu-popup){background:Canvas!important;color:CanvasText!important;backdrop-filter:none!important}.r5-player-tint{display:none!important}}
+/* PlayerWidget RU typography wins over the old compact-card override. */
+html[data-desktop-theme=modern] .deep-widget[data-widget=music] .t7-player .widget-song{font-size:var(--player-titleFont);font-weight:600}
+html[data-desktop-theme=modern] .deep-widget[data-widget=music] .t7-player .widget-artist{font-size:var(--player-artistFont);font-weight:500}

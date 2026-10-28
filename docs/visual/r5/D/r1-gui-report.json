@@ -36,9 +36,9 @@
             "height": 1080,
             "dpr": 1,
             "clockRect": {
-              "x": 709.878125,
+              "x": 709.003125,
               "y": 16.206249999999997,
-              "width": 501,
+              "width": 502,
               "height": 350
             },
             "fieldRect": {
@@ -174,7 +174,7 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 5,
+          "frames": 6,
           "tileBuilds": 1,
           "maskRebuilds": 2,
           "sceneRebuilds": 2,
@@ -184,9 +184,9 @@
             "height": 930,
             "dpr": 1,
             "clockRect": {
-              "x": 608.55,
+              "x": 607.8,
               "y": 14.706249999999997,
-              "width": 433,
+              "width": 435,
               "height": 302
             },
             "fieldRect": {
@@ -322,19 +322,19 @@
           "reason": "ready",
           "disposed": false,
           "software": true,
-          "frames": 7,
+          "frames": 6,
           "tileBuilds": 1,
-          "maskRebuilds": 1,
-          "sceneRebuilds": 1,
+          "maskRebuilds": 2,
+          "sceneRebuilds": 2,
           "pendingFrame": false,
           "last": {
             "width": 390,
             "height": 600,
             "dpr": 1,
             "clockRect": {
-              "x": 30.637500000000003,
+              "x": 30.059375000000003,
               "y": 2.809375000000003,
-              "width": 329,
+              "width": 330,
               "height": 233
             },
             "fieldRect": {
@@ -475,6 +475,12 @@
     {
       "id": "airwrite",
       "name": "AirWrite",
+      "origin": "builtin",
+      "internalHandler": true
+    },
+    {
+      "id": "arcade",
+      "name": "Air Arcade",
       "origin": "builtin",
       "internalHandler": true
     },
@@ -620,6 +626,10 @@
     },
     {
       "id": "airwrite",
+      "status": "internal window started and closed; external service/content functionality not certified"
+    },
+    {
+      "id": "arcade",
       "status": "internal window started and closed; external service/content functionality not certified"
     },
     {
@@ -2485,7 +2495,7 @@
   "tahoe5": {
     "mru": true,
     "snap": true,
-    "sharedAudioPosition": 23.849822,
+    "sharedAudioPosition": 16.996081,
     "neutralArtwork": true,
     "lockLogoutLogin": true,
     "consentDialog": "NOT_TESTED; no simulated consent",

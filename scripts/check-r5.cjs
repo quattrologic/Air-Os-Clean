@@ -23,7 +23,7 @@ async function run(){
   if(fallback&&process.env.AIR_R1_EXPECT_ELECTRON==='32.3.3'&&process.env.AIR_R1_APP)args[0]=path.join(process.env.AIR_R1_APP,'scripts/start-maclock-no-webgl.cjs');
   if(process.env.AIR_GLASS_DIAGNOSTIC==='1'){args.push('--glass-integration-test');if(process.platform==='win32')args.push('--use-gl=angle','--use-angle=swiftshader');}
   if(fallback)args.push('--disable-3d-apis','--disable-webgl','--disable-webgl2');
-  if(process.platform==='linux'){args.push('--disable-setuid-sandbox');if(!fallback)args.push('--use-gl=angle','--use-angle=swiftshader')}
+  if(process.platform==='linux'&&!fallback)args.push('--use-gl=angle','--use-angle=swiftshader');
   const env={...process.env,XDG_CONFIG_HOME:path.join(profile,'config'),APPDATA:path.join(profile,'roaming'),LOCALAPPDATA:path.join(profile,'local')};delete env.ELECTRON_RUN_AS_NODE;env.electron_config_cache=path.join(profile,'electron-cache');
   const log=fs.openSync(path.join(output,fallback?'fallback-process.log':'process.log'),'a');child=spawn(exe,args,{env,detached:process.platform!=='win32',stdio:['ignore','ignore',log]});fs.closeSync(log);
   let target;for(let i=0;i<240;i++){if(child.exitCode!==null)throw Error('Electron exited before CDP: '+child.exitCode);try{target=(await(await fetch('http://127.0.0.1:'+port+'/json')).json()).find(x=>x.type==='page'&&x.url.includes('login.html'));if(target)break}catch{}await delay(250)}
@@ -93,6 +93,7 @@ if(w===390){let page=1;while(!await evaluate("document.querySelector('.tahoe4-wi
    await wait('airPlayerArt.snapshot().running===0');assert.equal(await evaluate("document.querySelector('[data-widget=music]').classList.contains('r5-has-cover')"),true);
    if(diagnostic)assert.equal(await evaluate('airDesktopGlass.snapshot().tintCards'),1);
    await click('[data-widget=music] [data-media-action=next]');await wait("airMusic.transport.snapshot().title==='PUBLIC R5 blue'");await delay(100);await shot('artwork-transition');await wait('airPlayerArt.snapshot().running===0');await capture('player-art-blue');await delay(400);assert.equal(await evaluate("document.querySelectorAll('[data-widget=music] [data-media-action=toggle] canvas').length"),1);
+   report.playerTypography=await evaluate("(()=>{const p=document.querySelector('[data-widget=music] .t7-player');return ['title','artist'].map((key,i)=>({computed:parseFloat(getComputedStyle(p.querySelector(i?'.widget-artist':'.widget-song')).fontSize),source:parseFloat(p.style.getPropertyValue('--player-'+key+'Font'))}))})()");for(const t of report.playerTypography)assert.ok(Math.abs(t.computed-t.source)<.05,'actual PlayerWidget RU typography');
    report.realArtwork={source:'CC0 own embedded 64px PNG / real local MP3',sameEngine:true,tint:await evaluate('airPlayerArt.snapshot()')};
    {const wasPlaying=await evaluate('airMusic.transport.snapshot().playing');await click('[data-widget=music] [data-media-action=toggle]');await wait('airMusic.transport.snapshot().playing==='+!wasPlaying);await click('[data-widget=music] [data-media-action=toggle]');await wait('airMusic.transport.snapshot().playing==='+wasPlaying);}
   }

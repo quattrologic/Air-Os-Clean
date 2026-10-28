@@ -1,0 +1,20 @@
+[
+  {
+    "dpr": 1,
+    "programs": 4,
+    "textures": 8,
+    "transferWallTimeMs": 217
+  },
+  {
+    "dpr": 2,
+    "programs": 4,
+    "textures": 8,
+    "transferWallTimeMs": 217
+  },
+  {
+    "dpr": 3,
+    "programs": 4,
+    "textures": 8,
+    "transferWallTimeMs": 218
+  }
+]

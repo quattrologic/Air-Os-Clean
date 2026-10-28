@@ -1,3 +1,9 @@
+# R5 — letzter Produkt-/Testcheckpoint
+
+511/511 Tests,modernerAudit0. Original-Player-RU-Typografie nach echtem Bildvergleich korrigiert;volle Linux-Electron-End-to-End-/Shader-/CSS-/DPR1/2/3-Abnahme ohne Sandbox-/unsafeAusnahmen bestanden. NativeR5-Abnahme03e9c3f/Lauf40666937454 vollständig grün,Installer/318Runtimebytes/Installation/alle3GUI-Pfade geprüft;Windows-Bilderfb8b9a9 gesichert. Letzter Typografie-/Testcheckpoint wird im eigenen R5-Kanal erneut nativ gebaut. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Noch autorisiert: endgültige native Abnahme/Hash/Bilder,gesicherter Abschluss;keine neuen Features. Hardware/SAC/Signing/macOS offen.
+
+---
+
 # R5 — Checkpoint D / finaler nativer R5-Lauf
 
 A300d984,B/C7184d63 gesichert. 510/510 Tests,modernerAudit0,vollständiger Linux-Electron-End-to-Endlauf und Shader-/CSS-Abnahme3Größen bestanden. Gezielte echte DPR1/2/3-Rasterprüfung nach Skalierungskorrektur bestanden. Erster nativerR5-Lauf40664553791: NSIS/318Runtimebytes/Payload/Installation/alle3GUI-Läufe erfolgreich;abschließendes Outcome-JSON scheiterte am nicht vordeklarierten diagnosticGui-Feld. Feld ergänzt,Regression hinzugefügt;finalerBuild wird erneut ausgeführt. Kein fehlgeschlagenerLauf als vollständig grün ausgegeben. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Noch autorisiert: finalerWindows-R5-Installer/installierteGUI,Evidenz/Hash,Abschluss. Hardware/SAC/macOS bleiben offen.
