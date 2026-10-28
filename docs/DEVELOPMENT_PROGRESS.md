@@ -1,3 +1,17 @@
+# R6.1 — vollständig geprüft und gesichert
+
+Branch: fix/air-os-r6-true-fullscreen. Basis2e43327423abcce56da464789e01bf92ff7345f0; Produktkorrekturf59d5a5, Build-/Prüfcommit874082788fa803b02c198deae3b7f676fcf11332, Windows-Bildcheckpoint204d4ec3b74af52f8f5992bc1e6ff855b3f08d1e.
+
+Gemeinsame Workarea ohne Island-/Dockreserve,24px-Menü, korrekter Max/Restore und freie Randdrags. Sicheres natives F11/Darstellung/Escape mit Dialogvorrang und sichtbarem Austritt; Dock-Autohide ohne Geometrie-/M2-Änderung; ACK-geordnetes Snap nach Dwindle. Alle vier Layouts/Workspaces, Classic, Profile/Neustart, Notes-Speichern und M1/M2 erhalten.
+
+540/540 Tests, vollständige bestehende Linux-Electron-GUI und gezielte fünfgrößige Abnahme bestanden. [Windows-CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40779691219):23/23Schritte bestanden, tatsächliche Installation/EXE und sämtliche GUI-Pfade. Max1688:y24/H872 statt y93/H727, alle Kantenfehler0; natives Windows-Fullscreen1024×768, keine Metrikemulation.
+
+[Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40779691219/artifacts/12856348590):Air-OS-Ultimate-R6.1-1.0.3-dev.4.sha874082788fa8-Windows-x64.exe, 122557437Bytes, SHA256c73ab769acf6c1d121861c6bf198e77280d7d784d9c95cfc1c83f7b277a84157. [Bericht/Messungen/Vorher-Nachher](AIR_OS_R6_FULL_SCREEN.md). Normale Windows-Software-GPU/CSS und isolierte Shaderdiagnose getrennt; keine Hardwarefreigabe. Unsignierter Testbuild/keinProduktionsrelease.
+
+Offene drei kleine native Abnahmen, nur nach neuem Auftrag: physisches Windows11/F11/SAC; Mehrmonitor-/DPI-Hardwarewechsel; Hardware-GPU/macOS-Prüfung. Kein weiterer Produktumbau im Hintergrund. Sitzung nach Dokumentationspush beendet.
+
+---
+
 # R6.1 — native GUI-Regression konkret korrigiert
 
 Erster nativer Lauf40773273220: Packaging/Installation bestanden, alteGUI fehlgeschlagen (390px Notes-Speichern klickte überlagerndes Dock). Kein Erfolg behauptet. Produktfix: außerhalb neuer Viewports liegende Restore-Boxen zentriert, gültige Bounds erhalten; Max/Tiling-Dock-Autohide4px via Clip/Focus ohne Änderung an M2-Geometrie.539/539 Tests und komplette bestehende Linux-Electron-GUI inklusive zuvor fehlgeschlagenem Notes-Szenario bestanden. Erneute native Abnahme folgt im laufenden Auftrag. Keine weiteren Features beginnen.
