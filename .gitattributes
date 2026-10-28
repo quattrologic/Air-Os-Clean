@@ -37,3 +37,5 @@ third_party/tahoe7/** -text
 third_party/glass2/** -text
 
 third_party/evolution1/original/* -text
+# Evolution1: MIT/LICENSE/NOTICE must retain exact bytes in native Windows R4.
+third_party/evolution1/** -text
