@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  weather: Object.freeze({request:(action,data,owner)=>ipcRenderer.invoke('air-os:weather',action,data,owner)}),
   system: Object.freeze({
     snapshot: owner=>ipcRenderer.invoke('air-os:system:snapshot',owner),
     openSettings: (kind,owner)=>ipcRenderer.invoke('air-os:system:settings',kind,owner),

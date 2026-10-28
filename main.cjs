@@ -33,6 +33,8 @@ const airAppRuntime=require('./src/main/airapp-runtime.cjs').createRuntime({Brow
 const keepAwake=require('./src/main/keep-awake.cjs').createController(powerSaveBlocker,{available:process.env.AIR_GUI_TEST_ISOLATED!=='1'});
 app.on('before-quit',()=>keepAwake.release());
 let systemService=null;
+const weatherService=require('./src/main/weather-service.cjs').create();
+app.on('before-quit',()=>weatherService.cancelAll());
 const hyprland=require('./src/main/hyprland-adapter.cjs').create();
 function system(){
  if(!systemService)systemService=require('./src/main/system-capabilities.cjs').create({platform:process.platform,screen,powerMonitor,net,shell,clipboard,hyprland,onChange:value=>{
@@ -85,6 +87,7 @@ function requireTrusted(event) {
 const lockPresentation=require('./src/main/lock-presentation.cjs').create();
 function openLogin(preservePreview=false) {
   keepAwake.release();
+  weatherService.cancelAll();
   if(!preservePreview)lockPresentation.clear();
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
@@ -132,7 +135,7 @@ function createWindow() {
     if (!localAppFile(url)) event.preventDefault();
   });
   mainWindow.webContents.on('render-process-gone',()=>{lockPresentation.clear();keepAwake.release();});
-  mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame)keepAwake.release();});
+  mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame){keepAwake.release();weatherService.cancelAll();}});
   mainWindow.on('closed', () => { lockPresentation.clear(); keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
 }
@@ -150,6 +153,16 @@ ipcMain.handle('air-os:system:hyprland',async(event,owner)=>{
  requireControlSession(event,owner);if(result.response!==1)return{cancelled:true};
  const value=await hyprland.read(true);requireControlSession(event,owner);return value;
 });
+ipcMain.handle('air-os:weather',async(event,action,data,owner)=>{
+ requireControlSession(event,owner);const user=activeUser.username;
+ if(!['search','configure','read','refresh','forget'].includes(action))throw Error('Ungültige Wetteraktion.');
+ if(action==='search'){const result=await weatherService.search(data);requireControlSession(event,owner);return result;}
+ if(action==='configure'){const loc=require('./src/core/weather-model.js').location(data);preferenceStore.update(user,{weatherLocation:loc,weatherCache:null});return{location:loc,cache:null};}
+ if(action==='forget'){preferenceStore.update(user,{weatherLocation:null,weatherCache:null});return{location:null,cache:null};}
+ const prefs=preferenceStore.load(user);if(action==='read')return{location:prefs.weatherLocation,cache:prefs.weatherCache};
+ if(!prefs.weatherLocation)throw Error('Bitte zuerst freiwillig eine Stadt auswählen.');
+ try{const value=await weatherService.forecast(prefs.weatherLocation);requireControlSession(event,owner);if(JSON.stringify(preferenceStore.load(user).weatherLocation)!==JSON.stringify(prefs.weatherLocation))throw Error('Die Stadt wurde geändert.');preferenceStore.update(user,{weatherCache:value});return{location:prefs.weatherLocation,cache:value};}catch(error){requireControlSession(event,owner);if(JSON.stringify(preferenceStore.load(user).weatherLocation)!==JSON.stringify(prefs.weatherLocation))throw Error('Die Stadt wurde geändert.');return{location:prefs.weatherLocation,cache:prefs.weatherCache,error:'Wetterabruf fehlgeschlagen. Vorhandener Cache bleibt erhalten.'};}
+});
 // Non-production software rendering is allowed only for an explicitly isolated GUI diagnostic.
 ipcMain.handle('air-os:glass:test-policy',event=>{
  requirePreferenceUser(event);
@@ -159,6 +172,7 @@ ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);retu
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch,expectedSession)=>{
  const user=requirePreferenceUser(event);
+ if(patch&&('weatherCache' in patch||'weatherLocation' in patch))throw Error('Wetterdaten nur über den Wetteradapter ändern.');
  if(expectedSession!==undefined&&(typeof expectedSession!=='string'||expectedSession!==activeUser.preferenceSession))throw new Error('Die Anmeldung hat sich geändert.');
  return preferenceStore.update(user,patch);
 });

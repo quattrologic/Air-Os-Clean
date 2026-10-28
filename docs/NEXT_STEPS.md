@@ -1,3 +1,9 @@
+# R6 checkpoint C
+
+A08d4737 und B8374257 gesichert. Bestätigtes Reference-Preset, reversible Profilkonfiguration, Original-Wetterglyphen, echter freiwilliger Wetteradapter und Material-/Fokuskorrekturen. 521/521 Tests. Live-Wetter hier HTTP403-blockiert; DEMO-Screens explizit markiert. Als Nächstes im autorisierten Auftrag: finale GUI/Regression, optionaler Linux-Eventadapter, WindowsR6/Installation/Evidenz.
+
+---
+
 # R6 checkpoint B
 
 A08d4737 pushed. ExistingwindowSystem now executes Hyprland-derived Dwindle/Master/Monocle math,finite original linear interpolation and4internal workspaces,profile-bound acknowledged config.516/516 tests,actual1536px layout/workspaceGUI passed. No secondregistry/no nativeforeignwindowcontrol. Next authorized:referencepreset/weather,visual corrections/full regression,WindowsR6. [Source report](AIR_OS_R6_HYPRLAND_SOURCE_PORT.md).

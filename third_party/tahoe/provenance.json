@@ -462,6 +462,15 @@
         "sha256": "6a18a538e3375909a961247379f9fc404e4d5c5f918a8143b904596222ac7b6e",
         "license": "GPL-3.0",
         "modified": false
+      },
+      {
+        "key": "actions.view-grid",
+        "source": "src/actions/22/view-grid.svg",
+        "asset": "third_party/tahoe/icons/source/actions/22/view-grid.svg",
+        "sha256": "f60427d7c17117443fd4ca7d559c216da7432c87e444c46888b99f33b3ad2dd7",
+        "license": "GPL-3.0",
+        "adaptation": "Original bytes; neutral CSS white filter in status bar only",
+        "modified": false
       }
     ],
     "browserExports": [

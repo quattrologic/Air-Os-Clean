@@ -2,6 +2,7 @@
 // GPL-3.0 resources (symbolic browser exports add xmlns only), separately licensed: third_party/tahoe/icons/COPYING.
 // Metadata only; applications, launch authorization and lifecycle remain in app-registry.
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.airTahoeIcons=api;})(typeof window==='object'?window:null,function(){return Object.freeze({
+  "actions.view-grid":"third_party/tahoe/icons/source/actions/22/view-grid.svg",
   "finder": "third_party/tahoe/icons/source/places/scalable/folder.svg",
   "browser": "third_party/tahoe/icons/source/categories/32/applications-internet.svg",
   "notes": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",

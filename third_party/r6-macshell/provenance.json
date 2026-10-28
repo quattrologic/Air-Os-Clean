@@ -1,0 +1,25 @@
+{
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "sources": [
+    {
+      "source": "MacShell/WeatherWidget.qml",
+      "file": "third_party/r6-macshell/original/WeatherWidget.qml",
+      "sha256": "147abcd117d0d59edcf0601cccc8d0c474b3e85f3bcabb41b6afebca915c7d1f"
+    },
+    {
+      "source": "MacShell/WeatherHourCol.qml",
+      "file": "third_party/r6-macshell/original/WeatherHourCol.qml",
+      "sha256": "6081f46fd0a38f53257ee764e30281ace3386f8b190aabab64cac3328697765c"
+    },
+    {
+      "source": "MacShell/WeatherIcon.qml",
+      "file": "third_party/r6-macshell/original/WeatherIcon.qml",
+      "sha256": "d291c095abca784c7a26147ca0053b3e10eb34baa510c15d4a683b8cc6478d7f"
+    },
+    {
+      "source": "MacShell/MacWidgets.qml",
+      "file": "third_party/r6-macshell/original/MacWidgets.qml",
+      "sha256": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be"
+    }
+  ]
+}

@@ -42,3 +42,4 @@ third_party/evolution1/** -text
 third_party/r5/** -text
 
 third_party/hyprland/** -text
+third_party/r6-macshell/** -text

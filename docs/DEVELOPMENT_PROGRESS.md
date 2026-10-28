@@ -1501,3 +1501,7 @@ App Registry und Lifecycle, Launchpad, Spotlight-App-/Notizsuche, profilbezogene
 - Anfragen werden durch Zähler bei neuer Suche/Schließen entwertet; App-Suche bleibt bei Fehlern nutzbar.
 - Ein Treffer öffnet Air Notes mit der passenden Notiz-ID; `air-notes.js` kann diesen Fokus bei bereits offenem oder neu geöffnetem Fenster übernehmen.
 - Unit-Tests prüfen Titelsuche, Nichtdurchsuchen des Bodys, Grenzen und unveränderliche Suchresultate.
+
+## R6 Checkpoint C
+
+Reference-Preset, Original-Wetterglyphen, sicherer Wetteradapter und zwei sichtbare Produktkorrekturen; 521/521 Tests. A08d4737/B8374257 gesichert. Vollständige finale GUI/WindowsR6 folgen; Wetterlive lokal403-blockiert.

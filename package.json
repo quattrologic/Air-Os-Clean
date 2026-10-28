@@ -158,7 +158,12 @@
       "third_party/hyprland/**/*",
       "src/core/hyprland-layout.js",
       "air-r6-desktop.js",
-      "air-r6.css"
+      "air-r6.css",
+      "src/core/weather-model.js",
+      "src/core/weather-glyphs.js",
+      "src/main/weather-service.cjs",
+      "air-weather.js",
+      "third_party/r6-macshell/**/*"
     ],
     "mac": {
       "target": [

@@ -33,7 +33,7 @@
    const label=e('label','Bild auswählen'),input=e('input');input.type='file';input.accept='image/png,image/jpeg,image/webp';input.setAttribute('aria-label','Widgetbild auswählen');label.className='widget-image-picker';label.append(input);area.append(label);
    input.onchange=()=>{const f=input.files?.[0];if(!f)return;if(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>2*1024*1024){label.firstChild.textContent='PNG/JPG/WEBP bis 2 MB wählen';return;}const reader=new FileReader();reader.onload=async()=>{if(!c.alive())return;input.disabled=true;const saved=await c.save({widgetImage:reader.result});if(!c.alive())return;if(!saved)label.append(e('span','Speichern fehlgeschlagen; erneut wählen.'));input.disabled=false;input.value='';};reader.onerror=()=>label.append(e('span','Bild konnte nicht gelesen werden.'));reader.readAsDataURL(f);};return;
   }
-  if(id==='weather'){area.append(e('strong','Keine autorisierte Wetterquelle'),e('p','Wetter ist nicht verfügbar. Es werden weder Standort noch Wetterdaten abgefragt.'));return;}
+  if(id==='weather'){window.airWeather?.render(area,c);return;}
   if(m.phase==='error'){area.append(e('p','Daten konnten nicht geladen werden.'),button('Erneut laden',c.reload));return;}
   if(m.phase==='loading'){area.append(e('p','Wird geladen …'));return;}
   if(id==='calendar'){
