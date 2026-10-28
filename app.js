@@ -301,7 +301,7 @@ function initStocksApp(win){
 }
 
 
-function appWindowHostRect(){return windows.getBoundingClientRect()}
+function appWindowHostRect(){if(window.airWindowMath&&(modernWindowMotion()||document.documentElement.classList.contains('air-native-fullscreen'))){const b=airWindowMath.workArea(innerWidth,innerHeight,document.documentElement.classList.contains('air-native-fullscreen'));return new DOMRect(b.left,b.top,b.width,b.height);}return windows.getBoundingClientRect()}
 function setWindowToViewportRect(win,rect){
  const host=appWindowHostRect();
  win.style.left=Math.max(0,Math.min(Math.max(0,host.width-rect.width),rect.left-host.left))+"px";
@@ -500,6 +500,8 @@ function openApp(id){
   }
  };
  const bar=$(".window-titlebar",win);let drag=null;
+ bar.addEventListener('dblclick',e=>{if(e.button!==0||e.target.closest('.traffic,button'))return;e.preventDefault();win.querySelector('.maximize').click();});
+
  bar.addEventListener("pointerdown",e=>{
   if(document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||e.target.closest(".traffic")||e.target.closest("button")||win.classList.contains("maximized"))return;
   clearDockMotion(win);

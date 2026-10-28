@@ -7,7 +7,7 @@
  function arrange(ids,box,mode='floating',ratio=.55,active=ids[0],gap=8){ids=[...new Set(ids)].slice(0,60);ratio=clamp(ratio,.2,.8);const out={};let fallback=false;if(mode==='floating'||!ids.length)return{boxes:out,hidden:[],fallback};if(mode==='dwindle')recurse(tree(ids),box,out,ratio);else if(mode==='master'&&ids.length>1){const width=box.width*ratio;out[ids[0]]={...box,width};let y=box.top;for(const id of ids.slice(1)){const height=box.height/(ids.length-1);out[id]={left:box.left+width,top:y,width:box.width-width,height};y+=height;}}else for(const id of ids)out[id]={...box};
   // Electron minimum hitboxes: impossible layouts degrade to Monocle instead of clipping controls.
   if(Object.values(out).some(b=>b.width<Math.min(320,box.width)||b.height<Math.min(220,box.height))){fallback=true;mode='monocle';for(const id of ids)out[id]={...box};}
-  const hidden=mode==='monocle'?ids.filter(id=>id!==(ids.includes(active)?active:ids[0])):[];for(const b of Object.values(out)){const g=mode==='monocle'?0:Math.min(gap/2,b.width/10,b.height/10);b.left+=g;b.top+=g;b.width-=2*g;b.height-=2*g;}return{boxes:out,hidden,fallback};
+  const hidden=mode==='monocle'?ids.filter(id=>id!==(ids.includes(active)?active:ids[0])):[];for(const b of Object.values(out)){const g=mode==='monocle'?0:Math.min(gap/2,b.width/10,b.height/10);const l=b.left===box.left?0:g,t=b.top===box.top?0:g,r=Math.abs(b.left+b.width-box.left-box.width)<.001?0:g,d=Math.abs(b.top+b.height-box.top-box.height)<.001?0:g;b.left+=l;b.top+=t;b.width-=l+r;b.height-=t+d;}return{boxes:out,hidden,fallback};
  }
  function interpolate(begin,goal,point){return begin+(goal-begin)*clamp(point,0,1);}
  return{split,tree,arrange,interpolate};
