@@ -12,9 +12,9 @@ MacDock `glassBlur5+8=13`, MacWidgets `5+11=16`, FeatherBlur `radius9`, Island/P
 
 A-Abnahme: **470/470 Node-Tests**,297 Runtimeassets. Echter Linux-Electron44.9.3-Lauf mit synthetischen Profilen bei1920×1080/1650×930/390×600: originaler sicherer Softwarefallback, isolierter Shaderpfad, Context Loss/Restore4→0→4, Reduced Glass/Transparency/Motion, Classic/Modern, M1/M2-Reverse und Logout.390px ist ein CDP-Rendererviewport im nativen Mindestfenster, keine iPad-/Hardwareabnahme. [Renderer-Messwerte](visual/system-evolution-1/A/material-report.json), [Tests](visual/system-evolution-1/A/tests.tap). Prepass-/Upload-/Transferzähler und geschätzte Texturbytes sind lokale Diagnosewerte; keine FPS-Zusage.
 
-## B / C
+## Weitere Checkpoints
 
-Systemadapter und R4 werden in getrennten geprüften Checkpoints ergänzt. Aktuell keine neue Windows-/macOS-/Hardwareabnahme und noch kein R4-Installer.
+Die folgenden Abschnitte dokumentieren B und den später erfolgreich geprüften nativen R4. Die einzelnen Zwischenstände bleiben zeitlich erkennbar; der endgültige C-Nachweis ist maßgeblich.
 
 ## B — echte begrenzte Plattformintegration
 
@@ -41,9 +41,9 @@ Finder-Sicherheitskorrektur: Nach einem offenen Ordnerdialog Sitzungsprüfung un
 
 B-Abnahme: **484/484 Tests**,301 Runtimeassets,287 PWA-Buildassets; moderne eingefrorene Electron44.9.3/builder26.18.0-Toolchain **0 Auditbefunde**. Vollständiger vorhandener echter Linux-Electron-App-/Zwei-Profil-/Neustart-/Medien-/Notes-/M1/M2-/Fallbacklauf bestanden. Neuer System-GUI-Lauf alle drei Zielgrößen mit echten Display-/Onlinestatusdaten, Clipboard-Roundtrip, Session-Rejection vor/nach Logout,26px-Menüzeile, Escape, Reduced/Classic und M1/M2 bestanden. Frühe GUI-Fehler (gemeinsames Display, dann asynchrones Electron44-Clipboard) wurden nicht als Erfolg gewertet; getrenntes Testdisplay und echter Async-Adapter korrigierten diese. [Messdaten](visual/system-evolution-1/B/material-report.json), [voller Bestandslauf](visual/system-evolution-1/B/regression.json), [Tests](visual/system-evolution-1/B/tests.tap), [Audit](visual/system-evolution-1/B/dependency-audit.json).
 
-## C — R4 vorbereitet, noch keine Windows-Erfolgsbehauptung
+## C — Vorbereitung beim B-Checkpoint (historisch)
 
-Eigener `build-windows-r4.yml` und `windows-r4-build.cjs`; eingefrorener R1-Kanal/R3-Verifier wiederverwendet. R1/R2/R3 unverändert. Exakte8A-Abstammung/Featurebranch/Checkout-SHA; alle lokalen Runtimebytes/Notices im ASAR geprüft, Payloadinventur, PE-x64/Installerhash, native Runnerinstallation und Start aus installiertem Pfad, voller Tahoe7-Bestandslauf plus neuer Capability-/Materiallauf. Kein Publish/Signing/Sicherheitsbypass. Tatsächliche CI-/Artefaktresultate folgen; aktuell noch kein R4-Download freigegeben.
+Eigener `build-windows-r4.yml` und `windows-r4-build.cjs`; eingefrorener R1-Kanal/R3-Verifier wiederverwendet. R1/R2/R3 unverändert. Exakte8A-Abstammung/Featurebranch/Checkout-SHA; alle lokalen Runtimebytes/Notices im ASAR geprüft, Payloadinventur, PE-x64/Installerhash, native Runnerinstallation und Start aus installiertem Pfad, voller Tahoe7-Bestandslauf plus neuer Capability-/Materiallauf. Kein Publish/Signing/Sicherheitsbypass. Zum damaligen Checkpoint noch kein R4-Download; der endgültige erfolgreiche Nachweis folgt unten.
 
 
 ## Echte Bildvergleiche / Messwerte
@@ -107,3 +107,100 @@ Renderer: Material-/Fokus-/Popoverdarstellung und vorhandene Appcontroller; kein
 Bestehende MacShell-Appmenüstruktur erweitert: **Kopieren, Ausschneiden, Einfügen** über den sicheren nativen Textclipboard-Vertrag. Kein zweites Menü/Editor-/Notesmodell. `src/core/clipboard-edit.js` ist eine begrenzte Texttransaktion: nur echte Text-/Suchfelder und Textareas, keine Passwortfelder; readonly/disabled/maxlength; nach asynchroner Clipboardaktion Fokus, Textrevision, Auswahl, DOM und Sitzung erneut prüfen. Native `insertText/delete` erhalten im Chromium-Pfad die Undo-Historie und bestehende Notes-input-/Speicherhandler. PWA ohne native Bridge erhält keine vorgetäuschten Clipboard-Menüaktionen; reguläre Browserbedienung bleibt bestehen.
 
 **489/489 Tests**,302 Runtimeassets. Echter Linux-Electron-Menülauf: copy→paste→cut→native Undo→bestätigtes Notes-Speichern und Storevergleich, alle drei Zielgrößen/übrige Systemregressionen bestanden. [Messprotokoll](visual/system-evolution-1/native-edit/material-report.json), [echte Notes-Aufnahme](visual/system-evolution-1/native-edit/native-edit-notes.png), [Tests](visual/system-evolution-1/native-edit/tests.tap). R4 wird aus diesem erweiterten Stand erneut gebaut. Bereits erfolgreicher Vorgänger: [Windowslauf40639966766](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40639966766), Buildcommit `d1f7921b505ad20d7bf60cec83c2ec06775aa143`,485 Tests/native installierte GUI plus Systemcapabilities erfolgreich; endgültiger Stand folgt unten.
+
+
+### Zusammenhängende Appabläufe vor/nach, unveränderte Appcontroller
+
+Vorher-Durchlauf mit korrekt verknüpfter lokaler Amplitude-Runtime ebenfalls vollständig bestanden. Ein früherer Baselineversuch ohne diese Worktree-Abhängigkeit scheiterte bei Musik und zählt nicht als Erfolg. Alle Inhalte synthetisch. Aktuelle Basis-Appoberflächen werden bewusst nicht neu gestaltet; diese Bilder zeigen die bewahrten Abläufe plus Menü-/Materialintegration.
+
+| Bereich | Vorher8A | NachherEvolution1 |
+|---|---|---|
+| Desktop/Finder1920 | ![Vorher](visual/system-evolution-1/before-apps/r1-desktop-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-desktop-1920.png) |
+| Notes1920 | ![Vorher](visual/system-evolution-1/before-apps/r1-notes-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-notes-1920.png) |
+| Spotlight1920 | ![Vorher](visual/system-evolution-1/before-apps/deep-spotlight-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-spotlight-1920.png) |
+| Mitteilungen1920 | ![Vorher](visual/system-evolution-1/before-apps/deep-notifications-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-notifications-1920.png) |
+| MacLock1920 | ![Vorher](visual/system-evolution-1/before-apps/r1-lockscreen-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-lockscreen-1920.png) |
+| Kontrollzentrum bei geöffneter App1920 | ![Vorher](visual/system-evolution-1/before-apps/t6-control-live-1920.png) | ![Nachher](visual/system-evolution-1/after-apps/t6-control-live-1920.png) |
+| Desktop/Finder1650 | ![Vorher](visual/system-evolution-1/before-apps/r1-desktop-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-desktop-1650.png) |
+| Notes1650 | ![Vorher](visual/system-evolution-1/before-apps/r1-notes-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-notes-1650.png) |
+| Spotlight1650 | ![Vorher](visual/system-evolution-1/before-apps/deep-spotlight-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-spotlight-1650.png) |
+| Mitteilungen1650 | ![Vorher](visual/system-evolution-1/before-apps/deep-notifications-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-notifications-1650.png) |
+| MacLock1650 | ![Vorher](visual/system-evolution-1/before-apps/r1-lockscreen-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-lockscreen-1650.png) |
+| Kontrollzentrum bei geöffneter App1650 | ![Vorher](visual/system-evolution-1/before-apps/t6-control-live-1650.png) | ![Nachher](visual/system-evolution-1/after-apps/t6-control-live-1650.png) |
+| Desktop/Finder390 | ![Vorher](visual/system-evolution-1/before-apps/r1-desktop-390.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-desktop-390.png) |
+| Notes390 | ![Vorher](visual/system-evolution-1/before-apps/r1-notes-390.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-notes-390.png) |
+| Spotlight390 | ![Vorher](visual/system-evolution-1/before-apps/deep-spotlight-390.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-spotlight-390.png) |
+| Mitteilungen390 | ![Vorher](visual/system-evolution-1/before-apps/deep-notifications-390.png) | ![Nachher](visual/system-evolution-1/after-apps/deep-notifications-390.png) |
+| MacLock390 | ![Vorher](visual/system-evolution-1/before-apps/r1-lockscreen-390.png) | ![Nachher](visual/system-evolution-1/after-apps/r1-lockscreen-390.png) |
+| Kontrollzentrum bei geöffneter App390 | ![Vorher](visual/system-evolution-1/before-apps/t6-control-live-390.png) | ![Nachher](visual/system-evolution-1/after-apps/t6-control-live-390.png) |
+| Fenster-Snap | ![Vorher](visual/system-evolution-1/before-apps/r2-snap.png) | ![Nachher](visual/system-evolution-1/after-apps/r2-snap.png) |
+| MRU-Wechsel | ![Vorher](visual/system-evolution-1/before-apps/r2-switcher.png) | ![Nachher](visual/system-evolution-1/after-apps/r2-switcher.png) |
+| Musik/Widget | ![Vorher](visual/system-evolution-1/before-apps/r2-music-widget.png) | ![Nachher](visual/system-evolution-1/after-apps/r2-music-widget.png) |
+
+MacLock bleibt bewusst im vorhandenen sicheren Login-Materialpfad: Er läuft vor der Desktop-Sitzung und darf keine authentifizierten Desktoppräferenzen/privaten Inhalte übernehmen. Eine gemeinsame Login-/Desktop-Backdrop-Ownership wurde deshalb nicht im Sammelumbau eingeführt. Qt-Tracklinsen benötigen ihre eigenen kontrollierten lokalen Trackquellen; die übernommenen Originalreferenzen allein werden nicht als Ausführung ausgegeben. Electron liefert keinen nativen Systemvolume-/Brightness-/Bluetoothzustand oder Akkuprozent über die hier eingesetzten APIs; dafür werden keine ungeprüften zusätzlichen nativen Module installiert. Native Notifications bleiben ohne sicheren Opt-in-/OS-Verlaufsvertrag offen. Displaybounds sind Electron-DIP plus echte Skalierung, keine erfundene physische Monitorabnahme.
+
+390px-Widgetseiten: [CSS-Seite2](visual/system-evolution-1/B/widgets-390-page2.png) · [CSS-Seite3](visual/system-evolution-1/B/widgets-390-page3.png) · [Shader-Seite2](visual/system-evolution-1/final-diagnostic/widgets-390-page2.png) · [Shader-Seite3](visual/system-evolution-1/final-diagnostic/widgets-390-page3.png). Alle fünf vorhandenen Widgets bleiben über die bestehende Navigation erreichbar.
+
+
+## C — endgültiger nativer Windows-R4-Nachweis
+
+**Erfolgreich:** [Windows-x64-Lauf40642861669](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40642861669), Windows Server2022 (`10.0.20348`), tatsächliches installiertes Electron44.9.3 / builder26.18.0. [Vollständige öffentlichen Schrittresultate](visual/system-evolution-1/C/windows-ci.json).
+
+- Buildcommit **`fbbc11f4614047bc1dc865ef06d57678171db63f`**;8A-Ausgangscommit **`d6af14b2089db5f35386da2969d13b4e558d8fba`**.
+- A **`195235f28fc4b689089de65f22bec633fef0bc2e`**, B **`3ec212077710d802e989fddbbc9680efe3cb1f9b`**, zusätzliche echte Bearbeiten-Aktionen **`868405d`**; C-Windowsbilder vom CI anschließend als **`ffcdc05`** gesichert. Dieser Bericht wird als reiner Dokumentationsabschluss zusätzlich committet; dessen SHA steht im Abschlussbericht. Runtimecode bleibt identisch zum Buildcommit.
+- Source/Toolchain/Dependency-Audit inklusive dev-Abhängigkeiten, vollständiger verpflichtender Testgate, NSIS-x64-Build, **302 lokale Runtimeassets bytegenau im ASAR**, PE-Architektur und vollständige installierte Payload bestanden. Keine Sicherheitsprüfung deaktiviert. **491/491 lokale Tests**; nativer Windows-Testgate ebenfalls erfolgreich. Hostabhängige Symlinkbedingungen und dessen genaue TAP-Zähler sind im Windows-Evidenzartefakt nachlesbar und werden nicht aus Linuxwerten abgeleitet.
+- Echte Runnerinstallation in temporäres Verzeichnis, Start genau der installierten EXE. Zwei isolierte Profile, Login/Logout/Neustart, Apps, Metadaten-/Musiktransport, Notes-Speicherung/Sperrschutz, Widgets, CC/Spotlight, Fokus/MRU/Snap, M1/M2-Reverse, Classic/Modern, Reduced-Präferenzen und deaktiviertes WebGL1+2 bestanden.
+- Neuer nativer Systemlauf1920/1650/390 bestanden: Betriebssystem-online=true, Netzbetrieb, echte Displaybounds1024×768DIP/1× des virtuellen Runnerdisplays. Die größeren Zielgrößen werden wie bisher als eigene Fenster-/CDP-Rendererviewports geprüft; keine physische Monitorgrößenbehauptung. Alle fünf festen `ms-settings`-Aufrufe wurden von der echten Windows-Shell akzeptiert. Das ist kein manueller Funktionstest jeder externen Settingsseite.
+- Nativer Textclipboard-Roundtrip und echte Menüaktionen copy/paste/cut/Undo mit bestätigtem Notes-Speichern bestanden. Falsche/abgelaufene Sitzungen abgewiesen. Native Ordnerpicker/Consentdialoge, hörbare Audioausgabe, physische Batterie-/Multi-Monitor-/DPI-/Suspendereignisse und Windows11-SAC bleiben **manuell offen**.
+- Windows-GPU-Klassifikation tatsächlich **software**, deshalb korrekt `css-fallback`,0 Shaderprogramme/Draws/Texturen, DPR1. **Keine Hardware-WebGL-Abnahme**. Linux isolierte Shaderdiagnose und DPR2 bleiben getrennte Nachweise.
+- Die ersten zwei CI-Versuche scheiterten an Windows-EOL-Drift der neuen MIT-Lizenz. Vollständiger Byte-Erhalt des gesamten neuen Drittanbieterpakets korrigierte die Ursache; der Prüfvertrag wurde nicht gelockert. Spätere vollständige Läufe sind grün. Die letzte CI-Version enthält zusätzlich alle Menü-/Evidenzänderungen.
+
+### Aktueller Testdownload
+
+**[Air-OS Ultimate – Windows x64 – R4-Testinstaller](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40642861669/artifacts/12796172839)** · [Windows-Screenshots, Logs, Audit und TAP](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40642861669/artifacts/12796317035). Actions-Artefakte sind14Tage aufbewahrt und benötigen gegebenenfalls GitHub-Anmeldung. Kein öffentliches Produktionsrelease, keine Notarisierung oder vertrauenswürdige Signatur.
+
+Datei: `Air-OS-Ultimate-R4-1.0.3-dev.6.shafbbc11f46140-Windows-x64.exe`
+Größe: **122483497 Bytes (116.81MiB)**
+Builddatum: **2026-10-28T06:18:14.968Z**
+SHA-256:
+
+```text
+638a881038c9af72ef05ad0936efb62aa74cdabe786b143b755e990252da3cea
+```
+
+Die Prüfsumme stammt aus den tatsächlich gelesenen Installerbytes des erfolgreichen Windowsbuilds und stimmt mit Artefaktname und [bereinigtem CI-BUILD-INFO-Auszug](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/evidence.json) überein. Installer, SHA256SUMS.txt, vollständige BUILD-INFO.json und INSTALL-R4.txt liegen im Download. Artefakt-ZIP-Digest ist eine andere Prüfsumme als die obige EXE-Prüfsumme.
+
+Auf dem eigenen Test-PC ZIP entpacken, `Get-FileHash -Algorithm SHA256 .\Air-OS-Ultimate-R4-1.0.3-dev.6.shafbbc11f46140-Windows-x64.exe` vergleichen, danach manuell installieren. **Ungesigniert:** Smart App Control kann weiterhin blockieren. Defender/SAC nicht deaktivieren; bei Blockierung nicht umgehen. Nur synthetische Profile nutzen, Cloud deaktiviert lassen. Upgrade über vorhandene private Installationen ist keine abgenommene Datenmigration und gehört zur separaten Hardwareprüfung.
+
+### Echte installierte Windowsbilder
+
+| Windows-Renderer |1920×1080|1650×930|390×600|
+|---|---|---|---|
+| Desktop/Preset/CSS-Fallback | ![Desktop/Preset/CSS-Fallback](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/desktop-1920.png) | ![Desktop/Preset/CSS-Fallback](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/desktop-1650.png) | ![Desktop/Preset/CSS-Fallback](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/desktop-390.png) |
+| Native Systemfähigkeiten | ![Native Systemfähigkeiten](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/system-status-1920.png) | ![Native Systemfähigkeiten](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/system-status-1650.png) | ![Native Systemfähigkeiten](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/system-status-390.png) |
+| Kontrollzentrum | ![Kontrollzentrum](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/island-open-1920.png) | ![Kontrollzentrum](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/island-open-1650.png) | ![Kontrollzentrum](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/island-open-390.png) |
+| Spotlight | ![Spotlight](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/deep-spotlight-1920.png) | ![Spotlight](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/deep-spotlight-1650.png) | ![Spotlight](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/deep-spotlight-390.png) |
+| MacLock | ![MacLock](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-lockscreen-1920.png) | ![MacLock](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-lockscreen-1650.png) | ![MacLock](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-lockscreen-390.png) |
+| Appdesktop/Finder | ![Appdesktop/Finder](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-desktop-1920.png) | ![Appdesktop/Finder](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-desktop-1650.png) | ![Appdesktop/Finder](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-desktop-390.png) |
+| Notes | ![Notes](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-notes-1920.png) | ![Notes](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-notes-1650.png) | ![Notes](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r1-notes-390.png) |
+
+[Native Bearbeiten-/Notes-Aufnahme](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/native-edit-notes.png) · [Windows-Snap](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r2-snap.png) · [Windows-MRU](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r2-switcher.png) · [Musik/Widget](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r2-music-widget.png) · [neutral gesperrt](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/r2-locked-neutral.png).
+
+Die CI schreibt nur fest erlaubte PNG-Dateien aus den isolierten installierten Tests und bereinigte Metadaten auf den unveränderten eigenen Featurebranch. Kein Force-Push, keine Main-/PR-Änderung, keine Profile/Passwörter/rohen Logs in diesem Commit. Erwarteter Remote-SHA wird vorher geprüft; bei fremdem Fortschritt bleiben Bilder ausschließlich im Actions-Artefakt. Keine automatische App-/Websiteveröffentlichung.
+
+### Abschlussumfang
+
+A: gemeinsamer Materialpfad/Preblur/Originalparameter/CornerBorder und überprüfte Fallbacks vertieft; restliche Qt-Linsen/Inhaltsmasken offen. B: echte begrenzte OS-Capabilities, sichere Systemaktionen/Clipboard, Finder-Raceschutz und26px-Menüzeile nutzbar; anspruchsvollere native Hardwareadapter/Hyprland-Ereignisstream offen. C: aktueller R4 tatsächlich gebaut, installiert und im nativen Windowsrunner geprüft. **Kein Anspruch auf vollständigen MacShell-Port oder physische Hardwarefreigabe.** [Unveränderte Schutzdateien mit Hashes](visual/system-evolution-1/C/protected-files.json); bestehende Dock-/Island-/M1-/M2-/MacLock-/Cloud-/R1/R2/R3-Toolchain erhalten. Kein Cloudlogin, keine privaten Daten, keine iPad-Veröffentlichung. Nach Dokumentationssicherung STOP.
+
+
+### Shader-Vergleich mit dem bereits gesicherten8A-Originalstand
+
+Die8A-Aufnahmen stammen unverändert aus dem fixierten Ausgangscommit. Beide Shaderbilder sind **Softwarediagnose, kein Hardwarebeleg**; gleiche Wallpaper-/Preset-/Viewportpipeline, natürlich unterschiedliche Uhrzeit. Die stärkere geglättete Refraktion kommt vom nun laufenden Originalradius-Prepass und den ausgeführten Material-/Borderpfaden, nicht von geänderten8A-Dock-/Widget-Tintwerten. Die guten8A-Dock-/Widget-CSS-Fallbackwerte bleiben ausdrücklich erhalten; R4 verpackt sie erstmals zusammen mit diesen Erweiterungen.
+
+|1920×1080|8A ohne originalradiusnahen Prepass|Evolution1 mit gecachtem Prepass|
+|---|---|---|
+|Normales Wallpaper / isolierte Shader|![8A](visual/tahoe8a-after-diagnostic/desktop-1920.png)|![Evolution](visual/system-evolution-1/final-diagnostic/desktop-1920.png)|
+|Identisches synthetisches Muster / isolierte Shader|![8A](visual/tahoe8a-after-diagnostic/stripes-1920.png)|![Evolution](visual/system-evolution-1/final-diagnostic/stripes-1920.png)|
+
+
+Endgültige Workflowhärtung: Im mehrzeiligen PowerShell-Validierungsblock wird **jeder** native Exitcode sofort geprüft (Link/Install/Source/Modern/Catalina/Runtime). Ein früher Fehler kann nicht durch ein später erfolgreiches Kommando verdeckt werden. Separate Regression ergänzt, lokaler Abschluss491/491. Der endgültige Windowslauf mit dieser Härtung ist vollständig grün; alle final verlinkten Installer-/Bilddaten stammen aus genau diesem Lauf. Bereits frühere erfolgreiche R4-Vergänger bleiben nur als historische Nachweise bestehen.

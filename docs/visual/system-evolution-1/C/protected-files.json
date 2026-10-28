@@ -1,0 +1,92 @@
+[
+  {
+    "file": "air-island.js",
+    "identical": true,
+    "sha256": "8571dcd1f2acb1028ef747a52ae594f9870084e42e30b562aeea6513dcb27a30"
+  },
+  {
+    "file": "air-island.css",
+    "identical": true,
+    "sha256": "022b0b782ab1f12966493b4cf1aff2504ecff26eaebebf304ae73424b54d6480"
+  },
+  {
+    "file": "air-modern-dock.css",
+    "identical": true,
+    "sha256": "a9843d8d78274bb0253035c8be77c6ace849430a3e0e7a6decd21605ab2096e1"
+  },
+  {
+    "file": "air-macshell-dock.js",
+    "identical": true,
+    "sha256": "18a20278a5d94e7a38224e925e3dac32d497f9acde1287b22ae737c737f946b7"
+  },
+  {
+    "file": "app.js",
+    "identical": true,
+    "sha256": "a24c5b876aafd6f833578b6749094bfe359d11ef6d1a38a9cdc67727fc97772d"
+  },
+  {
+    "file": "styles.css",
+    "identical": true,
+    "sha256": "09f5fe572e758b0def129174d2504a04b741f7c16935bc2e6c3fd730875179c7"
+  },
+  {
+    "file": "maclock-layout.js",
+    "identical": true,
+    "sha256": "41265c8701f4da7e0ef7ab6e8250662fd2cb11782595683994ac88f0173ea837"
+  },
+  {
+    "file": "maclock-motion.js",
+    "identical": true,
+    "sha256": "8470b967410dcef634dbb20152daec8a120916178571268fe02368b73934b095"
+  },
+  {
+    "file": "maclock-morph.js",
+    "identical": true,
+    "sha256": "83c279f840cc9f3735356d1e649bf5fa1f2da73d8538ef97bfbc32200b25da00"
+  },
+  {
+    "file": "maclock-glass.js",
+    "identical": true,
+    "sha256": "33f80088776f7fc9d635574335a78922cb0279a4b2357fa6420a1f8619b2bc95"
+  },
+  {
+    "file": "maclock-shaders.js",
+    "identical": true,
+    "sha256": "7ac2706e75b6acd774aa2fe49bbfbc5ec7ffc3b58a311d3d07688f8f5e05b595"
+  },
+  {
+    "file": ".github/workflows/build-windows-r1.yml",
+    "identical": true,
+    "sha256": "5cb67029a41cab2345266cc7b1927cf3e96266b58dc54dc6e932b1faae24d0f2"
+  },
+  {
+    "file": ".github/workflows/build-windows-r2.yml",
+    "identical": true,
+    "sha256": "a1720d4fcc521f139ffda8ebd827fada500fa04de0c3f3fb36f5c62abb002f91"
+  },
+  {
+    "file": ".github/workflows/build-windows-r3.yml",
+    "identical": true,
+    "sha256": "f39dc8bc8bbc5c4fa4e7ed44355fa924c5f3a084d4453a0a6e2990af67dbcb09"
+  },
+  {
+    "file": "build/windows-x64/package.json",
+    "identical": true,
+    "sha256": "2275fa0b06a1589c9837d0e16d93106e8deec3f567bb02ef5b4bfb82c549862b"
+  },
+  {
+    "file": "build/windows-x64/package-lock.json",
+    "identical": true,
+    "sha256": "eea324e51f020ee1894c61bfb1869034712b34e977338cb400c2a40d45a399e1"
+  },
+  {
+    "file": "src/main/cloud-notes.cjs",
+    "identical": true,
+    "sha256": "844bbe5488a35b092e8240410625f521058715e504782237a9edc13ac145cb33"
+  },
+  {
+    "file": "pwa/adapter.js",
+    "identical": true,
+    "sha256": "a6a1cdb277162f900d485d2c50a4bdadfccd297b712e1be86aabc2ecd91506a0"
+  }
+]
