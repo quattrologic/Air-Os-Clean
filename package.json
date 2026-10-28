@@ -153,7 +153,9 @@
       "third_party/r5/**/*",
       "src/core/player-art-path.js",
       "air-player-art.js",
-      "air-scroll-feather.js"
+      "air-scroll-feather.js",
+      "hyprland-shaders.js",
+      "third_party/hyprland/**/*"
     ],
     "mac": {
       "target": [

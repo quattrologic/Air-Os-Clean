@@ -1,0 +1,3 @@
+Hyprland Copyright (c) 2022-2026 vaxerski. BSD-3-Clause; full LICENSE retained.
+Pinned 0aa6745f705f2c4b0a5004eb019ef76e5bbdb426. Original shader and pure layout calculations adapted to Electron. No Wayland/DRM/Hyprutils runtime is bundled.
+Execution paths and non-executed references are distinguished in docs/AIR_OS_R6_HYPRLAND_SOURCE_PORT.md. Shader comments/algorithm links are retained.

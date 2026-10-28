@@ -1,0 +1,132 @@
+{
+  "project": "https://github.com/hyprwm/Hyprland",
+  "commit": "0aa6745f705f2c4b0a5004eb019ef76e5bbdb426",
+  "license": "BSD-3-Clause",
+  "files": [
+    {
+      "source": "src/render/shaders/glsl/acrylicfinish.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/acrylicfinish.frag",
+      "sha256": "dd54dedaf627b7a32e3600979f0d2aa996025205dd5211fd79846ead970b470a"
+    },
+    {
+      "source": "src/render/shaders/glsl/glassFinish.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/glassFinish.glsl",
+      "sha256": "cfbbebda1310ee6aa4f60d21f88e26b7c263519d4a0045c4a04ff65ed3298e65"
+    },
+    {
+      "source": "src/render/shaders/glsl/blur1.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/blur1.frag",
+      "sha256": "ea384ff735b47417aac1873579582dca3a8e57e9bbde0b643e6f15b2ffae3c68"
+    },
+    {
+      "source": "src/render/shaders/glsl/blur1.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/blur1.glsl",
+      "sha256": "95477273ac1f55a5f0be1337bd9034bf07b0aaada8c59a7cec8c1ef27b81959a"
+    },
+    {
+      "source": "src/render/shaders/glsl/blur2.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/blur2.frag",
+      "sha256": "7df6bff77c333d0f956c4285c56902c2068e8dfca3b554d8e2fd46f7dbbaf7f5"
+    },
+    {
+      "source": "src/render/shaders/glsl/blur2.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/blur2.glsl",
+      "sha256": "4a51510f03c86cfe9aa58ca5973a0855ae1aa0019a159c360131dccdb0254e5f"
+    },
+    {
+      "source": "src/render/shaders/glsl/blurFinish.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/blurFinish.glsl",
+      "sha256": "1f253500eca4a7192f585c9d4ddce8a0563d6237c1d86bfe18d5732f4f7818e6"
+    },
+    {
+      "source": "src/render/shaders/glsl/cm_helpers.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/cm_helpers.glsl",
+      "sha256": "b7838b83e1f4d47e329aff8eaa732591216da2f68bda106e3ab2574184020291"
+    },
+    {
+      "source": "src/render/shaders/glsl/constants.h",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/constants.h",
+      "sha256": "40467a58a526d038313e2f9ffad940862599d2d90def5feffe1c7608b8f85d04"
+    },
+    {
+      "source": "src/render/shaders/glsl/rounding.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/rounding.glsl",
+      "sha256": "67efb089576ed2b8ddb327369e75049cccc822564e0e5d845d9c6f325f4de9dc"
+    },
+    {
+      "source": "src/render/shaders/glsl/inner_glow.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/inner_glow.frag",
+      "sha256": "60b5bf2771382af07a19cee5e66fe909030bbe087217f9d9baaf122bcd395e02"
+    },
+    {
+      "source": "src/render/shaders/glsl/inner_glow.glsl",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/inner_glow.glsl",
+      "sha256": "7858f0226aebfabdc78e6eaae3cba524ec3173b2d59a021d5cdc0bb54a66293b"
+    },
+    {
+      "source": "src/render/shaders/glsl/shadow.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/shadow.frag",
+      "sha256": "1ac26794543faf6ee9668de4d40864222aaf51a04a2fa7d0fe572fbf4bd34d9c"
+    },
+    {
+      "source": "src/render/shaders/glsl/border.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/border.frag",
+      "sha256": "11c5d00accc25824500d0693ae85484b639fae111c59a4648934f63bd1498f78"
+    },
+    {
+      "source": "src/render/shaders/glsl/prismfinish.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/prismfinish.frag",
+      "sha256": "f8ed48b532039e1fc3106222b3758606605ef4eae37e13f023a1a01f6bfa0d4e"
+    },
+    {
+      "source": "src/render/shaders/glsl/frostfinish.frag",
+      "local": "third_party/hyprland/original/src/render/shaders/glsl/frostfinish.frag",
+      "sha256": "afd20c697e8cc15a83c01f8eb9cc95c348773d05edbbf076af23d1096a75df0b"
+    },
+    {
+      "source": "src/render/gl/blur/Acrylic.cpp",
+      "local": "third_party/hyprland/original/src/render/gl/blur/Acrylic.cpp",
+      "sha256": "fd468919cf043c016707f808d5c462897ac939439fda46dfda8a062d80f97e0a"
+    },
+    {
+      "source": "src/layout/algorithm/tiled/dwindle/DwindleAlgorithm.cpp",
+      "local": "third_party/hyprland/original/src/layout/algorithm/tiled/dwindle/DwindleAlgorithm.cpp",
+      "sha256": "886049e3dde2ec87dadb8294dc50d7522db8c63399ed89ecadceaadaa9023a52"
+    },
+    {
+      "source": "src/layout/algorithm/tiled/master/MasterAlgorithm.cpp",
+      "local": "third_party/hyprland/original/src/layout/algorithm/tiled/master/MasterAlgorithm.cpp",
+      "sha256": "576631e765679da4c5369ce1153226f7a92ae630e71b3407db2daa2947ecffd3"
+    },
+    {
+      "source": "src/layout/algorithm/tiled/monocle/MonocleAlgorithm.cpp",
+      "local": "third_party/hyprland/original/src/layout/algorithm/tiled/monocle/MonocleAlgorithm.cpp",
+      "sha256": "3fd798edc318f98d6d8c63705fbdcbc799d66ae5047b8e34e2ac8d5128a1d068"
+    },
+    {
+      "source": "src/helpers/AnimatedVariable.hpp",
+      "local": "third_party/hyprland/original/src/helpers/AnimatedVariable.hpp",
+      "sha256": "5dbe40a2305a42c27ded1b0395f6300b1ee7726ddbb513be6ebedddec110ffc3"
+    },
+    {
+      "source": "src/helpers/Color.cpp",
+      "local": "third_party/hyprland/original/src/helpers/Color.cpp",
+      "sha256": "0e7d472cb56d9fd9f006e3d7cff930ee4341ed587cde7c47a3242b01447aa57f"
+    },
+    {
+      "source": "src/animation/AnimationManager.cpp",
+      "local": "third_party/hyprland/original/src/animation/AnimationManager.cpp",
+      "sha256": "9e6ebef3cf34a7f8940c5987c745c6f0f9b1347c577a2a1108328b62511868f7"
+    },
+    {
+      "source": "src/animation/WorkspaceAnimationController.cpp",
+      "local": "third_party/hyprland/original/src/animation/WorkspaceAnimationController.cpp",
+      "sha256": "490cc998a6c3ebac3e10e89330fb013adebf94c5191e6123172fa6f7b9aa415b"
+    },
+    {
+      "source": "src/config/values/ConfigValues.cpp",
+      "local": "third_party/hyprland/original/src/config/values/ConfigValues.cpp",
+      "sha256": "19e60dacf41d1cde34633cd55fb8b6d7fe3750c3a83f22aaa6afa2a2d7696560"
+    }
+  ]
+}

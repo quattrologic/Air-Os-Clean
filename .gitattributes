@@ -40,3 +40,5 @@ third_party/evolution1/original/* -text
 # Evolution1: MIT/LICENSE/NOTICE must retain exact bytes in native Windows R4.
 third_party/evolution1/** -text
 third_party/r5/** -text
+
+third_party/hyprland/** -text
