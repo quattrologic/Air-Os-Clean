@@ -1,0 +1,9 @@
+{
+  "os": "linux",
+  "profiles": 2,
+  "isolated": true,
+  "layoutRestart": true,
+  "mode": "master",
+  "workspace": 2,
+  "hardwareAcceptance": false
+}

@@ -1,0 +1,104 @@
+{
+  "run": "40731104765",
+  "job": "122967339513",
+  "steps": [
+    {
+      "name": "Set up job",
+      "outcome": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Require native Windows x64 and isolated R6 branch",
+      "outcome": "success"
+    },
+    {
+      "name": "Install unchanged frozen R1 modern toolchain",
+      "outcome": "success"
+    },
+    {
+      "name": "Mandatory dependency audit including development dependencies",
+      "outcome": "success"
+    },
+    {
+      "name": "Validate pinned R6 source and all runtime assets",
+      "outcome": "success"
+    },
+    {
+      "name": "All regression and security tests",
+      "outcome": "success"
+    },
+    {
+      "name": "Prepare R6 identity from exact checkout",
+      "outcome": "success"
+    },
+    {
+      "name": "Build unsigned R6 Windows x64 NSIS without publishing",
+      "outcome": "success"
+    },
+    {
+      "name": "Verify all ASAR source bytes, x64 architecture, runtime payload and SHA256",
+      "outcome": "success"
+    },
+    {
+      "name": "Install actual R6 installer only into runner temporary directory",
+      "outcome": "success"
+    },
+    {
+      "name": "Installed native Electron profiles, Tahoe apps, M1 M2, audio, MRU, lock and fallback",
+      "outcome": "success"
+    },
+    {
+      "name": "Installed native capabilities and materials and internal Hyprland layouts across four viewports",
+      "outcome": "success"
+    },
+    {
+      "name": "Installed isolated shader diagnostics (not hardware acceptance)",
+      "outcome": "success"
+    },
+    {
+      "name": "Record actual outcomes without claiming physical hardware or SAC approval",
+      "outcome": "success"
+    },
+    {
+      "name": "Commit only verified synthetic Windows PNGs on unchanged feature branch",
+      "outcome": "success"
+    },
+    {
+      "name": "Upload real R6 installer, checksum, metadata and instructions",
+      "outcome": "success"
+    },
+    {
+      "name": "Upload test logs, Windows screenshots, audit and failure evidence",
+      "outcome": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "outcome": "success"
+    },
+    {
+      "name": "Complete job",
+      "outcome": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "12835987657",
+      "name": "Air-OS-R6-Windows-evidence-58e395966d2699a707eac6fa5a8fa5860bb4ce66-1"
+    },
+    {
+      "id": "12835359688",
+      "name": "Air-OS-Ultimate-Windows-x64-R6-58e395966d2699a707eac6fa5a8fa5860bb4ce66-85eec3e2d2b83756e2f2cf5bf6307fcdf39e6403f88bd102ae85ab7dd3276e31-1"
+    }
+  ]
+}

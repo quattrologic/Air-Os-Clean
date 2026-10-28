@@ -1,3 +1,13 @@
+# R6 — geprüft und gesichert
+
+Branch feat/air-os-r6-macshell-hyprland; Basis7c3fc8d; Produkt-/Build58e395966d2699a707eac6fa5a8fa5860bb4ce66; Windows-Bildcommit762707f. A08d4737/B8374257/Cd1e9ca5/D7d1f447 abgeschlossen. 533/533 lokale Tests, moderner Audit0,365Runtimeassets,350PWA-Buildassets. Echte Linux-GUI4Größen/volle bestehende Suite, Profile-/Neustartprobe, Pixelnachweis und M2-Fokuskorrektur bestanden.
+
+[NativeWindows-R6-CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40731104765):22/22Schritte grün, NSIS/x64/ASAR/Payload/Installation und alle installierten GUIs bestanden. [Testinstaller](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40731104765/artifacts/12835359688),122556185Bytes,SHA25685eec3e2d2b83756e2f2cf5bf6307fcdf39e6403f88bd102ae85ab7dd3276e31. Normaler Software-CSS-Pfad getrennt von SwiftShaderdiagnose; Idle0. Echter öffentlicher Berlin-Wetterabruf im Windows-Runner erfolgreich. Ungesigniert/keinProduktionsrelease; physischeGPU/SAC/macOS/Hyprland/Audio/Picker offen.
+
+[Ergebnis](AIR_OS_R6_REFERENCE_MATCH.md),[ausgeführter Source-Port](AIR_OS_R6_HYPRLAND_SOURCE_PORT.md). Nächste drei Einheiten nur nach neuem Auftrag: physischer Windows11-/GPU-/SAC-Test, echte Hyprlandhost-/Signingabnahme, verbleibende Original-Compositor-/MacLockports. Aktueller Auftrag am gesicherten geprüften Teilport abgeschlossen; keine Hintergrundarbeit,STOP.
+
+---
+
 # R6 checkpoint D
 
 A08d4737/B8374257/Cd1e9ca5 gesichert. 531/531 Tests, moderner Audit0, vollständige bestehende Linux-GUI und gezielte Layout/M2-Fokusprüfung bestanden. Originalmaterialien auf echten synthetischen Streifen pixelgemessen. Freiwilliger begrenzter Linux-Socket2-Adapter mit Tests; nativer Hyprlandhost fehlt. Als Nächstes: Windows-R6/Installation/GUI, Abschlussbelege. Laufenden finalen R6-CSS-Lauf prüfen.
