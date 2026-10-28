@@ -23,6 +23,10 @@ function port(file,contour=false){let s=fs.readFileSync(path.join(root,file),'ut
  s=s.replace(/layout\(std140, binding = 0\) uniform buf \{([\s\S]*?)\};/,(_,block)=>[...block.matchAll(/^\s*(mat4|vec[234]|float)\s+(\w+)\s*;/gm)].map(m=>'uniform '+m[1]+' '+m[2]+';').join('\n'));
  const helper=contour?'uniform vec2 glassSize;\n'+shape:shape;
  const i=s.indexOf(contour?'float sdRoundRect':'const int');s=s.slice(0,i)+helper+'\n'+s.slice(i);
+ if(!contour){
+  s=s.replace('uniform sampler2D src;', 'uniform sampler2D src;\nuniform sampler2D airDetailSrc;\nuniform float airDetailWeight;');
+  s=s.replace('return textureLod(src, clamp(uv, vec2(0.001), vec2(0.999)), lod).rgb;', 'vec2 coord=clamp(uv,vec2(.001),vec2(.999));float detail=airDetailWeight*(1.0-smoothstep(2.0,max(3.0,bezel*1.45),max(-airDistance(qt_TexCoord0*itemSize),0.0)));if(detail<=0.001)return textureLod(src,coord,lod).rgb;if(detail>=0.999)return textureLod(airDetailSrc,coord,lod).rgb;return mix(textureLod(src,coord,lod).rgb,textureLod(airDetailSrc,coord,lod).rgb,detail);');
+ }
  if(contour)s=s.replace('sdRoundRect(p - c, c - pad, cornerR)','airDistance(p)');
  else{s=s.replace('vec2 q  = p - vec2(pad) - hs;','vec2 q  = p - vec2(pad) - hs - vec2(airEdgeInset,0.0);').replace('roundBox(q, hs, r)','airDistance(p)').replace('roundBox(q - vec2(0.0, 3.0), hs, r)','airDistance(p - vec2(0.0,3.0))');s=s.replace(/vec2 g\s*=\s*\(length\(m\)[\s\S]*?;/,'vec2 g = airNormal(p);');s=s.replace('(pItem + srcOffset) / srcSize','(pItem * airSourceScale + srcOffset) / srcSize');}
  return s;

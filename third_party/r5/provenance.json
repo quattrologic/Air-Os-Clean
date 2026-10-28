@@ -1,0 +1,41 @@
+{
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT",
+  "sources": [
+    {
+      "file": "third_party/r5/original/PlayerArt.qml",
+      "source": "MacShell/PlayerArt.qml",
+      "sha256": "7550f300d043fb476b7b655dbffdfcd6c00a5c6a858276c1072f38375cc3121e"
+    },
+    {
+      "file": "third_party/r5/original/PlayerBtn.qml",
+      "source": "MacShell/PlayerBtn.qml",
+      "sha256": "89e7dddab38c6fd16efe6e28c27156cc9edc11ebdb34240b84d8fa9ed62720bc"
+    },
+    {
+      "file": "third_party/r5/original/LiquidKnob.qml",
+      "source": "MacShell/LiquidKnob.qml",
+      "sha256": "4f0706643b8afe970a32fddc2b3796d18155a9e5ca89c9b0053b8eeaea8de5c8"
+    },
+    {
+      "file": "third_party/r5/original/LiquidSlider.qml",
+      "source": "MacShell/LiquidSlider.qml",
+      "sha256": "4bd489e6e03deab610939c47d5b7a441776fd95ce6137987484c0074cfbb98a0"
+    },
+    {
+      "file": "third_party/r5/original/LiquidSwitch.qml",
+      "source": "MacShell/LiquidSwitch.qml",
+      "sha256": "8ec89e8e5915ef0982bd58f1ebd9b89ed6f60281129f7e3c6675f14dc22fdb86"
+    },
+    {
+      "file": "third_party/r5/original/LiquidScrollBar.qml",
+      "source": "MacShell/LiquidScrollBar.qml",
+      "sha256": "de4ad3a8d505dba5d58cd76f236e2af2852c26b65b607655800022938237ab3e"
+    },
+    {
+      "file": "third_party/r5/original/CalendarWidget.qml",
+      "source": "MacShell/CalendarWidget.qml",
+      "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9"
+    }
+  ]
+}

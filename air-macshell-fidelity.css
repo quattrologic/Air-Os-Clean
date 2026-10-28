@@ -1,0 +1,10 @@
+/* MacShell local GlassSlab/LiquidKnob: the native input remains the hit/focus/value owner. */
+.r5-control-parent{position:relative}.r5-local-lens{position:absolute;pointer-events:none;display:block;z-index:3;box-shadow:0 1.5px 4px #0003;overflow:hidden}.r5-local-lens[hidden]{display:none!important}.r5-lens-fallback{width:100%;height:100%;display:block;pointer-events:none}.r5-local-lens.glass2-active>.r5-lens-fallback{visibility:hidden}
+html[data-desktop-theme=modern] .r5-native-lens.t7-slider::-webkit-slider-thumb{background:transparent!important;box-shadow:none!important}
+html[data-desktop-theme=modern] .r5-native-lens.t7-switch:before{background:transparent!important;box-shadow:none!important;border:0!important}
+html:not([data-desktop-theme=modern]) .r5-local-lens{display:none!important}
+@media(forced-colors:active){.r5-local-lens{display:none!important}.r5-native-lens{appearance:auto!important}}
+@media(forced-colors:active){html[data-desktop-theme=modern] .r5-native-lens.t7-slider::-webkit-slider-thumb{background:ButtonText!important;box-shadow:none!important}html[data-desktop-theme=modern] .r5-native-lens.t7-switch:before{background:ButtonText!important}}
+.r5-segment-lens{z-index:0;box-shadow:0 1px 3px #0003}
+html[data-desktop-theme=modern] .r5-native-segment:before{background:transparent!important;box-shadow:none!important}
+@media(forced-colors:active){html[data-desktop-theme=modern] .r5-native-segment:before{background:Highlight!important}}

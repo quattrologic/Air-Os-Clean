@@ -146,7 +146,11 @@
       "air-platform-system.css",
       "src/main/system-capabilities.cjs",
       "src/main/hyprland-adapter.cjs",
-      "src/core/clipboard-edit.js"
+      "src/core/clipboard-edit.js",
+      "src/core/macshell-fidelity.js",
+      "air-glass-controls.js",
+      "air-macshell-fidelity.css",
+      "third_party/r5/**/*"
     ],
     "mac": {
       "target": [

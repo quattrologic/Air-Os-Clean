@@ -1,0 +1,3 @@
+MacShell — Copyright (c) 2026 Rickky. MIT.
+Source commit 1bdb51870b621100fd2709f66c8f8e00ab17b9c4.
+Original Qt components ported to Electron; manifest describes executed paths and adaptations. Existing original shaders and QML references are reused, not relicensed.
