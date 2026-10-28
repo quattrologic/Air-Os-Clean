@@ -141,7 +141,11 @@
       "third_party/tahoe7/**/*",
       "src/core/macshell-glyphs7.js",
       "air-macshell-status.js",
-      "third_party/evolution1/**/*"
+      "third_party/evolution1/**/*",
+      "air-platform-system.js",
+      "air-platform-system.css",
+      "src/main/system-capabilities.cjs",
+      "src/main/hyprland-adapter.cjs"
     ],
     "mac": {
       "target": [

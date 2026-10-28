@@ -11,6 +11,14 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   restart: () => ipcRenderer.invoke('air-os:restart-app'),
   quit: () => ipcRenderer.invoke('air-os:quit-app'),
   platform: process.platform,
+  system: Object.freeze({
+    snapshot: owner=>ipcRenderer.invoke('air-os:system:snapshot',owner),
+    openSettings: (kind,owner)=>ipcRenderer.invoke('air-os:system:settings',kind,owner),
+    copy: (text,owner)=>ipcRenderer.invoke('air-os:system:copy',text,owner),
+    paste: owner=>ipcRenderer.invoke('air-os:system:paste',owner),
+    hyprland: owner=>ipcRenderer.invoke('air-os:system:hyprland',owner),
+    onChange: callback=>{if(typeof callback!=='function')throw Error('Listener required');const listener=(_event,value)=>callback(value);ipcRenderer.on('air-os:system:changed',listener);return()=>ipcRenderer.removeListener('air-os:system:changed',listener);}
+  }),
   control: Object.freeze({status:owner=>ipcRenderer.invoke('air-os:control:status',owner),setKeepAwake:(enabled,owner)=>ipcRenderer.invoke('air-os:control:awake',enabled,owner)}),
   glass: Object.freeze({testPolicy:()=>ipcRenderer.invoke('air-os:glass:test-policy')}),
   launchSpotify: () => ipcRenderer.invoke('air-os:spotify:launch'),

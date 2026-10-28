@@ -1,0 +1,12 @@
+/* Evolution1:26px menu row. Island/M1 and Dock/M2 retain their own geometry. */
+html[data-desktop-theme=modern] .t6-menu-bar{top:5px;height:26px;align-items:center}
+html[data-desktop-theme=modern] .t6-menu-bar button{min-height:26px;height:26px;padding:3px 8px}
+html[data-desktop-theme=modern] .t6-status{top:5px;height:26px;gap:3px}
+html[data-desktop-theme=modern] .t6-status :is(button,#deep-history-toggle,#air-search-open){height:26px;min-height:26px;width:28px;padding:3px}
+html[data-desktop-theme=modern] .air-modern-shell{top:5px}
+html[data-desktop-theme=modern] .air-system-toggle{height:26px;min-height:26px;padding:3px 8px}
+html[data-desktop-theme=modern] #t7-date-status{display:none!important}
+.evolution-system-panel{position:fixed;right:10px;top:38px;left:auto;bottom:auto;width:350px;max-width:calc(100vw - 20px);max-height:calc(100vh - 66px);overflow:auto;box-sizing:border-box;padding:14px;z-index:580;border-radius:14px;color:#f5f5f7}
+.evolution-system-panel h2{font-size:15px;margin:0 0 10px}.evolution-system-panel dl{font-size:12px;margin:0 0 10px}.evolution-system-panel dt{font-weight:650;margin-top:8px}.evolution-system-panel dd{margin:2px 0;line-height:1.4;color:#e2e4e8}.evolution-system-panel button{min-height:28px;padding:5px 8px;margin:3px;border-radius:7px;background:#ffffff12;color:inherit;border:1px solid #ffffff30;font:12px system-ui;cursor:pointer}.evolution-system-panel :focus-visible{outline:2px solid #9cdaa1;outline-offset:1px}.evolution-system-panel [role=status]:empty{display:none}.evolution-system-panel [role=status]{font-size:12px}.system-native-actions{display:flex;flex-wrap:wrap;gap:2px}
+@media(max-width:700px){html[data-desktop-theme=modern] :is(#t7-focus-status,#t7-media-status){display:none!important}html[data-desktop-theme=modern] .t6-status{gap:0;right:4px}html[data-desktop-theme=modern] .t6-status button{width:26px!important;min-width:26px!important}}
+@media(forced-colors:active){.evolution-system-panel{background:Canvas!important;color:CanvasText!important}.evolution-system-panel dd{color:CanvasText}}

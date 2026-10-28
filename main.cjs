@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage, powerSaveBlocker } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage, powerSaveBlocker, powerMonitor, screen, net, clipboard } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
@@ -14,6 +14,7 @@ const spotifyLauncher=require('./src/main/spotify-launcher.cjs').createSpotifyLa
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
+let fileSelectionRevision = 0;
 const preferenceStore=require('./src/main/preferences.cjs').createStore({
  root:()=>app.getPath('userData'),
  isNewProfile:username=>readAccounts().some(account=>account.usernameKey===username.toLocaleLowerCase('en-US')&&account.profileSchemaVersion===2)
@@ -31,6 +32,15 @@ const airAppManager=require('./src/main/airapp-manager.cjs').createManager({
 const airAppRuntime=require('./src/main/airapp-runtime.cjs').createRuntime({BrowserWindow,protocol:require('electron').protocol,session,manager:airAppManager});
 const keepAwake=require('./src/main/keep-awake.cjs').createController(powerSaveBlocker,{available:process.env.AIR_GUI_TEST_ISOLATED!=='1'});
 app.on('before-quit',()=>keepAwake.release());
+let systemService=null;
+const hyprland=require('./src/main/hyprland-adapter.cjs').create();
+function system(){
+ if(!systemService)systemService=require('./src/main/system-capabilities.cjs').create({platform:process.platform,screen,powerMonitor,net,shell,clipboard,hyprland,onChange:value=>{
+  if(mainWindow&&!mainWindow.isDestroyed()&&!mainWindow.isMinimized()&&!mainWindow.isMaximized()){const corrected=require('./src/main/system-capabilities.cjs').fitWindow(mainWindow.getBounds(),value.displays.map(d=>d.workArea));if(corrected)mainWindow.setBounds(corrected);}
+  if(activeUser&&mainWindow&&!mainWindow.isDestroyed()&&mainWindow.webContents.getURL()===require('node:url').pathToFileURL(path.join(app.getAppPath(),'index.html')).href)mainWindow.webContents.send('air-os:system:changed',{owner:activeUser.preferenceSession,value});
+ }});return systemService;
+}
+app.on('before-quit',()=>systemService?.dispose());
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
@@ -79,7 +89,7 @@ function openLogin(preservePreview=false) {
   airAppRuntime.closeAll();
   airCloud.suspend(activeUser?.username);
   activeUser = null;
-  fileWorkspaceRoot = null;
+  fileWorkspaceRoot = null;fileSelectionRevision++;
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.loadFile(path.join(app.getAppPath(), 'login.html'));
     mainWindow.setTitle('Air-OS – Anmeldung');
@@ -130,6 +140,16 @@ function requirePreferenceUser(event){requireTrusted(event);if(!activeUser)throw
 function requireControlSession(event,owner){requirePreferenceUser(event);if(owner!==activeUser.preferenceSession||event.sender!==mainWindow?.webContents||event.senderFrame!==event.sender.mainFrame||fileURLToPath(event.senderFrame.url)!==path.join(app.getAppPath(),'index.html'))throw Error('Die Sitzung hat sich geändert.');return owner;}
 ipcMain.handle('air-os:control:status',(event,owner)=>keepAwake.status(requireControlSession(event,owner)));
 ipcMain.handle('air-os:control:awake',(event,enabled,owner)=>keepAwake.set(enabled,requireControlSession(event,owner)));
+ipcMain.handle('air-os:system:snapshot',(event,owner)=>{requireControlSession(event,owner);return system().snapshot();});
+ipcMain.handle('air-os:system:settings',async(event,kind,owner)=>{requireControlSession(event,owner);await system().openSettings(kind);requireControlSession(event,owner);return{opened:true,kind};});
+ipcMain.handle('air-os:system:copy',async(event,text,owner)=>{requireControlSession(event,owner);const result=await system().copy(text);requireControlSession(event,owner);return result;});
+ipcMain.handle('air-os:system:paste',async(event,owner)=>{requireControlSession(event,owner);const result=await system().paste();requireControlSession(event,owner);return result;});
+ipcMain.handle('air-os:system:hyprland',async(event,owner)=>{
+ requireControlSession(event,owner);if(!hyprland.supported)throw Error('Hyprland nicht verfügbar.');
+ const result=await dialog.showMessageBox(mainWindow,{type:'question',buttons:['Abbrechen','Einmal Status lesen'],defaultId:0,cancelId:0,title:'Hyprland-Freigabe',message:'Aktive Arbeitsbereichsnummer und Fensteranzahl einmal lesen?',detail:'Keine Fenstertitel, Dateien oder Steuerbefehle. Diese Freigabe gilt nur für diese Abfrage.'});
+ requireControlSession(event,owner);if(result.response!==1)return{cancelled:true};
+ const value=await hyprland.read(true);requireControlSession(event,owner);return value;
+});
 // Non-production software rendering is allowed only for an explicitly isolated GUI diagnostic.
 ipcMain.handle('air-os:glass:test-policy',event=>{
  requirePreferenceUser(event);
@@ -423,11 +443,12 @@ function fileRelativeForUI(absolutePath) {
   return path.relative(ensureFileWorkspace(), absolutePath).split(path.sep).join('/');
 }
 ipcMain.handle('air-os:files:select-folder', async event => {
-  requireFileAccess(event);
+  requireFileAccess(event);const owner=activeUser.preferenceSession,ticket=++fileSelectionRevision;
   const result = await dialog.showOpenDialog(mainWindow || undefined, {
     title: 'Ordner für Air-OS auswählen',
     properties: ['openDirectory']
   });
+  requireControlSession(event,owner);if(ticket!==fileSelectionRevision)throw Error('Eine neuere Ordnerauswahl ist bereits aktiv.');
   if (result.canceled || !result.filePaths || !result.filePaths[0]) return null;
   fileWorkspaceRoot = fs.realpathSync(result.filePaths[0]);
   return { name: path.basename(fileWorkspaceRoot) || fileWorkspaceRoot, path: '' };
@@ -444,8 +465,8 @@ ipcMain.handle('air-os:files:current-folder', event => {
 });
 ipcMain.handle('air-os:files:search', async (event, query) => {
   requireFileAccess(event);
-  const root=ensureFileWorkspace();
-  return findFileNames(root,query);
+  const root=ensureFileWorkspace(),owner=activeUser.preferenceSession;
+  const result=await findFileNames(root,query);requireControlSession(event,owner);if(root!==fileWorkspaceRoot)throw Error('Der freigegebene Ordner hat sich geändert.');return result;
 });
 ipcMain.handle('air-os:files:list-directory', (event, relativeValue = '') => {
   requireFileAccess(event);
@@ -551,8 +572,8 @@ ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
   requireFileAccess(event);
   const target = resolveWorkspacePath(relativeValue);
   if (!fs.statSync(target).isFile()) throw new Error('Bitte wähle eine Datei aus.');
-  const error = await shell.openPath(target);
-  return error ? { ok: false, error } : { ok: true };
+  const owner=activeUser.preferenceSession,error = await shell.openPath(target);
+  requireControlSession(event,owner);return error ? { ok: false, error } : { ok: true };
 });
 
 app.whenReady().then(() => {

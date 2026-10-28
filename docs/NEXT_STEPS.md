@@ -1,3 +1,9 @@
+# System Evolution1 — Checkpoint B / R4-Kanal
+
+A-Checkpoint195235f gepusht. Sichere native Capability-Schicht, echter Systemstatus,26px-Menüzeile, sessiongebundene asynchrone Clipboard-/Finderaktionen und optionaler consentgebundener read-only Hyprlandadapter.484/484 Tests,301 Runtimeassets,287 PWA-Buildassets,0 modernes Audit. Echte Linux-GUI3Größen und kompletter Bestandslauf bestanden. Keine Windows-/macOS-/Hyprland-/Hardwareabnahme behauptet. [Bericht/Bilder/Grenzen](AIR_OS_SYSTEM_EVOLUTION_1.md). R4-Workflow vorbereitet; nächste autorisierte Einheiten: nativer CI-Build, installierte Windows-GUI/Systemprüfung, Evidenz-/Artefaktabschluss. Keine Veröffentlichung/Cloudlogin.
+
+---
+
 # System Evolution1 — Checkpoint A
 
 Basis d6af14b, Branch feat/air-os-system-evolution-1. Gemeinsamer gecachter WebGL2-Preblur, GlassSlab-Oberflächen und CornerBorder.470/470 Tests,297 Runtimeassets; echter isolierter Linux-Electron-Diagnoselauf alle drei Größen inklusive M1/M2/ContextLoss/Reduced/Classic/Logout. Kein Hardwarebeleg. [Bericht](AIR_OS_SYSTEM_EVOLUTION_1.md). B-Systemadapter/R4 in Arbeit; API403, noch kein neuer CI-Erfolg. Nächste drei zusammengehörige Einheiten im autorisierten Auftrag: sichere Systemadapter, Status-/Fensterintegration, R4-Runnerabnahme.
