@@ -1,3 +1,15 @@
+# R6.1 — native GUI-Regression konkret korrigiert
+
+Erster nativer Lauf40773273220: Packaging/Installation bestanden, alteGUI fehlgeschlagen (390px Notes-Speichern klickte überlagerndes Dock). Kein Erfolg behauptet. Produktfix: außerhalb neuer Viewports liegende Restore-Boxen zentriert, gültige Bounds erhalten; Max/Tiling-Dock-Autohide4px via Clip/Focus ohne Änderung an M2-Geometrie.539/539 Tests und komplette bestehende Linux-Electron-GUI inklusive zuvor fehlgeschlagenem Notes-Szenario bestanden. Erneute native Abnahme folgt im laufenden Auftrag. Keine weiteren Features beginnen.
+
+---
+
+# R6.1 — Erweiterung mit nativer Windows-Abnahme läuft
+
+Branch fix/air-os-r6-true-fullscreen; Basis2e43327; ursprünglicher geprüfter Hotfix49ee7ee wiederverwendet; Produktcheckpoint1b1f7d74dc1d07394ac54c01fe8b30138cb36e52 gepusht.538/538 Node-Tests, echte Linux-Electron5-Größen-/Dialog-Escape-/Menü-/Doppelklick-/Snap-/F11-/M1/M2-Abnahme bestanden. Reale R6-Vorhermessung1688:Finder y93/H727;nachher y24/H872. Kein reservierter Dockbereich, gemeinsame Workarea, äußere Tiling-Gaps0. Eigener R6.1-Kanal auf R6-Verifiern läuft; Windows-Erfolg erst nach CI bestätigen. [Bericht](AIR_OS_R6_FULL_SCREEN.md). Noch autorisiert: native Installation/GUI, Evidenz/Hash, Abschluss. Keine neuen Produktfeatures beginnen.
+
+---
+
 # R6.1 — Fenstergrenzen-Hotfix geprüft
 
 Basis2e43327423abcce56da464789e01bf92ff7345f0; Branch fix/r6-window-bounds. Modern-Host ohne62pxIsland-/76pxDockreserve; Menü24px, maximierte Fenster bis Unterkante, Dockoverlay. Authentifiziertes natives F11 mit Main/Preload und Geometrieschutz; Classic/M1/M2/Layouts erhalten.535/535 Tests und echte Linux-Electron-Abnahme3Größen/F11/Randdrags/Restore/Layout-M2 bestanden. [Bericht und Screenshots](AIR_OS_R6_1_WINDOW_BOUNDS.md). Keine Installerpipeline geändert/kein Hotfixinstaller gebaut. Nächste drei kleinen Abnahmen nur nach Auftrag: Windows-F11/nativeTitelleiste, DPI/Monitorwechsel, Hotfix in aktuellen Testbuild übernehmen. Aktuelle Sitzung beendet,STOP.

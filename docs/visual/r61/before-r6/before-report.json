@@ -1,0 +1,193 @@
+{
+  "os": "linux",
+  "osRelease": "6.18.55",
+  "arch": "x64",
+  "hardwareAcceptance": false,
+  "viewportMethod": "Native window resized for large views plus CDP renderer metrics; 390px is a narrow renderer, not a native physical 390px display",
+  "modes": [],
+  "nativeMotionPreference": false,
+  "normalMotionScenario": "Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged",
+  "rendererClock": "2026-10-28T12:34:30Z test-only; Main clock and performance.now unchanged",
+  "before": [
+    {
+      "viewport": {
+        "w": 1688,
+        "h": 896
+      },
+      "host": {
+        "x": 0,
+        "y": 93,
+        "width": 1688,
+        "height": 727,
+        "top": 93,
+        "right": 1688,
+        "bottom": 820,
+        "left": 0
+      },
+      "finder": {
+        "x": 0,
+        "y": 93,
+        "width": 1688,
+        "height": 727,
+        "top": 93,
+        "right": 1688,
+        "bottom": 820,
+        "left": 0
+      },
+      "menu": {
+        "x": 74,
+        "y": 5,
+        "width": 399.25,
+        "height": 26,
+        "top": 5,
+        "right": 473.25,
+        "bottom": 31,
+        "left": 74
+      }
+    },
+    {
+      "viewport": {
+        "w": 1920,
+        "h": 1080
+      },
+      "host": {
+        "x": 0,
+        "y": 93,
+        "width": 1920,
+        "height": 911,
+        "top": 93,
+        "right": 1920,
+        "bottom": 1004,
+        "left": 0
+      },
+      "finder": {
+        "x": 0,
+        "y": 93,
+        "width": 1920,
+        "height": 911,
+        "top": 93,
+        "right": 1920,
+        "bottom": 1004,
+        "left": 0
+      },
+      "menu": {
+        "x": 74,
+        "y": 5,
+        "width": 399.25,
+        "height": 26,
+        "top": 5,
+        "right": 473.25,
+        "bottom": 31,
+        "left": 74
+      }
+    },
+    {
+      "viewport": {
+        "w": 1650,
+        "h": 930
+      },
+      "host": {
+        "x": 0,
+        "y": 93,
+        "width": 1650,
+        "height": 761,
+        "top": 93,
+        "right": 1650,
+        "bottom": 854,
+        "left": 0
+      },
+      "finder": {
+        "x": 0,
+        "y": 93,
+        "width": 1650,
+        "height": 761,
+        "top": 93,
+        "right": 1650,
+        "bottom": 854,
+        "left": 0
+      },
+      "menu": {
+        "x": 74,
+        "y": 5,
+        "width": 399.25,
+        "height": 26,
+        "top": 5,
+        "right": 473.25,
+        "bottom": 31,
+        "left": 74
+      }
+    },
+    {
+      "viewport": {
+        "w": 1536,
+        "h": 864
+      },
+      "host": {
+        "x": 0,
+        "y": 93,
+        "width": 1536,
+        "height": 695,
+        "top": 93,
+        "right": 1536,
+        "bottom": 788,
+        "left": 0
+      },
+      "finder": {
+        "x": 0,
+        "y": 93,
+        "width": 1536,
+        "height": 695,
+        "top": 93,
+        "right": 1536,
+        "bottom": 788,
+        "left": 0
+      },
+      "menu": {
+        "x": 74,
+        "y": 5,
+        "width": 399.25,
+        "height": 26,
+        "top": 5,
+        "right": 473.25,
+        "bottom": 31,
+        "left": 74
+      }
+    },
+    {
+      "viewport": {
+        "w": 390,
+        "h": 600
+      },
+      "host": {
+        "x": 0,
+        "y": 91,
+        "width": 390,
+        "height": 433,
+        "top": 91,
+        "right": 390,
+        "bottom": 524,
+        "left": 0
+      },
+      "finder": {
+        "x": 0,
+        "y": 91,
+        "width": 390,
+        "height": 433,
+        "top": 91,
+        "right": 390,
+        "bottom": 524,
+        "left": 0
+      },
+      "menu": {
+        "x": 65,
+        "y": 5,
+        "width": 38,
+        "height": 26,
+        "top": 5,
+        "right": 103,
+        "bottom": 31,
+        "left": 65
+      }
+    }
+  ]
+}
