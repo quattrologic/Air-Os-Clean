@@ -1,0 +1,58 @@
+{
+  "upstream": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "third_party/evolution1/original/CornerBorder.qml",
+      "source": "MacShell/CornerBorder.qml",
+      "sha256": "9dea2f400dbc1700cfad57eeb93af84b34c843b05cbd7c4b0189f3d3882728fd"
+    },
+    {
+      "file": "third_party/evolution1/original/EdgeBlur.qml",
+      "source": "MacShell/EdgeBlur.qml",
+      "sha256": "2b92a4e68383060560b455efb3f2d14a0e017da0cf66a46e527ecdf2f9f8f418"
+    },
+    {
+      "file": "third_party/evolution1/original/FeatherBlur.qml",
+      "source": "MacShell/FeatherBlur.qml",
+      "sha256": "a90258c0a3b02394e78ebda1ab535d39ab4b38b7e626841cf8c4b5b37c874deb"
+    },
+    {
+      "file": "third_party/evolution1/original/GlassSegmented.qml",
+      "source": "MacShell/GlassSegmented.qml",
+      "sha256": "36c7edb71ecd1dac1d84aef1f71ac21519aa0bf53616e935f7d37f20456536c0"
+    },
+    {
+      "file": "third_party/evolution1/original/GlassSlab.qml",
+      "source": "MacShell/GlassSlab.qml",
+      "sha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca"
+    },
+    {
+      "file": "third_party/evolution1/original/GlassSlider.qml",
+      "source": "MacShell/GlassSlider.qml",
+      "sha256": "4e414a0bcff5f8ea778de3acf5ee0657647f38b0c27828463b2c53eb0d3f6344"
+    },
+    {
+      "file": "third_party/evolution1/original/GlassSwitch.qml",
+      "source": "MacShell/GlassSwitch.qml",
+      "sha256": "270a1452b3cc26c2534041b408e8f509dbc44aa9844dcfe811ced7b1af2054fa"
+    },
+    {
+      "file": "third_party/evolution1/original/tintcard.frag",
+      "source": "MacShell/tintcard.frag",
+      "sha256": "fcb5040b7dee6bd3bace55ce8f5295b6d1fd3903772b2d357ea5d712da5f53c5"
+    }
+  ],
+  "executed": [
+    "GlassSlab material profiles on control/menu/switcher/toolbar/launchpad hosts",
+    "CornerBorder onPaint gradient and0.8px line on regular material hosts",
+    "MacDock/MacWidgets/FeatherBlur preblur radii in shared cached two-pass WebGL2 path"
+  ],
+  "adaptations": [
+    "Gaussian17-tap separable half-resolution framebuffer prepass, not identical Qt MultiEffect kernel",
+    "Wallpaper-only, no DOM/window capture",
+    "Native slider/switch semantics and Tahoe7 finite motion preserved; Qt local track lens, FeatherBlur content masks, EdgeBlur not yet integrated",
+    "tintcard original retained for bounded follow-up; no claim it executes in this milestone"
+  ]
+}

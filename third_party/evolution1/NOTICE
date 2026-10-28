@@ -1,0 +1,5 @@
+MacShell — Copyright (c) 2026 Rickky. MIT.
+Fixed source: 1bdb51870b621100fd2709f66c8f8e00ab17b9c4
+Original QML/GLSL files in original/ retained with source hashes in provenance.json.
+Electron ports/adaptations: existing air-desktop-glass.js, src/core/glass-geometry.js, scripts/build-glass2-shaders.cjs.
+No Qt/Hyprland runtime required. Not all stored reference files execute; see provenance.

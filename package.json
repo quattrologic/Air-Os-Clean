@@ -140,7 +140,8 @@
       "air-tahoe7-icons.js",
       "third_party/tahoe7/**/*",
       "src/core/macshell-glyphs7.js",
-      "air-macshell-status.js"
+      "air-macshell-status.js",
+      "third_party/evolution1/**/*"
     ],
     "mac": {
       "target": [

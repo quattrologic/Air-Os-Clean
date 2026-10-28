@@ -1,0 +1,2830 @@
+TAP version 13
+# Subtest: Home loads real profile store titles, sorts valid dates and limits to three without bodies
+ok 1 - Home loads real profile store titles, sorts valid dates and limits to three without bodies
+  ---
+  duration_ms: 11.024031
+  type: 'test'
+  ...
+# Subtest: empty profile offers existing Notes app and confirmed saves refresh widget
+ok 2 - empty profile offers existing Notes app and confirmed saves refresh widget
+  ---
+  duration_ms: 1.752097
+  type: 'test'
+  ...
+# Subtest: sorting puts invalid dates last, keeps ties and renders hostile titles only as text
+ok 3 - sorting puts invalid dates last, keeps ties and renders hostile titles only as text
+  ---
+  duration_ms: 2.154664
+  type: 'test'
+  ...
+# Subtest: loading failure has retry and successful retry clears error
+ok 4 - loading failure has retry and successful retry clears error
+  ---
+  duration_ms: 2.230325
+  type: 'test'
+  ...
+# Subtest: late response from Alice cannot render into a changed Bob session
+ok 5 - late response from Alice cannot render into a changed Bob session
+  ---
+  duration_ms: 1.574624
+  type: 'test'
+  ...
+# Subtest: logout immediately erases rendered titles and ignores pending responses
+ok 6 - logout immediately erases rendered titles and ignores pending responses
+  ---
+  duration_ms: 1.667862
+  type: 'test'
+  ...
+# Subtest: closing immediately scrubs titles, ignores late response; fresh window loads current data
+ok 7 - closing immediately scrubs titles, ignores late response; fresh window loads current data
+  ---
+  duration_ms: 1.950712
+  type: 'test'
+  ...
+# Subtest: removed window and pagehide both clear data and detach global listeners
+ok 8 - removed window and pagehide both clear data and detach global listeners
+  ---
+  duration_ms: 1.454175
+  type: 'test'
+  ...
+# Subtest: superseded load cannot overwrite a newer confirmed-save refresh
+ok 9 - superseded load cannot overwrite a newer confirmed-save refresh
+  ---
+  duration_ms: 1.881369
+  type: 'test'
+  ...
+# Subtest: confirmed deletion change reloads Notes once and stops after widget close
+ok 10 - confirmed deletion change reloads Notes once and stops after widget close
+  ---
+  duration_ms: 3.614137
+  type: 'test'
+  ...
+# Subtest: Home reminders order overdue/today/future/undated, ignore completed and limit three
+ok 11 - Home reminders order overdue/today/future/undated, ignore completed and limit three
+  ---
+  duration_ms: 3.320602
+  type: 'test'
+  ...
+# Subtest: date-only validation handles leap dates and invalid values conservatively
+ok 12 - date-only validation handles leap dates and invalid values conservatively
+  ---
+  duration_ms: 0.819455
+  type: 'test'
+  ...
+# Subtest: local calendar days stay correct west/east of UTC and across DST boundaries
+ok 13 - local calendar days stay correct west/east of UTC and across DST boundaries
+  ---
+  duration_ms: 195.587253
+  type: 'test'
+  ...
+# Subtest: real persisted Alice reminders reload on reopening; Bob and descriptions stay separate
+ok 14 - real persisted Alice reminders reload on reopening; Bob and descriptions stay separate
+  ---
+  duration_ms: 10.534435
+  type: 'test'
+  ...
+# Subtest: empty and completed-only profiles offer existing reminders app
+ok 15 - empty and completed-only profiles offer existing reminders app
+  ---
+  duration_ms: 2.646282
+  type: 'test'
+  ...
+# Subtest: hostile title renders as text; details never render; ties keep store order
+ok 16 - hostile title renders as text; details never render; ties keep store order
+  ---
+  duration_ms: 1.003237
+  type: 'test'
+  ...
+# Subtest: load failure provides a working retry without disclosing private error text
+ok 17 - load failure provides a working retry without disclosing private error text
+  ---
+  duration_ms: 1.622515
+  type: 'test'
+  ...
+# Subtest: changed profile rejects a late response and disables old widget
+ok 18 - changed profile rejects a late response and disables old widget
+  ---
+  duration_ms: 1.066831
+  type: 'test'
+  ...
+# Subtest: logout scrubs titles synchronously and rejects pending data
+ok 19 - logout scrubs titles synchronously and rejects pending data
+  ---
+  duration_ms: 1.420946
+  type: 'test'
+  ...
+# Subtest: close, removal and pagehide scrub data and ignore future results
+ok 20 - close, removal and pagehide scrub data and ignore future results
+  ---
+  duration_ms: 4.688029
+  type: 'test'
+  ...
+# Subtest: new refresh wins over an older pending response
+ok 21 - new refresh wins over an older pending response
+  ---
+  duration_ms: 1.819417
+  type: 'test'
+  ...
+# Subtest: rapid confirmed change events discard older loads and detach on close
+ok 22 - rapid confirmed change events discard older loads and detach on close
+  ---
+  duration_ms: 1.6054
+  type: 'test'
+  ...
+# Subtest: profile change during event-driven reload prevents stale tasks rendering
+ok 23 - profile change during event-driven reload prevents stale tasks rendering
+  ---
+  duration_ms: 0.85668
+  type: 'test'
+  ...
+# Subtest: Air Home is a single built-in app with explicit empty widget states
+ok 24 - Air Home is a single built-in app with explicit empty widget states
+  ---
+  duration_ms: 2.119271
+  type: 'test'
+  ...
+# Subtest: Air Home navigation reuses trusted app starts and rejects arbitrary actions
+ok 25 - Air Home navigation reuses trusted app starts and rejects arbitrary actions
+  ---
+  duration_ms: 1.109385
+  type: 'test'
+  ...
+# Subtest: Air Home initial viewport bounds match reference and preserve narrow workspace
+ok 26 - Air Home initial viewport bounds match reference and preserve narrow workspace
+  ---
+  duration_ms: 5.617407
+  type: 'test'
+  ...
+# Subtest: Island clock uses real date formatting, live preference changes and visibility cleanup
+ok 27 - Island clock uses real date formatting, live preference changes and visibility cleanup
+  ---
+  duration_ms: 20.857977
+  type: 'test'
+  ...
+# Subtest: Island opens into panel, Escape restores focus and outside navigation keeps its target
+ok 28 - Island opens into panel, Escape restores focus and outside navigation keeps its target
+  ---
+  duration_ms: 1.681923
+  type: 'test'
+  ...
+# Subtest: Island resources are included in the desktop and installer
+ok 29 - Island resources are included in the desktop and installer
+  ---
+  duration_ms: 0.313314
+  type: 'test'
+  ...
+# Subtest: Control Center tile confirms saves, ignores double activation and reflects external changes
+ok 30 - Control Center tile confirms saves, ignores double activation and reflects external changes
+  ---
+  duration_ms: 1.862531
+  type: 'test'
+  ...
+# Subtest: Control Center tile reports failed save, allows retry and explains unavailable preferences
+ok 31 - Control Center tile reports failed save, allows retry and explains unavailable preferences
+  ---
+  duration_ms: 4.122181
+  type: 'test'
+  ...
+# Subtest: Control Center save adapter uses real profile store, survives restart and recovers after IO failure
+ok 32 - Control Center save adapter uses real profile store, survives restart and recovers after IO failure
+  ---
+  duration_ms: 15.168063
+  type: 'test'
+  ...
+# Subtest: Island shows only the latest real Notes save signal without content or focus interruption
+ok 33 - Island shows only the latest real Notes save signal without content or focus interruption
+  ---
+  duration_ms: 2.089718
+  type: 'test'
+  ...
+# Subtest: Modern exit is brief and inert immediately; Escape returns focus before visual completion
+ok 34 - Modern exit is brief and inert immediately; Escape returns focus before visual completion
+  ---
+  duration_ms: 1.139649
+  type: 'test'
+  ...
+# Subtest: reopening cancels stale exit; switching theme, hiding document and disposing cancel animations safely
+ok 35 - reopening cancels stale exit; switching theme, hiding document and disposing cancel animations safely
+  ---
+  duration_ms: 1.071599
+  type: 'test'
+  ...
+# Subtest: both reduced-motion preferences bypass Modern exit animation; Classic stays immediate
+ok 36 - both reduced-motion preferences bypass Modern exit animation; Classic stays immediate
+  ---
+  duration_ms: 2.394339
+  type: 'test'
+  ...
+# Subtest: opening Island first dismisses the existing start menu without replacing either component
+ok 37 - opening Island first dismisses the existing start menu without replacing either component
+  ---
+  duration_ms: 1.674532
+  type: 'test'
+  ...
+# Subtest: reference status line shares the real clock; Desktop tile confirms writes and reports failed writes
+ok 38 - reference status line shares the real clock; Desktop tile confirms writes and reports failed writes
+  ---
+  duration_ms: 1.157446
+  type: 'test'
+  ...
+# Subtest: Volume controls only a loaded local Air Music audio element and releases its listener on close
+ok 39 - Volume controls only a loaded local Air Music audio element and releases its listener on close
+  ---
+  duration_ms: 3.176068
+  type: 'test'
+  ...
+# Subtest: notification shortcut is available only after a real Notes signal and is cleared on profile disposal
+ok 40 - notification shortcut is available only after a real Notes signal and is cleared on profile disposal
+  ---
+  duration_ms: 1.587974
+  type: 'test'
+  ...
+# Subtest: Island defaults to Control Center; view buttons switch hidden/inert content and reset on next open
+ok 41 - Island defaults to Control Center; view buttons switch hidden/inert content and reset on next open
+  ---
+  duration_ms: 1.747651
+  type: 'test'
+  ...
+# Subtest: quick cards use registered names and existing icons; four launches reuse openApp then close and focus existing window
+ok 42 - quick cards use registered names and existing icons; four launches reuse openApp then close and focus existing window
+  ---
+  duration_ms: 4.235778
+  type: 'test'
+  ...
+# Subtest: quick launch failure keeps retry and suppresses duplicate starts; stale completion does not alter reopened panel
+ok 43 - quick launch failure keeps retry and suppresses duplicate starts; stale completion does not alter reopened panel
+  ---
+  duration_ms: 2.65859
+  type: 'test'
+  ...
+# Subtest: Classic hides new navigation and quick content; switching profiles/pagehide removes registry listener
+ok 44 - Classic hides new navigation and quick content; switching profiles/pagehide removes registry listener
+  ---
+  duration_ms: 0.986493
+  type: 'test'
+  ...
+# Subtest: registry names remain safe text and missing app cannot falsely launch
+ok 45 - registry names remain safe text and missing app cannot falsely launch
+  ---
+  duration_ms: 3.349115
+  type: 'test'
+  ...
+# Subtest: quick app focus skips hidden Finder editor and uses visible existing content
+ok 46 - quick app focus skips hidden Finder editor and uses visible existing content
+  ---
+  duration_ms: 1.123055
+  type: 'test'
+  ...
+# Subtest: M1 reverses the same timeline from its live time, including rapid repeated direction changes
+ok 47 - M1 reverses the same timeline from its live time, including rapid repeated direction changes
+  ---
+  duration_ms: 1.155362
+  type: 'test'
+  ...
+# Subtest: M1 interrupted quick view keeps its contents, fresh open resets control, close invalidates pending launch
+ok 48 - M1 interrupted quick view keeps its contents, fresh open resets control, close invalidates pending launch
+  ---
+  duration_ms: 0.9039
+  type: 'test'
+  ...
+# Subtest: M1 reduced-motion changes settle safely and stale callbacks after disposal cannot reopen
+ok 49 - M1 reduced-motion changes settle safely and stale callbacks after disposal cannot reopen
+  ---
+  duration_ms: 1.442929
+  type: 'test'
+  ...
+# Subtest: Modern uses the official geometric symbol in white without a tile or shared SVG IDs; Classic restores Grid
+ok 50 - Modern uses the official geometric symbol in white without a tile or shared SVG IDs; Classic restores Grid
+  ---
+  duration_ms: 3.411437
+  type: 'test'
+  ...
+# Subtest: retry adopts a verified orphan installation without replacing its files
+ok 51 - retry adopts a verified orphan installation without replacing its files
+  ---
+  duration_ms: 10.279767
+  type: 'test'
+  ...
+# Subtest: retry rejects tamper orphan assets without registering or deleting them
+ok 52 - retry rejects tamper orphan assets without registering or deleting them
+  ---
+  duration_ms: 2.470802
+  type: 'test'
+  ...
+# Subtest: retry rejects missing orphan assets without registering or deleting them
+ok 53 - retry rejects missing orphan assets without registering or deleting them
+  ---
+  duration_ms: 1.70684
+  type: 'test'
+  ...
+# Subtest: failed recovery index write preserves orphan files for another retry
+ok 54 - failed recovery index write preserves orphan files for another retry
+  ---
+  duration_ms: 6.428819
+  type: 'test'
+  ...
+# Subtest: retry rejects a symlinked orphan folder without touching its target
+ok 55 - retry rejects a symlinked orphan folder without touching its target
+  ---
+  duration_ms: 4.72257
+  type: 'test'
+  ...
+# Subtest: Store recovery success updates the shared Registry and mounted Launchpad safely
+ok 56 - Store recovery success updates the shared Registry and mounted Launchpad safely
+  ---
+  duration_ms: 20.153292
+  type: 'test'
+  ...
+# Subtest: Store recovery tampered updates the shared Registry and mounted Launchpad safely
+ok 57 - Store recovery tampered updates the shared Registry and mounted Launchpad safely
+  ---
+  duration_ms: 6.775734
+  type: 'test'
+  ...
+# Subtest: Store recovery index-failure updates the shared Registry and mounted Launchpad safely
+ok 58 - Store recovery index-failure updates the shared Registry and mounted Launchpad safely
+  ---
+  duration_ms: 5.961708
+  type: 'test'
+  ...
+# Subtest: fresh retry preserves partial pre-rename staging files
+ok 59 - fresh retry preserves partial pre-rename staging files
+  ---
+  duration_ms: 3.007157
+  type: 'test'
+  ...
+# Subtest: fresh retry preserves corrupt pre-rename staging files
+ok 60 - fresh retry preserves corrupt pre-rename staging files
+  ---
+  duration_ms: 3.388112
+  type: 'test'
+  ...
+# Subtest: staging directory collision fails safely and permits later retry
+ok 61 - staging directory collision fails safely and permits later retry
+  ---
+  duration_ms: 3.701117
+  type: 'test'
+  ...
+# Subtest: staging file collision fails safely and permits later retry
+ok 62 - staging file collision fails safely and permits later retry
+  ---
+  duration_ms: 15.402861
+  type: 'test'
+  ...
+# Subtest: staging symlink collision fails safely and permits later retry
+ok 63 - staging symlink collision fails safely and permits later retry
+  ---
+  duration_ms: 3.377346
+  type: 'test'
+  ...
+# Subtest: bundled demo signature and file hashes pass and install survives restart
+ok 64 - bundled demo signature and file hashes pass and install survives restart
+  ---
+  duration_ms: 3.41374
+  type: 'test'
+  ...
+# Subtest: catalog rejects corrupt signatures instead of installing
+ok 65 - catalog rejects corrupt signatures instead of installing
+  ---
+  duration_ms: 0.556915
+  type: 'test'
+  ...
+# Subtest: removal rolls back when the installed index cannot be written
+ok 66 - removal rolls back when the installed index cannot be written
+  ---
+  duration_ms: 0.839134
+  type: 'test'
+  ...
+# Subtest: removal rejects replaced symlink app folders
+ok 67 - removal rejects replaced symlink app folders
+  ---
+  duration_ms: 0.59371
+  type: 'test'
+  ...
+# Subtest: journal recovers interrupted uninstall before index commit without losing assets
+ok 68 - journal recovers interrupted uninstall before index commit without losing assets
+  ---
+  duration_ms: 0.662382
+  type: 'test'
+  ...
+# Subtest: journal completes interrupted uninstall after index commit
+ok 69 - journal completes interrupted uninstall after index commit
+  ---
+  duration_ms: 0.538629
+  type: 'test'
+  ...
+# Subtest: invalid recovery journal fails closed without changing installed files
+ok 70 - invalid recovery journal fails closed without changing installed files
+  ---
+  duration_ms: 1.460565
+  type: 'test'
+  ...
+# Subtest: Ed25519 signature and each file digest are verified
+ok 71 - Ed25519 signature and each file digest are verified
+  ---
+  duration_ms: 2.918916
+  type: 'test'
+  ...
+# Subtest: rejects modified payloads and unsigned metadata
+ok 72 - rejects modified payloads and unsigned metadata
+  ---
+  duration_ms: 1.212507
+  type: 'test'
+  ...
+# Subtest: permission declarations fail closed
+ok 73 - permission declarations fail closed
+  ---
+  duration_ms: 0.485971
+  type: 'test'
+  ...
+# Subtest: signed runtime serves bundled files but refuses foreign origins and unlisted files
+ok 74 - signed runtime serves bundled files but refuses foreign origins and unlisted files
+  ---
+  duration_ms: 44.60063
+  type: 'test'
+  ...
+# Subtest: runtime refuses symlinked assets and parent directory escape
+ok 75 - runtime refuses symlinked assets and parent directory escape
+  ---
+  duration_ms: 1.486203
+  type: 'test'
+  ...
+# Subtest: runtime refuses assets modified after initial verification
+ok 76 - runtime refuses assets modified after initial verification
+  ---
+  duration_ms: 2.819009
+  type: 'test'
+  ...
+# Subtest: reopened persistent session loads newly verified manifest and rejects removed assets
+ok 77 - reopened persistent session loads newly verified manifest and rejects removed assets
+  ---
+  duration_ms: 4.314865
+  type: 'test'
+  ...
+# Subtest: open protocol handler refuses assets when installation is missing
+ok 78 - open protocol handler refuses assets when installation is missing
+  ---
+  duration_ms: 0.753166
+  type: 'test'
+  ...
+# Subtest: concurrent launches share one signed app window
+ok 79 - concurrent launches share one signed app window
+  ---
+  duration_ms: 1.260729
+  type: 'test'
+  ...
+# Subtest: startup close rejects all waiting launches and allows retry
+ok 80 - startup close rejects all waiting launches and allows retry
+  ---
+  duration_ms: 1.323762
+  type: 'test'
+  ...
+# Subtest: startup closeAll rejects all waiting launches and allows retry
+ok 81 - startup closeAll rejects all waiting launches and allows retry
+  ---
+  duration_ms: 0.398982
+  type: 'test'
+  ...
+# Subtest: startup loadFailure rejects all waiting launches and allows retry
+ok 82 - startup loadFailure rejects all waiting launches and allows retry
+  ---
+  duration_ms: 0.43867
+  type: 'test'
+  ...
+# Subtest: host removal terminates a vetoing app without closing another profile
+ok 83 - host removal terminates a vetoing app without closing another profile
+  ---
+  duration_ms: 0.63402
+  type: 'test'
+  ...
+# Subtest: logout terminates every vetoing app and allows a fresh launch
+ok 84 - logout terminates every vetoing app and allows a fresh launch
+  ---
+  duration_ms: 0.47893
+  type: 'test'
+  ...
+# Subtest: failed startup destroys a vetoing window before retry
+ok 85 - failed startup destroys a vetoing window before retry
+  ---
+  duration_ms: 0.396558
+  type: 'test'
+  ...
+# Subtest: close revokes persistent protocol access until a fresh launch
+ok 86 - close revokes persistent protocol access until a fresh launch
+  ---
+  duration_ms: 5.825014
+  type: 'test'
+  ...
+# Subtest: closeAll revokes persistent protocol access until a fresh launch
+ok 87 - closeAll revokes persistent protocol access until a fresh launch
+  ---
+  duration_ms: 2.476561
+  type: 'test'
+  ...
+# Subtest: another profile cannot reactivate the closed profile protocol
+ok 88 - another profile cannot reactivate the closed profile protocol
+  ---
+  duration_ms: 1.731988
+  type: 'test'
+  ...
+# Subtest: closing and reopening cannot authorize an in-flight old-window response
+ok 89 - closing and reopening cannot authorize an in-flight old-window response
+  ---
+  duration_ms: 2.110488
+  type: 'test'
+  ...
+# Subtest: renderer crash retires only its app window, revokes assets and permits verified restart
+ok 90 - renderer crash retires only its app window, revokes assets and permits verified restart
+  ---
+  duration_ms: 13.031206
+  type: 'test'
+  ...
+# Subtest: renderer crash during startup rejects waiting launches and permits retry
+ok 91 - renderer crash during startup rejects waiting launches and permits retry
+  ---
+  duration_ms: 0.547021
+  type: 'test'
+  ...
+# Subtest: accepts glyph-only profile
+ok 92 - accepts glyph-only profile
+  ---
+  duration_ms: 1.454997
+  type: 'test'
+  ...
+# Subtest: rejects text content
+ok 93 - rejects text content
+  ---
+  duration_ms: 0.361365
+  type: 'test'
+  ...
+# Subtest: rejects PNG data
+ok 94 - rejects PNG data
+  ---
+  duration_ms: 0.156772
+  type: 'test'
+  ...
+# Subtest: requires explicit consent
+ok 95 - requires explicit consent
+  ---
+  duration_ms: 0.131685
+  type: 'test'
+  ...
+# Subtest: requires selection of profile
+ok 96 - requires selection of profile
+  ---
+  duration_ms: 0.11498
+  type: 'test'
+  ...
+# Subtest: allows selected profile
+ok 97 - allows selected profile
+  ---
+  duration_ms: 0.188049
+  type: 'test'
+  ...
+# Subtest: rejects invalid glyph points
+ok 98 - rejects invalid glyph points
+  ---
+  duration_ms: 1.111358
+  type: 'test'
+  ...
+# Subtest: opening, minimizing, focusing and closing are observable
+ok 99 - opening, minimizing, focusing and closing are observable
+  ---
+  duration_ms: 1.419915
+  type: 'test'
+  ...
+# Subtest: invalid states and identifiers fail
+ok 100 - invalid states and identifiers fail
+  ---
+  duration_ms: 0.387715
+  type: 'test'
+  ...
+# Subtest: focusing A then B then A notifies observers even when A last reported focused
+ok 101 - focusing A then B then A notifies observers even when A last reported focused
+  ---
+  duration_ms: 0.20873
+  type: 'test'
+  ...
+# Subtest: minimize, restore and background closure preserve focus notifications without reviving hidden apps
+ok 102 - minimize, restore and background closure preserve focus notifications without reviving hidden apps
+  ---
+  duration_ms: 0.160338
+  type: 'test'
+  ...
+# Subtest: built-in apps remain registered
+ok 103 - built-in apps remain registered
+  ---
+  duration_ms: 0.825574
+  type: 'test'
+  ...
+# Subtest: lookups are safe and snapshots immutable
+ok 104 - lookups are safe and snapshots immutable
+  ---
+  duration_ms: 0.194859
+  type: 'test'
+  ...
+# Subtest: trusted extensions can register once
+ok 105 - trusted extensions can register once
+  ---
+  duration_ms: 0.932722
+  type: 'test'
+  ...
+# Subtest: unsafe identifiers and metadata are rejected
+ok 106 - unsafe identifiers and metadata are rejected
+  ---
+  duration_ms: 0.268668
+  type: 'test'
+  ...
+# Subtest: installed signed app metadata appears in registry and is removable
+ok 107 - installed signed app metadata appears in registry and is removable
+  ---
+  duration_ms: 1.300658
+  type: 'test'
+  ...
+# Subtest: installed metadata cannot masquerade as a built-in app
+ok 108 - installed metadata cannot masquerade as a built-in app
+  ---
+  duration_ms: 0.187518
+  type: 'test'
+  ...
+# Subtest: BRAND-1 has three distinct, self-contained, script/font/text/foreign-asset-free SVG symbols
+ok 109 - BRAND-1 has three distinct, self-contained, script/font/text/foreign-asset-free SVG symbols
+  ---
+  duration_ms: 1.763854
+  type: 'test'
+  ...
+# Subtest: BRAND-1 actual raster exports have requested dimensions, transparent margins and unchanged rendered hashes
+ok 110 - BRAND-1 actual raster exports have requested dimensions, transparent margins and unchanged rendered hashes
+  ---
+  duration_ms: 2.26624
+  type: 'test'
+  ...
+# Subtest: BRAND-1 preview sheets are genuine complete renderer exports and all asset receipts match
+ok 111 - BRAND-1 preview sheets are genuine complete renderer exports and all asset receipts match
+  ---
+  duration_ms: 2.530831
+  type: 'test'
+  ...
+# Subtest: BRAND-1 remains awaiting selection and no draft is referenced by product entry points or packaging
+ok 112 - BRAND-1 remains awaiting selection and no draft is referenced by product entry points or packaging
+  ---
+  duration_ms: 1.550338
+  type: 'test'
+  ...
+# Subtest: calendar leap years, adjacent months and local today
+ok 113 - calendar leap years, adjacent months and local today
+  ---
+  duration_ms: 1.156164
+  type: 'test'
+  ...
+# Subtest: calendar local date across timezones uses civil days, not UTC
+ok 114 - calendar local date across timezones uses civil days, not UTC
+  ---
+  duration_ms: 0.518027
+  type: 'test'
+  ...
+# Subtest: macOS installation candidate is explicitly unverified, with only one fixed path inspected
+ok 115 - macOS installation candidate is explicitly unverified, with only one fixed path inspected
+  ---
+  duration_ms: 1.415738
+  type: 'test'
+  ...
+# Subtest: missing system installation is scoped, not a claim that no user installation exists
+ok 116 - missing system installation is scoped, not a claim that no user installation exists
+  ---
+  duration_ms: 0.206987
+  type: 'test'
+  ...
+# Subtest: a file or symlink masquerading as a bundle is rejected before resolving
+ok 117 - a file or symlink masquerading as a bundle is rejected before resolving
+  ---
+  duration_ms: 0.239695
+  type: 'test'
+  ...
+# Subtest: canonical redirection to another bundle or location is rejected
+ok 118 - canonical redirection to another bundle or location is rejected
+  ---
+  duration_ms: 0.18211
+  type: 'test'
+  ...
+# Subtest: permission, I/O and disappearing-path errors are not reported as missing installation; retry works
+ok 119 - permission, I/O and disappearing-path errors are not reported as missing installation; retry works
+  ---
+  duration_ms: 0.961285
+  type: 'test'
+  ...
+# Subtest: Windows and other platforms report unimplemented integration without filesystem probes
+ok 120 - Windows and other platforms report unimplemented integration without filesystem probes
+  ---
+  duration_ms: 0.260817
+  type: 'test'
+  ...
+# Subtest: three-way merge: independent edits, deletes, edit/delete conflicts and limits
+ok 121 - three-way merge: independent edits, deletes, edit/delete conflicts and limits
+  ---
+  duration_ms: 3.939049
+  type: 'test'
+  ...
+# Subtest: configuration rejects insecure hosts and service keys; disabled by default
+ok 122 - configuration rejects insecure hosts and service keys; disabled by default
+  ---
+  duration_ms: 0.462325
+  type: 'test'
+  ...
+# Subtest: two independent instances: create/edit/delete, offline/reconnect, restart and user isolation
+ok 123 - two independent instances: create/edit/delete, offline/reconnect, restart and user isolation
+  ---
+  duration_ms: 11.289464
+  type: 'test'
+  ...
+# Subtest: conflicts and failed writes preserve both sides; stale editor cannot overwrite imported note
+ok 124 - conflicts and failed writes preserve both sides; stale editor cannot overwrite imported note
+  ---
+  duration_ms: 4.366773
+  type: 'test'
+  ...
+# Subtest: logout/profile switch during request cannot apply private remote results; concurrent local edits retained
+ok 125 - logout/profile switch during request cannot apply private remote results; concurrent local edits retained
+  ---
+  duration_ms: 2.661315
+  type: 'test'
+  ...
+# Subtest: secure storage unavailable blocks login without affecting local notes; unsafe remote payload rejected
+ok 126 - secure storage unavailable blocks login without affecting local notes; unsafe remote payload rejected
+  ---
+  duration_ms: 0.66752
+  type: 'test'
+  ...
+# Subtest: RLS owner isolation, CAS, no privileged renderer or shipped secret
+ok 127 - RLS owner isolation, CAS, no privileged renderer or shipped secret
+  ---
+  duration_ms: 0.401105
+  type: 'test'
+  ...
+# Subtest: concurrent device CAS refuses a lost update and retries safely
+ok 128 - concurrent device CAS refuses a lost update and retries safely
+  ---
+  duration_ms: 4.223751
+  type: 'test'
+  ...
+# Subtest: cloud sync defaults to off
+ok 129 - cloud sync defaults to off
+  ---
+  duration_ms: 0.709952
+  type: 'test'
+  ...
+# Subtest: explicitly selected file only
+ok 130 - explicitly selected file only
+  ---
+  duration_ms: 0.322889
+  type: 'test'
+  ...
+# Subtest: only selected apps
+ok 131 - only selected apps
+  ---
+  duration_ms: 0.156332
+  type: 'test'
+  ...
+# Subtest: AirWrite opt-in
+ok 132 - AirWrite opt-in
+  ---
+  duration_ms: 0.12121
+  type: 'test'
+  ...
+# Subtest: no traversal
+ok 133 - no traversal
+  ---
+  duration_ms: 0.295488
+  type: 'test'
+  ...
+# Subtest: no silent default consent
+ok 134 - no silent default consent
+  ---
+  duration_ms: 0.142571
+  type: 'test'
+  ...
+# Subtest: accepts safe settings
+ok 135 - accepts safe settings
+  ---
+  duration_ms: 1.381137
+  type: 'test'
+  ...
+# Subtest: rejects credentials recursively
+ok 136 - rejects credentials recursively
+  ---
+  duration_ms: 0.534201
+  type: 'test'
+  ...
+# Subtest: rejects accounts
+ok 137 - rejects accounts
+  ---
+  duration_ms: 0.134169
+  type: 'test'
+  ...
+# Subtest: detects conflicts without overwriting
+ok 138 - detects conflicts without overwriting
+  ---
+  duration_ms: 0.536285
+  type: 'test'
+  ...
+# Subtest: recognizes equal documents
+ok 139 - recognizes equal documents
+  ---
+  duration_ms: 0.213546
+  type: 'test'
+  ...
+# Subtest: compact default is six registered apps, with existing Launchpad access and no unsupported ChatGPT entry
+ok 140 - compact default is six registered apps, with existing Launchpad access and no unsupported ChatGPT entry
+  ---
+  duration_ms: 1.683175
+  type: 'test'
+  ...
+# Subtest: pins preserve order, de-duplicate Launchpad, filter unavailable apps and leave stored references intact
+ok 141 - pins preserve order, de-duplicate Launchpad, filter unavailable apps and leave stored references intact
+  ---
+  duration_ms: 0.31048
+  type: 'test'
+  ...
+# Subtest: large pin lists have a bounded visible subset, stable overflow count and a permanently reachable app launcher
+ok 142 - large pin lists have a bounded visible subset, stable overflow count and a permanently reachable app launcher
+  ---
+  duration_ms: 2.339638
+  type: 'test'
+  ...
+# Subtest: installed entries without original icon assets remain in Registry/Launchpad, without monochrome dock substitutes
+ok 143 - installed entries without original icon assets remain in Registry/Launchpad, without monochrome dock substitutes
+  ---
+  duration_ms: 0.403619
+  type: 'test'
+  ...
+# Subtest: window animation targets the dock instead of a hidden icon with empty bounds
+ok 144 - window animation targets the dock instead of a hidden icon with empty bounds
+  ---
+  duration_ms: 0.813776
+  type: 'test'
+  ...
+# Subtest: original MacShell parser handles precedence/unary/modulo and refuses code/nonfinite/oversize
+ok 145 - original MacShell parser handles precedence/unary/modulo and refuses code/nonfinite/oversize
+  ---
+  duration_ms: 2.050008
+  type: 'test'
+  ...
+# Subtest: desktop shader mathematical body is original pinned MacShell, only Qt declarations adapted
+ok 146 - desktop shader mathematical body is original pinned MacShell, only Qt declarations adapted
+  ---
+  duration_ms: 1.353686
+  type: 'test'
+  ...
+# Subtest: new layouts remain validated per-profile and reject foreign types/positions
+ok 147 - new layouts remain validated per-profile and reject foreign types/positions
+  ---
+  duration_ms: 9.744724
+  type: 'test'
+  ...
+# Subtest: MacShell score ladder ranks exact, prefix, word-prefix, substring, ID without duplicate registry
+ok 148 - MacShell score ladder ranks exact, prefix, word-prefix, substring, ID without duplicate registry
+  ---
+  duration_ms: 0.54633
+  type: 'test'
+  ...
+# Subtest: original four-column first-fit packs supported tiles without overlaps and ignores duplicates
+ok 149 - original four-column first-fit packs supported tiles without overlaps and ignores duplicates
+  ---
+  duration_ms: 0.391961
+  type: 'test'
+  ...
+# Subtest: ClockWidget liveTime port uses original 12-hour no-leading-zero minute format
+ok 150 - ClockWidget liveTime port uses original 12-hour no-leading-zero minute format
+  ---
+  duration_ms: 0.295468
+  type: 'test'
+  ...
+# Subtest: DP2 original twelve-control catalogue packs all dimensions with slider gaps and no overlaps
+ok 151 - DP2 original twelve-control catalogue packs all dimensions with slider gaps and no overlaps
+  ---
+  duration_ms: 1.489889
+  type: 'test'
+  ...
+# Subtest: DP2 tile selections preserve explicit empty state and validate exact original IDs
+ok 152 - DP2 tile selections preserve explicit empty state and validate exact original IDs
+  ---
+  duration_ms: 1.275221
+  type: 'test'
+  ...
+# Subtest: DP2 order/focus are isolated across profiles, restart and failures; legacy layout retained
+ok 153 - DP2 order/focus are isolated across profiles, restart and failures; legacy layout retained
+  ---
+  duration_ms: 6.853209
+  type: 'test'
+  ...
+# Subtest: DP2 Keep Awake is never automatic, starts only on explicit boolean and is idempotent
+ok 154 - DP2 Keep Awake is never automatic, starts only on explicit boolean and is idempotent
+  ---
+  duration_ms: 0.331221
+  type: 'test'
+  ...
+# Subtest: DP2 Keep Awake releases previous session, logout and shutdown without persistence
+ok 155 - DP2 Keep Awake releases previous session, logout and shutdown without persistence
+  ---
+  duration_ms: 0.192746
+  type: 'test'
+  ...
+# Subtest: DP2 isolated UI tests cannot activate actual laptop power prevention
+ok 156 - DP2 isolated UI tests cannot activate actual laptop power prevention
+  ---
+  duration_ms: 0.154519
+  type: 'test'
+  ...
+# Subtest: DP2 critical notifications bypass focus while normal events remain in history
+ok 157 - DP2 critical notifications bypass focus while normal events remain in history
+  ---
+  duration_ms: 0.771924
+  type: 'test'
+  ...
+# Subtest: DP2 privileged bridge binds main frame and exact session; lifecycle cleanup and shared material remain
+ok 158 - DP2 privileged bridge binds main frame and exact session; lifecycle cleanup and shared material remain
+  ---
+  duration_ms: 0.423768
+  type: 'test'
+  ...
+# Subtest: DP2 twelve original Canvas glyph branches execute without QML or image assets
+ok 159 - DP2 twelve original Canvas glyph branches execute without QML or image assets
+  ---
+  duration_ms: 1.09297
+  type: 'test'
+  ...
+# Subtest: DP2 main authorization rejects stale sessions, subframes, other windows and login page
+ok 160 - DP2 main authorization rejects stale sessions, subframes, other windows and login page
+  ---
+  duration_ms: 1.788311
+  type: 'test'
+  ...
+# Subtest: DP2 appearance switches apply only confirmed writes, retain cache on failure and permit retry
+ok 161 - DP2 appearance switches apply only confirmed writes, retain cache on failure and permit retry
+  ---
+  duration_ms: 1.535626
+  type: 'test'
+  ...
+# Subtest: Modern relocates original profile controls; Classic restores them and hides compact shell
+ok 162 - Modern relocates original profile controls; Classic restores them and hides compact shell
+  ---
+  duration_ms: 2.393047
+  type: 'test'
+  ...
+# Subtest: disclosure focuses content, Escape restores trigger, Tab leaves without trapping focus
+ok 163 - disclosure focuses content, Escape restores trigger, Tab leaves without trapping focus
+  ---
+  duration_ms: 0.854677
+  type: 'test'
+  ...
+# Subtest: theme switch moves focus off disappearing chrome and closes nested account popup
+ok 164 - theme switch moves focus off disappearing chrome and closes nested account popup
+  ---
+  duration_ms: 0.91104
+  type: 'test'
+  ...
+# Subtest: existing search/menu actions are delegated; app actions stay with existing Registry route; outside click closes
+ok 165 - existing search/menu actions are delegated; app actions stay with existing Registry route; outside click closes
+  ---
+  duration_ms: 1.272827
+  type: 'test'
+  ...
+# Subtest: only explicitly new accounts default to Modern; ambiguous/legacy preferences stay Classic without rewriting
+ok 166 - only explicitly new accounts default to Modern; ambiguous/legacy preferences stay Classic without rewriting
+  ---
+  duration_ms: 2.37415
+  type: 'test'
+  ...
+# Subtest: Modern / Classic switches persist independently from Dock, wallpaper, other profiles and app files
+ok 167 - Modern / Classic switches persist independently from Dock, wallpaper, other profiles and app files
+  ---
+  duration_ms: 4.584886
+  type: 'test'
+  ...
+# Subtest: reset uses account generation defaults and does not reset other profiles or remove app data
+ok 168 - reset uses account generation defaults and does not reset other profiles or remove app data
+  ---
+  duration_ms: 1.129004
+  type: 'test'
+  ...
+# Subtest: production Main account marker classifies only accounts created by the new registration handler
+ok 169 - production Main account marker classifies only accounts created by the new registration handler
+  ---
+  duration_ms: 2.313819
+  type: 'test'
+  ...
+# Subtest: renderer selection/root await acknowledgement, preserve other fields, report errors and allow retry
+ok 170 - renderer selection/root await acknowledgement, preserve other fields, report errors and allow retry
+  ---
+  duration_ms: 9.217122
+  type: 'test'
+  ...
+# Subtest: Modern dock has a straight flush base and decorative inverse feet, never an ellipse
+ok 171 - Modern dock has a straight flush base and decorative inverse feet, never an ellipse
+  ---
+  duration_ms: 1.495216
+  type: 'test'
+  ...
+# Subtest: Modern island mirrors inverse top corners without changing trigger size or animations
+ok 172 - Modern island mirrors inverse top corners without changing trigger size or animations
+  ---
+  duration_ms: 0.540862
+  type: 'test'
+  ...
+# Subtest: music preview is explicitly static Demo with original text, no pretend controls/audio and Modern-only display
+ok 173 - music preview is explicitly static Demo with original text, no pretend controls/audio and Modern-only display
+  ---
+  duration_ms: 0.590255
+  type: 'test'
+  ...
+# Subtest: ordered Dock pin references persist per profile and survive a new store instance
+ok 174 - ordered Dock pin references persist per profile and survive a new store instance
+  ---
+  duration_ms: 5.0927
+  type: 'test'
+  ...
+# Subtest: invalid Dock pin patches never replace saved preferences and valid arrays are defensively copied
+ok 175 - invalid Dock pin patches never replace saved preferences and valid arrays are defensively copied
+  ---
+  duration_ms: 3.834914
+  type: 'test'
+  ...
+# Subtest: explicit empty pins, default inheritance, reset and pre-pinning preferences stay distinct
+ok 176 - explicit empty pins, default inheritance, reset and pre-pinning preferences stay distinct
+  ---
+  duration_ms: 1.496047
+  type: 'test'
+  ...
+# Subtest: existing preferences IPC binds pin updates to authenticated user rather than a renderer profile
+ok 177 - existing preferences IPC binds pin updates to authenticated user rather than a renderer profile
+  ---
+  duration_ms: 2.322893
+  type: 'test'
+  ...
+# Subtest: Evolution preblur follows original MacDock/MacWidgets/FeatherBlur radii without altering8A tint
+ok 178 - Evolution preblur follows original MacDock/MacWidgets/FeatherBlur radii without altering8A tint
+  ---
+  duration_ms: 0.810391
+  type: 'test'
+  ...
+# Subtest: Evolution cached prepass runs only on invalidation and releases framebuffer/cache with context
+ok 179 - Evolution cached prepass runs only on invalidation and releases framebuffer/cache with context
+  ---
+  duration_ms: 1.76771
+  type: 'test'
+  ...
+# Subtest: CornerBorder preserves original directional fade and bounded line geometry
+ok 180 - CornerBorder preserves original directional fade and bounded line geometry
+  ---
+  duration_ms: 0.886945
+  type: 'test'
+  ...
+# Subtest: creates a folder only beneath the selected workspace
+ok 181 - creates a folder only beneath the selected workspace
+  ---
+  duration_ms: 2.296864
+  type: 'test'
+  ...
+# Subtest: refuses symlink parent folders and files
+ok 182 - refuses symlink parent folders and files
+  ---
+  duration_ms: 0.39831
+  type: 'test'
+  ...
+# Subtest: duplicates files without replacing existing data
+ok 183 - duplicates files without replacing existing data
+  ---
+  duration_ms: 1.536968
+  type: 'test'
+  ...
+# Subtest: rejects symlink sources for copy
+ok 184 - rejects symlink sources for copy
+  ---
+  duration_ms: 0.298272
+  type: 'test'
+  ...
+# Subtest: file rename refuses replacement and preserves the original
+ok 185 - file rename refuses replacement and preserves the original
+  ---
+  duration_ms: 0.710343
+  type: 'test'
+  ...
+# Subtest: creating a new text document never overwrites an existing file
+ok 186 - creating a new text document never overwrites an existing file
+  ---
+  duration_ms: 0.468895
+  type: 'test'
+  ...
+# Subtest: only searches filenames inside approved root; returns immutable relative paths
+ok 187 - only searches filenames inside approved root; returns immutable relative paths
+  ---
+  duration_ms: 20.189482
+  type: 'test'
+  ...
+# Subtest: does not traverse symlinked files or directories outside workspace
+ok 188 - does not traverse symlinked files or directories outside workspace
+  ---
+  duration_ms: 2.582507
+  type: 'test'
+  ...
+# Subtest: search limits, query validation and bounded traversal
+ok 189 - search limits, query validation and bounded traversal
+  ---
+  duration_ms: 4.62806
+  type: 'test'
+  ...
+# Subtest: Finder text save creates new files and replaces an explicitly selected regular document
+ok 190 - Finder text save creates new files and replaces an explicitly selected regular document
+  ---
+  duration_ms: 7.200557
+  type: 'test'
+  ...
+# Subtest: temporary-name collision preserves unrelated file bytes and existing or absent destination
+ok 191 - temporary-name collision preserves unrelated file bytes and existing or absent destination
+  ---
+  duration_ms: 2.252959
+  type: 'test'
+  ...
+# Subtest: temporary symlink collisions preserve the link and never modify its target
+ok 192 - temporary symlink collisions preserve the link and never modify its target
+  ---
+  duration_ms: 1.07926
+  type: 'test'
+  ...
+# Subtest: partial temporary write failure preserves document and cleans only this attempt with no leaked descriptor
+ok 193 - partial temporary write failure preserves document and cleans only this attempt with no leaked descriptor
+  ---
+  duration_ms: 0.964139
+  type: 'test'
+  ...
+# Subtest: failed replacement preserves the document and removes only its own temporary output
+ok 194 - failed replacement preserves the document and removes only its own temporary output
+  ---
+  duration_ms: 0.939703
+  type: 'test'
+  ...
+# Subtest: write handler rejects missing authorization/workspace, traversal, unsupported types and existing directories
+ok 195 - write handler rejects missing authorization/workspace, traversal, unsupported types and existing directories
+  ---
+  duration_ms: 1.799707
+  type: 'test'
+  ...
+# Subtest: Air-OS dock SDF is straight at bottom and includes inverse feet, not an oval or rectangle
+ok 196 - Air-OS dock SDF is straight at bottom and includes inverse feet, not an oval or rectangle
+  ---
+  duration_ms: 2.146581
+  type: 'test'
+  ...
+# Subtest: Island mask mirrors edge connection; zero top radii stay zero
+ok 197 - Island mask mirrors edge connection; zero top radii stay zero
+  ---
+  duration_ms: 0.212765
+  type: 'test'
+  ...
+# Subtest: actual wallpaper cover/contain/position mapping
+ok 198 - actual wallpaper cover/contain/position mapping
+  ---
+  duration_ms: 0.8427
+  type: 'test'
+  ...
+# Subtest: reproducible original material ports retain refraction, dock adaptation and contour equations
+ok 199 - reproducible original material ports retain refraction, dock adaptation and contour equations
+  ---
+  duration_ms: 31.160819
+  type: 'test'
+  ...
+# Subtest: software diagnostic cannot be enabled by ordinary renderer input
+ok 200 - software diagnostic cannot be enabled by ordinary renderer input
+  ---
+  duration_ms: 0.468825
+  type: 'test'
+  ...
+# Subtest: SVG URL parentheses and overlay colours stay intact during layer parsing
+ok 201 - SVG URL parentheses and overlay colours stay intact during layer parsing
+  ---
+  duration_ms: 0.555162
+  type: 'test'
+  ...
+# Subtest: GLASS-2 pinned original shaders and MIT notice retain their recorded byte hashes
+ok 202 - GLASS-2 pinned original shaders and MIT notice retain their recorded byte hashes
+  ---
+  duration_ms: 4.626678
+  type: 'test'
+  ...
+# Subtest: GLASS-3 recognises explicit hardware hints without requiring debug extension
+ok 203 - GLASS-3 recognises explicit hardware hints without requiring debug extension
+  ---
+  duration_ms: 1.177385
+  type: 'test'
+  ...
+# Subtest: GLASS-3 software evidence always wins over vendor substrings
+ok 204 - GLASS-3 software evidence always wins over vendor substrings
+  ---
+  duration_ms: 0.262499
+  type: 'test'
+  ...
+# Subtest: GLASS-3 DPR retains sharp small materials while bounding pixels and GPU dimensions
+ok 205 - GLASS-3 DPR retains sharp small materials while bounding pixels and GPU dimensions
+  ---
+  duration_ms: 0.271823
+  type: 'test'
+  ...
+# Subtest: GLASS-3 buffers and decoded scenes are reused, diagnostics omit raw device and content
+ok 206 - GLASS-3 buffers and decoded scenes are reused, diagnostics omit raw device and content
+  ---
+  duration_ms: 0.447393
+  type: 'test'
+  ...
+# Subtest: confirmed note deletion refreshes Home with a payload-free change; failure emits none
+ok 207 - confirmed note deletion refreshes Home with a payload-free change; failure emits none
+  ---
+  duration_ms: 28.234211
+  type: 'test'
+  ...
+# Subtest: reminder create/edit/complete/reopen/delete all automatically refresh Home
+ok 208 - reminder create/edit/complete/reopen/delete all automatically refresh Home
+  ---
+  duration_ms: 5.19424
+  type: 'test'
+  ...
+# Subtest: failed reminder save, toggle and delete publish no successful change
+ok 209 - failed reminder save, toggle and delete publish no successful change
+  ---
+  duration_ms: 2.8811
+  type: 'test'
+  ...
+# Subtest: old confirmed writes after a profile change never trigger the new profile widgets
+ok 210 - old confirmed writes after a profile change never trigger the new profile widgets
+  ---
+  duration_ms: 6.197967
+  type: 'test'
+  ...
+# Subtest: logout invalidates a pending old action even on a new login to the same profile
+ok 211 - logout invalidates a pending old action even on a new login to the same profile
+  ---
+  duration_ms: 2.192681
+  type: 'test'
+  ...
+# Subtest: closing/reopening Home adds exactly one listener per event and detached Home never refreshes
+ok 212 - closing/reopening Home adds exactly one listener per event and detached Home never refreshes
+  ---
+  duration_ms: 2.36087
+  type: 'test'
+  ...
+# Subtest: Launchpad resources are linked and packaged
+ok 213 - Launchpad resources are linked and packaged
+  ---
+  duration_ms: 1.264895
+  type: 'test'
+  ...
+# Subtest: lighter Modern glass retains readable pill text on a white background and a decorative, non-layout divider
+ok 214 - lighter Modern glass retains readable pill text on a white background and a decorative, non-layout divider
+  ---
+  duration_ms: 1.465102
+  type: 'test'
+  ...
+# Subtest: WebGL2 fragment ports preserve original main/math exactly, with only ES declarations and clock uniform rename
+ok 215 - WebGL2 fragment ports preserve original main/math exactly, with only ES declarations and clock uniform rename
+  ---
+  duration_ms: 2.105581
+  type: 'test'
+  ...
+# Subtest: original Glass.qml and Clock uniforms, including half-size preblur and height-map controls, are retained
+ok 216 - original Glass.qml and Clock uniforms, including half-size preblur and height-map controls, are retained
+  ---
+  duration_ms: 0.846074
+  type: 'test'
+  ...
+# Subtest: renderer replaces textures without accumulation and destroys every GPU object once, idempotently
+ok 217 - renderer replaces textures without accumulation and destroys every GPU object once, idempotently
+  ---
+  duration_ms: 2.867471
+  type: 'test'
+  ...
+# Subtest: motion uses one cached scene texture and validates initial/final frames without accumulating GPU resources
+ok 218 - motion uses one cached scene texture and validates initial/final frames without accumulating GPU resources
+  ---
+  duration_ms: 4.066407
+  type: 'test'
+  ...
+# Subtest: compile/allocation-pass failures release partial GPU objects rather than hiding working DOM controls
+ok 219 - compile/allocation-pass failures release partial GPU objects rather than hiding working DOM controls
+  ---
+  duration_ms: 0.709402
+  type: 'test'
+  ...
+# Subtest: unavailable WebGL keeps CSS fallback and the untouched authenticated input path
+ok 220 - unavailable WebGL keeps CSS fallback and the untouched authenticated input path
+  ---
+  duration_ms: 7.265139
+  type: 'test'
+  ...
+# Subtest: materials activate only after a valid frame; forced/reduced glass releases GPU objects and queued work
+ok 221 - materials activate only after a valid frame; forced/reduced glass releases GPU objects and queued work
+  ---
+  duration_ms: 3.21847
+  type: 'test'
+  ...
+# Subtest: pagehide releases resources, listeners and frames; late image/font completion cannot revive a previous page
+ok 222 - pagehide releases resources, listeners and frames; late image/font completion cannot revive a previous page
+  ---
+  duration_ms: 1.154311
+  type: 'test'
+  ...
+# Subtest: old context-loss handlers cannot affect a replacement surface; current loss restores CSS fallback immediately
+ok 223 - old context-loss handlers cannot affect a replacement surface; current loss restores CSS fallback immediately
+  ---
+  duration_ms: 0.985131
+  type: 'test'
+  ...
+# Subtest: hidden pages release materials and become static; visible pages can recreate public textures without polling
+ok 224 - hidden pages release materials and become static; visible pages can recreate public textures without polling
+  ---
+  duration_ms: 1.11361
+  type: 'test'
+  ...
+# Subtest: enhancement CSS only affects MacLock materials, is non-blocking and includes no new animation/layout transforms
+ok 225 - enhancement CSS only affects MacLock materials, is non-blocking and includes no new animation/layout transforms
+  ---
+  duration_ms: 0.636643
+  type: 'test'
+  ...
+# Subtest: public material tiles are cached between draws and released on context loss, without extra WebGL programs
+ok 226 - public material tiles are cached between draws and released on context loss, without extra WebGL programs
+  ---
+  duration_ms: 1.157967
+  type: 'test'
+  ...
+# Subtest: software renderer detection avoids all material readback tiles while retaining real GL and finite content notifications
+ok 227 - software renderer detection avoids all material readback tiles while retaining real GL and finite content notifications
+  ---
+  duration_ms: 0.960193
+  type: 'test'
+  ...
+# Subtest: Public MacLock card glass reuses the existing field shader without allocating another program or texture
+ok 228 - Public MacLock card glass reuses the existing field shader without allocating another program or texture
+  ---
+  duration_ms: 0.346203
+  type: 'test'
+  ...
+# Subtest: MacLock settled geometry retains original height unit, anchors and sizes at all target viewports
+ok 229 - MacLock settled geometry retains original height unit, anchors and sizes at all target viewports
+  ---
+  duration_ms: 1.226538
+  type: 'test'
+  ...
+# Subtest: original H:mm and 12-hour clock have no suffix; date retains localized dddd MMMM d pattern
+ok 230 - original H:mm and 12-hour clock have no suffix; date retains localized dddd MMMM d pattern
+  ---
+  duration_ms: 16.937787
+  type: 'test'
+  ...
+# Subtest: public profile names and avatar fallback are text, existing account identity reaches only the existing login bridge
+ok 231 - public profile names and avatar fallback are text, existing account identity reaches only the existing login bridge
+  ---
+  duration_ms: 8.989905
+  type: 'test'
+  ...
+# Subtest: pending login blocks duplicate submissions, mode and profile switches; failure preserves selected profile and allows retry
+ok 232 - pending login blocks duplicate submissions, mode and profile switches; failure preserves selected profile and allows retry
+  ---
+  duration_ms: 2.09122
+  type: 'test'
+  ...
+# Subtest: bridge failure is visible, empty submissions do not authenticate, and client success never pretends to unlock
+ok 233 - bridge failure is visible, empty submissions do not authenticate, and client success never pretends to unlock
+  ---
+  duration_ms: 3.045845
+  type: 'test'
+  ...
+# Subtest: first profile uses the existing account creation path, mismatch avoids writes and failures allow retry
+ok 234 - first profile uses the existing account creation path, mismatch avoids writes and failures allow retry
+  ---
+  duration_ms: 2.015327
+  type: 'test'
+  ...
+# Subtest: account read failure remains locked and exposes retry without inventing an authenticated user
+ok 235 - account read failure remains locked and exposes retry without inventing an authenticated user
+  ---
+  duration_ms: 1.622825
+  type: 'test'
+  ...
+# Subtest: keyboard activates the actual password input, Escape clears it, and Caps Lock only reflects real key state
+ok 236 - keyboard activates the actual password input, Escape clears it, and Caps Lock only reflects real key state
+  ---
+  duration_ms: 1.98384
+  type: 'test'
+  ...
+# Subtest: clock pauses while hidden; pagehide clears secrets, timers and late account/auth responses
+ok 237 - clock pauses while hidden; pagehide clears secrets, timers and late account/auth responses
+  ---
+  duration_ms: 3.807324
+  type: 'test'
+  ...
+# Subtest: ported source, exact original font assets, separate OFL/MIT notices and local resources ship with the existing package
+ok 238 - ported source, exact original font assets, separate OFL/MIT notices and local resources ship with the existing package
+  ---
+  duration_ms: 2.98226
+  type: 'test'
+  ...
+# Subtest: rejection/account signals contain no payload; transport failures and stale replies do not emit rejection
+ok 239 - rejection/account signals contain no payload; transport failures and stale replies do not emit rejection
+  ---
+  duration_ms: 3.901212
+  type: 'test'
+  ...
+# Subtest: an absent authentication result remains a visible error without falsely signalling a confirmed password rejection
+ok 240 - an absent authentication result remains a visible error without falsely signalling a confirmed password rejection
+  ---
+  duration_ms: 1.383941
+  type: 'test'
+  ...
+# Subtest: MorphText defaults and real clock overrides remain distinct, including disabled stretch/width animation
+ok 241 - MorphText defaults and real clock overrides remain distinct, including disabled stretch/width animation
+  ---
+  duration_ms: 1.274549
+  type: 'test'
+  ...
+# Subtest: clock uses two layers with exact OutQuint in and 75-percent OutCubic out, external blur and scale
+ok 242 - clock uses two layers with exact OutQuint in and 75-percent OutCubic out, external blur and scale
+  ---
+  duration_ms: 0.996407
+  type: 'test'
+  ...
+# Subtest: default text stretches with clamped original ratios and smoothly animates width and alignment
+ok 243 - default text stretches with clamped original ratios and smoothly animates width and alignment
+  ---
+  duration_ms: 0.280466
+  type: 'test'
+  ...
+# Subtest: reversing to an existing text retains every currently visible transform and opacity at the new start
+ok 244 - reversing to an existing text retains every currently visible transform and opacity at the new start
+  ---
+  duration_ms: 1.571028
+  type: 'test'
+  ...
+# Subtest: rapid third text reuses only two layers and the latest authoritative content wins
+ok 245 - rapid third text reuses only two layers and the latest authoritative content wins
+  ---
+  duration_ms: 2.827041
+  type: 'test'
+  ...
+# Subtest: unchanged text does not restart motion and completed transitions leave no active tracks
+ok 246 - unchanged text does not restart motion and completed transitions leave no active tracks
+  ---
+  duration_ms: 0.188169
+  type: 'test'
+  ...
+# Subtest: Reduced Motion directly settles both layers, blur, width and alignment without callbacks
+ok 247 - Reduced Motion directly settles both layers, blur, width and alignment without callbacks
+  ---
+  duration_ms: 0.181679
+  type: 'test'
+  ...
+# Subtest: scalar reversals interpolate from live values rather than restarting the prior endpoint
+ok 248 - scalar reversals interpolate from live values rather than restarting the prior endpoint
+  ---
+  duration_ms: 0.262519
+  type: 'test'
+  ...
+# Subtest: shake retains the six QML targets, exact per-step easings and 435ms total
+ok 249 - shake retains the six QML targets, exact per-step easings and 435ms total
+  ---
+  duration_ms: 0.238012
+  type: 'test'
+  ...
+# Subtest: original QML audit sources are byte exact, MIT remains bundled and original fonts keep OFL
+ok 250 - original QML audit sources are byte exact, MIT remains bundled and original fonts keep OFL
+  ---
+  duration_ms: 1.489307
+  type: 'test'
+  ...
+# Subtest: morph module has no credential, IPC, profile, HTML injection, timer or new GPU program path
+ok 251 - morph module has no credential, IPC, profile, HTML injection, timer or new GPU program path
+  ---
+  duration_ms: 0.576855
+  type: 'test'
+  ...
+# Subtest: authentication and account notifications carry no payload, rejected events only follow a confirmed failure
+ok 252 - authentication and account notifications carry no payload, rejected events only follow a confirmed failure
+  ---
+  duration_ms: 0.394956
+  type: 'test'
+  ...
+# Subtest: Caps Lock preserves the original idle12u/submit36u anchors and accommodates the existing mobile24px submit button
+ok 253 - Caps Lock preserves the original idle12u/submit36u anchors and accommodates the existing mobile24px submit button
+  ---
+  duration_ms: 0.374475
+  type: 'test'
+  ...
+# Subtest: entry uses exact OutQuint, original 650ms targets and measured quarter states
+ok 254 - entry uses exact OutQuint, original 650ms targets and measured quarter states
+  ---
+  duration_ms: 1.306296
+  type: 'test'
+  ...
+# Subtest: password width is 450ms and blur/opacity use original 650ms 48*.55 controls
+ok 255 - password width is 450ms and blur/opacity use original 650ms 48*.55 controls
+  ---
+  duration_ms: 1.231395
+  type: 'test'
+  ...
+# Subtest: fast focus/blur reversals start exactly from current visible values without stale targets
+ok 256 - fast focus/blur reversals start exactly from current visible values without stale targets
+  ---
+  duration_ms: 0.801018
+  type: 'test'
+  ...
+# Subtest: exit retains original per-property durations and can reverse safely without touching authentication
+ok 257 - exit retains original per-property durations and can reverse safely without touching authentication
+  ---
+  duration_ms: 0.188289
+  type: 'test'
+  ...
+# Subtest: startup waits for decoded wallpaper/fonts, then retires its 450ms safety timer
+ok 258 - startup waits for decoded wallpaper/fonts, then retires its 450ms safety timer
+  ---
+  duration_ms: 11.066884
+  type: 'test'
+  ...
+# Subtest: decoded wallpaper waits for initial material readiness without consuming entry time
+ok 259 - decoded wallpaper waits for initial material readiness without consuming entry time
+  ---
+  duration_ms: 1.138317
+  type: 'test'
+  ...
+# Subtest: confirmed authentication queues exit without synchronous material work or waiting for completion
+ok 260 - confirmed authentication queues exit without synchronous material work or waiting for completion
+  ---
+  duration_ms: 0.72873
+  type: 'test'
+  ...
+# Subtest: wallpaper failure and timeout have bounded non-black functional fallback without late entry restart
+ok 261 - wallpaper failure and timeout have bounded non-black functional fallback without late entry restart
+  ---
+  duration_ms: 1.257174
+  type: 'test'
+  ...
+# Subtest: DOM and material events share the same frame; source geometry and mobile minimum remain unchanged
+ok 262 - DOM and material events share the same frame; source geometry and mobile minimum remain unchanged
+  ---
+  duration_ms: 0.797672
+  type: 'test'
+  ...
+# Subtest: Reduced Motion and runtime change settle latest intents and leave no active RAF
+ok 263 - Reduced Motion and runtime change settle latest intents and leave no active RAF
+  ---
+  duration_ms: 0.89089
+  type: 'test'
+  ...
+# Subtest: context loss retires old RAF callback without clearing or jumping its replacement CSS continuation
+ok 264 - context loss retires old RAF callback without clearing or jumping its replacement CSS continuation
+  ---
+  duration_ms: 0.629663
+  type: 'test'
+  ...
+# Subtest: pagehide cancels timers/observers/frames; stale assets and callbacks never revive the old profile page
+ok 265 - pagehide cancels timers/observers/frames; stale assets and callbacks never revive the old profile page
+  ---
+  duration_ms: 0.976217
+  type: 'test'
+  ...
+# Subtest: hidden and account-creation views remain stable without background motion or reusing old exit intent
+ok 266 - hidden and account-creation views remain stable without background motion or reusing old exit intent
+  ---
+  duration_ms: 0.93806
+  type: 'test'
+  ...
+# Subtest: confirmed-login signal contains no secret, no delay or unlock code; original material shaders and scope remain isolated
+ok 267 - confirmed-login signal contains no secret, no delay or unlock code; original material shaders and scope remain isolated
+  ---
+  duration_ms: 0.862969
+  type: 'test'
+  ...
+# Subtest: CB-02 real Notes buttons meet 24px, with centered 10px dots and room for unclipped focus inside existing titlebar
+ok 268 - CB-02 real Notes buttons meet 24px, with centered 10px dots and room for unclipped focus inside existing titlebar
+  ---
+  duration_ms: 0.968145
+  type: 'test'
+  ...
+# Subtest: CB-02 retains original dot colors, accessible focus and original shared/Classic and Home button rules
+ok 269 - CB-02 retains original dot colors, accessible focus and original shared/Classic and Home button rules
+  ---
+  duration_ms: 0.310531
+  type: 'test'
+  ...
+# Subtest: Modern Notes status and normal-text placeholder meet 4.5:1 on their actual declared surfaces
+ok 270 - Modern Notes status and normal-text placeholder meet 4.5:1 on their actual declared surfaces
+  ---
+  duration_ms: 1.035875
+  type: 'test'
+  ...
+# Subtest: Notes visual overrides cannot leak into Classic or other applications, including responsive rules
+ok 271 - Notes visual overrides cannot leak into Classic or other applications, including responsive rules
+  ---
+  duration_ms: 1.877422
+  type: 'test'
+  ...
+# Subtest: Notes emits no notification until save acknowledgement and never transmits note content
+ok 272 - Notes emits no notification until save acknowledgement and never transmits note content
+  ---
+  duration_ms: 4.386672
+  type: 'test'
+  ...
+# Subtest: Failed Notes save produces no success signal; retry emits only after success
+ok 273 - Failed Notes save produces no success signal; retry emits only after success
+  ---
+  duration_ms: 1.474135
+  type: 'test'
+  ...
+# Subtest: acknowledged save preserves newer editor text and persists only the requested snapshot; retry updates same note
+ok 274 - acknowledged save preserves newer editor text and persists only the requested snapshot; retry updates same note
+  ---
+  duration_ms: 21.371598
+  type: 'test'
+  ...
+# Subtest: pending save cannot be retargeted by new, delete, list selection or Spotlight navigation
+ok 275 - pending save cannot be retargeted by new, delete, list selection or Spotlight navigation
+  ---
+  duration_ms: 2.629228
+  type: 'test'
+  ...
+# Subtest: failed save preserves draft and saved data, emits no success and permits explicit retry
+ok 276 - failed save preserves draft and saved data, emits no success and permits explicit retry
+  ---
+  duration_ms: 2.097228
+  type: 'test'
+  ...
+# Subtest: notes create, edit, delete and persist by account
+ok 277 - notes create, edit, delete and persist by account
+  ---
+  duration_ms: 3.813573
+  type: 'test'
+  ...
+# Subtest: notes reject unsafe IDs and oversized documents
+ok 278 - notes reject unsafe IDs and oversized documents
+  ---
+  duration_ms: 0.74154
+  type: 'test'
+  ...
+# Subtest: official black/white/UI marks preserve the supplied geometric path, not BRAND-1 or pear
+ok 279 - official black/white/UI marks preserve the supplied geometric path, not BRAND-1 or pear
+  ---
+  duration_ms: 1.188782
+  type: 'test'
+  ...
+# Subtest: native ICO and ICNS contain lossless master-rendered PNG representations
+ok 280 - native ICO and ICNS contain lossless master-rendered PNG representations
+  ---
+  duration_ms: 0.950729
+  type: 'test'
+  ...
+# Subtest: official PNGs cover required sizes and native/PWA package paths exist
+ok 281 - official PNGs cover required sizes and native/PWA package paths exist
+  ---
+  duration_ms: 1.367417
+  type: 'test'
+  ...
+# Subtest: preferences update/reset persist using private temporary output and preserve the other profile
+ok 282 - preferences update/reset persist using private temporary output and preserve the other profile
+  ---
+  duration_ms: 6.77985
+  type: 'test'
+  ...
+# Subtest: update/reset reject temporary file collisions without changing foreign bytes or existing/missing settings
+ok 283 - update/reset reject temporary file collisions without changing foreign bytes or existing/missing settings
+  ---
+  duration_ms: 7.785019
+  type: 'test'
+  ...
+# Subtest: temporary symlink to another profile is neither followed nor removed by update/reset
+ok 284 - temporary symlink to another profile is neither followed nor removed by update/reset
+  ---
+  duration_ms: 3.311839
+  type: 'test'
+  ...
+# Subtest: dangling temporary symlink cannot create its target and remains untouched
+ok 285 - dangling temporary symlink cannot create its target and remains untouched
+  ---
+  duration_ms: 1.238987
+  type: 'test'
+  ...
+# Subtest: Windows-style dangling-link open is rejected before it can create a target
+ok 286 - Windows-style dangling-link open is rejected before it can create a target
+  ---
+  duration_ms: 2.742285
+  type: 'test'
+  ...
+# Subtest: temporary path inspection errors fail closed without replacing saved settings
+ok 287 - temporary path inspection errors fail closed without replacing saved settings
+  ---
+  duration_ms: 1.243463
+  type: 'test'
+  ...
+# Subtest: partial write closes its descriptor, preserves saved preferences and permits retry
+ok 288 - partial write closes its descriptor, preserves saved preferences and permits retry
+  ---
+  duration_ms: 1.750855
+  type: 'test'
+  ...
+# Subtest: failed rename preserves both profiles, removes own temporary output and permits retry
+ok 289 - failed rename preserves both profiles, removes own temporary output and permits retry
+  ---
+  duration_ms: 3.480038
+  type: 'test'
+  ...
+# Subtest: preferences persist independently for each account and survive restart
+ok 290 - preferences persist independently for each account and survive restart
+  ---
+  duration_ms: 2.962171
+  type: 'test'
+  ...
+# Subtest: unexpected keys, invalid colors, dangerous payloads and size limits fail
+ok 291 - unexpected keys, invalid colors, dangerous payloads and size limits fail
+  ---
+  duration_ms: 1.190324
+  type: 'test'
+  ...
+# Subtest: dock theme is validated, persisted per profile and resets to classic
+ok 292 - dock theme is validated, persisted per profile and resets to classic
+  ---
+  duration_ms: 0.956117
+  type: 'test'
+  ...
+# Subtest: offline clouds default preserves explicit Classic wallpapers and custom images by profile
+ok 293 - offline clouds default preserves explicit Classic wallpapers and custom images by profile
+  ---
+  duration_ms: 3.937818
+  type: 'test'
+  ...
+# Subtest: Pages deployment is explicit manual-only, exact branch and confirmation, PWA artifact only
+ok 294 - Pages deployment is explicit manual-only, exact branch and confirmation, PWA artifact only
+  ---
+  duration_ms: 0.896579
+  type: 'test'
+  ...
+# Subtest: Pages package validates favicon/manifest/subpath-safe assets and rejects private/native files
+ok 295 - Pages package validates favicon/manifest/subpath-safe assets and rejects private/native files
+  ---
+  duration_ms: 95.1108
+  type: 'test'
+  ...
+# Subtest: keyboard visual-viewport adjustment touches only focused note editor and cleans up
+ok 296 - keyboard visual-viewport adjustment touches only focused note editor and cleans up
+  ---
+  duration_ms: 1.527505
+  type: 'test'
+  ...
+# Subtest: PWA build: manifest, self-contained entry, official icons, no cloud and deterministic safe cache
+ok 297 - PWA build: manifest, self-contained entry, official icons, no cloud and deterministic safe cache
+  ---
+  duration_ms: 191.515227
+  type: 'test'
+  ...
+# Subtest: PWA and Electron share note creation format and bounds
+ok 298 - PWA and Electron share note creation format and bounds
+  ---
+  duration_ms: 2.137799
+  type: 'test'
+  ...
+# Subtest: worker ignores mutations and unlisted requests, deletes only its own old caches
+ok 299 - worker ignores mutations and unlisted requests, deletes only its own old caches
+  ---
+  duration_ms: 2.367839
+  type: 'test'
+  ...
+# Subtest: Air Reminders persist, update, complete and separate user profiles
+ok 300 - Air Reminders persist, update, complete and separate user profiles
+  ---
+  duration_ms: 3.903496
+  type: 'test'
+  ...
+# Subtest: malformed reminders fail without changing existing data
+ok 301 - malformed reminders fail without changing existing data
+  ---
+  duration_ms: 1.802932
+  type: 'test'
+  ...
+# Subtest: a failed atomic save preserves the prior reminder contents
+ok 302 - a failed atomic save preserves the prior reminder contents
+  ---
+  duration_ms: 0.858242
+  type: 'test'
+  ...
+# Subtest: search matches application names and IDs without executing apps
+ok 303 - search matches application names and IDs without executing apps
+  ---
+  duration_ms: 7.698361
+  type: 'test'
+  ...
+# Subtest: search results are bounded and immutable
+ok 304 - search results are bounded and immutable
+  ---
+  duration_ms: 0.308037
+  type: 'test'
+  ...
+# Subtest: note search matches only provided authenticated note titles
+ok 305 - note search matches only provided authenticated note titles
+  ---
+  duration_ms: 0.348757
+  type: 'test'
+  ...
+# Subtest: new profiles inherit both Modern themes; saved Classic and ambiguous profiles remain untouched
+ok 306 - new profiles inherit both Modern themes; saved Classic and ambiguous profiles remain untouched
+  ---
+  duration_ms: 3.629079
+  type: 'test'
+  ...
+# Subtest: win32: opens only the native app and coalesces simultaneous clicks
+ok 307 - win32: opens only the native app and coalesces simultaneous clicks
+  ---
+  duration_ms: 1.823844
+  type: 'test'
+  ...
+# Subtest: darwin: opens only the native app and coalesces simultaneous clicks
+ok 308 - darwin: opens only the native app and coalesces simultaneous clicks
+  ---
+  duration_ms: 0.233075
+  type: 'test'
+  ...
+# Subtest: rejects URLs, browsers, relative paths, UNC paths and traversal
+ok 309 - rejects URLs, browsers, relative paths, UNC paths and traversal
+  ---
+  duration_ms: 1.535807
+  type: 'test'
+  ...
+# Subtest: missing app, changed canonical target, unsupported OS and launch failure fail closed
+ok 310 - missing app, changed canonical target, unsupported OS and launch failure fail closed
+  ---
+  duration_ms: 0.778454
+  type: 'test'
+  ...
+# Subtest: renderer routes Spotify directly through native bridge without a browser or fake window
+ok 311 - renderer routes Spotify directly through native bridge without a browser or fake window
+  ---
+  duration_ms: 6.357182
+  type: 'test'
+  ...
+# Subtest: IPC requires trusted authenticated access before native launch
+ok 312 - IPC requires trusted authenticated access before native launch
+  ---
+  duration_ms: 1.785046
+  type: 'test'
+  ...
+# Subtest: native path matrix: regular Windows, packaged Windows path and macOS user bundle
+ok 313 - native path matrix: regular Windows, packaged Windows path and macOS user bundle
+  ---
+  duration_ms: 3.780504
+  type: 'test'
+  ...
+# Subtest: unsupported Store activation identifiers fail without browser fallback
+ok 314 - unsupported Store activation identifiers fail without browser fallback
+  ---
+  duration_ms: 0.274407
+  type: 'test'
+  ...
+# Subtest: unreadable Store path fails closed and a later request can retry
+ok 315 - unreadable Store path fails closed and a later request can retry
+  ---
+  duration_ms: 0.333805
+  type: 'test'
+  ...
+# Subtest: Dock and Launchpad routing reach native bridge and surface missing-client errors
+ok 316 - Dock and Launchpad routing reach native bridge and surface missing-client errors
+  ---
+  duration_ms: 4.039587
+  type: 'test'
+  ...
+# Subtest: Modern opens focused search, Classic leaves legacy route available, Escape returns focus
+ok 317 - Modern opens focused search, Classic leaves legacy route available, Escape returns focus
+  ---
+  duration_ms: 4.807766
+  type: 'test'
+  ...
+# Subtest: name/id search is case-insensitive, empty query shows all, names use textContent and registry changes refresh
+ok 318 - name/id search is case-insensitive, empty query shows all, names use textContent and registry changes refresh
+  ---
+  duration_ms: 3.164671
+  type: 'test'
+  ...
+# Subtest: arrow navigation and Enter use existing launch path once; successful launch closes
+ok 319 - arrow navigation and Enter use existing launch path once; successful launch closes
+  ---
+  duration_ms: 6.745067
+  type: 'test'
+  ...
+# Subtest: pending/failing launch stays visible, blocks duplicate launch and supports retry
+ok 320 - pending/failing launch stays visible, blocks duplicate launch and supports retry
+  ---
+  duration_ms: 2.298778
+  type: 'test'
+  ...
+# Subtest: outside click and theme switch close; cancelled pending launch cannot reopen or overwrite reopened menu
+ok 321 - outside click and theme switch close; cancelled pending launch cannot reopen or overwrite reopened menu
+  ---
+  duration_ms: 1.673982
+  type: 'test'
+  ...
+# Subtest: production native launcher returns truthful success/failure without rejecting legacy fire-and-forget callers
+ok 322 - production native launcher returns truthful success/failure without rejecting legacy fire-and-forget callers
+  ---
+  duration_ms: 1.083706
+  type: 'test'
+  ...
+# Subtest: pin action never launches app, blocks duplicate saves and returns focus without closing menu
+ok 323 - pin action never launches app, blocks duplicate saves and returns focus without closing menu
+  ---
+  duration_ms: 1.877142
+  type: 'test'
+  ...
+# Subtest: pin error is visible and retry remains possible; search arrows skip sibling pin buttons
+ok 324 - pin error is visible and retry remains possible; search arrows skip sibling pin buttons
+  ---
+  duration_ms: 2.332778
+  type: 'test'
+  ...
+# Subtest: rerendering a clicked pin does not turn its original menu event path into an outside click
+ok 325 - rerendering a clicked pin does not turn its original menu event path into an outside click
+  ---
+  duration_ms: 1.380056
+  type: 'test'
+  ...
+# Subtest: pinned filter uses full default references for null and respects explicit empty or unknown pins
+ok 326 - pinned filter uses full default references for null and respects explicit empty or unknown pins
+  ---
+  duration_ms: 2.156046
+  type: 'test'
+  ...
+# Subtest: search by name/id combines with each filter and empty matches launch nothing
+ok 327 - search by name/id combines with each filter and empty matches launch nothing
+  ---
+  duration_ms: 3.67689
+  type: 'test'
+  ...
+# Subtest: confirmed pin changes update filtered rows, preserve references and never launch
+ok 328 - confirmed pin changes update filtered rows, preserve references and never launch
+  ---
+  duration_ms: 1.908609
+  type: 'test'
+  ...
+# Subtest: typing during pending pin is preserved and delayed completion does not steal search focus
+ok 329 - typing during pending pin is preserved and delayed completion does not steal search focus
+  ---
+  duration_ms: 1.801971
+  type: 'test'
+  ...
+# Subtest: pending launch keeps input/filter responsive; failed launch preserves query and allows retry
+ok 330 - pending launch keeps input/filter responsive; failed launch preserves query and allows retry
+  ---
+  duration_ms: 3.826922
+  type: 'test'
+  ...
+# Subtest: Classic desktop retains all-app menu when Modern dock is chosen; filter state is transient
+ok 331 - Classic desktop retains all-app menu when Modern dock is chosen; filter state is transient
+  ---
+  duration_ms: 2.389452
+  type: 'test'
+  ...
+# Subtest: filtered results read updated profile preferences and pin failures do not pretend success
+ok 332 - filtered results read updated profile preferences and pin failures do not pretend success
+  ---
+  duration_ms: 2.03112
+  type: 'test'
+  ...
+# Subtest: arrow-selected result survives pending pin confirmation instead of returning to pin action
+ok 333 - arrow-selected result survives pending pin confirmation instead of returning to pin action
+  ---
+  duration_ms: 4.258742
+  type: 'test'
+  ...
+# Subtest: null materializes the complete default list; [] remains explicit; remove/re-add preserves order and unknown references
+ok 334 - null materializes the complete default list; [] remains explicit; remove/re-add preserves order and unknown references
+  ---
+  duration_ms: 4.643463
+  type: 'test'
+  ...
+# Subtest: invalid IDs, protected launcher, unsupported original icon and 64-pin limit fail without writes
+ok 335 - invalid IDs, protected launcher, unsupported original icon and 64-pin limit fail without writes
+  ---
+  duration_ms: 5.16817
+  type: 'test'
+  ...
+# Subtest: serialized confirmed writes preserve parallel pins, unrelated settings, Bob, and fresh-store persistence
+ok 336 - serialized confirmed writes preserve parallel pins, unrelated settings, Bob, and fresh-store persistence
+  ---
+  duration_ms: 5.037186
+  type: 'test'
+  ...
+# Subtest: failed save leaves cache/store unchanged; retry applies only after acknowledgement
+ok 337 - failed save leaves cache/store unchanged; retry applies only after acknowledgement
+  ---
+  duration_ms: 7.446018
+  type: 'test'
+  ...
+# Subtest: profile change before guarded write cannot write Bob, nor a new Alice session
+ok 338 - profile change before guarded write cannot write Bob, nor a new Alice session
+  ---
+  duration_ms: 2.774553
+  type: 'test'
+  ...
+# Subtest: profile change after disk commit suppresses stale renderer response
+ok 339 - profile change after disk commit suppresses stale renderer response
+  ---
+  duration_ms: 1.941238
+  type: 'test'
+  ...
+# Subtest: production Main creates a new ephemeral preference session on each login, including the same account
+ok 340 - production Main creates a new ephemeral preference session on each login, including the same account
+  ---
+  duration_ms: 1.227209
+  type: 'test'
+  ...
+# Subtest: Tahoe icon metadata resolves through the single existing registry, without changing app identity
+ok 341 - Tahoe icon metadata resolves through the single existing registry, without changing app identity
+  ---
+  duration_ms: 0.864882
+  type: 'test'
+  ...
+# Subtest: Every vendored icon is original pinned GPL source with exact digest, local resources and full attribution
+ok 342 - Every vendored icon is original pinned GPL source with exact digest, local resources and full attribution
+  ---
+  duration_ms: 3.88619
+  type: 'test'
+  ...
+# Subtest: Tahoe GTK values come from pinned original laptop Sass and preserve MIT notices
+ok 343 - Tahoe GTK values come from pinned original laptop Sass and preserve MIT notices
+  ---
+  duration_ms: 0.288748
+  type: 'test'
+  ...
+# Subtest: Tahoe icon painter uses safe images only in Modern and leaves Classic to original artwork
+ok 344 - Tahoe icon painter uses safe images only in Modern and leaves Classic to original artwork
+  ---
+  duration_ms: 3.082398
+  type: 'test'
+  ...
+# Subtest: Tahoe is a Modern component layer without shell geometry or animation ownership
+ok 345 - Tahoe is a Modern component layer without shell geometry or animation ownership
+  ---
+  duration_ms: 0.508504
+  type: 'test'
+  ...
+# Subtest: Tahoe originals, licenses, metadata and UI dependencies are packaged for offline Electron/PWA use
+ok 346 - Tahoe originals, licenses, metadata and UI dependencies are packaged for offline Electron/PWA use
+  ---
+  duration_ms: 8.285892
+  type: 'test'
+  ...
+# Subtest: Tahoe settings applies only confirmed values through existing serialized queue
+ok 347 - Tahoe settings applies only confirmed values through existing serialized queue
+  ---
+  duration_ms: 7.75829
+  type: 'test'
+  ...
+# Subtest: Tahoe failed save preserves acknowledged values and permits retry
+ok 348 - Tahoe failed save preserves acknowledged values and permits retry
+  ---
+  duration_ms: 1.976179
+  type: 'test'
+  ...
+# Subtest: Tahoe rejects a stale profile response without applying settings
+ok 349 - Tahoe rejects a stale profile response without applying settings
+  ---
+  duration_ms: 1.486022
+  type: 'test'
+  ...
+# Subtest: Tahoe presentation retains original nodes, Classic restoration and cleanup
+ok 350 - Tahoe presentation retains original nodes, Classic restoration and cleanup
+  ---
+  duration_ms: 0.567441
+  type: 'test'
+  ...
+# Subtest: Tahoe calendar has 42 local dates, Monday start and leap-day navigation
+ok 351 - Tahoe calendar has 42 local dates, Monday start and leap-day navigation
+  ---
+  duration_ms: 1.494094
+  type: 'test'
+  ...
+# Subtest: Tahoe reminders filter actual open/completed and local date-only values
+ok 352 - Tahoe reminders filter actual open/completed and local date-only values
+  ---
+  duration_ms: 0.260416
+  type: 'test'
+  ...
+# Subtest: Tahoe note search is title-only and retains literal unsafe-looking strings
+ok 353 - Tahoe note search is title-only and retains literal unsafe-looking strings
+  ---
+  duration_ms: 0.198775
+  type: 'test'
+  ...
+# Subtest: Calendar/playlist adapter isolates two accounts and never reassigns legacy data
+ok 354 - Calendar/playlist adapter isolates two accounts and never reassigns legacy data
+  ---
+  duration_ms: 2.587035
+  type: 'test'
+  ...
+# Subtest: Profile-local corrupt data and write errors remain explicit without overwriting source
+ok 355 - Profile-local corrupt data and write errors remain explicit without overwriting source
+  ---
+  duration_ms: 0.450138
+  type: 'test'
+  ...
+# Subtest: Profile-local initialization rejects profile change during asynchronous authentication
+ok 356 - Profile-local initialization rejects profile change during asynchronous authentication
+  ---
+  duration_ms: 0.362338
+  type: 'test'
+  ...
+# Subtest: New app adapter is included in offline packaging and preserves existing engine boundaries
+ok 357 - New app adapter is included in offline packaging and preserves existing engine boundaries
+  ---
+  duration_ms: 11.44203
+  type: 'test'
+  ...
+# Subtest: MacWidgets original dimensions, grid pitches and safe Dock boundary
+ok 358 - MacWidgets original dimensions, grid pitches and safe Dock boundary
+  ---
+  duration_ms: 1.472934
+  type: 'test'
+  ...
+# Subtest: MacWidgets overlap/nearest slot never put a widget on a neighbor or offscreen
+ok 359 - MacWidgets overlap/nearest slot never put a widget on a neighbor or offscreen
+  ---
+  duration_ms: 0.231413
+  type: 'test'
+  ...
+# Subtest: Narrow widget pages expose every selected widget exactly once without collision
+ok 360 - Narrow widget pages expose every selected widget exactly once without collision
+  ---
+  duration_ms: 0.243601
+  type: 'test'
+  ...
+# Subtest: ClockWidget rounded-rectangle tick geometry preserves all 60 finite rays
+ok 361 - ClockWidget rounded-rectangle tick geometry preserves all 60 finite rays
+  ---
+  duration_ms: 0.422006
+  type: 'test'
+  ...
+# Subtest: Widget config strictly validates IDs, sizes, positions and explicitly selected raster images
+ok 362 - Widget config strictly validates IDs, sizes, positions and explicitly selected raster images
+  ---
+  duration_ms: 0.899523
+  type: 'test'
+  ...
+# Subtest: Existing preference store persists widget gallery and positions per profile after restart
+ok 363 - Existing preference store persists widget gallery and positions per profile after restart
+  ---
+  duration_ms: 2.433608
+  type: 'test'
+  ...
+# Subtest: Widgets project actual API records without private bodies/descriptions and report retryable errors
+ok 364 - Widgets project actual API records without private bodies/descriptions and report retryable errors
+  ---
+  duration_ms: 0.48575
+  type: 'test'
+  ...
+# Subtest: Widget calendar projects the existing service without reassigning any storage
+ok 365 - Widget calendar projects the existing service without reassigning any storage
+  ---
+  duration_ms: 0.219706
+  type: 'test'
+  ...
+# Subtest: Widgets reject late profile replies and logout clears data immediately
+ok 366 - Widgets reject late profile replies and logout clears data immediately
+  ---
+  duration_ms: 4.190061
+  type: 'test'
+  ...
+# Subtest: Rapid widget reloads cannot overwrite the newest state; hidden widgets stop reads
+ok 367 - Rapid widget reloads cannot overwrite the newest state; hidden widgets stop reads
+  ---
+  duration_ms: 0.603295
+  type: 'test'
+  ...
+# Subtest: Music widget transport delegates to the one existing audio engine and rejects detached windows
+ok 368 - Music widget transport delegates to the one existing audio engine and rejects detached windows
+  ---
+  duration_ms: 1.34297
+  type: 'test'
+  ...
+# Subtest: Spotlight session checks reject profile switches even while query/version stay unchanged
+ok 369 - Spotlight session checks reject profile switches even while query/version stay unchanged
+  ---
+  duration_ms: 1.463179
+  type: 'test'
+  ...
+# Subtest: ID3v2.3 and 2.4 read real embedded text and bounded front-cover bytes
+ok 370 - ID3v2.3 and 2.4 read real embedded text and bounded front-cover bytes
+  ---
+  duration_ms: 2.362852
+  type: 'test'
+  ...
+# Subtest: FLAC Vorbis comments and picture blocks share the same safe metadata contract
+ok 371 - FLAC Vorbis comments and picture blocks share the same safe metadata contract
+  ---
+  duration_ms: 0.304982
+  type: 'test'
+  ...
+# Subtest: Invalid, truncated, unsupported and oversized tags preserve neutral fallbacks
+ok 372 - Invalid, truncated, unsupported and oversized tags preserve neutral fallbacks
+  ---
+  duration_ms: 1.973235
+  type: 'test'
+  ...
+# Subtest: Local metadata reads at most 2MiB, catches I/O errors and removes control characters
+ok 373 - Local metadata reads at most 2MiB, catches I/O errors and removes control characters
+  ---
+  duration_ms: 0.288578
+  type: 'test'
+  ...
+# Subtest: Public lock preview requires approved bounded raster data, expires and clears across account choice
+ok 374 - Public lock preview requires approved bounded raster data, expires and clears across account choice
+  ---
+  duration_ms: 0.62697
+  type: 'test'
+  ...
+# Subtest: Lock preview rejects file URLs, secret fields, oversized metadata and hostile covers
+ok 375 - Lock preview rejects file URLs, secret fields, oversized metadata and hostile covers
+  ---
+  duration_ms: 0.925662
+  type: 'test'
+  ...
+# Subtest: Actual Main lock bridge requires exact session and native confirmation before disclosure
+ok 376 - Actual Main lock bridge requires exact session and native confirmation before disclosure
+  ---
+  duration_ms: 2.586114
+  type: 'test'
+  ...
+# Subtest: Main public preview rejects desktop/subframes and a logout race during confirmation
+ok 377 - Main public preview rejects desktop/subframes and a logout race during confirmation
+  ---
+  duration_ms: 0.858382
+  type: 'test'
+  ...
+# Subtest: MacShell MRU orders active first, deduplicates, bounds history and drops closed IDs
+ok 378 - MacShell MRU orders active first, deduplicates, bounds history and drops closed IDs
+  ---
+  duration_ms: 0.707719
+  type: 'test'
+  ...
+# Subtest: Window bounds respect viewport and readable minima at 390px without storing content
+ok 379 - Window bounds respect viewport and readable minima at 390px without storing content
+  ---
+  duration_ms: 0.284772
+  type: 'test'
+  ...
+# Subtest: Profile window layouts accept only known app IDs, bounded geometry and explicit mode
+ok 380 - Profile window layouts accept only known app IDs, bounded geometry and explicit mode
+  ---
+  duration_ms: 1.475958
+  type: 'test'
+  ...
+# Subtest: New integration ships no second audio engine and preserves all actual M2 timeline code
+ok 381 - New integration ships no second audio engine and preserves all actual M2 timeline code
+  ---
+  duration_ms: 0.349959
+  type: 'test'
+  ...
+# Subtest: Window layouts persist after store restart without crossing profile ownership
+ok 382 - Window layouts persist after store restart without crossing profile ownership
+  ---
+  duration_ms: 1.678197
+  type: 'test'
+  ...
+# Subtest: Canonical lifecycle focus and derived active window flags stay synchronized
+ok 383 - Canonical lifecycle focus and derived active window flags stay synchronized
+  ---
+  duration_ms: 1.449229
+  type: 'test'
+  ...
+# Subtest: MacDock cosine influence retains original radius, falloff and symmetric neighbors
+ok 384 - MacDock cosine influence retains original radius, falloff and symmetric neighbors
+  ---
+  duration_ms: 0.837982
+  type: 'test'
+  ...
+# Subtest: Magnification adapts original1.7 peak to fixed Air-OS cells without changing bounds
+ok 385 - Magnification adapts original1.7 peak to fixed Air-OS cells without changing bounds
+  ---
+  duration_ms: 0.204302
+  type: 'test'
+  ...
+# Subtest: Clock geometry preserves original64u/11.5u/28 and material tint formulas
+ok 386 - Clock geometry preserves original64u/11.5u/28 and material tint formulas
+  ---
+  duration_ms: 0.600149
+  type: 'test'
+  ...
+# Subtest: New excerpts and original provenance retain pinned bytes and MIT attribution
+ok 387 - New excerpts and original provenance retain pinned bytes and MIT attribution
+  ---
+  duration_ms: 1.303606
+  type: 'test'
+  ...
+# Subtest: Original status Canvas paths draw real glyph geometry rather than empty placeholders
+ok 388 - Original status Canvas paths draw real glyph geometry rather than empty placeholders
+  ---
+  duration_ms: 0.64129
+  type: 'test'
+  ...
+# Subtest: Shell adapter delegates ownership, cleans resources, respects motion and Classic
+ok 389 - Shell adapter delegates ownership, cleans resources, respects motion and Classic
+  ---
+  duration_ms: 0.398731
+  type: 'test'
+  ...
+# Subtest: Glyph ink adapts to forced colors while original path fragments stay byte-identical
+ok 390 - Glyph ink adapts to forced colors while original path fragments stay byte-identical
+  ---
+  duration_ms: 0.309219
+  type: 'test'
+  ...
+# Subtest: System surfaces retain notifications while placing active interactions above banners
+ok 391 - System surfaces retain notifications while placing active interactions above banners
+  ---
+  duration_ms: 0.178675
+  type: 'test'
+  ...
+# Subtest: Asynchronous existing History button is adopted once with Classic content preserved
+ok 392 - Asynchronous existing History button is adopted once with Classic content preserved
+  ---
+  duration_ms: 1.314608
+  type: 'test'
+  ...
+# Subtest: Original Dock layout widens cells and moves neighbors with full1.7 magnification
+ok 393 - Original Dock layout widens cells and moves neighbors with full1.7 magnification
+  ---
+  duration_ms: 1.008044
+  type: 'test'
+  ...
+# Subtest: Dock viewport budgeting keeps controls reachable with many pins and390px pages
+ok 394 - Dock viewport budgeting keeps controls reachable with many pins and390px pages
+  ---
+  duration_ms: 0.368416
+  type: 'test'
+  ...
+# Subtest: Original Spring integrator preserves position/velocity on reversal, settles and bounds stalled frames
+ok 395 - Original Spring integrator preserves position/velocity on reversal, settles and bounds stalled frames
+  ---
+  duration_ms: 1.198647
+  type: 'test'
+  ...
+# Subtest: Preset is validated by the existing preference schema and never changes pins or user data
+ok 396 - Preset is validated by the existing preference schema and never changes pins or user data
+  ---
+  duration_ms: 1.9766
+  type: 'test'
+  ...
+# Subtest: Player RU composition ports actual source geometry in all sizes
+ok 397 - Player RU composition ports actual source geometry in all sizes
+  ---
+  duration_ms: 0.239796
+  type: 'test'
+  ...
+# Subtest: Ported full component originals and expanded GPL sources remain byte-identical
+ok 398 - Ported full component originals and expanded GPL sources remain byte-identical
+  ---
+  duration_ms: 2.549369
+  type: 'test'
+  ...
+# Subtest: M2 reads current dock icon geometry and releases presentation lease on every cleanup
+ok 399 - M2 reads current dock icon geometry and releases presentation lease on every cleanup
+  ---
+  duration_ms: 0.570316
+  type: 'test'
+  ...
+# Subtest: Shared controls keep native inputs authoritative and have finite event-driven animation
+ok 400 - Shared controls keep native inputs authoritative and have finite event-driven animation
+  ---
+  duration_ms: 0.256661
+  type: 'test'
+  ...
+# Subtest: Every admitted WGlyph and PlayerGlyph path executes on a Canvas2D-compatible context
+ok 401 - Every admitted WGlyph and PlayerGlyph path executes on a Canvas2D-compatible context
+  ---
+  duration_ms: 1.594003
+  type: 'test'
+  ...
+# Subtest: Shared segmented controls read accepted aria state and use independent original edge durations
+ok 402 - Shared segmented controls read accepted aria state and use independent original edge durations
+  ---
+  duration_ms: 0.341766
+  type: 'test'
+  ...
+# Subtest: Tahoe7 selector exposes every registered pin to one paged presentation owner
+ok 403 - Tahoe7 selector exposes every registered pin to one paged presentation owner
+  ---
+  duration_ms: 2.342282
+  type: 'test'
+  ...
+# Subtest: Symbolic browser exports preserve original paths and add only the missing XML namespace
+ok 404 - Symbolic browser exports preserve original paths and add only the missing XML namespace
+  ---
+  duration_ms: 0.536465
+  type: 'test'
+  ...
+# Subtest: 8A uses actual Dock, WidgetVisual and GlassSlab callsite material profiles
+ok 405 - 8A uses actual Dock, WidgetVisual and GlassSlab callsite material profiles
+  ---
+  duration_ms: 1.271024
+  type: 'test'
+  ...
+# Subtest: 8A records fixed original calls and retains exact source excerpt bytes
+ok 406 - 8A records fixed original calls and retains exact source excerpt bytes
+  ---
+  duration_ms: 1.241019
+  type: 'test'
+  ...
+# Subtest: 8A binds profiles in the shared draw, retains safe GPU guard and exposes numeric material diagnostics
+ok 407 - 8A binds profiles in the shared draw, retains safe GPU guard and exposes numeric material diagnostics
+  ---
+  duration_ms: 0.393884
+  type: 'test'
+  ...
+# Subtest: 8A centralizes translucent fallbacks and leaves header blur and prior blue widget layers absent
+ok 408 - 8A centralizes translucent fallbacks and leaves header blur and prior blue widget layers absent
+  ---
+  duration_ms: 0.277451
+  type: 'test'
+  ...
+# Subtest: ASAR extraction uses native Windows separators while feature matching stays portable
+ok 409 - ASAR extraction uses native Windows separators while feature matching stays portable
+  ---
+  duration_ms: 4.893433
+  type: 'test'
+  ...
+# Subtest: windows: bundles identifiable artifacts with verifiable checksums and packaged features
+ok 410 - windows: bundles identifiable artifacts with verifiable checksums and packaged features
+  ---
+  duration_ms: 62.44427
+  type: 'test'
+  ...
+# Subtest: macos: bundles identifiable artifacts with verifiable checksums and packaged features
+ok 411 - macos: bundles identifiable artifacts with verifiable checksums and packaged features
+  ---
+  duration_ms: 24.98165
+  type: 'test'
+  ...
+# Subtest: package validation rejects missing-island
+ok 412 - package validation rejects missing-island
+  ---
+  duration_ms: 49.475455
+  type: 'test'
+  ...
+# Subtest: package validation rejects private-key
+ok 413 - package validation rejects private-key
+  ---
+  duration_ms: 40.285292
+  type: 'test'
+  ...
+# Subtest: package validation rejects profile-data
+ok 414 - package validation rejects profile-data
+  ---
+  duration_ms: 41.991344
+  type: 'test'
+  ...
+# Subtest: package validation rejects wrong-commit
+ok 415 - package validation rejects wrong-commit
+  ---
+  duration_ms: 43.743741
+  type: 'test'
+  ...
+# Subtest: collection rejects absent installer and wrong executable architecture
+ok 416 - collection rejects absent installer and wrong executable architecture
+  ---
+  duration_ms: 96.198834
+  type: 'test'
+  ...
+# Subtest: refine paginates every selected original control once in saved order, bounded to three rows
+ok 417 - refine paginates every selected original control once in saved order, bounded to three rows
+  ---
+  duration_ms: 2.0239
+  type: 'test'
+  ...
+# Subtest: Today reads the existing authenticated store and exposes no descriptions
+ok 418 - Today reads the existing authenticated store and exposes no descriptions
+  ---
+  duration_ms: 1.299315
+  type: 'test'
+  ...
+# Subtest: Today handles empty profile, error and confirmed retry
+ok 419 - Today handles empty profile, error and confirmed retry
+  ---
+  duration_ms: 0.336319
+  type: 'test'
+  ...
+# Subtest: Today rejects out-of-order responses and keeps only newest loaded state
+ok 420 - Today rejects out-of-order responses and keeps only newest loaded state
+  ---
+  duration_ms: 4.403387
+  type: 'test'
+  ...
+# Subtest: Today session changes before and after list never expose earlier profile titles
+ok 421 - Today session changes before and after list never expose earlier profile titles
+  ---
+  duration_ms: 1.924413
+  type: 'test'
+  ...
+# Subtest: Today logout or disabled widget clears data and discards delayed replies
+ok 422 - Today logout or disabled widget clears data and discards delayed replies
+  ---
+  duration_ms: 0.66121
+  type: 'test'
+  ...
+# Subtest: Today size is validated in existing profile store
+ok 423 - Today size is validated in existing profile store
+  ---
+  duration_ms: 5.5993
+  type: 'test'
+  ...
+# Subtest: refine hides redundant clocks only in Modern, preserves calendar, live central clock and transparent symbol
+ok 424 - refine hides redundant clocks only in Modern, preserves calendar, live central clock and transparent symbol
+  ---
+  duration_ms: 0.36438
+  type: 'test'
+  ...
+# Subtest: WinBox refuses a live Air-OS owner and M2 instead of dual control
+ok 425 - WinBox refuses a live Air-OS owner and M2 instead of dual control
+  ---
+  duration_ms: 0.975857
+  type: 'test'
+  ...
+# Subtest: WinBox adapter delegates geometry, focus, max/restore and releases exactly once
+ok 426 - WinBox adapter delegates geometry, focus, max/restore and releases exactly once
+  ---
+  duration_ms: 0.833395
+  type: 'test'
+  ...
+# Subtest: WinBox original is pinned, licensed and not silently installed in production
+ok 427 - WinBox original is pinned, licensed and not silently installed in production
+  ---
+  duration_ms: 1.07938
+  type: 'test'
+  ...
+# Subtest: WinBox evaluation releases on profile switch without touching Air-OS state
+ok 428 - WinBox evaluation releases on profile switch without touching Air-OS state
+  ---
+  duration_ms: 0.257763
+  type: 'test'
+  ...
+# Subtest: Modern uses one live timeline for minimize/restore/minimize, rejecting stale callbacks and preserving geometry
+ok 429 - Modern uses one live timeline for minimize/restore/minimize, rejecting stale callbacks and preserving geometry
+  ---
+  duration_ms: 3.165963
+  type: 'test'
+  ...
+# Subtest: close during minimizing replaces completion, reopening cancels close; close during restoring runs once
+ok 430 - close during minimizing replaces completion, reopening cancels close; close during restoring runs once
+  ---
+  duration_ms: 0.806956
+  type: 'test'
+  ...
+# Subtest: separate windows keep independent motions; cleanup/disconnected old windows cannot hide a reopened instance
+ok 431 - separate windows keep independent motions; cleanup/disconnected old windows cannot hide a reopened instance
+  ---
+  duration_ms: 1.863923
+  type: 'test'
+  ...
+# Subtest: Reduced Motion, unsupported WAAPI and runtime settings/media/visibility changes settle the latest intent
+ok 432 - Reduced Motion, unsupported WAAPI and runtime settings/media/visibility changes settle the latest intent
+  ---
+  duration_ms: 2.291477
+  type: 'test'
+  ...
+# Subtest: closing an already hidden Modern window never flashes it or starts another animation
+ok 433 - closing an already hidden Modern window never flashes it or starts another animation
+  ---
+  duration_ms: 0.637385
+  type: 'test'
+  ...
+# Subtest: Classic retains original 410ms minimization frames and synchronous restore path
+ok 434 - Classic retains original 410ms minimization frames and synchronous restore path
+  ---
+  duration_ms: 0.884862
+  type: 'test'
+  ...
+# Subtest: existing openApp restores an in-flight minimized window, lifecycle focused; repeated restore launch does not reverse
+ok 435 - existing openApp restores an in-flight minimized window, lifecycle focused; repeated restore launch does not reverse
+  ---
+  duration_ms: 1.287368
+  type: 'test'
+  ...
+# Subtest: R2 installed payload verifier checks actual bytes and rejects missing or altered resources
+ok 436 - R2 installed payload verifier checks actual bytes and rejects missing or altered resources
+  ---
+  duration_ms: 9.865914
+  type: 'test'
+  ...
+# Subtest: R2 source guard requires the fixed Tahoe 5 ancestor, exact CI SHA and dedicated ref
+ok 437 - R2 source guard requires the fixed Tahoe 5 ancestor, exact CI SHA and dedicated ref
+  ---
+  duration_ms: 85.305745
+  type: 'test'
+  ...
+# Subtest: R2 critical modules and original license trees are covered by the existing runtime inventory
+ok 438 - R2 critical modules and original license trees are covered by the existing runtime inventory
+  ---
+  duration_ms: 4.717983
+  type: 'test'
+  ...
+# Subtest: R2 workflow keeps audits, installed-payload verification and native GUI mandatory without publishing
+ok 439 - R2 workflow keeps audits, installed-payload verification and native GUI mandatory without publishing
+  ---
+  duration_ms: 0.451409
+  type: 'test'
+  ...
+# Subtest: R2 Windows autocrlf checkout preserves all pinned Tahoe, MacBar and Deep-Port asset bytes
+ok 440 - R2 Windows autocrlf checkout preserves all pinned Tahoe, MacBar and Deep-Port asset bytes
+  ---
+  duration_ms: 15.022674
+  type: 'test'
+  ...
+# Subtest: R3 requires its exact feature branch, Tahoe6 ancestor and requested CI commit
+ok 441 - R3 requires its exact feature branch, Tahoe6 ancestor and requested CI commit
+  ---
+  duration_ms: 93.935547
+  type: 'test'
+  ...
+# Subtest: R3 inventories every Tahoe7 runtime and both original and browser icon exports
+ok 442 - R3 inventories every Tahoe7 runtime and both original and browser icon exports
+  ---
+  duration_ms: 4.823238
+  type: 'test'
+  ...
+# Subtest: R3 keeps audit, full tests, installed ASAR/payload checks and real Windows GUI mandatory
+ok 443 - R3 keeps audit, full tests, installed ASAR/payload checks and real Windows GUI mandatory
+  ---
+  duration_ms: 0.474654
+  type: 'test'
+  ...
+# Subtest: R1.1 absent identities are BLOCKED and configuration never falls back to unsigned
+ok 444 - R1.1 absent identities are BLOCKED and configuration never falls back to unsigned
+  ---
+  duration_ms: 1.433144
+  type: 'test'
+  ...
+# Subtest: R1.1 certificate policy requires native validated identity and enforces SHA256/RFC3161/full PE coverage
+ok 445 - R1.1 certificate policy requires native validated identity and enforces SHA256/RFC3161/full PE coverage
+  ---
+  duration_ms: 0.845484
+  type: 'test'
+  ...
+# Subtest: R1.1 Artifact Signing config uses supported native builder options without credential serialization
+ok 446 - R1.1 Artifact Signing config uses supported native builder options without credential serialization
+  ---
+  duration_ms: 0.345232
+  type: 'test'
+  ...
+# Subtest: R1.1 malformed public input, unapproved endpoints and incomplete credentials are rejected
+ok 447 - R1.1 malformed public input, unapproved endpoints and incomplete credentials are rejected
+  ---
+  duration_ms: 0.300095
+  type: 'test'
+  ...
+# Subtest: R1.1 signing options validate against the actual installed electron-builder schema
+ok 448 - R1.1 signing options validate against the actual installed electron-builder schema
+  ---
+  duration_ms: 533.704903
+  type: 'test'
+  ...
+# Subtest: R1.1 receipt finalization preserves SAC NOT_TESTED, records post-signing hash and no release approval
+ok 449 - R1.1 receipt finalization preserves SAC NOT_TESTED, records post-signing hash and no release approval
+  ---
+  duration_ms: 1.952794
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: unsigned
+ok 450 - R1.1 refuses signing receipt: unsigned
+  ---
+  duration_ms: 0.547892
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: timestamp
+ok 451 - R1.1 refuses signing receipt: timestamp
+  ---
+  duration_ms: 0.375877
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: chain
+ok 452 - R1.1 refuses signing receipt: chain
+  ---
+  duration_ms: 0.393013
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: signtool
+ok 453 - R1.1 refuses signing receipt: signtool
+  ---
+  duration_ms: 0.441054
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: commit
+ok 454 - R1.1 refuses signing receipt: commit
+  ---
+  duration_ms: 0.309158
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: installer-modified
+ok 455 - R1.1 refuses signing receipt: installer-modified
+  ---
+  duration_ms: 0.310129
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: app-modified
+ok 456 - R1.1 refuses signing receipt: app-modified
+  ---
+  duration_ms: 0.352642
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: uninstaller-missing
+ok 457 - R1.1 refuses signing receipt: uninstaller-missing
+  ---
+  duration_ms: 0.305222
+  type: 'test'
+  ...
+# Subtest: R1.1 refuses signing receipt: path-traversal
+ok 458 - R1.1 refuses signing receipt: path-traversal
+  ---
+  duration_ms: 0.348015
+  type: 'test'
+  ...
+# Subtest: R1.1 workflow is opt-in, environment-protected, secret-only, fail-closed and retains all R1 security/GUI gates
+ok 459 - R1.1 workflow is opt-in, environment-protected, secret-only, fail-closed and retains all R1 security/GUI gates
+  ---
+  duration_ms: 0.454324
+  type: 'test'
+  ...
+# Subtest: R1 preparation records modern runtime and leaves Catalina declaration intact; wrong runtime fails
+ok 460 - R1 preparation records modern runtime and leaves Catalina declaration intact; wrong runtime fails
+  ---
+  duration_ms: 4.639346
+  type: 'test'
+  ...
+# Subtest: R1 verifies actual ASAR source hashes including login, fonts, shaders, licenses and local dependencies
+ok 461 - R1 verifies actual ASAR source hashes including login, fonts, shaders, licenses and local dependencies
+  ---
+  duration_ms: 59.499553
+  type: 'test'
+  ...
+# Subtest: R1 fails closed on missing-font
+ok 462 - R1 fails closed on missing-font
+  ---
+  duration_ms: 49.212106
+  type: 'test'
+  ...
+# Subtest: R1 fails closed on wrong-shader
+ok 463 - R1 fails closed on wrong-shader
+  ---
+  duration_ms: 48.319854
+  type: 'test'
+  ...
+# Subtest: R1 fails closed on missing-local-script
+ok 464 - R1 fails closed on missing-local-script
+  ---
+  duration_ms: 39.082273
+  type: 'test'
+  ...
+# Subtest: R1 fails closed on unexpected-dependency
+ok 465 - R1 fails closed on unexpected-dependency
+  ---
+  duration_ms: 25.222542
+  type: 'test'
+  ...
+# Subtest: R1 fails closed on wrong-music-version
+ok 466 - R1 fails closed on wrong-music-version
+  ---
+  duration_ms: 29.764534
+  type: 'test'
+  ...
+# Subtest: R1 single-x64 collection has installer SHA256, honest hardware status and refuses stale output
+ok 467 - R1 single-x64 collection has installer SHA256, honest hardware status and refuses stale output
+  ---
+  duration_ms: 54.545942
+  type: 'test'
+  ...
+# Subtest: R1 dependency junction never overwrites an existing installation
+ok 468 - R1 dependency junction never overwrites an existing installation
+  ---
+  duration_ms: 0.603124
+  type: 'test'
+  ...
+# Subtest: R1 Windows autocrlf checkout preserves original shader, QML, font and wallpaper bytes
+ok 469 - R1 Windows autocrlf checkout preserves original shader, QML, font and wallpaper bytes
+  ---
+  duration_ms: 9.550024
+  type: 'test'
+  ...
+# Subtest: R1 isolated fallback requires both test mode and WebGL flag without changing security or geometry
+ok 470 - R1 isolated fallback requires both test mode and WebGL flag without changing security or geometry
+  ---
+  duration_ms: 3.768585
+  type: 'test'
+  ...
+1..470
+# tests 470
+# suites 0
+# pass 470
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2494.533157

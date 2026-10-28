@@ -20,7 +20,18 @@
   if(kind==='dock')return {...common,thickness:30,dispersion:.06,blurPx:1.5,tintMix:.42*.55,rim:.45*.20,grain:.03*.3,magnify:.08,rimTint:0,edgeTint:[0,0,0,0]};
   if(kind==='widget')return {...common,thickness:30,dispersion:.06,blurPx:1,tintMix:.25+.42*.8,rim:.45,grain:.03*.15,magnify:.08*Math.min(1,90/Math.max(1,height)),rimTint:1};
   if(kind==='island')return {...common,thickness:16*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
+  // GlassSlab is also the original control/menu material; do not replace 8A profiles.
+  if(['popover','control','toolbar','switcher','launchpad'].includes(kind))return {...common,thickness:16*1.6,dispersion:.06*1.3,blurPx:kind==='control'?0:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
   return null;
  }
- return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material};
+ // MacDock: glassBlur + 8; MacWidgets: glassBlur + 11; FeatherBlur: radius9.
+ function preblur(kind){return kind==='dock'?13:kind==='widget'?16:kind==='toolbar'?9:kind==='control'?0:5;}
+ // CornerBorder.qml onPaint: exact stop positions, colour mixing and 0.8px line.
+ function border(ctx,w,h,r,tint=[138/255,154/255,181/255],amount=1){
+  const lw=.8;if(w<2*lw||h<2*lw||amount<=0)return;
+  const c=tint.map(v=>Math.round((v+(1-v)*.42)*255)),a=Math.min(1,.72*amount),cx=w/2,cy=h/2,d=(w+h)/4,g=ctx.createLinearGradient(cx+d,cy-d,cx-d,cy+d);
+  for(const [p,m]of [[0,0],[.12,.25],[.32,1],[.68,1],[.88,.25],[1,0]])g.addColorStop(p,'rgba('+c.join(',')+','+a*m+')');
+  ctx.beginPath();ctx.roundRect(lw/2,lw/2,w-lw,h-lw,Math.max(0,Math.min(r-lw/2,(w-lw)/2,(h-lw)/2)));ctx.strokeStyle=g;ctx.lineWidth=lw;ctx.stroke();
+ }
+ return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material,preblur,border};
 });

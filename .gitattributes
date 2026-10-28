@@ -35,3 +35,5 @@ third_party/tahoe7/** -text
 
 # Preserve pinned material-callsite excerpts on Windows.
 third_party/glass2/** -text
+
+third_party/evolution1/original/* -text

@@ -1,3 +1,9 @@
+# System Evolution1 — Checkpoint A
+
+Basis d6af14b, Branch feat/air-os-system-evolution-1. Gemeinsamer gecachter WebGL2-Preblur, GlassSlab-Oberflächen und CornerBorder.470/470 Tests,297 Runtimeassets; echter isolierter Linux-Electron-Diagnoselauf alle drei Größen inklusive M1/M2/ContextLoss/Reduced/Classic/Logout. Kein Hardwarebeleg. [Bericht](AIR_OS_SYSTEM_EVOLUTION_1.md). B-Systemadapter/R4 in Arbeit; API403, noch kein neuer CI-Erfolg. Nächste drei zusammengehörige Einheiten im autorisierten Auftrag: sichere Systemadapter, Status-/Fensterintegration, R4-Runnerabnahme.
+
+---
+
 # TAHOE 8A – MacShell Glass Foundation
 
 Basis **854d7fb17700a7deb99307274b0ac3d98f5b3be1**, Branch **feat/air-os-tahoe-8a-glass-foundation**, Produktcheckpoint **aeef80e**. [Bericht, Originalparameter und echte Vorher-/Nachherbilder](AIR_OS_TAHOE_8A.md). Vorhandene GLASS-3-Engine: tatsächliche MacDock-/Widget-/GlassSlab-Profile, transparentere neutrale CSS-Fallbacks, einzelner13/16/5px-Compositorblur, transparente Islandkopfzeile und korrekte Wallpaperinvalidierung. Kein neuer Shader/Renderer oder Datencontroller. **467/467 Tests**,286Runtimeassets,274PWA-Assets. Echte Linux-Electron44.9.3-Abnahme1920/1650/390, normale Software-CSS- und isolierte SwiftShaderpfade getrennt; M1/M2-Reverse, Classic, Logout, Reduced Transparency/Glass und ContextLoss/Restore bestanden. Identische Dock-/Island-/Widgetrechtecke; messbare Refraktions-On/Off-Pixelunterschiede;0IdleDraws/700ms im390px-Diagnosesample.
