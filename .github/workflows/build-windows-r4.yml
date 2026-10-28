@@ -5,7 +5,7 @@ on:
     paths-ignore: ['docs/**']
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: air-os-windows-r4-${{ github.ref }}
   cancel-in-progress: true
@@ -92,6 +92,9 @@ jobs:
           $info.evidence.capabilitiesGui = '${{ steps.capabilities.outcome }}'
           $info | ConvertTo-Json -Depth 30 | Set-Content $file -Encoding utf8
           "R4 native runner installation: ${{ steps.install.outcome }}; GUI: ${{ steps.gui.outcome }}. Unsigned. Smart App Control / physical hardware: NOT TESTED. NOT a production release." >> $env:GITHUB_STEP_SUMMARY
+      - name: Commit only verified synthetic Windows PNGs on unchanged feature branch
+        if: success() && steps.gui.outcome == 'success' && steps.capabilities.outcome == 'success'
+        run: node scripts/publish-r4-evidence.cjs
       - name: Upload real R4 installer, checksum, metadata and instructions
         if: always() && steps.collect.outcome == 'success'
         uses: actions/upload-artifact@v4
