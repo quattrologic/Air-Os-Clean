@@ -1,0 +1,176 @@
+{
+  "geometryUnchanged": {
+    "1920": true,
+    "1650": true,
+    "390": true
+  },
+  "crops": [
+    {
+      "file": "docs/visual/system-evolution-1/details/before-dock-1920.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-1920.png",
+      "box": [
+        757,
+        1009,
+        1163,
+        1080
+      ],
+      "sha256": "849f9ca34665dde3d6aa2ea854081309b3e0721e3b45f962baddeabc9ffd7d96"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/before-island-1920.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-1920.png",
+      "box": [
+        836,
+        0,
+        1085,
+        42
+      ],
+      "sha256": "a53372f323ab140786b23b95ae19c2f6b0e79453682a7c7bb5569866925052f5"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-dock-1920.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-1920.png",
+      "box": [
+        757,
+        1009,
+        1163,
+        1080
+      ],
+      "sha256": "849f9ca34665dde3d6aa2ea854081309b3e0721e3b45f962baddeabc9ffd7d96"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-island-1920.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-1920.png",
+      "box": [
+        836,
+        0,
+        1085,
+        42
+      ],
+      "sha256": "5ace82bea371837caf8c302604975e7d3358bd808c4c29a0624748897cff265f"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/before-dock-1650.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-1650.png",
+      "box": [
+        622,
+        859,
+        1028,
+        930
+      ],
+      "sha256": "692e7af6f19ac3bf23cd4fd7345d26205a140dc813861ecad76a52acd2286e70"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/before-island-1650.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-1650.png",
+      "box": [
+        716,
+        0,
+        934,
+        38
+      ],
+      "sha256": "5c3f57a54bec475a0a6ad8b36dcec6ef6b2e9ad333dc03818f9e026ec4f1784d"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-dock-1650.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-1650.png",
+      "box": [
+        622,
+        859,
+        1028,
+        930
+      ],
+      "sha256": "692e7af6f19ac3bf23cd4fd7345d26205a140dc813861ecad76a52acd2286e70"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-island-1650.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-1650.png",
+      "box": [
+        716,
+        0,
+        934,
+        38
+      ],
+      "sha256": "e3f5d11111588606b45670ae53a5df38b9d9eb1e45401813ea1117278f088c1f"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/before-dock-390.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-390.png",
+      "box": [
+        35,
+        543,
+        356,
+        600
+      ],
+      "sha256": "bcc2c19f395254bcbd57a6dc9a5ab00f6c174a9b4ba70288176de5f014b9b755"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/before-island-390.png",
+      "source": "docs/visual/system-evolution-1/before/desktop-390.png",
+      "box": [
+        109,
+        0,
+        282,
+        38
+      ],
+      "sha256": "8d6d2c4995fa1741417c64e7e1a241d351f350b2ecb62ce9d651dd80ad68fab6"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-dock-390.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-390.png",
+      "box": [
+        35,
+        543,
+        356,
+        600
+      ],
+      "sha256": "6ecc570cb39cd9bd0c5e3181fd428771e3f2d3bc629ddf6b2026795c01bc1b0b"
+    },
+    {
+      "file": "docs/visual/system-evolution-1/details/after-island-390.png",
+      "source": "docs/visual/system-evolution-1/B/desktop-390.png",
+      "box": [
+        109,
+        0,
+        282,
+        38
+      ],
+      "sha256": "f88454900125da6644d72a20451e42d1c21ebdceeedf23c85a3c9f726c87d952"
+    }
+  ],
+  "diagnosticRefraction": [
+    {
+      "width": 1920,
+      "meanAbsoluteRGB": 0.13269794721407624,
+      "edgeRegion": [
+        789,
+        1013,
+        1130,
+        1017
+      ],
+      "classification": "isolated SwiftShader diagnostic, NOT hardware"
+    },
+    {
+      "width": 1650,
+      "meanAbsoluteRGB": 0.2561094819159335,
+      "edgeRegion": [
+        654,
+        863,
+        995,
+        867
+      ],
+      "classification": "isolated SwiftShader diagnostic, NOT hardware"
+    },
+    {
+      "width": 390,
+      "meanAbsoluteRGB": 0.6875,
+      "edgeRegion": [
+        67,
+        547,
+        323,
+        551
+      ],
+      "classification": "isolated SwiftShader diagnostic, NOT hardware"
+    }
+  ]
+}

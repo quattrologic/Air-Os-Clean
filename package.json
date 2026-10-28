@@ -145,7 +145,8 @@
       "air-platform-system.js",
       "air-platform-system.css",
       "src/main/system-capabilities.cjs",
-      "src/main/hyprland-adapter.cjs"
+      "src/main/hyprland-adapter.cjs",
+      "src/core/clipboard-edit.js"
     ],
     "mac": {
       "target": [
