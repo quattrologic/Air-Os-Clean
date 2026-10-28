@@ -94,3 +94,56 @@ Die folgenden lokal gebündelten Originale wurden zusätzlich bytegleich gegen d
 
 
 Letzte sichtbare Korrektur: Der ältere kompakte Tahoe-Selektor begrenzte Titel/Künstler trotz gesetzter Originalvariablen auf15/12px. R5setzt jetzt die tatsächlichen24/21RU-Werte(21.98/19.23px bei185px-Kartenhöhe) mit600/500Gewicht durch. Echte GUI-Assertions vergleichen computedStyle mit den Original-RU-Werten. Linux-GUI-Launcher verwenden jetzt weder `--disable-setuid-sandbox` noch `--enable-unsafe-swiftshader`/`--no-sandbox`. Der erste zusätzliche Legacy-Lauf wurde wegen des alten Flags automatisch abgelehnt; nach Entfernen der Ausnahmen liefen der direkte vollständige Electron-End-to-Endtest und beide R5-Materialpfade erfolgreich. Keine offene Sicherheitsausnahme für die Abnahme.
+
+
+## E — endgültiger nativer Windows-R5-Testinstaller
+
+**[Aktueller Windows-x64-R5-Testbuild](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40669223405/artifacts/12808256255)**,Actions-Artefakt(GitHub-Anmeldung,14Tage Aufbewahrung),kein öffentliches Produktionsrelease.
+
+- Exakter Produkt-/Buildcommit: `e8a7538c005291b2525511f3338b621b356ca217`.
+- Basis: `a5e17ece1b1e7f4ceaee69f92fae26490088e8db`.
+- CI: [Lauf40669223405](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40669223405),alle obligatorischen Schritte erfolgreich.
+- Datei: `Air-OS-Ultimate-R5-1.0.3-dev.3.shae8a7538c0052-Windows-x64.exe`;**122,499,209Bytes**;gebaut2026-10-28T10:06:00.271Z.
+- Electron44.9.3,electron-builder26.18.0,versionsfixierte moderne Toolchain.
+- SHA-256: `3f05e2e8e99c5a3bbacea9c082327e760d056e891ae76d3ecfb0eca1848093fd`.
+- NSIS/x64-PE,318Runtimeassets inkl. Originalquellen/MIT/GPL/OFL bytegleich im ASAR,gesamter installierter Payload geprüft. Installer tatsächlich im nativenWindows-x64-Runner installiert;EXE aus dem Installationsverzeichnis gestartet.
+- Source-/Security-/volle Node-Suite,synthetischeProfile/Neustart/Apps/M1/M2/MRU/Snap/Notes/Medien/Logout,normaler Materiallauf und separater Shaderdiagnoselauf erfolgreich.
+- Signatur:**UNSIGNED**,SAC/produktiveFreigabe:**nicht abgenommen**. Kein Signiernachweis erfunden.
+
+[NativeEvidenz/Metadaten](../docs/visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/evidence.json),[alleWindows-Bilder](../docs/visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/).Normaler Windowsproduktpfad:GPU`software`,Renderpfad`css-fallback`,0aktiveGL-Programme.Separate explizite Diagnose:max5Programme,Idle-Draws0;**keine Hardware-GPU-Abnahme**.Eigene prozedurale Tracks undWallpaper,keine heimlicheDesktop-/Fensteraufnahme.
+
+ErsterLauf40664553791 scheiterte nach erfolgreicherInstallation/GUIamOutcome-JSON-Feld;03e9c3f/Lauf40666937454belegt die Korrektur.Der hier verlinkte endgültigeInstaller enthält zusätzlich die tatsächliche Original-RU-Typografiekorrektur und die gehärteten Teststarts.Weder alterR4noch früheresR5-Artefakt wird als aktueller Installer ausgegeben.
+
+### Tatsächlich installierte Windows-Bildvergleiche
+
+| Windows-R4,normalerSoftwarefallback | Windows-R5,normalerSoftwarefallback |
+|---|---|
+| ![R4](visual/system-evolution-1/windows-r4/fbbc11f4614047bc1dc865ef06d57678171db63f/desktop-1920.png) | ![R5](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/desktop-1920.png) |
+
+R4-Archivbilder haben ihre damalige reale Uhrzeit und Presetpositionen;der identisch kontrollierte R4/R5-Szenenvergleich oben stammt aus echten Linux-Electronläufen.DieWindowsbilder dienen dem direkten Material-/Kompositionsvergleich,keinerPixelidentitätsmessung.Server-Schriftrasterung und physischeWindows11-GPUbleiben separateAbnahmen.
+
+![R5 reale lokale Coverdaten](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/player-art-1920.png)
+
+![R5 isolierte Shaderdiagnose mit Linienwallpaper — keine Hardwareabnahme](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/diagnostic-stripes-1920.png)
+
+[Kontrollzentrum](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/island-open-1920.png),[Spotlight](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/spotlight.png),[MacLock](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/r1-lockscreen-1920.png),[Finder/Notes/Snap](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/r2-snap.png),[echteGlaslinsen](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/diagnostic-glass-slider-held.png),[390pxRenderer](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/desktop-390.png),[1650px](visual/r5/windows-r5/e8a7538c005291b2525511f3338b621b356ca217/desktop-1650.png).
+
+### Test auf einem eigenen Windows-PC
+
+1. Artefakt herunterladen/entpacken;`Get-FileHash -Algorithm SHA256`mit`SHA256SUMS.txt`und obigemHash vergleichen.
+2. Nur freiwillig auf eigenemTestgerät installieren;synthetischeslokalesProfil anlegen.Kein Cloudlogin erforderlich.
+3. MacLock/Modern/Classic,Apps,Dock/Island,M1/M2,Musikdatei/Ordnerauswahl,Logout/Neustart testen.Die lokaleMaterialdiagnose zeigt den tatsächlich gewähltenPfad.
+4. Unsigned-Herausgeber/SAC-Blockaden bleiben möglich. Keine Schutzfunktionen deaktivieren oder Ausnahmen setzen;vertrauenswürdige Signierung ist weiterhin offen.
+
+NativePicker/Zustimmung,physischeAudioausgabe,GPU/DPI/mehrereMonitore,SAC/Signing,macOS/Hyprland und volleLive-Fensterrefraktion bleiben offen.AutomatischeRunner-Abnahme ist kein privaterWindows11-Hardwaretest.
+
+### Gesicherte Checkpoints
+
+| Abschnitt | Commit |
+|---|---|
+| A — Kantenrefraction/lokaleLinsen | `300d9844de07060596c53145842e35a6a8d59bdc` |
+| B/C — PlayerArt,Tintcard,Feather,Korrekturrunde | `7184d63fd5e254c8276d7ee9417c188121c1ecc5` |
+| D — DPR/Outcome-JSON | `03e9c3f003d995265b48d0c8666146b73229c5c1` |
+| C/D/E — endgültigeTypografie,sichereTests,nativerBuild | `e8a7538c005291b2525511f3338b621b356ca217` |
+
+Dokumentationsabschluss-SHA steht im Abschlussbericht;dieser Dokumentationscommit ändert keine Runtimebytes.MeilensteineA–E sind im oben belegten Umfang gesichert;bewusst offene Originalfunktionen/Plattformabnahmen werden nicht als fertig ausgegeben.

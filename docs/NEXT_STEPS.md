@@ -1,3 +1,9 @@
+# R5 — abgeschlossen und gesichert
+
+Branch feat/air-os-r5-macshell-fidelity;Basis a5e17ec,A300d984,B/C7184d63,D03e9c3f,finalerProdukt-/Buildcommite8a7538c005291b2525511f3338b621b356ca217. **511/511lokal**,modernerAudit0,318Runtimeassets,304PWA-Buildassets. Echte sandboxerhaltende Linux-Electron-GUI3Größen/DPR1/2/3/volleProfile-/App-/M1/M2-/Classicregressionen bestanden. [Endbericht](AIR_OS_R5_MACSHELL_FIDELITY.md). [NativeWindows-R5-CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40669223405)vollständig grün:Audit/Tests/NSIS/ASAR/Payload/Installation/volleinstallierteGUI/normalerCSS-Pfad/separateShaderdiagnose. [R5-Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40669223405/artifacts/12808256255),SHA256`3f05e2e8e99c5a3bbacea9c082327e760d056e891ae76d3ecfb0eca1848093fd`. Unsigned,keinProduktionsrelease;Hardware/SAC/macOS/Audio/Picker/Live-Fensterrefraktionoffen. KeineCloudanmeldung/Deployment/Mainänderung. Nächste dreiEinheiten nur nach neuemAuftrag:physischerWindows11-/GPU-/SAC-Test,Signing/nativeDialoge,verbleibendeQt-/Hardwareports. LaufenderAuftrag abgeschlossen,STOP.
+
+---
+
 # R5 — letzter Produkt-/Testcheckpoint
 
 511/511 Tests,modernerAudit0. Original-Player-RU-Typografie nach echtem Bildvergleich korrigiert;volle Linux-Electron-End-to-End-/Shader-/CSS-/DPR1/2/3-Abnahme ohne Sandbox-/unsafeAusnahmen bestanden. NativeR5-Abnahme03e9c3f/Lauf40666937454 vollständig grün,Installer/318Runtimebytes/Installation/alle3GUI-Pfade geprüft;Windows-Bilderfb8b9a9 gesichert. Letzter Typografie-/Testcheckpoint wird im eigenen R5-Kanal erneut nativ gebaut. [Bericht](AIR_OS_R5_MACSHELL_FIDELITY.md). Noch autorisiert: endgültige native Abnahme/Hash/Bilder,gesicherter Abschluss;keine neuen Features. Hardware/SAC/Signing/macOS offen.
