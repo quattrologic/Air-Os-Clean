@@ -20,6 +20,11 @@
       "source": "MacShell/MacWidgets.qml",
       "file": "third_party/r6-macshell/original/MacWidgets.qml",
       "sha256": "b658b44dc7d2ad0a617a144fc1ba16da2c19eaa734dce3551e776d1808cf03be"
+    },
+    {
+      "source": "MacShell/WidgetVisual.qml",
+      "file": "third_party/r6-macshell/original/WidgetVisual.qml",
+      "sha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8"
     }
   ]
 }

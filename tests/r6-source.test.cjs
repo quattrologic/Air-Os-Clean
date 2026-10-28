@@ -31,3 +31,5 @@ test('R6 native events remain session gated and stop on logout, navigation and a
  a.match(preload,/removeListener\('air-os:hyprland:changed'/);
  const css=fs.readFileSync('air-r6.css','utf8');a.match(css,/prefers-reduced-transparency:reduce[\s\S]*?\[data-glass-family\][\s\S]*?backdrop-filter:none/);
 });
+test('R6 PlayerWidget uses actual MacWidgets playerScale .8 callsite, not QML default1',()=>{const m=require('../src/core/macshell-shell7.js'),p=m.player(395,185,'medium');a.ok(Math.abs(p.k-.8*185/202)<1e-12);a.ok(p.art.size*p.k>80&&p.art.size*p.k<82);const original=fs.readFileSync('third_party/r6-macshell/original/MacWidgets.qml','utf8');a.match(original,/property real playerScale: 0.8/);a.match(fs.readFileSync('third_party/r6-macshell/original/WidgetVisual.qml','utf8'),/contentScale: host.playerScale/);});
+test('R6 newly integrated MacShell originals retain exact pinned bytes and all MIT source paths',()=>{const m=require('../third_party/r6-macshell/provenance.json');a.equal(m.commit,'1bdb51870b621100fd2709f66c8f8e00ab17b9c4');for(const f of m.sources)a.equal(crypto.createHash('sha256').update(fs.readFileSync(f.file)).digest('hex'),f.sha256,f.source);});

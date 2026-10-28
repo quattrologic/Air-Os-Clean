@@ -9,3 +9,8 @@ html[data-desktop-theme=modern][data-glass-family=hybrid] .dock:not(.glass2-acti
 @media(forced-colors:active){html[data-desktop-theme=modern][data-glass-family] :is(.deep-widget,.air-island-toggle,.air-island-panel,.dock):not(.glass2-active){background:Canvas!important;color:CanvasText!important;box-shadow:none!important}}
 
 .r6-weather[data-weather-size=small] .r6-weather-hours{display:none}.r6-weather[data-weather-size=small] .r6-weather-city{max-width:calc(100% - 34px)}.r6-weather[data-weather-size=small] .r6-weather-condition{max-width:calc(100% - 34px);bottom:45px}.r6-weather[data-weather-size=small] .r6-weather-source{bottom:7px;max-width:calc(100% - 72px);font-size:8px}.r6-weather[data-weather-size=large] .r6-weather-hours{left:17px;right:17px;top:140px;border-left:0;border-top:1px solid #ffffff29;padding:12px 0}
+
+/* PlayerWidget actual MacWidgets playerScale .8, native transport ownership retained. */
+html[data-desktop-theme=modern] .t7-player .widget-music-volume{bottom:0}
+html[data-desktop-theme=modern] .t7-player [data-media-action] canvas{width:calc(44px * var(--player-k))!important;height:calc(25px * var(--player-k))!important}
+html[data-desktop-theme=modern] .t7-player [data-media-action=toggle] canvas{width:calc(32px * var(--player-k))!important;height:calc(38px * var(--player-k))!important}

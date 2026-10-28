@@ -18,3 +18,6 @@ C: Original-MacWidgets-Raster 185 px, 22 px Zwischenraum/21 px Ursprung und Weat
 
 
 D: src/main/hyprland-adapter.cjs verwendet den offiziellen Socket2-Vertrag aus src/ipc/s2/S2.cpp und Unix.cpp (Originale und SHA-256 im Manifest), nicht deren Wayland-Eventloop. Eigener begrenzter Node-AF_UNIX-Client: nur Linux/Hyprland, ausdrücklicher nativer Consent, kanonischer uid-eigener nicht schreibbarer Runtime-Pfad, keine Symlinks,1,5s Connect-Timeout,64KiB Chunk-/Pufferlimit,4KiB Zeile,200Events/s Grenze. Nur numerische workspacev2-ID und Monitoränderung verlassen Main; Fenster-/Titelereignisse werden sofort verworfen. Consent benennt den gemeinsamen Eventstream. Keine Befehle, kein Polling, Cleanup bei Navigation/Logout/Quit. Kontrollierte Socketfixtures prüfen Berechtigung, private Pfade, Ausgaben und Cleanup. Kein echter Hyprland-Host vorhanden; native Abnahme offen. Windows/macOS deaktiviert.
+
+
+Visuelle Nachkorrektur nach jetzt sichtbarer Nutzerreferenz: MacWidgets.qml Zeile66 playerScale0.8, WidgetVisual.qml contentScale:host.playerScale und PlayerWidget.qml k=contentScale*k0 laufen jetzt durch src/core/macshell-shell7.js → air-widget-views.js; native Medientransport-/Inputhandler bleiben maßgeblich. Originale Glyphengrößen44×25/32×38 RU werden mit diesem k verwendet. Keine pauschale Originaltreue allein aufgrund einer kopierten QML-Datei.
