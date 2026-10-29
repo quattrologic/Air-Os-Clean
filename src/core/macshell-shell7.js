@@ -10,5 +10,7 @@
  }
  function player(width,height,size){const small=size==='small',large=size==='large',k=.8*(small?width/202:large?width/446:height/202),wr=width/k,hr=height/k,mx=23,artS=small?110:large?hr-218:hr-142;return{k,titleFont:small?21:24,artistFont:small?18:21,smallPlay:{x:wr-mx-46,y:23,size:46},art:{x:large?(wr-artS)/2:mx,y:23,size:Math.max(20,artS)},textX:small?mx:large?mx:mx+artS+18,titleCY:small?hr-60:large?hr-165:23+artS/2-16,subCY:small?hr-31:large?hr-137.5:23+artS/2+16,barCY:hr-95.5,timeCY:hr-75.2,ctlCY:hr-44};}
  function preset(){return{desktopWidgets:true,widgetSet:['clock','calendar','notes','reminders','music'],widgetLayout:{clock:{size:'small',style:'dial'},calendar:{size:'small',style:'digital'},notes:{size:'small',style:'digital'},reminders:{size:'small',style:'digital'},music:{size:'medium',style:'digital'}},widgetPositions:{clock:{x:21,y:56},calendar:{x:228,y:56},notes:{x:21,y:258},reminders:{x:228,y:258},music:{x:21,y:460}}};}
- return Object.freeze({step,dock,player,preset});
+ // Air-OS compatibility: backups created before R7 implicitly used the original scale1.
+ function restoreReference(backup){return backup?{widgetScale:1,...structuredClone(backup)}:null;}
+ return Object.freeze({step,dock,player,preset,restoreReference});
 });

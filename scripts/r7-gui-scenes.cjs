@@ -24,6 +24,11 @@ module.exports=async function({evaluate,viewport,capture,crop,shot,wait,click,pr
   await key('PageDown','PageDown',34,11);await wait("airWindowSystem.desktopLayout().workspace===2&&airWindowSystem.desktopLayout().assignments.notes===2");await shot('r7-workspace');await key('PageUp','PageUp',33,11);await wait("airWindowSystem.desktopLayout().workspace===1&&airWindowSystem.desktopLayout().assignments.notes===1");await close('notes');await close('finder');report.r7.workspaceShortcuts=true;
  }
  if(!before){await evaluate("persistAirSettingsConfirmed({reduceGlass:true})");a.equal(await evaluate("getComputedStyle(document.querySelector('.dock'),'::before').backgroundColor"),'rgb(36, 37, 41)');await shot('r7-reduced-transparency');await evaluate("persistAirSettingsConfirmed({reduceGlass:false})");}
+ if(!before){
+  await evaluate("(async()=>{const p=await airOS.preferences.get(),b={...p.referenceBackup};delete b.widgetScale;await persistAirSettingsConfirmed({referenceBackup:b,widgetScale:.8});airR6Desktop.open();})()");
+  await pressButton('#r6-reference-restore');await wait("!document.querySelector('.r6-desktop-options[open]')");a.equal(await evaluate('airOS.preferences.get().then(p=>p.widgetScale)'),1);a.equal(await evaluate('airOS.preferences.get().then(p=>p.referenceBackup)'),null);report.r7.legacyBackupRestore=true;
+ }
+ await wait("!airDockLayout.snapshot().running&&!airDesktopGlass.snapshot().pending");
  const idle=await evaluate('airDesktopGlass.snapshot().draws');await delay(550);a.equal(await evaluate('airDesktopGlass.snapshot().draws'),idle);report.r7.idleDraws=0;
  await logout();await wait("!!document.querySelector('.maclock-system')");a.equal(await evaluate('airOS.currentUser()'),null);
  for(const [w,h]of [[1536,864],[1688,896],[1920,1080],[1650,930],[390,600]]){await viewport(w,h);await delay(800);await shot('r7-maclock-'+w);a.equal(await evaluate("document.querySelector('.maclock-system').dataset.preview"),'neutral');a.equal(await evaluate("!!document.querySelector('.maclock-media-art img')"),false);}

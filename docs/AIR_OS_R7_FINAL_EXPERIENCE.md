@@ -104,3 +104,13 @@ Installer/Windows-Erfolg werden erst nach tatsächlichem Abschluss ergänzt. Uns
 ## Bewusst offen
 
 Physische Windows11-/Mehrmonitor-/DPI-/Hardware-GPU-/SAC-/Codesigning-Abnahme, macOS und nativer Hyprlandhost. Native Picker-/Zustimmungsdialoge und Audioausgabe sind weiterhin keine manuelle Geräteabnahme. Erweiterte freigegebene MacLock-Coveransicht ist geometrisch/policyseitig geprüft; der echte native Freigabedialog wurde nicht simuliert und nicht manuell abgenommen. Kein privater Live-Transport vor Login. Native Hyprland-Shadow-/Border-Compositorobjekte, neue Fenstergruppen und zusätzliche Finder-/Notes-/Reminders-Funktionen wurden in R7 nicht neu implementiert; bestehende sichere Workflows bleiben maßgeblich.
+
+## Checkpoint D — ältere bestätigte Desktop-Backups
+
+Die letzte Kompatibilitätsprüfung fand einen realen Fall: vor R7 erstellte referenceBackup-Objekte enthalten kein widgetScale. Ein reines Partial-Update beim Restore hätte dadurch die neue0.8-Skalierung beibehalten.
+
+Korrigiert in der bestehenden Reference-Aktion: fehlende Skalierung wird **nur beim ausdrücklich gewählten Anwenden/Wiederherstellen** als ursprüngliche1 normalisiert; vorhandene neue Skalierungswerte und alte Backupobjekte bleiben unverändert. Keine automatische Migration/Zuordnung beim Login.
+
+555/555 Tests. Die tatsächliche Electron-GUI schreibt im isolierten Profil ein Backup im alten Format, aktiviert den bestehenden Restorebutton über echte Tastaturbedienung und prüft den bestätigten Wert1 sowie geleerte Sicherung. [Prüfung](visual/r7/after/r7-report.json): legacyBackupRestore=true. Die fünf visuellen Ansichten, Workspace-/Snapaktionen und neutraler MacLock bestanden erneut.
+
+Checkpoint A49e5374, B d7bb297, C836a046. Der erste native R7-Lauf40840202863 bestand Audit, Tests, Packaging/Installation und die alte GUI, wird aber durch den Build mit diesem Kompatibilitätsfix ersetzt. Kein veralteter Installer wird als abschließender R7-Stand angeboten.

@@ -31,3 +31,6 @@ test('R7 original scale changes grid pitches and collision-safe placement withou
 test('R7 internal workspace shortcuts use the ACK owner, ignore AltGraph and never install OS hotkeys',()=>{
  const s=fs.readFileSync('air-window-system.js','utf8');a.match(s,/getModifierState\?\.\('AltGraph'\)/);a.match(s,/assignments:\{\[id\]:workspace\}/);a.match(s,/\(desk.workspace-1\+\(e.key==='PageDown'\?1:3\)\)%4\+1/);a.doesNotMatch(s,/globalShortcut|hyprctl|execFile|child_process/);
 });
+test('R7 restoring an older confirmed reference backup recovers implicit scale1 without mutating history',()=>{
+ const m=require('../src/core/macshell-shell7.js'),old={dockPins:['notes'],desktopWidgets:false},patch=m.restoreReference(old);a.equal(patch.widgetScale,1);a.equal('widgetScale' in old,false);a.deepEqual(patch.dockPins,['notes']);a.equal(m.restoreReference({...old,widgetScale:.65}).widgetScale,.65);a.equal(m.restoreReference(null),null);
+});

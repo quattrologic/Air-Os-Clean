@@ -1,3 +1,9 @@
+# R7 Checkpoint D — Legacy-Reference-Restore korrigiert
+
+555/555 Tests und tatsächliche fünfgrößige R7-GUI erneut bestanden. Alte Backups ohne widgetScale restaurieren nach ausdrücklicher Aktion nun korrekt1; vorhandene Skalierung bleibt erhalten, keine stille Datenmigration. Echte GUI bestätigt Legacy-Backup→Restore-Button→ACK-Wert1. A49e5374/Bd7bb297/C836a046 gesichert. Erster nativer R7-Lauf wird durch diesen finalen Produktfix ersetzt. Noch offen im laufenden Auftrag: finale native Installation/alle GUI-Pfade, Hash/Bilder und Bericht. Keine neuen Features beginnen.
+
+---
+
 # R7 Checkpoint C/D — Regression und sichtbare Korrektur abgeschlossen
 
 554/554 Tests, volle bestehende App-/Profil-/Neustart-GUI, R6.1-Geometrie/F11/M1M2, neue fünfgrößige R7-GUI inklusive Drag-Snap/Workspace-Shortcuts und komplette sechsfach-Material-/Context-/DPR-/Idle-Diagnose bestanden. Mehrere tatsächliche Bildkorrekturen für Wetteranker/Kalenderzeilen/Glyphen; beide Scrollachsen und Kartenrechtecke gemessen.370Runtimeassets. [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Jetzt noch autorisiert: nativer WindowsR7-Build/Installation/GUI, tatsächlicher Hash/Bilder, Abschluss. Keine neuen Produktfeatures mehr beginnen; native Hardwaregrenzen offen.
