@@ -106,3 +106,9 @@ html[data-pwa] .pwa-file-menu{margin-left:auto}
 html[data-pwa] .air-files-main{min-width:0;container-type:inline-size}
 @container(max-width:600px){html[data-pwa] .air-file-date{display:none!important}html[data-pwa] .air-files-columns>span:last-child{display:none}html[data-pwa] .air-file-entry,html[data-pwa] .air-files-columns{grid-template-columns:minmax(70px,1fr) 60px 60px!important}}
 @container(max-width:420px){html[data-pwa] .air-file-type{display:none!important}html[data-pwa] .air-files-columns>span:nth-child(2){display:none}html[data-pwa] .air-file-entry,html[data-pwa] .air-files-columns{grid-template-columns:minmax(60px,1fr) 60px!important}}
+@media(pointer:coarse){
+ html[data-pwa] .app-window .window-content button{min-height:44px!important}
+ html[data-pwa] .app-window .window-content :is(.air-files-tool,.arem-new,.air-file-duplicate){min-width:44px!important}
+ html[data-pwa] .app-window .window-content :is(input[type=checkbox],input[type=radio]){width:24px;min-width:24px;height:24px;min-height:24px}
+ html[data-pwa] .app-window .window-content label:has(input[type=checkbox]){min-height:44px;align-items:center}
+}
