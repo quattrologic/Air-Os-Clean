@@ -14,4 +14,24 @@ const common=header+'in vec2 qt_TexCoord0;uniform sampler2D tex;uniform float ra
 const down=common+read('blur1.glsl')+'\nvoid main(){fragColor=blur1(qt_TexCoord0*.5,tex,radius,halfpixel,1,.1696,0.);}\n';
 const up=common+read('blur2.glsl')+'\nvoid main(){fragColor=blur2(qt_TexCoord0*2.,tex,radius,halfpixel);}\n';
 const glass=header+'in vec2 qt_TexCoord0;vec2 v_texcoord;uniform sampler2D tex;uniform float glassRefraction,glassRoughness,noise,brightness;uniform vec2 itemSize,glassSize,srcSize,srcOffset,airPixelScale;out vec4 fragColor;\n'+shape+strip(read('blurFinish.glsl'))+strip(read('glassFinish.glsl')).replace('dFdx(v_texcoord)','(dFdx(v_texcoord)*airPixelScale.x)').replace('dFdy(v_texcoord)','(dFdy(v_texcoord)*airPixelScale.y)')+'\nvoid main(){v_texcoord=clamp((qt_TexCoord0*itemSize*airSourceScale+srcOffset)/srcSize,vec2(.001),vec2(.999));fragColor=glassFinish(airNormal(qt_TexCoord0*itemSize)*vec2(1.,-1.))*clamp(.5-airDistance(qt_TexCoord0*itemSize),0.,1.);}\n';
-fs.writeFileSync(path.resolve(__dirname,'../hyprland-shaders.js'),'/* Hyprland BSD-3-Clause Copyright 2022-2026 vaxerski; generated source adapters. */\nwindow.airHyprShaders='+JSON.stringify({acrylic,down,up,glass})+';\n');
+
+// R7: original static Prism/Frost functions; same scene/FBO and cache owner.
+const mapping='v_texcoord=clamp((qt_TexCoord0*itemSize*airSourceScale+srcOffset)/srcSize,vec2(.001),vec2(.999));';
+const inner=strip(read('inner_glow.glsl'));
+const decay=inner.slice(inner.indexOf('float innerGlowAlpha('),inner.indexOf('vec4 getInnerGlow('));
+const glow=decay+['vec4 airGlowFinish(vec4 color){',
+ 'float depth=max(-airDistance(qt_TexCoord0*itemSize),0.);',
+ 'float amount=innerGlowAlpha(depth,12.,2.)*airInnerGlow;',
+ 'color.rgb=mix(color.rgb,color.a*vec3(.86,.94,1.),amount);',
+ 'return color;','}'].join('\n');
+function withGlow(src){return src.replace(/void main\s*\(\s*\)\s*\{/,'uniform float airInnerGlow;\n'+glow+'\nvoid main(){').replace(/}\s*$/,'\n fragColor=airGlowFinish(fragColor);\n}\n');}
+function finish(name){
+ let text=strip(read(name+'finish.frag')).replace('in vec2           v_texcoord;','in vec2 qt_TexCoord0;vec2 v_texcoord;').replace(/\bglassSize\b/g,'airPatternSize');
+ text=text.replace('(gl_FragCoord.xy - glassPosition) / airPatternSize','(qt_TexCoord0*itemSize) / airPatternSize').replace('void main() {','void main() {'+mapping);
+ text=text.replace('dFdx(v_texcoord)','(dFdx(v_texcoord)*airPixelScale.x)').replace('dFdy(v_texcoord)','(dFdy(v_texcoord)*airPixelScale.y)');
+ const dependencies=strip(read('blurFinish.glsl'))+(name==='frost'?strip(read('glassFinish.glsl')).replace('dFdx(v_texcoord)','(dFdx(v_texcoord)*airPixelScale.x)').replace('dFdy(v_texcoord)','(dFdy(v_texcoord)*airPixelScale.y)'):'');
+ text=text.replace(name==='frost'?'vec2 frostRandom(':'const float TAU',dependencies+'\n'+(name==='frost'?'vec2 frostRandom(':'const float TAU'));
+ return withGlow(header+'uniform vec2 itemSize,glassSize,srcSize,srcOffset,airPixelScale;\n'+shape+text.replace(/\n}\s*$/,'\n fragColor*=clamp(.5-airDistance(qt_TexCoord0*itemSize),0.,1.);\n}\n'));
+}
+const prism=finish('prism'),frost=finish('frost');
+fs.writeFileSync(path.resolve(__dirname,'../hyprland-shaders.js'),'/* Hyprland BSD-3-Clause Copyright 2022-2026 vaxerski; generated source adapters. */\nwindow.airHyprShaders='+JSON.stringify({acrylic:withGlow(acrylic),down,up,glass:withGlow(glass),prism,frost})+';\n');

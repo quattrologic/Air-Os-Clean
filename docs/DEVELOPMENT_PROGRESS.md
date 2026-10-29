@@ -1,3 +1,9 @@
+# R7 Checkpoint A — Materialports geprüft
+
+Basis7be272a; Branch feat/air-os-r7-final-experience. Originale Hyprland-Prism-/Frostberechnungen und Inner-Glow-Abfall laufen in derselben GLASS-3-Engine, sechs validierte Materialfamilien; begrenzte adaptive Hardwareauflösung, unveränderte GPU-Guards.544/544 Tests und tatsächlicher Electron-Compile-/Renderlauf bestanden (Softwarediagnose, keine Hardwareabnahme). [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Weiter im autorisierten Auftrag: Widgets/MacLock/Fensterinteraktionen, visuelle Regression, WindowsR7. Keine zweite Engine/Registry.
+
+---
+
 # R6.1 — vollständig geprüft und gesichert
 
 Branch: fix/air-os-r6-true-fullscreen. Basis2e43327423abcce56da464789e01bf92ff7345f0; Produktkorrekturf59d5a5, Build-/Prüfcommit874082788fa803b02c198deae3b7f676fcf11332, Windows-Bildcheckpoint204d4ec3b74af52f8f5992bc1e6ff855b3f08d1e.
