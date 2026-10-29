@@ -22,15 +22,15 @@ jobs:
           cache-dependency-path: build/ipad-tests/package-lock.json
       - name: Install only frozen browser test and audio dependencies
         run: npm ci --prefix build/ipad-tests --ignore-scripts --no-audit --no-fund
+      - name: Install frozen regression toolchain without downloading native Electron
+        run: npm ci --prefix build/windows-x64 --ignore-scripts --no-audit --no-fund
       - name: Mandatory audit including test dependencies
         run: |
           mkdir -p dist/ipad-evidence
           npm audit --prefix build/ipad-tests --audit-level=high --json > dist/ipad-evidence/dependency-audit.json
-      - name: Stage the sole local browser audio dependency
-        run: |
-          mkdir -p node_modules/amplitudejs/dist
-          cp build/ipad-tests/node_modules/amplitudejs/package.json build/ipad-tests/node_modules/amplitudejs/LICENSE node_modules/amplitudejs/
-          cp build/ipad-tests/node_modules/amplitudejs/dist/amplitude.min.js node_modules/amplitudejs/dist/
+          npm audit --prefix build/windows-x64 --audit-level=high --json > dist/ipad-evidence/regression-toolchain-audit.json
+      - name: Link audited regression tools (ASAR tests) and the sole shipped audio dependency
+        run: node scripts/windows-test-build.cjs link
       - name: Full desktop and browser regression suite
         run: node scripts/run-test-gate.cjs
       - name: Build and verify the actual offline PWA bytes, CSP and licenses
