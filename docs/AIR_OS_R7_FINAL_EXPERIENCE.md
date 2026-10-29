@@ -1,6 +1,6 @@
 # Air-OS R7 — Final Experience
 
-Branch: feat/air-os-r7-final-experience. Verbindliche Basis:7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildcommit:f324d5901141ec1bcbf6bb773b4d1876751a8fb3.556/556 lokale Tests; die R6.1-Geometrie,24px-Menü und natives Fullscreen bleiben erhalten. Die abschließende Windows-Shaderdiagnose läuft; alle normalen installierten GUI-Pfade sind bestanden.
+Branch: feat/air-os-r7-final-experience. Verbindliche Basis:7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildcommit:b839d409c255effa36d483a89d8e13ed7ab5570d.557/557 lokale Tests und24/24 native Windows-CI-Schritte bestanden. Die R6.1-Geometrie,24px-Menü und natives Fullscreen bleiben erhalten. Installer tatsächlich installiert; sämtliche GUI-Pfade und getrennte Shaderdiagnose bestanden.
 
 ## Checkpoint A — gemeinsame Materialpipeline
 
@@ -78,7 +78,7 @@ Dies belegt tatsächliche gerenderte Shaderwirkung, keine Hardwareabnahme oder F
 
 [Prism mit Refraktion](visual/r7/diagnostic/stripes-prism.png) · [ohne](visual/r7/diagnostic/stripes-prism-no-refraction.png) · [Frost mit Refraktion](visual/r7/diagnostic/stripes-frost.png) · [ohne](visual/r7/diagnostic/stripes-frost-no-refraction.png).
 
-Die vollständige isolierte Softwarediagnose bestand einschließlich Context Loss/Restore, DPR1/2/3, Reduced Motion/Transparency, Classic und Logout. Gemessene zusätzliche Idle-Draws0. Nach allen sechs Familien maximal10 Programme inklusive Prepass/Controls,8 Texturen und geschätzte27.648.000 Texturbytes in dieser Szene; nach Restore7 Programme/4Texturen. [Tatsächliche Zähler](visual/r7/diagnostic/material-report.json). Kein FPS-Versprechen, kein Hardware-Benchmark. Die adaptive Hardwarequalität ist als begrenzter Schutz implementiert; physische GPU-Abnahme offen.
+Die vollständige isolierte Softwarediagnose bestand einschließlich Context Loss/Restore, DPR1/2/3, Reduced Motion/Transparency, Classic und Logout. Gemessene zusätzliche Idle-Draws0. In der festen Referenzszene nach allen sechs Familien10 Programme inklusive Prepass/Controls,8 Texturen und geschätzte27.648.000 Texturbytes; nach Restore7 Programme/4Texturen. Im vollständigen nativen Verlauf einschließlich Artwork-Tintcard maximal11 Programme. [Tatsächliche Zähler](visual/r7/diagnostic/material-report.json). Kein FPS-Versprechen, kein Hardware-Benchmark. Die adaptive Hardwarequalität ist als begrenzter Schutz implementiert; physische GPU-Abnahme offen.
 
 ### Screenshots und Messdaten
 
@@ -99,7 +99,7 @@ MacTahoe GTK/Icons und ihre MIT/GPL-3.0-Nachweise unverändert weiterverwendet; 
 
 Eigener build-windows-r7.yml auf unverändertem R6.1-Kanal/Verifier und eingefrorener Electron44.9.3-/Builder26.18.0-Toolchain.370 tatsächliche Runtimeassets einschließlich neuem CSS und vollständigem MIT-Originalnachweis; jeder lokale Runtimebyte wird beim ASAR-/Installationsvergleich geprüft. Pflichtaudit, sämtliche Tests, NSIS-x64/PE/Hash, echte Installation/EXE, volle bisherige GUI, R6.1-Fenstergrenzen/Fullscreen, zusätzliche fünfgrößige R7-Szenen und separate Shaderdiagnose sind verpflichtend. R1–R6.1 unverändert.
 
-Installer/Windows-Erfolg werden erst nach tatsächlichem Abschluss ergänzt. Unsignierter technischer Testbuild, kein Produktionsrelease.
+Die erfolgreiche abschließende Windows-Abnahme steht im folgenden Abschnitt. Unsignierter technischer Testbuild, kein Produktionsrelease.
 
 ## Bewusst offen
 
@@ -145,3 +145,51 @@ Korrigiert: die rechte Karte erhält denselben z-index4-/Isolation-Vertrag wie d
 Außerdem werden Finder und Notes für den direkten Vergleich über echte Titelleistendrags versetzt (beide Fenster sichtbar); identische echte Eingaben auch im unveränderten R6.1-Baselinelauf. Kein nachbearbeitetes Bild und keine direkte Layoutstilmanipulation im Screenshotfixture.
 
 557/557 Tests, komplette neue fünfgrößige GUI und erneute unveränderte R6.1-Baseline bestanden. Die finalen Windowsbilder/der Installer werden erneut aus genau diesem korrigierten Produktstand erzeugt. [Zwei echte Fenster](visual/r7/after/r7-apps-1536.png).
+
+## Endgültige Windows-R7-Abnahme
+
+[Erfolgreicher nativer Lauf:24/24](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40845304594) · [R7-Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40845304594/artifacts/12885640870) · [Protokolle/Diagnose/Screenshots](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40845304594/artifacts/12885660878).
+
+| Nachweis | Tatsächliches Ergebnis |
+|---|---|
+| Produkt-/Buildcommit | b839d409c255effa36d483a89d8e13ed7ab5570d |
+| Installer | Air-OS-Ultimate-R7-1.0.3-dev.4.shab839d409c255-Windows-x64.exe |
+| Dateigröße | 122580175 Bytes |
+| SHA-256 | ec5c62b6e090f2be85800abd30d5a5ffb5646e3d439f0ba0b7f14d419525220f |
+| Toolchain | Electron44.9.3 / electron-builder26.18.0, unverändert eingefroren |
+| Audit/Source/Tests | Pflichtaudit und Modern-/Catalina-Sourcechecks bestanden; alle Regressionen ausgeführt |
+| Verpackung | NSIS-x64, PE-Architektur und alle370 lokalen Runtimeassets bytegenau gegen ASAR/Installation geprüft |
+| Installation | Echter Windows-x64-Runner, isoliertes Zielverzeichnis, Start der installierten EXE |
+| GUI | Volle bisherige App-/Profil-/Neustartsuite, System-/Layouts, fünf R6.1-Fenstergrößen, fünf R7-Szenen, getrennte Shaderdiagnose bestanden |
+| R6.1-Schutz | Maxränder in allen fünf Größen0px Fehler, Menü24px, Fullscreen1024×768 mit inner=outer=screen, Restore und M1/M2 bestanden |
+| Neue R7-Aktionen | Drag-Snap, Workspacewechsel/-Mitnahme, bestätigter Legacy-Restore, sichtbarer MacLock-Stack und echter Enter→Passwortfokus bestanden |
+| Normaler Produktpfad | Tatsächlich erkannte Software-GPU, CSS-Fallback; keine behauptete Hardware-Snell-Refraktion |
+| Shaderpfad | Isolierter Softwarediagnoselauf, sechs Materialfamilien;0zusätzliche Idle-Draws, Context Loss/Restore und reduzierte Transparenz bestanden |
+| Signatur | Unsigniert; Smart App Control/physische Geräte nicht freigegeben |
+
+Der CI-Host läuft unter Windows10.0.20348x64. Die fünf Vergleichsgrößen1536×864,1688×896,1920×1080,1650×930 und390×600 sind gekennzeichnete Rendererviewports; insbesondere390 ist keine Mobilgeräteabnahme. Native Fullscreenprüfung hebt die CDP-Metrikemulation vorher auf und nutzt den tatsächlichen1024×768-Runnerbildschirm. Eigene Rendereraufnahmen, keine heimliche Desktop-/Fremdfensteraufnahme.
+
+[Windows-Messdaten](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/evidence.json) · [Desktop1536](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-desktop-1536.png) · [zwei sichtbare Apps](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-apps-1536.png) · [MacLock mit sichtbarer neutraler Karte](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-maclock-1536.png) · [Kontrollzentrum](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-controls-1536.png) · [Spotlight](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-spotlight-1536.png) · [Drag-Snap](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/r7-drag-snap.png) · [echtes Vollbild](visual/r7/windows-r7/b839d409c255effa36d483a89d8e13ed7ab5570d/finder-fullscreen.png).
+
+### Späterer eigener Windows-Test
+
+1. Installer-Artefakt herunterladen und entpacken; BUILD-INFO.json, SHA256SUMS.txt und INSTALL-R7.txt mitlesen.
+2. Die EXE mit PowerShell Get-FileHash -Algorithm SHA256 prüfen; der vollständige Hash muss mit obigem Wert übereinstimmen.
+3. Unsignierten technischen Testbuild auf einem eigenen Test-PC manuell installieren. Keine Abschaltung von Defender/Smart App Control, keine automatische Installation auf einem privaten Rechner.
+4. Lokales Testprofil verwenden; Reference-Preset nur nach Bestätigung anwenden. Widgets, Snap, Workspaces, F11/Exit, Notes-Speichern, Sperren/Logout/erneute Anmeldung prüfen. Keine Cloud-Anmeldung erforderlich.
+5. Physische GPU/DPI/Mehrmonitor, native Picker/Medienfreigabe und Audioausgabe bleiben separate manuelle Abnahmen.
+
+Actions-Artefakte:14Tage Aufbewahrung. Die synthetischen Bilder und ausgewählten Messdaten sind zusätzlich dauerhaft im Branch gesichert.
+
+## Gesicherte Commitfolge
+
+- A Originalshader/Materialpipeline:49e53741302563d4b06aff998eed959bed3de24f
+- B Originalfeder/Widgets/MacLock:d7bb29769b1cfd529907c4c327f1814725707275
+- C/D visuelle Integration/Regression/R7-Kanal:836a0462d3e05409e64919275811d4d9e3b5f676
+- Legacy-Restore:b77f1f24aefe439369a26000a7aafe4895f750fa
+- Tatsächlicher MacLock-Tastaturfokus:f324d5901141ec1bcbf6bb773b4d1876751a8fb3
+- Finaler Produkt-/Buildstand mit nativer Layerkorrektur:b839d409c255effa36d483a89d8e13ed7ab5570d
+- Verifizierte finale Windowsbilder:2fb8786bc38c72a052611d4cd69843c146d6a3c4
+- Der abschließende reine Dokumentationscommit verändert keine gebauten Runtimebytes; sein SHA steht im Git-Log und Abschlussbericht.
+
+Nicht alle Wünsche dieses großen Pakets sind als neue Funktion implementiert: native Shadow-/Border-Compositorobjekte, neue Fenstergruppen, weitergehende Finder-/Notes-Funktionen und eine manuell freigegebene große MacLock-Medienansicht bleiben offen. Bestehende geprüfte Appfunktionen wurden erhalten; daraus wird keine neue Portierung behauptet.

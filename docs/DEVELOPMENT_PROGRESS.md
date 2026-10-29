@@ -1,3 +1,17 @@
+# R7 — finaler geprüfter und gesicherter Stand
+
+Branch feat/air-os-r7-final-experience; Basis7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildb839d409c255effa36d483a89d8e13ed7ab5570d; finaler Windows-Bildcommit2fb8786bc38c72a052611d4cd69843c146d6a3c4.
+
+557/557 lokale Tests; volle Linux-Electron-App-/Profil-/Neustart-GUI, R6.1-Geometrie/F11/M1M2, fünf R7-Szenen, sechs Materialfamilien/Context/DPR/Idle bestanden. [Native Windows-R7-CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40845304594):24/24Schritte einschließlich Pflichtaudit,370Runtimeassets/ASAR/PE/NSIS, tatsächlicher Installation und allen installierten GUI-Pfaden bestanden. Die tatsächliche Windows-Bildkontrolle bestätigte den korrigierten MacLock-Layer und zwei sichtbare Apps.
+
+Neue echte Originalports: Hyprland Prism/Frost/InnerGlow in derselben GLASS-3-Pipeline; MacShell-Feder für Fenstergeometrien; skalierte originale Widgetkomposition; sichere MacLock-Medien-/Rechtskarten-Geometrie und Original-PlayerArt-Pfad. Eigene Integrationen:450ms Drag-Snap-Vorschau, interne Workspace-Shortcuts, bestätigter kompatibler Legacy-Reference-Restore.24px/F11/Dock/Island/M1/M2/Registry/Profile/Cloud/PWA erhalten.
+
+[Installer](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40845304594/artifacts/12885640870):Air-OS-Ultimate-R7-1.0.3-dev.4.shab839d409c255-Windows-x64.exe, 122580175Bytes, SHA256ec5c62b6e090f2be85800abd30d5a5ffb5646e3d439f0ba0b7f14d419525220f. [Bericht/Quellen/Messwerte/Screenshots](AIR_OS_R7_FINAL_EXPERIENCE.md).
+
+Windows-Normalpfad Software-GPU/CSS; getrennte Software-Shaderdiagnose,0Idle-Draws. Keine Hardware-GPU-/SAC-/Codesigning-/Produktionsfreigabe. Offene drei kleine native Abnahmen nur nach neuem Auftrag: physische Windows-GPU/DPI/Mehrmonitor; native Picker/Consent/Audio; macOS/Hyprlandhost. Neue Fenstergruppen/Shadow-Border-Port und zusätzliche Appfunktionen wurden nicht behauptet. Nach Dokumentationspush STOP; keine Hintergrundentwicklung.
+
+---
+
 # R7 Bildabnahme — nativen MacLock-Layer tatsächlich korrigiert
 
 557/557 Tests; neue fünfgrößige GUI und unveränderte Vergleichsbasis erneut bestanden. Native f324-Funktionstests24/24 grün, aber echte Bildprüfung fand rechts vom bestehenden MacLock-Canvas verdeckten neutralen Kartentext. z=4/Isolation entspricht jetzt der zentralen Karte; Stack/Fokus/keine Authfreigabe geprüft. Zwei echte Apps werden per tatsächlichem Titelleistendrag für identische Vorher-/Nachher-Szenen sichtbar angeordnet. Noch autorisiert: erneuter finaler WindowsR7-Build/Installation/GUI/Bildkontrolle aus diesem Stand, Hash und Abschluss. Keine weiteren Features beginnen.
