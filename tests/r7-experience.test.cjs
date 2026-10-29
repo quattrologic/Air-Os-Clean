@@ -34,3 +34,7 @@ test('R7 internal workspace shortcuts use the ACK owner, ignore AltGraph and nev
 test('R7 restoring an older confirmed reference backup recovers implicit scale1 without mutating history',()=>{
  const m=require('../src/core/macshell-shell7.js'),old={dockPins:['notes'],desktopWidgets:false},patch=m.restoreReference(old);a.equal(patch.widgetScale,1);a.equal('widgetScale' in old,false);a.deepEqual(patch.dockPins,['notes']);a.equal(m.restoreReference({...old,widgetScale:.65}).widgetScale,.65);a.equal(m.restoreReference(null),null);
 });
+test('R7 MacLock sign-in action targets the interactive password rather than the earlier hidden username',()=>{
+ const html=fs.readFileSync('login.html','utf8');a.match(html,/<input id="login-username"[^>]+type="hidden"/);
+ const s=fs.readFileSync('maclock-system.js','utf8');a.match(s,/signIn.onclick=\(\)=>document.querySelector\('#login-password'\)\?\.focus\(\)/);a.doesNotMatch(s,/querySelector\('#login-password,#login-username'\)/);
+});

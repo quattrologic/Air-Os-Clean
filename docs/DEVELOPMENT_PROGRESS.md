@@ -1,3 +1,9 @@
+# R7 letzter Produktcheckpoint — Tastatur/Kompatibilität geprüft
+
+556/556 Tests, vollständige neue fünfgrößige R7-GUI inklusive Legacy-Restore und tatsächlicher MacLock-Enter→Passwortfokus; currentUser bleibt null. R6.1-Fullscreen/M1M2 und Shader-/Cleanup-Regressionswege erhalten. A49e5374/Bd7bb297/C836a046/Db77f1f2 gesichert. Noch autorisiert: WindowsR7 aus genau diesem letzten Produktstand installieren/prüfen, Evidenz/Hash und Abschlussdokumentation. Keine neuen Produktfeatures beginnen.
+
+---
+
 # R7 Checkpoint D — Legacy-Reference-Restore korrigiert
 
 555/555 Tests und tatsächliche fünfgrößige R7-GUI erneut bestanden. Alte Backups ohne widgetScale restaurieren nach ausdrücklicher Aktion nun korrekt1; vorhandene Skalierung bleibt erhalten, keine stille Datenmigration. Echte GUI bestätigt Legacy-Backup→Restore-Button→ACK-Wert1. A49e5374/Bd7bb297/C836a046 gesichert. Erster nativer R7-Lauf wird durch diesen finalen Produktfix ersetzt. Noch offen im laufenden Auftrag: finale native Installation/alle GUI-Pfade, Hash/Bilder und Bericht. Keine neuen Features beginnen.

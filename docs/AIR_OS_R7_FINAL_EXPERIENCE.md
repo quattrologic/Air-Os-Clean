@@ -114,3 +114,9 @@ Korrigiert in der bestehenden Reference-Aktion: fehlende Skalierung wird **nur b
 555/555 Tests. Die tatsächliche Electron-GUI schreibt im isolierten Profil ein Backup im alten Format, aktiviert den bestehenden Restorebutton über echte Tastaturbedienung und prüft den bestätigten Wert1 sowie geleerte Sicherung. [Prüfung](visual/r7/after/r7-report.json): legacyBackupRestore=true. Die fünf visuellen Ansichten, Workspace-/Snapaktionen und neutraler MacLock bestanden erneut.
 
 Checkpoint A49e5374, B d7bb297, C836a046. Der erste native R7-Lauf40840202863 bestand Audit, Tests, Packaging/Installation und die alte GUI, wird aber durch den Build mit diesem Kompatibilitätsfix ersetzt. Kein veralteter Installer wird als abschließender R7-Stand angeboten.
+
+### Abschließende MacLock-Tastaturprüfung
+
+Der neue „Zur Anmeldung“-Button fokussiert explizit das interaktive Passwortfeld. Ein gemeinsamer querySelector für Passwort und versteckten Benutzernamen hätte wegen der DOM-Reihenfolge das versteckte Feld gewählt. Der reale Electron-Test fokussiert den Button, sendet Enter, prüft activeElement=login-password und weiterhin currentUser=null. Kein Login-/Consent-Mock.
+
+556/556 Tests und die komplette neue fünfgrößige R7-GUI bestanden. Das GUI-Testhilfsmittel prüft Popoveranimationen auf der Desktopseite unverändert; auf Loginseiten darf die dort nicht vorhandene Island entfallen. Finale R7-Quelle enthält sowohl Legacy-Restore als auch diesen Fokusfix.

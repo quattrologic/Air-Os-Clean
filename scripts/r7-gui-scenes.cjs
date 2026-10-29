@@ -32,5 +32,6 @@ module.exports=async function({evaluate,viewport,capture,crop,shot,wait,click,pr
  const idle=await evaluate('airDesktopGlass.snapshot().draws');await delay(550);a.equal(await evaluate('airDesktopGlass.snapshot().draws'),idle);report.r7.idleDraws=0;
  await logout();await wait("!!document.querySelector('.maclock-system')");a.equal(await evaluate('airOS.currentUser()'),null);
  for(const [w,h]of [[1536,864],[1688,896],[1920,1080],[1650,930],[390,600]]){await viewport(w,h);await delay(800);await shot('r7-maclock-'+w);a.equal(await evaluate("document.querySelector('.maclock-system').dataset.preview"),'neutral');a.equal(await evaluate("!!document.querySelector('.maclock-media-art img')"),false);}
+ if(!before){await viewport(1536,864);await pressButton('.maclock-safe-notice button');await wait("document.activeElement?.id==='login-password'");a.equal(await evaluate('airOS.currentUser()'),null);report.r7.signInFocus=true;}
  fs.writeFileSync(path.join(output,'r7-report.json'),JSON.stringify(report,null,2));console.log('PASS R7 real desktop/app/controls/Spotlight, idle, neutral MacLock and '+(before?'baseline':'drag-to-Snap'));
 };
