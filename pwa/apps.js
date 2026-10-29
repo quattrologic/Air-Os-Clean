@@ -25,6 +25,8 @@
    files.addEventListener('dragover',e=>{if(e.dataTransfer.types.includes('Files'))e.preventDefault();},{signal});
    files.addEventListener('drop',async e=>{if(!e.dataTransfer.files.length)return;e.preventDefault();try{await airOS.files.import(e.dataTransfer.files,current());status.textContent='Dateien importiert.';refresh();}catch(error){status.textContent=error.message;}},{signal});
   }
+  const web=win.querySelector('.browser-hero');if(web){web.querySelector('h2').textContent='Webstart';web.querySelector('p').textContent='Öffnet gewählte Webseiten in Safari. Externe Seiten gehören nicht zum Offline-Cache.';}
+  const photos=win.querySelector('.air-photos-app');if(photos){const p=photos.querySelector('header p');if(p)p.textContent='Ausgewählte Bilder lokal ansehen · kein Upload.';photos.addEventListener('change',e=>{if(e.target.id==='air-photos-input'&&([...e.target.files].length>40||[...e.target.files].some(f=>f.size>8*1024*1024))){e.stopImmediatePropagation();e.target.value='';toast('Bilderauswahl: höchstens 40 Bilder, je 8 MiB.');}}, {capture:true,signal});}
   const notes=win.querySelector('.air-notes');
   if(notes){const actions=notes.querySelector('.note-actions')||notes.querySelector('.note-workspace');actions?.append(button('Notizen exportieren',async()=>{try{const data=await airOS.notes.list();airBrowserFiles.download(new Blob([JSON.stringify({format:'air-os-notes',version:1,notes:data},null,2)],{type:'application/json'}),'Air-OS-Notizen.json');}catch(e){toast(e.message);}}));}
  }

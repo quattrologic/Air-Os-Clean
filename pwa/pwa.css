@@ -96,3 +96,13 @@ html[data-pwa] .pwa-file-actions label{cursor:pointer}
 html[data-pwa] .window-resize-handle{background:none!important}
 html[data-pwa] .window-resize-handle::after{content:"";position:absolute;right:6px;bottom:6px;width:12px;height:12px;border-right:2px solid #7c8b95;border-bottom:2px solid #7c8b95;border-radius:0 0 3px 0}
 .pwa-capability{display:block;font-size:10px;color:inherit;opacity:.7;font-weight:400;max-width:100%}
+/* Internal app content stays reachable above the overlay Dock; window bounds stay edge-to-edge. */
+html[data-pwa] .note-workspace{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))!important;box-sizing:border-box}
+html[data-pwa] .arem-editor{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))!important}
+html[data-pwa] .air-file-row{display:flex!important;align-items:center;flex-wrap:wrap;padding:0 8px}
+html[data-pwa] .air-file-entry{flex:1 1 100%;min-width:0}
+html[data-pwa] .air-file-duplicate{position:static!important;transform:none!important;min-width:40px;min-height:44px;margin:2px}
+html[data-pwa] .pwa-file-menu{margin-left:auto}
+html[data-pwa] .air-files-main{min-width:0;container-type:inline-size}
+@container(max-width:600px){html[data-pwa] .air-file-date{display:none!important}html[data-pwa] .air-files-columns>span:last-child{display:none}html[data-pwa] .air-file-entry,html[data-pwa] .air-files-columns{grid-template-columns:minmax(70px,1fr) 60px 60px!important}}
+@container(max-width:420px){html[data-pwa] .air-file-type{display:none!important}html[data-pwa] .air-files-columns>span:nth-child(2){display:none}html[data-pwa] .air-file-entry,html[data-pwa] .air-files-columns{grid-template-columns:minmax(60px,1fr) 60px!important}}
