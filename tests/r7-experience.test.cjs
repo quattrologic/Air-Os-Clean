@@ -24,3 +24,10 @@ test('R7 window spring shares original stable integrator and retains interrupted
  const m=require('../src/core/macshell-shell7.js');let s={value:0,velocity:0};for(let n=0;n<300&&!s.done;n++)s=m.step(s,100,.016,.18,1,.08);a.equal(s.value,100);
  const moving=m.step({value:50,velocity:80},0,.016,.18,1,.08);a.ok(Number.isFinite(moving.value));const source=fs.readFileSync('air-window-system.js','utf8');a.match(source,/prior\?\.springs/);a.match(source,/edgeTimer=setTimeout/);a.match(source,/,450\)/);a.doesNotMatch(source,/setInterval/);
 });
+test('R7 original scale changes grid pitches and collision-safe placement without changing margins',()=>{
+ const m=require('../src/core/desktop-widgets.js'),g=m.gridInfo(1536,864,.8);a.equal(g.pitchX,165);a.equal(g.pitchY,161);a.equal(g.top,56);
+ const box=m.dims('small',1536,.8),first=m.firstLeft(box,[],1536,864,.8),next=m.firstLeft(box,[{...first,...box}],1536,864,.8);a.ok(first&&next);a.equal(m.overlaps({...first,...box},{...next,...box}),false);
+});
+test('R7 internal workspace shortcuts use the ACK owner, ignore AltGraph and never install OS hotkeys',()=>{
+ const s=fs.readFileSync('air-window-system.js','utf8');a.match(s,/getModifierState\?\.\('AltGraph'\)/);a.match(s,/assignments:\{\[id\]:workspace\}/);a.match(s,/\(desk.workspace-1\+\(e.key==='PageDown'\?1:3\)\)%4\+1/);a.doesNotMatch(s,/globalShortcut|hyprctl|execFile|child_process/);
+});

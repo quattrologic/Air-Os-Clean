@@ -33,3 +33,74 @@ Weitere Checkpoints und Windows-R7-Abnahme folgen im selben Auftrag. Native Scha
 [Unveränderter R6.1-Desktop](visual/r7/before/r7-desktop-1536.png) · [erster integrierter R7-Durchgang](visual/r7/iteration1/r7-desktop-1536.png) · [reale Snapvorschau](visual/r7/iteration1/r7-snap-preview.png) · [Snap-Ergebnis](visual/r7/iteration1/r7-drag-snap.png).
 
 Der erste direkte Bildvergleich zeigt konkrete Restprobleme: feste Wetterpixel überlappen nach Skalierung; Kalenderkopf bricht um und letzte Zeile benötigt Scrollen. Diese Produktfehler werden in der folgenden visuellen Korrekturrunde behoben. Kein Pixelgleichheitsversprechen.
+
+## Checkpoint C/D — visuelle Korrekturen und vollständige Regression
+
+554/554 Tests, alle540 R6.1-Regressionen erhalten. Komplette bisherige Linux-Electron-App-/Profil-/Neustart-/Musik-/MacLock-Suite bestanden. R6.1-F11/Geometrie/M1/M2 zusätzlich geprüft. Neue fünfgrößige R7-Szenen einschließlich realer Randvorschau/Snap, Workspacewechsel mit/ohne aktives Fenster, Spotlightrechner, zwei Apps, Kontrollzentrum, Widgetseiten, neutraler MacLock und reduzierter Transparenz bestanden.
+
+### Tatsächliche visuelle Korrekturrunden
+
+1. Erster integrierter Screenshot: Wettertexte überlappen bei0.8-Skalierung, Kalenderkopf bricht um. Wetterkomposition und Schrift-/Monatsdarstellung korrigiert.
+2. Zweiter Screenshot: CSS-zoom verschiebt prozentuale Wetteranker; durch explizite Originaleinheiten×scaleF ersetzt. Kalender hatte zusätzlich vererbte feste12px-Zeilen und eine maximale Inhaltshöhe; jetzt explizite Kopf-/Sieben-Zeilen-/Öffnerkomposition. Keine Funktion durch overflow:hidden entfernt.
+3. DOM-Prüfung fand verbleibenden horizontalen Überlauf: originale16px-Aktions-SVGs waren größer als die skalierten14.4px-Buttons. Glyphen skaliert; beide Kalenderachsen werden nun auf tatsächliche scroll/client-Maße geprüft. Wetter-Stundenstreifen muss vollständig innerhalb der Kartenrechtecke liegen.
+
+[Vorher1536](visual/r7/before/r7-desktop-1536.png) · [Durchgang1](visual/r7/iteration1/r7-desktop-1536.png) · [Durchgang2](visual/r7/iteration2/r7-desktop-1536.png) · [geprüftes Nachher1536](visual/r7/after/r7-desktop-1536.png).
+
+Der im Chat vorhandene MacShell-Zieldesktop wurde visuell als Kompositionsreferenz verwendet (Uhr/Kalender, breites Wetter/Player, breites Dock). Keine Original-Pixeldatei aus dem Chat im Workspace, daher kein behaupteter direkter Pixelidentitätswert. Unveränderte R6.1-Baseline7be272a wurde separat tatsächlich ausgeführt; identische Uhr12:34/Datum und ausdrücklich synthetisches DEMO-Wetter nur im Renderer-Test. Das blaue Air-OS-Wallpaper bleibt identisch.
+
+| Bereich | Original / Abweichung | Konkreter R7-Nachweis |
+|---|---|---|
+| Komposition | MacWidgets dims185/395, scale0.8, Originalraster179/28/23 | Kleine Widgets148×148, breite316×148, Abstandpitch165/161; bestehende Profile nur nach Bestätigung umstellen |
+| Kalender | CalendarWidget-Monatskopf, sieben Spalten; eigener Appöffner bleibt | Kein Umbruch, kein horizontaler/vertikaler Scrollbedarf; alle Tage/Monatsaktionen erhalten |
+| Wetter | WeatherWidget/HourCol/WeatherIcon, reale API bleibt | Skalierte Originalkomposition; DEMO klar gekennzeichnet, keine erfundenen Produktivwerte |
+| Dock/Island | Eigene äußere Air-Formen bleiben absichtlich | Originalmagnifikation/Pins,24px-Menü und M1/M2 unverändert; feinere CSS-Lichtkante |
+| Glas | Original MacShell plus tatsächlich ausgeführte neue Hyprland-Finishes | Prism/Frost opt-in; Wallpaper-only; sichere Software-CSS-Pipeline getrennt |
+| MacLock | LockScreen.qml-Medien-/Rechtskartenkomposition | Originalgeometrie, freigegebenes Cover erweiterbar; vor Login neutral; wiederverwendeter originaler PlayerArt-Notenpfad |
+| Apps | Tahoe-Header/Sidebar/Workspace aus R1–R6.1 | Finder/Notes gleichzeitig, bisherige Datenspeicherung/Retry/Undo/Profilrechte weiter geprüft; keine neue Appengine |
+
+### Final verwendete Originalparameter und Portgrenzen
+
+Hyprland ConfigValues.cpp: glass.refraction20, glass.size40, glass.roughness1; glow.range10, glow.render_power3. Frost/Prism verwenden den vorhandenen gecachten Dual-Kawase-Prepass; MacShell/Gaussian bleiben erhalten. Die frühe A-Diagnose verwendete noch Air-Kalibrierung12/2 und Prism80; der finale Stand benutzt diese tatsächlichen Originaldefaults. Aktivierung/weiße Glastönung und zurückhaltende Alphaamplitude sind Air-Anpassungen, kein unmodifizierter Hyprland-Standardglow.
+
+### Gemessene Shaderwirkung und Ressourcen
+
+[Reale Streifen-Pixelmessungen](visual/r7/diagnostic/pixel-comparison.json). Paarweise derselbe Dockcrop mit/ohne Refraktionsuniform, unveränderte Szene:
+
+| Material | mittlere absolute RGB-Differenz0–255 | geänderte Pixel über2 |
+|---|---:|---:|
+| Acrylic | 1.163 | 5399 |
+| Hybrid | 2.179 | 10303 |
+| GlassFinish | 2.871 | 13602 |
+| Prism | 10.795 | 36379 |
+| Frost | 2.577 | 23729 |
+
+Dies belegt tatsächliche gerenderte Shaderwirkung, keine Hardwareabnahme oder Fidelity-Prozentzahl. Neue Muster sind optional; das Standardmaterial wird nicht still auf Prism geändert.
+
+[Prism mit Refraktion](visual/r7/diagnostic/stripes-prism.png) · [ohne](visual/r7/diagnostic/stripes-prism-no-refraction.png) · [Frost mit Refraktion](visual/r7/diagnostic/stripes-frost.png) · [ohne](visual/r7/diagnostic/stripes-frost-no-refraction.png).
+
+Die vollständige isolierte Softwarediagnose bestand einschließlich Context Loss/Restore, DPR1/2/3, Reduced Motion/Transparency, Classic und Logout. Gemessene zusätzliche Idle-Draws0. Nach allen sechs Familien maximal10 Programme inklusive Prepass/Controls,8 Texturen und geschätzte27.648.000 Texturbytes in dieser Szene; nach Restore7 Programme/4Texturen. [Tatsächliche Zähler](visual/r7/diagnostic/material-report.json). Kein FPS-Versprechen, kein Hardware-Benchmark. Die adaptive Hardwarequalität ist als begrenzter Schutz implementiert; physische GPU-Abnahme offen.
+
+### Screenshots und Messdaten
+
+[1536](visual/r7/after/r7-desktop-1536.png) · [1688](visual/r7/after/r7-desktop-1688.png) · [1920](visual/r7/after/r7-desktop-1920.png) · [1650](visual/r7/after/r7-desktop-1650.png) · [390-Renderer](visual/r7/after/r7-desktop-390.png) · [Apps](visual/r7/after/r7-apps-1536.png) · [Kontrollzentrum](visual/r7/after/r7-controls-1536.png) · [Spotlight](visual/r7/after/r7-spotlight-1536.png) · [MacLock](visual/r7/after/r7-maclock-1536.png) · [Workspace](visual/r7/after/r7-workspace.png) · [Geometrie/Scrollmessungen](visual/r7/after/r7-report.json) · [R6.1-Fullscreenregression](visual/r7/after/r61-bounds-report.json).
+
+## Technische Zuständigkeiten
+
+| Ebene | Zuständigkeit |
+|---|---|
+| Renderer | Derselbe GLASS-3-Owner, Materialcache/Masken/Controls; bestehender Widgetmanager/Window-Lifecycle/MRU; sichere MacLock-Präsentation |
+| Electron Main / Preload | Unveränderte authentifizierte Profil-/Datei-/Musikmetadaten-/Vollbild-/System-IPC, Native-Consent vor öffentlichem Cover-Snapshot |
+| Plattformadapter | Bestehende allowlistbasierte Windows-Einstellungen, Display-/Power-/Netzstatus; optionaler Linux-Hyprland-Consentadapter bleibt separat |
+| Ausdrücklich nicht unterstützt | Systemweite Fremdfenstersteuerung/-aufnahme, Live-Fensterrefraktion, Hyprland/Wayland auf Windows, private Daten vor Login |
+
+MacTahoe GTK/Icons und ihre MIT/GPL-3.0-Nachweise unverändert weiterverwendet; R7 importiert keine weiteren Markenicons. Originalquellen und SHA-256: third_party/hyprland/provenance.json, third_party/r7-macshell/provenance.json sowie bestehende Tahoe-/MacShell-Manifeste. Kein neuer Bibliotheks-/Datenbank-/Audio-/Renderer-Owner.
+
+## Windows R7
+
+Eigener build-windows-r7.yml auf unverändertem R6.1-Kanal/Verifier und eingefrorener Electron44.9.3-/Builder26.18.0-Toolchain.370 tatsächliche Runtimeassets einschließlich neuem CSS und vollständigem MIT-Originalnachweis; jeder lokale Runtimebyte wird beim ASAR-/Installationsvergleich geprüft. Pflichtaudit, sämtliche Tests, NSIS-x64/PE/Hash, echte Installation/EXE, volle bisherige GUI, R6.1-Fenstergrenzen/Fullscreen, zusätzliche fünfgrößige R7-Szenen und separate Shaderdiagnose sind verpflichtend. R1–R6.1 unverändert.
+
+Installer/Windows-Erfolg werden erst nach tatsächlichem Abschluss ergänzt. Unsignierter technischer Testbuild, kein Produktionsrelease.
+
+## Bewusst offen
+
+Physische Windows11-/Mehrmonitor-/DPI-/Hardware-GPU-/SAC-/Codesigning-Abnahme, macOS und nativer Hyprlandhost. Native Picker-/Zustimmungsdialoge und Audioausgabe sind weiterhin keine manuelle Geräteabnahme. Erweiterte freigegebene MacLock-Coveransicht ist geometrisch/policyseitig geprüft; der echte native Freigabedialog wurde nicht simuliert und nicht manuell abgenommen. Kein privater Live-Transport vor Login. Native Hyprland-Shadow-/Border-Compositorobjekte, neue Fenstergruppen und zusätzliche Finder-/Notes-/Reminders-Funktionen wurden in R7 nicht neu implementiert; bestehende sichere Workflows bleiben maßgeblich.

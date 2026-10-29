@@ -21,7 +21,7 @@ const inner=strip(read('inner_glow.glsl'));
 const decay=inner.slice(inner.indexOf('float innerGlowAlpha('),inner.indexOf('vec4 getInnerGlow('));
 const glow=decay+['vec4 airGlowFinish(vec4 color){',
  'float depth=max(-airDistance(qt_TexCoord0*itemSize),0.);',
- 'float amount=innerGlowAlpha(depth,12.,2.)*airInnerGlow;',
+ 'float amount=innerGlowAlpha(depth,10.,3.)*airInnerGlow;',
  'color.rgb=mix(color.rgb,color.a*vec3(.86,.94,1.),amount);',
  'return color;','}'].join('\n');
 function withGlow(src){return src.replace(/void main\s*\(\s*\)\s*\{/,'uniform float airInnerGlow;\n'+glow+'\nvoid main(){').replace(/}\s*$/,'\n fragColor=airGlowFinish(fragColor);\n}\n');}

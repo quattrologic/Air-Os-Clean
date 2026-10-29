@@ -25,3 +25,42 @@ html[data-desktop-theme=modern].air-reduced-glass[data-glass-family] :is(.deep-w
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme=modern][data-glass-family] :is(.deep-widget,.air-island-toggle,.air-island-panel,.dock[data-theme=modern]):not(.glass2-active),.maclock-media-card,.maclock-safe-notice{background:#242529!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 @supports not (backdrop-filter:blur(1px)){html[data-desktop-theme=modern][data-glass-family] :is(.deep-widget,.air-island-toggle,.air-island-panel,.dock[data-theme=modern]):not(.glass2-active){background:#242529!important}}
 @media(forced-colors:active){html[data-desktop-theme=modern][data-glass-family] :is(.deep-widget,.air-island-toggle,.air-island-panel,.dock[data-theme=modern]):not(.glass2-active),.maclock-media-card,.maclock-safe-notice{background:Canvas!important;color:CanvasText!important;box-shadow:none!important;backdrop-filter:none!important}}
+/* Visual correction 1: QML scaleF scales the whole weather composition, not only its outer card. */
+/* Explicit QML scaleF values: CSS zoom changes percentage anchors and is unsuitable here. */
+html[data-desktop-theme=modern] .widget-month-nav strong{color:#ff453a;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:calc(12px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar][data-widget-size] .widget-calendar-grid button{min-height:calc(11px * var(--widget-scale,1));line-height:calc(11px * var(--widget-scale,1));font-size:calc(10px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar] .deep-widget-content{scrollbar-width:thin}
+.maclock-media-art>svg{width:85%;height:85%;filter:drop-shadow(0 1px 1px #0006)}
+
+/* Visual correction 2: retain percentage anchors, scale only original absolute units. */
+.r6-weather-city{top:calc(15px * var(--widget-scale,1));left:calc(17px * var(--widget-scale,1));font-size:calc(17px * var(--widget-scale,1))}
+.r6-weather-temp{left:calc(16px * var(--widget-scale,1));top:calc(31px * var(--widget-scale,1));font-size:calc(53px * var(--widget-scale,1))}
+.r6-weather-condition{left:calc(17px * var(--widget-scale,1));bottom:calc(31px * var(--widget-scale,1));font-size:calc(13px * var(--widget-scale,1))}
+.r6-weather-hours{right:calc(12px * var(--widget-scale,1));top:calc(52px * var(--widget-scale,1));padding-left:calc(8px * var(--widget-scale,1));font-size:calc(12px * var(--widget-scale,1))}
+.r6-weather-hours strong{font-size:calc(16px * var(--widget-scale,1))}
+.r6-weather-hours canvas{width:calc(20px * var(--widget-scale,1))!important;height:calc(20px * var(--widget-scale,1))!important}
+.r6-weather-source{bottom:calc(8px * var(--widget-scale,1));left:calc(17px * var(--widget-scale,1));font-size:calc(9px * var(--widget-scale,1))}
+.r6-weather-actions{right:calc(9px * var(--widget-scale,1));bottom:calc(7px * var(--widget-scale,1))}
+.r6-weather-actions button{font-size:calc(10px * var(--widget-scale,1));padding:calc(3px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]>header{height:10px;min-height:0;padding:0;font-size:8px;line-height:10px}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar] .deep-widget-content{max-height:calc(100% - 10px)}
+html[data-desktop-theme=modern][data-glass-family].air-reduced-glass :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::before,html[data-desktop-theme=modern][data-glass-family].air-reduced-glass :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::after{background:#242529!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){html[data-desktop-theme=modern][data-glass-family] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::before,html[data-desktop-theme=modern][data-glass-family] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::after{background:#242529!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+@media(forced-colors:active){html[data-desktop-theme=modern][data-glass-family] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::before,html[data-desktop-theme=modern][data-glass-family] :is(.dock[data-theme=modern],.air-island-toggle):not(.glass2-active)::after{background:Canvas!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+/* Remove inherited fixed12px rows at80% scale; keep every real day and opener reachable. */
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-calendar-grid{grid-auto-rows:calc(12px * var(--widget-scale,1));line-height:calc(12px * var(--widget-scale,1));margin-top:3px}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-calendar-grid button{width:calc(14px * var(--widget-scale,1));height:calc(12px * var(--widget-scale,1));min-height:0;line-height:calc(12px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-month-nav button{width:calc(18px * var(--widget-scale,1));height:calc(18px * var(--widget-scale,1));min-height:0;line-height:calc(16px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .deep-widget-content>button{min-height:0;height:calc(18px * var(--widget-scale,1));font-size:calc(10px * var(--widget-scale,1));padding:0 3px;line-height:1}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]{padding:10px}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]>header{margin-bottom:2px}
+/* Compact calendar: explicit original header/seven-row month/opener composition.
+   Flex allocation replaces the inherited fixed content max-height; no control is hidden. */
+html[data-desktop-theme=modern] .deep-widget[data-widget-size]:not([data-widget-size=legacy]){border-radius:calc(28px * var(--widget-scale,1))}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]){display:grid;grid-template-rows:10px minmax(0,1fr);gap:2px;padding:10px}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large])>header{margin:0}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large])>.deep-widget-content{display:flex;flex-direction:column;height:100%;max-height:none;min-height:0}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-month-nav,html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .deep-widget-content>button{flex:none}
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-calendar-grid{flex:1;min-height:0;grid-template-rows:repeat(7,minmax(0,1fr));grid-auto-rows:auto;align-items:center}
+/* The existing16px action SVG must scale with its14.4px button at80%, not create a scrollbar. */
+html[data-desktop-theme=modern] .deep-widget[data-widget=calendar] .widget-month-nav .t7-action-icon{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}

@@ -160,6 +160,7 @@
       "air-r6-desktop.js",
       "air-r6.css",
       "air-r7.css",
+      "third_party/r7-macshell/**/*",
       "src/core/weather-model.js",
       "src/core/weather-glyphs.js",
       "src/main/weather-service.cjs",

@@ -1,0 +1,62 @@
+{
+  "acrylic": {
+    "dockCrop": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGB": 1.163,
+    "changedPixelsOver2": 5399,
+    "pixels": 61028,
+    "scope": "isolated Software WebGL diagnostic, wallpaper stripes only; not a hardware/fidelity score"
+  },
+  "hybrid": {
+    "dockCrop": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGB": 2.179,
+    "changedPixelsOver2": 10303,
+    "pixels": 61028,
+    "scope": "isolated Software WebGL diagnostic, wallpaper stripes only; not a hardware/fidelity score"
+  },
+  "hyprglass": {
+    "dockCrop": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGB": 2.871,
+    "changedPixelsOver2": 13602,
+    "pixels": 61028,
+    "scope": "isolated Software WebGL diagnostic, wallpaper stripes only; not a hardware/fidelity score"
+  },
+  "prism": {
+    "dockCrop": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGB": 10.795,
+    "changedPixelsOver2": 36379,
+    "pixels": 61028,
+    "scope": "isolated Software WebGL diagnostic, wallpaper stripes only; not a hardware/fidelity score"
+  },
+  "frost": {
+    "dockCrop": [
+      542,
+      1007,
+      1378,
+      1080
+    ],
+    "meanAbsoluteRGB": 2.577,
+    "changedPixelsOver2": 23729,
+    "pixels": 61028,
+    "scope": "isolated Software WebGL diagnostic, wallpaper stripes only; not a hardware/fidelity score"
+  }
+}

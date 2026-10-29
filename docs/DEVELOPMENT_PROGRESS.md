@@ -1,3 +1,9 @@
+# R7 Checkpoint C/D — Regression und sichtbare Korrektur abgeschlossen
+
+554/554 Tests, volle bestehende App-/Profil-/Neustart-GUI, R6.1-Geometrie/F11/M1M2, neue fünfgrößige R7-GUI inklusive Drag-Snap/Workspace-Shortcuts und komplette sechsfach-Material-/Context-/DPR-/Idle-Diagnose bestanden. Mehrere tatsächliche Bildkorrekturen für Wetteranker/Kalenderzeilen/Glyphen; beide Scrollachsen und Kartenrechtecke gemessen.370Runtimeassets. [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Jetzt noch autorisiert: nativer WindowsR7-Build/Installation/GUI, tatsächlicher Hash/Bilder, Abschluss. Keine neuen Produktfeatures mehr beginnen; native Hardwaregrenzen offen.
+
+---
+
 # R7 Checkpoint B — Fenster/Widgets/MacLock geprüft
 
 550/550 Tests; neue echte fünfgrößige Desktop-/App-/MacLock-/Drag-Snap-GUI und vollständige R6.1-F11-/Geometrie-/M1M2-Abnahme bestanden. Originale MacShell-Feder für Tiling,450ms Snapvorschau, bestätigte profilgebundene Widgetskalierung, sicherer größerer MacLock-Coverpfad. [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Nächste autorisierte Abschnitte: sichtbare Wetter-/Kalender-Skalierungsfehler korrigieren, volle Regression, WindowsR7. Native Medienfreigabe/physische Hardware nicht behauptet.
