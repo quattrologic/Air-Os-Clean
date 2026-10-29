@@ -1,0 +1,27 @@
+'use strict';
+// Additional real Electron scenes; invoked by the existing isolated GUI harness.
+const fs=require('node:fs'),path=require('node:path'),a=require('node:assert/strict');
+module.exports=async function({evaluate,viewport,capture,crop,shot,wait,click,pressButton,key,fill,app,close,logout,client,delay,report,output}){
+ const before=process.env.AIR_R7_BEFORE==='1';report.r7={before,scenes:[],dragSnap:false};
+ for(const [w,h]of [[1536,864],[1688,896],[1920,1080],[1650,930],[390,600]]){
+  await viewport(w,h);await capture('r7-desktop-'+w);await crop('.dock','r7-dock-'+w);await crop('#air-island-toggle','r7-island-'+w);
+  const r=await evaluate("document.querySelector('.dock [data-app=notes]').getBoundingClientRect().toJSON()");await client.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:r.x+r.width/2,y:r.y+r.height/2});await capture('r7-hover-'+w);await client.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:w-15,y:h/2});
+  await pressButton('#air-island-toggle');await capture('r7-controls-'+w);await key('Escape','Escape',27);await wait("document.querySelector('#air-island-panel').hidden");
+  await key('k','KeyK',75,2);await wait("!!document.querySelector('.air-search-overlay:not([hidden])')");await fill('.air-search-field','(2+3)*4');await wait("document.querySelector('.air-search-results').textContent.includes('20')");await capture('r7-spotlight-'+w);await key('Escape','Escape',27);
+  await app('finder');await app('notes');await capture('r7-apps-'+w);await close('notes');await close('finder');
+  if(w===390){let n=0;while(!await evaluate("document.querySelector('.tahoe4-widget-pager button:last-child')?.disabled??true")){await click('.tahoe4-widget-pager button:last-child');await capture('r7-widget-page-'+(++n));if(n>6)throw Error('Unbounded widget pages');}while(!await evaluate("document.querySelector('.tahoe4-widget-pager button:first-child')?.disabled??true"))await click('.tahoe4-widget-pager button:first-child');}
+  const g=await evaluate("({menu:document.querySelector('.t6-menu-bar').getBoundingClientRect().toJSON(),island:document.querySelector('#air-island-toggle').getBoundingClientRect().toJSON(),widgets:[...document.querySelectorAll('.deep-widget')].map(e=>({id:e.dataset.widget,hidden:e.hidden,rect:e.getBoundingClientRect().toJSON()})),dock:document.querySelector('.dock').getBoundingClientRect().toJSON()})");
+  a.equal(g.menu.height,24);report.r7.scenes.push({viewport:[w,h],geometry:g});
+ }
+ if(!before){
+  await viewport(1688,896);await app('finder');await evaluate("airWindowSystem.configure({mode:'floating'})");await delay(250);
+  const b=await evaluate("openApps.get('finder').getBoundingClientRect().toJSON()"),x=b.x+b.width/2,y=b.y+20;
+  await client.send('Input.dispatchMouseEvent',{type:'mouseMoved',x,y});await client.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,clickCount:1});await client.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:2,y:400,buttons:1,button:'left'});
+  await wait("!!document.querySelector('.r7-snap-preview')");await shot('r7-snap-preview');await client.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:2,y:400,button:'left',buttons:0,clickCount:1});
+  await wait("openApps.get('finder').dataset.snap==='left'");const box=await evaluate("openApps.get('finder').getBoundingClientRect().toJSON()");a.equal(box.x,0);a.equal(box.y,24);a.equal(box.width,844);a.equal(box.height,872);await shot('r7-drag-snap');report.r7.dragSnap=true;await close('finder');
+ }
+ const idle=await evaluate('airDesktopGlass.snapshot().draws');await delay(550);a.equal(await evaluate('airDesktopGlass.snapshot().draws'),idle);report.r7.idleDraws=0;
+ await logout();await wait("!!document.querySelector('.maclock-system')");a.equal(await evaluate('airOS.currentUser()'),null);
+ for(const [w,h]of [[1536,864],[1688,896],[1920,1080],[1650,930],[390,600]]){await viewport(w,h);await delay(800);await shot('r7-maclock-'+w);a.equal(await evaluate("document.querySelector('.maclock-system').dataset.preview"),'neutral');a.equal(await evaluate("!!document.querySelector('.maclock-media-art img')"),false);}
+ fs.writeFileSync(path.join(output,'r7-report.json'),JSON.stringify(report,null,2));console.log('PASS R7 real desktop/app/controls/Spotlight, idle, neutral MacLock and '+(before?'baseline':'drag-to-Snap'));
+};

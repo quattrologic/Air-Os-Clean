@@ -27,5 +27,7 @@
   const get=kind=>parts.find(p=>p.type===kind)?.value||'';
   return get('weekday')+', '+get('month')+' '+get('day');
  }
- return Object.freeze({layout,time,date});
+ // LockScreen.qml media.width=372u; collapsed150u / expanded138u; art=width, gap24u.
+ function media(height,width,room,expanded=false){const u=Math.max(.6,height/1200),card=Math.min(372*u,Math.max(0,width-32)),base=(expanded?138:150)*u,art=expanded?Math.max(0,Math.min(card,room-base-24*u)):0;return {u,width:card,height:base,art,gap:24*u};}
+ return Object.freeze({layout,time,date,media});
 });

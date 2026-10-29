@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT",
+  "source": "MacLock/LockScreen.qml",
+  "local": "third_party/r7-macshell/original/LockScreen.qml",
+  "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006"
+}

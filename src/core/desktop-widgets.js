@@ -4,7 +4,7 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.airWidgetMath=api;})(typeof window==='object'?window:null,function(){
  const ids=Object.freeze(['clock','calendar','notes','reminders','music','image','weather']);
  const labels=Object.freeze({clock:'Heute',calendar:'Kalender',notes:'Notizen',reminders:'Erinnerungen',music:'Now Playing',image:'Bild',weather:'Wetter'});
- function dims(size,width=1920){const b=size==='large'?[375,385]:size==='medium'?[395,185]:[185,185],s=Math.min(1,Math.max(1,width-42)/b[0]);return {width:Math.round(b[0]*s),height:Math.round(b[1]*s)};}
+ function dims(size,width=1920,scale=1){const b=size==='large'?[375,385]:size==='medium'?[395,185]:[185,185],s=Math.min(Math.max(.6,Math.min(1.5,scale)),Math.max(1,width-42)/b[0]);return {width:Math.round(b[0]*s),height:Math.round(b[1]*s)};}
  function gridInfo(width,height){const availW=width-42,availH=height-56-24,cols=Math.max(1,Math.floor((availW+28)/(179+28))),rows=Math.max(1,Math.floor((availH+23)/(179+23))),used=cols*179+(cols-1)*28;return {cols,rows,left:21+Math.floor(Math.max(0,availW-used)/2),top:56,pitchX:207,pitchY:202};}
  const overlaps=(a,b)=>a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
  function slots(box,others,width,height){const g=gridInfo(width,height-54),out=[];for(let row=0;row<g.rows;row++)for(let col=0;col<g.cols;col++){const b={x:g.left+col*g.pitchX,y:g.top+row*g.pitchY,...box};if(b.x+box.width<=width-21&&b.y+box.height<=height-78&&!others.some(o=>overlaps(b,o)))out.push(b);}return out;}

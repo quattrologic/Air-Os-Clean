@@ -1,0 +1,1 @@
+MacShell Copyright (c) 2026 Rickky, MIT. Pinned 1bdb51870b621100fd2709f66c8f8e00ab17b9c4. LockScreen.qml media and right-column geometry is ported in maclock-layout.js/maclock-system.js/air-r7.css. PAM/Quickshell/MPRIS/notification-file access is NOT executed. Authentication remains Air-OS Main.\n

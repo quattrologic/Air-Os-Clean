@@ -1,3 +1,9 @@
+# R7 Checkpoint B — Fenster/Widgets/MacLock geprüft
+
+550/550 Tests; neue echte fünfgrößige Desktop-/App-/MacLock-/Drag-Snap-GUI und vollständige R6.1-F11-/Geometrie-/M1M2-Abnahme bestanden. Originale MacShell-Feder für Tiling,450ms Snapvorschau, bestätigte profilgebundene Widgetskalierung, sicherer größerer MacLock-Coverpfad. [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Nächste autorisierte Abschnitte: sichtbare Wetter-/Kalender-Skalierungsfehler korrigieren, volle Regression, WindowsR7. Native Medienfreigabe/physische Hardware nicht behauptet.
+
+---
+
 # R7 Checkpoint A — Materialports geprüft
 
 Basis7be272a; Branch feat/air-os-r7-final-experience. Originale Hyprland-Prism-/Frostberechnungen und Inner-Glow-Abfall laufen in derselben GLASS-3-Engine, sechs validierte Materialfamilien; begrenzte adaptive Hardwareauflösung, unveränderte GPU-Guards.544/544 Tests und tatsächlicher Electron-Compile-/Renderlauf bestanden (Softwarediagnose, keine Hardwareabnahme). [Bericht](AIR_OS_R7_FINAL_EXPERIENCE.md). Weiter im autorisierten Auftrag: Widgets/MacLock/Fensterinteraktionen, visuelle Regression, WindowsR7. Keine zweite Engine/Registry.
