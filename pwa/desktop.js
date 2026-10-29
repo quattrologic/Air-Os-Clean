@@ -16,7 +16,7 @@
  const originalOpen=window.openApp;
  window.openApp=function(id,...args){if(id==='spotify'){showInfo('Spotify',limited.spotify);return {ok:false,error:'NATIVE_UNAVAILABLE'};}const result=originalOpen(id,...args);schedule();return result;};
  function el(tag,text){const n=document.createElement(tag);if(text)n.textContent=text;return n;}
- function button(text,fn){const b=el('button',text);b.type='button';b.onclick=fn;return b;}
+ function button(text,fn){const b=el('button',text);b.type='button';b.onclick=async()=>{try{await fn();}catch(error){toast(error.message||'Aktion fehlgeschlagen.');}};return b;}
  function closeTools(){tools?.close();tools=null;}
  function dialog(title){closeTools();const d=el('dialog');d.className='pwa-tools';d.append(el('h2',title),button('Schließen',()=>d.close()));document.body.append(d);d.addEventListener('close',()=>{d.remove();if(tools===d)tools=null;},{once:true});tools=d;d.showModal();return d;}
  function showInfo(title,text){const d=dialog(title);d.append(el('p',text));if(title==='Spotify'){const a=el('a','Spotify-Webseite öffnen');a.href='https://open.spotify.com';a.target='_blank';a.rel='noopener noreferrer';d.append(a);}}
@@ -27,6 +27,8 @@
  d.append(row);
  const label=el('label','Glasqualität '),quality=el('select');quality.setAttribute('aria-label','iPad-Glasqualität');for(const [value,name]of [['standard','Standard · sparsames CSS-Glas'],['high','Hoch · geprüfter WebGL2-Hardwarepfad'],['reduced','Reduzierte Transparenz']])quality.append(new Option(name,value));quality.value=(await airOS.preferences.get()).pwaQuality;
  quality.onchange=run(async()=>{const p=await airOS.preferences.update({pwaQuality:quality.value,reduceGlass:quality.value==='reduced'});airSettingsCache={...airSettingsCache,...p};applyAirSettings(p);status.textContent='Qualität gespeichert. Hardwareguard und CSS-Fallback bleiben aktiv.';});label.append(quality);d.append(label);
+ const dockOrder=el('details'),dockSummary=el('summary','Dock-Reihenfolge');dockOrder.append(dockSummary);const dockList=el('div');dockOrder.append(dockList);d.append(dockOrder);
+ function renderPins(){dockList.replaceChildren();const ids=airDockReferences(readAirSettings().dockPins);ids.forEach((id,i)=>{const line=el('div'),name=el('span',airAppRegistry.get(id)?.name||id);line.append(name);for(const [direction,label]of [[-1,'Nach links'],[1,'Nach rechts']]){const b=button(label,run(async()=>{const next=ids.slice(),j=i+direction;if(j<0||j>=next.length)return;[next[i],next[j]]=[next[j],next[i]];await persistAirSettingsConfirmed({dockPins:next});renderPins();}));b.disabled=i+direction<0||i+direction>=ids.length;b.setAttribute('aria-label',id+' '+label);line.append(b);}dockList.append(line);});}renderPins();
  d.append(button('Datenbackup exportieren',run(async()=>{airBrowserFiles.download(await airOS.backup.export(),'Air-OS-iPad-Backup.json');status.textContent='Backup an Safari übergeben. Es enthält die privaten Inhalte dieses lokalen Bereichs.';})));
  const restore=el('label','Backup wiederherstellen '),input=el('input');input.type='file';input.accept='.json,application/json';input.setAttribute('aria-label','Air-OS-Backup auswählen');restore.append(input);d.append(restore);
  input.onchange=run(async()=>{const file=input.files[0];if(file&&confirm('Daten dieses lokalen Bereichs durch das gewählte Backup ersetzen? Vorher exportieren.')){await airOS.backup.restore(file,true);await airOS.logout();}});
@@ -44,7 +46,8 @@
  document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;if(!e.isPrimary){cancelPress();return;}const dock=e.target.closest('.dock-app');if(!dock)return;cancelPress();pointer={id:e.pointerId,x:e.clientX,y:e.clientY};longPress=setTimeout(()=>{longPress=null;dock.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:e.clientX,clientY:e.clientY}));pointer=null;},600);},{signal,passive:true});
  document.addEventListener('pointermove',e=>{if(pointer&&e.pointerId===pointer.id&&Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>10)cancelPress();},{signal,passive:true});
  for(const type of ['pointerup','pointercancel','visibilitychange'])document.addEventListener(type,cancelPress,{signal});
- function dispose(){events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);closeTools();delete window.airPwaWorkArea;}
+ const stopLifecycle=airAppLifecycle.onChange(()=>requestAnimationFrame(()=>root.classList.toggle('pwa-window-visible',[...openApps.values()].some(w=>w.isConnected&&w.style.display!=='none'))));
+ function dispose(){stopLifecycle();events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);closeTools();delete window.airPwaWorkArea;}
  document.addEventListener('air-profile-changing',dispose,{once:true});window.addEventListener('pagehide',dispose,{once:true});
  document.addEventListener('air-browser-storage-blocked',()=>toast('Speicherupdate blockiert. Andere Air-OS-Tabs schließen und neu laden.'),{signal});
  document.addEventListener('air-browser-data',e=>{if(e.detail.key==='notes')document.dispatchEvent(new Event('air-notes-changed'));if(e.detail.key==='reminders')document.dispatchEvent(new Event('air-reminders-changed'));},{signal});

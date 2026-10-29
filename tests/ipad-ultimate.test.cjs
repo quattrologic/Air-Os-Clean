@@ -30,3 +30,12 @@ test('PWA actions preserve dirty Notes and do not enable native cloud or public 
  assert.match(read('pwa/adapter.js'),/airNotes\?\.hasUnsaved/);assert.match(read('pwa/apps.js'),/beforeunload/);
  const workflow=read('.github/workflows/deploy-pwa-preview.yml');assert.match(workflow,/publish-public-pwa-test/);assert.doesNotMatch(workflow,/\n  push:|\n  pull_request:/);
 });
+test('custom browser reminder lists share validation without changing old entries',()=>{
+ const f=require('../src/core/reminders-format.js');assert.equal(f.validate({title:'x',list:' Studium '}).list,'Studium');assert.ok(!Object.hasOwn(f.validate({title:'x'}),'list'));assert.throws(()=>f.validate({title:'x',list:''}));assert.throws(()=>f.validate({title:'x',list:'x'.repeat(61)}));
+});
+test('iPad workflow builds auditable artifacts without Pages or publication permissions',()=>{
+ const w=read('.github/workflows/build-air-os-ipad.yml');assert.match(w,/branches: \[feat\/air-os-ipad-ultimate\]/);for(const t of ['audit-level=high','run-test-gate.cjs','test-ipad-browser.cjs chromium','test-ipad-browser.cjs webkit','package-ipad.cjs','upload-artifact@v4'])assert.ok(w.includes(t));assert.doesNotMatch(w,/pages: write|deploy-pages|contents: write|gh release|publish always/);
+});
+test('PWA packages verify actual bytes and require clean versioned source for ZIP identity',()=>{
+ assert.match(read('scripts/check-pwa-package.cjs'),/Runtime byte mismatch/);assert.match(read('scripts/check-pwa-package.cjs'),/Unreviewed file outside offline allowlist/);assert.match(read('scripts/package-ipad.cjs'),/info.sourceDirty/);assert.match(read('scripts/build-pwa.cjs'),/RUNTIME-ASSETS.json/);
+});

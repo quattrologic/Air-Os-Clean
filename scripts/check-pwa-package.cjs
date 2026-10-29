@@ -1,4 +1,5 @@
 'use strict';
+const crypto=require('node:crypto');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 function check(root){
  root=path.resolve(root);let count=0;
@@ -20,6 +21,12 @@ function check(root){
  const sw=read('sw.js');const list=JSON.parse(sw.match(/ASSETS=(\[[^\n]+?\]);/)[1]);
  for(const value of list)asset(value);assert.ok(list.includes('index.html')&&list.includes('desktop.html'));
  assert.match(read('adapter.js'),/configured:false/);
+ const inventory=JSON.parse(read('RUNTIME-ASSETS.json'));assert.equal(inventory.schemaVersion,1);
+ for(const item of inventory.files){asset(item.file);const b=fs.readFileSync(path.join(root,item.file));assert.equal(b.length,item.bytes,'Runtime size mismatch: '+item.file);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),item.sha256,'Runtime byte mismatch: '+item.file);}
+ assert.equal(new Set(list).size,list.length,'Duplicate cached asset');assert.equal(count,list.length+1,'Unreviewed file outside offline allowlist');
+ for(const f of ['storage.js','files.js','apps.js','air-music.js','air-reminders.js','air-os-enhancements.js','third_party/tahoe/icons/COPYING','third_party/hyprland/LICENSE','third_party/glass2/LICENSE'])assert.ok(list.includes(f),'Required runtime/license missing: '+f);
+ for(const html of ['index.html','desktop.html'])for(const m of read(html).matchAll(/<script src="([^"]+)"/g))assert.doesNotMatch(read(m[1]),/require\(['"](?:electron|node:)|ipcRenderer\./,'Native runtime in executed browser script');
+
  return {files:count,cachedAssets:list.length,privateData:'not included by build allowlist; no user data read'};
 }
 if(require.main===module)console.log(JSON.stringify(check(process.argv[2]||'dist/pwa')));

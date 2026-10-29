@@ -34,14 +34,21 @@
   const search=document.createElement('input');search.type='search';search.className='tahoe-reminder-search';search.placeholder='Aufgaben suchen';search.setAttribute('aria-label','Aufgaben suchen');
   const filter=document.createElement('select');filter.className='tahoe-reminder-filter';filter.setAttribute('aria-label','Aufgaben filtern');for(const [value,label]of [['all','Alle Aufgaben'],['open','Offen'],['done','Erledigt'],['today','Heute'],['overdue','Überfällig']]){const o=document.createElement('option');o.value=value;o.textContent=label;filter.append(o);}filter.value='all';list.before(search,filter);search.oninput=()=>draw();filter.onchange=()=>draw();
   function inform(message){if(notifyActive&&win.isConnected)status.textContent=message}
+  let listName=null,listFilter=null;
+  if(window.airOS?.platform==='web'){
+   const label=document.createElement('label');label.textContent='Liste';listName=document.createElement('input');listName.className='arem-listname';listName.maxLength=60;listName.value='Erinnerungen';label.append(listName);form.prepend(label);
+   listFilter=document.createElement('select');listFilter.setAttribute('aria-label','Liste filtern');list.before(listFilter);listFilter.onchange=()=>draw();
+  }
   function select(item){
    selected=item?.id||null;title.value=item?.title||'';details.value=item?.details||'';
+   if(listName)listName.value=item?.list||'Erinnerungen';
    date.value=item?.dueDate||'';priority.value=item?.priority||'none';done.checked=!!item?.completed;del.disabled=!selected;
    draw();
   }
   function draw(){
    list.replaceChildren();
-   const sorted=[...entries].filter(item=>window.airTahoeAppModel.reminder(item,filter.value,search.value)).sort((a,b)=>Number(a.completed)-Number(b.completed)||(a.dueDate||'9999').localeCompare(b.dueDate||'9999')||a.title.localeCompare(b.title,'de-DE'));
+   if(listFilter){const prior=listFilter.value;listFilter.replaceChildren(new Option('Alle Listen',''));for(const name of [...new Set(entries.map(e=>e.list||'Erinnerungen'))].sort())listFilter.append(new Option(name,name));listFilter.value=prior; if(!listFilter.value)listFilter.value='';}
+   const sorted=[...entries].filter(item=>(!listFilter?.value||(item.list||'Erinnerungen')===listFilter.value)&&window.airTahoeAppModel.reminder(item,filter.value,search.value)).sort((a,b)=>Number(a.completed)-Number(b.completed)||(a.dueDate||'9999').localeCompare(b.dueDate||'9999')||a.title.localeCompare(b.title,'de-DE'));
    for(const item of sorted){
     const row=document.createElement('div');row.className='arem-row'+(selected===item.id?' selected':'');
     const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=!!item.completed;checkbox.setAttribute('aria-label',item.title+' als erledigt markieren');
@@ -69,7 +76,7 @@
   form.addEventListener('submit',async event=>{
    event.preventDefault();if(busy)return;busy=true;save.disabled=true;
    try{
-    const saved=await api.save({id:selected,expectedSnapshot:entries.find(n=>n.id===selected),title:title.value,details:details.value,dueDate:date.value||null,priority:priority.value,completed:done.checked});
+    const saved=await api.save({id:selected,expectedSnapshot:entries.find(n=>n.id===selected),title:title.value,details:details.value,dueDate:date.value||null,priority:priority.value,completed:done.checked,...(listName?{list:listName.value}:{} )});
     await notifyChange('air-reminders-changed');
     await refresh(saved.id);inform('Im Air-OS-Profil gespeichert.');
    }catch(e){inform(e.message||'Speichern fehlgeschlagen.')}

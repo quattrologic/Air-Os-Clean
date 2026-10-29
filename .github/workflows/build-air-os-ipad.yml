@@ -1,0 +1,68 @@
+name: Air-OS Ultimate iPad PWA (build and browser tests, no deployment)
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/air-os-ipad-ultimate]
+    paths-ignore: ['docs/**']
+permissions:
+  contents: read
+concurrency:
+  group: air-os-ipad-test
+  cancel-in-progress: false
+jobs:
+  ipad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: build/ipad-tests/package-lock.json
+      - name: Install only frozen browser test and audio dependencies
+        run: npm ci --prefix build/ipad-tests --ignore-scripts --no-audit --no-fund
+      - name: Mandatory audit including test dependencies
+        run: |
+          mkdir -p dist/ipad-evidence
+          npm audit --prefix build/ipad-tests --audit-level=high --json > dist/ipad-evidence/dependency-audit.json
+      - name: Stage the sole local browser audio dependency
+        run: |
+          mkdir -p node_modules/amplitudejs/dist
+          cp build/ipad-tests/node_modules/amplitudejs/package.json build/ipad-tests/node_modules/amplitudejs/LICENSE node_modules/amplitudejs/
+          cp build/ipad-tests/node_modules/amplitudejs/dist/amplitude.min.js node_modules/amplitudejs/dist/
+      - name: Full desktop and browser regression suite
+        run: node scripts/run-test-gate.cjs
+      - name: Build and verify the actual offline PWA bytes, CSP and licenses
+        run: |
+          node scripts/build-pwa.cjs
+          node scripts/check-pwa-package.cjs
+          node scripts/package-ipad.cjs
+      - name: Install Chromium and WebKit test engines
+        run: node build/ipad-tests/node_modules/playwright/cli.js install --with-deps chromium webkit
+      - name: Real Chromium touch, data, offline and seven-viewport GUI
+        env:
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/chromium
+        run: node scripts/test-ipad-browser.cjs chromium
+      - name: Real WebKit touch, data, offline and seven-viewport GUI
+        env:
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/webkit
+        run: node scripts/test-ipad-browser.cjs webkit
+      - name: Keep versioned installable site ZIP and SHA-256 (never deploy)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Ultimate-iPad-${{ github.sha }}
+          path: dist/ipad/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Keep actual browser screenshots and failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-browser-evidence-${{ github.sha }}
+          path: |
+            dist/ipad-evidence/
+            dist/r1-gui/node-tests.tap
+          if-no-files-found: warn
+          retention-days: 30

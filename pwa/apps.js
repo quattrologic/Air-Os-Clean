@@ -7,6 +7,10 @@
   if(mounted.has(win))return;mounted.add(win);
   const files=win.querySelector('.air-files-app');
   if(files){
+   for(const n of files.querySelectorAll('[data-air-action=choose-folder] strong'))n.textContent='Interne Dateien';
+   for(const n of files.querySelectorAll('[data-air-action=choose-folder] small'))n.textContent='In diesem Browser';
+   const hint=files.querySelector('.air-files-place-hint');if(hint)hint.textContent='Dateien ausdrücklich importieren. Alle Ordner liegen ausschließlich im Air-OS-Browserspeicher.';
+   const footer=files.querySelector('.air-files-sidebar-footer');if(footer)footer.textContent='Lokaler Browserbereich · Backup über iPad-Menü';
    const bar=document.createElement('div');bar.className='pwa-file-actions';const status=document.createElement('p');status.setAttribute('role','status');status.textContent='Interner Browserspeicher · Import bis 8 MiB/Datei, Bibliothek bis 16 MiB.';
    const label=document.createElement('label');label.textContent='Dateien importieren';const input=document.createElement('input');input.type='file';input.multiple=true;input.hidden=true;label.append(input);bar.append(label,status);
    const current=()=>window.airFinder?.currentPath(win)||'';
@@ -28,8 +32,8 @@
  observer.observe(document.querySelector('#windows'),{childList:true});
  for(const w of openApps.values())mount(w);
  // Preserve dirty Notes and the Finder editor before destructive UI/session transitions.
- document.addEventListener('click',e=>{const close=e.target.closest('.close');if(!close)return;const win=close.closest('.app-window');if(win?.querySelector('.air-notes')&&window.airNotes?.hasUnsaved()&&!confirm('Ungespeicherte Notiz verwerfen und schließen?')){e.preventDefault();e.stopImmediatePropagation();}}, {capture:true,signal});
- window.addEventListener('beforeunload',e=>{if(window.airNotes?.hasUnsaved()){e.preventDefault();e.returnValue='';}},{signal});
+ document.addEventListener('click',e=>{const close=e.target.closest('.close');if(!close)return;const win=close.closest('.app-window');if(((win?.querySelector('.air-notes')&&window.airNotes?.hasUnsaved())||window.airFinder?.hasUnsaved(win))&&!confirm('Ungespeicherte Änderungen verwerfen und schließen?')){e.preventDefault();e.stopImmediatePropagation();}}, {capture:true,signal});
+ window.addEventListener('beforeunload',e=>{if(window.airNotes?.hasUnsaved()||[...openApps.values()].some(w=>window.airFinder?.hasUnsaved(w))){e.preventDefault();e.returnValue='';}},{signal});
  function dispose(){observer.disconnect();events.abort();}
  document.addEventListener('air-profile-changing',dispose,{once:true});window.addEventListener('pagehide',dispose,{once:true});
 })();

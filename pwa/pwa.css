@@ -87,3 +87,9 @@ html[data-pwa] #air-island{top:env(safe-area-inset-top,0px)!important}
  html[data-pwa] .menu-left>#active-app{display:none}
  html[data-pwa] .menu-right>.icon-button{display:none}
 }
+html[data-pwa].pwa-window-visible .tahoe4-widget-pager{display:none!important}
+@media(max-width:600px){html[data-pwa] .t6-menu-bar button[data-menu=app]{display:none!important}}
+html[data-pwa] .pwa-file-menu{display:inline-flex;gap:4px}
+html[data-pwa] .pwa-file-menu button{min-width:36px;min-height:44px;border:0;background:transparent;color:#334c68}
+html[data-pwa] .pwa-file-actions label{cursor:pointer}
+.pwa-session-ended>*:not(.wallpaper){visibility:hidden!important}

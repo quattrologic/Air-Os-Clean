@@ -1,3 +1,9 @@
+# iPad Ultimate — Checkpoint C/D (2026-10-29)
+
+568/568 Node-Regressionen bestanden. Chromium: 77 echte Browserprüfungen, sieben Touch-Viewports, Offline-Kaltstart, CAS-Konflikt, atomarer Dateiimport, Backup/Restore mit Binärdaten, zwei lokale Bereiche, Musikimport ohne Autoplay und M2-Restore bestanden. Zusätzliche Daten-/BFCache- und Updateguards werden erneut geprüft.
+PWA-Artefakte prüfen jetzt jedes Laufzeitasset anhand Größe/SHA-256, CSP, Offline-Allowlist und Lizenzen. Eigener reiner Buildworkflow mit Chromium/WebKit, Audit und ZIP; keine Pages-/Release-Aktion. Browser-Testtoolchain und Amplitude exakt fixiert; Audit 0 Befunde.
+Noch offen: CI-WebKit-Ergebnis, endgültige Bildkontrolle und versioniertes ZIP aus sauberem Produktcommit, vollständige Funktionsmatrix. Echter iPadhost nicht verfügbar.
+
 # iPad Ultimate — Checkpoint A/B (2026-10-29)
 
 Basis 02ccaf88724731cf685d2221f88e959020aff3f0; Branch feat/air-os-ipad-ultimate.

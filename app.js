@@ -503,7 +503,7 @@ function openApp(id){
  bar.addEventListener('dblclick',e=>{if(e.button!==0||e.target.closest('.traffic,button'))return;e.preventDefault();win.querySelector('.maximize').click();});
 
  bar.addEventListener("pointerdown",e=>{
-  if(document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||e.target.closest(".traffic")||e.target.closest("button")||win.classList.contains("maximized"))return;
+  if((window.airOS?.platform==="web"&&e.isPrimary===false)||document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||e.target.closest(".traffic")||e.target.closest("button")||win.classList.contains("maximized"))return;
   clearDockMotion(win);
   const r=win.getBoundingClientRect();
   drag={pointerId:e.pointerId,x:e.clientX-r.left,y:e.clientY-r.top};
@@ -520,7 +520,7 @@ function openApp(id){
  bar.addEventListener("pointerup",stopWindowDrag);bar.addEventListener("pointercancel",stopWindowDrag);bar.addEventListener("lostpointercapture",stopWindowDrag);
  const resizeGrip=$(".window-resize-handle",win);let resizing=null;
  resizeGrip.addEventListener("pointerdown",e=>{
-  if(document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||win.classList.contains("maximized"))return;
+  if((window.airOS?.platform==="web"&&e.isPrimary===false)||document.documentElement.classList.contains("air-native-fullscreen")||e.button!==0||win.classList.contains("maximized"))return;
   e.preventDefault();e.stopPropagation();clearDockMotion(win);
   const host=appWindowHostRect();
   resizing={pointerId:e.pointerId,startX:e.clientX,startY:e.clientY,startWidth:win.offsetWidth,startHeight:win.offsetHeight,hostWidth:host.width,hostHeight:host.height};

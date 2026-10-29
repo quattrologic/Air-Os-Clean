@@ -284,7 +284,7 @@
   function openTextEditor(win, result) {
     const state = fileStates.get(win);
     if (!state) return;
-    state.editorPath = result.path;
+    state.editorPath = result.path;state.editorContent=result.content;
     const list = win.querySelector('#air-files-list');
     const editor = win.querySelector('#air-files-editor');
     const title = win.querySelector('#air-files-editor-title');
@@ -363,7 +363,7 @@
     const saveButton = win.querySelector('[data-air-action="save-file"]');
     if (saveButton) saveButton.disabled = true;
     try {
-      await window.airOS.files.writeTextFile(state.editorPath, text.value);
+      const savedText=text.value;await window.airOS.files.writeTextFile(state.editorPath, savedText);state.editorContent=savedText;
       setEditorStatus(win, 'Gespeichert · ' + new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }));
       await loadDirectory(win, state.currentPath);
     } catch (error) {
@@ -665,6 +665,7 @@
   // Opening a result never grants access to additional host folders.
   window.airFinder=Object.freeze({
     currentPath:win=>fileStates.get(win)?.currentPath||"",
+    hasUnsaved:win=>{const state=fileStates.get(win),editor=win?.querySelector('#air-files-editor');return !!state?.editorPath&&!editor?.hidden&&win.querySelector('#air-files-editor-text')?.value!==state.editorContent;},
     async revealFile(relative,kind='file'){
       if(typeof relative!=='string'||!relative||relative.startsWith('/')||relative.split('/').some(part=>!part||part==='..'||part==='.'))return false;
       const win=openApps.get('finder');
