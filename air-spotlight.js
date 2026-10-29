@@ -36,17 +36,18 @@
   if(fileTimer!==null){clearTimeout(fileTimer);fileTimer=null;}
   const current=++requestVersion,query=input.value;selected=0;
   const apps=document.documentElement.dataset.desktopTheme==='modern'&&search.rankApps?search.rankApps(registry,query,25):search.findApps(registry,query,25);
-  let notes=[],files=[],firstRefresh=true;
+  let notes=[],files=[],browserData=[],firstRefresh=true;
   const refresh=()=>{
    if(current!==requestVersion||overlay.hidden)return;
    const value=window.airMacShellMath?.calcValue(query);
    const calculation=value!==null&&value!==undefined?[{type:'calculation',name:query+' = '+value,id:'calculator'}]:[];
-   const active=firstRefresh?null:options[selected],next=[...calculation,...apps,...notes,...files],i=active?next.findIndex(n=>n.type===active.type&&n.id===active.id&&n.path===active.path):-1;options=next;firstRefresh=false;selected=i>=0?i:Math.min(selected,Math.max(0,next.length-1));paint();highlight();
+   const active=firstRefresh?null:options[selected],next=[...calculation,...apps,...notes,...files,...browserData],i=active?next.findIndex(n=>n.type===active.type&&n.id===active.id&&n.path===active.path):-1;options=next;firstRefresh=false;selected=i>=0?i:Math.min(selected,Math.max(0,next.length-1));paint();highlight();
   };
   refresh();
   if(query.trim().length<2)return;
   const owner=Promise.resolve(window.airOS?.currentUser?.()).then(u=>u?.preferenceSession).catch(()=>null);
   const valid=async()=>{const session=await owner;return !!session&&current===requestVersion&&!overlay.hidden&&(await window.airOS.currentUser())?.preferenceSession===session&&current===requestVersion&&!overlay.hidden;};
+  if(window.airOS?.search?.query){void(async()=>{try{const result=await window.airOS.search.query(query);if(await valid()){browserData=result;refresh();}}catch{}})();}
   if(window.airOS?.notes?.list){void(async()=>{try{if(!await valid())return;const entries=await window.airOS.notes.list();if(!await valid())return;notes=search.findNotes(entries,query,12);refresh();}catch{}})();}
   if(window.airOS?.files?.searchNames){fileTimer=setTimeout(async()=>{fileTimer=null;try{if(!await valid())return;const result=await window.airOS.files.searchNames(query);if(!await valid())return;files=Array.isArray(result?.items)?result.items.slice(0,20).map(item=>({type:'file',name:item.name,path:item.path,kind:item.kind})):[];refresh();}catch{}},180);}
 

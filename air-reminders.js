@@ -48,7 +48,7 @@
     checkbox.disabled=busy;
     checkbox.addEventListener('change',async()=>{
      if(busy)return;busy=true;checkbox.disabled=true;
-     try{await api.save({...item,completed:checkbox.checked});await notifyChange('air-reminders-changed');await refresh(selected);inform('Aufgabe gespeichert.')}
+     try{await api.save({...item,completed:checkbox.checked,expectedSnapshot:item});await notifyChange('air-reminders-changed');await refresh(selected);inform('Aufgabe gespeichert.')}
      catch(e){checkbox.checked=!checkbox.checked;inform(e.message||'Speichern fehlgeschlagen.')}
      finally{busy=false;checkbox.disabled=false;draw()}
     });
@@ -69,7 +69,7 @@
   form.addEventListener('submit',async event=>{
    event.preventDefault();if(busy)return;busy=true;save.disabled=true;
    try{
-    const saved=await api.save({id:selected,title:title.value,details:details.value,dueDate:date.value||null,priority:priority.value,completed:done.checked});
+    const saved=await api.save({id:selected,expectedSnapshot:entries.find(n=>n.id===selected),title:title.value,details:details.value,dueDate:date.value||null,priority:priority.value,completed:done.checked});
     await notifyChange('air-reminders-changed');
     await refresh(saved.id);inform('Im Air-OS-Profil gespeichert.');
    }catch(e){inform(e.message||'Speichern fehlgeschlagen.')}

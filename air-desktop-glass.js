@@ -99,6 +99,7 @@
  }
  async function paint(){frame=null;if(disposed)return;if(painting){dirty=true;return;}painting=true;const started=performance.now();try{
   await policy;if(disposed)return;
+  if(window.airOS?.platform==='web'&&(readAirSettings().pwaQuality||'standard')!=='high'){release();reason='browser-standard-css';document.documentElement.dataset.desktopGlass='fallback';return;}
   if(document.documentElement.dataset.desktopTheme!=='modern'||reduced()||document.hidden||suspended){release();document.documentElement.dataset.desktopGlass='fallback';return;}if(failed)return;
   if(!gl)init();await updateScene();if(!gl||!scene||disposed)return;
   const now=performance.now(),visible=[];for(const el of document.querySelectorAll(selectors)){

@@ -1,7 +1,7 @@
 'use strict';
 // Adapter on existing openApps/lifecycle/M2; never owns or clones app windows.
 (() => {
- const math=window.airWindowMath;if(!math||!window.airOS?.preferences||!['win32','darwin','linux'].includes(window.airOS.platform))return;
+ const math=window.airWindowMath;if(!math||!window.airOS?.preferences||!['win32','darwin','linux','web'].includes(window.airOS.platform))return;
  let stopFullscreen=null,fullscreenExit=null;const events=new AbortController(),signal=events.signal,motionMedia=matchMedia('(prefers-reduced-motion: reduce)'),mounted=new WeakSet(),cleanups=Object.create(null);let disposed=false,owner=null,layout=readAirSettings().windowLayout||{},mru=[],panel=null,choices=[],selected=0,returnFocus=null,timer=null,menu=null,menuReturn=null,writes=Promise.resolve(),restoring=false;
  const modern=()=>document.documentElement.dataset.desktopTheme==='modern';
  const current=()=>airAppLifecycle.focused();

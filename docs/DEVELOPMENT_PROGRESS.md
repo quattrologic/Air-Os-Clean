@@ -1,3 +1,11 @@
+# iPad Ultimate — Checkpoint A/B (2026-10-29)
+
+Basis 02ccaf88724731cf685d2221f88e959020aff3f0; Branch feat/air-os-ipad-ultimate.
+Bestehende 557 Tests plus 8 gezielte Regressionen: 565/565 bestanden. Chromium-Touch-Smoke: Notes, Reminders, Finder, Kalender, Musik, Einstellungen ohne Pageerrors; Host bei 1180×820: x0/y24/w1180/h796.
+Implementiert: IndexedDB-v2-Erweiterung mit v1-Erhalt, Session-/Arbeitsbereichsbindung, Transaktionen/CAS/Quota-Fehler; gemeinsame Reminder-Validierung, echte Appcontroller und virtuelle Finder-Blobs; Playlist-/Kalender-Facade, Medienpersistenz, lokale Backup-/Restore-Aktionen, Touch-/VisualViewport-Hook auf bestehender Fensterverwaltung.
+Noch nicht abgenommen: vollständige Browser-Arbeitsabläufe/Offline/7 Viewports, WebKit, ZIP/CI. Offizielle WebKit-Downloads bisher durch Netzwerkfilter (403 Domain forbidden) blockiert; kein iPad-Hardwarehost vorhanden.
+Nächste drei überprüfbare Einheiten: Browser-E2E mit echten Daten; responsive Bildkontrolle/Offline; Buildworkflow, ZIP und Funktionsmatrix. Kein öffentliches Deployment.
+
 # R7 — finaler geprüfter und gesicherter Stand
 
 Branch feat/air-os-r7-final-experience; Basis7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildb839d409c255effa36d483a89d8e13ed7ab5570d; finaler Windows-Bildcommit2fb8786bc38c72a052611d4cd69843c146d6a3c4.

@@ -2,7 +2,7 @@
 // Air Reminders: per-user, offline and atomically persisted task data.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const ID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const PRIORITIES=new Set(['none','low','medium','high']);
+const format=require('../core/reminders-format.js');
 function createStore({root}){
  if(typeof root!=='function')throw new TypeError('Root function required.');
  function filename(user){
@@ -27,19 +27,12 @@ function createStore({root}){
   finally{try{fs.unlinkSync(temp)}catch(e){if(e.code!=='ENOENT')throw e}}
  }
  function save(user,item){
-  if(!item||typeof item!=='object'||Array.isArray(item))throw new TypeError('Invalid reminder.');
-  const {id,title,details='',dueDate=null,priority='none',completed=false}=item;
-  if(id!=null&&(typeof id!=='string'||!ID.test(id)))throw new TypeError('Invalid reminder ID.');
-  if(typeof title!=='string'||!title.trim()||title.length>140||typeof details!=='string'||details.length>2000)
-   throw new TypeError('Invalid reminder text.');
-  if(!PRIORITIES.has(priority)||typeof completed!=='boolean')throw new TypeError('Invalid reminder state.');
-  if(dueDate!==null&&(typeof dueDate!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(dueDate)||Number.isNaN(Date.parse(dueDate))||
-   new Date(dueDate+'T12:00:00Z').toISOString().slice(0,10)!==dueDate))throw new TypeError('Invalid due date.');
+  const {id}=format.validate(item);
   const items=list(user),index=id?items.findIndex(entry=>entry.id===id):-1;
   if(id&&index<0)throw new Error('Reminder not found.');
   if(index<0&&items.length>=300)throw new Error('Reminder limit reached.');
   const now=new Date().toISOString();
-  const entry={id:index<0?crypto.randomUUID():id,title:title.trim(),details,dueDate,priority,completed,createdAt:index<0?now:items[index].createdAt,updatedAt:now};
+  const entry=format.make(item,index>=0?items[index]:null,now,index<0?crypto.randomUUID():id);
   if(index>=0)items[index]=entry;else items.unshift(entry);
   persist(user,items);return {...entry};
  }

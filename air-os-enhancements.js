@@ -110,7 +110,7 @@
   const AIR_EVENTS_KEY='air-os-calendar-events-v1';
   let calendarStore=null,calendarOpening=null;
   function calendarRead() { if(!calendarStore)return [];const data=calendarStore.read();if(!Array.isArray(data))throw Error('Kalenderdaten sind ungültig.');return data; }
-  function calendarWrite(events) { if(!calendarStore)throw Error('Kalender benötigt eine gültige Sitzung.');calendarStore.write(events);document.dispatchEvent(new Event('air-calendar-changed')); }
+  async function calendarWrite(events) { if(!calendarStore)throw Error('Kalender benötigt eine gültige Sitzung.');await calendarStore.write(events);document.dispatchEvent(new Event('air-calendar-changed')); }
   async function calendarSource(){try{calendarOpening??=window.airProfileLocal.open({api:window.airOS,storage:localStorage,base:AIR_EVENTS_KEY,empty:[],events:document});calendarStore=await calendarOpening;if((await window.airOS.currentUser())?.preferenceSession!==calendarStore.session)throw Error('Sitzung geändert.');return calendarRead();}catch(error){calendarStore?.dispose();calendarStore=null;calendarOpening=null;throw error;}}
   window.airCalendarData=Object.freeze({list:calendarSource});
   async function mountCalendar(win){
@@ -122,7 +122,7 @@
     const list=win.querySelector('#air-calendar-list');if(!list)return;
     const events=calendarRead().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));list.replaceChildren();
     if(!events.length){const empty=document.createElement('p');empty.className='air-calendar-empty';empty.textContent='Noch keine Termine. Füge oben deinen ersten Termin hinzu.';list.appendChild(empty);win.dispatchEvent(new Event('air-calendar-rendered'));return}
-    for(const event of events){const row=document.createElement('article');row.className='air-calendar-event';row.dataset.eventDate=event.date;const date=document.createElement('time');date.textContent=new Date(event.date+'T'+(event.time||'00:00')).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short',year:'numeric'})+' · '+event.time;const body=document.createElement('div');const title=document.createElement('strong');title.textContent=event.title;body.append(title);if(event.note){const note=document.createElement('p');note.textContent=event.note;body.append(note)}const remove=document.createElement('button');remove.type='button';remove.textContent='Entfernen';remove.setAttribute('aria-label','Termin '+event.title+' entfernen');remove.addEventListener('click',()=>{calendarWrite(calendarRead().filter(item=>item.id!==event.id));calendarRender(win)});row.append(date,body,remove);list.appendChild(row)}win.dispatchEvent(new Event('air-calendar-rendered'));
+    for(const event of events){const row=document.createElement('article');row.className='air-calendar-event';row.dataset.eventDate=event.date;const date=document.createElement('time');date.textContent=new Date(event.date+'T'+(event.time||'00:00')).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short',year:'numeric'})+' · '+event.time;const body=document.createElement('div');const title=document.createElement('strong');title.textContent=event.title;body.append(title);if(event.note){const note=document.createElement('p');note.textContent=event.note;body.append(note)}const edit=document.createElement('button');edit.type='button';edit.textContent='Bearbeiten';edit.setAttribute('aria-label','Termin '+event.title+' bearbeiten');edit.onclick=()=>{const form=win.querySelector('#air-calendar-form');form.dataset.editId=event.id;for(const k of ['title','date','time','note'])win.querySelector('#air-calendar-'+k).value=event[k]||'';win.querySelector('#air-calendar-title').focus();};const remove=document.createElement('button');remove.type='button';remove.textContent='Entfernen';remove.setAttribute('aria-label','Termin '+event.title+' entfernen');remove.addEventListener('click',async()=>{try{await calendarWrite(calendarRead().filter(item=>item.id!==event.id));calendarRender(win);}catch{toast('Termin konnte nicht gespeichert werden. Bitte erneut öffnen.');}});row.append(date,body,edit,remove);list.appendChild(row)}win.dispatchEvent(new Event('air-calendar-rendered'));
   }
   function calendarExport(win) {
     const events=calendarRead();if(!events.length){toast('Noch keine Termine zum Exportieren.');return}
@@ -161,12 +161,12 @@
     return baseAppBody(id);
   };
 
-  document.addEventListener('submit', event => {
+  document.addEventListener('submit', async event => {
     if(event.target && event.target.id==='air-calendar-form'){
       event.preventDefault();const win=event.target.closest('.app-window');const title=win.querySelector('#air-calendar-title').value.trim();const date=win.querySelector('#air-calendar-date').value;const time=win.querySelector('#air-calendar-time').value;const note=win.querySelector('#air-calendar-note').value.trim();
       if(!title||!date||!time)return;
-      const events=calendarRead();events.push({id:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),title,date,time,note});
-      try{calendarWrite(events);event.target.reset();win.querySelector('#air-calendar-date').value=date;win.querySelector('#air-calendar-time').value='09:00';calendarRender(win)}catch{toast('Termin konnte nicht lokal gespeichert werden.')}
+      const events=calendarRead(),editId=event.target.dataset.editId,entry={id:editId||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),title,date,time,note};const index=editId?events.findIndex(e=>e.id===editId):-1;if(editId&&index<0){toast('Termin nicht gefunden. Bitte erneut öffnen.');return;}if(index>=0)events[index]=entry;else events.push(entry);
+      try{await calendarWrite(events);delete event.target.dataset.editId;event.target.reset();win.querySelector('#air-calendar-date').value=date;win.querySelector('#air-calendar-time').value='09:00';calendarRender(win)}catch{toast('Termin konnte nicht lokal gespeichert werden.')}
     }
   });
   document.addEventListener('click',event=>{
@@ -664,6 +664,7 @@
   // Reveal only relative paths returned by the authenticated Finder search.
   // Opening a result never grants access to additional host folders.
   window.airFinder=Object.freeze({
+    currentPath:win=>fileStates.get(win)?.currentPath||"",
     async revealFile(relative,kind='file'){
       if(typeof relative!=='string'||!relative||relative.startsWith('/')||relative.split('/').some(part=>!part||part==='..'||part==='.'))return false;
       const win=openApps.get('finder');

@@ -1,9 +1,52 @@
 'use strict';
+// One registry, one openApps map, shared M1/M2 and existing internal window controller.
 (() => {
- const supported=new Set(['home','notes','settings','calculator','about','launchpad']);const original=window.openApp;
- window.openApp=function(id,...args){if(!supported.has(id)){toast('PWA-1: '+(airAppRegistry.get(id)?.name||id)+' ist hier nicht unterstützt.');return {ok:false,error:'PWA_UNSUPPORTED'};}return original(id,...args);};
- const banner=document.createElement('p');banner.className='pwa-local-label';banner.textContent='Lokal · Cloud aus';document.body.append(banner);
- document.documentElement.dataset.pwa='true';
- const mark=()=>document.querySelectorAll('button[data-app]').forEach(b=>{if(!supported.has(b.dataset.app)){b.disabled=true;b.setAttribute('aria-disabled','true');b.title='PWA-1: nicht verfügbar';}});mark();new MutationObserver(mark).observe(document.querySelector('.windows')||document.body,{childList:true,subtree:true});
-
+ const root=document.documentElement,events=new AbortController(),signal=events.signal;
+ root.dataset.pwa='true';
+ const host=document.querySelector('#windows'),viewport=window.visualViewport;
+ let queued=0,tools=null,longPress=null,pointer=null;
+ const area=()=>{const r=host.getBoundingClientRect();return new DOMRect(r.x,r.y,r.width,r.height);};
+ window.airPwaWorkArea=area;
+ function reflow(){queued=0;const v=viewport,h=v?.height||innerHeight,w=v?.width||innerWidth;root.style.setProperty('--pwa-height',h+'px');root.style.setProperty('--pwa-width',w+'px');root.style.setProperty('--pwa-top',(v?.offsetTop||0)+'px');root.classList.toggle('pwa-keyboard',innerHeight-h>150);for(const win of openApps.values())if(!win._airOSDockMotion)clampAppWindow(win);window.airWindowSystem?.reflow();window.airDesktopGlass?.refresh();}
+ function schedule(){if(!queued)queued=requestAnimationFrame(reflow);}
+ viewport?.addEventListener('resize',schedule,{signal});viewport?.addEventListener('scroll',schedule,{signal});window.addEventListener('resize',schedule,{signal});window.addEventListener('orientationchange',schedule,{signal});const resize=new ResizeObserver(schedule);resize.observe(host);schedule();
+ const limited={spotify:'Native Spotify-Desktopsteuerung ist unter iPadOS nicht verfügbar. Du kannst Spotify im Browser öffnen.',aircard:'AirCard benötigt den nativen Desktopadapter und ist auf iPadOS nicht verfügbar.',store:'Native Apppakete lassen sich in Safari nicht installieren. Die integrierten Webapps sind über Launchpad erreichbar.',ai:'Der lokale Ollama-Desktopdienst ist im isolierten iPad-Build nicht angebunden.',translator:'Kein freigegebener Browser-Übersetzungsdienst konfiguriert.',weather:'Keine Browser-Wetterquelle konfiguriert. Es werden keine erfundenen Wetterdaten angezeigt.',football:'Kein freigegebener Browser-Livescoredienst konfiguriert.',stocks:'Kein freigegebener Browser-Kursdienst konfiguriert.',tagesschau:'Live-Nachrichten benötigen einen geeigneten Browser-CORS-Dienst. Dieser Build enthält keinen Offline-Nachrichtencache.',trash:'Dateien werden nach Bestätigung dauerhaft aus dem internen Finder entfernt. Ein wiederherstellbarer Papierkorb ist nicht implementiert.'};
+ const originalBody=window.appBody;
+ window.appBody=function(id){if(limited[id]){const section=document.createElement('section');section.className='pwa-unavailable';const h=document.createElement('h2'),p=document.createElement('p');h.textContent=airAppRegistry.get(id)?.name||id;p.textContent=limited[id];section.append(h,p);return section.outerHTML;}if(id==='downloads')return '<section class="pwa-unavailable"><h2>Exportierte Dateien</h2><p>Safari verwaltet Downloads außerhalb von Air-OS. Dateien aus dem internen Finder lassen sich über „Exportieren“ an Safari übergeben.</p><button data-app="finder">Internen Finder öffnen</button></section>';return originalBody(id);};
+ const originalOpen=window.openApp;
+ window.openApp=function(id,...args){if(id==='spotify'){showInfo('Spotify',limited.spotify);return {ok:false,error:'NATIVE_UNAVAILABLE'};}const result=originalOpen(id,...args);schedule();return result;};
+ function el(tag,text){const n=document.createElement(tag);if(text)n.textContent=text;return n;}
+ function button(text,fn){const b=el('button',text);b.type='button';b.onclick=fn;return b;}
+ function closeTools(){tools?.close();tools=null;}
+ function dialog(title){closeTools();const d=el('dialog');d.className='pwa-tools';d.append(el('h2',title),button('Schließen',()=>d.close()));document.body.append(d);d.addEventListener('close',()=>{d.remove();if(tools===d)tools=null;},{once:true});tools=d;d.showModal();return d;}
+ function showInfo(title,text){const d=dialog(title);d.append(el('p',text));if(title==='Spotify'){const a=el('a','Spotify-Webseite öffnen');a.href='https://open.spotify.com';a.target='_blank';a.rel='noopener noreferrer';d.append(a);}}
+ async function openTools(){const d=dialog('Air-OS · iPad'),status=el('p');status.setAttribute('role','status');d.append(el('p','Lokaler Browserbereich · keine Sicherheitsanmeldung · Cloud deaktiviert.'),status);
+ const run=fn=>async()=>{try{await fn();}catch(e){status.textContent=e.message||'Aktion fehlgeschlagen.';}};
+ const row=el('section');row.className='pwa-tool-actions';
+ row.append(button('Appübersicht',()=>{d.close();overview();}),button('Zwei Apps nebeneinander',run(async()=>{await airWindowSystem.configure({mode:'master'});d.close();})),button('Frei bewegliche Fenster',run(async()=>{await airWindowSystem.configure({mode:'floating'});d.close();})),button('Widgetgalerie',()=>{d.close();document.querySelector('#t7-preset-entry')?.click();}));
+ d.append(row);
+ const label=el('label','Glasqualität '),quality=el('select');quality.setAttribute('aria-label','iPad-Glasqualität');for(const [value,name]of [['standard','Standard · sparsames CSS-Glas'],['high','Hoch · geprüfter WebGL2-Hardwarepfad'],['reduced','Reduzierte Transparenz']])quality.append(new Option(name,value));quality.value=(await airOS.preferences.get()).pwaQuality;
+ quality.onchange=run(async()=>{const p=await airOS.preferences.update({pwaQuality:quality.value,reduceGlass:quality.value==='reduced'});airSettingsCache={...airSettingsCache,...p};applyAirSettings(p);status.textContent='Qualität gespeichert. Hardwareguard und CSS-Fallback bleiben aktiv.';});label.append(quality);d.append(label);
+ d.append(button('Datenbackup exportieren',run(async()=>{airBrowserFiles.download(await airOS.backup.export(),'Air-OS-iPad-Backup.json');status.textContent='Backup an Safari übergeben. Es enthält die privaten Inhalte dieses lokalen Bereichs.';})));
+ const restore=el('label','Backup wiederherstellen '),input=el('input');input.type='file';input.accept='.json,application/json';input.setAttribute('aria-label','Air-OS-Backup auswählen');restore.append(input);d.append(restore);
+ input.onchange=run(async()=>{const file=input.files[0];if(file&&confirm('Daten dieses lokalen Bereichs durch das gewählte Backup ersetzen? Vorher exportieren.')){await airOS.backup.restore(file,true);await airOS.logout();}});
+ d.append(button('Dauerhafte Speicherung anfragen',run(async()=>{status.textContent=await airOS.storage.persist()?'Browser hat persistente Speicherung gewährt. Regelmäßige Backups bleiben wichtig.':'Browser hat keine Zusage erteilt. Bitte regelmäßig exportieren.';})));
+ d.append(button('Speicherbelegung prüfen',run(async()=>{const e=await airOS.storage.estimate();status.textContent=e.quota?'Browserbereich: '+Math.round((e.usage||0)/1048576)+' / '+Math.round(e.quota/1048576)+' MiB. Datei- und Musikbibliothek je max. 16 MiB.':'Speicherschätzung nicht verfügbar.';})));
+ d.append(button('Materialdiagnose',()=>{d.close();airDesktopGlass?.showDiagnostics();}),button('Lokalen Bereich wechseln / Startbildschirm',run(async()=>{if(confirm('Lokalen Bereich schließen? Nicht gespeicherte Änderungen vorher speichern.'))await airOS.logout();})));
+ d.append(el('p','Installation in Safari: Teilen → Zum Home-Bildschirm → als Web-App öffnen. Offline erst nach vollständig geladenem App-Cache. Browserdaten können gelöscht werden; Export ist die Datensicherung.'));
+ }
+ const toolsButton=button('☷',openTools);toolsButton.id='pwa-tools-toggle';toolsButton.setAttribute('aria-label','iPad, Fenster und Datensicherung');(document.querySelector('.t6-status')||document.querySelector('.menubar-right')||document.body).append(toolsButton);
+ function overview(){const d=dialog('Offene Apps'),list=el('div');list.className='pwa-overview';for(const [id,w]of openApps){list.append(button((airAppRegistry.get(id)?.name||id)+(w.style.display==='none'?' · minimiert':''),()=>{d.close();openApp(id);}));}if(!list.children.length)list.append(el('p','Keine App geöffnet.'));list.append(button('Launchpad öffnen',()=>{d.close();openApp('launchpad');}));d.append(list);}
+ window.airIPad=Object.freeze({overview,tools:openTools,workArea:area});
+ document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.code==='Backquote'){e.preventDefault();overview();}},{signal});
+ // Long press feeds existing context menus. Movement, cancellation or second touch aborts.
+ function cancelPress(){clearTimeout(longPress);longPress=null;pointer=null;}
+ document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;if(!e.isPrimary){cancelPress();return;}const dock=e.target.closest('.dock-app');if(!dock)return;cancelPress();pointer={id:e.pointerId,x:e.clientX,y:e.clientY};longPress=setTimeout(()=>{longPress=null;dock.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:e.clientX,clientY:e.clientY}));pointer=null;},600);},{signal,passive:true});
+ document.addEventListener('pointermove',e=>{if(pointer&&e.pointerId===pointer.id&&Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>10)cancelPress();},{signal,passive:true});
+ for(const type of ['pointerup','pointercancel','visibilitychange'])document.addEventListener(type,cancelPress,{signal});
+ function dispose(){events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);closeTools();delete window.airPwaWorkArea;}
+ document.addEventListener('air-profile-changing',dispose,{once:true});window.addEventListener('pagehide',dispose,{once:true});
+ document.addEventListener('air-browser-storage-blocked',()=>toast('Speicherupdate blockiert. Andere Air-OS-Tabs schließen und neu laden.'),{signal});
+ document.addEventListener('air-browser-data',e=>{if(e.detail.key==='notes')document.dispatchEvent(new Event('air-notes-changed'));if(e.detail.key==='reminders')document.dispatchEvent(new Event('air-reminders-changed'));},{signal});
+ function online(){root.dataset.online=String(navigator.onLine);toolsButton.title=navigator.onLine?'Browser online · iPad & Backup':'Offline · lokale Apps';}window.addEventListener('online',online,{signal});window.addEventListener('offline',online,{signal});online();
 })();

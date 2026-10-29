@@ -8,3 +8,82 @@ html,body{overscroll-behavior:none}button,a,input,textarea{touch-action:manipula
 @media(pointer:coarse){.air-notes input,.air-notes textarea{font-size:16px}.note-workspace{scroll-padding-block:16px}.note-actions{position:sticky;bottom:0;background:#f8f7f3;z-index:1}.pwa-local-label{max-width:35vw;text-align:right}}
 @supports(height:100dvh){body{min-height:100dvh}}
 @media(prefers-reduced-transparency:reduce){.dock,#air-island-toggle{-webkit-backdrop-filter:none!important}}
+
+/* Browser-only shell adaptation. Desktop CSS and M1/M2 geometry remain shared. */
+:root{--pwa-height:100dvh;--pwa-width:100vw;--pwa-top:0px;--pwa-bar:calc(24px + env(safe-area-inset-top,0px))}
+html,body{width:100%;height:100%;overflow:hidden}
+#desktop{height:var(--pwa-height);max-width:100%;top:var(--pwa-top)}
+html[data-pwa] #windows.windows{position:absolute!important;inset:auto!important;left:env(safe-area-inset-left,0px)!important;right:env(safe-area-inset-right,0px)!important;top:var(--pwa-bar)!important;height:calc(var(--pwa-height) - var(--pwa-bar) - env(safe-area-inset-bottom,0px))!important;width:auto!important}
+html[data-pwa] .menubar{top:var(--pwa-top)!important;padding-top:env(safe-area-inset-top,0px)!important;height:var(--pwa-bar)!important;min-height:var(--pwa-bar)!important;box-sizing:border-box}
+html[data-pwa] .dock{padding-bottom:env(safe-area-inset-bottom,0px)!important;max-width:calc(100vw - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))!important}
+html[data-pwa] #air-island{top:calc(var(--pwa-top) + env(safe-area-inset-top,0px))!important}
+html[data-pwa] .app-window{min-width:min(340px,100%)!important;min-height:min(220px,100%)!important;max-width:100%!important;max-height:100%!important}
+html[data-pwa] .window-content{min-width:0;min-height:0;overscroll-behavior:contain}
+.pwa-keyboard .dock{visibility:hidden!important;pointer-events:none!important}
+.pwa-keyboard .app-window{max-height:100%!important}
+#pwa-tools-toggle{color:inherit;background:transparent;border:0;min-width:32px;height:24px;font:20px system-ui;cursor:pointer}
+.pwa-tools,.pwa-image-preview{box-sizing:border-box;max-width:min(560px,calc(100vw - 24px));max-height:calc(var(--pwa-height) - 32px);overflow:auto;padding:24px;color:#202124;background:#f8f7f3;border:1px solid #ffffff66;border-radius:18px;box-shadow:0 24px 80px #0008;font:15px system-ui}
+.pwa-tools::backdrop,.pwa-image-preview::backdrop{background:#08152080}
+.pwa-tools button,.pwa-tools select,.pwa-tools input,.pwa-file-actions button,.pwa-file-actions label{min-height:44px;font:inherit;margin:4px;padding:8px 12px;border:1px solid #b8bdc3;border-radius:10px;background:#fff;color:#202124}
+.pwa-tools label{display:block;margin:14px 0}
+.pwa-tools select{width:100%}
+.pwa-tool-actions,.pwa-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px}
+.pwa-unavailable{padding:24px;max-width:620px;line-height:1.6}
+.pwa-image-preview img{max-width:100%;max-height:70dvh;object-fit:contain;display:block}
+.pwa-file-actions{display:flex;gap:4px;align-items:center;flex-wrap:wrap;padding:8px;background:#f7f7f2;border-bottom:1px solid #d0d3d7}
+.pwa-file-actions p{flex-basis:100%;margin:0;font-size:12px}
+.pwa-file-menu{min-width:0}
+html[data-pwa] .deep-widget,html[data-pwa] .air-search-dialog,html[data-pwa] .deep-history,html[data-pwa] #air-island-panel{-webkit-backdrop-filter:blur(16px) saturate(1.15)}
+html[data-pwa] input:not([type=range]):not([type=checkbox]),html[data-pwa] textarea,html[data-pwa] select{font-size:16px}
+@media(pointer:coarse){
+ html[data-pwa] .window-titlebar{min-height:48px!important;height:48px!important;touch-action:none}
+ html[data-pwa] .traffic button{width:32px!important;height:36px!important;min-width:32px;min-height:36px;position:relative}
+ html[data-pwa] .window-resize-handle{width:44px!important;height:44px!important;touch-action:none}
+ html[data-pwa] .dock-app{min-width:44px;min-height:44px}
+ html[data-pwa] .air-file-entry,html[data-pwa] .arem-item,html[data-pwa] .note-list button,html[data-pwa] .air-search-result{min-height:44px}
+ html[data-pwa] .app-window button:not(.traffic button):not(.calc-btn){touch-action:manipulation}
+}
+@media(max-width:850px){
+ html[data-pwa] .menubar-left>button:not(:first-child):not(#active-app){display:none}
+ html[data-pwa] .t6-status #t7-date-status,html[data-pwa] .t6-status #t7-focus-status,html[data-pwa] .t6-status #t7-media-status{display:none}
+ html[data-pwa] .air-files-sidebar{width:150px;min-width:150px}
+ html[data-pwa] .airmusic-layout{grid-template-columns:150px minmax(0,1fr)}
+ html[data-pwa] .airmusic-header h2{font-size:24px}
+}
+@media(max-width:600px){
+ html[data-pwa] .air-files-sidebar{display:none}
+ html[data-pwa] .air-files-toolbar{gap:4px;padding:8px;flex-wrap:wrap}
+ html[data-pwa] .air-files-toolbar input{max-width:100%;min-width:90px;width:110px}
+ html[data-pwa] .air-file-type,html[data-pwa] .air-file-date{display:none}
+ html[data-pwa] .air-file-entry{grid-template-columns:minmax(0,1fr) 54px}
+ html[data-pwa] .airmusic-layout{display:block;overflow:auto}
+ html[data-pwa] .airmusic-sidebar{width:auto}
+ html[data-pwa] .airmusic-playlists{display:flex;overflow:auto}
+ html[data-pwa] .airmusic-header{flex-wrap:wrap}
+ html[data-pwa] .airmusic-now h3{font-size:20px}
+ html[data-pwa] .airmusic-buttons{gap:4px;flex-wrap:wrap}
+ html[data-pwa] .air-calendar-event{grid-template-columns:1fr;gap:6px}
+ html[data-pwa] .air-calendar-fields{display:flex;flex-wrap:wrap}
+ html[data-pwa] .air-search-dialog{width:calc(100vw - 20px)}
+ html[data-pwa] .t6-status>button:not(#pwa-tools-toggle):not(#air-search-open){display:none}
+}
+@media(prefers-reduced-motion:reduce){html[data-pwa] *{scroll-behavior:auto!important}}
+@media(prefers-reduced-transparency:reduce){html[data-pwa] .deep-widget,html[data-pwa] #air-island-panel{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#182023!important}}
+html[data-pwa] #desktop{position:absolute!important;inset:var(--pwa-top) 0 auto!important;height:var(--pwa-height)!important}
+html[data-pwa] #air-island{top:env(safe-area-inset-top,0px)!important}
+#pwa-space{display:block;margin:8px auto 16px;padding:12px;border:1px solid #fff5;border-radius:12px;background:#132539b3;color:#fff;font:16px system-ui;max-width:90%;width:280px}
+.maclock-login #login-form label{font-size:13px}
+@media(pointer:coarse){
+ html[data-pwa] .traffic button{background:transparent!important;border:0!important;box-shadow:none!important}
+ html[data-pwa] .traffic button::before{content:"";position:absolute;width:13px;height:13px;left:9px;top:12px;border-radius:50%;background:#ff5f57;box-shadow:inset 0 0 0 1px #ffffff22}
+ html[data-pwa] .traffic button.minimize::before{background:#ffbd2e}
+ html[data-pwa] .traffic button.maximize::before{background:#28c840}
+}
+@media(max-width:850px){
+ html[data-pwa] .menu-left>.menu-item{display:none}
+ html[data-pwa] .menu-left{max-width:28vw;overflow:hidden;white-space:nowrap;gap:10px!important}
+}
+@media(max-width:600px){
+ html[data-pwa] .menu-left>#active-app{display:none}
+ html[data-pwa] .menu-right>.icon-button{display:none}
+}
