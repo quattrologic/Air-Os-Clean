@@ -1,0 +1,121 @@
+{
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40940401712",
+  "productCommit": "6e9094530175455c4214dcad08550284de63a483",
+  "buildCommit": "6e9094530175455c4214dcad08550284de63a483",
+  "nodeLocal": {
+    "tests": 571,
+    "pass": 571,
+    "fail": 0
+  },
+  "browserProofs": [
+    {
+      "browser": "webkit",
+      "checks": 89,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "6e9094530175455c4214dcad08550284de63a483"
+    },
+    {
+      "browser": "chromium",
+      "checks": 90,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "6e9094530175455c4214dcad08550284de63a483"
+    }
+  ],
+  "zipProof": {
+    "name": "Air-OS-Ultimate-iPad-6e9094530175.zip",
+    "sha256": "184ff5998cbabb05968b72798e2b6bd8e936b0a9d3845ae6163eec75daf4d6d3",
+    "bytes": 2252510,
+    "commit": "6e9094530175455c4214dcad08550284de63a483"
+  },
+  "artifacts": [
+    {
+      "name": "Air-OS-Ultimate-iPad-6e9094530175455c4214dcad08550284de63a483",
+      "id": "12928280262",
+      "containerSha256": "5260a2ab013aad67444c12c1a3222c5706086b737c2b2703a2696fcd936f0016",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40940401712/artifacts/12928280262"
+    },
+    {
+      "name": "Air-OS-iPad-browser-evidence-6e9094530175455c4214dcad08550284de63a483",
+      "id": "12926629016",
+      "containerSha256": "ce4343716ed93bedcaf5921fe0e6718578c762a6af9dbc58bc31ebad6e345b3e",
+      "url": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/40940401712/artifacts/12926629016"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install only frozen browser test and audio dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install frozen regression toolchain without downloading native Electron",
+      "conclusion": "success"
+    },
+    {
+      "name": "Mandatory audit including test dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Link audited regression tools (ASAR tests) and the sole shipped audio dependency",
+      "conclusion": "success"
+    },
+    {
+      "name": "Full desktop and browser regression suite",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build and verify the actual offline PWA bytes, CSP and licenses",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install Chromium and WebKit test engines",
+      "conclusion": "success"
+    },
+    {
+      "name": "Real Chromium touch, data, offline and seven-viewport GUI",
+      "conclusion": "success"
+    },
+    {
+      "name": "Real WebKit touch, data, offline and seven-viewport GUI",
+      "conclusion": "success"
+    },
+    {
+      "name": "Keep versioned installable site ZIP and SHA-256 (never deploy)",
+      "conclusion": "success"
+    },
+    {
+      "name": "Keep actual browser screenshots and failures",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "localZipMatchesCI": true,
+  "physicalIPadAcceptance": false,
+  "publicDeployment": false
+}

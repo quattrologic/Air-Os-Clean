@@ -1,3 +1,12 @@
+# iPad Ultimate — geprüfter und gesicherter Abschluss (2026-10-29)
+
+Branch feat/air-os-ipad-ultimate. Basis02ccaf88724731cf685d2221f88e959020aff3f0.
+Produkt-/Buildcommit 6e9094530175455c4214dcad08550284de63a483. 571/571 Node-Tests; Chromium90/WebKit89 Browserprüfungen, je sieben Größen, echte Engines. [CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40940401712) vollständig erfolgreich inklusive Audit, Byte-/CSP-/Lizenzinventur und ZIP. Lokaler ZIP-Hash entspricht der CI: 184ff5998cbabb05968b72798e2b6bd8e936b0a9d3845ae6163eec75daf4d6d3. [Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/40940401712/artifacts/12928280262).
+
+Ausführbar: gemeinsame PWA-Shell/Fenster/Layouts/M1M2, IndexedDB-v2 mit v1-Erhalt, lokale Bereiche ohne Authbehauptung, Notes, Reminders/Listen, Kalender/Bearbeiten, virtueller Finder, persistente Musik über dieselbe Engine, AirWrite, Einstellungen, lokale Suche/Widgets, atomarer validierter Backup/Restore, tatsächlicher Offline-Ursprungsverlust und Browser-Neustart. Appmatrix, Grenzen und36 direkte Vorher/Nachherbilder in [Bericht](AIR_OS_IPAD_ULTIMATE.md). Keine öffentliche Bereitstellung, keine privaten Daten, kein Merge auf main, keine Änderungen der Windows-/macOS-Workflows.
+
+Offene drei Abnahmebereiche: physisches iPad (Installation/Tastatur/Pencil/Safe Areas/Audio/Suspend), reale Hardware-WebGL-/Akkumessung, ausdrücklich konfigurierte Browser-Wetter-/Cloud-/Pushdienste. Diese sind nicht als fertig markiert. Kein weiterer Ausbau nach diesem Auftrag; nach Dokumentationspush STOP.
+
 # iPad Ultimate — Checkpoint C/D (2026-10-29)
 
 568/568 Node-Regressionen bestanden. Chromium: 77 echte Browserprüfungen, sieben Touch-Viewports, Offline-Kaltstart, CAS-Konflikt, atomarer Dateiimport, Backup/Restore mit Binärdaten, zwei lokale Bereiche, Musikimport ohne Autoplay und M2-Restore bestanden. Zusätzliche Daten-/BFCache- und Updateguards werden erneut geprüft.
