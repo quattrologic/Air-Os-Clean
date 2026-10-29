@@ -45,3 +45,6 @@ test('optional Media Session delegates to the one transport and cleans private m
 test('local session termination hides stale DOM and reloads BFCache restores',()=>{
  const s=read('pwa/storage.js');assert.match(s,/pwa-session-ended/);assert.match(s,/pageshow/);assert.match(s,/e.persisted/);assert.match(read('pwa/pwa.css'),/pwa-session-ended/);
 });
+test('cross-tab invalidation does not duplicate the app controller own notification',()=>{
+ assert.match(read('pwa/storage.js'),/key:e.data.key,external:true/);assert.match(read('pwa/desktop.js'),/if\(!e.detail.external\)return/);
+});

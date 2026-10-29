@@ -50,6 +50,6 @@
  function dispose(){stopLifecycle();events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);closeTools();delete window.airPwaWorkArea;}
  document.addEventListener('air-profile-changing',dispose,{once:true});window.addEventListener('pagehide',dispose,{once:true});
  document.addEventListener('air-browser-storage-blocked',()=>toast('Speicherupdate blockiert. Andere Air-OS-Tabs schließen und neu laden.'),{signal});
- document.addEventListener('air-browser-data',e=>{if(e.detail.key==='notes')document.dispatchEvent(new Event('air-notes-changed'));if(e.detail.key==='reminders')document.dispatchEvent(new Event('air-reminders-changed'));},{signal});
+ document.addEventListener('air-browser-data',e=>{if(!e.detail.external)return;if(e.detail.key==='notes')document.dispatchEvent(new Event('air-notes-changed'));if(e.detail.key==='reminders')document.dispatchEvent(new Event('air-reminders-changed'));},{signal});
  function online(){root.dataset.online=String(navigator.onLine);toolsButton.title=navigator.onLine?'Browser online · iPad & Backup':'Offline · lokale Apps';}window.addEventListener('online',online,{signal});window.addEventListener('offline',online,{signal});online();
 })();
