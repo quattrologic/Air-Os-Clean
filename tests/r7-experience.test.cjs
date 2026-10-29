@@ -38,3 +38,6 @@ test('R7 MacLock sign-in action targets the interactive password rather than the
  const html=fs.readFileSync('login.html','utf8');a.match(html,/<input id="login-username"[^>]+type="hidden"/);
  const s=fs.readFileSync('maclock-system.js','utf8');a.match(s,/signIn.onclick=\(\)=>document.querySelector\('#login-password'\)\?\.focus\(\)/);a.doesNotMatch(s,/querySelector\('#login-password,#login-username'\)/);
 });
+test('R7 moved public MacLock card retains the centre-card stacking contract over the existing material canvas',()=>{
+ const s=fs.readFileSync('air-r7.css','utf8');a.match(s,/\.maclock-safe-notice\.r7-lock-right\{z-index:4;isolation:isolate;color:#f2f5f3\}/);
+});

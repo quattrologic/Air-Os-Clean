@@ -1,6 +1,6 @@
 # Air-OS R7 — Final Experience
 
-Branch: feat/air-os-r7-final-experience. Verbindliche Basis:7be272a61d43db03810817755adf9615629ac89b. Die R6.1-Geometrie,24px-Menü und natives Fullscreen bleiben Regressionen.
+Branch: feat/air-os-r7-final-experience. Verbindliche Basis:7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildcommit:f324d5901141ec1bcbf6bb773b4d1876751a8fb3.556/556 lokale Tests; die R6.1-Geometrie,24px-Menü und natives Fullscreen bleiben erhalten. Die abschließende Windows-Shaderdiagnose läuft; alle normalen installierten GUI-Pfade sind bestanden.
 
 ## Checkpoint A — gemeinsame Materialpipeline
 
@@ -17,7 +17,7 @@ Branch: feat/air-os-r7-final-experience. Verbindliche Basis:7be272a61d43db038108
 
 [Prism](visual/r7/materials/material-prism.png) · [Frost](visual/r7/materials/material-frost.png) · [Acrylic mit Inner Glow](visual/r7/materials/material-acrylic.png).
 
-Weitere Checkpoints und Windows-R7-Abnahme folgen im selben Auftrag. Native Schatten-/Borderobjekte, DRM/KMS/Wayland und echte Live-Fensterrefraktion sind dadurch nicht portiert.
+Die folgenden Abschnitte dokumentieren die weiteren tatsächlichen Checkpoints und die native Abnahme. Native Schatten-/Borderobjekte, DRM/KMS/Wayland und echte Live-Fensterrefraktion sind dadurch nicht portiert.
 
 ## Checkpoint B — echte Interaktionen und sichere MacLock-Komposition
 
@@ -120,3 +120,28 @@ Checkpoint A49e5374, B d7bb297, C836a046. Der erste native R7-Lauf40840202863 be
 Der neue „Zur Anmeldung“-Button fokussiert explizit das interaktive Passwortfeld. Ein gemeinsamer querySelector für Passwort und versteckten Benutzernamen hätte wegen der DOM-Reihenfolge das versteckte Feld gewählt. Der reale Electron-Test fokussiert den Button, sendet Enter, prüft activeElement=login-password und weiterhin currentUser=null. Kein Login-/Consent-Mock.
 
 556/556 Tests und die komplette neue fünfgrößige R7-GUI bestanden. Das GUI-Testhilfsmittel prüft Popoveranimationen auf der Desktopseite unverändert; auf Loginseiten darf die dort nicht vorhandene Island entfallen. Finale R7-Quelle enthält sowohl Legacy-Restore als auch diesen Fokusfix.
+
+## Exakte Originalcode-Zuordnung
+
+| Originalprojekt / Commit | Originalpfad / Integrität | Tatsächlicher R7-Ausführungspfad |
+|---|---|---|
+| Hyprland0aa6745f705f2c4b0a5004eb019ef76e5bbdb426, BSD-3-Clause | src/render/shaders/glsl/prismfinish.frag, frostfinish.frag, inner_glow.glsl; exakte SHA-256 und Dateien im vorhandenen [Manifest](../third_party/hyprland/provenance.json) | build-hyprland-shaders → airHyprShaders → derselbe air-desktop-glass-Draw; originale Faltungs-/Voronoi-/Glowberechnung wirklich ausgeführt |
+| MacShell1bdb51870b621100fd2709f66c8f8e00ab17b9c4, MIT | MacShell/Spring.qml, vorhandenes third_party/tahoe7/original/Spring.qml | airMacShell7.step wird jetzt von air-window-system.reflow für vier Geometrieachsen aufgerufen; keine weitere Animationsengine |
+| Derselbe MacShell-Pin, MIT | MacShell/MacWidgets.qml, vorhandenes third_party/r6-macshell/original/MacWidgets.qml | dims/gridCell/gridGap-Skalierung in desktop-widgets; bestätigtes Reference-Preset und vorhandener Galerie-/Dragmanager |
+| Derselbe MacShell-Pin, MIT | MacLock/LockScreen.qml; [SHA-256/Quelle](../third_party/r7-macshell/provenance.json) und vollständiger [Lizenztext](../third_party/r7-macshell/LICENSE) | maclock-layout.media, bestehendes maclock-system und gemeinsames air-r7.css; kein PAM/Quickshell/FileView/MPRIS-Aufruf |
+| Derselbe MacShell-Pin, MIT | Vorhandenes PlayerArt.qml und src/core/player-art-path.js | Derselbe ursprüngliche generische Notenpfad jetzt auch im neutralen MacLock; kein erfundenes Cover |
+| MacTahoe GTK1e45e19f510edb8cde18fa84d6cd5319f60b086b, MIT / Icons839848b9a8a38a92a6936e30c4abe35cc6f2546d, GPL-3.0 | Bestehende Originalwerte/56 zentrale Assets und Quell-/Lizenznachweise | air-tahoe.css und vorhandenes Registry-/Iconmapping in Apps/Dock/Launchpad/Spotlight weiterverwendet; R7 beansprucht keine neuen Iconimporte |
+
+Nur1 neue Originaldatei wird zusätzlich gebündelt (LockScreen.qml); die bereits vorhandenen Originale wurden wiederverwendet. Nicht ausgeführte Teile dieser QML-Datei zählen nicht als Port. Die Rampen-/Warte-/Kollisions- und Consentintegration gehört zur Air-OS-Anpassung, nicht zu behauptetem unverändertem Originalcode.
+
+Die eingefrorene moderne Toolchain hat beim lokalen Audit0 Advisories. Der normale lokale Root behält bewusst die separate Legacy-Electron32-Installation; check:modern lehnt diese erwartungsgemäß ab. Echte lokale GUI-Läufe nutzten explizit Electron44.9.3. Im Windows-Kanal erfolgt zuerst der bestehende Toolchain-Link; dort sind Modern-/Catalina-Sourcechecks und der Pflichtaudit tatsächlich bestanden. Keine Auditprüfung wurde umgangen.
+
+## Windows-Bildabnahme: korrigierter MacLock-Layer
+
+Native Funktionstests von f324d5901141ec1bcbf6bb773b4d1876751a8fb3 bestanden24/24. Die anschließende tatsächliche Bildprüfung zeigte jedoch einen Darstellungsfehler: nach dem Verschieben in die rechte Originalspalte lag die neutrale Karte außerhalb des z=4-Hosts, sodass das vorhandene MacLock-Glas-Canvas ihre Texte übermalte. Dieser Stand wird deshalb nicht als endgültige visuelle Abnahme angeboten.
+
+Korrigiert: die rechte Karte erhält denselben z-index4-/Isolation-Vertrag wie die zentrale Karte. Keine neue Shaderengine und keine private Inhaltssichtbarkeit. Die GUI prüft den Stack, sendet Enter auf dem realen Anmeldebutton und bestätigt weiterhin Passwortfokus bei currentUser=null.
+
+Außerdem werden Finder und Notes für den direkten Vergleich über echte Titelleistendrags versetzt (beide Fenster sichtbar); identische echte Eingaben auch im unveränderten R6.1-Baselinelauf. Kein nachbearbeitetes Bild und keine direkte Layoutstilmanipulation im Screenshotfixture.
+
+557/557 Tests, komplette neue fünfgrößige GUI und erneute unveränderte R6.1-Baseline bestanden. Die finalen Windowsbilder/der Installer werden erneut aus genau diesem korrigierten Produktstand erzeugt. [Zwei echte Fenster](visual/r7/after/r7-apps-1536.png).

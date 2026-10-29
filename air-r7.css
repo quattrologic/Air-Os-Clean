@@ -64,3 +64,5 @@ html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-wid
 html[data-desktop-theme=modern] .deep-widget[data-widget=calendar]:not([data-widget-size=large]) .widget-calendar-grid{flex:1;min-height:0;grid-template-rows:repeat(7,minmax(0,1fr));grid-auto-rows:auto;align-items:center}
 /* The existing16px action SVG must scale with its14.4px button at80%, not create a scrollbar. */
 html[data-desktop-theme=modern] .deep-widget[data-widget=calendar] .widget-month-nav .t7-action-icon{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+/* Public right-column content stays above the existing MacLock material canvas, like the centre card. */
+.maclock-safe-notice.r7-lock-right{z-index:4;isolation:isolate;color:#f2f5f3}

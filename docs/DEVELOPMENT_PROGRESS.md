@@ -1,3 +1,9 @@
+# R7 Bildabnahme — nativen MacLock-Layer tatsächlich korrigiert
+
+557/557 Tests; neue fünfgrößige GUI und unveränderte Vergleichsbasis erneut bestanden. Native f324-Funktionstests24/24 grün, aber echte Bildprüfung fand rechts vom bestehenden MacLock-Canvas verdeckten neutralen Kartentext. z=4/Isolation entspricht jetzt der zentralen Karte; Stack/Fokus/keine Authfreigabe geprüft. Zwei echte Apps werden per tatsächlichem Titelleistendrag für identische Vorher-/Nachher-Szenen sichtbar angeordnet. Noch autorisiert: erneuter finaler WindowsR7-Build/Installation/GUI/Bildkontrolle aus diesem Stand, Hash und Abschluss. Keine weiteren Features beginnen.
+
+---
+
 # R7 letzter Produktcheckpoint — Tastatur/Kompatibilität geprüft
 
 556/556 Tests, vollständige neue fünfgrößige R7-GUI inklusive Legacy-Restore und tatsächlicher MacLock-Enter→Passwortfokus; currentUser bleibt null. R6.1-Fullscreen/M1M2 und Shader-/Cleanup-Regressionswege erhalten. A49e5374/Bd7bb297/C836a046/Db77f1f2 gesichert. Noch autorisiert: WindowsR7 aus genau diesem letzten Produktstand installieren/prüfen, Evidenz/Hash und Abschlussdokumentation. Keine neuen Produktfeatures beginnen.
