@@ -28,8 +28,9 @@
   const notes=win.querySelector('.air-notes');
   if(notes){const actions=notes.querySelector('.note-actions')||notes.querySelector('.note-workspace');actions?.append(button('Notizen exportieren',async()=>{try{const data=await airOS.notes.list();airBrowserFiles.download(new Blob([JSON.stringify({format:'air-os-notes',version:1,notes:data},null,2)],{type:'application/json'}),'Air-OS-Notizen.json');}catch(e){toast(e.message);}}));}
  }
- const observer=new MutationObserver(()=>{for(const w of openApps.values())mount(w);});
- observer.observe(document.querySelector('#windows'),{childList:true});
+ function availability(){for(const b of document.querySelectorAll('.alp-app[data-app],[data-start-app]')){const id=b.dataset.app||b.dataset.startApp;if(window.airIPad.availability(id)==='unavailable'&&!b.querySelector('.pwa-capability')){const badge=document.createElement('small');badge.className='pwa-capability';badge.textContent='iPad: nicht verfügbar';b.title=(b.title||id)+' · '+badge.textContent;b.append(badge);}}}
+ const observer=new MutationObserver(()=>{for(const w of openApps.values())mount(w);availability();});
+ observer.observe(document.querySelector('#windows'),{childList:true,subtree:true});
  for(const w of openApps.values())mount(w);
  // Preserve dirty Notes and the Finder editor before destructive UI/session transitions.
  document.addEventListener('click',e=>{const close=e.target.closest('.close');if(!close)return;const win=close.closest('.app-window');if(((win?.querySelector('.air-notes')&&window.airNotes?.hasUnsaved())||window.airFinder?.hasUnsaved(win))&&!confirm('Ungespeicherte Änderungen verwerfen und schließen?')){e.preventDefault();e.stopImmediatePropagation();}}, {capture:true,signal});

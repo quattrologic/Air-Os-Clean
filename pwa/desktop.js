@@ -14,7 +14,7 @@
  const originalBody=window.appBody;
  window.appBody=function(id){if(limited[id]){const section=document.createElement('section');section.className='pwa-unavailable';const h=document.createElement('h2'),p=document.createElement('p');h.textContent=airAppRegistry.get(id)?.name||id;p.textContent=limited[id];section.append(h,p);return section.outerHTML;}if(id==='downloads')return '<section class="pwa-unavailable"><h2>Exportierte Dateien</h2><p>Safari verwaltet Downloads außerhalb von Air-OS. Dateien aus dem internen Finder lassen sich über „Exportieren“ an Safari übergeben.</p><button data-app="finder">Internen Finder öffnen</button></section>';return originalBody(id);};
  const originalOpen=window.openApp;
- window.openApp=function(id,...args){if(id==='spotify'){showInfo('Spotify',limited.spotify);return {ok:false,error:'NATIVE_UNAVAILABLE'};}const result=originalOpen(id,...args);schedule();return result;};
+ window.openApp=function(id,...args){if(Object.hasOwn(limited,id)){showInfo(airAppRegistry.get(id)?.name||id,limited[id]);return {ok:false,error:'NATIVE_UNAVAILABLE'};}const result=originalOpen(id,...args);schedule();return result;};
  function el(tag,text){const n=document.createElement(tag);if(text)n.textContent=text;return n;}
  function button(text,fn){const b=el('button',text);b.type='button';b.onclick=async()=>{try{await fn();}catch(error){toast(error.message||'Aktion fehlgeschlagen.');}};return b;}
  function closeTools(){tools?.close();tools=null;}
@@ -39,8 +39,8 @@
  }
  const toolsButton=button('☷',openTools);toolsButton.id='pwa-tools-toggle';toolsButton.setAttribute('aria-label','iPad, Fenster und Datensicherung');(document.querySelector('.t6-status')||document.querySelector('.menubar-right')||document.body).append(toolsButton);
  function overview(){const d=dialog('Offene Apps'),list=el('div');list.className='pwa-overview';for(const [id,w]of openApps){list.append(button((airAppRegistry.get(id)?.name||id)+(w.style.display==='none'?' · minimiert':''),()=>{d.close();openApp(id);}));}if(!list.children.length)list.append(el('p','Keine App geöffnet.'));list.append(button('Launchpad öffnen',()=>{d.close();openApp('launchpad');}));d.append(list);}
- window.airIPad=Object.freeze({overview,tools:openTools,workArea:area});
- document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.code==='Backquote'){e.preventDefault();overview();}},{signal});
+ window.airIPad=Object.freeze({overview,tools:openTools,workArea:area,availability:id=>Object.hasOwn(limited,id)?'unavailable':['mail','browser','downloads','photos'].includes(id)?'limited':'local'});
+
  // Long press feeds existing context menus. Movement, cancellation or second touch aborts.
  function cancelPress(){clearTimeout(longPress);longPress=null;pointer=null;}
  document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;if(!e.isPrimary){cancelPress();return;}const dock=e.target.closest('.dock-app');if(!dock)return;cancelPress();pointer={id:e.pointerId,x:e.clientX,y:e.clientY};longPress=setTimeout(()=>{longPress=null;dock.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:e.clientX,clientY:e.clientY}));pointer=null;},600);},{signal,passive:true});

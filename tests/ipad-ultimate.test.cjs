@@ -39,3 +39,9 @@ test('iPad workflow builds auditable artifacts without Pages or publication perm
 test('PWA packages verify actual bytes and require clean versioned source for ZIP identity',()=>{
  assert.match(read('scripts/check-pwa-package.cjs'),/Runtime byte mismatch/);assert.match(read('scripts/check-pwa-package.cjs'),/Unreviewed file outside offline allowlist/);assert.match(read('scripts/package-ipad.cjs'),/info.sourceDirty/);assert.match(read('scripts/build-pwa.cjs'),/RUNTIME-ASSETS.json/);
 });
+test('optional Media Session delegates to the one transport and cleans private metadata',()=>{
+ const s=read('pwa/media-session.js');assert.match(s,/if\(!session\|\|!window.MediaMetadata\)return/);assert.match(s,/airMusic\?\.transport/);assert.match(s,/session.metadata=null/);assert.match(s,/setActionHandler\(action,null\)/);assert.doesNotMatch(s,/new Audio|setInterval|fetch\(/);
+});
+test('local session termination hides stale DOM and reloads BFCache restores',()=>{
+ const s=read('pwa/storage.js');assert.match(s,/pwa-session-ended/);assert.match(s,/pageshow/);assert.match(s,/e.persisted/);assert.match(read('pwa/pwa.css'),/pwa-session-ended/);
+});
