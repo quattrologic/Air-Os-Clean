@@ -11,12 +11,12 @@ function check(root){
   if(e.isDirectory())visit(file);else count++;
  }}visit(root);
  const read=f=>fs.readFileSync(path.join(root,f),'utf8');
- const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');
+ const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');assert.equal(manifest.id,'./');assert.equal(manifest.name,'Air-OS Ultimate');assert.equal(manifest.display,'standalone');
  function asset(value){assert.ok(!value.startsWith('/')&&!value.includes('..')&&!/^[a-z]+:/i.test(value),'Relative asset required: '+value);assert.ok(fs.existsSync(path.join(root,value)),'Missing asset: '+value);}
  for(const icon of manifest.icons)asset(icon.src);
  for(const f of ['index.html','desktop.html']){
   const html=read(f);for(const m of html.matchAll(/(?:src|href)="([^"]+)"/g)){if(!m[1].startsWith('#'))asset(m[1]);}
-  assert.match(html,/viewport-fit=cover/);assert.match(html,/apple-mobile-web-app-capable/);assert.match(html,/connect-src 'self'/);assert.doesNotMatch(html,/src="air-cloud.js"/);
+  assert.match(html,/viewport-fit=cover/);assert.match(html,/apple-mobile-web-app-title\" content=\"Air-OS Ultimate/);assert.match(html,/apple-mobile-web-app-capable/);assert.match(html,/connect-src 'self'/);assert.doesNotMatch(html,/src="air-cloud.js"/);
  }
  const sw=read('sw.js');const list=JSON.parse(sw.match(/ASSETS=(\[[^\n]+?\]);/)[1]);
  for(const value of list)asset(value);assert.ok(list.includes('index.html')&&list.includes('desktop.html'));

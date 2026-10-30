@@ -50,6 +50,16 @@ jobs:
         env:
           AIR_IPAD_OUTPUT: dist/ipad-evidence/webkit
         run: node scripts/test-ipad-browser.cjs webkit
+      - name: Chromium Pages subpath and safe-update regression (no deployment)
+        env:
+          AIR_IPAD_BASE_PATH: /Air-Os-Clean/
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/chromium
+        run: node scripts/test-ipad-browser.cjs chromium
+      - name: WebKit Pages subpath and safe-update regression (no deployment)
+        env:
+          AIR_IPAD_BASE_PATH: /Air-Os-Clean/
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/webkit
+        run: node scripts/test-ipad-browser.cjs webkit
       - name: Keep versioned installable site ZIP and SHA-256 (never deploy)
         if: success()
         uses: actions/upload-artifact@v4

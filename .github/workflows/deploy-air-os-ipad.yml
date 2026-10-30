@@ -1,0 +1,140 @@
+name: Publish Air-OS iPad to Pages (owner approval only)
+on:
+  workflow_dispatch:
+    inputs:
+      public_confirmation:
+        description: 'After owner approval only: type publish-air-os-ipad-publicly. Pages is PUBLIC.'
+        required: true
+        type: string
+      source_commit:
+        description: 'Exact reviewed 40-character HEAD of feat/air-os-ipad-ultimate'
+        required: true
+        type: string
+      site_review:
+        description: 'Confirm exclusive site review: exclusive-air-os-ipad-site-reviewed'
+        required: true
+        type: string
+      previous_source_commit:
+        description: 'For an existing verified Air-OS iPad site: exact previous BUILD-INFO commit; otherwise empty'
+        required: false
+        default: ''
+        type: string
+permissions:
+  contents: read
+# Serialize with the existing preview channel without modifying it.
+concurrency:
+  group: air-os-pwa-public-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      source_sha: ${{ steps.source.outputs.source_sha }}
+      base_url: ${{ steps.pages.outputs.base_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: build/ipad-tests/package-lock.json
+      - name: Require owner confirmation and current reviewed iPad branch SHA
+        id: source
+        run: node scripts/ipad-pages-guard.cjs source
+      - name: Refuse an unrelated, stale or unverifiable existing Pages site
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/ipad-pages-guard.cjs destination
+      - name: Read existing Pages configuration without enabling or changing a site
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: false
+      - name: Match configured destination to owner-reviewed Pages site
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: node scripts/ipad-pages-guard.cjs configured
+      - name: Install frozen test dependencies without native runtime downloads
+        run: |
+          npm ci --prefix build/ipad-tests --ignore-scripts --no-audit --no-fund
+          npm ci --prefix build/windows-x64 --ignore-scripts --no-audit --no-fund
+          node scripts/windows-test-build.cjs link
+      - name: Mandatory audits
+        run: |
+          npm audit --prefix build/ipad-tests --audit-level=high --json > dist/ipad-pages-evidence/browser-audit.json
+          npm audit --prefix build/windows-x64 --audit-level=high --json > dist/ipad-pages-evidence/regression-audit.json
+      - name: Complete regression gate
+        run: node scripts/run-test-gate.cjs
+      - name: Build and inspect actual static PWA files and ZIP
+        run: |
+          node scripts/build-pwa.cjs
+          node scripts/check-pwa-package.cjs
+          node scripts/package-ipad.cjs
+      - name: Install browser engines
+        run: node build/ipad-tests/node_modules/playwright/cli.js install --with-deps chromium webkit
+      - name: Chromium under the configured Pages subpath
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          AIR_IPAD_OUTPUT: dist/ipad-pages-evidence/chromium
+        run: |
+          export AIR_IPAD_BASE_PATH="$(node -e 'process.stdout.write(new URL(process.env.PAGES_BASE_URL.replace(/\/?$/, "/")).pathname)')"
+          node scripts/test-ipad-browser.cjs chromium
+      - name: WebKit under the configured Pages subpath
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          AIR_IPAD_OUTPUT: dist/ipad-pages-evidence/webkit
+        run: |
+          export AIR_IPAD_BASE_PATH="$(node -e 'process.stdout.write(new URL(process.env.PAGES_BASE_URL.replace(/\/?$/, "/")).pathname)')"
+          node scripts/test-ipad-browser.cjs webkit
+      - name: Upload checked website files, never the build ZIP
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/pwa
+      - name: Keep approval plan, audits, browser results and installable ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-Pages-evidence-${{ github.sha }}
+          path: |
+            dist/ipad-pages-evidence/
+            dist/ipad/
+            dist/r1-gui/node-tests.tap
+          retention-days: 30
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.build.outputs.source_sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Recheck source lease and existing site immediately before publication
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/ipad-pages-guard.cjs recheck
+      - name: Publish only after explicit owner approval and all gates
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify the actual published HTTPS URL and approved build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          DEPLOYED_PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/ipad-pages-guard.cjs verify

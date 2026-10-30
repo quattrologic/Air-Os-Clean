@@ -1,3 +1,10 @@
+# iPad-Installation / Pages — Vorbereitung (2026-10-30)
+
+Basis4a82ac41fcc43eb6ebde34f6422cb2bdd239f971; Branch feat/air-os-ipad-ultimate. Keine neue App. Neuer ausschließlich manuell freizugebender Pages-Workflow mit Owner-/Branch-/SHA-/Site-Lease, read-only Vorprüfung, fremde/unklare Site blockiert, configure-pages ohne Aktivierung, geprüftes dist/pwa-Artefakt, erst danach geschützter Deployjob.
+576/576 lokale Regressionen; Chromium100 Browserprüfungen unter /Air-Os-Clean/ bei7 Größen, einschließlich Manifest/Worker/Assetbytes, Offline-Prozessneustart, sicherem bestätigtem Workerupdate und Datenpersistenz bestanden. WebKit-Unterpfadtest wird im nicht veröffentlichenden CI-Build geprüft.
+Pages-API aus Arbeitsumgebung nicht prüfbar; kein leerer Bestand unterstellt. Publisher nicht gestartet. Öffentliche Freigabe, tatsächliche Ziel-/Exklusivitätsprüfung und ggf. separate Defaultbranch-Registrierung bleiben nötig.
+Nächste drei Abschlussprüfungen dieses Auftrags: CI/WebKit-Ergebnis; Installationsbericht/Evidenz; abschließender Dokumentationspush ohne Veröffentlichung.
+
 # iPad Ultimate — geprüfter und gesicherter Abschluss (2026-10-29)
 
 Branch feat/air-os-ipad-ultimate. Basis02ccaf88724731cf685d2221f88e959020aff3f0.
