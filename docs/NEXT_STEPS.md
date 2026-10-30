@@ -1,9 +1,12 @@
-# iPad-Installation / Pages — Vorbereitung (2026-10-30)
+# iPad-Installation / Pages — geprüfte Vorbereitung (2026-10-30)
 
-Basis4a82ac41fcc43eb6ebde34f6422cb2bdd239f971; Branch feat/air-os-ipad-ultimate. Keine neue App. Neuer ausschließlich manuell freizugebender Pages-Workflow mit Owner-/Branch-/SHA-/Site-Lease, read-only Vorprüfung, fremde/unklare Site blockiert, configure-pages ohne Aktivierung, geprüftes dist/pwa-Artefakt, erst danach geschützter Deployjob.
-576/576 lokale Regressionen; Chromium100 Browserprüfungen unter /Air-Os-Clean/ bei7 Größen, einschließlich Manifest/Worker/Assetbytes, Offline-Prozessneustart, sicherem bestätigtem Workerupdate und Datenpersistenz bestanden. WebKit-Unterpfadtest wird im nicht veröffentlichenden CI-Build geprüft.
-Pages-API aus Arbeitsumgebung nicht prüfbar; kein leerer Bestand unterstellt. Publisher nicht gestartet. Öffentliche Freigabe, tatsächliche Ziel-/Exklusivitätsprüfung und ggf. separate Defaultbranch-Registrierung bleiben nötig.
-Nächste drei Abschlussprüfungen dieses Auftrags: CI/WebKit-Ergebnis; Installationsbericht/Evidenz; abschließender Dokumentationspush ohne Veröffentlichung.
+Basis: 4a82ac41fcc43eb6ebde34f6422cb2bdd239f971; Branch feat/air-os-ipad-ultimate. Produkt-/Workflowcommit 49b2130789265a47a456533ef235c203cc49ba38. Keine neue App. Neuer rein manueller Publisher mit Owner-/Branch-/SHA-/Site-Lease, read-only Zielprüfung, blockierten fremden/unklaren Inhalten und configure-pages ohne automatische Aktivierung. dist/pwa wird erst nach ausdrücklicher Freigabe und vollständiger Wiederholungsprüfung veröffentlicht.
+
+576/576 Regressionen; [CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717) einschließlich Pflichtaudits und Paketprüfung erfolgreich. Echte Chromium/WebKit-Läufe: Root 99/98, Pages-Unterpfad 100/99 Prüfungen, jeweils sieben Touch-Viewports und keine unbehandelten Browserfehler. Echte Offline-Ursprungsunterbrechung/Neustart, Dirty-Notes-Updateblockade, bestätigter Workerwechsel, erhaltene Appdaten und scoped Cachebereinigung bestanden. [ZIP](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/artifacts/12991115521), 2.252.526 Bytes, SHA256 bb50f44cdbfa45a998367876e59aed0f4c6c9e9223c9030c6ba7ccb835565d0b; lokal reproduziert. [Bericht/Installation](AIR_OS_IPAD_INSTALLATION.md), [Prüfnachweis](visual/ipad-installation/verification.json).
+
+NICHT veröffentlicht; Publisher nicht gestartet; main, Pages-Einstellungen und vorhandene Site unverändert. Pages-API lokal nicht verifizierbar, Bestand niemals als leer unterstellt. Die neue Actions-Workflowseite meldet noch „Workflow not found“; Defaultbranch-Registrierung nur der geprüften Workflowdatei braucht separate Inhaberfreigabe. Kein öffentliches HTTPS-/physisches iPad-Ergebnis behauptet.
+
+Nächste drei Schritte ausschließlich nach neuem Auftrag: 1. Öffentliche Bereitstellung/ganze Site prüfen und ausdrücklich freigeben, ggf. Workflowregistrierung separat genehmigen. 2. Owner prüft Pages-Quelle/HTTPS und startet manuell mit aktuellem SHA und allen Bestätigungen. 3. Tatsächliche Deployment-URL/Commit prüfen, danach Safari-Home-Screen/Offline/Backup auf eigenem iPad abnehmen. Nach Dokumentationspush STOP; keine Hintergrundveröffentlichung.
 
 # iPad Ultimate — geprüfter und gesicherter Abschluss (2026-10-29)
 

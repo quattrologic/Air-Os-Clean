@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "sourceCommit": "49b2130789265a47a456533ef235c203cc49ba38",
+  "ciRun": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717",
+  "ciJob": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/job/124152095236",
+  "publicationPerformed": false,
+  "publisherDispatched": false,
+  "physicalIPadAcceptance": false,
+  "publicHTTPSAcceptance": false,
+  "pagesConfigurationVerifiedLocally": false,
+  "publisherRegistration": "Workflow not found; default-branch workflow registration needs separate owner approval",
+  "regressionTests": {
+    "passed": 576,
+    "failed": 0
+  },
+  "browserProofs": [
+    {
+      "browser": "chromium",
+      "basePath": "/",
+      "checks": 99,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "49b2130789265a47a456533ef235c203cc49ba38"
+    },
+    {
+      "browser": "webkit",
+      "basePath": "/",
+      "checks": 98,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "49b2130789265a47a456533ef235c203cc49ba38"
+    },
+    {
+      "browser": "chromium",
+      "basePath": "/Air-Os-Clean/",
+      "checks": 100,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "49b2130789265a47a456533ef235c203cc49ba38"
+    },
+    {
+      "browser": "webkit",
+      "basePath": "/Air-Os-Clean/",
+      "checks": 99,
+      "viewports": 7,
+      "errors": [],
+      "status": "passed",
+      "commit": "49b2130789265a47a456533ef235c203cc49ba38"
+    }
+  ],
+  "buildProof": {
+    "name": "Air-OS-Ultimate-iPad-49b213078926.zip",
+    "sha256": "bb50f44cdbfa45a998367876e59aed0f4c6c9e9223c9030c6ba7ccb835565d0b",
+    "bytes": 2252526,
+    "commit": "49b2130789265a47a456533ef235c203cc49ba38"
+  },
+  "localZIPHashMatchesCI": true,
+  "artifacts": {
+    "pwaZIP": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/artifacts/12991115521",
+    "browserScreenshotsAndResults": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/artifacts/12991195406"
+  },
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      1180,
+      820
+    ],
+    [
+      1366,
+      1024
+    ],
+    [
+      834,
+      1194
+    ],
+    [
+      820,
+      1180
+    ],
+    [
+      744,
+      1133
+    ],
+    [
+      390,
+      600
+    ]
+  ],
+  "emulation": {
+    "touch": true,
+    "deviceScaleFactor": 2
+  },
+  "limits": [
+    "Secure loopback subpath tests are not a public Pages deployment.",
+    "Playwright WebKit is not physical iPad Safari.",
+    "Existing Pages content was not assumed to be empty.",
+    "No changes to main, Pages settings or public site were performed."
+  ]
+}

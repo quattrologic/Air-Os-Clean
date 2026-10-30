@@ -15,7 +15,7 @@ Keine neue App oder Datenmigration. Die Laufzeitadapter bleiben erhalten. Einzig
 
 ## Vorbereiteter Veröffentlichungsprozess
 
-Datei: .github/workflows/deploy-air-os-ipad.yml.
+Datei: [deploy-air-os-ipad.yml](../.github/workflows/deploy-air-os-ipad.yml).
 Ausschließlich workflow_dispatch, nur Repositoryinhaber quattrologic und nur refs/heads/feat/air-os-ipad-ultimate. Kein Push-, PR-, Timer- oder Folgeworkflow-Deployment.
 
 Erforderliche manuelle Eingaben:
@@ -57,7 +57,7 @@ Die aktuelle Pages-Konfiguration konnte aus dieser Umgebung nicht authentifizier
 
 1. Der Repositoryinhaber muss der **öffentlichen Bereitstellung** ausdrücklich zustimmen und prüfen, dass die gesamte Repository-Pages-Site ausschließlich für diese iPad-App vorgesehen ist.
 2. Erst danach Settings → Pages prüfen: Quelle GitHub Actions, korrektes Ziel bzw. bewusst gewählte eigene Domain, HTTPS aktiviert. Bestehende andere Projekte vorher klären; der Workflow ändert diese Einstellungen nicht automatisch.
-3. GitHub muss den manuell startbaren Workflow anbieten. workflow_dispatch benötigt eine Registrierung über den Defaultbranch. Falls die neue Datei im Actions-Menü nicht erscheint, braucht die Übernahme **nur dieser geprüften Workflowdatei** auf den Defaultbranch eine gesonderte Inhaberfreigabe. Hier wurde main nicht geändert und kein App-Merge vorbereitet.
+3. GitHub muss den manuell startbaren Workflow anbieten. workflow_dispatch benötigt eine Registrierung über den Defaultbranch. Bei der Prüfung am 30.10.2026 antwortete die Actions-Seite der neuen Datei noch mit „Workflow not found“. Die Übernahme **nur dieser geprüften Workflowdatei** auf den Defaultbranch braucht deshalb eine gesonderte Inhaberfreigabe. Hier wurde main nicht geändert und kein App-Merge vorbereitet. Die Laufzeitdateien bleiben auf dem iPad-Branch; der Workflow checkt ausdrücklich dessen freigegebene SHA aus.
 4. Im Actions-Menü den neuen Workflow wählen, Branch feat/air-os-ipad-ultimate auswählen und die vier obigen Eingaben setzen. Die source_commit muss der aktuell freigegebenen Branch-SHA entsprechen; ein veralteter Wert bricht ab.
 5. Falls konfiguriert, github-pages-Environment freigeben. Nach erfolgreicher Bereitstellung ausschließlich den tatsächlichen page_url-Link aus dem Lauf öffnen.
 
@@ -71,7 +71,7 @@ Der Browsertest simuliert eine Pages-Projektadresse auf einer sicheren Loopback-
 
 Der echte Updatefall wird geprüft: wartender Worker, blockierter ungespeicherter Notes-Entwurf, bestätigte Aktivierung, Rückkehr zum richtigen Unterpfad, begrenzte Cachebereinigung und erhaltene Notes-/Reminders-/Kalender-/Finder-/Musikdaten. Andere Caches bleiben erhalten.
 
-Endgültige Testergebnisse und Buildnachweis werden nach Abschluss unten eingetragen. Kein öffentlicher HTTPS-Livetest wird vor der Freigabe behauptet.
+Die Browserprüfung arbeitet mit echten Chromium-/WebKit-Engines auf einer sicheren Loopback-Origin. Sie ist kein öffentlicher HTTPS-Pages-Livetest und keine physische iPad-Abnahme. Der Veröffentlichungsjob bleibt bis zur späteren Zustimmung ungestartet; dessen tatsächlicher OIDC-/Pages-Deploypfad ist deshalb noch nicht ausgeführt.
 
 ## Safari: Zum Home-Bildschirm hinzufügen
 
@@ -102,3 +102,29 @@ Die Website und ihre statischen Quellen können öffentlich erreichbar sein. Lok
 Lokale Bereiche sind keine sichere Passwortanmeldung. Browserstorage kann durch iPadOS, Safari, private Sitzungen oder manuelles Löschen verloren gehen. Persistenzanfragen sind keine ewige Speicherungsgarantie; Export/Backup bleiben erforderlich.
 
 Unterschiedliche Origins haben getrennte Browserdaten. Ein Wechsel von Host/Domain/Protokoll öffnet deshalb einen anderen Speicherbereich; Daten werden nicht automatisch übernommen. Unterschiedliche Pfade derselben Origin sind dagegen keine IndexedDB-Sicherheitsgrenze. Wer andere Projekte auf derselben Origin betreibt, muss deren Vertrauenswürdigkeit berücksichtigen oder eine eigene Origin wählen. Safari-Tab und Home-Screen-App können je nach iPadOS zusätzlich unterschiedliche Speicher-/Sitzungszustände besitzen; vorher sichern.
+
+## Geprüfter Vorbereitungsstand
+
+Produkt-/Workflowcommit: 49b2130789265a47a456533ef235c203cc49ba38. Der folgende Dokumentationscommit ändert keine Appdateien. Beim späteren Deployment wird trotzdem der dann ausdrücklich freigegebene vollständige Branch-HEAD erneut gebaut und geprüft; ein altes ZIP wird nicht ungeprüft veröffentlicht.
+
+- Lokal: 576/576 Regressionstests, darunter fünf neue Prüfungen für Owner-/SHA-Freigabe, fremde/unbekannte Pages-Inhalte, HTTPS-/Domainkonfiguration, Tokenbegrenzung und manuellen Workflow.
+- Sauberer PWA-Build: 363 Dateien, 362 Offlineassets; Byteinventur, CSP, Lizenzen und Ausschluss nativer Laufzeitdateien bestanden.
+- Reproduzierbares ZIP: Air-OS-Ultimate-iPad-49b213078926.zip, 2.252.526 Bytes, SHA-256 `bb50f44cdbfa45a998367876e59aed0f4c6c9e9223c9030c6ba7ccb835565d0b`.
+
+[Nicht veröffentlichender CI-Lauf für diesen Stand](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717): **erfolgreich**, einschließlich Pflichtaudits, vollständigem Testgate, Build, Paketprüfung und Artefakten.
+
+| Echter Browserlauf | Startpfad | Bestandene Prüfungen | Viewports | Unbehandelte Browserfehler |
+|---|---|---:|---:|---:|
+| Chromium | / | 99 | 7 | 0 |
+| WebKit | / | 98 | 7 | 0 |
+| Chromium | /Air-Os-Clean/ | 100 | 7 | 0 |
+| WebKit | /Air-Os-Clean/ | 99 | 7 | 0 |
+
+Viewports mit Touch-Emulation und DPR 2: 1024×768, 1180×820, 1366×1024, 834×1194, 820×1180, 744×1133 und 390×600. Die zusätzlichen Chromiumprüfungen betreffen dessen Offline-Netzwerkemulation; beide Engines müssen unabhängig davon einen tatsächlichen Ausfall des Ursprungsservers und einen Browserneustart mit erhaltenen Daten bestehen.
+
+[Aktuelles PWA-ZIP herunterladen](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/artifacts/12991115521). Der SHA-256 der enthaltenen PWA-ZIP entspricht dem oben dokumentierten lokalen Build. Die GitHub-Artefaktverpackung hat einen eigenen, davon verschiedenen Hash.
+[Chromium-/WebKit-Screenshots, Ergebnis-JSON, Audits und Testprotokoll](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41081662717/artifacts/12991195406); die Unterpfadnachweise liegen darin unter ipad-evidence/pages/. [Kompakter Prüfnachweis](visual/ipad-installation/verification.json).
+
+In allen vier Läufen geprüft: Notes/Reminders/Kalender, virtueller Finder mit Dateiimport/-export, echter Musiktransport ohne Autoplay, Dock/M2/Island, lokale Bereichstrennung, Backup/Restore mit Binärdateien, Hoch-/Querformat, Offline-Kaltstart, begrenzter Worker-Scope und bestätigtes Update mit erhaltenen Daten. Keine physischen iPad-, Safari-Installations-, Audiohardware- oder öffentlichen Pages-Erfolge werden daraus abgeleitet.
+
+GitHub-Actions-Artefakte dieses Kanals werden 30 Tage aufbewahrt; der Download kann eine GitHub-Anmeldung verlangen. Eine ZIP ist ein Paket für einen Webhost, kein direkt auf iPadOS installierbares IPA. Zur Home-Screen-Installation braucht es die nach Freigabe tatsächlich bereitgestellte HTTPS-Website.
