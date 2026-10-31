@@ -1,3 +1,11 @@
+# InfinityOS / Origin — Checkpoint B (2026-10-31)
+
+564/564 Node-Tests. Unveränderter vorhandener Control-Center-/Notification-Owner ergänzt: geometrische Tastaturnavigation, Tab-Fokusgrenze, abbrechbare endliche innere Kachel-Reveals ohne M1-Änderung; Bannerstapel aus realen Höhen, Queue begrenzt, Ablauf pausiert bei Fokus/Hover, Fokusmodus räumt nichtkritische Banner weg. Intelligentes Dock freiwillig im bestehenden Dock-Kontextmenü, eventbasierte Overlap-Auswertung ohne Polling; M2-Lease blendet seinen Zielbereich synchron ein. Kein Originalcode aus dem Archiv übernommen.
+
+Erster Linux-CI-Lauf hat Audit/562 Tests/Sandboxstart bestanden; der neue Geometrietest serialisierte DOMRect an einer Stelle als leeres Objekt. Testharness korrigiert, kein Geometriehack im Produkt. Erneute echte GUI/Artefakte und begrenzte synthetische Evidenzspeicherung vorbereitet. Noch keine GUI-Abnahme behauptet.
+
+Nächste drei konkrete Arbeiten: GUI-Ausführung korrigieren/abnehmen; bestehende Glass-Pipeline für neue Stage-Flächen/Cleanup prüfen; Lizenz-/Mess-/Bildbericht und iPad-Portfähigkeit abschließen. iPad/main/Pages bleiben unverändert.
+
 # InfinityOS / Origin — Checkpoint A (2026-10-31)
 
 Branch feat/air-os-infinityos-origin-port-1, ab tatsächlichem Desktop-Remote-HEAD 02ccaf88724731cf685d2221f88e959020aff3f0. iPad-HEAD 1deb36a2e77107897cd277d07bdd09140697da9d bleibt unverändert separat. 70/70 private Referenzhashes geprüft; keinerlei ISO-Quellbytes im Produkt. Origin-Rechte unklar, Blur-My-Shell-Copyleft für Gesamtbuild nicht geklärt: neue Stage-Funktionen sind eigenständige Air-OS-Implementierungen.

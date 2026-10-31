@@ -66,6 +66,7 @@
       "src/main/lock-presentation.cjs",
       "air-window-system.js",
       "air-stage-overview.js",
+      "src/core/panel-navigation.js",
       "src/core/stage-model.js",
       "air-origin.css",
       "air-system-integration.js",

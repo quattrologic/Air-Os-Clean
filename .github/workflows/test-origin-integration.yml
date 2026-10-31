@@ -63,3 +63,21 @@ jobs:
             dist/origin-evidence/
             dist/r1-gui/node-tests.tap
           retention-days: 30
+  save-synthetic-evidence:
+    needs: electron
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: Air-OS-Origin-Linux-evidence-${{ github.sha }}
+          path: dist
+      - name: Save only source-leased synthetic screenshots to this feature branch
+        run: node scripts/publish-origin-evidence.cjs

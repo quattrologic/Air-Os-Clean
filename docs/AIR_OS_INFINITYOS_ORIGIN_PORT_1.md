@@ -32,3 +32,13 @@ F11-/R6.1-Arbeitsfläche, Floating/Dwindle/Master/Monocle, vier Workspaces, Snap
 ## Prüfstand
 
 Baseline 557/557 Node-Tests. Checkpoint A 562/562, darunter Gruppenvalidierung/Isolation/Persistenz, aktive Fensterableitung, Reorder, Miniaturgrenzen und Overlap. Echte Electron-GUI wird im eigenen nicht veröffentlichenden Linux-CI-Kanal geprüft; Ergebnisse werden nach Ausführung ergänzt. Noch keine lokale/nativ-Windows/iPad-Hardwareabnahme behauptet.
+
+## Checkpoint B · vorhandene Systemflächen und Dock
+
+Geometrische Pfeil-/Home-/End-Navigation zwischen vorhandenen Kontrollkacheln; Tab bleibt im offenen Island-Panel, Kalender-/Dialognavigation hat Vorrang. Kurze innere Kachel-Reveals laufen im bestehenden Glascontroladapter und werden beim Schließen/Reduzieren/Verbergen/Logout beendet. M1 bleibt die einzige äußere Island-Timeline.
+
+Der vorhandene Benachrichtigungsverlauf bleibt der einzige Nachrichtenstore. Reale Bannerhöhen bestimmen den begrenzten Stapel; Fokus/Hover pausieren dessen Ablauf, Escape entfernt das fokussierte Banner. Fokusmodus verbirgt schon sichtbare nichtkritische Banner, kritische bleiben erlaubt.
+
+Im vorhandenen Dock-Kontextmenü ist Intelligentes Dock freiwillig einschaltbar. Ausschließlich sichtbare interne Fenster lösen Overlap aus. Resize-, Pointer-, Layout- und Lifecycle-Ereignisse statt Intervallpolling; bei M2 bekommt das vorhandene Dock eine synchrone Sichtbarkeitslease, bevor der ursprüngliche M2-Code sein Zielrechteck misst. Ein beschrifteter Rückholbutton und die Bildschirmkante bleiben erreichbar. Pins, Magnifikation und Außenkontur unverändert. Die bisherige Dock-Fensterübersicht öffnet dieselbe Stage-Übersicht.
+
+564/564 Regressionen. Erster CI-Lauf startete echtes sandboxed Electron erfolgreich, scheiterte dann an einer DOMRect-Serialisierung im neuen Testharness; korrigiert. Weitere reale Testergebnisse folgen.
