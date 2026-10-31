@@ -1,5 +1,7 @@
 # InfinityOS Integration 2 — Desktop / Windows R8
 
+**Abschlussstand:** Windows R8 vollständig gebaut, auf Windows-Runner installiert und GUI-geprüft. Produkt-/Buildquelle `e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5`; 572/572 Regressionen, 62 Linux-Electron-Checks und vier Materialprüfungen. iPad PWA 2 separat ebenfalls abschließend grün: Produkt `89683dc747ef79886447469234b7eadc0167acc0`, 585/585 Regressionen, Chromium/WebKit einschließlich mehrfacher kalter Offline-Neustarts und Unterpfad. Berichte darunter dokumentieren auch die historischen Fehler/Korrekturen.
+
 Basis: `8651a1aaa357b52a7c4edfbea7056bf59e40601b`.
 Branch: `feat/air-os-infinityos-origin-port-2-desktop`.
 
@@ -71,7 +73,7 @@ Normaler Software-GPU-Produktpfad: CSS-Fallback, **0** aktive GL-Programme und *
 | 2 | 263ms | 4 | 5 | 42705792 | 24ms |
 | 3 | 275ms | 4 | 5 | 42705792 | 27ms |
 
-Nach gemessener Ruhephase keine zusätzlichen Draws. Context Loss/Restore baut Ressourcen korrekt neu auf; Profil-Cleanup endet mit 0 Programmen/Texturen/Tiles und `pending:false`. Letzte strukturierte Refraction-on/off-Probe: 51377 veränderte Pixel bei 451×145, mittlere absolute RGB-Differenz 17.8028. Das belegt ausführbare sichtbare Shaderwirkung über dem synthetischen eigenen Linienwallpaper, **keine** Pixelgleichheit zum MacShell-Compositor und keinen fairen Stärkevergleich mit anders großen früheren Karten. Kein GPU-FPS-Wert und keine Beschleunigungszusage aus dieser Softwaremessung.
+Die Texturbytewerte erfassen die eigenen GL-Texturen, nicht den gesamten Chromium-Speicher oder alle 2D-Ausgabecanvases. Nach gemessener Ruhephase keine zusätzlichen Draws. Context Loss/Restore baut Ressourcen korrekt neu auf; Profil-Cleanup endet mit 0 Programmen/Texturen/Tiles und `pending:false`. Letzte strukturierte Refraction-on/off-Probe: 51377 veränderte Pixel bei 451×145, mittlere absolute RGB-Differenz 17.8028. Das belegt ausführbare sichtbare Shaderwirkung über dem synthetischen eigenen Linienwallpaper, **keine** Pixelgleichheit zum MacShell-Compositor und keinen fairen Stärkevergleich mit anders großen früheren Karten. Kein GPU-FPS-Wert und keine Beschleunigungszusage aus dieser Softwaremessung.
 
 ### Echte Vergleichsbilder
 
@@ -97,7 +99,7 @@ Die erste Bildrunde zeigte zu helle Textflächen vor weißen Appinhalten. Die zw
 - `82cd19cd85a341d7ecb0ed38abb250b8c33d74f6`: ausführbare Gruppenaktionen, Materialkorrektur, 572 Tests und R8-Kanal.
 - `767afb2832b70fed701865396468b6ef71abb15f`: erste Linux-Evidenz.
 - `e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5`: visuelle Korrektur, Touch-Cleanup, R8-Metadatenfix; finales getestetes Produkt.
-- `ce6fc11` (vollständige ID im Gitverlauf): zweite Linux-Evidenz; keine Produktänderung.
+- `ce6fc1189f839441046446a842dc3ec7169d72eb`: zweite Linux-Evidenz; keine Produktänderung.
 
 ## Windows R8 — erfolgreich gebaut und installiert
 
@@ -116,4 +118,6 @@ Produkt-/Buildcommit: `e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5`. Evidenzcommit:
 
 Unsignierter technischer Testinstaller. Kein Produktionsrelease, kein Smart-App-Control-/Defender-Bypass und keine automatische Installation auf privaten Rechnern. Nach Download ZIP entpacken, `Get-FileHash -Algorithm SHA256` auf die EXE anwenden und mit obigem Hash vergleichen. Schutzfunktionen nicht deaktivieren. Eigener Test-PC / synthetische lokale Profile; keine Cloudanmeldung.
 
-[iPad-Portbericht im separaten Branch](https://github.com/quattrologic/Air-Os-Clean/blob/feat/air-os-infinityos-origin-port-2-ipad/docs/AIR_OS_INFINITYOS_ORIGIN_PORT_2_IPAD.md). Die dortige WebKit-Cold-Offline-Abnahme wird separat dokumentiert; Windows-Erfolg ist kein iPad-Nachweis.
+[iPad-Portbericht im separaten Branch](https://github.com/quattrologic/Air-Os-Clean/blob/feat/air-os-infinityos-origin-port-2-ipad/docs/AIR_OS_INFINITYOS_ORIGIN_PORT_2_IPAD.md). Die finale iPad-CI [41227319687](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687) ist vollständig grün: Chromium Root 119 / WebKit Root 118 / Chromium Unterpfad 120 / WebKit Unterpfad 119, je sieben Viewports und keine Fehler. Drei tatsächliche kalte Offline-Starts pro Browserpfad; die zwei zusätzlichen starten den Browser erst nach Abschalten des Origins. Die kanonische Startadresse ist direkt im begrenzten App-Shell-Cache enthalten. Frühere intermittierende Fehler wurden nicht verborgen, sondern in separaten roten Läufen dokumentiert und anschließend strenger geprüft.
+
+[iPad-PWA-2-Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687/artifacts/13052597337): `Air-OS-Ultimate-iPad-89683dc747ef.zip`, SHA-256 `fb0c397093004d9842b665c86c1191f8a5451b2785fe2087f70bf87ed372fb2c`. Kein Deployment. Physische Safari-/Pencil-/Audio-/GPU-Abnahme weiterhin offen. Die automatisierten Erfolge der Plattformen sind getrennte Nachweise.

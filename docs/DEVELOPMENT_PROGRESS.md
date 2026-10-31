@@ -1,3 +1,9 @@
+# Integration 2 — Desktop und iPad final gesichert
+
+Desktopprodukt e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5, Branch `feat/air-os-infinityos-origin-port-2-desktop`: 572/572 Regressionen, Linux-GUI 62 + vier Materialtests; Windows R8 / Lauf 41222397648 vollständig erfolgreich installiert und geprüft. iPadprodukt 89683dc747ef79886447469234b7eadc0167acc0, separater Branch `feat/air-os-infinityos-origin-port-2-ipad`: 585/585, finale CI 41227319687 grün; Chromium 119/120 und WebKit 118/119 Root/Unterpfad, je sieben Viewports und wiederholte kalte Offline-Starts. Visuelle Korrekturen inklusive tatsächlich geprüfter WebKit-Select-Pixel. Beide Artefakte und SHA256 in AIR_OS_INFINITYOS_ORIGIN_PORT_2.md / iPad-Bericht. Keine neuen ungeklärten Originalquellen, keine neue Datenbank, kein Deployment/main-Merge.
+
+Offene drei Geräteabnahmen: physische Windows-GPU/Audio/Picker; echte iPad-Safari-Installation/Pencil/Tastatur/Safe Areas/Suspend; tatsächlicher plattformspezifischer Compositormaterialvergleich. Keine automatische Fortsetzung nach Abschluss.
+
 # Integration 2 — geprüfter Desktop / Windows R8
 
 Branch `feat/air-os-infinityos-origin-port-2-desktop`; Basis 8651a1aaa357b52a7c4edfbea7056bf59e40601b. Finales Produkt e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5. 572/572 Regressionen, 62 Linux-Electron-GUI-Checks plus vier Shaderchecks; nativer Windows-Lauf 41222397648 vollständig erfolgreich, Installer installiert und EXE geprüft. Gruppen-Minimize/Restore über M2, Tastatur/Touchübersicht, vorhandene Layouts/Workspaces, DPR-korrekte separate Mipmaps, finite Lichtreaktionen und visuell korrigierter Fallback. Quellenrechte unverändert: keine ungeklärten Originaldateien übernommen.
