@@ -191,7 +191,7 @@
     trigger.setAttribute('aria-label', 'Air Island, ' + clock.textContent + ', öffnen oder schließen');
   }
   function finishClose() {
-    cancelMotion();targetOpen=false;
+    window.airControlMotion?.cancelWithin(panel);cancelMotion();targetOpen=false;
     quickVersion++;launchBusy=false;
     panel.hidden=true;panel.inert=false;panel.classList.remove('is-closing');
     observedAudio?.removeEventListener('volumechange',syncVolume);observedAudio=null;
@@ -201,7 +201,7 @@
     trigger.setAttribute('aria-expanded', 'false');
     if(immediate||!motionAllowed())finishClose();
     else if(targetOpen){
-      targetOpen=false;quickVersion++;launchBusy=false;
+      window.airControlMotion?.cancelWithin(panel);targetOpen=false;quickVersion++;launchBusy=false;
       panel.inert=true;panel.classList.add('is-closing');
       animatePanel(false);
     }
@@ -217,9 +217,21 @@
     panel.hidden=false;panel.inert=false;panel.classList.remove('is-closing');targetOpen=true;
     trigger.setAttribute('aria-expanded','true');
     if(motionAllowed())animatePanel(true);else cancelMotion();
-    closeButton.focus();watchVolume();
+    closeButton.focus();watchVolume();window.airControlMotion?.reveal(controlView.querySelector('.air-control-grid'));
   }
   function keydown(event) {
+    if(!panel.hidden&&!panel.inert&&!document.querySelector('dialog[open],#air-calendar-panel')&&panel.contains(document.activeElement)){
+      if(event.key==='Tab'){
+        const items=[...panel.querySelectorAll('button:not(:disabled),input:not(:disabled),select:not(:disabled),[tabindex="0"]')].filter(n=>n.getClientRects().length&&!n.closest('[hidden],[inert]'));
+        if(items.length){const i=items.indexOf(document.activeElement);event.preventDefault();items[(i+(event.shiftKey?items.length-1:1))%items.length].focus();}return;
+      }
+      const source=event.target.closest('[data-cc-action]');
+      if(source&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)&&window.airPanelMath){
+        const nodes=[...controlView.querySelectorAll('[data-cc-action]:not(:disabled)')].filter(n=>n.getClientRects().length&&!n.closest('[hidden],[inert]'));
+        const id=airPanelMath.direction(nodes.map(n=>{const r=n.getBoundingClientRect();return {id:n.dataset.ccAction,x:r.left+r.width/2,y:r.top+r.height/2};}),source.dataset.ccAction,event.key);
+        if(id){event.preventDefault();nodes.find(n=>n.dataset.ccAction===id)?.focus();}return;
+      }
+    }
     if (!panel.hidden && event.key === 'Escape') {
       if(window.airControlCenter?.back?.()){event.preventDefault();event.stopImmediatePropagation();return;}
       event.preventDefault();

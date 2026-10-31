@@ -166,7 +166,12 @@
       "src/core/weather-glyphs.js",
       "src/main/weather-service.cjs",
       "air-weather.js",
-      "third_party/r6-macshell/**/*"
+      "third_party/r6-macshell/**/*",
+      "src/core/stage-model.js",
+      "src/core/panel-navigation.js",
+      "air-stage-overview.js",
+      "air-origin.css",
+      "air-origin2.css"
     ],
     "mac": {
       "target": [

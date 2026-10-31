@@ -112,3 +112,9 @@ html[data-pwa] .air-files-main{min-width:0;container-type:inline-size}
  html[data-pwa] .app-window .window-content :is(input[type=checkbox],input[type=radio]){width:24px;min-width:24px;height:24px;min-height:24px}
  html[data-pwa] .app-window .window-content label:has(input[type=checkbox]){min-height:44px;align-items:center}
 }
+
+/* Stage is the shared internal Air-OS model, never native iPadOS Stage Manager. */
+html[data-pwa=true] .origin-stage-overview{top:calc(var(--pwa-top,0px) + env(safe-area-inset-top,0px) + 48px);left:max(8px,env(safe-area-inset-left,0px));right:max(8px,env(safe-area-inset-right,0px));max-height:calc(var(--pwa-height,100dvh) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 64px);-webkit-overflow-scrolling:touch}
+html[data-pwa=true] .origin-stage-overview :is(button,select){min-height:44px}html[data-pwa=true] .origin-stage-rail{left:max(4px,env(safe-area-inset-left,0px));top:calc(var(--pwa-top,0px) + env(safe-area-inset-top,0px) + 74px)}
+html[data-pwa=true].pwa-keyboard .origin-stage-rail{display:none}
+@media(orientation:portrait){html[data-pwa=true] .origin-stage-rail{max-width:52px}}

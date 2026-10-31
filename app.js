@@ -814,7 +814,7 @@ $("#go-menu")?.addEventListener("click",()=>openApp("downloads"));
 $("#window-menu")?.addEventListener("click",()=>{const last=[...openApps.values()].at(-1); if(last){last.style.display="flex";last.style.zIndex=++zIndex;}});
 $("#help-menu")?.addEventListener("click",()=>openApp("about"));
 
-window.addEventListener("resize",()=>requestAnimationFrame(()=>openApps.forEach(win=>clampAppWindow(win))));
+window.addEventListener("resize",()=>requestAnimationFrame(()=>openApps.forEach(win=>{if(win._airOSDockMotion)settleModernDockMotion(win);clampAppWindow(win);})));
 
 openApp("finder"); // Start with the reference layout
 // Startup must not depend on the Dock animation completing. Some older WebKit/Electron

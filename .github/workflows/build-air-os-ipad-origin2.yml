@@ -1,0 +1,99 @@
+name: Air-OS Ultimate iPad PWA 2 (build and browser tests, no deployment)
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/air-os-infinityos-origin-port-2-ipad]
+    paths-ignore: ['docs/**']
+permissions:
+  contents: write
+concurrency:
+  group: air-os-ipad-origin2-test
+  cancel-in-progress: false
+jobs:
+  ipad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: build/ipad-tests/package-lock.json
+      - name: Install only frozen browser test and audio dependencies
+        run: npm ci --prefix build/ipad-tests --ignore-scripts --no-audit --no-fund
+      - name: Install frozen regression toolchain without downloading native Electron
+        run: npm ci --prefix build/windows-x64 --ignore-scripts --no-audit --no-fund
+      - name: Mandatory audit including test dependencies
+        run: |
+          mkdir -p dist/ipad-evidence
+          npm audit --prefix build/ipad-tests --audit-level=high --json > dist/ipad-evidence/dependency-audit.json
+          npm audit --prefix build/windows-x64 --audit-level=high --json > dist/ipad-evidence/regression-toolchain-audit.json
+      - name: Link audited regression tools (ASAR tests) and the sole shipped audio dependency
+        run: node scripts/windows-test-build.cjs link
+      - name: Full desktop and browser regression suite
+        run: node scripts/run-test-gate.cjs
+      - name: Build and verify the actual offline PWA bytes, CSP and licenses
+        run: |
+          node scripts/build-pwa.cjs
+          node scripts/check-pwa-package.cjs
+          node scripts/package-ipad.cjs
+      - name: Install Chromium and WebKit test engines
+        run: node build/ipad-tests/node_modules/playwright/cli.js install --with-deps chromium webkit
+      - name: Identical Chromium baseline from the verified iPad source (no deployment)
+        env:
+          AIR_IPAD_SITE: dist/ipad-baseline/dist/pwa
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/before/chromium
+        run: |
+          git worktree add --quiet --detach dist/ipad-baseline 1deb36a2e77107897cd277d07bdd09140697da9d
+          ln -s "$GITHUB_WORKSPACE/node_modules" dist/ipad-baseline/node_modules
+          cd dist/ipad-baseline
+          node scripts/build-pwa.cjs
+          cd ../..
+          node scripts/test-ipad-browser.cjs chromium
+      - name: Real Chromium touch, data, offline and seven-viewport GUI
+        env:
+          AIR_ORIGIN2_IPAD: '1'
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/chromium
+        run: node scripts/test-ipad-browser.cjs chromium
+      - name: Real WebKit touch, data, offline and seven-viewport GUI
+        env:
+          AIR_ORIGIN2_IPAD: '1'
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/webkit
+        run: node scripts/test-ipad-browser.cjs webkit
+      - name: Chromium Pages subpath and safe-update regression (no deployment)
+        env:
+          AIR_IPAD_BASE_PATH: /Air-Os-Clean/
+          AIR_ORIGIN2_IPAD: '1'
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/chromium
+        run: node scripts/test-ipad-browser.cjs chromium
+      - name: WebKit Pages subpath and safe-update regression (no deployment)
+        env:
+          AIR_IPAD_BASE_PATH: /Air-Os-Clean/
+          AIR_ORIGIN2_IPAD: '1'
+          AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/webkit
+        run: node scripts/test-ipad-browser.cjs webkit
+      - name: Save only verified synthetic browser images and versioned build metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/publish-ipad-origin2-evidence.cjs
+      - name: Keep versioned installable site ZIP and SHA-256 (never deploy)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Ultimate-iPad-Origin2-${{ github.sha }}
+          path: dist/ipad/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Keep actual browser screenshots and failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-Origin2-browser-evidence-${{ github.sha }}
+          path: |
+            dist/ipad-evidence/
+            dist/r1-gui/node-tests.tap
+          if-no-files-found: warn
+          retention-days: 30

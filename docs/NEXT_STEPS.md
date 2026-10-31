@@ -1,3 +1,9 @@
+# Integration 2 — iPad-Checkpoint
+
+Basis 1deb36a2e77107897cd277d07bdd09140697da9d; Branch `feat/air-os-infinityos-origin-port-2-ipad`. Selektiver Stage-/Materialport, validierte IndexedDB-Profileinstellungen und gemeinsame Übersicht. Browser-eigene Reminders-/Kalender-/Finder-Funktionen erhalten. 584/584 Node-Tests und bestehender vollständiger Chromium-Lauf 99/99, sieben Viewports bestanden. Zusätzliche Stage-/WebKit-CI ausstehend. Kein Deployment.
+
+Nächste drei Schritte: Stage-/WebKit-Abnahme korrigieren; echte Vorher-/Nachher-Bilder prüfen; ZIP/SHA und Grenzen dokumentieren.
+
 # iPad-Installation / Pages — geprüfte Vorbereitung (2026-10-30)
 
 Basis: 4a82ac41fcc43eb6ebde34f6422cb2bdd239f971; Branch feat/air-os-ipad-ultimate. Produkt-/Workflowcommit 49b2130789265a47a456533ef235c203cc49ba38. Keine neue App. Neuer rein manueller Publisher mit Owner-/Branch-/SHA-/Site-Lease, read-only Zielprüfung, blockierten fremden/unklaren Inhalten und configure-pages ohne automatische Aktivierung. dist/pwa wird erst nach ausdrücklicher Freigabe und vollständiger Wiederholungsprüfung veröffentlicht.

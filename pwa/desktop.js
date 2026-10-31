@@ -4,7 +4,7 @@
  const root=document.documentElement,events=new AbortController(),signal=events.signal;
  root.dataset.pwa='true';
  const host=document.querySelector('#windows'),viewport=window.visualViewport;
- let queued=0,tools=null,longPress=null,pointer=null;
+ let queued=0,lifecycleFrame=0,tools=null,longPress=null,pointer=null;
  const area=()=>{const r=host.getBoundingClientRect();return new DOMRect(r.x,r.y,r.width,r.height);};
  window.airPwaWorkArea=area;
  function reflow(){queued=0;const v=viewport,h=v?.height||innerHeight,w=v?.width||innerWidth;root.style.setProperty('--pwa-height',h+'px');root.style.setProperty('--pwa-width',w+'px');root.style.setProperty('--pwa-top',(v?.offsetTop||0)+'px');root.classList.toggle('pwa-keyboard',innerHeight-h>150);for(const win of openApps.values())if(!win._airOSDockMotion)clampAppWindow(win);window.airWindowSystem?.reflow();window.airDesktopGlass?.refresh();}
@@ -38,7 +38,7 @@
  d.append(el('p','Installation in Safari: Teilen → Zum Home-Bildschirm → als Web-App öffnen. Offline erst nach vollständig geladenem App-Cache. Browserdaten können gelöscht werden; Export ist die Datensicherung.'));
  }
  const toolsButton=button('☷',openTools);toolsButton.id='pwa-tools-toggle';toolsButton.setAttribute('aria-label','iPad, Fenster und Datensicherung');(document.querySelector('.t6-status')||document.querySelector('.menubar-right')||document.body).append(toolsButton);
- function overview(){const d=dialog('Offene Apps'),list=el('div');list.className='pwa-overview';for(const [id,w]of openApps){list.append(button((airAppRegistry.get(id)?.name||id)+(w.style.display==='none'?' · minimiert':''),()=>{d.close();openApp(id);}));}if(!list.children.length)list.append(el('p','Keine App geöffnet.'));list.append(button('Launchpad öffnen',()=>{d.close();openApp('launchpad');}));d.append(list);}
+ function overview(){closeTools();if(window.airStageOverview)return airStageOverview.open();const d=dialog('Offene Apps'),list=el('div');list.className='pwa-overview';for(const [id,w]of openApps){list.append(button((airAppRegistry.get(id)?.name||id)+(w.style.display==='none'?' · minimiert':''),()=>{d.close();openApp(id);}));}if(!list.children.length)list.append(el('p','Keine App geöffnet.'));list.append(button('Launchpad öffnen',()=>{d.close();openApp('launchpad');}));d.append(list);}
  window.airIPad=Object.freeze({overview,tools:openTools,workArea:area,availability:id=>Object.hasOwn(limited,id)?'unavailable':['mail','browser','downloads','photos'].includes(id)?'limited':'local'});
 
  // Long press feeds existing context menus. Movement, cancellation or second touch aborts.
@@ -46,8 +46,8 @@
  document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;if(!e.isPrimary){cancelPress();return;}const dock=e.target.closest('.dock-app');if(!dock)return;cancelPress();pointer={id:e.pointerId,x:e.clientX,y:e.clientY};longPress=setTimeout(()=>{longPress=null;dock.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:e.clientX,clientY:e.clientY}));pointer=null;},600);},{signal,passive:true});
  document.addEventListener('pointermove',e=>{if(pointer&&e.pointerId===pointer.id&&Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>10)cancelPress();},{signal,passive:true});
  for(const type of ['pointerup','pointercancel','visibilitychange'])document.addEventListener(type,cancelPress,{signal});
- const stopLifecycle=airAppLifecycle.onChange(()=>requestAnimationFrame(()=>root.classList.toggle('pwa-window-visible',[...openApps.values()].some(w=>w.isConnected&&w.style.display!=='none'))));
- function dispose(){stopLifecycle();events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);closeTools();delete window.airPwaWorkArea;}
+ const stopLifecycle=airAppLifecycle.onChange(()=>{if(!lifecycleFrame)lifecycleFrame=requestAnimationFrame(()=>{lifecycleFrame=0;root.classList.toggle('pwa-window-visible',[...openApps.values()].some(w=>w.isConnected&&w.style.display!=='none'));});});
+ function dispose(){stopLifecycle();events.abort();resize.disconnect();cancelPress();cancelAnimationFrame(queued);cancelAnimationFrame(lifecycleFrame);closeTools();delete window.airPwaWorkArea;}
  document.addEventListener('air-profile-changing',dispose,{once:true});window.addEventListener('pagehide',dispose,{once:true});
  document.addEventListener('air-browser-storage-blocked',()=>toast('Speicherupdate blockiert. Andere Air-OS-Tabs schließen und neu laden.'),{signal});
  document.addEventListener('air-browser-data',e=>{if(!e.detail.external)return;if(e.detail.key==='notes')document.dispatchEvent(new Event('air-notes-changed'));if(e.detail.key==='reminders')document.dispatchEvent(new Event('air-reminders-changed'));},{signal});
