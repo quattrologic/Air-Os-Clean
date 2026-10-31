@@ -2,6 +2,7 @@
 // Isolated software shader diagnostic. Never a hardware or native Windows acceptance.
 const a=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 module.exports=async function(h){const {evaluate:e,wait,viewport,shot,app,delay}=h,report={platform:process.platform,kind:'isolated software shader diagnostic',hardwareAcceptance:false,viewports:[],checks:[]};
+ report.userAgent=await e('navigator.userAgent');a.ok(report.userAgent.includes('Electron/44.9.3'));
  await wait("airDesktopGlass.snapshot().renderPath==='isolated-diagnostic'");await app('finder');await app('notes');
  const synthetic=await e("(()=>{const c=document.createElement('canvas');c.width=1688;c.height=896;const g=c.getContext('2d');g.fillStyle='#b6cde0';g.fillRect(0,0,c.width,c.height);g.fillStyle='#193750';for(let x=0;x<c.width;x+=40)g.fillRect(x,0,4,c.height);for(let y=0;y<c.height;y+=40)g.fillRect(0,y,c.width,4);return c.toDataURL('image/png');})()");
  await e('document.querySelector(".wallpaper").style.backgroundImage='+JSON.stringify('url("'+synthetic+'")'));
