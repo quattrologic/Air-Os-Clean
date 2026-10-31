@@ -1,3 +1,11 @@
+# InfinityOS / Origin — Checkpoint D / Cleanup (2026-10-31)
+
+565/565 Regressionen (557 bestehende erhalten). Neue Stage-Modelle laufen nachweislich auch in einem Browser-Realm ohne Node/Electron; das ist Portfähigkeit, keine iPad-Abnahme. Eigene Hash-/Bytemetadaten aller70 Referenzen dokumentiert, kein fremder Quellinhalt übernommen;374 produktive Runtimeassets enthalten keine Referenzdateien.
+
+Echte Linux-CI: R7-Vergleichsszenen bei1920×1080/1688×896/1650×930/390×600 und deren24px-/Maximierungsrechtecke bestanden. Produktlauf erreichte Stage-Ansichten/Gruppierung; eine ungültige Top-Level-await-Testexpression korrigiert. Neue vollständige Abnahme läuft erneut. Eigenes Pointercapture-/lostpointercapture-Cleanup sowie lokale AbortController pro Banner verhindern zurückgehaltene Listener. M1-Reversal und tatsächliche emulierte Touch-/Touchcancel-Ereignisse ergänzt. Keine Hardware-/Windows-/iPad-GUI-Abnahme behauptet.
+
+Nächste drei Abschlussprüfungen: vollständige echte GUI und Materialdiagnose bis grün; synthetische Bilder/Messwerte ansehen und korrigieren; Bericht/Git-Sicherung. Keine neue Ausbauphase, kein öffentlicher Release. iPad-Branch bleibt separat unverändert.
+
 # InfinityOS / Origin — Checkpoint C (2026-10-31)
 
 564/564 Regressionen. Neue Stage-Flächen verwenden jetzt dieselbe vorhandene GLASS-3-Engine: GlassSlab-/Switcher-/Popover-Material, gemeinsame Wallpaper-/Preblur-/Programmressourcen, unveränderte Hardwareklassifikation und CSS-/Reduced-Transparency-Fallbacks. Kein Blur-My-Shell-/Origin-Shader kopiert, keine zweite Engine, kein neuer Idle-Loop. Eigene CSS-Lichtkante der neuen Oberfläche; übriges Desktopdesign unverändert.

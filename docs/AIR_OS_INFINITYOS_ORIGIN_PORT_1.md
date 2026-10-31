@@ -48,3 +48,19 @@ Im vorhandenen Dock-Kontextmenü ist Intelligentes Dock freiwillig einschaltbar.
 Die neuen Stage-Flächen sind echte Zieloberflächen derselben air-desktop-glass.js-Engine: Übersicht als Switcher-/GlassSlab-Profil, Rail als Popover. Gemeinsame Szenentextur, Preblur, Programme, DPR-Budgets, GPU-Schutz und Ressourcenfreigabe. Keine neue Shaderberechnung aus dem Archiv, kein neuer Compositor, kein Fenster-Capture. Originale existierende MacShell-Parameter in src/core/glass-geometry.js unverändert; Wallpaper-only-Grenze bleibt. CSS-Fallback nutzt eine abgestufte transparente Fläche mit Lichtsaum; Reduced Transparency bleibt opak.
 
 Ein getrennter isolierter Software-Shadertest prüft den tatsächlich ausgeführten Stage-Pfad, DPR1/2/3, Idle-Draws, Context Loss/Restore und Cleanup. Dies ist ausdrücklich keine Hardware-GPU- oder Windows-Abnahme. Ergebnis folgt nach tatsächlichem Lauf.
+
+## Architektur, Cleanup und iPad-Portfähigkeit
+
+Renderer: Stage-Ansicht, Tastatur-/Pointer-/Touch-Navigation, schematische Vorschauen, vorhandene Fensteraktionen und kontrollierter Bannerablauf. Window-System: Registry-/Workspace-/Layout-/Fokushoheit bleibt in air-window-system.js/openApps; kein neuer Minimierungsowner. Main: vorhandene autorisierte Preferences-IPC, validierte Stage-/Dockmetadaten und bestehende atomare profilgetrennte Dateien. Keine neue native IPC, Shelloperation oder Datenbank.
+
+Stage-Drag endet bei pointercancel, lostpointercapture, Resize, Blur, Visibility, Profilwechsel und Fullscreen. Lokale Bannerlistener besitzen je einen eigenen abgebrochenen Controller statt einer unbeschränkt anwachsenden Liste am Sitzungscontroller. Endliche UI-Reveals canceln beim Schließen/Verbergen/Reduzieren.
+
+| Teil | iPad-Portfähigkeit | Geprüfter Stand / offene Anpassung |
+|---|---|---|
+| stage-model / panel-navigation | Reine Browser-/JS-Modelle, keine Node-/GNOME-Imports | Browser-Realm-Modelltest bestanden; bestehende PWA-Preferences brauchen getrennte Validierung/Defaults |
+| Stage-Übersicht und Pointercapture | Web Pointer API, native Buttons/Checkboxen/Tab, Responsive Layout | Linux-Electron-Touch-Emulation vorgesehen; kein Pencil-/Safari-Hardwaretest |
+| Stage-Konfiguration / Fensterowner | An gemeinsame Registry ankoppelbar | PWA-Fensteradapter/Offline-/VisualViewport-Vertrag separat prüfen; nicht ungeprüft übernommen |
+| Kachel-/Banner-/Dockfunktionen | DOM-/ResizeObserver-/Event-basiert | Safe Areas, WebKit, Offlineupdates und Browseradapter auf eigenem Portbranch prüfen |
+| Electron-F11 / native Energiesperre | Keine entsprechende Browserberechtigung | Nicht in PWA importieren oder vortäuschen |
+
+Der iPad-Branch wurde nicht gemerged/geändert; seine 576 bisherigen Tests werden nicht mit den 565 Desktoptests addiert. Kein Pages-Deployment. [Eigene Referenz-Hashprüfung ohne Quellinhalt](build-evidence/infinity-origin/reference-audit.json).

@@ -19,3 +19,8 @@ test('Stage and intelligent dock settings persist per profile with existing atom
 test('Dock overlap excludes touching edges and handles actual positive intersection',()=>{
  const dock={left:10,top:80,width:100,height:20};a.equal(m.overlap(dock,{left:0,top:0,width:500,height:80}),false);a.equal(m.overlap(dock,{left:110,top:80,width:10,height:20}),false);a.equal(m.overlap(dock,{left:0,top:0,width:500,height:81}),true);a.equal(m.overlap(dock,{left:0,top:0,width:0,height:900}),false);
 });
+test('Stage model executes in a browser realm without Node, Electron, native APIs or storage',()=>{
+ const vm=require('node:vm'),sandbox={window:{}};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../src/core/stage-model.js'),'utf8'),sandbox);const web=sandbox.window.airStageMath;
+ const input={enabled:true,groups:[group],order:['reminders',group.id]},ids=['finder','notes','reminders'];
+ a.deepEqual(JSON.parse(JSON.stringify(web.stages(ids,input))),m.stages(ids,input));a.deepEqual(JSON.parse(JSON.stringify(web.validate(input,known))),m.validate(input,known));a.equal(sandbox.window.airOS,undefined);
+});

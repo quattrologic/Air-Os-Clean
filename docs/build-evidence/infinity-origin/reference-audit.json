@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "archiveSHA256": "149b40ae53e76fa245f25507484bc339a0b4c4b072a3016d1645f42373f290dc",
+  "referenceFileCount": 70,
+  "referenceBytes": 640973,
+  "allHashesVerified": true,
+  "upstreamCommit": "not supplied by this ISO extract",
+  "originalSourceFilesInProduct": 0,
+  "files": [
+    {
+      "referencePath": "usr/share/glib-2.0/schemas/99_infinity-OS-defaults.gschema.override",
+      "bytes": 896,
+      "sha256": "b13c5ad076b1b848d42e1d276986de2271e3b82dfc1bc9a653b83503820c3850",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/ARCHITECTURE.md",
+      "bytes": 1723,
+      "sha256": "904b81a737f63d63842b71124feb72971f39866e5747097d6980c27d09e67a30",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/animationEngine.js",
+      "bytes": 13894,
+      "sha256": "1a57e7b9e012d763d4cebc8d6ce03f836a4d0c02309cb118d9b53fd5d19d3034",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/config.js",
+      "bytes": 2960,
+      "sha256": "bcd361b9892785d32130fc5057a44e97ccc56c83bbf19c89fe53542239ccdea8",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/extension.js",
+      "bytes": 4655,
+      "sha256": "032c162b84429d2f2cb7bcc34942258b8884bf61fb03dbe43c4e888fdeb9d81d",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/helper.js",
+      "bytes": 406,
+      "sha256": "615ba559e0033a4df10cc03b4b768a7a41ab6861e3d198ed51930942f33caeed",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/icon/centreStage.svg",
+      "bytes": 4885,
+      "sha256": "1b51da89ff9fcac58751f7cdc79121bf11900dfc4c317868342cff3ead6fa22b",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/metadata.json",
+      "bytes": 203,
+      "sha256": "d75424a012dc88283a6252086aac19624668db1b2508c091f2fb5f21c50dae98",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/remakeMinimizeAnim.js",
+      "bytes": 38405,
+      "sha256": "2913bc4e4937fbde96894f8d1a8e1ef5f073bc05dc838174672f921ec5cee9e2",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/remakeUnminimizeAnim.js",
+      "bytes": 6093,
+      "sha256": "3088a247712b7465017332182d842715d2a16286ce914743c4d237e948c73331",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/stageManager.js",
+      "bytes": 84361,
+      "sha256": "4b985ac26d4374d9990983463bc14dfab26e6fb4668335f7333f1c3a994a31dc",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/stageManagerQuickSettings.js",
+      "bytes": 2473,
+      "sha256": "60aae95aaf1845632621bf35f4ae93ce5486880a5ada5813de71c8cfc2e26d0c",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/stageManagerStageScroll.js",
+      "bytes": 22699,
+      "sha256": "f061f45dd073462bd13198bcb764a477b7cb94024be196c62cff2d84a7dae41e",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/Origin@appscreen/stylesheet.css",
+      "bytes": 199,
+      "sha256": "b3624ca626f615d1aa6ecc11bd75f27224fa36860adf450bf1a752f145141ed5",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/blurEffect.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/extension.js",
+      "bytes": 1833,
+      "sha256": "7ff0707f61bb0111c8b3d4391bfbd704759efd3aea248b3c2f503bef16094634",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/metadata.json",
+      "bytes": 213,
+      "sha256": "a39ce8f1da26f65bfde9cec7068f2cc79eda9af710780ad16baa7f88575e90e6",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/remakeDateMenu.js",
+      "bytes": 9327,
+      "sha256": "b9fa11d0123384a4dde25c8d211dde44d1b20f2367986d9d7d586981d232db78",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/remakeDialogs.js",
+      "bytes": 2901,
+      "sha256": "6268fb0385dd4f91809e122c19b4522d670205060bc22a8d010465a0c65fa013",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/remakeNotificationBanner.js",
+      "bytes": 6461,
+      "sha256": "1f19bda89a644b003593f0d5245b5d0c707e51464e4ada310424fb07af723e4c",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/remakeOverview.js",
+      "bytes": 113014,
+      "sha256": "493eef5bc1454cc7639cebdfdad1bc791933b097de219bf77ea28366fa0ce179",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/remakeQS.js",
+      "bytes": 17780,
+      "sha256": "75dbba442aaa516038b8d03f29528b50c412072c8c9dadb5e16ece333ccc21b5",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/roundedClipEffect.js",
+      "bytes": 2480,
+      "sha256": "1c17ff6d6269650a20f98b0b5ce2e6124c3def94ad49b24f9ca0739b93e5de97",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/styleSheetDateMenu.css",
+      "bytes": 18792,
+      "sha256": "be459139cd8cb0a22f208380c1ef5157eede9fd802fcd598c97b5e63ef4f0174",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/styleSheetNotificationBanner.css",
+      "bytes": 680,
+      "sha256": "b7e57ac28ce567d65c1efcf48617eed86e6427a4e9c21405575d380e20ca6a85",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/stylesheet.css",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/stylesheetDialogs.css",
+      "bytes": 6283,
+      "sha256": "6bf82999df7317d60cf463a130d1b0e88c86c22ee52d42bcabedf7b5c9a09eaf",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/stylesheetOverview.css",
+      "bytes": 16039,
+      "sha256": "8e8f536663806a3f2f517c9d34fe47904b336955c53f7cf105fdfd13923d9263",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUICC@quandz24.extension/stylesheetQS.css",
+      "bytes": 10203,
+      "sha256": "7124ba7e3d558c86c273d6b3582f3403ebf5dae4706dffb1f43029320dd83df2",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/extension.js",
+      "bytes": 32404,
+      "sha256": "e2286a6c41ae45f73f64d51777955919b71157d3fa03b897389e93f1bb293a69",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/icons/privateMode-symbolic.svg",
+      "bytes": 3233,
+      "sha256": "33c0bea0cdc2c063d5c1b4517ea49c3b9716715c7794690864630317297f372f",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/icons/privateModeDark.svg",
+      "bytes": 3181,
+      "sha256": "04a5ade38d8d5297570763601ce0e5512dbcefd2c38abd8978f794d6bf84b799",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/icons/privateModeGradient.svg",
+      "bytes": 3867,
+      "sha256": "54c036fa3888f961c51fcbd3329ef9ad7068e51562ce0e3dfbf96ab44821365a",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/icons/privateModeLight.svg",
+      "bytes": 3181,
+      "sha256": "3dcc1734d494f1493947a872d77926051ff9e00b90e71979f6d4a6ae1da48da6",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/metadata.json",
+      "bytes": 221,
+      "sha256": "59b988ce932751255f95b59f85203403c74170f09e04cce6a9c43b7f1247dcab",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/shaders/privateModeLiquidGlass.glsl",
+      "bytes": 1773,
+      "sha256": "8db2e3ff30570179cae50277911e96c1798984b67681e4efe4c9d9ede1535e1e",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/OriginUIPrivateMode@quandz24.extension/stylesheet.css",
+      "bytes": 358,
+      "sha256": "c62db781033c5d7245e1eb2ea0f979f0333854810640ff42a452d87ee2dc253f",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/color.glsl",
+      "bytes": 4079,
+      "sha256": "05a125addf9fd2f6a28f09d8eae010c101b07298f01204c07af14c97f19bd761",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/color.js",
+      "bytes": 4958,
+      "sha256": "84ffe1b206de60b3bede6ca9ff7a550e5b18fb37be88a928d194d7cd0c8cc86c",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/corner.glsl",
+      "bytes": 2504,
+      "sha256": "b2a45c21357e6d4603f374a8f5300e3ae80d69ce33641a2f2cfa590bd5cbeba7",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/corner.js",
+      "bytes": 7352,
+      "sha256": "686ab486181eb35ce6092d243984af98fb8a6efd38a0db3a28570be0b89f3cba",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/derivative.glsl",
+      "bytes": 2551,
+      "sha256": "4b218281c1b792bee6af203a45a9fa830aa061e374ab23fde2ac701bfcfadf3c",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/derivative.js",
+      "bytes": 3527,
+      "sha256": "5fd2fd90aa252ba1a190ec0189de277ca5825229f66e2af7910274b80dbea020",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/downscale.glsl",
+      "bytes": 2493,
+      "sha256": "6a718bf2c2a24496894cb40dfcd30253d4c312f9223d757fa38050b569c07ea0",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/downscale.js",
+      "bytes": 4133,
+      "sha256": "7b24170d2f7de8daa816d56ef02a8da5e5597c6cdb13a0e4db9c30c5764c8385",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/effects.js",
+      "bytes": 15907,
+      "sha256": "6491f6973f7399bd338888f50ab3c4c9e7b21ec885a1de009b35be99da15a4c9",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/gaussian_blur.glsl",
+      "bytes": 1934,
+      "sha256": "5b7925e7f5c049e2aca4490ff5f00574981a610ec9ed035505f871249f0392d2",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/gaussian_blur.js",
+      "bytes": 6617,
+      "sha256": "f3d82d7183d0c2a90f9783cd2d40a3ea24979f0048b4627d34c674179da23eb7",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/hsl_to_rgb.glsl",
+      "bytes": 393,
+      "sha256": "b3861a5ba80c5a8bba586ce9cd2142bb4a2a3891d7aad77d009b0145f9dee705",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/hsl_to_rgb.js",
+      "bytes": 953,
+      "sha256": "863878cfaef61d07e2a00f1d5c0b70be66430e9b9318e0d4502618dd08c225ca",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/luminosity.glsl",
+      "bytes": 1167,
+      "sha256": "f5a5af36037c2ce508a3f15c47b145c0bb1c2ff8e097d9e95296aa9b96b57ba1",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/luminosity.js",
+      "bytes": 4667,
+      "sha256": "c61c5de757fc329d8676cdcae77aaee47035fda3b9600b5046cff1364f63a0a2",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/monte_carlo_blur.glsl",
+      "bytes": 1362,
+      "sha256": "c3aa2c1dfddcb9721f701de0773dfbbd196d5d8eec73720b8e0243d2dea3283f",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/monte_carlo_blur.js",
+      "bytes": 6368,
+      "sha256": "ad4d6337664bef2d9e561f1f9262332f239e77f62748e318ae730ce3d9eb1137",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/native_dynamic_gaussian_blur.js",
+      "bytes": 2198,
+      "sha256": "2459a5615b39914ed8f14b7f08b1c583e626356b9da38cfc038c1671d362cda2",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/native_static_gaussian_blur.js",
+      "bytes": 1386,
+      "sha256": "4c44126178bd9145e934b8386d1a075c52bbc0644be31722fa75bcb548820fc7",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/noise.glsl",
+      "bytes": 500,
+      "sha256": "ceb4c505d9edade7e6873de56a199c1d7e6db7cd3a8ba6184fc8153303463b48",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/noise.js",
+      "bytes": 2253,
+      "sha256": "e856a61c44cd76428b4eb5192430a2d1904fd4159eca2f4eaf8d1a05212f0319",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/pixelize.js",
+      "bytes": 2679,
+      "sha256": "c43622daca37480db95e666403a665b8c15621ba0f14a426cc723f1789ff23c5",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/rgb_to_hsl.glsl",
+      "bytes": 555,
+      "sha256": "9b554f135a0c5e3087bb0c599928777f100d9f92f1b173772cc21746af0d8d75",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/rgb_to_hsl.js",
+      "bytes": 953,
+      "sha256": "e03781cfd2ae4ea5840429ede79476cd89f0b44c55c71f64aba3249f5eab8865",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/upscale.glsl",
+      "bytes": 1803,
+      "sha256": "2cf89263ace93a9453a41ef207f8a1f829ecde060ba903cb6014191902c4ffd4",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/blur-my-shell@aunetx/effects/upscale.js",
+      "bytes": 3480,
+      "sha256": "c7eaf3b714aafcb3ad6d19ab57b2293db77f78f6b6b99c8bdb211244bb16fb88",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/appIconIndicators.js",
+      "bytes": 45214,
+      "sha256": "7a5e12f7557a1c7f1769fb77f11d144deeb5390620502e5e1a714064c89916f4",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/intellihide.js",
+      "bytes": 11411,
+      "sha256": "1ea45a31650733b92eb2a14642965abc8b016178b00255625d8c36eef479c4eb",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/windowPreview.js",
+      "bytes": 22515,
+      "sha256": "f40a6a48b2d761d97d4da2c42f063e0cda43b443c95878dcf31419d6aba3e45e",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/icons/Radience/index.theme",
+      "bytes": 1166,
+      "sha256": "c07511a5bc4d50c72441b7e8f159bdc9f1c7bacd0b6141acc2f42689db4f4f24",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/plymouth/themes/sunshine/sunshine.plymouth",
+      "bytes": 206,
+      "sha256": "ee2e2471632b65323ba9fe78290d0152a548193f9edd0ac74d9541a7df99d4f5",
+      "incorporated": false
+    },
+    {
+      "referencePath": "usr/share/plymouth/themes/sunshine/sunshine.script",
+      "bytes": 464,
+      "sha256": "dc3d8b68900c47f435a9a1fea42207fc9c2335633287d7f3df1267a0c90e6c2e",
+      "incorporated": false
+    }
+  ]
+}
