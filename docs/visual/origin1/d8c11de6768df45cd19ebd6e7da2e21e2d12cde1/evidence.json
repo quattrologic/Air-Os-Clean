@@ -1,0 +1,254 @@
+{
+  "sourceCommit": "d8c11de6768df45cd19ebd6e7da2e21e2d12cde1",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41194769512",
+  "hardwareAcceptance": false,
+  "acceptance": "INCOMPLETE / FAILED; visual debugging only",
+  "before": {
+    "platform": "linux",
+    "physicalHardware": false,
+    "baseline": true,
+    "viewports": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "geometry": {
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1920,
+            "height": 1056,
+            "top": 24,
+            "right": 1920,
+            "bottom": 1080,
+            "left": 0
+          },
+          "menu": {
+            "x": 74,
+            "y": 0,
+            "width": 465.25,
+            "height": 24,
+            "top": 0,
+            "right": 539.25,
+            "bottom": 24,
+            "left": 74
+          },
+          "dock": {
+            "x": 742.984375,
+            "y": 1011,
+            "width": 434.03125,
+            "height": 69,
+            "top": 1011,
+            "right": 1177.015625,
+            "bottom": 1080,
+            "left": 742.984375
+          },
+          "island": {
+            "x": 850,
+            "y": 0,
+            "width": 220,
+            "height": 40,
+            "top": 0,
+            "right": 1070,
+            "bottom": 40,
+            "left": 850
+          }
+        },
+        "maximized": {
+          "x": 0,
+          "y": 24,
+          "width": 1920,
+          "height": 1056,
+          "top": 24,
+          "right": 1920,
+          "bottom": 1080,
+          "left": 0
+        }
+      },
+      {
+        "width": 1688,
+        "height": 896,
+        "geometry": {
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1688,
+            "height": 872,
+            "top": 24,
+            "right": 1688,
+            "bottom": 896,
+            "left": 0
+          },
+          "menu": {
+            "x": 74,
+            "y": 0,
+            "width": 465.25,
+            "height": 24,
+            "top": 0,
+            "right": 539.25,
+            "bottom": 24,
+            "left": 74
+          },
+          "dock": {
+            "x": 626.984375,
+            "y": 827,
+            "width": 434.03125,
+            "height": 69,
+            "top": 827,
+            "right": 1061.015625,
+            "bottom": 896,
+            "left": 626.984375
+          },
+          "island": {
+            "x": 747.28125,
+            "y": 0,
+            "width": 193.4375,
+            "height": 36,
+            "top": 0,
+            "right": 940.71875,
+            "bottom": 36,
+            "left": 747.28125
+          }
+        },
+        "maximized": {
+          "x": 0,
+          "y": 24,
+          "width": 1688,
+          "height": 872,
+          "top": 24,
+          "right": 1688,
+          "bottom": 896,
+          "left": 0
+        }
+      },
+      {
+        "width": 1650,
+        "height": 930,
+        "geometry": {
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1650,
+            "height": 906,
+            "top": 24,
+            "right": 1650,
+            "bottom": 930,
+            "left": 0
+          },
+          "menu": {
+            "x": 74,
+            "y": 0,
+            "width": 465.25,
+            "height": 24,
+            "top": 0,
+            "right": 539.25,
+            "bottom": 24,
+            "left": 74
+          },
+          "dock": {
+            "x": 607.984375,
+            "y": 861,
+            "width": 434.03125,
+            "height": 69,
+            "top": 861,
+            "right": 1042.015625,
+            "bottom": 930,
+            "left": 607.984375
+          },
+          "island": {
+            "x": 730.453125,
+            "y": 0,
+            "width": 189.078125,
+            "height": 36,
+            "top": 0,
+            "right": 919.53125,
+            "bottom": 36,
+            "left": 730.453125
+          }
+        },
+        "maximized": {
+          "x": 0,
+          "y": 24,
+          "width": 1650,
+          "height": 906,
+          "top": 24,
+          "right": 1650,
+          "bottom": 930,
+          "left": 0
+        }
+      },
+      {
+        "width": 390,
+        "height": 600,
+        "geometry": {
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 390,
+            "height": 576,
+            "top": 24,
+            "right": 390,
+            "bottom": 600,
+            "left": 0
+          },
+          "menu": {
+            "x": 65,
+            "y": 0,
+            "width": 38,
+            "height": 24,
+            "top": 0,
+            "right": 103,
+            "bottom": 24,
+            "left": 65
+          },
+          "dock": {
+            "x": 29.15625,
+            "y": 545.171875,
+            "width": 331.6875,
+            "height": 54.828125,
+            "top": 545.171875,
+            "right": 360.84375,
+            "bottom": 600,
+            "left": 29.15625
+          },
+          "island": {
+            "x": 123,
+            "y": 0,
+            "width": 144,
+            "height": 36,
+            "top": 0,
+            "right": 267,
+            "bottom": 36,
+            "left": 123
+          }
+        },
+        "maximized": {
+          "x": 0,
+          "y": 24,
+          "width": 390,
+          "height": 576,
+          "top": 24,
+          "right": 390,
+          "bottom": 600,
+          "left": 0
+        }
+      }
+    ],
+    "checks": [
+      "no renderer exceptions 1920",
+      "no renderer exceptions 1688",
+      "no renderer exceptions 1650",
+      "no renderer exceptions 390"
+    ],
+    "status": "passed"
+  },
+  "after": {
+    "status": "incomplete",
+    "platform": "linux",
+    "physicalHardware": false,
+    "baseline": false
+  },
+  "material": {
+    "status": "incomplete",
+    "hardwareAcceptance": false
+  }
+}
