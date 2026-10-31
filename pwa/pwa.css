@@ -118,3 +118,8 @@ html[data-pwa=true] .origin-stage-overview{top:calc(var(--pwa-top,0px) + env(saf
 html[data-pwa=true] .origin-stage-overview :is(button,select){min-height:44px}html[data-pwa=true] .origin-stage-rail{left:max(4px,env(safe-area-inset-left,0px));top:calc(var(--pwa-top,0px) + env(safe-area-inset-top,0px) + 74px)}
 html[data-pwa=true].pwa-keyboard .origin-stage-rail{display:none}
 @media(orientation:portrait){html[data-pwa=true] .origin-stage-rail{max-width:52px}}
+/* WebKit native select faces can paint white despite a dark inherited foreground.
+   Keep the real select and its OS picker/keyboard contract; style only its closed face. */
+html[data-pwa=true] .origin-stage-overview select{appearance:none;-webkit-appearance:none;color-scheme:dark;color:#f5f5f7;background-color:#303844;background-image:linear-gradient(45deg,transparent 50%,#f5f5f7 50%),linear-gradient(135deg,#f5f5f7 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px}
+html[data-pwa=true] .origin-stage-overview option{color:#f5f5f7;background:#303844}
+@media(forced-colors:active){html[data-pwa=true] .origin-stage-overview select{appearance:auto;-webkit-appearance:auto;color-scheme:normal;color:ButtonText;background:ButtonFace}}

@@ -1,0 +1,148 @@
+{
+  "synthetic": true,
+  "physicalIPad": false,
+  "kind": "Linux Chromium touch / DPR2, actual renderer captures, no retouch",
+  "testTime": "2026-10-29T12:34:00Z",
+  "basePath": "/Air-Os-Clean/",
+  "before": {
+    "product": "Air-OS Ultimate iPad PWA",
+    "schemaVersion": 1,
+    "commit": "1deb36a2e77107897cd277d07bdd09140697da9d",
+    "sourceDirty": false,
+    "target": "browser-pwa",
+    "authentication": "local-area-not-security-auth",
+    "cloud": false,
+    "physicalIPadAcceptance": false
+  },
+  "after": {
+    "product": "Air-OS Ultimate iPad PWA",
+    "schemaVersion": 1,
+    "commit": "977aa8946aacd6ff9349f1c61a27d7c032749fb4",
+    "sourceDirty": false,
+    "target": "browser-pwa",
+    "authentication": "local-area-not-security-auth",
+    "cloud": false,
+    "physicalIPadAcceptance": false
+  },
+  "checks": {
+    "before": 100,
+    "after": 117
+  },
+  "files": [
+    {
+      "file": "before/1180x820-desktop.jpg",
+      "bytes": 127514,
+      "sha256": "682f380bb2439da7390bf609da2881193aed2c0a01ff3deb0087fc8f010dd98c"
+    },
+    {
+      "file": "before/1366x1024-desktop.jpg",
+      "bytes": 144614,
+      "sha256": "64dee91f350cff9cdf30479878d9737afbb96366ccbb17b1e7b031fcd43b014c"
+    },
+    {
+      "file": "before/834x1194-desktop.jpg",
+      "bytes": 117316,
+      "sha256": "8e18773747f4e4599a7d4e293e902d462a7661e80d5af66cc57995601d045204"
+    },
+    {
+      "file": "before/1180x820-notes.jpg",
+      "bytes": 75016,
+      "sha256": "37e1485941c034f7ede265e60e19ba1bcb535f7cb11044785eb01287633e0fa4"
+    },
+    {
+      "file": "before/1180x820-finder.jpg",
+      "bytes": 137513,
+      "sha256": "97b99c46aecf5d8d15328f379eb9d3f84f598b338c89fa736375a850f6ea2b42"
+    },
+    {
+      "file": "before/1180x820-two-apps.jpg",
+      "bytes": 155743,
+      "sha256": "9ed9fc9cec4ac2211160715474b466229472bbbe867e719ad025f589887cb5fd"
+    },
+    {
+      "file": "before/1180x820-control-center.jpg",
+      "bytes": 174718,
+      "sha256": "01fe177ec0db07b5d3c47e50e6eb5373330cdf50544e0dfb932e2b4169bbc1be"
+    },
+    {
+      "file": "before/1180x820-spotlight.jpg",
+      "bytes": 95142,
+      "sha256": "10c69c487db0f12cc0e4638f41baa00fbc5314e419b97e37e360ddd61b88d246"
+    },
+    {
+      "file": "before/1180x820-overview.jpg",
+      "bytes": 136698,
+      "sha256": "9772d45914cc32eb6ff3056bd4fdf4363f1f2a6959b2a3fee1ca58d95866139e"
+    },
+    {
+      "file": "before/1180x820-start-screen.jpg",
+      "bytes": 123711,
+      "sha256": "eb9e392e290164109f2e0a8efe1bfabc057c516b59fa55aae0d593de9f7314ad"
+    },
+    {
+      "file": "after/1180x820-desktop.jpg",
+      "bytes": 127821,
+      "sha256": "59590313d2fc440a92f72e08dd681cda6ed4da32a5f951baeba99e5a6ac70c09"
+    },
+    {
+      "file": "after/1366x1024-desktop.jpg",
+      "bytes": 144764,
+      "sha256": "9a10d7141f4f48bd03c715f3dfccaf056ca869473519a462397b85755686ad3f"
+    },
+    {
+      "file": "after/834x1194-desktop.jpg",
+      "bytes": 116978,
+      "sha256": "33d33d6143b73f71467aca6ecbb1dd1ec0dd85229dc8e5d077e4bffa949019b8"
+    },
+    {
+      "file": "after/1180x820-notes.jpg",
+      "bytes": 75088,
+      "sha256": "9b93b30238c4e15cc372c41a3598b235b1ccb9c7cbf1497e0bae7376564b2c5b"
+    },
+    {
+      "file": "after/1180x820-finder.jpg",
+      "bytes": 138042,
+      "sha256": "f8f64f6d4126166e1938ad4efd69278ad90f90cc048d021ae78effd1a465edc5"
+    },
+    {
+      "file": "after/1180x820-two-apps.jpg",
+      "bytes": 155701,
+      "sha256": "d338387b4249cf231e4cc57fad54965894fbf05c9abd4b1f5558ff2a2930fda3"
+    },
+    {
+      "file": "after/1180x820-control-center.jpg",
+      "bytes": 177972,
+      "sha256": "10facff7fe6454e2eff0e76fa905bd8f9c903e6259a006e67bd33419a99d2090"
+    },
+    {
+      "file": "after/1180x820-spotlight.jpg",
+      "bytes": 96653,
+      "sha256": "ce30abf822df815312bb95c5caed4dba257bb65935fca68677091c451ff65244"
+    },
+    {
+      "file": "after/1180x820-overview.jpg",
+      "bytes": 179968,
+      "sha256": "da55331569a152c3890a5ea497dea58de9f400b5e06ec4621bb7baa2c8e1e1be"
+    },
+    {
+      "file": "after/1180x820-start-screen.jpg",
+      "bytes": 123711,
+      "sha256": "eb9e392e290164109f2e0a8efe1bfabc057c516b59fa55aae0d593de9f7314ad"
+    },
+    {
+      "file": "after/1180x820-stage-groups.jpg",
+      "bytes": 207632,
+      "sha256": "fe54c94030edccdc4016bcff2b73e83ea46e5e4bbcbf9dd6a887885d0d1e3159"
+    },
+    {
+      "file": "after/834x1194-stage-manager.jpg",
+      "bytes": 202947,
+      "sha256": "a52a3beed22e392bb9ebb2b7f4528a3da4e4ff1338d40150c9a396cd30ce8d02"
+    },
+    {
+      "file": "after/1366x1024-stage-manager.jpg",
+      "bytes": 243952,
+      "sha256": "dc4e8ce97907a70d662658d708c69feaa434573fe118c1916025f3754ea460d4"
+    }
+  ]
+}
