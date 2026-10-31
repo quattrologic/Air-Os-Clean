@@ -102,3 +102,9 @@ Physisches iPad, Safari-Home-Screen-Installation, reale Safe Areas/Bildschirmtas
 ## Zweite visuelle Korrekturrunde (WebKit)
 
 Der abschließende Lauf 41223948617 auf b716ad310902cadc29cc2d952415bb984fe5935b bestand tatsächlich alle Browserpfade: Chromium Root 116, WebKit Root 115, Chromium Unterpfad 117, WebKit Unterpfad 116; jeweils sieben Viewports und 0 Fehler. Auch der kalte Offline-Neustart besteht nach der robusten Start-URL-Zuordnung. Dennoch zeigte die visuelle Prüfung der WebKit-Aufnahmen schlecht lesbare native weiße Select-Flächen. Produktkorrektur: echter Select bleibt erhalten, explizite dunkle geschlossene Fläche / lesbarer Vordergrund / native Picker- und Tastaturfunktion. Zusätzlicher GUI-Check; erneuter Build wird getrennt nachgewiesen. Die WebKit-GTK-Compositorwirkung unterscheidet sich sichtbar von Chromium; keine Behauptung gleicher physischer Safari-Blurqualität.
+
+## Präzisierung der intermittierenden WebKit-Abnahme
+
+Lauf 41225675689 auf 8503a39715b2427b68484838dc7b51a960c3fbef: neue echte Select-Pixelprüfung in Chromium und WebKit bestanden; der WebKit-Unterpfadlauf scheiterte dennoch beim letzten kalten Offline-Neustart. Nach Rückkehr des Origins meldete die begrenzte Diagnose aktivierten Worker, gecachtes index.html und die erhaltene synthetische Notiz; kein Nachweis von Datenverlust. Deshalb ist die frühere einmalige grüne Abnahme b716 kein Stabilitätsbeweis.
+
+Gezielte Produktkorrektur: der Worker cached zusätzlich genau die eigene kanonische Scope-Startadresse als neutralen App-Shell-Response ohne fremde Response-URL. Kein privater Datensatz und kein weiterer Cache; bestehende Cacheversionierung/Updatebestätigung/Scope-Grenzen bleiben. Die 367 Runtimeassets werden um genau diesen Startdokument-Alias ergänzt. Ein ausgeführter Worker-Test prüft Inhalt, Alias und Fremdorigin-/Querygrenzen. Ergebnis des erneuten Browserlaufs folgt separat.
