@@ -13,6 +13,9 @@ jobs:
   electron:
     runs-on: ubuntu-24.04
     timeout-minutes: 25
+    outputs:
+      regression: ${{ steps.regression.outcome }}
+      sandbox: ${{ steps.sandbox.outcome }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -76,6 +79,7 @@ jobs:
           retention-days: 30
   save-synthetic-evidence:
     needs: electron
+    if: ${{ !cancelled() && needs.electron.outputs.regression == 'success' && needs.electron.outputs.sandbox == 'success' }}
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -91,4 +95,6 @@ jobs:
           name: Air-OS-Origin-Linux-evidence-${{ github.sha }}
           path: dist
       - name: Save only source-leased synthetic screenshots to this feature branch
+        env:
+          ORIGIN_EVIDENCE_DEBUG: ${{ needs.electron.result != 'success' && '1' || '0' }}
         run: node scripts/publish-origin-evidence.cjs

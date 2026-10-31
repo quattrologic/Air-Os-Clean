@@ -46,5 +46,5 @@
  const stop=airAppLifecycle.onChange(()=>{if(!frame&&!disposed)frame=requestAnimationFrame(()=>{frame=0;sync();});});
  function end(){if(disposed)return;close(false);disposed=true;stop();events.abort();rail.remove();chosen.clear();}
  document.addEventListener('air-profile-changing',end,{once:true});window.addEventListener('pagehide',end,{once:true});
- window.airStageOverview=Object.freeze({open,close,sync,snapshot:()=>({open:!!panel,dragging:!!drag,pending:!!frame,disposed})});sync();
+ window.airStageOverview=Object.freeze({open,close,sync,snapshot:()=>({open:!!panel,dragging:!!drag,pending:!!frame,disposed,busy,selected:chosen.size})});sync();
 })();
