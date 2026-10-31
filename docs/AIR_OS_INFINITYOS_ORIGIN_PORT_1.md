@@ -66,3 +66,9 @@ Stage-Drag endet bei pointercancel, lostpointercapture, Resize, Blur, Visibility
 Der iPad-Branch wurde nicht gemerged/geändert; seine 576 bisherigen Tests werden nicht mit den 565 Desktoptests addiert. Kein Pages-Deployment. [Eigene Referenz-Hashprüfung ohne Quellinhalt](build-evidence/infinity-origin/reference-audit.json).
 
 M2-Resize-Korrektur im bestehenden app.js: Bei Viewport-/Displaygrößenänderung wird ausschließlich eine schon laufende M2-Animation über ihren ursprünglichen settleModernDockMotion-Pfad beendet, bevor die Fenstergrenzen neu geklemmt werden. Das verhindert veraltete Dock-Ziele/Leases nach Resize. Die normale 410ms-Timeline, Kurve und Reverse bleiben unverändert. Der GUI-Test prüft beide Zielrichtungen und Lease=0.
+
+## Tatsächliche visuelle Korrekturrunde
+
+Die ersten echten CI-Bilder (5eb457a; ausdrücklich unvollständige Abnahme) zeigten kleine Checkbox-Klickziele, mit Drag kollidierende Labelbereiche, sehr kleine schematische Fenster und unnötige leere Panelhöhe. Korrigiert: 44px-Auswahlzeilen, Labels ausdrücklich vom Drag ausgenommen, größere zentrierte Gruppenausschnitte und inhaltsabhängige Panelhöhe mit einem begrenzten Scrollbereich im schmalen Viewport. Keine nachträgliche Bildbearbeitung.
+
+Die erste Materialdiagnose verwendete ein neues SVG-data-URI, das die vorhandene Herkunftsprüfung korrekt mit wallpaper-origin ablehnte. Der Test verwendet nun ausschließlich selbst im Test erzeugte PNG-Pixel über den bereits freigegebenen begrenzten Rasterpfad. Herkunfts-/GPU-Schutz im Produkt unverändert.
