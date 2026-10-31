@@ -25,5 +25,9 @@
   const scale=Math.min(width/Math.max(1,area.width),height/Math.max(1,area.height));
   const w=Math.max(12,Math.min(width,box.width*scale)),h=Math.max(10,Math.min(height,box.height*scale));return {left:Math.max(0,Math.min(width-w,box.left*scale)),top:Math.max(0,Math.min(height-h,box.top*scale)),width:w,height:h};
  }
- return Object.freeze({empty,validate,stages,move,overlap,miniature});
+ // Select only live windows. Never relaunch a closed group member.
+ function actionTargets(group,action,state){if(!group||!['activate','minimize','restore'].includes(action))return [];return group.apps.filter(id=>state(id)!=='closed'&&(action==='activate'||(action==='minimize'?state(id)!=='minimized':state(id)==='minimized')));}
+ function activeStage(groups,focused,state){return groups.find(g=>g.apps.includes(focused))||groups.find(g=>g.apps.some(id=>state(id)!=='minimized'))||groups[0];}
+ function neighbor(groups,focused,direction){if(!groups.length)return null;const i=groups.findIndex(g=>g.apps.includes(focused));return groups[(Math.max(0,i)+(direction<0?groups.length-1:1))%groups.length];}
+ return Object.freeze({empty,validate,stages,move,overlap,miniature,actionTargets,activeStage,neighbor});
 });

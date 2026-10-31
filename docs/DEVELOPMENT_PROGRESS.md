@@ -1,3 +1,9 @@
+# Integration 2 — Desktop-Checkpoint
+
+Basis 8651a1aaa357b52a7c4edfbea7056bf59e40601b; Branch `feat/air-os-infinityos-origin-port-2-desktop`. Stage-Gruppenaktionen über M2, endliche Stage-Übergänge, gemeinsame Layoutwahl, DPR-korrekte Materialabtastung und transparenter CSS-Fallback implementiert. 572/572 lokale Regressionen und Syntaxprüfung bestanden. Neue GUI-/Windows-CI noch ausstehend. Ungeklärte Referenzquellen nicht übernommen.
+
+Nächste drei Schritte: echte Electron-Bildprüfung/Korrektur; selektiver iPad-Port; Windows-R8- und WebKit-Buildnachweise dokumentieren.
+
 # InfinityOS / Origin — geprüfter Abschluss (2026-10-31)
 
 Branch feat/air-os-infinityos-origin-port-1; Desktopbasis02ccaf88724731cf685d2221f88e959020aff3f0. Abgenommener Quell-/Teststandd299a706fe95a59a0f8458126c8d9fd4c5ed5b07, Produktkorrektura1f0c92a4f2c561f4d9b5656232c2c70518f03b5; finale Bilder/Messwerte1e773c77b3409f880d6304ac50646fc219416be2.

@@ -1,0 +1,102 @@
+name: InfinityOS integration 2 · Linux Electron (no release)
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/air-os-infinityos-origin-port-2-desktop]
+    paths-ignore: ['docs/**']
+permissions:
+  contents: read
+concurrency:
+  group: air-origin2-linux-check
+  cancel-in-progress: false
+jobs:
+  electron:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    outputs:
+      regression: ${{ steps.regression.outcome }}
+      sandbox: ${{ steps.sandbox.outcome }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Frozen and audited existing toolchain
+        run: |
+          npm ci --prefix build/windows-x64 --ignore-scripts --no-fund --no-audit
+          npm audit --prefix build/windows-x64 --audit-level=high
+          node scripts/windows-test-build.cjs link
+          node build/windows-x64/node_modules/electron/install.js
+      - name: Syntax and complete regression suite
+        id: regression
+        run: |
+          node scripts/windows-test-build.cjs validate
+          node scripts/run-test-gate.cjs
+      - name: Configure Chromium's supplied Linux sandbox (never disable it)
+        id: sandbox
+        run: |
+          sudo chown root:root build/windows-x64/node_modules/electron/dist/chrome-sandbox
+          sudo chmod 4755 build/windows-x64/node_modules/electron/dist/chrome-sandbox
+      - name: Identical baseline desktop scenes from verified Origin 1
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
+          AIR_R1_APP: dist/origin-baseline
+          AIR_R1_OUTPUT: dist/origin-evidence/before
+          AIR_ORIGIN2_SCENES: '1'
+          AIR_ORIGIN_SCENES: '1'
+          AIR_ORIGIN_BEFORE: '1'
+        run: |
+          git worktree add --quiet --detach dist/origin-baseline 8651a1aaa357b52a7c4edfbea7056bf59e40601b
+          ln -s "$GITHUB_WORKSPACE/node_modules" dist/origin-baseline/node_modules
+          xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
+      - name: Real Linux Electron groups, touch, bounds, M1/M2, F11, profiles and restart
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
+          AIR_R1_APP: .
+          AIR_R1_OUTPUT: dist/origin-evidence/after
+          AIR_ORIGIN2_SCENES: '1'
+          AIR_ORIGIN_SCENES: '1'
+        run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
+      - name: Isolated software material diagnostic, DPR and shared-context cleanup
+        if: ${{ !cancelled() && steps.regression.outcome == 'success' && steps.sandbox.outcome == 'success' }}
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
+          AIR_R1_APP: .
+          AIR_R1_OUTPUT: dist/origin-evidence/materials
+          AIR_ORIGIN_MATERIAL: '1'
+        run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
+      - name: Preserve synthetic screenshots, metrics and failures (never publish a site)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Origin2-Linux-evidence-${{ github.sha }}
+          path: |
+            dist/origin-evidence/
+            dist/r1-gui/node-tests.tap
+          retention-days: 30
+  save-synthetic-evidence:
+    needs: electron
+    if: ${{ !cancelled() && needs.electron.outputs.regression == 'success' && needs.electron.outputs.sandbox == 'success' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: Air-OS-Origin2-Linux-evidence-${{ github.sha }}
+          path: dist
+      - name: Save only source-leased synthetic screenshots to this feature branch
+        env:
+          ORIGIN_EVIDENCE_DEBUG: ${{ needs.electron.result != 'success' && '1' || '0' }}
+        run: node scripts/publish-origin2-evidence.cjs

@@ -34,6 +34,17 @@ module.exports=async function(h){
   const orderBefore=await e('airWindowSystem.stageSnapshot().order'),dragRects=await e("[...document.querySelectorAll('[data-stage]')].map(n=>n.getBoundingClientRect().toJSON())");await h.client.send('Input.dispatchMouseEvent',{type:'mousePressed',x:dragRects[1].left+10,y:dragRects[1].top+10,button:'left',buttons:1,clickCount:1});await h.client.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:dragRects[0].left+10,y:dragRects[0].top+10,button:'left',buttons:1});await h.client.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:dragRects[0].left+10,y:dragRects[0].top+10,button:'left',buttons:0,clickCount:1});await wait('airWindowSystem.stageSnapshot().order[0]==='+JSON.stringify(orderBefore[1]));check('actual pointer drop persists stage order',true);
 
 
+  if(process.env.AIR_ORIGIN2_SCENES==='1'){
+   await key('Escape','Escape',27);const live=await e('[...openApps.keys()]');
+   check('group minimize uses existing M2',await e("airWindowSystem.stageAction(airWindowSystem.stageSnapshot().groups[0].id,'minimize')"));
+   check('both group members minimized without closing',await e("['finder','notes'].every(id=>airAppLifecycle.get(id)==='minimized'&&openApps.has(id))"));
+   check('group restore completes shared M2',await e("airWindowSystem.stageAction(airWindowSystem.stageSnapshot().groups[0].id,'restore')"));
+   await wait("['finder','notes'].every(id=>openApps.get(id).style.display!=='none'&&!openApps.get(id)._airOSDockMotion)");
+   a.deepEqual(await e('[...openApps.keys()]'),live);check('group operations preserve window identity and no dock leases',await e('airDockLayout.snapshot().leases===0'));
+   await key(']','BracketRight',221,3);await wait("airAppLifecycle.focused()==='reminders'");await key('[','BracketLeft',219,3);await wait("['finder','notes'].includes(airAppLifecycle.focused())");await delay(250);
+   check('stage keyboard cycles and cleans finite transition',await e('airWindowSystem.stageActivity().animations===0&&!airWindowSystem.stageActivity().busy'));
+   await e('airStageOverview.open()');await e("document.querySelector('[data-stage]').focus()");await key('End','End',35);check('stage spatial End selects final live card',await e("document.activeElement===document.querySelectorAll('[data-stage]')[document.querySelectorAll('[data-stage]').length-1]"));await shot('stage-group-actions');
+  }
   await key('Escape','Escape',27);await e('airWindowSystem.stageSettings({enabled:false})');await wait("![...openApps.values()].some(w=>w.classList.contains('origin-stage-away'))");a.deepEqual(await e("Object.fromEntries([...openApps].map(([id,w])=>[id,{left:w.style.left,top:w.style.top,width:w.style.width,height:w.style.height}]))"),bounds);check('stage disable preserves window geometry',true);
   await e('airWindowSystem.configure({workspace:2})');await wait('airWindowSystem.desktopLayout().workspace===2&&airWindowSystem.stages().length===0');await e('airWindowSystem.configure({workspace:1})');await wait('airWindowSystem.desktopLayout().workspace===1&&airWindowSystem.stages().length===2');check('workspace switch preserves grouped windows and IDs',await e('openApps.size===3&&airWindowSystem.stageSnapshot().groups.length===1'));
 
