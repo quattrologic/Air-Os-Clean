@@ -27,7 +27,7 @@
  async function stageAction(groupId,action,preferred){
   if(disposed||!owner||!modern()||stageBatch||document.documentElement.classList.contains('air-native-fullscreen'))return false;
   const group=stageList().find(g=>g.id===groupId);if(!group||!['activate','restore','minimize'].includes(action))return false;
-  const session=owner,ticket=++stageToken,ids=airStageMath.actionTargets(group,action,id=>airAppLifecycle.get(id));stageBatch=true;
+  const session=owner,ticket=++stageToken,ids=airStageMath.actionTargets(group,action,id=>airAppLifecycle.get(id));stageBatch=true;window.airStageOverview?.sync();
   try{const waiting=[];for(const id of ids){if(disposed||owner!==session||ticket!==stageToken)break;const w=openApps.get(id);if(!w)continue;cancelStageMotion(id);if(action==='minimize'){if(airAppLifecycle.get(id)!=='minimized')w.querySelector('.minimize')?.click();}else if(airAppLifecycle.get(id)==='minimized'||w._airOSDockMotion)openApp(id);if(w._airOSMotion)waiting.push(w._airOSMotion.finished.catch(()=>{}));}
    await Promise.all(waiting);if(disposed||owner!==session||ticket!==stageToken)return false;
    if(action!=='minimize'){const target=group.apps.includes(preferred)&&openApps.has(preferred)?preferred:math.order(group.apps.filter(id=>openApps.has(id)),mru,null)[0];if(target)focus(target);}return true;

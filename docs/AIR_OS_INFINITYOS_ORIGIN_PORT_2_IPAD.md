@@ -24,3 +24,7 @@ Eigener Workflow `build-air-os-ipad-origin2.yml`: Audit, Regressionen, sauberer 
 ## Installation / Grenzen
 
 ZIP auf einem ausdrücklich gewählten vertrauenswürdigen HTTPS-Host entpacken; Safari → Teilen → Zum Home-Bildschirm → als Web-App öffnen. Dieser Auftrag deployed keine Website. Nach erstmaligem vollständigem Laden bleiben lokale Apps offline verfügbar. Browserdaten regelmäßig über das vorhandene Backup exportieren. Lokale Bereiche sind keine sichere Passwortauthentifizierung; kein Apple-Kalender-/Stage-Manager-/Dateien-App-Vollzugriff und keine native App-Store-App.
+
+## Visuelle Korrektur nach realem Bildvergleich
+
+Der erste reale Chromium-Stage-Lauf bestand 113 Prüfungen ohne Fehler. Das Overlay war über weißen Arbeitsflächen zu hell; Produktcode erhält eine separate Lesefläche, kompaktere Appzeilen, ehrliche Zustandsindikatoren und deaktivierte nicht anwendbare Gruppenaktionen. Widgets/Dock bleiben transparent. Lokales Stage-Rail-Swipen respektiert vertikales Scrollen und Pointercancel. Touch-Release räumt Hoverlicht auf. Zusätzliche Szenarien prüfen Leseflächen-Kontrast, Swipe-Abbruch und bestätigte Backup-Wiederherstellung der Gruppen. Die Hardwaregrenzen bleiben unverändert.
