@@ -64,3 +64,5 @@ Stage-Drag endet bei pointercancel, lostpointercapture, Resize, Blur, Visibility
 | Electron-F11 / native Energiesperre | Keine entsprechende Browserberechtigung | Nicht in PWA importieren oder vortäuschen |
 
 Der iPad-Branch wurde nicht gemerged/geändert; seine 576 bisherigen Tests werden nicht mit den 565 Desktoptests addiert. Kein Pages-Deployment. [Eigene Referenz-Hashprüfung ohne Quellinhalt](build-evidence/infinity-origin/reference-audit.json).
+
+M2-Resize-Korrektur im bestehenden app.js: Bei Viewport-/Displaygrößenänderung wird ausschließlich eine schon laufende M2-Animation über ihren ursprünglichen settleModernDockMotion-Pfad beendet, bevor die Fenstergrenzen neu geklemmt werden. Das verhindert veraltete Dock-Ziele/Leases nach Resize. Die normale 410ms-Timeline, Kurve und Reverse bleiben unverändert. Der GUI-Test prüft beide Zielrichtungen und Lease=0.

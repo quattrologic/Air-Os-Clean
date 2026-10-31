@@ -27,10 +27,12 @@ jobs:
           node scripts/windows-test-build.cjs link
           node build/windows-x64/node_modules/electron/install.js
       - name: Syntax and complete regression suite
+        id: regression
         run: |
           node scripts/windows-test-build.cjs validate
           node scripts/run-test-gate.cjs
       - name: Configure Chromium's supplied Linux sandbox (never disable it)
+        id: sandbox
         run: |
           sudo chown root:root build/windows-x64/node_modules/electron/dist/chrome-sandbox
           sudo chmod 4755 build/windows-x64/node_modules/electron/dist/chrome-sandbox
@@ -55,6 +57,7 @@ jobs:
           AIR_ORIGIN_SCENES: '1'
         run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
       - name: Isolated software material diagnostic, DPR and shared-context cleanup
+        if: ${{ !cancelled() && steps.regression.outcome == 'success' && steps.sandbox.outcome == 'success' }}
         env:
           AIR_GUI_TEST_ISOLATED: '1'
           AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
