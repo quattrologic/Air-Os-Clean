@@ -1,3 +1,11 @@
+# Integration 2 — final geprüftes iPad PWA 2
+
+Branch `feat/air-os-infinityos-origin-port-2-ipad`; Basis 1deb36a2e77107897cd277d07bdd09140697da9d. Finales Produkt / Build: 89683dc747ef79886447469234b7eadc0167acc0. 585/585 Node-Tests. CI 41227319687 vollständig grün: Chromium Root 119, WebKit Root 118, Chromium Unterpfad 120, WebKit Unterpfad 119; je sieben Viewports, keine Browserfehler. Wiederholte echte Offline-Kaltstarts bestanden; direkter kanonischer App-Shell-Cache zusätzlich zu Runtimeassets. Stage-Gruppenaktionen / Keyboard / Pointercancel / Backup / Profile, gemeinsamer Materialpfad, native WebKit-Select-Lesbarkeit anhand echter Pixel geprüft.
+
+ZIP Air-OS-Ultimate-iPad-89683dc747ef.zip; SHA256 fb0c397093004d9842b665c86c1191f8a5451b2785fe2087f70bf87ed372fb2c. Bericht AIR_OS_INFINITYOS_ORIGIN_PORT_2_IPAD.md; Artefakte im genannten Lauf. Keine neue DB / Schemaänderung; keine ungeklärten Referenzquellen übernommen; kein Deployment. Desktop separat vollständig als Windows R8 installiert/geprüft (Lauf 41222397648).
+
+Nächste drei ausdrücklich offene Geräteprüfungen: echte Safari-Home-Screen-Installation/offline; Pencil/Tastatur/Safe Areas/Suspend/Audio; physische Hardware-GPU/Compositormaterialien. Keine Fortsetzung nach Abschluss ohne Folgeauftrag.
+
 # Integration 2 — iPad-Checkpoint
 
 Basis 1deb36a2e77107897cd277d07bdd09140697da9d; Branch `feat/air-os-infinityos-origin-port-2-ipad`. Selektiver Stage-/Materialport, validierte IndexedDB-Profileinstellungen und gemeinsame Übersicht. Browser-eigene Reminders-/Kalender-/Finder-Funktionen erhalten. 584/584 Node-Tests und bestehender vollständiger Chromium-Lauf 99/99, sieben Viewports bestanden. Zusätzliche Stage-/WebKit-CI ausstehend. Kein Deployment.

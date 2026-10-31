@@ -1,5 +1,9 @@
 # InfinityOS Integration 2 — iPad PWA 2
 
+**Abschlussstand:** Produkt-/Buildquelle `89683dc747ef79886447469234b7eadc0167acc0`. 585/585 Regressionen; alle vier Chromium-/WebKit-Pfade einschließlich dreifacher kalter Offline-Neustarts bestanden. Der früher intermittierende Fehler wurde nicht ausgeblendet; nach direktem Caching des kanonischen Startdokuments besteht die strengere Wiederholungsprüfung. Physische iPad-/Safari-/Pencil-Abnahme bleibt offen.
+
+**Aktuelles PWA-ZIP:** [Actions-Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687/artifacts/13052597337), Datei `Air-OS-Ultimate-iPad-89683dc747ef.zip`, SHA-256 `fb0c397093004d9842b665c86c1191f8a5451b2785fe2087f70bf87ed372fb2c`. Kein Deployment. Ältere Zwischenstände unten sind historisch.
+
 Basis: `1deb36a2e77107897cd277d07bdd09140697da9d`.
 Branch: `feat/air-os-infinityos-origin-port-2-ipad`.
 
@@ -108,3 +112,31 @@ Der abschließende Lauf 41223948617 auf b716ad310902cadc29cc2d952415bb984fe5935b
 Lauf 41225675689 auf 8503a39715b2427b68484838dc7b51a960c3fbef: neue echte Select-Pixelprüfung in Chromium und WebKit bestanden; der WebKit-Unterpfadlauf scheiterte dennoch beim letzten kalten Offline-Neustart. Nach Rückkehr des Origins meldete die begrenzte Diagnose aktivierten Worker, gecachtes index.html und die erhaltene synthetische Notiz; kein Nachweis von Datenverlust. Deshalb ist die frühere einmalige grüne Abnahme b716 kein Stabilitätsbeweis.
 
 Gezielte Produktkorrektur: der Worker cached zusätzlich genau die eigene kanonische Scope-Startadresse als neutralen App-Shell-Response ohne fremde Response-URL. Kein privater Datensatz und kein weiterer Cache; bestehende Cacheversionierung/Updatebestätigung/Scope-Grenzen bleiben. Die 367 Runtimeassets werden um genau diesen Startdokument-Alias ergänzt. Ein ausgeführter Worker-Test prüft Inhalt, Alias und Fremdorigin-/Querygrenzen. Ergebnis des erneuten Browserlaufs folgt separat.
+
+## Finale Abnahme / Wiederholbarkeit
+
+[Erfolgreicher Lauf 41227319687](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687). Sauberer Produkt-/Buildcheckout `89683dc747ef79886447469234b7eadc0167acc0`. Alle 585 Node-Regressionen, Audits, Paket-/CSP-/Runtime-/Lizenzprüfungen bestanden.
+
+| Browserpfad | Erfolgreiche GUI-Prüfungen | Viewports | Unbehandelte Fehler |
+|---|---|---|---|
+| Chromium Vorherbasis | 99 | 7 | 0 |
+| Chromium / | 119 | 7 | 0 |
+| WebKit / | 118 | 7 | 0 |
+| Chromium /Air-Os-Clean/ | 120 | 7 | 0 |
+| WebKit /Air-Os-Clean/ | 119 | 7 | 0 |
+
+Jeder neue Browserpfad prüft den ersten kalten Neustart und zwei zusätzliche Relaunches. Bei den beiden zusätzlichen Fällen wird der echte Originserver **vor** dem Start des persistenten Browsers abgeschaltet; keine Online-Aufwärmnavigation. Notes, Reminders, importierte Musik und Stage-Gruppen werden danach aus demselben IndexedDB-Bestand gelesen. Alle zwölf kalten Starts dieser vier Pfade bestanden. Das ist eine reproduzierbare automatisierte Abnahme, keine Zusage für alle Safari-/Hardwareversionen.
+
+Die native WebKit-Select-Fläche wurde anhand tatsächlicher Renderer-PNG-Pixel geprüft: beide Felder Luminanz 0.0387408 und Textkontrast 10.8668:1. Prüfung umfasst Chromium und WebKit, nicht nur deklarierte CSS-Farben. Der finale WebKit-Screenshot wurde visuell geprüft: Beschriftungen wieder lesbar. Die GTK-/WebKit-Compositorwirkung unterscheidet sich weiterhin sichtbar von Chromium; keine behauptete Blur- oder Hardwareparität.
+
+Aktuelles versioniertes ZIP: `Air-OS-Ultimate-iPad-89683dc747ef.zip`, **2268450 Bytes**. SHA-256 **`fb0c397093004d9842b665c86c1191f8a5451b2785fe2087f70bf87ed372fb2c`**. Lokal aus sauberem Checkout reproduziert; Hash identisch mit CI. Dies ist der Hash der PWA-ZIP im Actions-Artefakt, nicht der äußeren Artefakt-ZIP.
+
+- [Installierbares PWA-Artefakt, BUILD-INFO und SHA256SUMS](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687/artifacts/13052597337) (30 Tage Aufbewahrung).
+- [Browserbilder, Audits und Testprotokolle](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41227319687/artifacts/13052183577).
+- [Strukturierter vollständiger Nachweis](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/evidence.json) mit Worker-/Scope-/Offline-/Update-/GPU- und Stage-Messungen.
+- [Finale WebKit-Stage-Übersicht](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-stage-groups.jpg), [Stage Hochformat](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/834x1194-stage-manager.jpg), [Desktop](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1366x1024-desktop.jpg), [Kontrollzentrum](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-control-center.jpg).
+- [Spotlight](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-spotlight.jpg), [Offline Notes](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-offline-notes.jpg), [Musik](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-music.jpg), [Startbildschirm](visual/origin2-ipad/89683dc747ef79886447469234b7eadc0167acc0/webkit/1180x820-start-screen.jpg).
+
+Finale Produkt-Checkpoints: `caa20a6fbd1797fe2f8b0e1e87bbca858529ca0f` (zweite visuelle Korrektur), `8503a39715b2427b68484838dc7b51a960c3fbef` (echte Select-Pixelprüfung), `54a7aa2` (kanonischer Startdokument-Alias), `89683dc747ef79886447469234b7eadc0167acc0` (strengere Offline-Wiederholungen). Die Evidenz liegt in einem folgenden reinen Dokumentationscommit.
+
+Keine offenen automatisierten Testfehler im finalen Lauf. Weiter offen: physische iPad/Safari-Installation, Pencil, reale Bildschirmtastatur/Safe Areas/Suspend/Audio, Hardware-GPU und vollständige Live-Fensterrefraktion. MacLock behält den bestehenden sicheren Start-/Materialpfad; kein neuer Shaderumbau. Keine Cloudanmeldung, keine öffentliche Website, kein main-Merge.
