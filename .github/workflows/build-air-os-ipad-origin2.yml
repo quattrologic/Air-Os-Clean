@@ -8,7 +8,7 @@ permissions:
   contents: write
 concurrency:
   group: air-os-ipad-origin2-test
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   ipad:
     runs-on: ubuntu-24.04
@@ -36,6 +36,7 @@ jobs:
       - name: Full desktop and browser regression suite
         run: node scripts/run-test-gate.cjs
       - name: Build and verify the actual offline PWA bytes, CSP and licenses
+        id: package
         run: |
           node scripts/build-pwa.cjs
           node scripts/check-pwa-package.cjs
@@ -59,17 +60,20 @@ jobs:
           AIR_IPAD_OUTPUT: dist/ipad-evidence/chromium
         run: node scripts/test-ipad-browser.cjs chromium
       - name: Real WebKit touch, data, offline and seven-viewport GUI
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
         env:
           AIR_ORIGIN2_IPAD: '1'
           AIR_IPAD_OUTPUT: dist/ipad-evidence/webkit
         run: node scripts/test-ipad-browser.cjs webkit
       - name: Chromium Pages subpath and safe-update regression (no deployment)
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
         env:
           AIR_IPAD_BASE_PATH: /Air-Os-Clean/
           AIR_ORIGIN2_IPAD: '1'
           AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/chromium
         run: node scripts/test-ipad-browser.cjs chromium
       - name: WebKit Pages subpath and safe-update regression (no deployment)
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
         env:
           AIR_IPAD_BASE_PATH: /Air-Os-Clean/
           AIR_ORIGIN2_IPAD: '1'
@@ -80,7 +84,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/publish-ipad-origin2-evidence.cjs
       - name: Keep versioned installable site ZIP and SHA-256 (never deploy)
-        if: success()
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
         uses: actions/upload-artifact@v4
         with:
           name: Air-OS-Ultimate-iPad-Origin2-${{ github.sha }}
