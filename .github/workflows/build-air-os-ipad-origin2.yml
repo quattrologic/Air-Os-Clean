@@ -79,8 +79,10 @@ jobs:
           AIR_ORIGIN2_IPAD: '1'
           AIR_IPAD_OUTPUT: dist/ipad-evidence/pages/webkit
         run: node scripts/test-ipad-browser.cjs webkit
-      - name: Save only verified synthetic browser images and versioned build metadata
+      - name: Save allowlisted synthetic browser evidence (failed runs stay explicitly failed)
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
         env:
+          IPAD_EVIDENCE_DEBUG: ${{ failure() && '1' || '0' }}
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/publish-ipad-origin2-evidence.cjs
       - name: Keep versioned installable site ZIP and SHA-256 (never deploy)
