@@ -21,13 +21,14 @@ async function run(){
  async function start(fallback=false){
   const args=[...(process.env.AIR_R1_APP?[path.resolve(process.env.AIR_R1_APP)]:[]),'--user-data-dir='+profile,'--remote-debugging-address=127.0.0.1','--remote-debugging-port='+port];
   if(fallback&&process.env.AIR_R1_EXPECT_ELECTRON==='32.3.3'&&process.env.AIR_R1_APP)args[0]=path.join(process.env.AIR_R1_APP,'scripts/start-maclock-no-webgl.cjs');
+  if(process.env.AIR_ORIGIN_MATERIAL==='1')args.push('--glass-integration-test');
   if(fallback)args.push('--disable-3d-apis','--disable-webgl','--disable-webgl2');
   if(process.platform==='linux'&&!fallback)args.push('--use-gl=angle','--use-angle=swiftshader');
   const env={...process.env,XDG_CONFIG_HOME:path.join(profile,'config'),APPDATA:path.join(profile,'roaming'),LOCALAPPDATA:path.join(profile,'local')};delete env.ELECTRON_RUN_AS_NODE;env.electron_config_cache=path.join(profile,'electron-cache');
   const log=fs.openSync(path.join(output,fallback?'fallback-process.log':'process.log'),'a');child=spawn(exe,args,{env,detached:process.platform!=='win32',stdio:['ignore','ignore',log]});fs.closeSync(log);
   let target;for(let i=0;i<240;i++){if(child.exitCode!==null)throw Error('Electron exited before CDP: '+child.exitCode);try{target=(await(await fetch('http://127.0.0.1:'+port+'/json')).json()).find(x=>x.type==='page'&&x.url.includes('login.html'));if(target)break}catch{}await delay(250)}
   if(!target)throw Error('No actual Electron login renderer.');client=await cdp(target.webSocketDebuggerUrl);await client.send('Page.enable');await client.send('Runtime.enable');if(report.nativeMotionPreference===undefined)report.nativeMotionPreference=await evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches");await client.send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'no-preference'}]});report.normalMotionScenario='Renderer explicitly emulates no-preference; separate reduce scenario remains mandatory; OS preference unchanged';frame=await evaluate('({width:Math.max(0,outerWidth-innerWidth),height:Math.max(0,outerHeight-innerHeight)})');
-  const trace="window.__r1Events=[];for(const t of ['pointerdown','click','submit','input'])document.addEventListener(t,e=>{__r1Events.push({type:t,id:e.target.id});if(__r1Events.length>30)__r1Events.shift()},true)";await client.send('Page.addScriptToEvaluateOnNewDocument',{source:trace});await evaluate(trace);
+  const trace="window.__r1Events=[];for(const t of ['pointerdown','click','submit','input'])document.addEventListener(t,e=>{__r1Events.push({type:t,id:e.target.id});if(__r1Events.length>30)__r1Events.shift()},true)";await client.send('Page.addScriptToEvaluateOnNewDocument',{source:trace});await evaluate(trace);if(process.env.AIR_ORIGIN_MATERIAL==='1'){const hook="window.__originContexts=[];const gc=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){const c=gc.call(this,type,...args);if(type==='webgl2'&&c&&!__originContexts.includes(c))__originContexts.push(c);return c;};";await client.send('Page.addScriptToEvaluateOnNewDocument',{source:hook});await evaluate(hook);}
  }
  async function evaluate(expression){const r=await client.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result.value}
  async function wait(expression){for(let i=0;i<160;i++){try{if(await evaluate(expression))return}catch{}await delay(150)}throw Error('GUI condition timed out: '+expression.slice(0,160))}
@@ -62,6 +63,7 @@ async function run(){
    fs.writeFileSync(path.join(output,'widget-report.json'),JSON.stringify(report,null,2));console.log('PASS actual isolated widget composition, all three sizes');return;
   }
   await start();await viewport(1920,1080);await create(alice,'R1 Test Alice');await wait("document.documentElement.dataset.desktopTheme==='modern'");
+  if(process.env.AIR_ORIGIN_MATERIAL==='1'){await require('./origin-material-scenes.cjs')({evaluate,wait,viewport,shot,app,delay,client,output});return;}
   if(process.env.AIR_ORIGIN_SCENES==='1'){await require('./origin-gui-scenes.cjs')({evaluate,wait,click,fill,key,viewport,shot,app,close,logout,login,create,stop,start,report,output,client,alice,bob,delay});return;}
   report.userAgent=await evaluate('navigator.userAgent');const expectedElectron=process.env.AIR_R1_EXPECT_ELECTRON||'44.9.3';assert.ok(report.userAgent.includes('Electron/'+expectedElectron),'actual Electron runtime matches test channel');
   report.registeredApps=await evaluate('airAppRegistry.list().map(({id,name,origin})=>({id,name,origin,internalHandler:typeof appNames[id]==="string"}))');

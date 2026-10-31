@@ -1,3 +1,11 @@
+# InfinityOS / Origin — Checkpoint C (2026-10-31)
+
+564/564 Regressionen. Neue Stage-Flächen verwenden jetzt dieselbe vorhandene GLASS-3-Engine: GlassSlab-/Switcher-/Popover-Material, gemeinsame Wallpaper-/Preblur-/Programmressourcen, unveränderte Hardwareklassifikation und CSS-/Reduced-Transparency-Fallbacks. Kein Blur-My-Shell-/Origin-Shader kopiert, keine zweite Engine, kein neuer Idle-Loop. Eigene CSS-Lichtkante der neuen Oberfläche; übriges Desktopdesign unverändert.
+
+Zweiter CI-Lauf bestand Audit und Sandboxstart, der Baseline-Harness traf jedoch verdeckte Fenstersteuerungen. Korrigiert: vorhandenes Fenster vor Schließen/Maximieren fokussieren, echte Accountauswahl statt verstecktem Usernamefeld. Der neue isolierte Software-Shadertest misst die Stage-Materialien bei DPR1/2/3, Idle, Context Loss/Restore und vollständigem Lifecycle-Cleanup. Noch nicht als bestanden behauptet.
+
+Nächste drei Arbeiten: tatsächliche GUI/Shaderläufe bis grün; Bilder und Messwerte prüfen/korrigieren; Lizenz-/iPad-Portfähigkeitsbericht und endgültige Sicherung. iPad-Branch unverändert, keine öffentliche Bereitstellung.
+
 # InfinityOS / Origin — Checkpoint B (2026-10-31)
 
 564/564 Node-Tests. Unveränderter vorhandener Control-Center-/Notification-Owner ergänzt: geometrische Tastaturnavigation, Tab-Fokusgrenze, abbrechbare endliche innere Kachel-Reveals ohne M1-Änderung; Bannerstapel aus realen Höhen, Queue begrenzt, Ablauf pausiert bei Fokus/Hover, Fokusmodus räumt nichtkritische Banner weg. Intelligentes Dock freiwillig im bestehenden Dock-Kontextmenü, eventbasierte Overlap-Auswertung ohne Polling; M2-Lease blendet seinen Zielbereich synchron ein. Kein Originalcode aus dem Archiv übernommen.

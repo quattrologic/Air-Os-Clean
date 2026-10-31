@@ -16,6 +16,7 @@ function publish(root){
    const bytes=fs.readFileSync(path.join(source,file));if(bytes.length>15*1024*1024||!bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw Error('Invalid screenshot.');fs.writeFileSync(path.join(dir,phase,file),bytes);
   }
  }
+ const material=JSON.parse(fs.readFileSync(path.join(root,'dist/origin-evidence/materials/material-report.json'),'utf8'));if(material.status!=='passed'||material.hardwareAcceptance!==false||material.cleanup.programs!==0||material.cleanup.textures!==0)throw Error('Material cleanup evidence missing.');reports.material=material;
  fs.writeFileSync(path.join(dir,'evidence.json'),JSON.stringify({sourceCommit:sha,run:'https://github.com/quattrologic/Air-Os-Clean/actions/runs/'+run,hardwareAcceptance:false,...reports},null,2)+'\n');
  git(['add','--',relative]);if(git(['diff','--cached','--name-only']).split('\n').some(f=>!f.startsWith(relative+'/')))throw Error('Unexpected staged path.');
  git(['-c','user.name=github-actions[bot]','-c','user.email=41898282+github-actions[bot]@users.noreply.github.com','commit','-m','docs(origin): save synthetic Linux Electron evidence for '+sha.slice(0,12)]);git(['push','origin','HEAD:refs/heads/'+branch]);

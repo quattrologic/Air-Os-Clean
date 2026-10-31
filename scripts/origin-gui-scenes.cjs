@@ -2,7 +2,8 @@
 // Real Electron/CDP only. All accounts and contents are disposable synthetic fixtures.
 const a=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 module.exports=async function(h){
- const {evaluate:e,wait,click,fill,key,viewport,shot,app,close,delay}=h,before=process.env.AIR_ORIGIN_BEFORE==='1';
+ const {evaluate:e,wait,click,fill,key,viewport,shot,app,delay}=h,before=process.env.AIR_ORIGIN_BEFORE==='1';
+ const close=async id=>{await e(`airWindowSystem.focus(${JSON.stringify(id)})`);await wait(`!openApps.get(${JSON.stringify(id)})?._airOSDockMotion`);await h.close(id);};
  const result={platform:process.platform,physicalHardware:false,baseline:before,viewports:[],checks:[]};
  const check=(name,value)=>{a.ok(value,name);result.checks.push(name);};
  await e("persistAirSettingsConfirmed({reduceMotion:false,desktopWidgets:true,widgetSet:['clock','calendar'],dockTheme:'modern'})");
@@ -12,7 +13,7 @@ module.exports=async function(h){
   await shot('desktop-'+width);
   const geometry=await e("({host:appWindowHostRect().toJSON(),menu:document.querySelector('.t6-menu-bar').getBoundingClientRect().toJSON(),dock:document.querySelector('.dock').getBoundingClientRect().toJSON(),island:document.querySelector('#air-island-toggle').getBoundingClientRect().toJSON()})");
   a.equal(geometry.host.top,24);a.equal(geometry.host.height,height-24);a.equal(geometry.menu.height,24);a.equal(geometry.dock.bottom,height);a.equal(geometry.island.top,0);
-  await e("openApps.get('finder').querySelector('.maximize').click()");await delay(100);const rect=await e("openApps.get('finder').getBoundingClientRect().toJSON()");a.equal(rect.left,0);a.equal(rect.top,24);a.equal(rect.width,width);a.equal(rect.bottom,height);await shot('finder-maximized-'+width);await e("openApps.get('finder').querySelector('.maximize').click()");
+  await e("airWindowSystem.focus('finder');openApps.get('finder').querySelector('.maximize').click()");await delay(100);const rect=await e("openApps.get('finder').getBoundingClientRect().toJSON()");a.equal(rect.left,0);a.equal(rect.top,24);a.equal(rect.width,width);a.equal(rect.bottom,height);await shot('finder-maximized-'+width);await e("openApps.get('finder').querySelector('.maximize').click()");
   await click('#air-island-toggle');await delay(500);await shot('control-center-'+width);await key('Escape','Escape',27);await wait("document.querySelector('#air-island-panel').hidden");
   if(!before){check('stage overview '+width,await e('airStageOverview.open()'));await shot('stages-'+width);const r=await e("document.querySelector('.origin-stage-overview').getBoundingClientRect().toJSON()");check('overview viewport bounds '+width,r.left>=0&&r.top>=24&&r.right<=width&&r.bottom<=height);await key('Tab','Tab',9);check('overview traps keyboard '+width,await e("!!document.activeElement.closest('.origin-stage-overview')"));await key('Escape','Escape',27);check('overview escape '+width,await e('!airStageOverview.snapshot().open'));}
   result.viewports.push({width,height,geometry,maximized:rect});for(const id of await e('[...openApps.keys()]'))await close(id);

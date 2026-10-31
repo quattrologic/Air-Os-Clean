@@ -54,6 +54,14 @@ jobs:
           AIR_R1_OUTPUT: dist/origin-evidence/after
           AIR_ORIGIN_SCENES: '1'
         run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
+      - name: Isolated software material diagnostic, DPR and shared-context cleanup
+        env:
+          AIR_GUI_TEST_ISOLATED: '1'
+          AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
+          AIR_R1_APP: .
+          AIR_R1_OUTPUT: dist/origin-evidence/materials
+          AIR_ORIGIN_MATERIAL: '1'
+        run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
       - name: Preserve synthetic screenshots, metrics and failures (never publish a site)
         if: always()
         uses: actions/upload-artifact@v4

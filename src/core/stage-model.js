@@ -17,7 +17,7 @@
   const available=[...new Set(ids)],assigned=new Set(),list=[];
   for(const group of settings.groups){const apps=group.apps.filter(id=>available.includes(id));if(apps.length){list.push({id:group.id,apps});apps.forEach(id=>assigned.add(id));}}
   available.filter(id=>!assigned.has(id)).forEach(id=>list.push({id,apps:[id]}));
-  const rank=id=>{const n=settings.order.indexOf(id);return n<0?settings.order.length+list.findIndex(g=>g.id===id):n;};return list.sort((a,b)=>rank(a.id)-rank(b.id));
+  const ranks=new Map(list.map((g,i)=>[g.id,settings.order.includes(g.id)?settings.order.indexOf(g.id):settings.order.length+i]));return list.sort((a,b)=>ranks.get(a.id)-ranks.get(b.id));
  }
  function move(order,id,before){const next=order.filter(x=>x!==id),index=next.indexOf(before);next.splice(index<0?next.length:index,0,id);return next;}
  function overlap(a,b){return a.width>0&&a.height>0&&b.width>0&&b.height>0&&a.left<b.left+b.width&&a.left+a.width>b.left&&a.top<b.top+b.height&&a.top+a.height>b.top;}

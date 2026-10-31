@@ -1,7 +1,7 @@
 'use strict';
 // Shared MacShell WebGL2 materials; only wallpaper pixels enter GPU memory.
 (() => {
- const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.system-switcher,.deep-history,.deep-dock-menu,.deep-toast,.dp2-tile,.dp2-detail,.dp2-editor,.air-start-menu,.alp-panel,.t6-menu-popup,.r5-local-lens';
+ const selectors='.dock[data-theme="modern"],#air-island-toggle,#air-island-panel,.air-calendar-panel,.air-search-dialog,.app-window>.window-titlebar,.deep-widget,.system-switcher,.deep-history,.deep-dock-menu,.deep-toast,.dp2-tile,.dp2-detail,.dp2-editor,.air-start-menu,.alp-panel,.t6-menu-popup,.r5-local-lens,.origin-stage-overview,.origin-stage-rail';
  const events=new AbortController(),signal=events.signal,tiles=new Map(),locals=new Map(),tints=new Map(),media=[matchMedia('(prefers-reduced-transparency: reduce)'),matchMedia('(prefers-contrast: more)'),matchMedia('(forced-colors: active)')];
  const canvas=document.createElement('canvas');let gl=null,programs={},buffer=null,texture=null,scene=null,epoch=0,disposed=false,failed=false,reason='',painting=false,dirty=false,frame=null,settle=null,lastPaint=0,fallbackAt=0,software=false,diagnostic=false,diagnosticRefraction=true;
  let quality=1,slowPaints=0,qualityChanges=0,lastPaintMs=0;let draws=0,sceneBuilds=0,transfers=0,paintMs=0,decodeCount=0,bufferResizes=0,transferMs=0,contextLosses=0,maxTexture=4096,gpuType='unknown',decoded=null,diagnosticDialog=null;const programsLive=new Set(),shadersLive=new Set(),blurred=new Map();let prepass=null,framebuffer=null,scratch=null,prepassDraws=0,prepassMs=0,uploadMs=0,textureBytes=0,sceneSize=[1,1],sceneScale=1,suspended=false;
@@ -59,7 +59,7 @@
   }
   gl.bindFramebuffer(gl.FRAMEBUFFER,null);prepassMs+=performance.now()-started;return result;
  }
- function kindFor(el,edge){return edge===1?'dock':el.matches('.deep-widget')?'widget':el.matches('#air-island-toggle,#air-island-panel')?'island':el.matches('.window-titlebar')?'toolbar':el.matches('.dp2-tile,.dp2-detail,.dp2-editor,.t7-segmented button')?'control':el.matches('.system-switcher')?'switcher':el.matches('.air-start-menu,.alp-panel')?'launchpad':'popover';}
+ function kindFor(el,edge){return edge===1?'dock':el.matches('.deep-widget')?'widget':el.matches('#air-island-toggle,#air-island-panel')?'island':el.matches('.window-titlebar')?'toolbar':el.matches('.dp2-tile,.dp2-detail,.dp2-editor,.t7-segmented button')?'control':el.matches('.system-switcher,.origin-stage-overview')?'switcher':el.matches('.air-start-menu,.alp-panel')?'launchpad':'popover';}
  function tileFor(el){let t=tiles.get(el);if(!t){const c=document.createElement('canvas');c.className='deep-glass-tile';c.setAttribute('aria-hidden','true');t={canvas:c,contents:new Set(),textWrappers:new Set(),amount:0,from:0,target:0,start:0,mouse:[0,0]};tiles.set(el,t);}
   for(const text of [...el.childNodes])if(text.nodeType===3&&text.textContent.trim()){const span=document.createElement('span');span.className='glass2-text';text.replaceWith(span);span.append(text);t.textWrappers.add(span);}
   for(const span of t.textWrappers)if(span.parentNode!==el)t.textWrappers.delete(span);

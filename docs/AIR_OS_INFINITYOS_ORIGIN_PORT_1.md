@@ -42,3 +42,9 @@ Der vorhandene Benachrichtigungsverlauf bleibt der einzige Nachrichtenstore. Rea
 Im vorhandenen Dock-Kontextmenü ist Intelligentes Dock freiwillig einschaltbar. Ausschließlich sichtbare interne Fenster lösen Overlap aus. Resize-, Pointer-, Layout- und Lifecycle-Ereignisse statt Intervallpolling; bei M2 bekommt das vorhandene Dock eine synchrone Sichtbarkeitslease, bevor der ursprüngliche M2-Code sein Zielrechteck misst. Ein beschrifteter Rückholbutton und die Bildschirmkante bleiben erreichbar. Pins, Magnifikation und Außenkontur unverändert. Die bisherige Dock-Fensterübersicht öffnet dieselbe Stage-Übersicht.
 
 564/564 Regressionen. Erster CI-Lauf startete echtes sandboxed Electron erfolgreich, scheiterte dann an einer DOMRect-Serialisierung im neuen Testharness; korrigiert. Weitere reale Testergebnisse folgen.
+
+## Checkpoint C · gemeinsame Materialien
+
+Die neuen Stage-Flächen sind echte Zieloberflächen derselben air-desktop-glass.js-Engine: Übersicht als Switcher-/GlassSlab-Profil, Rail als Popover. Gemeinsame Szenentextur, Preblur, Programme, DPR-Budgets, GPU-Schutz und Ressourcenfreigabe. Keine neue Shaderberechnung aus dem Archiv, kein neuer Compositor, kein Fenster-Capture. Originale existierende MacShell-Parameter in src/core/glass-geometry.js unverändert; Wallpaper-only-Grenze bleibt. CSS-Fallback nutzt eine abgestufte transparente Fläche mit Lichtsaum; Reduced Transparency bleibt opak.
+
+Ein getrennter isolierter Software-Shadertest prüft den tatsächlich ausgeführten Stage-Pfad, DPR1/2/3, Idle-Draws, Context Loss/Restore und Cleanup. Dies ist ausdrücklich keine Hardware-GPU- oder Windows-Abnahme. Ergebnis folgt nach tatsächlichem Lauf.
