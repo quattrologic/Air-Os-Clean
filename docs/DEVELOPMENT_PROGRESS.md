@@ -1,3 +1,11 @@
+# InfinityOS / Origin — Checkpoint A (2026-10-31)
+
+Branch feat/air-os-infinityos-origin-port-1, ab tatsächlichem Desktop-Remote-HEAD 02ccaf88724731cf685d2221f88e959020aff3f0. iPad-HEAD 1deb36a2e77107897cd277d07bdd09140697da9d bleibt unverändert separat. 70/70 private Referenzhashes geprüft; keinerlei ISO-Quellbytes im Produkt. Origin-Rechte unklar, Blur-My-Shell-Copyleft für Gesamtbuild nicht geklärt: neue Stage-Funktionen sind eigenständige Air-OS-Implementierungen.
+
+562/562 Node-Tests (557 erhalten + fünf neue). Neuer vorhandener Window-System-Vertrag für bestätigte profilgebundene Stage-Gruppen/Reihenfolge, unabhängige schematische Vorschauen, tastatur-/pointerbedienbare Übersicht, optionaler Stage-Modus ohne Geometrieänderung. Kein zweiter Fensterowner, M2 unverändert. Linux-Electron-E2E/Before-After-Workflow vorbereitet; lokal fehlt ein nutzbarer Display-/Chromium-Sandboxhost, daher noch keine GUI-Abnahme behauptet. CI prüft mit korrekt konfiguriertem offiziellen SUID-Sandboxhelper, ohne Sandboxabschaltung.
+
+Nächste drei Checkpoints dieses ausdrücklich zusammenhängenden Auftrags: echte GUI und Fehlerkorrektur; Control-Center-/Notification-/Dock-Funktionen; Glas-/Cleanup-/iPad-Portfähigkeit und Abschlussnachweise. Kein Installer, Release, main-Merge oder Pages-Deployment.
+
 # R7 — finaler geprüfter und gesicherter Stand
 
 Branch feat/air-os-r7-final-experience; Basis7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildb839d409c255effa36d483a89d8e13ed7ab5570d; finaler Windows-Bildcommit2fb8786bc38c72a052611d4cd69843c146d6a3c4.

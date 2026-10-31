@@ -1,13 +1,15 @@
 'use strict';
 // Host-side per-account appearance settings. No renderer-supplied paths.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetScale:1,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false,todaySize:'compact',widgetSet:null,widgetLayout:{},widgetImage:'',windowLayout:{},weatherLocation:null,weatherCache:null,referenceBackup:null,glassFamily:'macshell',desktopLayout:{mode:'floating',ratio:.55,workspace:1,assignments:{}}});
+const DEFAULTS=Object.freeze({schemaVersion:1,wallpaper:'clouds',customWallpaper:'',accent:'#75aeea',dockSize:48,dockTheme:'classic',desktopTheme:'classic',dockPins:null,reduceGlass:false,reduceMotion:false,clock24:true,desktopWidgets:false,widgetScale:1,widgetPositions:{},controlOrder:[0,1,2,3],controlTiles:null,focusMode:false,todaySize:'compact',widgetSet:null,widgetLayout:{},widgetImage:'',windowLayout:{},stageManager:{enabled:false,groups:[],order:[]},dockIntellihide:false,weatherLocation:null,weatherCache:null,referenceBackup:null,glassFamily:'macshell',desktopLayout:{mode:'floating',ratio:.55,workspace:1,assignments:{}}});
 const WALLPAPERS=new Set(['clouds','yosemite','coast','aurora','midnight']);
 function validate(patch){
  if(!patch||typeof patch!=='object'||Array.isArray(patch))throw new TypeError('Ungültige Einstellungen.');
  const result={};
  for(const [key,value] of Object.entries(patch)){
   if(!Object.prototype.hasOwnProperty.call(DEFAULTS,key)||key==='schemaVersion')throw new TypeError('Unbekannte Einstellung.');
+  if(key==='stageManager'){result[key]=require('../core/stage-model.js').validate(value,id=>!!require('../core/app-registry.js').get(id));continue;}
+  if(key==='dockIntellihide'&&typeof value!=='boolean')throw new TypeError('Ungültiges Dockverhalten.');
   if(key==='weatherLocation'){result[key]=value===null?null:require('../core/weather-model.js').location(value);continue;}
   if(key==='weatherCache'){result[key]=value===null?null:require('../core/weather-model.js').validate(value);continue;}
   if(key==='referenceBackup'){if(value!==null&&(!value||typeof value!=='object'||Object.keys(value).some(k=>!['desktopWidgets','widgetScale','widgetSet','widgetPositions','widgetLayout','dockPins','dockSize','glassFamily'].includes(k))))throw new TypeError('Ungültige Sicherung.');result[key]=value===null?null:validate(value);continue;}

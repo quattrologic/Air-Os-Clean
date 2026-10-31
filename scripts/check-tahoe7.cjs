@@ -62,6 +62,7 @@ async function run(){
    fs.writeFileSync(path.join(output,'widget-report.json'),JSON.stringify(report,null,2));console.log('PASS actual isolated widget composition, all three sizes');return;
   }
   await start();await viewport(1920,1080);await create(alice,'R1 Test Alice');await wait("document.documentElement.dataset.desktopTheme==='modern'");
+  if(process.env.AIR_ORIGIN_SCENES==='1'){await require('./origin-gui-scenes.cjs')({evaluate,wait,click,fill,key,viewport,shot,app,close,logout,login,create,stop,start,report,output,client,alice,bob,delay});return;}
   report.userAgent=await evaluate('navigator.userAgent');const expectedElectron=process.env.AIR_R1_EXPECT_ELECTRON||'44.9.3';assert.ok(report.userAgent.includes('Electron/'+expectedElectron),'actual Electron runtime matches test channel');
   report.registeredApps=await evaluate('airAppRegistry.list().map(({id,name,origin})=>({id,name,origin,internalHandler:typeof appNames[id]==="string"}))');
   assert.equal(report.registeredApps.every(x=>x.internalHandler),true,'every actual registry entry has an internal app mapping');
