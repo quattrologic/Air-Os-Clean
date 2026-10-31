@@ -24,3 +24,8 @@ test('Stage model executes in a browser realm without Node, Electron, native API
  const input={enabled:true,groups:[group],order:['reminders',group.id]},ids=['finder','notes','reminders'];
  a.deepEqual(JSON.parse(JSON.stringify(web.stages(ids,input))),m.stages(ids,input));a.deepEqual(JSON.parse(JSON.stringify(web.validate(input,known))),m.validate(input,known));a.equal(sandbox.window.airOS,undefined);
 });
+test('Main and renderer share all shipped app identities for stage and workspace persistence',()=>{
+ const registry=require('../src/core/app-registry.js');for(const id of ['reminders','launchpad','store','arcade'])a.ok(registry.get(id),id+' must exist before renderer-only controllers mount');
+ const value={enabled:true,groups:[{id:'g-abcdef12',apps:['finder','reminders']}],order:['g-abcdef12','launchpad','store','arcade']};a.deepEqual(p.validate({stageManager:value}).stageManager,value);
+ a.equal(p.validate({desktopLayout:{mode:'dwindle',ratio:.55,workspace:1,assignments:{reminders:1,launchpad:1,arcade:2,store:3}}}).desktopLayout.assignments.reminders,1);
+});

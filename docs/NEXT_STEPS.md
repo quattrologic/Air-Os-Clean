@@ -1,3 +1,11 @@
+# InfinityOS / Origin — Registry-Korrektur (2026-10-31)
+
+566/566 Regressionen. Reale GUI fand: die Renderer-Registrierungen von reminders/launchpad/store/arcade waren Main unbekannt. Metadaten in der bestehenden gemeinsamen Registry zentralisiert, Controller bleiben erhalten; Stage-/Workspace-/Fensterpersistenz akzeptiert jetzt dieselben tatsächlich gelieferten Apps. Keine zweite Registry. Neue Regression prüft genau den vorher abgewiesenen Main-Vertrag.
+
+Die erste echte visuelle Korrekturrunde ist in Produktcode: größere Touch-Auswahl, Labels vom Drag getrennt, zentrierte geometrische Vorschauen, passende Panelhöhe. PNG-Testwallpaper verwendet vorhandenen erlaubten Pfad; Herkunftsschutz bleibt. Neue GUI prüft echten Pointer-Drop, Touchcancel, Workspaces, M1/M2, F11 und Profilneustart; unabhängige Softwarematerialmessung wartet auf endliche Übergangsruhe. Vollständige Abnahme noch offen, CI läuft erneut. Unvollständige Debugbilder sind ausdrücklich als solche markiert, keine Erfolgsbehauptung.
+
+Nächste drei Abschlussprüfungen: volle GUI/Materialdiagnose; tatsächliche Bilder/Messwerte; geprüfter finaler Bericht/Push. Keine weiteren Featureanfänge, iPad/main/Pages unverändert.
+
 # InfinityOS / Origin — Checkpoint D / Cleanup (2026-10-31)
 
 565/565 Regressionen (557 bestehende erhalten). Neue Stage-Modelle laufen nachweislich auch in einem Browser-Realm ohne Node/Electron; das ist Portfähigkeit, keine iPad-Abnahme. Eigene Hash-/Bytemetadaten aller70 Referenzen dokumentiert, kein fremder Quellinhalt übernommen;374 produktive Runtimeassets enthalten keine Referenzdateien.

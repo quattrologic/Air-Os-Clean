@@ -72,3 +72,9 @@ M2-Resize-Korrektur im bestehenden app.js: Bei Viewport-/Displaygrößenänderun
 Die ersten echten CI-Bilder (5eb457a; ausdrücklich unvollständige Abnahme) zeigten kleine Checkbox-Klickziele, mit Drag kollidierende Labelbereiche, sehr kleine schematische Fenster und unnötige leere Panelhöhe. Korrigiert: 44px-Auswahlzeilen, Labels ausdrücklich vom Drag ausgenommen, größere zentrierte Gruppenausschnitte und inhaltsabhängige Panelhöhe mit einem begrenzten Scrollbereich im schmalen Viewport. Keine nachträgliche Bildbearbeitung.
 
 Die erste Materialdiagnose verwendete ein neues SVG-data-URI, das die vorhandene Herkunftsprüfung korrekt mit wallpaper-origin ablehnte. Der Test verwendet nun ausschließlich selbst im Test erzeugte PNG-Pixel über den bereits freigegebenen begrenzten Rasterpfad. Herkunfts-/GPU-Schutz im Produkt unverändert.
+
+## Gemeinsame Registry statt zweiter Appwelt
+
+Die echte Stage-Tastaturprüfung fand eine bestehende Inkonsistenz: reminders, launchpad, store und arcade wurden erst in Renderermodulen registriert; Main kannte diese mitgelieferten Apps nicht und lehnte ihre Stage-Reihenfolge bzw. Workspace-/Fenstergeometrien ab. Die Metadaten stehen nun ausschließlich in derselben zentralen src/core/app-registry.js. Vorhandene Controller registrieren nur noch bei Bedarf, ihre Funktionen/Icons/Daten bleiben unverändert. Ein neuer Test prüft Main-seitig Gruppen und Workspaces mit diesen echten IDs. 566/566 lokale Regressionen.
+
+Die Material-Idle-Messung beginnt erst nach einem nachweislich ruhenden Übergang (600ms unveränderte Draws, maximal8s Wartebudget), danach ein separates800ms-Messfenster. Es werden keine Ereignisse/Rendererfunktionen für einen grünen Zähler abgeschaltet.
