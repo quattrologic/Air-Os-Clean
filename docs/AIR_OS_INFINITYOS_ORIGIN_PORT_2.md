@@ -24,3 +24,11 @@ Der R8-Kanal nutzt die bestehende eingefrorene Electron-44.9.3-Toolchain, Audit,
 ## Noch offen
 
 Neue CI-Ergebnisse, Bildprüfung/Korrektur, Installer-Hash und iPad-Port werden nach tatsächlicher Ausführung ergänzt. Physische Windows-GPU/Audio/Dialoge, iPad-Hardware und echter Hyprland-Host sind nicht abgenommen. Wallpaper-only ist weiterhin die Grenze des WebGL-Backdrops. MacLock behält seinen separaten sicheren Renderer; kein neuer MacLock-Shaderport in diesem Checkpoint.
+
+## Checkpoint 2: tatsächliche GUI und Korrektur
+
+Produkt 82cd19cd85a341d7ecb0ed38abb250b8c33d74f6: Linux-CI 41221498036 bestand 62 echte Funktionschecks in vier Viewports sowie vier isolierte Materialchecks. CSS-Produktpfad Software-GPU; Diagnose 4 Programme / 5 Texturen; DPR1: 169ms, DPR2: 252ms, DPR3: 267ms letzte Paint-Wallzeit, keine Hardware-FPS. Refraction-on/off derselben Shaderkarte: 51585 geänderte Pixel / 429×152, mittlere absolute RGB-Differenz 17.3545. Unterschiedliche Geometrien früherer Berichte erlauben keinen direkten Stärkevergleich. Context Loss/Restore und Cleanup: 0 Programme/0 Texturen/0 Tiles, pending false. Screenshotvergleich unter `docs/visual/origin2/82cd19cd85a341d7ecb0ed38abb250b8c33d74f6/`.
+
+Bildprüfung zeigte zu wenig Textkontrast des Overlays über weißen Workspaces. Produktkorrektur: separate dunklere Lesefläche nur für textreiche Overlays, kompakte Appzeilen, Zustandsanzeige minimierter Vorschauen und passende deaktivierte Gruppenaktionen. Pointer-Swipe auf der Stage-Rail wechselt Gruppen; vertikales Scrollen bleibt erhalten und Pointercancel verwirft die Geste. Touch-Release beendet Hoverlicht. Testuhren im isolierten GUI-Harness nun deterministisch.
+
+Windows-Lauf 41221498035 erzeugte/installierte R8 und bestand die GUI-Schritte inklusive Stage/F11/R6.1-Grenzen/R7/Shaderdiagnose; das abschließende Outcome-Schreiben schlug wegen fehlendem `stageGui`-Metadatenfeld fehl. Kein insgesamt grüner Build. Feld ergänzt; neuer Lauf erforderlich.
