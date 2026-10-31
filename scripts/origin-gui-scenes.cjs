@@ -6,6 +6,7 @@ module.exports=async function(h){
  const close=async id=>{await e(`airWindowSystem.focus(${JSON.stringify(id)})`);await wait(`!openApps.get(${JSON.stringify(id)})?._airOSDockMotion`);await h.close(id);};
  const result={platform:process.platform,physicalHardware:false,baseline:before,viewports:[],checks:[]};
  const check=(name,value)=>{a.ok(value,name);result.checks.push(name);};
+ await wait('!!window.airWindowSystem');if(!before)await wait('!!window.airStageOverview&&!!window.airControlMotion');
  await e("persistAirSettingsConfirmed({reduceMotion:false,desktopWidgets:true,widgetSet:['clock','calendar'],dockTheme:'modern'})");
  for(const id of await e('[...openApps.keys()]'))await close(id);
  for(const [width,height]of [[1920,1080],[1688,896],[1650,930],[390,600]]){
