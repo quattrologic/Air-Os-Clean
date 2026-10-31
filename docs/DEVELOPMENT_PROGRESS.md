@@ -1,3 +1,15 @@
+# InfinityOS / Origin — geprüfter Abschluss (2026-10-31)
+
+Branch feat/air-os-infinityos-origin-port-1; Desktopbasis02ccaf88724731cf685d2221f88e959020aff3f0. Abgenommener Quell-/Teststandd299a706fe95a59a0f8458126c8d9fd4c5ed5b07, Produktkorrektura1f0c92a4f2c561f4d9b5656232c2c70518f03b5; finale Bilder/Messwerte1e773c77b3409f880d6304ac50646fc219416be2.
+
+566/566 Regressionen (alle557 alten erhalten), Pflichtaudit und Sourcecheck bestanden. [Echte Linux-Electron-CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41196045500):56 Produktprüfungen bei1920×1080/1688×896/1650×930/390×600,mit echten Shellprüfungen inklusive Gruppierung/Reorder/Touchcancel/Workspaces/F11/M1M2/Controls/Profilneustart; separate4 Softwarematerialprüfungen mit DPR1/2/3, Pixelwirkung, Context Loss/Restore und Cleanup auf0Programme/0Texturen/0Tiles/pendingfalse. Keine Hardwarefreigabe. [Bericht](AIR_OS_INFINITYOS_ORIGIN_PORT_1.md), [41 finale Bilder/Messwerte](visual/origin1/d299a706fe95a59a0f8458126c8d9fd4c5ed5b07/evidence.json).
+
+Funktional: optionale profilgespeicherte Stage-Gruppen/Übersicht auf demselben Window-System; Controls mit Tastatur/finiten Reveals; pausierbare begrenzte echte Banner; freiwillige eventbasierte Docküberlappung mit M2-Lease; M2-Resize-Cleanup; konsistente Main-/Renderer-IDs vier zuvor nur im Renderer registrierter mitgelieferter Apps. Host/Menü/Dock/Island-Rechtecke identisch zur R7-Baseline,24px ohne Dockreserve. Neue Stage-Flächen nutzen dieselbe GLASS-3-Pipeline; NormalpfadSoftware/CSS, isolierteShaderdiagnose getrennt.
+
+70/70 private Referenzhashes bestätigt. Direkte ISO-/Origin-/Blur-/Dash-Quellübernahmen0 wegen unklarer Rechte bzw. nicht geregelter GPL-Gesamtbuildpflichten; eigene funktionale Implementierungen ausdrücklich gekennzeichnet. Keine Referenzquellen verteilt, kein Release/Pages/main-Merge. iPad bleibt unverändert bei1deb36a2e77107897cd277d07bdd09140697da9d; keine Addition seiner576 Tests.
+
+Drei offene Abnahmebereiche nur nach neuem Auftrag: konkrete Original-Lizenz-/Distributionsfreigaben; native Windows/macOS/GPU/Mehrmonitorhardware; separater PWA/WebKit/iPad-Port inklusive Safe Areas/Pencil/Offline. Vorschauen bleiben schematisch, kein OS-Drag-out/Live-Capture. Kein neuer Windowsinstaller. Nach Abschlussdokumentationspush STOP, keine Hintergrundentwicklung.
+
 # InfinityOS / Origin — Registry-Korrektur (2026-10-31)
 
 566/566 Regressionen. Reale GUI fand: die Renderer-Registrierungen von reminders/launchpad/store/arcade waren Main unbekannt. Metadaten in der bestehenden gemeinsamen Registry zentralisiert, Controller bleiben erhalten; Stage-/Workspace-/Fensterpersistenz akzeptiert jetzt dieselben tatsächlich gelieferten Apps. Keine zweite Registry. Neue Regression prüft genau den vorher abgewiesenen Main-Vertrag.
