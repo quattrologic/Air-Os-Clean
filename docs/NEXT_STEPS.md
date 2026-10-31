@@ -1,3 +1,11 @@
+# Integration 2 — geprüfter Desktop / Windows R8
+
+Branch `feat/air-os-infinityos-origin-port-2-desktop`; Basis 8651a1aaa357b52a7c4edfbea7056bf59e40601b. Finales Produkt e4ab7f8d89ca543edd102d81100dc9aeb46dc3d5. 572/572 Regressionen, 62 Linux-Electron-GUI-Checks plus vier Shaderchecks; nativer Windows-Lauf 41222397648 vollständig erfolgreich, Installer installiert und EXE geprüft. Gruppen-Minimize/Restore über M2, Tastatur/Touchübersicht, vorhandene Layouts/Workspaces, DPR-korrekte separate Mipmaps, finite Lichtreaktionen und visuell korrigierter Fallback. Quellenrechte unverändert: keine ungeklärten Originaldateien übernommen.
+
+Installer-SHA256 c15047bfc7b1ab966881766da5ff071807b0013462db4454124483842c175a89. Bericht: AIR_OS_INFINITYOS_ORIGIN_PORT_2.md. iPad separat; kalter WebKit-Offline-Neustart noch in Prüfung. Kein Deployment/Release/main-Merge.
+
+Nächste drei abgegrenzte Prüfungen: iPad-WebKit-Cold-Offline-Nachweis; physischer Windows-GPU-/Audio-/Picker-Test; physische iPad/Safari/Pencil-Abnahme. Keine Fortsetzung nach Abschluss ohne Folgeauftrag.
+
 # Integration 2 — Desktop-Checkpoint
 
 Basis 8651a1aaa357b52a7c4edfbea7056bf59e40601b; Branch `feat/air-os-infinityos-origin-port-2-desktop`. Stage-Gruppenaktionen über M2, endliche Stage-Übergänge, gemeinsame Layoutwahl, DPR-korrekte Materialabtastung und transparenter CSS-Fallback implementiert. 572/572 lokale Regressionen und Syntaxprüfung bestanden. Neue GUI-/Windows-CI noch ausstehend. Ungeklärte Referenzquellen nicht übernommen.
