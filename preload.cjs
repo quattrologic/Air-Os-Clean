@@ -1,6 +1,33 @@
 'use strict';
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer, webUtils } = require('electron');
 contextBridge.exposeInMainWorld('airOS', Object.freeze({
+  shelf:Object.freeze({
+    list:owner=>ipcRenderer.invoke('air-os:nexus:shelf','list',null,owner),
+    addText:(text,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','text',text,owner),
+    capture:owner=>ipcRenderer.invoke('air-os:nexus:shelf','capture',null,owner),
+    consent:(enabled,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','consent',enabled,owner),
+    pick:owner=>ipcRenderer.invoke('air-os:nexus:shelf','pick',null,owner),
+    drop:(files,owner)=>{if(!Array.isArray(files)||files.length<1||files.length>32)throw Error('Dateiauswahl ungültig.');const paths=files.map(file=>webUtils.getPathForFile(file));if(paths.some(p=>!p))throw Error('Nur tatsächlich ausgewählte Dateien.');return ipcRenderer.invoke('air-os:nexus:shelf','drop',paths,owner);},
+    fromFinder:(relative,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','workspace',relative,owner),
+    group:(ids,name,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','group',{ids,name},owner),
+    children:(id,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','children',id,owner),
+    take:(bundle,id,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','take',{bundle,id},owner),
+    rename:(id,name,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','rename',{id,name},owner),
+    favorite:(id,value,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','favorite',{id,value},owner),
+    remove:(id,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','remove',id,owner),
+    copy:(id,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','copy',id,owner),
+    clear:owner=>ipcRenderer.invoke('air-os:nexus:shelf','clear',null,owner),
+    drag:(id,owner)=>ipcRenderer.send('air-os:nexus:drag',id,owner),
+    onChange:fn=>{if(typeof fn!=='function')throw Error('Listener erforderlich.');const handler=(_event,data)=>fn(data);ipcRenderer.on('air-os:nexus:shelf-changed',handler);return()=>ipcRenderer.removeListener('air-os:nexus:shelf-changed',handler);}
+  }),
+  timer:Object.freeze({
+    read:owner=>ipcRenderer.invoke('air-os:nexus:timer','read',null,owner),
+    start:(kind,seconds,owner)=>ipcRenderer.invoke('air-os:nexus:timer','start',{kind,seconds},owner),
+    pause:owner=>ipcRenderer.invoke('air-os:nexus:timer','pause',null,owner),
+    resume:owner=>ipcRenderer.invoke('air-os:nexus:timer','resume',null,owner),
+    reset:owner=>ipcRenderer.invoke('air-os:nexus:timer','reset',null,owner),
+    onChange:fn=>{if(typeof fn!=='function')throw Error('Listener erforderlich.');const handler=(_event,data)=>fn(data);ipcRenderer.on('air-os:nexus:timer-changed',handler);return()=>ipcRenderer.removeListener('air-os:nexus:timer-changed',handler);}
+  }),
   accounts: () => ipcRenderer.invoke('air-os:accounts'),
   createAccount: data => ipcRenderer.invoke('air-os:create-account', data),
   login: data => ipcRenderer.invoke('air-os:login', data),
@@ -35,7 +62,7 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
   }),
   reminders: Object.freeze({
     list: () => ipcRenderer.invoke('air-os:reminders:list'),
-    save: item => ipcRenderer.invoke('air-os:reminders:save',item),
+    save: (item,owner) => ipcRenderer.invoke('air-os:reminders:save',item,owner),
     remove: id => ipcRenderer.invoke('air-os:reminders:remove',id)
   }),
   cloud: Object.freeze({

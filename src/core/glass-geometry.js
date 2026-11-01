@@ -33,5 +33,8 @@
   for(const [p,m]of [[0,0],[.12,.25],[.32,1],[.68,1],[.88,.25],[1,0]])g.addColorStop(p,'rgba('+c.join(',')+','+a*m+')');
   ctx.beginPath();ctx.roundRect(lw/2,lw/2,w-lw,h-lw,Math.max(0,Math.min(r-lw/2,(w-lw)/2,(h-lw)/2)));ctx.strokeStyle=g;ctx.lineWidth=lw;ctx.stroke();
  }
- return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material,preblur,border};
+ // CSS pixels and texture texels differ after DPR scaling / half-size preblur.
+ function sampleScale(sceneScale,preblurred,local=false){const s=Number.isFinite(sceneScale)?Math.max(.01,Math.min(3,sceneScale)):1;return local?[1,1]:[preblurred?s/2:s,s];}
+ function light(material,amount){const t=Number.isFinite(amount)?Math.max(0,Math.min(.5,amount)):0;return {...material,rim:material.rim*(1+t),dispersion:material.dispersion};}
+ return {sampleScale,light,distance,rectDistance,cover,layers,gradient,gpu,resolution,material,preblur,border};
 });

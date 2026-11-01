@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage, powerSaveBlocker, powerMonitor, screen, net, clipboard } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, session, dialog, safeStorage, powerSaveBlocker, powerMonitor, screen, net, clipboard, nativeImage } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
@@ -84,9 +84,11 @@ function localAppFile(url) {
 function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
+const nexus=require('./src/main/nexus-ipc.cjs')({ipcMain,app,dialog,nativeImage,clipboard,window:()=>mainWindow,authorize:requireControlSession,user:()=>activeUser,preferences:preferenceStore,workspace:relative=>resolveWorkspacePath(relative)});
 const lockPresentation=require('./src/main/lock-presentation.cjs').create();
 function openLogin(preservePreview=false) {
   keepAwake.release();
+  nexus.end();
   weatherService.cancelAll();hyprland.stop();
   if(mainWindow&&!mainWindow.isDestroyed()&&mainWindow.isFullScreen())mainWindow.setFullScreen(false);
   if(!preservePreview)lockPresentation.clear();
@@ -100,9 +102,11 @@ function openLogin(preservePreview=false) {
   }
 }
 function openDesktop(account) {
+  nexus.end();
   lockPresentation.clear();
   keepAwake.release();
   activeUser = {...publicAccount(account),preferenceSession:crypto.randomBytes(16).toString('hex')};
+  nexus.begin(activeUser.preferenceSession);
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.loadFile(path.join(app.getAppPath(), 'index.html'));
     mainWindow.setTitle('Air-OS');
@@ -145,7 +149,7 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!localAppFile(url)) event.preventDefault();
   });
-  mainWindow.webContents.on('render-process-gone',()=>{lockPresentation.clear();keepAwake.release();});
+  mainWindow.webContents.on('render-process-gone',()=>{nexus.end();lockPresentation.clear();keepAwake.release();});
   mainWindow.webContents.on('did-start-navigation',(_event,_url,_inPlace,isMainFrame)=>{if(isMainFrame){keepAwake.release();weatherService.cancelAll();hyprland.stop();}});
   mainWindow.on('closed', () => { lockPresentation.clear(); keepAwake.release(); airAppRuntime.closeAll(); mainWindow = null; });
   openLogin();
@@ -159,7 +163,7 @@ ipcMain.handle('air-os:window:fullscreen-toggle',(event,owner)=>{requireControlS
 ipcMain.handle('air-os:control:awake',(event,enabled,owner)=>keepAwake.set(enabled,requireControlSession(event,owner)));
 ipcMain.handle('air-os:system:snapshot',(event,owner)=>{requireControlSession(event,owner);return system().snapshot();});
 ipcMain.handle('air-os:system:settings',async(event,kind,owner)=>{requireControlSession(event,owner);await system().openSettings(kind);requireControlSession(event,owner);return{opened:true,kind};});
-ipcMain.handle('air-os:system:copy',async(event,text,owner)=>{requireControlSession(event,owner);const result=await system().copy(text);requireControlSession(event,owner);return result;});
+ipcMain.handle('air-os:system:copy',async(event,text,owner)=>{requireControlSession(event,owner);const result=await system().copy(text);requireControlSession(event,owner);nexus.ownCopy(text,owner);return result;});
 ipcMain.handle('air-os:system:paste',async(event,owner)=>{requireControlSession(event,owner);const result=await system().paste();requireControlSession(event,owner);return result;});
 ipcMain.handle('air-os:system:hyprland',async(event,owner)=>{
  requireControlSession(event,owner);if(!hyprland.supported)throw Error('Hyprland nicht verfügbar.');
@@ -194,13 +198,13 @@ ipcMain.handle('air-os:spotify:launch',event=>{requirePreferenceUser(event);retu
 ipcMain.handle('air-os:preferences:get',event=>preferenceStore.load(requirePreferenceUser(event)));
 ipcMain.handle('air-os:preferences:update',(event,patch,expectedSession)=>{
  const user=requirePreferenceUser(event);
- if(patch&&('weatherCache' in patch||'weatherLocation' in patch))throw Error('Wetterdaten nur über den Wetteradapter ändern.');
+ if(patch&&('weatherCache' in patch||'weatherLocation' in patch||'nexusOwnCopies' in patch||'nexusTimer' in patch))throw Error('Wetterdaten nur über den Wetteradapter ändern.');
  if(expectedSession!==undefined&&(typeof expectedSession!=='string'||expectedSession!==activeUser.preferenceSession))throw new Error('Die Anmeldung hat sich geändert.');
  return preferenceStore.update(user,patch);
 });
 ipcMain.handle('air-os:preferences:reset',event=>preferenceStore.reset(requirePreferenceUser(event)));
 ipcMain.handle('air-os:reminders:list',event=>reminderStore.list(requirePreferenceUser(event)));
-ipcMain.handle('air-os:reminders:save',(event,item)=>reminderStore.save(requirePreferenceUser(event),item));
+ipcMain.handle('air-os:reminders:save',(event,item,owner)=>{const username=requirePreferenceUser(event);if(owner!==undefined)requireControlSession(event,owner);return reminderStore.save(username,item);});
 ipcMain.handle('air-os:reminders:remove',(event,id)=>reminderStore.remove(requirePreferenceUser(event),id));
 for(const action of ['status','signIn','sync','signOut'])ipcMain.handle('air-os:cloud:'+action,async(event,input)=>{
  const user=requirePreferenceUser(event),owner=activeUser.preferenceSession;
@@ -618,4 +622,5 @@ app.whenReady().then(() => {
   createWindow();
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
 });
+app.on('before-quit',()=>nexus.end());
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });

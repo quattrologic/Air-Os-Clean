@@ -165,7 +165,18 @@
       "src/core/weather-glyphs.js",
       "src/main/weather-service.cjs",
       "air-weather.js",
-      "third_party/r6-macshell/**/*"
+      "third_party/r6-macshell/**/*",
+      "src/core/stage-model.js",
+      "src/core/panel-navigation.js",
+      "src/core/nexus-model.js",
+      "src/core/edge-drop.js",
+      "air-stage-overview.js",
+      "air-origin.css",
+      "air-origin2.css",
+      "air-edge-shelf.js",
+      "air-nexus-island.js",
+      "air-nexus.css",
+      "third_party/edge-drop/**/*"
     ],
     "mac": {
       "target": [

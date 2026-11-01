@@ -1,0 +1,6 @@
+Edge-Drop source excerpts and pure algorithms
+https://github.com/Deepender25/Edge-Drop
+Contributors: Edge-Drop project contributors (see upstream commit).
+Licensed under Apache License 2.0; complete upstream LICENSE retained.
+No Edge-Drop artwork, native helper, React runtime or Twemoji assets included.
+Air-OS adaptation: TypeScript type erasure; injected clipboard provider; SHA-256 file/image identity; CommonJS/browser wrapper.

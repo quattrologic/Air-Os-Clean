@@ -814,7 +814,7 @@ $("#go-menu")?.addEventListener("click",()=>openApp("downloads"));
 $("#window-menu")?.addEventListener("click",()=>{const last=[...openApps.values()].at(-1); if(last){last.style.display="flex";last.style.zIndex=++zIndex;}});
 $("#help-menu")?.addEventListener("click",()=>openApp("about"));
 
-window.addEventListener("resize",()=>requestAnimationFrame(()=>openApps.forEach(win=>clampAppWindow(win))));
+window.addEventListener("resize",()=>{for(const win of openApps.values())if(win._airOSDockMotion)settleModernDockMotion(win);requestAnimationFrame(()=>openApps.forEach(win=>clampAppWindow(win)));});
 
 openApp("finder"); // Start with the reference layout
 // Startup must not depend on the Dock animation completing. Some older WebKit/Electron
@@ -894,20 +894,28 @@ function airDockPinUpdate(registry,pins,id,pinned,canPin){
  if(next.length>=64)throw new Error('Maximal 64 Dock-Pins möglich. Bitte zuerst eine App lösen.');
  return [...next,id];
 }
-function airDockSelection(registry,pins,width,iconSize){
- const candidates=[...new Set(['launchpad',...airDockReferences(pins)])].filter(id=>registry.get(id)?.iconClass);
+function airDockSelection(registry,pins,width,iconSize,live=[]){
+ const base=['launchpad',...airDockReferences(pins)];
+ const all=live.length?[...base.filter(id=>id!=='trash'),...live.filter(id=>id!=='trash'),'trash']:base;
+ const candidates=[...new Set(all)].filter(id=>registry.get(id)?.iconClass);
  // The original compact selector remains the Classic/legacy fallback. Tahoe7 owns paging.
  if(typeof window!=='undefined'&&window.airMacShell7)return {visible:candidates,overflow:0};
  const icon=Math.max(30,Math.min(42,(Number(iconSize)||48)-6));
  const capacity=Math.max(1,Math.floor((Math.min(440,Math.max(0,width-24))-22)/(icon+14)));
  return {visible:candidates.slice(0,capacity),overflow:Math.max(0,candidates.length-capacity)};
 }
+function persistAirNexusOption(key,value,owner){if(!['nexusHotEdge'].includes(key)||typeof value!=='boolean')return Promise.reject(Error('Ungültige Nexus-Option.'));const save=airSettingsWrites.then(()=>airOS.preferences.update({[key]:value},owner)).then(async saved=>{if((await airOS.currentUser())?.preferenceSession!==owner)throw Error('Die Sitzung hat sich geändert.');airSettingsCache={...readAirSettings(),...saved};applyAirSettings(airSettingsCache);return saved;});airSettingsWrites=save.catch(()=>{});return save;}
+function persistAirDockOrder(from,to){
+ const initial=window.airOS.currentUser();const save=airSettingsWrites.then(async()=>{const owner=(await initial)?.preferenceSession;if(!owner||(await airOS.currentUser())?.preferenceSession!==owner)throw Error('Die Sitzung hat sich geändert.');const latest=await airOS.preferences.get();const dockPins=airNexusModel.dockOrder(airDockReferences(latest.dockPins),from,to);const saved=await airOS.preferences.update({dockPins},owner);if((await airOS.currentUser())?.preferenceSession!==owner)throw Error('Die Sitzung hat sich geändert.');airSettingsCache={...readAirSettings(),dockPins:saved.dockPins};applyAirSettings(airSettingsCache);return true;});airSettingsWrites=save.catch(()=>{});return save;
+}
 function initAirDockLayout(){
  const dock=document.querySelector('.dock'),registry=window.airAppRegistry;
+ const recent=[];
  const originals=Array.from(dock.children),buttons=new Map(originals.filter(el=>el.dataset.app).map(el=>[el.dataset.app,el]));
  const update=()=>{
   const settings=readAirSettings(),modern=settings.dockTheme==='modern',active=document.activeElement;
-  const selection=airDockSelection(registry,settings.dockPins,window.innerWidth,settings.dockSize);
+  const live=[...new Set([...(typeof openApps!=='undefined'?[...openApps.keys()]:[]),...recent.slice(0,3)])];
+  const selection=airDockSelection(registry,settings.dockPins,window.innerWidth,settings.dockSize,modern&&window.airMacShell7?live:[]);
   if(modern){
    for(const id of selection.visible){
     if(!buttons.has(id)){
@@ -935,6 +943,7 @@ function initAirDockLayout(){
  document.addEventListener('air-settings-changed',update);
  window.addEventListener('resize',update);
  registry.onChange(update);
+ airAppLifecycle.onChange(e=>{if(['focused','maximized'].includes(e.state)){const i=recent.indexOf(e.id);if(i>=0)recent.splice(i,1);recent.unshift(e.id);recent.splice(6);}update();});
  update();
 }
 initAirDockLayout();

@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/Deepender25/Edge-Drop",
+  "commit": "72400d19cdb65b89b74358877d341aed68662625",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "electron/store/signature.ts",
+      "sha256": "0327f3a676b8b9c4191b6cbd2380d8ca13b4bcda9a88411d7040a6a37cd60a41"
+    },
+    {
+      "path": "shared/linkText.ts",
+      "sha256": "4b14fb6d09bd5bf6ec0e7e0012f23f1420174f248ae5bb16530c032fd4967edc"
+    },
+    {
+      "path": "shared/itemMeta.ts",
+      "sha256": "8395c56b7641df7f357ee3e8cff794a8725b7d4910068e8fdc3695174c107b13"
+    },
+    {
+      "path": "src/lib/search.ts",
+      "sha256": "af109263dadfc23c48d813b781003ee25b38db337452c30aa5d71d468564c6f4"
+    },
+    {
+      "path": "electron/preload/internalDragGuard.ts",
+      "sha256": "639ee343fad1d0f8987e88a711aead64a52fff978317641ec98b0d004624c8b0"
+    },
+    {
+      "path": "electron/clipboard/formats.ts",
+      "sha256": "0814d1d64f139365d6537b22de187b572dbad456afeaf9693931e2db5058a2c6",
+      "excerpt": "const IGNORED_FORMATS through end of file; clipboard provider injected in port"
+    }
+  ]
+}

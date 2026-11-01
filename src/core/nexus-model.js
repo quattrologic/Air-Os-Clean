@@ -1,0 +1,11 @@
+'use strict';
+// Air-OS-owned portable contracts. No Electron, filesystem, credentials or host commands.
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.airNexusModel=api;})(typeof window==='object'?window:null,function(){
+ const MAX_ITEMS=80,MAX_BYTES=64*1024*1024,MAX_FILE=16*1024*1024;
+ function timer(value){if(value===null)return null;if(!value||Object.keys(value).some(k=>!['kind','state','duration','remaining','deadline','id'].includes(k))||!['countdown','pomodoro','break'].includes(value.kind)||!['running','paused','done'].includes(value.state)||![value.duration,value.remaining,value.deadline].every(Number.isSafeInteger)||value.duration<1000||value.duration>86400000||value.remaining<0||value.remaining>value.duration||value.deadline<0||value.deadline>8640000000000000||typeof value.id!=='string'||!/^[a-f0-9]{32}$/.test(value.id))throw Error('Ungültiger Timer.');return {...value};}
+ function remaining(t,now=Date.now()){return !t?0:t.state==='running'?Math.max(0,Math.min(t.duration,t.deadline-now)):t.remaining;}
+ function lrc(text){if(typeof text!=='string'||text.length>131072)throw Error('LRC-Datei zu groß.');const result=[];let offset=Number(/\[offset:([+-]?\d+)\]/i.exec(text)?.[1]||0);offset=Math.max(-60000,Math.min(60000,offset));for(const line of text.split(/\r?\n/)){const tags=[...line.matchAll(/\[(\d{1,3}):([0-5]\d)(?:[.:](\d{1,3}))?\]/g)],body=line.replace(/\[[^\]]*\]/g,'').trim().slice(0,1000);for(const tag of tags){const time=Math.max(0,(Number(tag[1])*60+Number(tag[2]))*1000+Number((tag[3]||'').padEnd(3,'0'))+offset);if(body)result.push({time,text:body});}if(result.length>5000)throw Error('Zu viele Liedtextzeilen.');}return result.sort((a,b)=>a.time-b.time);}
+ function lyricAt(lines,ms){let lo=0,hi=lines.length;while(lo<hi){const m=(lo+hi)>>>1;if(lines[m].time<=ms)lo=m+1;else hi=m;}return lo-1;}
+ function dockOrder(pins,from,to){if(!Array.isArray(pins)||!pins.includes(from)||!pins.includes(to))throw Error('Nur angeheftete Apps können umgeordnet werden.');const next=pins.filter(id=>id!==from);next.splice(next.indexOf(to),0,from);return next;}
+ return Object.freeze({MAX_ITEMS,MAX_BYTES,MAX_FILE,timer,remaining,lrc,lyricAt,dockOrder});
+});

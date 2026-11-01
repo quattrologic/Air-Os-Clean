@@ -1,3 +1,7 @@
+# Nexus 1 — Checkpoint A
+
+R7-Basis 02ccaf88724731cf685d2221f88e959020aff3f0; separater Branch feat/air-os-nexus-1-system-integrations. Main-eigene temporäre Shelf, Apache-Edge-Drop-Modelle, Dock/Stage-Aktionen und bestehende Island mit Timer/Musik/Reminders integriert. 575/575 Node-Tests und Runtime-/Syntaxprüfung bestanden; echte neue GUI/Windows-Abnahme noch ausstehend. Keine Veröffentlichung und kein iPad-Merge. Nächster Schritt: Electron-GUI, gezielte Korrekturen, Linux-Prototyp/ISO-Voraussetzungen dokumentieren. [Details](AIR_OS_NEXUS_1.md).
+
 # R7 — finaler geprüfter und gesicherter Stand
 
 Branch feat/air-os-r7-final-experience; Basis7be272a61d43db03810817755adf9615629ac89b. Produkt-/Buildb839d409c255effa36d483a89d8e13ed7ab5570d; finaler Windows-Bildcommit2fb8786bc38c72a052611d4cd69843c146d6a3c4.

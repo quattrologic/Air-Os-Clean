@@ -3,7 +3,7 @@
 (() => {
  const registry=window.airAppRegistry;
  if(!registry)return;
- registry.register('store',{name:'Air App Store',iconClass:'store-icon',glyph:'▣'});
+ if(!registry.get?.('store'))registry.register('store',{name:'Air App Store',iconClass:'store-icon',glyph:'▣'});
  vectorIcon.store='<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="airStoreB" x2="0" y2="1"><stop stop-color="#aee4ff"/><stop offset="1" stop-color="#408ee7"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#airStoreB)"/><path d="M15 24h34l-3 28H18Z" fill="#f9fcff"/><path d="M25 25v-6a7 7 0 0 1 14 0v6" fill="none" stroke="#f9fcff" stroke-width="4"/><path d="M27 38h10M32 33v10" stroke="#288edf" stroke-width="4" stroke-linecap="round"/></svg>';
  function body(){return '<section class="air-store"><header><div><small>AIR-OS · APP STORE</small><h2>Air App Store</h2><p>Geprüfte Apps aus dem lokalen Katalog.</p></div></header><div class="as-warning">Nur signierte Offline-Demopakete. Kein öffentlicher App-Marktplatz und keine Zahlungen.</div><div class="as-list" aria-live="polite">Katalog wird überprüft …</div><p class="as-status" role="status"></p></section>'}
  function mount(win){
