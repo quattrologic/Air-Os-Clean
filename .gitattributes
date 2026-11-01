@@ -45,3 +45,7 @@ third_party/hyprland/** -text
 third_party/r6-macshell/** -text
 
 third_party/r7-macshell/** -text
+
+# Nexus: original Apache source/license bytes must match the pinned checkout on Windows.
+third_party/edge-drop/** -text
+*.desktop text eol=lf

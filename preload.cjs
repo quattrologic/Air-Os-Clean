@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer, webUtils } = require('electron');
 contextBridge.exposeInMainWorld('airOS', Object.freeze({
   shelf:Object.freeze({
     list:owner=>ipcRenderer.invoke('air-os:nexus:shelf','list',null,owner),
+    importBytes:(name,bytes,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','bytes',{name,bytes},owner),
     addText:(text,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','text',text,owner),
     capture:owner=>ipcRenderer.invoke('air-os:nexus:shelf','capture',null,owner),
     consent:(enabled,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','consent',enabled,owner),

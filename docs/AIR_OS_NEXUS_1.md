@@ -38,3 +38,13 @@ Erste echte Linux-CI [41287651894](https://github.com/quattrologic/Air-Os-Clean/
 Getrennte Software-Shaderdiagnose bestand: DPR 1/2/3, echte Pixeländerung durch Refraktion, null Idle-Draws, Context Loss/Restore und Cleanup auf 0 Programme/0 Texturen. Keine Hardware-GPU-Abnahme. Neue Linux-/Windows-CI läuft vom nächsten Quellcheckpoint aus. Windows-NSIS und Linux-DEB bleiben Testartefakte ohne automatische Veröffentlichung/Installation auf Privatgeräten.
 
 Checkpoint A: `2e3cd8b1720811585ce54fceb2cfabbbb11afdf9`. Debug-Evidenz: `3b71d87` (vollständige SHA in Git). iPad-Basis unverändert; InfinityOS-ISO fehlt weiterhin. Siehe [Linux-Prototyp](AIR_OS_LINUX_ROADMAP.md) und [ISO-Voraussetzungen](AIR_OS_INFINITYOS_INVENTORY.md).
+
+## Checkpoint C — reale Integrationskorrekturen
+
+597/597 Node-Regressionen einschließlich der 15 wiederverwendeten Stage-/Paneltests; alle ursprünglichen 557 Tests bleiben erhalten. `d1cdfa712f2a195db7d480c3e0c60e2e1d4f57e8` bestand 24 neue echte Linux-Electron-Prüfungen. Der getrennte Gruppenlauf fand den nicht geladenen `panel-navigation.js`-Helfer; dieser wird jetzt tatsächlich im HTML geladen. Shelf-Shortcut ist getrennt **Strg+Alt+Y**, Stage bleibt Strg+Alt+S. Die vorhandenen Tahoe-Promptdialoge ersetzen auf Electron nicht unterstützte Browser-Prompts.
+
+Die direkte Bildkontrolle zeigte zu hellen Textuntergrund über cremefarbenen Appflächen. Korrektur im Produkt: begrenzte dunkle Fallbacktönung der Shelf und eine lesbare innere Island-Fläche; keine Änderung der äußeren Dock-/Islandform. Hardwarematerialien bleiben beim selben GLASS-3-Eigentümer. Der neue Materialtest prüft die Shelf selbst im Shaderpfad und nach Idle.
+
+Zusätzliche ausdrückliche Browser-Dateiauswahl kopiert nur die vom Nutzer ausgewählten File-Inhalte in denselben Main-Speicher; keine Hostpfade oder neuen Dateisystemrechte. Das ist auch ein geeigneter Ansatz für einen späteren PWA-Port, noch kein iPad-Branchport. Die GUI wählt eigene synthetische Dateien über den echten Browser-Dateieingabepfad und bildet daraus Stapel über die Produktdialoge. Native Picker-/OLE-Dragabnahmen bleiben separat.
+
+Windows verweigerte zunächst korrekt den Build wegen veränderter Zeilenenden in der neuen Apache-Lizenz. Byteerhalt für `third_party/edge-drop/**` ergänzt; keine Integritätsprüfung abgeschwächt. Linux-DEB-Gate benötigte vollständige Git-Historie und erhält diese jetzt. Endgültige Installer-/DEB-/GUI-Ergebnisse folgen nach den neuen Läufen.

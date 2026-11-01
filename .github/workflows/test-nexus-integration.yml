@@ -112,6 +112,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -129,5 +131,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Air-OS-Nexus1-Linux-DEB-prototype-${{ github.sha }}
-          path: dist/linux-nexus/*.deb
+          path: |
+            dist/linux-nexus/*.deb
+            dist/linux-nexus/SHA256SUMS.txt
           if-no-files-found: error

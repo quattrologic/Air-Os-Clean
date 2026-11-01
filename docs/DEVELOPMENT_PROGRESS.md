@@ -1,3 +1,7 @@
+# Nexus 1 — Checkpoint C
+
+597/597 Node-Tests, 393 Runtimeassets, tatsächliche Nexus-GUI vorher mit 24 Prüfungen bestanden. Gruppen-Navigationshelper, Dialoge, getrennte Shortcuts, Dateiauswahl und lesbare Materialien korrigiert. Neue native Windows-/Linux-CI aus diesem Quellstand abwarten; keine vollständige GUI-/Installerfreigabe vor Ergebnissen. [Bericht](AIR_OS_NEXUS_1.md).
+
 # Nexus 1 — Checkpoint B
 
 580/580 Node-Tests; 393 lokale Runtimeassets geprüft. Finder-Shelf-Import/Export, Ordnerstapel, sichere Sitzungs- und Consenttests ergänzt. Erste echte GUI fand Island-Togglefehler; Produktcode korrigiert, erneute GUI noch offen. Software-Materialdiagnose bestand separat. Neuer Windows-Nexus1-Testkanal und isolierter Linux-DEB-Prototyp vorbereitet; keine Veröffentlichung. [Bericht](AIR_OS_NEXUS_1.md).
