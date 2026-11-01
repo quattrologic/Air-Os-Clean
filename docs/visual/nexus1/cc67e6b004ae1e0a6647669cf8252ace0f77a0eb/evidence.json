@@ -1,0 +1,1135 @@
+{
+  "sourceCommit": "cc67e6b004ae1e0a6647669cf8252ace0f77a0eb",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41288878871",
+  "acceptance": "INCOMPLETE / FAILED",
+  "hardwareAcceptance": false,
+  "before": {
+    "source": "cc67e6b004ae1e0a6647669cf8252ace0f77a0eb",
+    "platform": "linux",
+    "physicalHardware": false,
+    "baseline": true,
+    "checks": [],
+    "scenes": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "rect": {
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1920,
+            "height": 1056,
+            "top": 24,
+            "right": 1920,
+            "bottom": 1080,
+            "left": 0
+          },
+          "dock": {
+            "x": 713.9921875,
+            "y": 1011,
+            "width": 492.015625,
+            "height": 69,
+            "top": 1011,
+            "right": 1206.0078125,
+            "bottom": 1080,
+            "left": 713.9921875
+          },
+          "island": {
+            "x": 745,
+            "y": 0,
+            "width": 430,
+            "height": 40,
+            "top": 0,
+            "right": 1175,
+            "bottom": 40,
+            "left": 745
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 1688,
+        "height": 896,
+        "rect": {
+          "viewport": {
+            "width": 1688,
+            "height": 896
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1688,
+            "height": 872,
+            "top": 24,
+            "right": 1688,
+            "bottom": 896,
+            "left": 0
+          },
+          "dock": {
+            "x": 626.5,
+            "y": 827,
+            "width": 435,
+            "height": 69,
+            "top": 827,
+            "right": 1061.5,
+            "bottom": 896,
+            "left": 626.5
+          },
+          "island": {
+            "x": 629,
+            "y": 0,
+            "width": 430,
+            "height": 36,
+            "top": 0,
+            "right": 1059,
+            "bottom": 36,
+            "left": 629
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 1536,
+        "height": 864,
+        "rect": {
+          "viewport": {
+            "width": 1536,
+            "height": 864
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1536,
+            "height": 840,
+            "top": 24,
+            "right": 1536,
+            "bottom": 864,
+            "left": 0
+          },
+          "dock": {
+            "x": 550.5,
+            "y": 795,
+            "width": 435,
+            "height": 69,
+            "top": 795,
+            "right": 985.5,
+            "bottom": 864,
+            "left": 550.5
+          },
+          "island": {
+            "x": 553,
+            "y": 0,
+            "width": 430,
+            "height": 36,
+            "top": 0,
+            "right": 983,
+            "bottom": 36,
+            "left": 553
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 390,
+        "height": 600,
+        "rect": {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 390,
+            "height": 576,
+            "top": 24,
+            "right": 390,
+            "bottom": 600,
+            "left": 0
+          },
+          "dock": {
+            "x": 44.421875,
+            "y": 550.125,
+            "width": 301.15625,
+            "height": 49.875,
+            "top": 550.125,
+            "right": 345.578125,
+            "bottom": 600,
+            "left": 44.421875
+          },
+          "island": {
+            "x": 12,
+            "y": 0,
+            "width": 366,
+            "height": 36,
+            "top": 0,
+            "right": 378,
+            "bottom": 36,
+            "left": 12
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      }
+    ],
+    "status": "passed"
+  },
+  "after": {
+    "source": "cc67e6b004ae1e0a6647669cf8252ace0f77a0eb",
+    "platform": "linux",
+    "physicalHardware": false,
+    "baseline": false,
+    "checks": [
+      {
+        "name": "shelf toggle available 1920",
+        "pass": true
+      },
+      {
+        "name": "shelf fits viewport 1920",
+        "pass": true
+      },
+      {
+        "name": "closed shelf removes every hitbox 1920",
+        "pass": true
+      },
+      {
+        "name": "shelf toggle available 1688",
+        "pass": true
+      },
+      {
+        "name": "shelf fits viewport 1688",
+        "pass": true
+      },
+      {
+        "name": "closed shelf removes every hitbox 1688",
+        "pass": true
+      },
+      {
+        "name": "shelf toggle available 1536",
+        "pass": true
+      },
+      {
+        "name": "shelf fits viewport 1536",
+        "pass": true
+      },
+      {
+        "name": "closed shelf removes every hitbox 1536",
+        "pass": true
+      },
+      {
+        "name": "shelf toggle available 390",
+        "pass": true
+      },
+      {
+        "name": "shelf fits viewport 390",
+        "pass": true
+      },
+      {
+        "name": "closed shelf removes every hitbox 390",
+        "pass": true
+      },
+      {
+        "name": "Main shelf deduplicates real authenticated text",
+        "pass": true
+      },
+      {
+        "name": "actual shelf search uses original Edge-Drop filtering",
+        "pass": true
+      },
+      {
+        "name": "real browser File selection reaches bounded Main-owned snapshots",
+        "pass": true
+      },
+      {
+        "name": "two real UI bundles retain four snapshots in the same Main store",
+        "pass": true
+      }
+    ],
+    "scenes": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "rect": {
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1920,
+            "height": 1056,
+            "top": 24,
+            "right": 1920,
+            "bottom": 1080,
+            "left": 0
+          },
+          "dock": {
+            "x": 655.984375,
+            "y": 1011,
+            "width": 608.03125,
+            "height": 69,
+            "top": 1011,
+            "right": 1264.015625,
+            "bottom": 1080,
+            "left": 655.984375
+          },
+          "island": {
+            "x": 745,
+            "y": 0,
+            "width": 430,
+            "height": 40,
+            "top": 0,
+            "right": 1175,
+            "bottom": 40,
+            "left": 745
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 1688,
+        "height": 896,
+        "rect": {
+          "viewport": {
+            "width": 1688,
+            "height": 896
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1688,
+            "height": 872,
+            "top": 24,
+            "right": 1688,
+            "bottom": 896,
+            "left": 0
+          },
+          "dock": {
+            "x": 568.5,
+            "y": 827,
+            "width": 551,
+            "height": 69,
+            "top": 827,
+            "right": 1119.5,
+            "bottom": 896,
+            "left": 568.5
+          },
+          "island": {
+            "x": 629,
+            "y": 0,
+            "width": 430,
+            "height": 36,
+            "top": 0,
+            "right": 1059,
+            "bottom": 36,
+            "left": 629
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 1536,
+        "height": 864,
+        "rect": {
+          "viewport": {
+            "width": 1536,
+            "height": 864
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 1536,
+            "height": 840,
+            "top": 24,
+            "right": 1536,
+            "bottom": 864,
+            "left": 0
+          },
+          "dock": {
+            "x": 492.5,
+            "y": 795,
+            "width": 551,
+            "height": 69,
+            "top": 795,
+            "right": 1043.5,
+            "bottom": 864,
+            "left": 492.5
+          },
+          "island": {
+            "x": 553,
+            "y": 0,
+            "width": 430,
+            "height": 36,
+            "top": 0,
+            "right": 983,
+            "bottom": 36,
+            "left": 553
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      },
+      {
+        "width": 390,
+        "height": 600,
+        "rect": {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 24,
+            "width": 390,
+            "height": 576,
+            "top": 24,
+            "right": 390,
+            "bottom": 600,
+            "left": 0
+          },
+          "dock": {
+            "x": 37.3125,
+            "y": 557.8125,
+            "width": 315.375,
+            "height": 42.1875,
+            "top": 557.8125,
+            "right": 352.6875,
+            "bottom": 600,
+            "left": 37.3125
+          },
+          "island": {
+            "x": 12,
+            "y": 0,
+            "width": 366,
+            "height": 36,
+            "top": 0,
+            "right": 378,
+            "bottom": 36,
+            "left": 12
+          },
+          "menu": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      }
+    ],
+    "status": "failed",
+    "error": "GUI condition timed out: !!document.querySelector('.nexus-bundle-children button')",
+    "debug": {
+      "errors": [],
+      "view": "control",
+      "open": false,
+      "nexus": {
+        "tab": "music",
+        "timer": null,
+        "ticking": false,
+        "lyrics": 0,
+        "disposed": false
+      },
+      "root": true,
+      "inert": true
+    }
+  },
+  "materials": {
+    "platform": "linux",
+    "kind": "isolated software shader diagnostic",
+    "hardwareAcceptance": false,
+    "viewports": [
+      {
+        "dpr": 1,
+        "snapshot": {
+          "quality": 1,
+          "lastPaintMs": 112,
+          "qualityChanges": 0,
+          "failed": false,
+          "reason": "",
+          "diagnostic": true,
+          "software": true,
+          "diagnosticRefraction": true,
+          "draws": 85,
+          "sceneBuilds": 3,
+          "transfers": 54,
+          "tiles": 6,
+          "pending": false,
+          "disposed": false,
+          "paintWallTimeMs": 15242,
+          "programs": 4,
+          "materialPrograms": 3,
+          "prepassDraws": 18,
+          "prepassWallTimeMs": 2202,
+          "uploadWallTimeMs": 34,
+          "maxTexture": 4096,
+          "sceneSize": [
+            1688,
+            896
+          ],
+          "estimatedTextureBytes": 16132779,
+          "textures": 5,
+          "localTextureBytes": 0,
+          "gpuType": "software",
+          "renderPath": "isolated-diagnostic",
+          "contextLosses": 0,
+          "decodeCount": 2,
+          "bufferResizes": 15,
+          "transferWallTimeMs": 17,
+          "dpr": 1,
+          "backdrop": "wallpaper-only",
+          "family": "macshell",
+          "localLenses": 0,
+          "tintCards": 0,
+          "edgeDetail": true,
+          "sampling": "css-pixel-correct-separate-mip-levels",
+          "interaction": "finite-contour-and-rim",
+          "materials": [
+            {
+              "kind": "island",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "dock",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 30,
+                "dispersion": 0.06,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.09000000000000001,
+                "grain": 0.009,
+                "magnify": 0.08,
+                "rimTint": 0,
+                "edgeTint": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "launchpad",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.16875,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "switcher",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "dpr": 2,
+        "snapshot": {
+          "quality": 1,
+          "lastPaintMs": 278,
+          "qualityChanges": 0,
+          "failed": false,
+          "reason": "",
+          "diagnostic": true,
+          "software": true,
+          "diagnosticRefraction": true,
+          "draws": 100,
+          "sceneBuilds": 4,
+          "transfers": 66,
+          "tiles": 6,
+          "pending": true,
+          "disposed": false,
+          "paintWallTimeMs": 20236,
+          "programs": 4,
+          "materialPrograms": 3,
+          "prepassDraws": 24,
+          "prepassWallTimeMs": 3072,
+          "uploadWallTimeMs": 34,
+          "maxTexture": 4096,
+          "sceneSize": [
+            2746,
+            1458
+          ],
+          "estimatedTextureBytes": 42705792,
+          "textures": 5,
+          "localTextureBytes": 0,
+          "gpuType": "software",
+          "renderPath": "isolated-diagnostic",
+          "contextLosses": 0,
+          "decodeCount": 2,
+          "bufferResizes": 20,
+          "transferWallTimeMs": 19,
+          "dpr": 2,
+          "backdrop": "wallpaper-only",
+          "family": "macshell",
+          "localLenses": 0,
+          "tintCards": 0,
+          "edgeDetail": true,
+          "sampling": "css-pixel-correct-separate-mip-levels",
+          "interaction": "finite-contour-and-rim",
+          "materials": [
+            {
+              "kind": "island",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "dock",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 30,
+                "dispersion": 0.06,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.09000000000000001,
+                "grain": 0.009,
+                "magnify": 0.08,
+                "rimTint": 0,
+                "edgeTint": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "launchpad",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.16875,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "switcher",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "dpr": 3,
+        "snapshot": {
+          "quality": 1,
+          "lastPaintMs": 132,
+          "qualityChanges": 0,
+          "failed": false,
+          "reason": "",
+          "diagnostic": true,
+          "software": true,
+          "diagnosticRefraction": true,
+          "draws": 121,
+          "sceneBuilds": 6,
+          "transfers": 84,
+          "tiles": 6,
+          "pending": false,
+          "disposed": false,
+          "paintWallTimeMs": 26539,
+          "programs": 4,
+          "materialPrograms": 3,
+          "prepassDraws": 36,
+          "prepassWallTimeMs": 5205,
+          "uploadWallTimeMs": 34,
+          "maxTexture": 4096,
+          "sceneSize": [
+            2746,
+            1458
+          ],
+          "estimatedTextureBytes": 42705792,
+          "textures": 5,
+          "localTextureBytes": 0,
+          "gpuType": "software",
+          "renderPath": "isolated-diagnostic",
+          "contextLosses": 0,
+          "decodeCount": 2,
+          "bufferResizes": 27,
+          "transferWallTimeMs": 26,
+          "dpr": 3,
+          "backdrop": "wallpaper-only",
+          "family": "macshell",
+          "localLenses": 0,
+          "tintCards": 0,
+          "edgeDetail": true,
+          "sampling": "css-pixel-correct-separate-mip-levels",
+          "interaction": "finite-contour-and-rim",
+          "materials": [
+            {
+              "kind": "island",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "dock",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 30,
+                "dispersion": 0.06,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.09000000000000001,
+                "grain": 0.009,
+                "magnify": 0.08,
+                "rimTint": 0,
+                "edgeTint": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "launchpad",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.16875,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.5,
+                  1
+                ]
+              }
+            },
+            {
+              "kind": "toolbar",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            },
+            {
+              "kind": "switcher",
+              "values": {
+                "saturation": 1.25,
+                "dark": 1,
+                "shadowAmt": 0,
+                "flatInner": 1,
+                "ringW": 0,
+                "thickness": 25.6,
+                "dispersion": 0.078,
+                "blurPx": 1.5,
+                "tintMix": 0.231,
+                "rim": 0.1125,
+                "grain": 0.006,
+                "magnify": 0.08000000000000002,
+                "rimTint": 1,
+                "sampleScale": [
+                  0.8131296060670123,
+                  1.6262592121340247
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "checks": [
+      "zero idle draws with the actual new stage material",
+      "actual stage shader pixels change with refraction enabled",
+      "shared context loss/restore releases and rebuilds programs",
+      "actual new Shelf uses shared GL material and reaches zero idle draws",
+      "profile lifecycle frees all shared stage textures/programs/RAFs"
+    ],
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) air-os-desktop/1.0.3 Chrome/152.0.7977.167 Electron/44.9.3 Safari/537.36",
+    "pixelDifference": {
+      "width": 451,
+      "height": 145,
+      "changedPixels": 51377,
+      "meanAbsoluteRGBDifference": 17.802828962458904,
+      "source": "actual shader output over synthetic own wallpaper; no window pixels"
+    },
+    "cleanup": {
+      "quality": 1,
+      "lastPaintMs": 1,
+      "qualityChanges": 0,
+      "failed": false,
+      "reason": "",
+      "diagnostic": true,
+      "software": true,
+      "diagnosticRefraction": true,
+      "draws": 161,
+      "sceneBuilds": 8,
+      "transfers": 119,
+      "tiles": 0,
+      "pending": false,
+      "disposed": true,
+      "paintWallTimeMs": 37338,
+      "programs": 0,
+      "materialPrograms": 0,
+      "prepassDraws": 48,
+      "prepassWallTimeMs": 5235,
+      "uploadWallTimeMs": 34,
+      "maxTexture": 4096,
+      "sceneSize": [
+        2746,
+        1458
+      ],
+      "estimatedTextureBytes": 0,
+      "textures": 0,
+      "localTextureBytes": 0,
+      "gpuType": "software",
+      "renderPath": "disposed",
+      "contextLosses": 1,
+      "decodeCount": 4,
+      "bufferResizes": 48,
+      "transferWallTimeMs": 35,
+      "dpr": 3,
+      "backdrop": "wallpaper-only",
+      "family": "macshell",
+      "localLenses": 0,
+      "tintCards": 0,
+      "edgeDetail": true,
+      "sampling": "css-pixel-correct-separate-mip-levels",
+      "interaction": "finite-contour-and-rim",
+      "materials": []
+    },
+    "status": "passed"
+  }
+}
