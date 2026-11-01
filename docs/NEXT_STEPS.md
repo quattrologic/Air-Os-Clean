@@ -1,3 +1,7 @@
+# Nexus 1 — Checkpoint D
+
+600/600 Node-Tests, 393 Runtimeassets. Echte Dateistapel-/Rootrevisions-/Namenssicherheit korrigiert. Windows aus Checkpoint C tatsächlich gebaut, ASAR/PE/SHA geprüft und installiert; alte statische Dockbreitenannahme in GUI durch echte dynamische Algorithmusprüfung ersetzt. Vollständige neue Windows-/Linux-GUI sowie DEB-Build noch ausstehend. [Bericht](AIR_OS_NEXUS_1.md). Keine Veröffentlichung oder iPad-Branchänderung.
+
 # Nexus 1 — Checkpoint C
 
 597/597 Node-Tests, 393 Runtimeassets, tatsächliche Nexus-GUI vorher mit 24 Prüfungen bestanden. Gruppen-Navigationshelper, Dialoge, getrennte Shortcuts, Dateiauswahl und lesbare Materialien korrigiert. Neue native Windows-/Linux-CI aus diesem Quellstand abwarten; keine vollständige GUI-/Installerfreigabe vor Ergebnissen. [Bericht](AIR_OS_NEXUS_1.md).

@@ -125,8 +125,7 @@ jobs:
           node scripts/run-test-gate.cjs
       - name: Build application DEB only (no installation or host configuration)
         run: |
-          node scripts/linux-nexus-build.cjs
-          node build/windows-x64/node_modules/electron-builder/cli.js --linux deb --x64 --config dist/linux-nexus-config.json --publish never
+          node scripts/linux-nexus-build.cjs build
           sha256sum dist/linux-nexus/*.deb > dist/linux-nexus/SHA256SUMS.txt
       - uses: actions/upload-artifact@v4
         with:

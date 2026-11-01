@@ -17,3 +17,5 @@ Die Ubuntu-macOS-Anleitung von mmBesar wurde nur statisch gelesen. Sie verlangt 
 Vor einer Linux-Edition: DEB in einer isolierten Ubuntu-VM installieren, starten und deinstallieren; Sandbox, Picker/Audio, Suspend/Resume und Wayland/X11 prüfen. Hyprland braucht einen echten, ausdrücklich freigegebenen Testhost. Vor einer ISO: Paket-/Quellinventar, vollständige Lizenzprüfung, reproduzierbarer Imagebau, VM-Boot, Update-/Rollbackmodell und separater Installationsreview. Keine Festplatten-/Bootloaderänderung im Nexus-Auftrag.
 
 Der Nexus-Bericht nennt nach dem CI-Lauf den tatsächlichen DEB-/GUI-Status. Vorbereitung ist keine behauptete native Linux- oder ISO-Abnahme.
+
+Statisch gelesene Tutorialquelle: `mmBesar/Tutorials@1172eac88ed0b40013d74e1edb9111c22aed038d`, `macOS-theme-for-Ubuntu.md`. Null Code/Assets übernommen. Der erste DEB-Versuch scheiterte nach bestandenem Testgate; für die nächste Diagnose werden begrenzte Builderfehler als Annotation gesichert und der Paketmaintainer ausdrücklich angegeben. Keine behauptete erfolgreiche DEB-Abnahme vor erfolgreichem Build.

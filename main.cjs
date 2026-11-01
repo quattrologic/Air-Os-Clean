@@ -84,7 +84,7 @@ function localAppFile(url) {
 function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
-const nexus=require('./src/main/nexus-ipc.cjs')({ipcMain,app,dialog,nativeImage,clipboard,window:()=>mainWindow,authorize:requireControlSession,user:()=>activeUser,preferences:preferenceStore,workspace:relative=>resolveWorkspacePath(relative),destination:relative=>resolveWorkspacePath(relative,{allowMissingFinal:true})});
+const nexus=require('./src/main/nexus-ipc.cjs')({ipcMain,app,dialog,nativeImage,clipboard,window:()=>mainWindow,authorize:requireControlSession,user:()=>activeUser,preferences:preferenceStore,workspace:relative=>resolveWorkspacePath(relative),workspaceRevision:()=>fileSelectionRevision,destination:(relative,grant)=>{if(grant!==fileSelectionRevision)throw Error('Der freigegebene Ordner wurde geändert.');return resolveWorkspacePath(relative,{allowMissingFinal:true});}});
 const lockPresentation=require('./src/main/lock-presentation.cjs').create();
 function openLogin(preservePreview=false) {
   keepAwake.release();

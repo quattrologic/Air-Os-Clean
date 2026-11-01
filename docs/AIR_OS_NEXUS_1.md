@@ -48,3 +48,17 @@ Die direkte Bildkontrolle zeigte zu hellen Textuntergrund über cremefarbenen Ap
 Zusätzliche ausdrückliche Browser-Dateiauswahl kopiert nur die vom Nutzer ausgewählten File-Inhalte in denselben Main-Speicher; keine Hostpfade oder neuen Dateisystemrechte. Das ist auch ein geeigneter Ansatz für einen späteren PWA-Port, noch kein iPad-Branchport. Die GUI wählt eigene synthetische Dateien über den echten Browser-Dateieingabepfad und bildet daraus Stapel über die Produktdialoge. Native Picker-/OLE-Dragabnahmen bleiben separat.
 
 Windows verweigerte zunächst korrekt den Build wegen veränderter Zeilenenden in der neuen Apache-Lizenz. Byteerhalt für `third_party/edge-drop/**` ergänzt; keine Integritätsprüfung abgeschwächt. Linux-DEB-Gate benötigte vollständige Git-Historie und erhält diese jetzt. Endgültige Installer-/DEB-/GUI-Ergebnisse folgen nach den neuen Läufen.
+
+## Checkpoint D — Dateistapel und native Buildabnahme
+
+600/600 lokale Tests; 393 Runtime-Dateien. Echte Dateiauswahl und zwei benannte Stapel funktionierten im Linux-Renderer. Beim Öffnen eines Stapels wurde ein unnötiges Main-Leseereignis als Mutation publiziert und anschließend die Ansicht neu aufgebaut. Beides korrigiert: Lesen bleibt ohne Änderungsereignis und lokale Aufklappaktionen lösen keinen Neuaufbau aus. Neues Laufzeitverhalten wird erneut per GUI geprüft. Finder-Import/Export bindet nun zusätzlich die konkrete Rootrevision über asynchrone Schritte; portable Dateinamen verhindern insbesondere Windows-Gerätenamen.
+
+Windows-CI [41288878817](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41288878817) bestand Audit, komplette Regressionen, Originalbytes/ASAR/PE/SHA-256 und die tatsächliche NSIS-Installation. Die GUI scheiterte an der alten Annahme konstanter Dockbreite trotz neu hinzugekommener Running-/Recent-Apps. Die neue Prüfung berechnet die erwartete dynamische Breite aus dem vorhandenen MacShell-Algorithmus; die unveränderte Island, Unterkante, M2 und alle ursprünglichen Pins bleiben verpflichtend. **Noch keine vollständige Windows-Abnahme aus diesem Zwischenlauf.**
+
+Der Linux-DEB-Prototyp erhält explizite Maintainerangabe und begrenzte Builderdiagnosen. Noch kein installiertes DEB oder VM-Boot behauptet.
+
+### Herkunft eigener wiederverwendeter Komponenten
+
+Gezielte eigene Air-OS-Wiederverwendung aus `feat/air-os-infinityos-origin-port-2-desktop@45d056fcb97f841dbe5182c6c48c083fc614e5a7`: Stage-Modell/Übersicht und Integration im vorhandenen Window System, geometrische Panelnavigation, intelligentes Dock-Ausblenden samt M2-Motion-Leases, finite Materialinteraktion und zugehörige 15 Regressionstests. Kein kompletter Branchmerge, keine ungeklärten Origin-Originale.
+
+Tatsächlich verwendete Edge-Drop-Funktionen: `contentSignature` → Main-Shelf-Deduplizierung; `isLinkText` → Text-/Linkklassifikation; `normalizeNote` → Stapelnamen; `queryWords/searchText/matchesWords` → Shelf-Suche; `reduceGuard/isGuarded` → native Drag-Rücklaufbegrenzung; `isClipboardExcluded` → explizite Clipboard-Übernahme. Andere mitgelieferte reine Hilfsfunktionen werden nicht als ausgeführte Produktfunktionen ausgegeben.
