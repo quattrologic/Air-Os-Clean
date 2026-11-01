@@ -107,3 +107,27 @@ jobs:
         env:
           NEXUS_DEBUG_EVIDENCE: ${{ needs.electron.result != 'success' && '1' || '0' }}
         run: node scripts/publish-nexus-evidence.cjs
+  linux-package-prototype:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Frozen dependencies and security gate
+        run: |
+          npm ci --prefix build/windows-x64 --ignore-scripts --no-audit --no-fund
+          npm audit --prefix build/windows-x64 --audit-level=high
+          node scripts/windows-test-build.cjs link
+          node scripts/run-test-gate.cjs
+      - name: Build application DEB only (no installation or host configuration)
+        run: |
+          node scripts/linux-nexus-build.cjs
+          node build/windows-x64/node_modules/electron-builder/cli.js --linux deb --x64 --config dist/linux-nexus-config.json --publish never
+          sha256sum dist/linux-nexus/*.deb > dist/linux-nexus/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-Nexus1-Linux-DEB-prototype-${{ github.sha }}
+          path: dist/linux-nexus/*.deb
+          if-no-files-found: error

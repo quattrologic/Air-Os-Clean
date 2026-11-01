@@ -299,7 +299,7 @@
   document.addEventListener('air-notes-saved', notesSaved);
   window.addEventListener('pagehide', dispose, {once: true});
   desktop.classList.add('has-air-island');
-  window.airIsland=Object.freeze({registerView(id,label,node){if(extraViews.has(id)||!node||!/^[-a-z]+$/.test(id))throw Error('Ungültige Island-Ansicht.');const button=document.createElement('button');button.type='button';button.textContent=label;button.dataset.islandView=id;button.onclick=()=>showView(id);views.append(button);panel.append(node);extraViews.set(id,{label,node,button});showView(selectedView);return()=>{button.remove();node.remove();extraViews.delete(id);if(selectedView===id)showView('control');};},show(id){if(!targetOpen)open();showView(id);},selected:()=>selectedView,isOpen:()=>targetOpen});
+  window.airIsland=Object.freeze({registerView(id,label,node){if(extraViews.has(id)||!node||!/^[-a-z]+$/.test(id))throw Error('Ungültige Island-Ansicht.');const button=document.createElement('button');button.type='button';button.textContent=label;button.dataset.islandView=id;button.onclick=()=>showView(id);views.append(button);panel.append(node);extraViews.set(id,{label,node,button});showView(selectedView);return()=>{button.remove();node.remove();extraViews.delete(id);if(selectedView===id)showView('control');};},show(id){if(!targetOpen)toggle();showView(id);},selected:()=>selectedView,isOpen:()=>targetOpen});
   showView('control');
   settingsChanged();
   visibility();

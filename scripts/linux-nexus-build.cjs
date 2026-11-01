@@ -1,0 +1,7 @@
+'use strict';
+// Package preparation only. Never installs, enables autostart, changes GNOME or invokes sudo.
+const fs=require('node:fs'),path=require('node:path');
+function config(root){const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));return {...pkg.build,electronVersion:'44.9.3',npmRebuild:false,publish:null,directories:{output:'dist/linux-nexus'},artifactName:'Air-OS-Ultimate-Nexus1-${version}-Linux-${arch}.${ext}',linux:{target:['deb'],executableName:'air-os',category:'Utility',icon:'dist/linux-icons',desktop:{entry:{Name:'Air-OS Ultimate',Comment:'Air-OS internal desktop workspace',StartupWMClass:'Air-OS'}}},deb:{depends:['libgtk-3-0','libnss3','libxss1','libxtst6','xdg-utils','libatspi2.0-0','libuuid1','libsecret-1-0']}};}
+function prepare(root){if(process.platform!=='linux'||process.arch!=='x64')throw Error('Linux x64 prototype only.');const icons=path.join(root,'dist/linux-icons');fs.mkdirSync(icons,{recursive:true});for(const size of [16,32,48,64,128,256,512]){const source=path.join(root,'assets/brand/png/app-'+size+'.png');if(fs.existsSync(source))fs.copyFileSync(source,path.join(icons,size+'x'+size+'.png'));}const file=path.join(root,'dist/linux-nexus-config.json');fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(config(root),null,2)+'\n');return file;}
+if(require.main===module)console.log(prepare(path.resolve(__dirname,'..')));
+module.exports={config,prepare};

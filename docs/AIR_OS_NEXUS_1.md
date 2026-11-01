@@ -28,3 +28,13 @@ Main authentifiziert Hauptfenster, exakten Hauptframe und Sitzung vor/nach async
 R7-Baseline: 557/557 tatsächlich ausgeführte Node-Tests. Checkpoint A: **575/575** (557 bestehende + 18 neue). Syntax-/Runtimeprüfung: 389 lokale Ressourcen. Neue echte Linux-Electron-/Materialprüfungen und ein Windows-Testkanal werden separat ausgeführt; bis zu deren Abschluss keine GUI-/Windows-Freigabe behauptet.
 
 Screenshots, Messwerte, abschließende Commit-SHAs und verbleibende Teilaufgaben werden nach den tatsächlichen CI-Läufen ergänzt.
+
+## Checkpoint B — Finder-/Plattformintegration und erste GUI-Korrektur
+
+580/580 lokale Node-Tests, 393 Runtime-Ressourcen geprüft. Finder-Dateien lassen sich über ihre vorhandene explizite Rootfreigabe in die Ablage kopieren; Rückexport verwendet den bestehenden Finder-Resolver und exklusives Erstellen ohne Überschreiben. Ordnerstapel importieren nach nativer Auswahl nur 2–32 direkte Dateien; keine rekursive Rootfreigabe. Native Drag-Ausgabe und echte manuelle Pickerabnahme sind getrennte Hostprüfungen.
+
+Erste echte Linux-CI [41287651894](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41287651894): vier Baselineansichten und 14 neue Ablage-/Layoutprüfungen bestanden. Island-Aktivierung fiel durch; Ursache war eine falsche Referenz auf `window.open`, korrigiert zum vorhandenen M1-Toggle und durch neuen Regressionstest gesichert. Dieser Lauf ist ausdrücklich **keine vollständige GUI-Freigabe**. Debugbilder unter `docs/visual/nexus1/2e3cd8b1720811585ce54fceb2cfabbbb11afdf9/`.
+
+Getrennte Software-Shaderdiagnose bestand: DPR 1/2/3, echte Pixeländerung durch Refraktion, null Idle-Draws, Context Loss/Restore und Cleanup auf 0 Programme/0 Texturen. Keine Hardware-GPU-Abnahme. Neue Linux-/Windows-CI läuft vom nächsten Quellcheckpoint aus. Windows-NSIS und Linux-DEB bleiben Testartefakte ohne automatische Veröffentlichung/Installation auf Privatgeräten.
+
+Checkpoint A: `2e3cd8b1720811585ce54fceb2cfabbbb11afdf9`. Debug-Evidenz: `3b71d87` (vollständige SHA in Git). iPad-Basis unverändert; InfinityOS-ISO fehlt weiterhin. Siehe [Linux-Prototyp](AIR_OS_LINUX_ROADMAP.md) und [ISO-Voraussetzungen](AIR_OS_INFINITYOS_INVENTORY.md).

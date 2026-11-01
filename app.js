@@ -938,6 +938,7 @@ function initAirDockLayout(){
    if(active.hidden)buttons.get('launchpad')?.focus();
    else if(document.activeElement!==active)active.focus();
   }
+  if(modern){const shelf=dock.querySelector('[data-dock-action="shelf"]'),trash=buttons.get('trash');if(shelf)dock.insertBefore(shelf,trash&&!trash.hidden?trash:null);}
   dock.scrollLeft=0;
  };
  document.addEventListener('air-settings-changed',update);

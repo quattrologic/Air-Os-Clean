@@ -6,6 +6,8 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     addText:(text,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','text',text,owner),
     capture:owner=>ipcRenderer.invoke('air-os:nexus:shelf','capture',null,owner),
     consent:(enabled,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','consent',enabled,owner),
+    folder:owner=>ipcRenderer.invoke('air-os:nexus:shelf','folder',null,owner),
+    exportToFinder:(id,folder,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','export',{id,folder},owner),
     pick:owner=>ipcRenderer.invoke('air-os:nexus:shelf','pick',null,owner),
     drop:(files,owner)=>{if(!Array.isArray(files)||files.length<1||files.length>32)throw Error('Dateiauswahl ungültig.');const paths=files.map(file=>webUtils.getPathForFile(file));if(paths.some(p=>!p))throw Error('Nur tatsächlich ausgewählte Dateien.');return ipcRenderer.invoke('air-os:nexus:shelf','drop',paths,owner);},
     fromFinder:(relative,owner)=>ipcRenderer.invoke('air-os:nexus:shelf','workspace',relative,owner),

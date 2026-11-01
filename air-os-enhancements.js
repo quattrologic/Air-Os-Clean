@@ -263,12 +263,12 @@
     const query = (win.querySelector('#air-files-search')?.value || '').trim().toLocaleLowerCase('de-DE');
     const items = state.items.filter(item => !query || item.name.toLocaleLowerCase('de-DE').includes(query));
     container.innerHTML = items.map(item => `
-      <div class="air-file-row"><button type="button" class="air-file-entry" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
+      <div class="air-file-row"><button type="button" class="air-file-entry" draggable="true" data-air-action="open-item" data-path="${escapeHTML(item.path)}" data-kind="${item.kind}">
         <span class="air-file-name"><span class="air-file-icon">${fileIcon(item)}</span><span class="air-file-name-copy"><strong>${escapeHTML(item.name)}</strong><small>${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() + '-Datei' : 'Datei')}</small></span></span>
         <span class="air-file-type">${item.kind === 'folder' ? 'Ordner' : escapeHTML(item.extension ? item.extension.slice(1).toUpperCase() : 'Datei')}</span>
         <span class="air-file-size">${item.kind === 'folder' ? '—' : formatBytes(item.size)}</span>
         <span class="air-file-date">${formatDate(item.modifiedAt)}</span>
-      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button><button type="button" class="air-file-duplicate" data-air-action="rename-item" data-path="${escapeHTML(item.path)}" title="Datei umbenennen" aria-label="${escapeHTML(item.name)} umbenennen">✎</button>` : ''}</div>`).join('');
+      </button>${item.kind === 'file' ? `<button type="button" class="air-file-duplicate" data-air-action="shelf-item" data-path="${escapeHTML(item.path)}" title="In temporäre Ablage kopieren" aria-label="${escapeHTML(item.name)} in Ablage">▱</button><button type="button" class="air-file-duplicate" data-air-action="duplicate-item" data-path="${escapeHTML(item.path)}" title="Datei duplizieren" aria-label="${escapeHTML(item.name)} duplizieren">⧉</button><button type="button" class="air-file-duplicate" data-air-action="rename-item" data-path="${escapeHTML(item.path)}" title="Datei umbenennen" aria-label="${escapeHTML(item.name)} umbenennen">✎</button>` : ''}</div>`).join('');
     if (noResults) noResults.hidden = items.length > 0;
     container.hidden = false;
     window.airTahoeApps?.paintFiles(win);
@@ -375,6 +375,9 @@
   async function mountFiles(win) {
     if (fileStates.has(win)) return;
     fileStates.set(win, { currentPath: '', parentPath: '', rootName: null, items: [], editorPath: '' });
+    win.addEventListener('dragstart',event=>{const entry=event.target.closest('.air-file-entry[data-kind="file"]');if(entry){event.dataTransfer.setData('application/x-air-finder',entry.dataset.path);event.dataTransfer.effectAllowed='copy';}});
+    win.addEventListener('dragover',event=>{if(event.dataTransfer.types.includes('application/x-air-shelf'))event.preventDefault();});
+    win.addEventListener('drop',event=>{const id=event.dataTransfer.getData('application/x-air-shelf');if(id){event.preventDefault();void window.airFinder.receiveFromShelf(id).catch(error=>setFileStatus(win,error.message));}});
     win.addEventListener('click', async event => {
       const control = event.target.closest('[data-air-action]');
       if (!control) return;
@@ -383,7 +386,8 @@
       const state = fileStates.get(win);
       const action = control.dataset.airAction;
       try {
-        if (action === 'choose-folder') {
+        if(action==='shelf-item'){await window.airEdgeShelf?.fromFinder(control.dataset.path);setFileStatus(win,'In temporäre Ablage kopiert.');}
+        else if (action === 'choose-folder') {
           const selected = await window.airOS.files.selectFolder();
           if (!selected) return;
           state.currentPath = '';
@@ -664,6 +668,7 @@
   // Reveal only relative paths returned by the authenticated Finder search.
   // Opening a result never grants access to additional host folders.
   window.airFinder=Object.freeze({
+    async receiveFromShelf(id){const win=openApps.get('finder'),state=win&&fileStates.get(win);if(!state?.rootName)throw Error('Bitte zuerst einen Finder-Ordner ausdrücklich freigeben.');const owner=(await airOS.currentUser())?.preferenceSession;const result=await airOS.shelf.exportToFinder(id,state.currentPath,owner);if((await airOS.currentUser())?.preferenceSession!==owner)throw Error('Die Sitzung hat sich geändert.');await loadDirectory(win,state.currentPath);setFileStatus(win,'Datei ohne Überschreiben exportiert.');return result;},
     async revealFile(relative,kind='file'){
       if(typeof relative!=='string'||!relative||relative.startsWith('/')||relative.split('/').some(part=>!part||part==='..'||part==='.'))return false;
       const win=openApps.get('finder');

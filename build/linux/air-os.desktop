@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Air-OS Ultimate
+Comment=Air-OS internal desktop workspace
+Exec=air-os
+Icon=air-os
+Terminal=false
+Categories=Utility;
+StartupWMClass=Air-OS
+StartupNotify=true

@@ -21,5 +21,5 @@ module.exports=async h=>{
  }
  await click('#air-island-toggle');await delay(500);await shot('control-center');await key('Escape','Escape',27);
  report.status='passed';fs.writeFileSync(path.join(h.output,'nexus-report.json'),JSON.stringify(report,null,2)+'\n');console.log('PASS Nexus real '+process.platform+' Electron '+report.checks.length+' checks, '+report.scenes.length+' measured viewports; no physical hardware claim');
- }catch(error){report.status='failed';report.error=String(error.message).slice(0,600);fs.writeFileSync(path.join(h.output,'nexus-report.json'),JSON.stringify(report,null,2)+'\n');throw error;}
+ }catch(error){report.status='failed';report.error=String(error.message).slice(0,600);try{report.debug=await e("({errors:window.__originRuntimeErrors,view:window.airIsland?.selected(),open:window.airIsland?.isOpen(),nexus:window.airNexusIsland?.snapshot(),root:!!document.querySelector('.nexus-island'),inert:document.querySelector('.nexus-island')?.inert})");}catch{}fs.writeFileSync(path.join(h.output,'nexus-report.json'),JSON.stringify(report,null,2)+'\n');throw error;}
 };

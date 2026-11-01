@@ -28,7 +28,7 @@ function create({tempRoot,nativeImage,clipboard,now=Date.now}){
  const target=path.join(privateRoot(),crypto.randomUUID());await fsp.writeFile(target,content,{flag:'wx',mode:0o600});
  if(expected!==epoch){await fsp.unlink(target).catch(()=>{});throw Error('Die Sitzung hat sich geändert.');}
  let preview='';if(content.length>=24&&content.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))&&content.readUInt32BE(16)*content.readUInt32BE(20)<=4e6&&nativeImage){try{const image=nativeImage.createFromBuffer(content),s=image.getSize();if(!image.isEmpty()&&s.width*s.height<=4e6)preview=image.resize({width:240}).toDataURL();}catch{}}
- return view(add({kind:'file',name:path.basename(absolute).slice(0,200),bytes:content.length,file:target,preview,signature:edge.contentSignature({kind:'files',paths:[digest]}),source:'file'}));}
+ try{const added=add({kind:'file',name:path.basename(absolute).slice(0,200),bytes:content.length,file:target,preview,signature:edge.contentSignature({kind:'files',paths:[digest]}),source:'file'});if(added.file!==target)await fsp.unlink(target);return view(added);}catch(error){await fsp.unlink(target).catch(()=>{});throw error;}}
  function group(ids,name='Dateistapel'){if(!Array.isArray(ids)||ids.length<2||ids.length>32||new Set(ids).size!==ids.length)throw Error('2–32 verschiedene Dateien auswählen.');const children=ids.map(get);if(children.some(i=>!['file','image'].includes(i.kind)))throw Error('Stapel enthalten Dateien und Bilder.');const used=new Set([...items.values()].flatMap(i=>i.children||[]));if(ids.some(id=>used.has(id)))throw Error('Element ist bereits in einem Stapel.');return view(add({kind:'bundle',name:edge.normalizeNote(name)||'Dateistapel',children:[...ids],signature:'bundle|'+[...ids].sort().join(','),source:'group'}));}
  function children(id){return (get(id).children||[]).map(id=>view(get(id)));}
  async function remove(id){const i=get(id);for(const bundle of items.values())if(bundle.children)bundle.children=bundle.children.filter(c=>c!==id);items.delete(id);bytes-=i.bytes||0;if(i.file)await fsp.unlink(i.file).catch(()=>{});if(i.children)for(const child of i.children)if(items.has(child))await remove(child);}
@@ -36,10 +36,11 @@ function create({tempRoot,nativeImage,clipboard,now=Date.now}){
  function rename(id,name){const n=edge.normalizeNote(name);if(!n)throw Error('Name fehlt.');get(id).name=n;return view(get(id));}
  function favorite(id,value){if(typeof value!=='boolean')throw Error('Ungültiger Favorit.');get(id).favorite=value;return view(get(id));}
  function copy(id){const i=get(id);if(['text','link'].includes(i.kind)){clipboard.writeText(i.text);return {copied:true};}if(i.kind==='image'){clipboard.writeImage(nativeImage.createFromBuffer(i.content));return {copied:true};}throw Error('Dateien über „Herausziehen“ exportieren.');}
+ async function contents(id){const i=get(id);if(i.kind==='file')return {name:i.name,bytes:await fsp.readFile(i.file)};if(i.kind==='image')return {name:i.name+'.png',bytes:i.content};if(['text','link'].includes(i.kind))return {name:i.name.slice(0,80)+'.txt',bytes:Buffer.from(i.text)};throw Error('Bitte zuerst ein Stapel-Element entnehmen.');}
  function files(id){const i=get(id),all=i.kind==='bundle'?i.children.map(get):[i];if(all.some(i=>i.kind!=='file'))throw Error('Native Drag-Ausgabe unterstützt importierte Dateien.');return all.map(i=>i.file);}
  async function clear(){epoch++;const previous=root;root=null;items.clear();bytes=0;if(previous)await fsp.rm(previous,{recursive:true,force:true});return list();}
  async function forgetClipboard(){for(const i of [...items.values()])if(['clipboard','own-copy'].includes(i.source)&&items.has(i.id))await remove(i.id);return list();}
  function serial(fn){const started=epoch;const result=queue.catch(()=>{}).then(()=>{if(started!==epoch)throw Error('Die Sitzung hat sich geändert.');return fn(started);});queue=result.catch(()=>{});return result;}
- return Object.freeze({list,text,capture,file,group,children,remove,take,rename,favorite,copy,files,clear,forgetClipboard,serial,diagnostics:()=>({count:items.size,bytes,epoch})});
+ return Object.freeze({list,text,capture,file,group,children,remove,take,rename,favorite,copy,contents,files,clear,forgetClipboard,serial,diagnostics:()=>({count:items.size,bytes,epoch})});
 }
 module.exports={create};

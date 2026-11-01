@@ -176,7 +176,11 @@
       "air-edge-shelf.js",
       "air-nexus-island.js",
       "air-nexus.css",
-      "third_party/edge-drop/**/*"
+      "third_party/edge-drop/**/*",
+      "src/main/nexus-shelf.cjs",
+      "src/main/nexus-ipc.cjs",
+      "src/main/nexus-timer.cjs",
+      "src/main/clipboard-exclusion.cjs"
     ],
     "mac": {
       "target": [

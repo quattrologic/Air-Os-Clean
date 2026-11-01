@@ -1,3 +1,7 @@
+# Nexus 1 — Checkpoint B
+
+580/580 Node-Tests; 393 lokale Runtimeassets geprüft. Finder-Shelf-Import/Export, Ordnerstapel, sichere Sitzungs- und Consenttests ergänzt. Erste echte GUI fand Island-Togglefehler; Produktcode korrigiert, erneute GUI noch offen. Software-Materialdiagnose bestand separat. Neuer Windows-Nexus1-Testkanal und isolierter Linux-DEB-Prototyp vorbereitet; keine Veröffentlichung. [Bericht](AIR_OS_NEXUS_1.md).
+
 # Nexus 1 — Checkpoint A
 
 R7-Basis 02ccaf88724731cf685d2221f88e959020aff3f0; separater Branch feat/air-os-nexus-1-system-integrations. Main-eigene temporäre Shelf, Apache-Edge-Drop-Modelle, Dock/Stage-Aktionen und bestehende Island mit Timer/Musik/Reminders integriert. 575/575 Node-Tests und Runtime-/Syntaxprüfung bestanden; echte neue GUI/Windows-Abnahme noch ausstehend. Keine Veröffentlichung und kein iPad-Merge. Nächster Schritt: Electron-GUI, gezielte Korrekturen, Linux-Prototyp/ISO-Voraussetzungen dokumentieren. [Details](AIR_OS_NEXUS_1.md).

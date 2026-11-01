@@ -79,4 +79,5 @@ function createEmptyTextExclusive(target){
  fs.writeFileSync(target,'',{flag:'wx',mode:0o600});
  return {ok:true};
 }
-module.exports={createFolder,duplicateFile,renameFile,createEmptyTextExclusive};
+function createBytesExclusive(target,bytes){if(!Buffer.isBuffer(bytes)||bytes.length>16*1024*1024)throw Error('Datei zu groß.');fs.writeFileSync(target,bytes,{flag:'wx',mode:0o600});return {ok:true};}
+module.exports={createBytesExclusive,createFolder,duplicateFile,renameFile,createEmptyTextExclusive};

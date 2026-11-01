@@ -248,3 +248,5 @@ test('M1 reduced-motion changes settle safely and stale callbacks after disposal
  e['air-island-close'].emit('click');assert.equal(e['air-island-panel'].hidden,true);
  h.window.emit('pagehide');stale();assert.equal(e['air-island-panel'].hidden,true);
 });
+
+test('Public Island view selection uses the existing reversible M1 toggle and never a browser window',()=>{const h=setup();h.window.airIsland.show('control');assert.equal(h.elements['air-island-panel'].hidden,false);assert.equal(h.elements['air-island-toggle'].getAttribute('aria-expanded'),'true');});
