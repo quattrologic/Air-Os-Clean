@@ -83,6 +83,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-tahoe7.cjs
       - name: Installed Nexus1 Stage Manager 2, grouped M2, touch, profiles, restart and edge bounds
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: stages
         env:
           AIR_GUI_TEST_ISOLATED: '1'
@@ -92,6 +93,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-tahoe7.cjs
       - name: Installed Nexus shelf, Island timer, shared reminders and private session cleanup
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: nexus
         env:
           AIR_GUI_TEST_ISOLATED: '1'
@@ -100,6 +102,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-tahoe7.cjs
       - name: Installed native capabilities and materials and internal Hyprland layouts across four viewports
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: capabilities
         env:
           AIR_GUI_TEST_ISOLATED: '1'
@@ -109,6 +112,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-r6.cjs
       - name: Installed Nexus1 actual fullscreen and edge bounds in five viewports
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: bounds
         env:
           AIR_GUI_TEST_ISOLATED: '1'
@@ -117,6 +121,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-r6.cjs
       - name: Installed Nexus1 reference desktop, widget scale, controls, apps, drag Snap and private MacLock
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: experience
         env:
           AIR_GUI_TEST_ISOLATED: '1'
@@ -126,6 +131,7 @@ jobs:
           AIR_TAHOE7_WINDOWS: '1'
         run: node scripts/check-r6.cjs
       - name: Installed isolated shader diagnostics (not hardware acceptance)
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         id: diagnostic
         env:
           AIR_GUI_TEST_ISOLATED: '1'

@@ -72,3 +72,9 @@ Weitere Prüfkorrekturen: Alle ursprünglichen 13 Dockeinträge werden weiterhin
 Die Dateiauswahl verwendet jetzt einen Tahoe-Button über dem echten HTML-Dateieingabepfad; der zusätzliche sichtbare rohe Browserbutton entfällt. Nativer Electron-Dialog bleibt in den Optionen. Timer-Mitteilungen öffnen direkt dieselbe Island-Ansicht, keine Platzhalterapp. Die erneute GUI prüft diese Aktionen.
 
 Frühere Nexus-Messdateien erfassten für `menu` irrtümlich die im Modern-Modus versteckte Classic-`.menubar` (Höhe 0). Der Fensterhost lag korrekt bei y=24. Der neue Lauf misst ausdrücklich die aktive `.t6-menu-bar` und verlangt 24px sowie den vollständigen Fensterarbeitsbereich in jeder Zielgröße. Historische Messdateien bleiben unverändert als Fehlernachweis erhalten.
+
+## Checkpoint F — abschließende CI-Härtung
+
+`f1765ca` bestand die vollständige installierte Windows-App-GUI (Profile, Apps, M1/M2, Musiktransport, MRU, MacLock, Fallback); weitere native Prüfungen waren noch im Lauf. Der Linux-Vorherlauf scheiterte diesmal an einem flüchtigen Mausziel während der MacShell-Dockmagnifikation. Der Launcher wird im Harness nun über tatsächlichen Fokus und Enter aktiviert. Maus-/Hover-/Magnifikationstests bleiben separat erhalten.
+
+Unabhängige Nexus-/Stage-/Material-/Bounds-Prüfungen laufen nach bestandenem Sicherheitsgate und bestätigter Installation auch dann, wenn eine andere GUI-Prüfung fehlschlägt. Der Gesamtlauf bleibt bei jedem Fehler rot. Keine Sicherheits-, Integritäts- oder Fachprüfung wird übersprungen oder als erfolgreich ausgegeben. Produkt-Runtime seit Checkpoint E unverändert; dieser Checkpoint ändert nur Teststeuerung und Dokumentation.

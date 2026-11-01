@@ -52,6 +52,7 @@ jobs:
           ln -s "$GITHUB_WORKSPACE/node_modules" dist/nexus-baseline/node_modules
           xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
       - name: Nexus shelf, timer, reminders, profiles and native fullscreen
+        if: ${{ !cancelled() && steps.gate.outcome == 'success' && steps.sandbox.outcome == 'success' }}
         env:
           AIR_GUI_TEST_ISOLATED: '1'
           AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
@@ -60,6 +61,7 @@ jobs:
           AIR_NEXUS_SCENES: '1'
         run: xvfb-run -a -s '-screen 0 1920x1080x24' node scripts/check-tahoe7.cjs
       - name: Existing stages, group M2, geometry, touch, keyboard and restart
+        if: ${{ !cancelled() && steps.gate.outcome == 'success' && steps.sandbox.outcome == 'success' }}
         env:
           AIR_GUI_TEST_ISOLATED: '1'
           AIR_R1_EXE: build/windows-x64/node_modules/electron/dist/electron
