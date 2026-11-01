@@ -62,3 +62,13 @@ Der Linux-DEB-Prototyp erhält explizite Maintainerangabe und begrenzte Builderd
 Gezielte eigene Air-OS-Wiederverwendung aus `feat/air-os-infinityos-origin-port-2-desktop@45d056fcb97f841dbe5182c6c48c083fc614e5a7`: Stage-Modell/Übersicht und Integration im vorhandenen Window System, geometrische Panelnavigation, intelligentes Dock-Ausblenden samt M2-Motion-Leases, finite Materialinteraktion und zugehörige 15 Regressionstests. Kein kompletter Branchmerge, keine ungeklärten Origin-Originale.
 
 Tatsächlich verwendete Edge-Drop-Funktionen: `contentSignature` → Main-Shelf-Deduplizierung; `isLinkText` → Text-/Linkklassifikation; `normalizeNote` → Stapelnamen; `queryWords/searchText/matchesWords` → Shelf-Suche; `reduceGuard/isGuarded` → native Drag-Rücklaufbegrenzung; `isClipboardExcluded` → explizite Clipboard-Übernahme. Andere mitgelieferte reine Hilfsfunktionen werden nicht als ausgeführte Produktfunktionen ausgegeben.
+
+## Checkpoint E — integrierter visueller Prüfstand
+
+Produktstand D `b22053315addbe075bc1046f40a7a4c5d72b6ff8`: **27 neue echte Nexus-GUI-Prüfungen und 5 separate Materialprüfungen bestanden**. Screenshotkontrolle bestätigt zwei reale Dateistapel, aufgeklappte Inhalte und lesbaren Timer. [Linux-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41289704007). DEB-Prototyp erfolgreich gebaut; Artefakt `Air-OS-Nexus1-Linux-DEB-prototype-b22053315addbe075bc1046f40a7a4c5d72b6ff8`, Prüfsummen im Artefakt. Keine DEB-Installation/VM-Abnahme.
+
+Weitere Prüfkorrekturen: Alle ursprünglichen 13 Dockeinträge werden weiterhin explizit verlangt, zusätzlich der funktionale Shelf-Eintrag. Dynamische Running-/Recent-Einträge dürfen vorhanden sein; Duplikate bleiben verboten. Beabsichtigte Logout-Navigation darf ihre laufende CDP-Auswertung beenden; anschließend bleibt die neue Loginseite zwingend zu prüfen. Andere Auswertungsfehler werden nicht geschluckt. Gruppenberichte sichern künftig auch den letzten erfolgreichen Prüfschritt bei Fehlern.
+
+Die Dateiauswahl verwendet jetzt einen Tahoe-Button über dem echten HTML-Dateieingabepfad; der zusätzliche sichtbare rohe Browserbutton entfällt. Nativer Electron-Dialog bleibt in den Optionen. Timer-Mitteilungen öffnen direkt dieselbe Island-Ansicht, keine Platzhalterapp. Die erneute GUI prüft diese Aktionen.
+
+Frühere Nexus-Messdateien erfassten für `menu` irrtümlich die im Modern-Modus versteckte Classic-`.menubar` (Höhe 0). Der Fensterhost lag korrekt bei y=24. Der neue Lauf misst ausdrücklich die aktive `.t6-menu-bar` und verlangt 24px sowie den vollständigen Fensterarbeitsbereich in jeder Zielgröße. Historische Messdateien bleiben unverändert als Fehlernachweis erhalten.

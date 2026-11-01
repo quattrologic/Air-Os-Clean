@@ -8,6 +8,7 @@ module.exports=async function(h){
  result.userAgent=await e('navigator.userAgent');a.ok(result.userAgent.includes('Electron/44.9.3'),'frozen modern Electron runtime');
  const check=(name,value)=>{a.ok(value,name);result.checks.push(name);};
  await wait('!!window.airWindowSystem');if(!before)await wait('!!window.airStageOverview&&!!window.airControlMotion');
+ try{
  await e("persistAirSettingsConfirmed({reduceMotion:false,desktopWidgets:true,widgetSet:['clock','calendar'],dockTheme:'modern'})");
  for(const id of await e('[...openApps.keys()]'))await close(id);
  for(const [width,height]of [[1920,1080],[1688,896],[1650,930],[390,600]]){
@@ -74,4 +75,5 @@ module.exports=async function(h){
   await h.logout();await wait("location.pathname.endsWith('login.html')");check('logout removes stage UI',await e("!document.querySelector('.origin-stage-overview,.origin-stage-rail')"));await shot('neutral-maclock');
  }
  result.status='passed';fs.writeFileSync(path.join(h.output,'origin-report.json'),JSON.stringify(result,null,2));console.log('::notice title=Origin integration proof::'+JSON.stringify({baseline:before,checks:result.checks.length,viewports:result.viewports.length,status:result.status,platform:process.platform}));
+ }catch(error){result.status='failed';result.error=String(error.message).slice(0,800);result.lastSuccessfulCheck=result.checks.at(-1)?.name;fs.writeFileSync(path.join(h.output,'origin-report.json'),JSON.stringify(result,null,2));console.log('::error title=Stage integration phase::'+String(result.lastSuccessfulCheck||'startup'));throw error;}
 };
