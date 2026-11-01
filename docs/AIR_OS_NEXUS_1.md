@@ -78,3 +78,26 @@ Frühere Nexus-Messdateien erfassten für `menu` irrtümlich die im Modern-Modus
 `f1765ca` bestand die vollständige installierte Windows-App-GUI (Profile, Apps, M1/M2, Musiktransport, MRU, MacLock, Fallback); weitere native Prüfungen waren noch im Lauf. Der Linux-Vorherlauf scheiterte diesmal an einem flüchtigen Mausziel während der MacShell-Dockmagnifikation. Der Launcher wird im Harness nun über tatsächlichen Fokus und Enter aktiviert. Maus-/Hover-/Magnifikationstests bleiben separat erhalten.
 
 Unabhängige Nexus-/Stage-/Material-/Bounds-Prüfungen laufen nach bestandenem Sicherheitsgate und bestätigter Installation auch dann, wenn eine andere GUI-Prüfung fehlschlägt. Der Gesamtlauf bleibt bei jedem Fehler rot. Keine Sicherheits-, Integritäts- oder Fachprüfung wird übersprungen oder als erfolgreich ausgegeben. Produkt-Runtime seit Checkpoint E unverändert; dieser Checkpoint ändert nur Teststeuerung und Dokumentation.
+
+## Gesicherter Sitzungsabschluss — Wochenbudget 1 %
+
+Auf ausdrückliche Budgetanweisung keine neue Entwicklungsphase begonnen. Alle Produktänderungen und die letzte Teststeuerung bleiben erhalten. Letzter geprüfter lokaler Gate: **600/600 Node-Tests**, Syntax-/Runtimeprüfung mit **393 Dateien**. Die letzten Änderungen an Launcheraktivierung und unabhängiger Teststeuerung sind noch nicht vollständig per GUI abgenommen und werden nicht als fertig geprüft bezeichnet.
+
+Gesicherte Integrationen: temporäre Main-Shelf mit bewussten Datei-/Clipboardimporten, Deduplizierung, Suche, Favoriten und Stapeln; Finder-Import/Export mit Rootrevision und exklusivem Schreiben; bestehendes Dock mit Running-/Recent-Einträgen und Pinreorder; eigene geprüfte Stage-Komponenten; bestehende Island mit Musik, lokalem LRC, Timer/Pomodoro, Reminders und echtem Status; gemeinsame GLASS-3-Materialanbindung. Keine globale Clipboard-Überwachung, kein neuer Datenspeicher für Musik/Reminders, keine zweite Window-/Dock-/Glasengine.
+
+Belastbare GUI-Nachweise: Produkt D `b22053315addbe075bc1046f40a7a4c5d72b6ff8` bestand **27 Nexus-Prüfungen** und **5 isolierte Software-Materialprüfungen**, einschließlich echter ausgewählter File-Objekte, zweier benannter Stapel, Entnehmen und Profilbereinigung. [Vorher/Nachher und Messdaten](visual/nexus1/b22053315addbe075bc1046f40a7a4c5d72b6ff8/evidence.json), [Stapel](visual/nexus1/b22053315addbe075bc1046f40a7a4c5d72b6ff8/after/shelf-bundle-expanded.png), [Timer](visual/nexus1/b22053315addbe075bc1046f40a7a4c5d72b6ff8/after/island-timer-running.png). GPU: Software; separate Diagnose, keine Hardwarefreigabe. 0 Programme/0 Texturen nach Cleanup.
+
+Windows: Installer mehrfach erfolgreich gebaut, ASAR/Originalbytes/PE-x64/SHA geprüft und auf dem nativen Runner installiert. [Lauf 41290680599](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41290680599) bestand zuletzt bestätigt die vollständige installierte App-GUI. **Vollständige abschließende Windows-/Stage-/Bounds-Abnahme sowie endgültiger Installername und SHA-256 wurden vor diesem Budgetstopp nicht bestätigt. Kein fertig abgenommener Nexus-Windows-Installer behauptet.** Die Actions-Artefakte enthalten die tatsächlich erzeugten Installer, BUILD-INFO und Prüfsummen.
+
+Linux-DEB-Prototyp: gebaut und als `Air-OS-Nexus1-Linux-DEB-prototype-b22053315addbe075bc1046f40a7a4c5d72b6ff8` in [41289704007](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41289704007) gesichert. Keine Installation/VM-/ISO-Abnahme.
+
+### Konkrete Fortsetzung
+
+1. Letzte Nexus-Linux-/Windows-CIs prüfen. Gruppen-/Neustartsequenz vollständig abschließen; bei Fehlern `origin-report.json` samt letztem Prüfschritt auswerten. Die letzten Testkorrekturen brauchen noch einen erfolgreichen vollständigen Lauf.
+2. Danach Windows-Installer aus exakt geprüftem Quellstand freigeben: BUILD-INFO, Installername, SHA-256, installierte Screenshots und alle nativen Testergebnisse dokumentieren. CI wird durch Push gestartet; kein öffentliches Release/Website-Deployment.
+3. Native Picker-/OLE-Drag-/Audio-/Hardware-GPU-Abnahmen fehlen. Native Drag-Ausgabe unterstützt importierte Dateien; Clipboard-Bilder in gemischten Stapeln brauchen noch vollständige Export-/UI-Unterstützung. Globale private Clipboardüberwachung bleibt bewusst ausgeschlossen. LRC-Parser ist getestet; vollständiger LRC-/Medien-GUI-Durchlauf bleibt offen.
+4. Linux-DEB in isolierter VM installieren/starten/deinstallieren. Keine Host-/Bootloaderänderungen; echte Hyprland-Hardware fehlt.
+5. iPad-Port separat durchführen: nur reine Modelle gezielt übernehmen, Safari/WebKit/Touch/Offline prüfen. Bestehender iPad-Branch unverändert.
+6. InfinityOS-ISO/Inspektionsarchiv fehlt weiterhin; keine ungeklärten Originaldateien übernommen. Siehe Linux-/InfinityOS-Berichte.
+
+Quell-/Testcheckpoint nach nicht destruktiver Übernahme ausschließlich synthetischer CI-Dokumentation: `9c5a8614a83d179bf47cabb9609de599099726e7`. Runtime-Produktcheckpoint E: `f1765ca` (vollständige SHA in Git). Abschließender Sicherungscommit folgt im Git-Verlauf; keine Änderungen verworfen, kein Force-Push, kein Merge auf main.

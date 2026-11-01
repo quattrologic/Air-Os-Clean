@@ -1,3 +1,7 @@
+# Nexus 1 — Budgetstopp, gesicherter Stand
+
+600/600 Node-Tests; 393 Runtimeassets geprüft. Alle Änderungen bewahrt. 27 Nexus-GUI- und 5 Software-Materialprüfungen belegt; Linux-DEB gebaut. Windows gebaut/installiert, vollständige abschließende Stage-/Windows-Abnahme und Installer-SHA noch nicht bestätigt. Letzte Testharnesskorrekturen benötigen CI-Abschluss. Keine neue Phase mehr beginnen; nächste Sitzung liest die konkrete Fortsetzung in [AIR_OS_NEXUS_1.md](AIR_OS_NEXUS_1.md). iPad-Branch und main unverändert, keine Veröffentlichung.
+
 # Nexus 1 — Checkpoint E
 
 600/600 Node-Tests. D bestand 27 Nexus- und 5 Material-GUI-Prüfungen; Linux-DEB gebaut, noch nicht installiert. Dock- und beabsichtigte Navigationsannahmen der älteren GUI korrigiert, aktive Menüleiste nun ausdrücklich gemessen. Gruppen-/Windows-Gesamtabnahme aus neuem Quellstand noch ausstehend. [Bericht](AIR_OS_NEXUS_1.md).
