@@ -60,6 +60,14 @@ Die Notch sitzt **innerhalb der Air-OS-Desktop-App**, nicht als systemweites Ove
 
 Die hochgeladene Drittanbieter-App „Pro Notch“ wird nicht mitverteilt; Air-OS verwendet eine eigenständige Implementierung ohne deren proprietäre Binärdateien, macOS-Systemberechtigungen oder Tracking.
 
+## Lockscreen-Musik und Tablet-Layout
+
+Der Air-OS-Anmeldebildschirm zeigt nach Auswahl eines lokalen Kontos dessen **zuletzt gespielten Titel** mit Albumcover (falls in Air Music ausgewählt), Interpret, letzter Abspielposition und Musiksteuerungs-Symbolen. Aus Sicherheitsgründen sind die Steuerungs-Symbole vor der Anmeldung deaktiviert; Air Music kann erst nach dem Entsperren wiedergeben. Eine MP3-Datei wird nicht im Login-Screen geladen. Wenn bisher kein Titel gespielt wurde, bleibt die Musikkarte ausgeblendet.
+
+Die Desktop-Notch behält den zuletzt abgespielten Titel auch nach Pausieren, Schließen des Musikfensters oder Neustart bei. Zum Steuern muss Air Music mit den lokalen Audiodateien geöffnet sein. Die Musik-Metadaten werden pro lokalem Benutzerkonto in der Air-OS-Benutzerdateiablage gespeichert; Audiodateien werden nicht kopiert. In **Air Music** kann für den aktuellen Titel über „Cover auswählen“ ein lokales Bild hinterlegt werden, das verkleinert als Teil der Metadaten gespeichert wird.
+
+Das zusätzliche `tablet-layout.css` verbessert das Desktop-Layout für iPad-große Fenster und Touch-Eingaben (größere Ziele, scrollbareres Dock, passende Fenstergröße). **Air-OS bleibt eine Electron-Desktop-App für Windows/macOS/Linux; dies ist keine native iPadOS-App und kein iPad-App-Store-Build.** Ein echter iPadOS-Port wäre ein eigenständiges Projekt.
+
 ## Dokumentation und Mitarbeit
 
 - [Entwicklungsanleitung](docs/DEVELOPMENT.md)
