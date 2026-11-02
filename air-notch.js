@@ -245,8 +245,7 @@
     if (event.key === 'Escape' && expanded) { setOpen(false); trigger.focus(); }
   });
   window.addEventListener('air-os:music-state', event => {
-    musicEventVersion++;
-    if (event.detail?.available) media = event.detail;
+    if (event.detail?.available) { musicEventVersion++; media = event.detail; }
     else media = { ...media, playable: false, playing: false };
     updateMusic();
   });
