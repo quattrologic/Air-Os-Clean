@@ -93,3 +93,57 @@ button{-webkit-tap-highlight-color:transparent}
  .create-fields{gap:4px}
  .create-fields input{height:27px}
 }
+
+/* Media lockscreen: blurred background and glass player, adapted for touch screens. */
+.lock-clock{position:absolute;z-index:2;top:5.5%;left:50%;transform:translateX(-50%);display:flex;align-items:center;flex-direction:column;gap:2px;pointer-events:none;text-shadow:0 2px 17px #0004;white-space:nowrap}
+.lock-date{font-size:clamp(15px,1.6vw,21px);color:#ffffffe8}
+.lock-time{font-size:clamp(54px,6vw,79px);font-weight:250;letter-spacing:-.045em;line-height:1.06}
+.lock-media{display:flex;align-items:center;flex-direction:column;gap:12px;width:min(325px,90vw);margin:0 auto 15px}
+.lock-media[hidden]{display:none!important}
+.lock-artwork{width:clamp(148px,22vh,250px);height:clamp(148px,22vh,250px);aspect-ratio:1;border-radius:22px;background-color:#394b61;background-image:linear-gradient(145deg,#9bcbe3,#435baf 65%,#142b58);background-size:cover;background-position:center;color:white;display:grid;place-items:center;font-size:clamp(48px,10vh,80px);box-shadow:0 14px 38px #0006,inset 0 1px #fff4;border:1px solid #ffffff69}
+.lock-player{width:100%;border:1px solid #ffffff46;border-radius:21px;background:#4f586a55;box-shadow:0 10px 26px #0004,inset 0 1px #ffffff4a;backdrop-filter:blur(22px) saturate(1.4);padding:9px 13px 11px;color:#fff}
+.lock-player-grip{width:26px;height:3px;border-radius:4px;background:#ffffff53;margin:0 auto 7px}
+.lock-media-title{font-size:13px;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.lock-media-artist{font-size:11px;color:#ffffffbf;margin-top:3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.lock-progress{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;align-items:center;gap:6px;margin-top:12px;font-size:9px;color:#ffffffc2;font-variant-numeric:tabular-nums}
+.lock-progress-rail{height:3px;background:#ffffff45;border-radius:10px;overflow:hidden}
+.lock-progress-rail i{display:block;width:0;height:100%;background:white;border-radius:10px}
+.lock-controls{display:flex;gap:20px;justify-content:center;margin-top:8px}
+.lock-controls button{border:0;padding:0;width:27px;height:26px;background:transparent;color:#fff;font-size:16px;opacity:.8}
+.lock-controls button:disabled{cursor:default;opacity:.62}
+.is-creating .lock-media,.is-creating .lock-clock{display:none!important}
+@media(max-width:1024px),(pointer:coarse){
+ .login-stage{width:min(440px,calc(100vw - 26px))}
+ .lock-media{width:min(330px,80vw)}
+ .lock-player{padding:10px 13px 12px}
+ .password-row{height:38px;width:min(310px,95%)}
+ .password-submit{width:32px;height:32px;flex-basis:32px}
+ .password-row input{font-size:13px}
+ .saved-account{min-height:36px;padding:6px 12px}
+ .power-button{min-width:64px;min-height:44px}
+}
+@media(max-height:790px){
+ .lock-artwork{width:clamp(124px,20vh,200px);height:clamp(124px,20vh,200px)}
+ .lock-clock{top:3%}
+ .lock-time{font-size:53px}
+ .lock-media{gap:8px;margin-bottom:9px}
+ .login-form{margin-top:10px}
+ .lock-player{padding:6px 10px}
+ .lock-progress{margin-top:8px}
+ .lock-controls{margin-top:4px}
+}
+@media(max-height:650px){
+ .lock-clock{display:none}
+ .login-signature{display:none}
+ .lock-artwork{width:116px;height:116px;border-radius:17px}
+ .lock-media{width:min(290px,85vw)}
+ .lock-controls{margin-top:2px}
+ .login-stage{top:48%}
+}
+@media(max-height:520px){
+ .lock-artwork{width:80px;height:80px}
+ .lock-player{padding:4px 9px}
+ .lock-media{gap:4px;margin-bottom:3px}
+ .lock-progress{margin-top:4px}
+ .lock-controls{margin-top:2px}
+}
