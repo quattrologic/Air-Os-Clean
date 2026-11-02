@@ -145,7 +145,7 @@ ipcMain.handle('air-os:media:get-last', (event, username) => {
 ipcMain.handle('air-os:media:set-last', (event, data = {}) => {
   requireTrusted(event);
   if (!activeUser || !event.senderFrame?.url?.endsWith('/index.html')) throw new Error('Mediadaten erfordern eine aktive Anmeldung.');
-  return mediaStore.write(activeUser.username, data);
+  return mediaStore().write(activeUser.username, data);
 });
 ipcMain.handle('air-os:current-user', event => {
   requireTrusted(event);
