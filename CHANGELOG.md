@@ -5,6 +5,7 @@ Air-OS veröffentlicht derzeit automatische **Vorab-Builds**. Die GitHub-Release
 ## Unveröffentlicht
 
 - Dokumentation, Beitragsrichtlinien und Issue-Vorlagen verbessert.
+- Air-OS Notch: eigene ausklappbare Oberfläche mit lokalem Timer, nächstem Kalendertermin und Air-Music-Steuerung; per Einstellung deaktivierbar.
 
 ## 1.0.3 – Entwicklungsstand (2026-10-18)
 
