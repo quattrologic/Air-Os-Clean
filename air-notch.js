@@ -58,7 +58,8 @@
   const panel = find('#air-notch-panel');
   const trigger = find('.air-notch-trigger');
   const timer = { duration: 300, remaining: 300, endAt: null, done: false };
-  let media = { available: false };
+  let media = { available: false, playable: false };
+  let musicEventVersion = 0;
   let expanded = false;
   let audioContext = null;
 
@@ -152,14 +153,41 @@
 
   function updateMusic() {
     const hasTrack = !!media.available;
+    const playable = hasTrack && !!media.playable;
     find('.air-notch-track-title').textContent = hasTrack ? media.title : 'Keine Musik';
-    find('.air-notch-track-artist').textContent = hasTrack ? media.artist : 'Öffne Air Music für lokale Songs.';
-    notch.querySelectorAll('[data-notch-music]').forEach(button => { button.disabled = !hasTrack; });
+    find('.air-notch-track-artist').textContent = hasTrack
+      ? (media.playing ? media.artist : 'Zuletzt gespielt · ' + media.artist)
+      : 'Öffne Air Music für lokale Songs.';
+    const cover = find('.air-notch-art');
+    if (cover) {
+      cover.textContent = media.artwork ? '' : '♫';
+      cover.style.backgroundImage = media.artwork ? 'url("' + media.artwork + '")' : '';
+      cover.classList.toggle('has-artwork', !!media.artwork);
+    }
+    notch.querySelectorAll('[data-notch-music]').forEach(button => {
+      button.disabled = !playable;
+      button.title = playable ? '' : 'Zuerst Air Music mit lokalen Dateien öffnen';
+    });
     const play = find('[data-notch-music="toggle"]');
     play.textContent = media.playing ? '❚❚' : '▶';
     play.setAttribute('aria-label', media.playing ? 'Musik pausieren' : 'Musik abspielen');
     find('.air-notch-indicator').classList.toggle('is-playing', !!media.playing);
-    find('.air-notch-trigger-label').textContent = timer.done ? 'Timer fertig' : media.playing ? '♫ Spielt' : 'Air-OS';
+    notch.classList.toggle('has-last-song', hasTrack);
+    find('.air-notch-trigger-label').textContent = timer.done ? 'Timer fertig' : hasTrack ? media.title : 'Air-OS';
+    trigger.title = hasTrack ? 'Zuletzt gespielt: ' + media.title + ' – ' + media.artist : 'Air-OS Notch';
+  }
+
+  async function loadLastMusic() {
+    if (!window.airOS?.media?.getLast) return;
+    const version = musicEventVersion;
+    try {
+      const saved = await window.airOS.media.getLast();
+      if (version !== musicEventVersion || !saved?.title) return;
+      media = {
+        ...saved, available: true, playable: false, playing: false
+      };
+      updateMusic();
+    } catch { /* The notch still works when local media history is unavailable. */ }
   }
 
   function updateClock() {
@@ -217,7 +245,9 @@
     if (event.key === 'Escape' && expanded) { setOpen(false); trigger.focus(); }
   });
   window.addEventListener('air-os:music-state', event => {
-    media = event.detail && event.detail.available ? event.detail : { available: false };
+    musicEventVersion++;
+    if (event.detail?.available) media = event.detail;
+    else media = { ...media, playable: false, playing: false };
     updateMusic();
   });
   window.addEventListener('storage', event => {
@@ -232,6 +262,7 @@
   updateTimer();
   updateMusic();
   updateClock();
+  void loadLastMusic();
   try {
     const settings = JSON.parse(localStorage.getItem('air-os-desktop-settings-v2') || '{}');
     setEnabled(settings.notchEnabled !== false);
