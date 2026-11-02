@@ -12,7 +12,7 @@ let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
-const mediaStore = createMediaStore(app.getPath('userData'));
+const mediaStore = () => createMediaStore(app.getPath('userData'));
 const isExistingAccount = username => readAccounts().some(item => item.username === username);
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
