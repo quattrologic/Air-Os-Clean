@@ -12,6 +12,7 @@
   };
   let accounts = [];
   let selectedAccount = null;
+  let mediaRequestVersion = 0;
 
   function setMode(next) {
     const creating = next === "create";
@@ -23,8 +24,38 @@
     if (creating) $("#create-display-name").focus();
     else $("#login-password").focus();
   }
+
+  function mediaTime(value) {
+    const number = Math.max(0, Math.floor(Number(value) || 0));
+    return Math.floor(number / 60) + ':' + String(number % 60).padStart(2, '0');
+  }
+
+  async function loadLockMedia(username) {
+    const request = ++mediaRequestVersion;
+    const card = $('#lock-media');
+    card.hidden = true;
+    if (!username || !window.airOS?.media?.getLast) return;
+    try {
+      const song = await window.airOS.media.getLast(username);
+      if (request !== mediaRequestVersion || !song?.title) return;
+      $('#lock-media-title').textContent = song.title;
+      $('#lock-media-artist').textContent = 'Zuletzt gespielt · ' + (song.artist || 'Unbekannt');
+      $('#lock-position').textContent = mediaTime(song.position);
+      $('#lock-duration').textContent = mediaTime(song.duration);
+      const percent = Number(song.duration) > 0 ? Math.max(0, Math.min(100, Number(song.position) / song.duration * 100)) : 0;
+      $('#lock-progress-fill').style.width = percent + '%';
+      const art = $('#lock-artwork');
+      const image = typeof song.artwork === 'string' && /^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(song.artwork);
+      art.textContent = image ? '' : '♫';
+      art.style.backgroundImage = image ? 'url("' + song.artwork + '")' : '';
+      art.classList.toggle('has-artwork', image);
+      card.hidden = false;
+    } catch { card.hidden = true; }
+  }
+
   function selectAccount(account, button) {
     selectedAccount = account;
+    void loadLockMedia(account.username);
     $("#login-username").value = account.username;
     $("#login-profile-name").textContent = account.displayName || account.username;
     $("#login-profile-subtitle").textContent = "Air-OS Benutzerkonto";
@@ -113,7 +144,9 @@
 
   function updateClock() {
     const now = new Date();
-    $("#login-clock").textContent = now.toLocaleTimeString("en-US", { hour:"2-digit", minute:"2-digit", hour12:true });
+    $("#login-clock").textContent = now.toLocaleTimeString("de-DE", { hour:"2-digit", minute:"2-digit" });
+    $("#lock-date").textContent = now.toLocaleDateString("de-DE", { weekday:"long", day:"numeric", month:"long" });
+    $("#lock-time").textContent = now.toLocaleTimeString("de-DE", { hour:"2-digit", minute:"2-digit" });
   }
   updateClock();
   setInterval(updateClock, 15000);

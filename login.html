@@ -18,7 +18,30 @@
     <span id="login-clock">12:02 PM</span>
   </header>
 
+  <div class="lock-clock" aria-label="Datum und Uhrzeit">
+    <div id="lock-date" class="lock-date"></div>
+    <time id="lock-time" class="lock-time"></time>
+  </div>
+
   <main class="login-stage" id="login-stage">
+    <section id="lock-media" class="lock-media" aria-label="Zuletzt gespielte Musik" hidden>
+      <div id="lock-artwork" class="lock-artwork" aria-hidden="true">♫</div>
+      <div class="lock-player">
+        <div class="lock-player-grip" aria-hidden="true"></div>
+        <div id="lock-media-title" class="lock-media-title">Noch keine Musik</div>
+        <div id="lock-media-artist" class="lock-media-artist">Air Music</div>
+        <div class="lock-progress">
+          <span id="lock-position">0:00</span>
+          <div class="lock-progress-rail" aria-hidden="true"><i id="lock-progress-fill"></i></div>
+          <span id="lock-duration">0:00</span>
+        </div>
+        <div class="lock-controls" aria-label="Musiksteuerung nach dem Entsperren verfügbar">
+          <button type="button" disabled aria-label="Vorheriger Titel – erst anmelden">⏮</button>
+          <button type="button" disabled aria-label="Wiedergabe – erst anmelden">▶</button>
+          <button type="button" disabled aria-label="Nächster Titel – erst anmelden">⏭</button>
+        </div>
+      </div>
+    </section>
     <section class="login-profile" id="login-profile" aria-label="Ausgewähltes Benutzerkonto">
       <div class="profile-picture" aria-hidden="true">
         <svg viewBox="0 0 80 80" role="img">

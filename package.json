@@ -24,6 +24,7 @@
     },
     "files": [
       "main.cjs",
+      "media-state.cjs",
       "preload.cjs",
       "index.html",
       "styles.css",
@@ -46,7 +47,10 @@
       "air-arcade-games.js",
       "air-arcade-games.css",
       "air-music.js",
-      "air-music.css"
+      "air-music.css",
+      "air-notch.js",
+      "air-notch.css",
+      "tablet-layout.css"
     ],
     "mac": {
       "target": [

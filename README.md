@@ -48,10 +48,25 @@ Installer lokal erstellen: `npm run pack:win`, `npm run pack:mac` oder `npm run 
 | Air Arcade | Snake mit lokalem Bestwert |
 | Fotos / Musik | Lokale Bilder und Audiodateien öffnen |
 | Kalender | Lokale Termine und ICS-Export |
+| Air-OS Notch | Ausklappbare Notch in der Menüleiste mit Air-Music-Steuerung, Timer und nächstem lokalem Kalendertermin; in Einstellungen abschaltbar |
 | Mail / Spotify | Links zu den jeweiligen externen Diensten |
 | AirCard Lite | Lokale Artwork-Verwaltung; Wallet-Funktionen benötigen ein **separates, nicht mitgeliefertes** macOS-Backend |
 | AirWrite | Persönliche Buchstaben erfassen, lokal speichern, Texte in eigener Handschrift darstellen und als PNG exportieren; Cloud-Sync ist noch nicht aktiv |
 | Cloud-Sync | Nicht allgemein aktiv; vorhandene Module sind vorbereitende, lokal getestete Bausteine |
+
+## Air-OS Notch
+
+Die Notch sitzt **innerhalb der Air-OS-Desktop-App**, nicht als systemweites Overlay auf macOS oder Windows. Ein Klick auf die schwarze Kapsel oben öffnet Musiksteuerung, einen Timer (5/10/25 Minuten) und den nächsten Termin aus dem lokalen Air-OS-Kalender. Die Musiksteuerung funktioniert mit tatsächlich in **Air Music** geladenen Audiodateien; externe Musik-Apps werden nicht heimlich ausgelesen. Ein abgelaufener Timer bleibt bis zum Bestätigen sichtbar. Unter **Einstellungen → Air-OS Notch** kann die Notch ein- oder ausgeblendet werden.
+
+Die hochgeladene Drittanbieter-App „Pro Notch“ wird nicht mitverteilt; Air-OS verwendet eine eigenständige Implementierung ohne deren proprietäre Binärdateien, macOS-Systemberechtigungen oder Tracking.
+
+## Lockscreen-Musik und Tablet-Layout
+
+Der Air-OS-Anmeldebildschirm zeigt nach Auswahl eines lokalen Kontos dessen **zuletzt gespielten Titel** mit Albumcover (falls in Air Music ausgewählt), Interpret, letzter Abspielposition und Musiksteuerungs-Symbolen. Aus Sicherheitsgründen sind die Steuerungs-Symbole vor der Anmeldung deaktiviert; Air Music kann erst nach dem Entsperren wiedergeben. Eine MP3-Datei wird nicht im Login-Screen geladen. Wenn bisher kein Titel gespielt wurde, bleibt die Musikkarte ausgeblendet.
+
+Die Desktop-Notch behält den zuletzt abgespielten Titel auch nach Pausieren, Schließen des Musikfensters oder Neustart bei. Zum Steuern muss Air Music mit den lokalen Audiodateien geöffnet sein. Die Musik-Metadaten werden pro lokalem Benutzerkonto in der Air-OS-Benutzerdateiablage gespeichert; Audiodateien werden nicht kopiert. In **Air Music** kann für den aktuellen Titel über „Cover auswählen“ ein lokales Bild hinterlegt werden, das verkleinert als Teil der Metadaten gespeichert wird.
+
+Das zusätzliche `tablet-layout.css` verbessert das Desktop-Layout für iPad-große Fenster und Touch-Eingaben (größere Ziele, scrollbareres Dock, passende Fenstergröße). **Air-OS bleibt eine Electron-Desktop-App für Windows/macOS/Linux; dies ist keine native iPadOS-App und kein iPad-App-Store-Build.** Ein echter iPadOS-Port wäre ein eigenständiges Projekt.
 
 ## Dokumentation und Mitarbeit
 
