@@ -24,6 +24,7 @@
     },
     "files": [
       "main.cjs",
+      "media-state.cjs",
       "preload.cjs",
       "index.html",
       "styles.css",
