@@ -16,7 +16,13 @@ function mount(win){
  const engine=window.Amplitude;
  function init(){engine.init({songs:state.tracks.map(t=>({name:t.name,artist:t.artist,url:t.url})),volume:.75,continue_next:true,preload:'metadata'});state.audio=engine.getAudio();state.audio.addEventListener('timeupdate',refresh);state.audio.addEventListener('durationchange',refresh);state.audio.addEventListener('play',refresh);state.audio.addEventListener('pause',refresh);state.audio.addEventListener('ended',refresh);engine.setShuffle(state.shuffle);engine.setRepeat(state.repeat)}
  function current(){return Number(engine.getActiveIndex())||0}
- function refresh(){if(active!==win||!win.isConnected)return;const i=current(),track=state.tracks[i],a=state.audio;q('.airmusic-title').textContent=track?track.name:'Noch kein Song';q('.airmusic-artist').textContent=track?track.artist:'Füge deine Musikdateien hinzu.';q('.airmusic-play').textContent=a&&!a.paused?'❚❚':'▶';q('.airmusic-elapsed').textContent=fmt(a?.currentTime);q('.airmusic-duration').textContent=fmt(a?.duration);q('.airmusic-seek').value=a&&Number.isFinite(a.duration)&&a.duration?String(a.currentTime/a.duration*100):'0';root.querySelectorAll('.airmusic-track').forEach(b=>b.classList.toggle('playing',Number(b.dataset.index)===i&&!!track));}
+ function publish(){
+  const track=state.tracks[current()];
+  window.dispatchEvent(new CustomEvent('air-os:music-state',{detail:track
+   ? {available:true,title:track.name,artist:track.artist,playing:!!state.audio&&!state.audio.paused}
+   : {available:false}}));
+ }
+ function refresh(){if(active!==win||!win.isConnected)return;const i=current(),track=state.tracks[i],a=state.audio;q('.airmusic-title').textContent=track?track.name:'Noch kein Song';q('.airmusic-artist').textContent=track?track.artist:'Füge deine Musikdateien hinzu.';q('.airmusic-play').textContent=a&&!a.paused?'❚❚':'▶';q('.airmusic-elapsed').textContent=fmt(a?.currentTime);q('.airmusic-duration').textContent=fmt(a?.duration);q('.airmusic-seek').value=a&&Number.isFinite(a.duration)&&a.duration?String(a.currentTime/a.duration*100):'0';root.querySelectorAll('.airmusic-track').forEach(b=>b.classList.toggle('playing',Number(b.dataset.index)===i&&!!track));publish();}
  function render(){
   const lists=q('.airmusic-playlists');lists.replaceChildren();
   const entries=[['all','Alle Songs'],...Object.entries(state.playlists).map(([id,p])=>[id,p.name])];
@@ -29,10 +35,19 @@ function mount(win){
   refresh()
  }
  q('.airmusic-input').addEventListener('change',e=>{const files=[...e.target.files].filter(f=>f.type.startsWith('audio/')||/\.(mp3|m4a|wav|ogg|flac|aac)$/i.test(f.name));if(!files.length)return;try{engine.pause()}catch{};state.urls.forEach(u=>URL.revokeObjectURL(u));state.urls=[];state.tracks=files.map(f=>{const url=URL.createObjectURL(f);state.urls.push(url);const name=f.name.replace(/\.[^.]+$/,'');const parts=name.split(/\s+-\s+/);return{name:parts.length>1?parts.slice(1).join(' - '):name,artist:parts.length>1?parts[0]:'Lokale Datei',fileKey:f.name+'|'+f.size,url}});init();render();e.target.value=''});
+ const handleNotchControl=e=>{
+  if(active!==win||!win.isConnected||!state.tracks.length)return;
+  if(e.detail?.action==='toggle'){if(state.audio?.paused)engine.play();else engine.pause()}
+  else if(e.detail?.action==='previous')engine.prev();
+  else if(e.detail?.action==='next')engine.next();
+  else return;
+  refresh();
+ };
+ window.addEventListener('air-os:music-control',handleNotchControl);
  root.addEventListener('click',e=>{const b=e.target.closest('[data-music]');if(!b)return;const action=b.dataset.music;if(action==='new-playlist'){const name=prompt('Name der neuen Playlist:');if(name&&name.trim()){const id='list-'+Date.now();state.playlists[id]={name:name.trim().slice(0,60),names:[]};save(state.playlists);state.selected=id;render()}return}if(!state.tracks.length)return;if(action==='play'){state.audio?.paused?engine.play():engine.pause()}if(action==='prev')engine.prev();if(action==='next')engine.next();if(action==='shuffle'){state.shuffle=!state.shuffle;engine.setShuffle(state.shuffle);b.classList.toggle('active',state.shuffle)}if(action==='repeat'){state.repeat=!state.repeat;engine.setRepeat(state.repeat);b.classList.toggle('active',state.repeat)}refresh()});
  q('.airmusic-seek').addEventListener('input',e=>{if(state.audio&&Number.isFinite(state.audio.duration))engine.setSongPlayedPercentage(Number(e.target.value))});
  q('.airmusic-volume input').addEventListener('input',e=>{if(state.audio)state.audio.volume=Number(e.target.value)/100});
- const observer=new MutationObserver(()=>{if(!win.isConnected){if(active===win){try{engine.pause()}catch{};active=null}state.urls.forEach(u=>URL.revokeObjectURL(u));observer.disconnect()}});const host=document.querySelector('#windows');if(host)observer.observe(host,{childList:true,subtree:true});
+ const observer=new MutationObserver(()=>{if(!win.isConnected){if(active===win){try{engine.pause()}catch{};active=null;window.dispatchEvent(new CustomEvent('air-os:music-state',{detail:{available:false}}))}window.removeEventListener('air-os:music-control',handleNotchControl);state.urls.forEach(u=>URL.revokeObjectURL(u));observer.disconnect()}});const host=document.querySelector('#windows');if(host)observer.observe(host,{childList:true,subtree:true});
  render()
 }
 function load(){try{const p=JSON.parse(localStorage.getItem('air-music-playlists-v1')||'{}');return p&&typeof p==='object'&&!Array.isArray(p)?p:{}}catch{return {}}}
