@@ -31,7 +31,7 @@ test('notch timer, music bridge and visibility work without native system APIs',
     const classes = new Set();
     return {
       dataset, events, attrs,
-      hidden: false, disabled: false, textContent: '',
+      hidden: false, disabled: false, textContent: '', style: {}, title: '',
       classList: {
         toggle(name, active) {
           const enabled = active === undefined ? !classes.has(name) : !!active;
@@ -59,6 +59,7 @@ test('notch timer, music bridge and visibility work without native system APIs',
     ['.air-notch-timer-status', element()],
     ['[data-notch-timer="toggle"]', timerToggle],
     ['.air-notch-track-title', element()],
+    ['.air-notch-art', element()],
     ['.air-notch-track-artist', element()],
     ['.air-notch-indicator', element()],
     ['.air-notch-trigger-label', element()],
