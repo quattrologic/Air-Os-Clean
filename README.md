@@ -48,10 +48,17 @@ Installer lokal erstellen: `npm run pack:win`, `npm run pack:mac` oder `npm run 
 | Air Arcade | Snake mit lokalem Bestwert |
 | Fotos / Musik | Lokale Bilder und Audiodateien öffnen |
 | Kalender | Lokale Termine und ICS-Export |
+| Air-OS Notch | Ausklappbare Notch in der Menüleiste mit Air-Music-Steuerung, Timer und nächstem lokalem Kalendertermin; in Einstellungen abschaltbar |
 | Mail / Spotify | Links zu den jeweiligen externen Diensten |
 | AirCard Lite | Lokale Artwork-Verwaltung; Wallet-Funktionen benötigen ein **separates, nicht mitgeliefertes** macOS-Backend |
 | AirWrite | Persönliche Buchstaben erfassen, lokal speichern, Texte in eigener Handschrift darstellen und als PNG exportieren; Cloud-Sync ist noch nicht aktiv |
 | Cloud-Sync | Nicht allgemein aktiv; vorhandene Module sind vorbereitende, lokal getestete Bausteine |
+
+## Air-OS Notch
+
+Die Notch sitzt **innerhalb der Air-OS-Desktop-App**, nicht als systemweites Overlay auf macOS oder Windows. Ein Klick auf die schwarze Kapsel oben öffnet Musiksteuerung, einen Timer (5/10/25 Minuten) und den nächsten Termin aus dem lokalen Air-OS-Kalender. Die Musiksteuerung funktioniert mit tatsächlich in **Air Music** geladenen Audiodateien; externe Musik-Apps werden nicht heimlich ausgelesen. Ein abgelaufener Timer bleibt bis zum Bestätigen sichtbar. Unter **Einstellungen → Air-OS Notch** kann die Notch ein- oder ausgeblendet werden.
+
+Die hochgeladene Drittanbieter-App „Pro Notch“ wird nicht mitverteilt; Air-OS verwendet eine eigenständige Implementierung ohne deren proprietäre Binärdateien, macOS-Systemberechtigungen oder Tracking.
 
 ## Dokumentation und Mitarbeit
 
