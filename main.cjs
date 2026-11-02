@@ -6,11 +6,14 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
+const { createMediaStore } = require('./media-state.cjs');
 
 let mainWindow = null;
 let activeUser = null;
 let fileWorkspaceRoot = null;
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
+const mediaStore = createMediaStore(app.getPath('userData'));
+const isExistingAccount = username => readAccounts().some(item => item.username === username);
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 
 function readAccounts() {
@@ -131,6 +134,18 @@ ipcMain.handle('air-os:login', (event, input = {}) => {
   }
   setImmediate(() => openDesktop(account));
   return { ok: true };
+});
+// Login can display the selected local account's last song without loading its audio file.
+ipcMain.handle('air-os:media:get-last', (event, username) => {
+  requireTrusted(event);
+  const target = activeUser ? activeUser.username : String(username || '');
+  if (!target || !isExistingAccount(target)) return null;
+  return mediaStore.read(target);
+});
+ipcMain.handle('air-os:media:set-last', (event, data = {}) => {
+  requireTrusted(event);
+  if (!activeUser || !event.senderFrame?.url?.endsWith('/index.html')) throw new Error('Mediadaten erfordern eine aktive Anmeldung.');
+  return mediaStore.write(activeUser.username, data);
 });
 ipcMain.handle('air-os:current-user', event => {
   requireTrusted(event);
