@@ -40,6 +40,7 @@ test('notch timer, music bridge and visibility work without native system APIs',
         contains(name) { return classes.has(name); }
       },
       setAttribute(name, value) { attrs[name] = value; },
+      hasAttribute(name) { return Object.prototype.hasOwnProperty.call(attrs, name); },
       addEventListener(name, fn) { events[name] = fn; },
       focus() {}
     };
