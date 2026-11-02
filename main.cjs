@@ -140,7 +140,7 @@ ipcMain.handle('air-os:media:get-last', (event, username) => {
   requireTrusted(event);
   const target = activeUser ? activeUser.username : String(username || '');
   if (!target || !isExistingAccount(target)) return null;
-  return mediaStore.read(target);
+  return mediaStore().read(target);
 });
 ipcMain.handle('air-os:media:set-last', (event, data = {}) => {
   requireTrusted(event);
