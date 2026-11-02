@@ -78,3 +78,19 @@
   #air-notch, #air-notch .air-notch-chevron { transition: none; }
 }
 .air-reduced-motion #air-notch, .air-reduced-motion #air-notch .air-notch-chevron { transition: none; }
+
+
+#air-notch.has-last-song:not(.is-open){width:min(258px,calc(100vw - 280px))}
+#air-notch.has-last-song:not(.is-open) .air-notch-trigger{justify-content:center;gap:8px}
+.air-notch-trigger-label{display:block;min-width:0;max-width:205px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.air-notch-art.has-artwork{background-size:cover;background-position:center;background-repeat:no-repeat}
+@media(max-width:800px){
+ #air-notch.has-last-song:not(.is-open){width:min(190px,calc(100vw - 220px))}
+ .air-notch-trigger-label{max-width:140px}
+}
+@media(pointer:coarse){
+ #air-notch .air-notch-player button{min-height:42px;min-width:42px}
+ #air-notch .air-notch-player .air-notch-open-app{min-height:42px}
+ #air-notch .air-notch-presets button,#air-notch .air-notch-timer-actions button{min-height:42px}
+ .air-notch-trigger{min-height:42px}
+}
