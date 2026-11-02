@@ -1,0 +1,49 @@
+/* Tablet/iPad-style responsive desktop mode for Air-OS Electron.
+   This does not create a native iPadOS application. */
+@media (max-width:1100px), (pointer:coarse){
+  .menubar{padding-inline:12px;min-height:39px;height:39px}
+  .menu-left,.menu-right{gap:10px}
+  .desktop{inset:39px 0 0}
+  .desktop-icons{top:12px;left:9px;width:82px;gap:11px}
+  .desktop-icon{width:80px;min-height:80px;font-size:12px}
+  .desktop-art{width:53px;height:52px}
+  .windows{inset:8px 10px 106px}
+  .app-window:not(.maximized){
+    left:0!important;top:0!important;transform:none!important;
+    width:100%!important;height:100%!important;max-width:100%!important;
+    min-height:0;resize:none;border-radius:18px
+  }
+  .app-window.maximized{border-radius:18px}
+  .window-titlebar{height:51px;flex-basis:51px;touch-action:none}
+  .traffic button{width:17px;height:17px}
+  .window-resize-handle{display:none}
+  .dock{
+    left:50%;right:auto;bottom:max(10px,env(safe-area-inset-bottom));
+    width:max-content;max-width:calc(100vw - 24px);
+    overflow-x:auto;overflow-y:hidden;justify-content:flex-start;scrollbar-width:none;
+    scroll-snap-type:x proximity;touch-action:pan-x;
+    padding:10px 12px 13px;border-radius:24px
+  }
+  .dock::-webkit-scrollbar{display:none}
+  .dock-app{width:64px;height:60px;scroll-snap-align:center;flex:0 0 auto}
+  .dock-icon{width:53px;height:53px}
+  .dock-app:hover{transform:none}
+  .dock-app:active{transform:scale(.94)}
+  .menu-item{min-height:35px}
+  .app-window button,.app-window select{touch-action:manipulation}
+  .app-window .window-content{overscroll-behavior:contain}
+  .air-settings .setting-row{min-height:54px}
+}
+@media (max-width:780px){
+  .menu-left>.menu-item{display:none}
+  .menubar .menu-right .system-symbol,.menubar .menu-right .battery{display:none}
+  .menu-left{gap:7px}
+  .menu-left strong{font-size:12px}
+  #active-app{max-width:77px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #clock{font-size:11px}
+  .dock-app{width:58px;height:54px}
+  .dock-icon{width:46px;height:46px}
+}
+@media (prefers-reduced-motion:reduce){
+  .dock-app{transition:none}
+}
