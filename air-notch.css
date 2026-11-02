@@ -1,0 +1,80 @@
+/* Air-OS Notch: fixed inside the Electron desktop, not the native macOS menu bar. */
+#air-notch {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 140;
+  width: 130px;
+  color: #f5f7fb;
+  background: #090c13;
+  border: 1px solid #242a37;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 9px 28px #0005;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+  transition: width .22s ease, border-radius .22s ease;
+}
+#air-notch[hidden], #air-notch-panel[hidden] { display: none; }
+#air-notch.is-open { width: min(358px, calc(100vw - 20px)); border-radius: 0 0 26px 26px; box-shadow: 0 15px 50px #0009; }
+#air-notch button { color: inherit; cursor: pointer; font: inherit; }
+#air-notch button:focus-visible { outline: 2px solid #87b9ff; outline-offset: 2px; }
+#air-notch button:disabled { opacity: .34; cursor: not-allowed; }
+.air-notch-trigger {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  width: 100%; min-height: 30px; padding: 3px 10px 5px;
+  background: transparent; border: 0; color: #fff;
+  font-size: 11px !important; font-weight: 650 !important;
+}
+.air-notch-indicator { width: 6px; height: 6px; border-radius: 50%; background: #8091ab; box-shadow: 0 0 8px #60708540; }
+.air-notch-indicator.is-playing { background: #59d5a1; box-shadow: 0 0 10px #3df0a57e; }
+.air-notch-trigger-label { white-space: nowrap; }
+.air-notch-chevron { color: #8895a9; font-size: 14px; transition: transform .2s; }
+#air-notch.is-open .air-notch-chevron { transform: rotate(180deg); }
+.air-notch-panel { padding: 5px 16px 16px; }
+.air-notch-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 0 12px; border-bottom: 1px solid #ffffff18; }
+.air-notch-header > div { display: flex; flex-direction: column; gap: 3px; }
+.air-notch-eyebrow, .air-notch-section-label { font-size: 10px; font-weight: 700; letter-spacing: .11em; color: #9ca8c0; }
+.air-notch-time { font-size: 25px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+#air-notch .air-notch-close { border: 0; background: #ffffff14; border-radius: 50%; width: 28px; height: 28px; font-size: 21px; line-height: 1; }
+.air-notch-section { padding: 14px 0 13px; border-bottom: 1px solid #ffffff18; }
+.air-notch-section:last-child { border-bottom: 0; padding-bottom: 1px; }
+.air-notch-now { display: flex; align-items: center; gap: 11px; margin: 10px 0 8px; min-width: 0; }
+.air-notch-art { width: 41px; height: 41px; flex: 0 0 41px; display: grid; place-items: center; border-radius: 12px; font-size: 22px; background: linear-gradient(135deg,#6154e8,#1798dc); }
+.air-notch-track { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.air-notch-track strong, .air-notch-track small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.air-notch-track strong { font-size: 13px; }
+.air-notch-track small { color: #aeb9cc; font-size: 11px; }
+.air-notch-player { display: flex; align-items: center; gap: 6px; }
+#air-notch .air-notch-player button { border: 0; border-radius: 9px; background: #ffffff12; min-width: 31px; height: 30px; }
+#air-notch .air-notch-player .air-notch-play { background: #ffffff28; }
+#air-notch .air-notch-player .air-notch-open-app { min-width: 0; height: 30px; margin-left: auto; padding: 0 10px; font-size: 11px; }
+.air-notch-timer-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 9px 0; }
+.air-notch-countdown { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .035em; }
+.air-notch-timer-status { font-size: 11px; color: #b2bfda; }
+.air-notch-presets, .air-notch-timer-actions { display: flex; gap: 6px; margin-top: 8px; }
+#air-notch .air-notch-presets button, #air-notch .air-notch-timer-actions button { border: 1px solid #ffffff21; border-radius: 9px; background: #ffffff0c; padding: 6px 10px; font-size: 11px; }
+#air-notch .air-notch-presets button.is-selected { border-color: #82b9ff; background: #337ccf3d; }
+#air-notch .air-notch-timer-actions button { flex: 1; font-weight: 600; }
+#air-notch .air-notch-timer-actions .air-notch-primary { background: #307add; border-color: #307add; }
+.air-notch-event { display: flex; flex-direction: column; gap: 4px; margin: 9px 0 4px; }
+.air-notch-event strong { font-size: 12px; overflow-wrap: anywhere; }
+.air-notch-event small { color: #abb8cc; }
+#air-notch .air-notch-calendar-open { padding: 5px 0; border: 0; background: none; color: #99c5ff; font-size: 11px; }
+#air-notch.is-timer-done { border-color: #ffa552; }
+#air-notch.is-timer-done .air-notch-indicator { background: #ffa552; box-shadow: 0 0 9px #ffa5529a; }
+#air-notch.is-timer-done .air-notch-timer-status { color: #ffc48b; }
+@media (max-width: 980px) {
+  .menubar .menu-left .menu-item:nth-of-type(n+3) { display: none; }
+}
+@media (max-width: 790px) {
+  .menubar .menu-left .menu-item { display: none; }
+  .menubar .menu-left { gap: 9px; }
+  .menubar .menu-right .system-symbol, .menubar .menu-right .battery { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #air-notch, #air-notch .air-notch-chevron { transition: none; }
+}
+.air-reduced-motion #air-notch, .air-reduced-motion #air-notch .air-notch-chevron { transition: none; }
