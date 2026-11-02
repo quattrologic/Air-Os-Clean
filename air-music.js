@@ -15,7 +15,7 @@ function mount(win){
  active=win;
  const engine=window.Amplitude;
  function init(){engine.init({songs:state.tracks.map(t=>({name:t.name,artist:t.artist,url:t.url})),volume:.75,continue_next:true,preload:'metadata'});state.audio=engine.getAudio();state.audio.addEventListener('timeupdate',refresh);state.audio.addEventListener('durationchange',refresh);state.audio.addEventListener('play',refresh);state.audio.addEventListener('pause',refresh);state.audio.addEventListener('ended',refresh);engine.setShuffle(state.shuffle);engine.setRepeat(state.repeat)}
- function current(){return Number(engine.getActiveIndex())||0}
+ function current(){const index=Number(engine.getActiveIndex());return Number.isInteger(index)&&index>=0?index:0}
  function publish(){
   const track=state.tracks[current()];
   window.dispatchEvent(new CustomEvent('air-os:music-state',{detail:track
