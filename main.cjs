@@ -160,7 +160,6 @@ function requireAirCardAccess(event) {
   requireTrusted(event);
   if (!activeUser) throw new Error('Bitte melde dich zuerst bei Air-OS an.');
 }
-rebootController = registerRebootIpc({ app, ipcMain, dialog, shell, BrowserWindow, requireAccess: requireAirCardAccess });
 function airCardSafeID(value, fieldName) {
   const id = String(value || '');
   if (!/^[A-Za-z0-9._:-]{1,160}$/.test(id)) throw new Error('Ungültige ' + fieldName + '-Kennung.');
@@ -448,6 +447,7 @@ ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
 
 app.whenReady().then(() => {
   app.setAppUserModelId('com.quattrologic.airos');
+  rebootController = registerRebootIpc({ app, ipcMain, dialog, shell, BrowserWindow, requireAccess: requireAirCardAccess });
   session.defaultSession.setPermissionRequestHandler((_webContents, _permission, callback) => callback(false));
   createWindow();
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
