@@ -1,0 +1,29 @@
+.air-reboot{height:100%;overflow:auto;background:linear-gradient(160deg,#080d1b,#15213e 68%,#10182a);color:#edf6ff;font-family:inherit;padding:23px;box-sizing:border-box}
+.air-reboot-header{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:4px 0 18px}
+.air-reboot-header small{font-size:10px;font-weight:800;letter-spacing:2.5px;color:#6fdafa}
+.air-reboot-header h2{font-size:34px;line-height:1.1;margin:8px 0;color:#fff}
+.air-reboot-header p{color:#bed0e8;font-size:13px;margin:0;line-height:1.5}
+.air-reboot-logo{display:grid;place-items:center;flex-shrink:0;width:66px;height:66px;border-radius:18px;background:linear-gradient(135deg,#2dc5ef,#263680);color:#fff;font-size:37px;font-weight:900;box-shadow:0 12px 28px #0005}
+.air-reboot-note{font-size:12px;line-height:1.5;padding:12px 14px;border:1px solid #5887ab66;border-radius:10px;background:#4b8db225;color:#d8efff}
+.air-reboot-feedback{min-height:17px;padding:13px 0;color:#8de9ff;font-size:12px}
+.air-reboot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.air-reboot-card{display:flex;flex-direction:column;min-width:0;padding:18px;border:1px solid #6584ba55;border-radius:15px;background:#ffffff0d;box-shadow:0 14px 32px #0002}
+.air-reboot-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.air-reboot-number{font-size:13px;font-weight:900;color:#69d5ff}
+.air-reboot-state{font-size:10px;color:#afc0da;background:#cedbf01a;border-radius:20px;padding:5px 8px}
+.air-reboot-state.running{color:#84f5bd;background:#27ba802b}
+.air-reboot-card h3{font-size:19px;margin:17px 0 7px;color:#fff}
+.air-reboot-card p{font-size:12px;line-height:1.55;color:#c2d1e6;margin:0 0 18px;flex:1}
+.air-reboot-path{font-size:10px;line-height:1.5;overflow-wrap:anywhere;min-height:32px;color:#95d5f6;padding:10px 0;border-top:1px solid #ffffff20}
+.air-reboot-actions{display:flex;flex-wrap:wrap;gap:7px}
+.air-reboot button{cursor:pointer;font:inherit;font-size:11px;font-weight:700;padding:9px 11px;border:1px solid #6495c280;border-radius:8px;background:#ffffff13;color:#e6f5ff}
+.air-reboot button:hover:not(:disabled){background:#ffffff2b}
+.air-reboot button.primary{border-color:#55c5e8;background:#178fc1;color:white}
+.air-reboot button:disabled{cursor:not-allowed;opacity:.38}
+.air-reboot-card small{display:block;min-height:28px;margin-top:12px;font-size:10px;line-height:1.4;color:#b0c9e3}
+.air-reboot-footer{margin-top:16px;border-top:1px solid #ffffff2b;padding-top:16px}
+.air-reboot-footer strong{font-size:14px;color:#fff}
+.air-reboot-footer p{font-size:12px;line-height:1.6;color:#c2d1e6;max-width:720px}
+.air-reboot-links{display:flex;flex-wrap:wrap;gap:8px}
+.dock-icon.reboot-icon{display:grid;place-items:center;border-radius:12px;background:#13203d;box-shadow:0 2px 7px #0004;color:#73ddff;font-weight:900}
+@media(max-width:650px){.air-reboot{padding:13px}.air-reboot-header h2{font-size:27px}.air-reboot-logo{width:44px;height:44px;font-size:26px}}

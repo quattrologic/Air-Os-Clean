@@ -26,6 +26,9 @@ jobs:
           node --check app.js
           node --check air-os-enhancements.js
           node --check aircard-lite.js
+          node --check reboot-app.js
+          node --check reboot-integration.cjs
+          node --test tests/*.test.cjs
       - name: Audit production and development dependencies
         run: npm audit --audit-level=high
       - name: Check for accidentally tracked private files

@@ -6,9 +6,11 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { fileURLToPath } = require('node:url');
 const { execFileSync } = require('node:child_process');
+const { registerRebootIpc } = require('./reboot-integration.cjs');
 
 let mainWindow = null;
 let activeUser = null;
+let rebootController = null;
 let fileWorkspaceRoot = null;
 const accountFile = () => path.join(app.getPath('userData'), 'accounts.json');
 const scryptOptions = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
@@ -52,6 +54,7 @@ function requireTrusted(event) {
   if (!event.senderFrame || !localAppFile(event.senderFrame.url)) throw new Error('Nicht autorisierter Aufruf.');
 }
 function openLogin() {
+  rebootController?.stopAll();
   activeUser = null;
   fileWorkspaceRoot = null;
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -444,6 +447,7 @@ ipcMain.handle('air-os:files:open-native', async (event, relativeValue) => {
 
 app.whenReady().then(() => {
   app.setAppUserModelId('com.quattrologic.airos');
+  rebootController = registerRebootIpc({ app, ipcMain, dialog, shell, BrowserWindow, requireAccess: requireAirCardAccess });
   session.defaultSession.setPermissionRequestHandler((_webContents, _permission, callback) => callback(false));
   createWindow();
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });

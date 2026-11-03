@@ -165,3 +165,8 @@ Air Music verwendet [AmplitudeJS](https://github.com/serversideup/amplitudejs) (
 Air-OS verwendet für Catalina **Electron 32.3.3** (Electron 33+ unterstützt macOS 10.15 nicht mehr). Der Installer ist für **macOS 10.15.0 oder neuer** konfiguriert und wird weiterhin als universeller Intel-/Apple-Silicon-Test-Build erstellt. macOS Catalina selbst läuft auf Intel-Macs; Apple-Silicon-Macs verwenden neuere macOS-Versionen.
 
 **Hinweis:** Electron 32 ist nicht mehr aktuell und erhält keine regulären Sicherheitsupdates. Nutze die Catalina-Ausgabe nur zum Testen, öffne keine unbekannten externen Inhalte und aktualisiere macOS, wenn möglich. Die Kompatibilität muss auf einem echten Mac mit 10.15.8 getestet werden; GitHub Actions erstellt die Installer auf einem neueren macOS-Runner. Alle Apps bleiben enthalten, einzelne Web-Dienste können jedoch eigene Mindestanforderungen haben.
+
+
+## Reboot (lokale Integration)
+
+Über das **Reboot**-Symbol im Dock lassen sich ein bereits installierter Reboot Launcher (Windows), LawinServer und FortMatchmaker verwalten. Air OS startet die gewählten Komponenten als **separate lokale Prozesse**; der eigentliche Project-Reboot-Gameserver und Fortnite sind **nicht enthalten**. Die App ist ausdrücklich keine vollständige 1:1-Portierung des ursprünglichen Launchers. Für Installation, Grenzen, Lizenzhinweise und Sicherheit siehe [Reboot-Integrationsanleitung](docs/REBOOT_INTEGRATION.md).

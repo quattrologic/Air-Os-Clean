@@ -17,6 +17,12 @@ contextBridge.exposeInMainWorld('airOS', Object.freeze({
     writeTextFile: (relativePath, content) => ipcRenderer.invoke('air-os:files:write-text', relativePath, content),
     openNative: relativePath => ipcRenderer.invoke('air-os:files:open-native', relativePath)
   }),
+  reboot: Object.freeze({
+    state: () => ipcRenderer.invoke('air-os:reboot:state'),
+    configure: kind => ipcRenderer.invoke('air-os:reboot:configure', kind),
+    start: kind => ipcRenderer.invoke('air-os:reboot:start', kind),
+    stop: kind => ipcRenderer.invoke('air-os:reboot:stop', kind)
+  }),
   airCardLite: Object.freeze({
     listDevices: () => ipcRenderer.invoke('aircard:list-devices'),
     scanCards: deviceID => ipcRenderer.invoke('aircard:scan-cards', deviceID),

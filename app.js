@@ -448,6 +448,7 @@ function openApp(id){
  if(id==="tagesschau")tsLoadNews(win,"homepage");
  if(id==="stocks")initStocksApp(win);
  if(id==="aircard" && window.airCardLiteApp) window.airCardLiteApp.init(win);
+ if(id==="reboot" && window.rebootApp) window.rebootApp.init(win);
  if((id==="translator"||id==="ai") && window.airExtraApps)window.airExtraApps.mount(id,win);
 }
 let calcExpr="";
