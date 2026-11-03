@@ -88,3 +88,17 @@ tailscale serve off
 ```
 
 Die lokale Air-OS-Web-App auf dem iPad bleibt nach erfolgreicher Installation und vorhandenem Cache offline nutzbar. Zum vollständigen Entfernen die App und ggf. die Safari-Websitedaten löschen.
+
+## Safari-Fehler „Response served by service worker has redirections“
+
+Das tritt auf, wenn ein statischer Dateiserver `index.html` nach `/` umleitet und Safari die umgeleitete Antwort aus dem Service-Worker-Cache als Navigation erhält. Die Korrektur ist ab `air-os-ipad-v2-safari-redirect-fix` enthalten: Die App speichert die echte Startseite unter `./` und erstellt neue, nicht-umgeleitete `Response`-Objekte vor einer Navigation.
+
+**Für bereits betroffene iPads:**
+
+1. Auf Windows im vorhandenen Ordner `Air-OS-iPad`: `git pull --ff-only origin feature/private-ipad-pwa` (solange der PR offen ist). Tailscale Serve muss nicht neu eingerichtet werden.
+2. Auf dem iPad die Safari-Seitendaten **nur** für die private `.ts.net`-Adresse löschen: **Einstellungen → Apps → Safari → Erweitert → Website-Daten** und den betreffenden Domain-Eintrag suchen. Je nach iPadOS-Version ist Safari direkt in den Einstellungen. **Achtung:** Dadurch können lokal importierte Musikdateien, Termine und App-Einstellungen unter dieser Domain verloren gehen. Vorher sichern!
+3. Safari neu öffnen, Tailscale einschalten und die private `https://…ts.net/`-Adresse aufrufen, anschließend erst zum Home-Bildschirm hinzufügen.
+4. Wenn die Seite weiterhin fehlschlägt, zunächst in Safari ohne vorhandene Home-Bildschirm-Verknüpfung öffnen und prüfen, ob die richtige Branch-Version auf Windows liegt (`git branch --show-current`).
+
+Die direkte URL `/index.html` vermeiden, da manche statischen Dateiserver diese absichtlich nach `/` umleiten. Nutze die Root-Adresse mit abschließendem Schrägstrich.
+
