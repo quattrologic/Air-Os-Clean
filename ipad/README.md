@@ -102,3 +102,7 @@ Das tritt auf, wenn ein statischer Dateiserver `index.html` nach `/` umleitet un
 
 Die direkte URL `/index.html` vermeiden, da manche statischen Dateiserver diese absichtlich nach `/` umleiten. Nutze die Root-Adresse mit abschließendem Schrägstrich.
 
+
+## App-Symbol
+
+Als App-Symbol wird die vom Projektinhaber bereitgestellte schwarz-weiße, geometrische Air-OS-Bildmarke verwendet (`air-os-official.png`). Safari nutzt sie über `apple-touch-icon` und das PWA-Manifest. Nach einem Update muss die bereits installierte Home-Bildschirm-Verknüpfung ggf. entfernt und erneut hinzugefügt werden; Safari kann das alte Symbol zwischenspeichern. Dabei die Safari-Website-Daten möglichst nicht löschen, um lokale Musik und Termine zu erhalten.

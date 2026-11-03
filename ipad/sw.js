@@ -1,8 +1,8 @@
 /* Cache the real root page, not /index.html: static file servers may redirect
    /index.html to /, which Safari rejects if returned by a service worker.
    Bump this version when the app shell changes. */
-const CACHE_VERSION = 'air-os-ipad-v3-original-icon';
-const SHELL = ['./', './styles.css', './app.js', './manifest.webmanifest', './air-logo.png'];
+const CACHE_VERSION = 'air-os-ipad-v4-official-uploaded-logo';
+const SHELL = ['./', './styles.css', './app.js', './manifest.webmanifest', './air-os-official.png'];
 
 /* Strip the redirect flag from same-origin responses, even after CacheStorage.
    WebKit rejects redirected Response objects in navigation respondWith(). */

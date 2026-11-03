@@ -11,8 +11,8 @@
   "theme_color": "#111827",
   "icons": [
     {
-      "src": "./air-logo.png",
-      "sizes": "any",
+      "src": "./air-os-official.png",
+      "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     }

@@ -18,7 +18,7 @@ test('PWA assets parse, stay same-origin and do not depend on Electron', () => {
   assert.equal(manifest.display, 'standalone');
   assert.equal(manifest.start_url, './');
   assert.equal(manifest.scope, './');
-  for (const file of ['index.html','app.js','styles.css','manifest.webmanifest','air-logo.png','sw.js']) {
+  for (const file of ['index.html','app.js','styles.css','manifest.webmanifest','air-os-official.png','sw.js']) {
     assert.ok(fs.existsSync(path.join(dir,file)), 'Missing offline asset: ' + file);
   }
   assert.match(html, /href="\.\/manifest\.webmanifest"/);
@@ -82,7 +82,7 @@ test('Safari navigation receives a non-redirected offline response', async () =>
   handlers.install({ waitUntil: promise => { install = promise; } });
   await install;
   assert.deepEqual(fetched, ['./']);
-  assert.deepEqual(installedAssets, ['./styles.css', './app.js', './manifest.webmanifest', './air-logo.png']);
+  assert.deepEqual(installedAssets, ['./styles.css', './app.js', './manifest.webmanifest', './air-os-official.png']);
   assert.equal(stored.get('./').redirected, false);
 
   let navigation;
