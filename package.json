@@ -46,7 +46,10 @@
       "air-arcade-games.js",
       "air-arcade-games.css",
       "air-music.js",
-      "air-music.css"
+      "air-music.css",
+      "reboot-app.css",
+      "reboot-app.js",
+      "reboot-integration.cjs"
     ],
     "mac": {
       "target": [
