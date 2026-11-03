@@ -71,9 +71,8 @@
         feedback.textContent = 'Aktion fehlgeschlagen: ' + (error && error.message ? error.message : String(error));
         try { await refresh(); } catch { /* Keep primary error visible. */ }
         feedback.textContent = 'Aktion fehlgeschlagen: ' + (error && error.message ? error.message : String(error));
-      } finally {
-        button.disabled = false;
       }
+
     });
     refresh().catch(error => { feedback.textContent = 'Reboot-Status konnte nicht geladen werden: ' + error.message; });
   }
