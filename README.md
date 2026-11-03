@@ -1,3 +1,7 @@
+## Air-OS für iPad – private Offline-Web-App
+
+Eine eigenständige, kostenlose und offlinefähige iPad-PWA ist im Ordner [`ipad/`](ipad/) enthalten. Sie wird über **Tailscale Serve** privat von einem Windows-PC installiert und kann danach mit lokal gespeicherter Musik, Notch, Lockscreen-Anzeige, Timer und Kalender auch ohne Verbindung genutzt werden. Updates werden bei wieder verfügbarer privater HTTPS-Verbindung geladen; dies ist **keine native iPadOS-App**. [Einrichtung und Einschränkungen](ipad/README.md).
+
 # Air-OS
 
 **Ein eigenständiger, Aqua-inspirierter Desktop für Windows und macOS – entwickelt mit Electron.**
