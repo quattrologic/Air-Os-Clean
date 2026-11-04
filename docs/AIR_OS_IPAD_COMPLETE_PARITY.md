@@ -1,106 +1,180 @@
-# Air-OS Ultimate iPad — Desktop Parity
+# Air-OS Ultimate iPad — Complete Desktop Parity
 
-Basis `feature/private-ipad-pwa@7de1635c0207b8604c5409ef62c466585b4d5f04`. Entwicklungsbranch `feat/ipad-complete-desktop-parity`. PR #16/#17 bei Beginn offen. **Kein Merge in main oder den verwendeten privaten Branch. Keine Tailscale-, Task- oder Serve-Konfiguration auf dem Windows-PC verändert.**
+Entwicklungsbranch: `feat/ipad-complete-desktop-parity`.
+Basis: `feature/private-ipad-pwa@7de1635c0207b8604c5409ef62c466585b4d5f04`.
+Produktcommit: **`7ab977aefada10c531a1d2ae6bf7f514aa53df50`**.
+Build-/Testcommit: **`6180ed44ab67353eb750d832f67f596a2201a40d`** (gleiche Laufzeitbytes, erweiterte Abnahme).
 
-## Checkpoint A/B — echter Browserdesktop und Daten
+Die verwendete private Version, `main`, PR #16/#17 und die Tailscale-/Windows-Task-Konfiguration wurden nicht geändert. Beide PRs waren bei Beginn offen. **Kein Merge, keine öffentliche oder private Deploymentaktion, kein Funnel und kein Pages.** Die hier gebaute Edition ist ein eigener geprüfter Entwicklungskandidat; ein Wechsel der installierten Version benötigt Datensicherung und ausdrückliche Eigentümerfreigabe.
 
-Eine Registry (`ipad/registry.js`) steuert Dock, Launchpad und Appstarts. Ein Window Manager (`ipad/desktop.js`) verwaltet bestehende Panels und neue Apps: Fokus, Drag/Resize mit Pointercancel, Minimize/Restore/Maximize, Side-by-Side, Übersicht, persistierte Geometrie und Tastatur. Keine Steuerung nativer iPadOS-Fenster. Dock/Notch/Lockscreen bleiben Air-OS-Oberflächen.
+## Tatsächlicher Umfang
 
-Die bestehende Datenbank **`air-os-ipad-tracks-v1` wird additiv von Version 1 auf 2 erweitert**: `tracks` bleibt bestehen; `records` ergänzt Notes/Dokumente/Dateien/Reminders/Kalender/Einstellungen. Keine Datenbank wird gelöscht oder zurückgesetzt. Der bestehende Musikcontroller und das einzige HTMLAudioElement bleiben zuständig. Letzter Titel, Position und Timer behalten ihre bisherigen Schlüssel. Kalender wird transaktional und idempotent übernommen; der alte LocalStorage-Wert bleibt unverändert als Rückfallsicherung. Fehler brechen den Import ab. Alte gleichzeitig offene Tabs können das Upgrade blockieren und müssen geschlossen werden.
+25 registrierte Apps: **16 lokale Apps und neun ausdrücklich gekennzeichnete externe Webalternativen**. Eine Registry, ein interner Window Manager und der vorhandene Audiocontroller. Echte lokale Apps statt zusätzlicher funktionsloser Icons. Das ist weitgehende Browserfunktionalität, keine behauptete vollständige native Windows-/iPadOS-Parität.
 
-Dateien liegen ausschließlich im internen Browserspeicher. Expliziter File-Import, Ordner, Kopie, Move, Rename, Papierkorb/Restore, Text-/Bildvorschau und Export erweitern diesen Bereich; keine Rechte auf beliebige iPad-Dateien. Notes und AirWrite-Dokumente verwenden Revisionsprüfungen und bestätigtes Speichern. Ungespeicherte Entwürfe werden bei Fensterschließen abgefragt. Backup/Restore besitzt eine gemeinsame Transaktion über beide Stores; IDs werden nur nach ausdrücklicher Bestätigung ersetzt.
+- Desktop mit Dock, Pins, laufenden/aktiven/minimierten Apps, MRU, Touch-Kontextmenüs, Pin-Reihenfolge, Launchpad mit Appgruppen, Spotlight, Fensterübersicht, Widgets und Kontrollzentrum.
+- Drag/Resize, Pointercancel, Fokus/Z-Reihenfolge, Minimize/Restore/Maximize, Side-by-Side und persistierte Geometrien. Unter 640px werden Snapfenster vollbreit, damit Apps bedienbar bleiben. Ausschließlich interne PWA-Fenster.
+- Finder mit echtem internem Dateibaum, Import/Export, Move/Copy/Rename, Papierkorb/Restore, Text- und Rasterbildvorschau. Notes/Dokumente mit Revisionen, explizitem bestätigtem Speichern, Konfliktschutz, Undo/Redo und Import/Export.
+- Echte Reminders und Kalender; vorhandene Musik-/Coverbibliothek mit Playlists, Suche, Favoriten, Shuffle/Repeat, Metadaten, Fortschritt und einem gemeinsamen Audiostatus. Originale sieben Arcade-Spiele und AirWrite-Handschrift-/PNG-Funktionen.
+- Safe Areas, VisualViewport/ResizeObserver, größere Touchziele, Pointer-/Pencil-Ereignisse, Portrait/Landscape, CSS-Glasqualitäten, Reduced Motion/Transparency und Forced Colors. Kein zusätzlicher Shader-/Audio-/Fensterrenderer.
 
-## Ausführbare Wiederverwendung
+## Architektur und Datenverträge
 
-- Vorhandener privater Controller `ipad/app.js`: Audio, Notch, Lockscreen, Timer und Kalender weitergeführt; keine fremde Shell darübergelegt.
-- Originale eigene Desktopmodule `airwrite.js`/`air-arcade-games.js` und CSS nach `ipad/vendor/` gezielt portiert. AirWrite-Handschrift/Cropping/Canvas/PNG-Export läuft im Browser; Dokumentbibliothek ergänzt denselben Appbereich. Keine native PencilKit-/Wallet-Funktion behauptet.
-- Bounded ID3/FLAC-Parser aus `src/core/music-metadata.js` des geprüften Air-OS-Desktopports nach `ipad/core/` übernommen. Keine Dateipfade, externen Metadatenabfragen oder zweite Audioengine.
-- Bereits kuratierte MacTahoe-Icons aus der bestehenden Air-OS-Integration: `ipad/icons/` mit vollständigen GPL-3.0-Texten, Autoren-/NOTICE-/Quellnachweisen. Eigenes offizielles Logo unverändert. Glas ist der Chromium/WebKit-CSS-Compositor, **keine behauptete Snell- oder Fremdfensterrefraktion**.
+| Eigentümer | Aufgabe |
+|---|---|
+| `ipad/registry.js` | Ein Appinventar für Dock, Launchpad, Suche und Öffnen |
+| `ipad/desktop.js`, `core/window-model.js` | Interne Fenster, Bounds, Restorewarteschlange, Dock und Systempanels |
+| `ipad/app.js` | Bestehender privater Lockscreen/Notch, **ein** HTMLAudioElement, Musiktitel, Kalender und Timer |
+| `ipad/storage.js` | Gemeinsamer Browserdatenadapter, Revisionen, Transaktionen, validierte Modelle und virtueller Dateibaum |
+| `ipad/apps.js`, `widgets.js` | Datenverbrauchende Apps/Widgets; keine konkurrierenden Stores |
+| `ipad/backup.js` | Konsistenter Snapshot, validierter atomarer Restore und wiederholbares Legacy-Journal |
+| `scripts/build-ipad-parity.cjs` | Contenthash-Versionierung der vollständig lokalen App-Shell |
 
-## Funktionsmatrix — aktueller tatsächlicher Stand
+**Die existierende Datenbank `air-os-ipad-tracks-v1` wird additiv von Version 1 auf 2 erweitert.** Der Store `tracks` und bestehende IDs/Audio-Blobs bleiben bestehen. Der neue `records`-Store enthält Notes, Dokumente, Reminders, Kalender, Dateien, Karten, Playlists, Einstellungen und Mitteilungen. Musik-Metadaten werden getrennt als `trackmeta` gespeichert: Favorit/Cover/LastPlayed schreiben die alte Audiodatei nicht neu. Der tatsächliche WebKit-Test deckte einen Blob-Lesefehler nach erneutem Schreiben gelesener Blobdatensätze auf; die Trennung beseitigt diesen Pfad.
 
-| App/Funktion | Desktopvertrag / native Abhängigkeit | iPad-Pfad / Persistenz | Offline | Prüfstand / Einschränkung |
+`air-ipad:last-track-v1`, `air-ipad:last-progress-v1`, `air-ipad:timer-v1` und das AirWrite-Profil behalten ihre Schlüssel. Kalender wird transaktional und idempotent übernommen; `air-ipad:calendar-v1` bleibt unverändert als Rückfallsicherung. Beschädigte Legacydaten stoppen die Migration statt einen Reset auszulösen. Ein Upgrade kann auf noch offenen alten Verbindungen warten; dann alte Clients schließen. Keine automatische Eigentümerzuordnung von Desktopdaten und kein Datenbanklöschen.
+
+Restore schreibt Nutzerdaten und ein Journal für Timer/Player/Handschrift in **einem** IDB-Commit. LocalStorage wird danach aus dem Journal übernommen; bei Fehlern bleibt ein wiederholbarer Auftrag erhalten. Quota-/Validierungs-/Konfliktfehler melden keinen Speichererfolg. Standardimport ergänzt ohne Überschreiben; ID-Kollisionen brechen die gesamte Transaktion ab, außer Überschreiben wurde ausdrücklich bestätigt. Aktuelle Einstellungen bleiben beim Merge erhalten. Dateibaumzyklen und ungültige Eltern werden abgelehnt.
+
+## Überprüfbare Funktionsmatrix
+
+„Ja“ bedeutet lokaler getesteter Ablauf, nicht native Systemparität. Browserdatei-/Audiotests verwenden isolierte ausgewählte synthetische Dateien. Externe Anbieter wurden nicht automatisch aufgerufen oder angemeldet.
+
+| App/Funktion | Desktopfunktion / Abhängigkeit | iPadfunktion und Daten | Offline / Parität | Tatsächlicher Test / Grenze |
 |---|---|---|---|---|
-| Finder | Main-FS, explizite Roots | virtueller IDB-Dateibaum, File/Blob-Import, Export | ja | Import/Textspeichern real Chromium; weitere Dateiaktionen noch gezielt prüfen |
-| Notes | lokale Datendienste / Profil | IDB-Notes, Revisionen, Suche, Save, Import/Export | ja | echter Save und Offline-Neuladen geprüft; weitere Konflikt-/Undo-Prüfungen folgen |
-| AirWrite | Handschrift-Canvas, lokale Profile | Original-Canvas plus IDB-Dokumentbibliothek | ja | Dokument speichern und Originalmodul gemountet; physischer Pencil offen |
-| Reminders | gemeinsamer Taskstore | IDB-Reminders, Listen/Fälligkeit/Priorität/Filter | ja | Aufgabe erstellen geprüft; erweiterte CRUD-Prüfungen folgen |
-| Kalender | Desktopkalender / Datendienst | bestehende Oberfläche + Monatsansicht, IDB-Migration | ja | bestehender und neuer Termin geprüft; kein Apple-Kalenderzugriff |
-| Musik | Desktopaudio / lokale Metadaten | **bestehendes** Audio/Tracks, neue Playlist-/Filter-/Transportaktionen | ja | v1-Bibliothek/Start/Erhalt geprüft; Safari-Audiohardware offen |
-| Timer | lokale Deadline | vorhandene persistierte Zeitstempel | ja | vorhandener Timer erhalten; Hintergrundgrenzen iPadOS |
-| Fotos | ausgewählte Desktopdateien | gemeinsame interne File-Blobs, Galerie/Export | ja | Oberfläche aufgenommen; realer Importtest folgt |
-| Rechner | lokale Rechnung | begrenzter Parser ohne eval | ja | tatsächliches Ergebnis geprüft |
-| Air Arcade | eigene sieben JS-Spiele | bestehende Spielcontroller im Browser | ja | konkrete Spielabläufe noch prüfen |
-| AirCard Lite | Geräte-/Wallet-Skins auf macOS | lokale Kartenbibliothek/JSON als Webalternative | ja | keine Wallet-/Gerätesteuerung; CRUD-Abnahme folgt |
-| Downloads | native Downloads | interner Dateibereich / explizite Exporte | ja | kein Lesen der nativen Safari-Downloadliste |
-| Papierkorb | native/interne Dateiaktionen | nur interner Datei-Papierkorb | ja | Restore-/Löschabnahme folgt |
-| Air Home | Desktopübersicht | echte lokale Appstarts | ja | keine native OS-Übersicht |
-| Einstellungen | Electron-/OS-Adapter | PWA-Design, Storage, Backup, Update | ja | OS-Toggles nicht vorgetäuscht |
-| Browser | Electron-Webfenster | geprüfter HTTPS-Link in Browser | nur UI | kein iframe-Zwang, keine Browserengine in der PWA |
-| Mail | Provider / native URL | expliziter externer Providerlink | nein | kein Mailclient-/Offline-Sync behauptet |
-| Übersetzer | externer Dienst | expliziter DeepL-Link | nein | keine erfundenen Übersetzungen |
-| Air-KI | externer Dienst/Auth | expliziter Browserlink | nein | keine Secrets oder automatische Anmeldung |
-| Nachrichten | Onlineanbieter | expliziter Tagesschau-Link | nein | keine erfundenen Meldungen |
-| Wetter | Onlinequelle | expliziter Anbieterlink | nein | keine heimliche Ortung/Fakewerte; Widgetprovider noch offen |
-| Fußball | Onlineanbieter | expliziter kicker-Link | nein | keine Fake-Ergebnisse |
-| Aktien | Onlineanbieter | expliziter Börsenlink | nein | keine Fakekurse |
-| Spotify | Konto/Onlinedienst | expliziter Webplayerlink | nein | keine native Spotify-Steuerung |
-| Über Air-OS | Produktinfos | lokale Informationen/Lizenzen | ja | keine native App-Store-App |
-| Launchpad/Spotlight | Registry/Suchdienste | eine Registry, lokale Suche, Rechner | ja | echte Suche im Browser geprüft |
-| Notch/Kontrollzentrum | gemeinsame Dienste | vorhandene Player-/Timerzustände, lokale Hinweise | ja | keine systemweite iPadOS-Steuerung |
+| Finder | Main-FS, explizite Roots, native Picker | IDB-Dateibaum, Ordner, Import/Export, Copy/Move/Rename, Trash/Restore, Text/Bild | Ja / Webalternative | Echter File-Import/Textsave; Modelltests für Baumaktionen/Zyklen/Trashbatches. Kein beliebiger Dateien-App-Zugriff; natives DnD/Picker auf Hardware offen |
+| Notes | lokale Datendienste | IDB-Notes, Liste/Suche/Sortierung, CAS-Save, Undo/Redo, Import/Export | Ja / weitgehend | Echte Speicherung, Tastatur-Undo/Redo, Konfliktentwurf, abgelehnter Dirty-Close, kalter Neustart |
+| AirWrite | originaler JS-Handschrifteditor | Original-Canvas/Zeichenprofile/PNG plus IDB-Dokumentbibliothek, Textimport/export | Ja / eingeschränkt | Dokument-Save und Originalmodul; physisches Pencil-Zeichnen und native Auswahl offen. Kein rich-text Word-/PencilKit-Anspruch |
+| Reminders | vorhandene Aufgabenlogik | Listen, Datum/Priorität, Erstellen/Bearbeiten/Erledigen/Löschen/Filter | Ja / weitgehend | Echter Create/Edit/Heute/Completed-Ablauf; Widget liest dieselben Daten |
+| Kalender | lokale Termine/Navigation | ursprüngliche App plus Monat und Tages-/Wochenlistenfilter, Suche, CRUD | Ja / weitgehend | Alttermin bleibt, neuer Termin wird erstellt/bearbeitet/gelöscht. Kein nativer Apple-Kalenderzugriff |
+| Air Music | Desktopaudio, ausgewählte Dateien/Metadaten | **bestehende** DB/Audioengine, Playlists/Suche/Favoriten/Shuffle/Repeat/Seek/App-Lautstärke/Cover | Ja / eingeschränkt | Alter Blob-SHA nach echtem Upgrade und Recovery identisch; echte Wiedergabe/Control-Center-Transport. Hardwareaudio/Background/Safari-Lautstärke offen |
+| Fotos | Desktopdateien | derselbe virtuelle File-Store, Rasterbildimport/Galerie/Export | Ja / Webalternative | Echtes ausgewähltes PNG wird gespeichert und dekodiert; keine native Fotomediathek |
+| Rechner | lokale Ausdrücke | begrenzter Parser ohne eval, Klammern und Grundrechenarten | Ja / eingeschränkt | `(2+3)*4=20`; keine vollständige wissenschaftliche Rechnerparität |
+| Air Arcade | eigene sieben JS-Spiele | Originale Spielcontroller, Touch-/Tastaturaktionen | Ja / portiert | Reale 2048-Züge, Snake-Start, Pause/Resume und Intervallcleanup bei Minimize/Close; nicht jede Spielregel separat abgenommen |
+| AirCard Lite | Geräte-/Wallet-Skins | lokale JSON-Kartenbibliothek, Import/Export | Ja / Webalternative | Reales Speichern; keine Wallet-/Geräte-Skin-Steuerung |
+| Timer | lokale Deadline | bestehende Zeitstempel, Pause/Resume/Reset, lokaler Abschluss | Ja / erhalten | alter Timer bleibt beim Upgrade; keine garantierte OS-Hintergrundausführung |
+| Downloads | native Downloadverwaltung | interner Dateibereich, expliziter Export nach Safari/Dateien | Ja / eingeschränkt | gemeinsame Finderfunktionen; kein Lesen der Safari-Downloadliste |
+| Papierkorb | Dateiaktionen | interner Trash/Restore/Purge mit Batchschutz | Ja / Webalternative | Modelltest schützt bereits vorher gelöschte Kinder; keine iPadOS-Papierkorbsteuerung |
+| Air Home | Desktopübersicht | echte lokale Appstarts | Ja / eingeschränkt | Registry-/Öffnen-Pfad; keine native OS-Übersicht |
+| Einstellungen | native Main-/OS-Adapter | Materialien, Bewegung, Storage/Persistenzanfrage, Backup, Update | Ja / eingeschränkt | Backup/Restore/Quota/Update echt getestet; kein Bluetooth/Helligkeits-/Systemlautstärke-Faketoggle |
+| Über Air-OS | Produktinfos | lokale Informationen/Quellnachweise | Ja | lokale Oberfläche, keine native App-Store-App |
+| Air Web | Electron-Webfenster | validierter HTTPS-Link, neuer Browsertab | nur UI / ersetzt | kein iframe-Zwang und keine zweite Browserengine |
+| Mail | Provider/Native-App | expliziter externer Providerlink | Nein / eingeschränkt | kein eigener Mailclient oder Offline-Sync |
+| Übersetzer | MyMemory-Netzwerkdienst | expliziter DeepL-Weblink | Nein / ersetzt | keine lokale Übersetzungsengine; kein automatischer Texttransfer |
+| Air-KI | Desktop-Ollama auf localhost | expliziter Browserlink zu einem Onlinedienst | Nein / ersetzt | iPad-localhost ist nicht der Windows-PC; kein Ollama-/LLM-/Cloud-Auth-Anspruch |
+| Nachrichten | Onlinequelle | expliziter Tagesschau-Link | Nein / eingeschränkt | keine erfundenen Artikel oder gebündelte Fremdinhalte |
+| Wetter | Wetteranbieter | expliziter Anbieterlink | Nein / eingeschränkt | kein Provider eingerichtet, keine erfundenen Wetterwerte; vollständiges Wetterwidget offen |
+| Fußball | Onlinequelle | expliziter kicker-Link | Nein / eingeschränkt | keine Fake-Ergebnisse |
+| Aktien | Onlinequelle | expliziter Börsenlink | Nein / eingeschränkt | keine Fakekurse |
+| Spotify | Onlinedienst/Auth | expliziter Webplayerlink | Nein / eingeschränkt | keine native Spotify-Steuerung |
+| Spotlight/Launchpad | Registry/Suchdienste | Apps, Notes, Dokumente, Tasks, Events, Dateien, Rechner; Gruppen | Ja / portiert | echte Suchtreffer, Appgruppen, Tastatur/Touch, Appstart |
+| Dock/Fenster | Desktop-Lifecycle/M1/M2 | ein interner Web-Lifecycle, Pins/Reorder/MRU/Resize/Snap/Restore | Ja / adaptiert | Pointer-/Touchcancel, Side-by-Side, sechs Größen, gespeicherte Wiederherstellung. Keine native Stage-Manager-/F11-Electron-Steuerung |
+| Notch/Widgets/Control Center | gemeinsame Dienste | Originalplayer/-timer plus echte Kalender-/Reminderansichten, Mitteilungen | Ja / adaptiert | ein Audioelement, echter gemeinsamer Transport. Keine native iPadOS-Island/Push-Systemintegration |
+| Sperransicht | Desktopauth/native Grenzen | erhaltene private visuelle Start-/Sperroberfläche | Ja / bewusst begrenzt | keine zusätzliche sichere Anmeldung oder native iPadOS-Sperre; Tailscale bleibt separater privater Transport |
 
-## Bislang tatsächlich ausgeführt
+## Gemeinsam verwendeter Code und Lizenzen
 
-21 bestehende Node-Tests erhalten. Erster echter Chromium-154-Lauf: **21 Prüfungen, 21 Screenshots**, darunter Legacy-v1-Musik, Kalenderübernahme, Notes, AirWrite, Reminders, File-Import/Textsave, Musikstart, Calculator, Side-by-Side, sechs Viewports und Offline-Neuladen. Keine physische iPad-Abnahme. Ein leeres Appfenster allein zählt nicht als Appabnahme; noch nicht geprüfte Workflows stehen explizit in der Matrix.
+- Originale eigene `airwrite.js/css` und `air-arcade-games.js/css` aus dem verbindlichen Desktopinventar wurden gezielt nach `ipad/vendor/` portiert. `vendor/SOURCE.json` nennt Original-SHA-256; Ziel-JS passt Pointerabbruch, Canvasgrenzen und sichtbarkeitsabhängige Timer an. Nicht blind einen anderen Branch gemergt.
+- `src/core/music-metadata.js` aus R7 `02ccaf88724731cf685d2221f88e959020aff3f0` unverändert browserfähig übernommen, SHA-256 `b4e8d5e588a5c766fc1d22eabf1621b809a895a41b5897ed2e1b52505e53164b`.
+- Bereits kuratierte MacTahoe-Assets aus der vorhandenen Air-OS-Integration: Original-SVGs, GPL-3.0-COPYING/AUTHORS/NOTICE und `provenance.json` mit Upstream-Pins. Kein zusätzliches Markenasset importiert. Das offizielle private Air-OS-Logo bleibt unverändert.
+- Materialien sind der **CSS-Compositor von Chromium/WebKit** mit begrenztem Standardblur, opt-in höherer Qualität, Reduced Transparency/Forced Colors. Kein neuer GL-Renderer und keine behauptete Snell-, Hardware-GPU- oder Fremdfensterrefraktion. MacShell-/Hyprland-Desktopshader wurden nicht blind als Safari-kompatibel ausgegeben.
+- Native Electron-/Windows-/Hyprland-/Cloud-Codepfade bleiben außerhalb der PWA. Keine neuen Laufzeit-CDNs, Secrets oder Telemetrie.
 
-Lokaler Playwright-Browserdownload war durch die Netzwerkregel für `cdn.playwright.dev` blockiert. Installiertes Chromium funktioniert; WebKit wird über einen separaten CI-Pfad geprüft. Kein Erfolg behauptet, bevor dieser Lauf tatsächlich stattgefunden hat.
+## Tests, Bilder und reproduzierbare Befehle
 
-## Offline und privates Update
+**Lokal tatsächlich bestanden:** 29 Node-Tests (alle 21 alten + acht zusätzliche), 80 Chromiumchecks unter Root und separat unter `/Air-OS/`, jeweils 28 Aufnahmeereignisse; neun zusätzliche Upgrade-/Rückfallchecks mit acht Aufnahmen. Testwerkzeug-Audit: null Vulnerabilities. 89 Runtime-Dateien byteweise gegen den Buildstand geprüft, einschließlich CSP, Scopes und Lizenzassets.
 
-Contenthash-generierter v5-Service-Worker cached alle lokalen Runtime-/Iconassets. Root bleibt `./`; Navigation erhält eine neu erzeugte, nicht umgeleitete Response. Cachewechsel löscht keine IndexedDB-Daten. Eine vorherige Cacheversion bleibt verfügbar. Neue Worker aktivieren sich bei bestehenden Clients nur nach Sicherheitsabfrage aller geöffneten Appfenster; Musik und ungespeicherte Inhalte blockieren Reload. Kein GitHub Pages/Funnel/Clouddeploy.
+Viewports: 1024×768, 1180×820, 1366×1024, 834×1194, 820×1180, 390×600. DPR 1 bei den Größenwechseln, DPR 2 nach kaltem Neustart; Touchfähige Browserkontexte; tatsächlich injizierte Chromium-Touchbewegung/Cancel, WebKit-Tap und Pointercapture-Abbruch. Screenshots sind echte unretuschierte Browseraufnahmen. Tabellen in `report.json` enthalten Viewport/DPR und echte DOMRects für Host, Fenster, Dock und Notch. Die Original-v4- und neue Ansicht verwenden dasselbe synthetische Profil/Viewport; die Uhr läuft real weiter. Keine erfundene Pixelidentität.
 
-Die bestehenden Windows-Skripte sind bislang **nicht umgestellt**. Späterer Rollout erst nach vollständiger Abnahme, Export auf dem tatsächlichen iPad und ausdrücklicher Freigabe. Die alte Version bleibt auf `feature/private-ipad-pwa` unverändert erreichbar. Ein neuer Hostname/Port bedeutet einen anderen Browser-Origin und getrennte Daten.
+Der Server wird **wirklich beendet**, anschließend wird der ganze Browserprozess geschlossen und mit demselben isolierten Profil erneut gestartet. Das prüft den App-Shell-Cache und persistierte Nutzerdaten ohne Server, nicht bloß einen iPad-User-Agent. Vorhandene Audiodaten werden nach echtem Service-Worker-Upgrade und kompatiblem Rückfall per SHA-256 verglichen.
 
-## Noch offen vor Freigabe
+**Abschließender CI-Lauf [41844493854](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41844493854): erfolgreich.** Chromium: 80 Checks unter Root + 80 unter Unterpfad + 9 Upgrade/Recovery. WebKit: 79 + 79 + 9. Insgesamt **336 Browserchecks**, zusätzlich 29 Node-Regressionen (in beiden CI-Jobs erneut ausgeführt). Der Unterschied um einen Check ist die Chromium-spezifische echte Touchbewegung über CDP; WebKit prüft stattdessen Touch-Tap und Pointercancel. Beide Engines bestehen auch den echten Offline-Prozessneustart und DPR 2. Vorheriger Produktlauf [41844115214](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41844115214) ebenfalls grün. Die einzigen abschließenden Workflow-Warnungen betreffen von GitHub auf Node 24 umgestellte v4-Action-Runtimes, keine fehlgeschlagenen Tests/Audits.
 
-Gezielte vollständige CRUD-/Konflikt-/Backup-/Update-/Touchtests, echter kalter Offline-Browserneustart, WebKit, visuelle Korrekturen, versioniertes Build-ZIP und sicherer Rolloutplan. Physische iPadOS-/Pencil-/Safari-Dateipicker-/Audio-/Suspend-Abnahme bleibt mangels Hardware offen. Externe Dienste bleiben ehrlich begrenzte Browserlinks. Keine vollständige Desktopparität oder Installationsfreigabe behauptet.
+[Maschinenlesbare Ergebnisse, DOMRects und Performance](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/evidence.json) sind im Branch gesichert. Der zusätzliche DOMRect-Test deckte einen veralteten WebKit-VisualViewport nach schnellem Resize auf (Host bei 390×600 noch 1180px hoch). Der Renderer begrenzt ihn nun gegen `innerHeight` und berechnet Fenstergrenzen im Resizepfad unmittelbar neu. Frühere WebKit-Läufe deckten außerdem den Blob-Rewrite-Fehler und ein zu frühes Weiterlaufen des Update-Tests vor dem Reload auf. Beides wurde konkret korrigiert; keine fehlgeschlagenen Läufe als Endabnahme ausgegeben.
 
-## Checkpoint C — Browserhärtung und Buildpfad
+```sh
+node --test tests/*.test.cjs
+node scripts/package-ipad-parity.cjs
+node scripts/check-ipad-parity-package.cjs
+node scripts/build-ipad-recovery.cjs
+# Nach Installation der eingefrorenen Testwerkzeuge und echten Browserengines:
+AIR_PAD_ENGINE=chromium node scripts/test-ipad-parity.cjs
+AIR_PAD_ENGINE=webkit node scripts/test-ipad-parity.cjs
+AIR_PAD_ENGINE=webkit AIR_PAD_PREFIX=/Air-OS/ node scripts/test-ipad-parity.cjs
+AIR_PAD_ENGINE=webkit node scripts/test-ipad-updates.cjs
+```
 
-28/28 Node-Tests (21 vorhandene + 7 neue) bestanden. Der erste neue statische Löschschutztest traf fälschlich `Set.clear()`; auf tatsächliche Datenbank-Löschoperationen präzisiert. Zweiter realer Chromiumlauf wieder 21/21 mit CSP, angepasster Pointer-/Ink-Behandlung und spielabhängigen Pausentimern bestanden. Private Stablebranch weiterhin unverändert.
+## Offline, private Updates und Rückfall
 
-Neue CI baut eine versionierte ZIP, prüft alle Bytes/CSP/Lizenzen und testet Chromium sowie WebKit unter Root und `/Air-OS/`. Kein Deployment. Workflowerfolg wird erst nach tatsächlichem Lauf dokumentiert.
+Contenthash-v5 cached sämtliche lokalen Laufzeitassets, Root `./`, Manifest-ID/Start/Scope relativ. Der Safari-Redirect-Fix erzeugt weiterhin neue Response-Objekte für Navigationen. Scope-getrennte Cache-Namen vermeiden fremde Unterpfad-Löschungen; eine vorherige eigene Version bleibt erhalten. Cachewechsel löscht keine IndexedDB-Daten.
 
-## Checkpoint D — echte Safari-Fehlersuche
+Neue Worker aktivieren bestehende v5-Clients erst nach Rückmeldung aller geöffneten Appclients. Audio und ungespeicherte Inhalte blockieren das Reload; direkt davor erfolgt eine erneute Prüfung. Der erste v4-Übergang erfordert nach Download/Pause das vollständige Schließen der alten Clients. Keine aggressive skipWaiting-/Storage-Reset-Installation. Suspend/Resume nutzt Zeitstempel und Sichtbarkeitsereignisse statt Hintergrundpolling.
 
-CI [41836745449](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41836745449): Chromium unter Root und Unterpfad bestanden; WebKit scheiterte beim Backup mit `NotFoundError`. Keine Safari-Freigabe. Zusätzliche Blob-Readback-/Audiodecoder-Prüfungen grenzen dies jetzt ein. Lokales Chromium besteht auch bei tatsächlichem Abspielfortschritt statt bloßem `paused=false`.
+Drei getrennte, **nicht deployte** Pakete: neue Parity-PWA, lesendes Vorabbackup für die alte Version und kompatible Classic-Recovery-Oberfläche. Unveränderter alter v1-Code wäre nach dem additiven v2-Upgrade kein sicherer Rollback. Recovery verwendet deshalb v2-fähige Adapter, behält neue Workspace-Daten und kann sie exportieren. Große JSON-Backups haben eine explizite 64-MiB-Binärgrenze; darüber wird kein vollständiger Export behauptet.
 
-Pointercapture wird bei Abbruch/Fokusverlust beendet, Fenster bleiben vollständig im verfügbaren Viewport; Long-Press unterdrückt den folgenden Ghost-Klick. Die Cache-Namen enthalten den Service-Worker-Scope und löschen keine fremden Unterpfad-Caches. Arcade-Timer pausieren auch hinter dem Lockscreen. Backup-Merge behält bestehende Einstellungen statt wegen automatisch angelegter Setting-IDs abzubrechen.
+Der konkrete [private Umstellungsplan](AIR_OS_IPAD_PRIVATE_ROLLOUT.md) beschreibt Datensicherung, manuelle Freigabe, bewussten Umgang mit der bisherigen Branch-folgenden Windows-Aufgabe und sicheren Rückweg. Keine dieser Liveaktionen wurde ausgeführt. Browserdaten bleiben lokal, können aber durch iPadOS gelöscht werden. Andere Origins trennen Daten; Unterpfade allein sind **keine** Profiltrennung.
 
-## Checkpoint E — Datenworkflows und kalter Neustart
+## Performance und verbleibende Abnahme
 
-28 Node-Regressionen und **41 echte Chromiumprüfungen / 27 Aufnahmen** bestanden. Der Testserver wird tatsächlich beendet; anschließend wird der ganze Browserprozess geschlossen und mit demselben isolierten Profil ohne verfügbaren Server gestartet. Notes, Dokumente und exportierbare Musikbytes bleiben erhalten. Echte Dateiaktionen (Copy/Move/Rename/Trash/Restore/Zyklen), PNG-Import/Decode, AirCard, Arcade/Intervallcleanup, Undo/Redo und Speicherkonflikte sind geprüft.
+Lokales Chromium nach kaltem DPR-2-Neustart und Appinventar: 15 offene interne Fenster, zwei Canvas-Elemente, ein Audioelement, gemeldeter JS-Heap ungefähr 5,65 MB (eine Browsermomentaufnahme, kein Gesamt-/GPU-Speicherbenchmark). Ein Audioelement, keine JS-Glas-Renderloops, keine externen Textur-Captures. Arcade-Intervalle pausieren bei Minimize/Lock/Hidden und werden bei Close entfernt; Canvasgrößen sind begrenzt. Blob-URLs von Vorschauen werden freigegeben, Drawer-/Popup-Listener beendet. Clock/Widgets laufen nur sichtbar; Timer berechnen nach Suspend aus echten Zeitstempeln. Materialpfad, Canvasanzahl und Browserheap werden, soweit verfügbar, im Bericht erfasst. Keine erfundenen FPS oder physische GPU-Abnahme.
 
-Backup-Restore validiert Modelle und Ordnerbeziehungen. Ein einzelner IDB-Commit stellt Nutzerdaten samt Journal für alte Timer-/Player-/Handschrift-Schlüssel wieder her; bei einem LocalStorage-Fehler bleibt das Journal für einen sicheren Retry erhalten. Keine Datenbanklöschung. Bewusstes Überschreiben verlangt die bestehende zweite Bestätigung. Ein fehlgeschlagener Konfliktimport verändert keine Nutzerdaten.
+**Offen:** reales iPad/Safari/Home-Screen, Softwaretastatur/Trackpad/Pencil, native Datei-/Share-/Audioausgabe, lange Suspend-/Background-Wiedergabe, konkrete private Tailscale-/Task-Abnahme, große segmentierte Backups, lückenlose Spielregel-/Metadatenformatabdeckung, rich-text AirWrite, vollständige native Desktopapp-Parität. Wetter/News/Mail/LLM/Spotify bleiben ausdrücklich Webalternativen ohne Backendintegration. Cloud bleibt deaktiviert. Windows-/Desktopdateien und deren Fullscreen/M1/M2 wurden nicht geändert; diese Sitzung behauptet keine erneute native Windows-Abnahme.
 
-WebKit-Zwischenlauf: Medien-/Backup-Prüfungen bestanden, Offline-Emulation verursachte internen WebKit-Navigationsfehler. Der nächste Test nutzt statt Browseremulation einen tatsächlich abgeschalteten HTTP-Server. Physische iPad-Abnahme bleibt unabhängig davon offen.
+## Checkpoints
 
-## Checkpoint F — realer Update- und Rückfalltest
+| Commit | Gesicherter Inhalt |
+|---|---|
+| `c4a3b6d54f375ab2ad069e58c6594980b0140954` | Registry, Browserdesktop, additive Datenarchitektur, erste Apps |
+| `cda83785ff04e4c913d14d2b07d70e490f1f9840` | Lebenszyklus und privater Browser-Buildkanal |
+| `fb744e715603cfe649a85f0a72be4906f62d6cfc` | Touch-/Cachegrenzen und WebKit-Fehlersuche |
+| `023bebec99fbec61929eb78f1a6c3c42414ffb36` | Restorevalidierung und echter kalter Offline-Neustart |
+| `dbefa321480d37ca9c3a6c21aa57f04e346323f0` | Unveränderliche Musik-Blobs, Update-/Recoverypfad |
+| `58c3baaf7ca8a22e5776897554a8d0b235558ae4` | Kleine Viewports, Migration-/Quota-Fehlerpfade |
+| `ae45ab743442023c244fccd825aff054a5dd198b` | Vorabbackup, gemeinsame Controls, Rolloutplan |
+| `7ab977aefada10c531a1d2ae6bf7f514aa53df50` | Korrigierter WebKit-Viewport, gesamtes Offline-Appinventar |
+| `6180ed44ab67353eb750d832f67f596a2201a40d` | Abschließende DPR-/Accessibility-/Appinventar-Abnahme |
 
-Lokales Chromium: **8 zusätzliche Updateprüfungen / 7 Aufnahmen** bestanden. Original-v4-Oberfläche aus dem verbindlichen Commit wird tatsächlich geladen, spielt synthetische Musik, lädt den neuen Worker wartend und läuft ohne erzwungenen Musikabbruch weiter. Nach Schließen aller alten Clients aktiviert v5. SHA-256 der alten Audiodatei stimmt exakt überein; alter Kalender/Timer bleiben erhalten. Zweiter Tab mit Audio und ungespeicherte Notes blockieren den neuen Worker; nach Speichern/Pause gelingt Aktivierung.
+Jeder Produktcheckpoint wurde auf dem eigenen Featurebranch gepusht. Separate Evidence-Commits enthalten ausschließlich synthetische Browseraufnahmen. Keine Liveinstallation umgestellt.
 
-Ein **getrenntes kompatibles Classic-Recovery-ZIP** enthält die ursprüngliche Vier-App-Oberfläche mit aktuellem v2-fähigem Datenadapter. Der echte Rückfalltest öffnet damit die unveränderten Musikbytes und kann auch die weiterhin gespeicherten Workspace-Daten exportieren. Kein Datenbank-Downgrade und kein Deployment. Unveränderter alter v1-Code wäre nach einem v2-Upgrade kein sicherer Rückweg; deshalb diese ausdrücklich getestete kompatible Variante verwenden.
+## Konkrete Main-/Browsertrennung
 
-Musikmetadaten werden im Records-Bereich getrennt von den vorhandenen Audiodateien aktualisiert. Der wiederholte WebKit-Blobfehler nach erneutem Schreiben gelesener Audio-Blobs wird damit gezielt vermieden; Bestätigung durch nächsten WebKit-CI-Lauf steht noch aus. Fensterrestore und gleichzeitige Appstarts sind serialisiert. Kalender besitzt zusätzlich Such-/Tages-/Wochenfilter; Reminder-Bearbeitung umfasst Liste, Datum und Priorität.
+Die Desktopbasis exponiert `airOS.accounts/createAccount/login/currentUser/logout/restart/quit` und `airOS.files.selectFolder/currentFolder/listDirectory/readTextFile/writeTextFile/openNative` sowie `airCardLite.listDevices/scanCards/saveArtwork/getArtwork/applySkin` in `preload.cjs`. Keiner dieser IPC-Pfade wird in die PWA kopiert. Dateifunktionen werden durch den internen IDB-Baum und ausdrückliche File-/Download-Aktionen ersetzt; Geräte-/Wallet-Funktionen bleiben nicht unterstützt. Browserlokalsitzung ist keine Ersatzimplementierung der Desktopauthentifizierung. Die übrigen lokalen Appmodelle verwenden browsergerechte Records; Desktop-OS- und Providerfunktionen bleiben klar getrennt.
 
-## Checkpoint G — kleine Viewports und Safari-Regressionen
+## Gemessene Geometrie nach Korrektur (Chromium, DPR 1)
 
-44 echte lokale Chromium-Prüfungen / 28 Screenshots, 29 Node-Tests bestanden; Audit der eingefrorenen Browser-Testwerkzeuge ohne Vulnerabilities. Unter 640px werden interne Snapfenster vollbreit statt unbrauchbar schmal nebeneinander dargestellt. Untere Editoraktionen bleiben oberhalb des Overlay-Docks scrollbar. Beschädigter alter Kalender stoppt seine Migration ohne Löschen, synthetischer Quota-Fehler bestätigt kein Speichern.
+| Viewport | Host (x,y,Breite,Höhe) | Notes-Snap (x,y,Breite,Höhe) | Unterer Spalt |
+|---|---|---|---|
+| 1024×768 | 0,44,1024,724 | 0,44,512,724 | 0px |
+| 1180×820 | 0,44,1180,776 | 0,44,590,776 | 0px |
+| 1366×1024 | 0,44,1366,980 | 0,44,683,980 | 0px |
+| 834×1194 | 0,44,834,1150 | 0,44,417,1150 | 0px |
+| 820×1180 | 0,44,820,1136 | 0,44,410,1136 | 0px |
+| 390×600 | 0,44,390,556 | 0,44,390,556 | 0px |
 
-WebKit-CI nach unveränderlichen Musik-Blobs erreicht die gesamten Backup-, Restore- und Touchprüfungen ohne den früheren Blob-Lesefehler. Ein versehentlicher Close-Tap im Test wurde auf die freie Titelleistenfläche korrigiert; der vollständige WebKit-Endlauf ist noch abzuwarten.
+Die iPad-Touchzeile nutzt 44px-Trefferhöhen; die native 24px-Desktopmenüleiste wurde nicht verändert. Dock bleibt Overlay; Inhalt bleibt darüber scrollbar. Hardware-Safe-Area-Werte dieser Linux-Kontexte sind 0, deshalb keine physische Notch-/Safari-Keyboard-Abnahme daraus ableiten.
 
-## Checkpoint H — vollständiger privater Kandidat
+## Buildpakete und Download
 
-**29/29 Node-Tests**, **50 Chromium-App-/Datenchecks unter Root und separat unter `/Air-OS/`**, jeweils 28 Aufnahmen, sowie **9 echte Update-/Rückfallchecks mit 8 Aufnahmen** lokal bestanden. Alle 21 ursprünglichen Regressionen erhalten. Quota-/Migrationsfehler, echte Dateiaktionen, Reminder-Bearbeitung/Heute/Erledigen, Kalender-Suche/Bearbeiten/Löschen und gemeinsamer Kontrollzentrum-Audiotransport geprüft. Launchpad besitzt echte Appgruppenfilter. Standardglas nutzt begrenzten CSS-Blur; hochwertig/reduziert bleiben auswählbar. BFCache-Rückkehr verwirft keine Draft-DOMs oder Pointerlistener.
+Im erfolgreichen [Actions-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41844493854) unter **Artifacts**:
 
-[Privater Umstellungsplan](AIR_OS_IPAD_PRIVATE_ROLLOUT.md) mit lesendem Vorabbackup, additivem Upgrade und kompatiblem Rückfallpaket. Die Vorabversion wurde zusätzlich im Browser wirklich vor dem Schemawechsel geprüft; sie hält die Datenbank auf Version 1. Es wurde nichts auf dem Windows-PC installiert, auf Tailscale umgestellt oder öffentlich deployed. Endgültiger Chromium-/WebKit-CI-Kandidat folgt diesem Commit; Ergebnis wird danach ergänzt.
+`Air-OS-iPad-Parity-Build-6180ed44ab67353eb750d832f67f596a2201a40d`
+
+Enthält:
+
+- `Air-OS-Ultimate-iPad-Parity-6180ed44ab67353eb750d832f67f596a2201a40d.zip`
+- `Air-OS-iPad-ReadOnly-Preflight-6180ed44ab67353eb750d832f67f596a2201a40d.zip`
+- `Air-OS-iPad-Compatible-Recovery-6180ed44ab67353eb750d832f67f596a2201a40d.zip`
+- jeweils benachbarte `.sha256`-Prüfsumme; `BUILD-INFO.json` innerhalb der Pakete.
+
+Der äußere GitHub-Actions-Artefaktcontainer hat laut Actions SHA-256 `7e89336b26598d72ad3b5ad98a11d161a0e910f9a71f3348afb2c0a6ba8c4058`. **Dies ist die Containerprüfsumme, nicht die Prüfsumme einer enthaltenen PWA-ZIP**; für die einzelne Datei deren mitgelieferte `.sha256` verwenden. Artefaktretention 30 Tage; bei Ablauf exakt den dokumentierten Buildcommit erneut bauen. Kein automatisches Hosting/Release.
+
+## Echte Vorher-/Nachher-Nachweise
+
+Alle folgenden Bilder verwenden synthetische lokale Daten, keine persönlichen Musikdateien oder Cloudkonten:
+
+- [Vorher: ursprüngliche private Vier-App-Oberfläche](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/update-chromium/before-desktop.png) → [Nachher: derselbe Upgrade-Testdesktop](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/update-chromium/update-desktop.png).
+- [Desktop/Dock/Widgets](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/desktop-clean.png), [zwei Fenster](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/two-windows.png), [Hochformat](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/webkit/desktop-834x1194.png), [WebKit 390×600 nach Geometriefix](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/webkit/desktop-390x600.png).
+- [Finder](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/finder.png), [Notes](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/notes.png), [AirWrite](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/airwrite.png), [Reminders](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/reminders.png), [Kalender](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/calendar.png), [Musik](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/music.png).
+- [Fotos](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/photos.png), [Rechner](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/calculator.png), [Einstellungen](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/settings.png), [Launchpad](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/launchpad.png), [Spotlight](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/spotlight.png).
+- [Kontrollzentrum](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/chromium/control-center.png), [Lockscreen](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/webkit/lockscreen.png), [kalter Offline-Neustart bei DPR 2](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/webkit/offline-cold-restart.png), [kompatible Rückfalloberfläche](visual/ipad-parity/6180ed44ab67353eb750d832f67f596a2201a40d/update-webkit/update-classic-recovery.png).
+
+Chromium und WebKit messen nach dem Fix bei 390×600 übereinstimmend Host und vollbreiten Snap mit `(0,44,390,556)`, unterer Spalt 0px. Die Linux-Kontexte melden keinen echten iPad-Safe-Area-Wert; reale Hardwarefreigabe bleibt offen.
