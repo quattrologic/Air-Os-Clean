@@ -1,0 +1,28 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "checks": [
+    "preflight exports original music before any schema upgrade",
+    "old v4 download does not replace playing client or interrupt original audio",
+    "old v4 to new v5 retains exact original audio SHA256",
+    "old calendar and timer preserved after real SW update",
+    "multi-client update blocked by unsaved Notes and second-client audio",
+    "safe update waits for explicit export handoff release",
+    "safe worker activation preserves saved draft",
+    "compatible classic recovery opens v2 music and retains workspace",
+    "classic recovery can export all retained workspace and music",
+    "no uncaught update browser errors"
+  ],
+  "screens": [
+    "before-lockscreen",
+    "before-desktop",
+    "before-music",
+    "before-backup-preflight",
+    "update-desktop",
+    "update-music",
+    "update-safe",
+    "update-classic-recovery"
+  ],
+  "errors": [],
+  "status": "passed"
+}

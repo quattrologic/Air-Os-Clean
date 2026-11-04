@@ -1,0 +1,26 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "liveCloudflare": false,
+  "checks": [
+    "anonymous first visit receives authentication page, never app shell",
+    "authenticated fixture installs protected cloud shell and manifest",
+    "local backup remains compatible and includes real synthetic audio bytes",
+    "expired session cannot replace the installed worker with login HTML",
+    "cold offline process restart works after expiry with music and notes intact",
+    "renew login cannot navigate away from a dirty draft",
+    "renewed authorization permits safe automatic activation of complete verified update",
+    "new cloud-like origin does not silently inherit old local data",
+    "explicit compatible backup restore transfers synthetic note and music to new origin",
+    "no uncaught cloud browser errors"
+  ],
+  "screens": [
+    "cloud-protected-desktop",
+    "cloud-session-expired",
+    "cloud-cold-offline",
+    "cloud-renewed-update",
+    "cloud-portrait"
+  ],
+  "errors": [],
+  "status": "passed"
+}

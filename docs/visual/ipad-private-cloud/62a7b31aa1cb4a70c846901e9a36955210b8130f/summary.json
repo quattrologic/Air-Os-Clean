@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "62a7b31aa1cb4a70c846901e9a36955210b8130f",
+  "baseCommit": "e4b1c4203c2430da04bccc5dd33953fb44cc0781",
+  "unitTests": 47,
+  "browserChecks": 244,
+  "newCloudChecks": 10,
+  "auditVulnerabilities": 0,
+  "localEngine": "Chromium 154, Linux",
+  "webkit": "NOT RUN: official browser download blocked HTTP403 Domain forbidden",
+  "liveCloudflare": false,
+  "physicalIPad": false,
+  "deployment": false,
+  "cloudflareAccountConnected": false,
+  "runtimeAssets": 110,
+  "localZipSHA256": "86e1d36b52a39227b203e2987ece1a970af38f5d3ade310e241e6227f2609984"
+}

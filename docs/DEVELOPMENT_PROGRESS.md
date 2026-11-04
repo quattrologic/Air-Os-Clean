@@ -1,3 +1,9 @@
+# Private Cloud Updates — separater Vorbereitungsstand
+
+Featurebranch `feat/ipad-private-cloud-updates`, Produkt `62a7b31aa1cb4a70c846901e9a36955210b8130f`, Basis `e4b1c4203c2430da04bccc5dd33953fb44cc0781`. Fail-closed Pages-Worker, SHA-256-Cacheprüfung, Cloudclient und releasegebundener Artefaktworkflow implementiert. 47 Tests und Chromiumabläufe bestanden; neuer WebKitdownload blockiert HTTP403. Kein Konto/Cloudflare-Login/Deployment, kein Releasebranch angelegt, keine private Installation geändert. [Einrichtung, Schutz, genaue Resultate und Freigaben](AIR_OS_IPAD_PC_FREE_UPDATES.md).
+
+---
+
 # Air-OS iPad Ultimate 2.0 — Fortsetzung gesichert
 
 Arbeitsbranch `feat/air-os-ipad-ultimate-2`, Basis `a228d895939861bf5379917d6d69849aaadc2f84`, Produkt `7fb71d3a4ffb2659d87bcc6c24fedfc3ba1e898a`. Vorherige Parity-Checkpoints/Beweise bleiben erhalten; keine fertigen Arbeiten neu begonnen oder Nutzerdaten zurückgesetzt.

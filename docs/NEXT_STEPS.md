@@ -1,3 +1,9 @@
+# Nächster Freigabeschritt — Cloudvorbereitung
+
+[Private PC-unabhängige Updates](AIR_OS_IPAD_PC_FREE_UPDATES.md) sind vorbereitet, noch nicht bereitgestellt. Zuerst ausdrückliche Freigabe für Cloudflare-Kontoanbindung/Sicherheitskonfiguration, dann echte Apex-/Preview-/Fail-Closed-Negativtests und neue WebKit-/iPad-Abnahme. Veröffentlichung je Build und persönliche Migration separat freigeben. Keine Aufgabe aus der folgenden Liste autorisiert automatisch einen Rollout oder eine Änderung an Tailscale.
+
+---
+
 # iPad Ultimate 2.0 — konkrete Restarbeiten
 
 [Gesicherter Produktstand, Ergebnisse und Pakete](AIR_OS_IPAD_ULTIMATE_2.md). `feature/private-ipad-pwa` bleibt unverändert; kein automatischer Rollout.
