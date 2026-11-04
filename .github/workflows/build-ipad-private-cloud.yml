@@ -53,10 +53,21 @@ jobs:
           name: iPad-Private-Cloud-Evidence-${{ matrix.engine }}-${{ github.sha }}
           path: dist/cloud-evidence/
           retention-days: 30
-      - uses: actions/upload-artifact@v4
-        if: success() && matrix.engine == 'chromium'
+  verified-package:
+    needs: verify
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          name: iPad-Private-Cloud-Candidate-${{ github.sha }}
+          node-version: '24'
+      - name: Package exact source only after BOTH browser jobs succeed
+        run: |
+          node scripts/build-ipad-private-cloud.cjs
+          node scripts/build-ipad-private-cloud.cjs --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iPad-Private-Cloud-Verified-Build-${{ github.sha }}
           path: |
             dist/Air-OS-iPad-Private-Cloud-*.zip
             dist/Air-OS-iPad-Private-Cloud-*.sha256
