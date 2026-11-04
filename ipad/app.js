@@ -17,14 +17,9 @@
 
   let toastTimeout;
 
-  function toast(message) {
-    document.dispatchEvent(new CustomEvent('air-ipad-notice',{detail:String(message)}));
-    const el = $('#toast');
-    el.textContent = String(message);
-    el.hidden = false;
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => { el.hidden = true; }, 4200);
-  }
+  function presentNotice(message,appId=null){const host=$('#toast');clearTimeout(toastTimeout);return new airInfinityNotification.NotificationView(host,String(message),{duration:4200,onclick:appId?()=>window.airDesktop?.open(appId):null});}
+  function toast(message) {document.dispatchEvent(new CustomEvent('air-ipad-notice',{detail:{title:String(message),source:'toast'}}));presentNotice(message);}
+
   function safeJSON(key, fallback) {
     try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
   }
@@ -292,16 +287,16 @@
     saveTimer();tickTimer();
   }
 
-  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;return;}location.reload();}
+  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}location.reload();}
   async function setupUpdates() {
     if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
     try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
       navigator.serviceWorker.ready.then(()=>$('#settings-offline').textContent='Service Worker aktiv; Offlinecache installiert');
       let controlled=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled)void safeReload();controlled=true;});
-      navigator.serviceWorker.addEventListener('message',async event=>{const m=event.data||{};if(m.type==='CHECK_UPDATE_SAFETY'){const ready=audio.paused&&!window.airDesktop?.dirty();if(ready){rememberPosition();await window.airDesktop?.flush();}event.source?.postMessage({type:'UPDATE_SAFETY',token:m.token,ready:ready&&audio.paused&&!window.airDesktop?.dirty()});}if(m.type==='UPDATE_BLOCKED')toast('Ein anderer Air-OS-Tab spielt Musik oder enthält ungespeicherte Entwürfe.');});
+      navigator.serviceWorker.addEventListener('message',async event=>{const m=event.data||{};if(m.type==='CHECK_UPDATE_SAFETY'){const ready=audio.paused&&!window.airDesktop?.dirty()&&!window.airTransfers?.busy();if(ready){rememberPosition();await window.airDesktop?.flush();}event.source?.postMessage({type:'UPDATE_SAFETY',token:m.token,ready:ready&&audio.paused&&!window.airDesktop?.dirty()&&!window.airTransfers?.busy()});}if(m.type==='UPDATE_BLOCKED')toast('Ein anderer Air-OS-Tab spielt Musik oder enthält ungespeicherte Entwürfe.');});
       const installButton=document.createElement('button');installButton.type='button';installButton.textContent='Geladenes Update sicher aktivieren';installButton.hidden=true;installButton.className='primary';$('#check-update').after(installButton);
       const showWaiting=()=>{installButton.hidden=!registration.waiting;if(registration.waiting)$('#update-state').textContent='Update vollständig geladen. Vor Aktivierung Backup erstellen und Entwürfe speichern.';};
-      installButton.onclick=async()=>{if(!registration.waiting)return;if(!audio.paused||window.airDesktop?.dirty()){toast('Bitte Musik pausieren und Entwürfe speichern.');return;}await window.airDesktop?.flush();registration.waiting.postMessage({type:'REQUEST_SAFE_UPDATE',token:crypto.randomUUID()});};
+      installButton.onclick=async()=>{if(!registration.waiting)return;if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){toast('Bitte Musik pausieren und Entwürfe speichern.');return;}await window.airDesktop?.flush();registration.waiting.postMessage({type:'REQUEST_SAFE_UPDATE',token:crypto.randomUUID()});};
       registration.addEventListener('updatefound',()=>{registration.installing?.addEventListener('statechange',showWaiting);});showWaiting();
       const check=async()=>{if(!navigator.onLine)return;try{await registration.update();showWaiting();}catch{$('#update-state').textContent='Privater Server nicht erreichbar. Vorhandener Offlinecache bleibt erhalten.';}};
       $('#check-update').addEventListener('click',()=>void check());window.addEventListener('online',()=>void check());document.addEventListener('visibilitychange',()=>{if(!document.hidden){tickTimer();void check();}});
@@ -378,7 +373,7 @@
   async function start() {
     wire();networkStatus();dateTime();try{await airStore.completeLegacyRestore();}catch(e){toast(e.message);}renderEvents();loadTimer();document.addEventListener('air-storage-blocked',()=>toast('Datenbankupgrade wartet. Bitte alte Air-OS-Tabs schließen; keine Daten werden zurückgesetzt.'));
     let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pageshow',e=>{if(e.persisted)clock();});window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
-    await refreshCalendar();
+    document.addEventListener('air-transfer-changed',()=>{if(state.pendingReload&&!window.airTransfers?.busy())void safeReload();});await refreshCalendar();
     try { state.db=await openDB(); await refreshLibrary(); }
     catch(error) {
       toast('Lokaler Musikspeicher nicht verfügbar. Prüfe Safari-Einstellungen und freien Speicherplatz.');
@@ -386,6 +381,6 @@
     }
     void setupUpdates();
   }
-  window.airIPad=Object.freeze({toast,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
+  window.airIPad=Object.freeze({toast,presentNotice,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
   window.airIPadReady=start();
 })();

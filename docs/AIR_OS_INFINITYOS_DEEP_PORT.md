@@ -29,3 +29,13 @@ Checkpoint-A-Tests: alle 29 bisherigen Regressionen erhalten; zusätzliche Origi
 ## Browserzwischenstand A
 
 34 Node-Tests und der unveränderte 80-Check-Chromium-Basispfad bestanden. Die zusätzlichen CSV-/Speicher-/Source-Downloadprüfungen laufen ebenfalls erfolgreich, aber der kombinierte lokale Ablauf bricht bei einem späteren Blobdownload nach vollständigem Browserneustart mit einem nativen Chromium-154-SIGSEGV ab. Kein JavaScript-Erfolg oder physisches Safari-Ergebnis daraus behauptet. Eigener vollständiger Chromium-/WebKit-CI-Lauf wird zur Abgrenzung gestartet; der betroffene End-to-End-Pfad bleibt bis dahin offen. Keine GPU-Schutzflags geändert.
+
+## Tatsächlich verdrahteter Checkpoint B
+
+- `isOverlapRect` läuft in der opt-in Dock-Überlappungsentscheidung; `get_distance_sqr` im Touch-/Long-Press-Abbruch. Andere mitgelieferte Distanz-/Hithelper bleiben explizit nur modellgetestet, keine zusätzliche Featurebehauptung.
+- MacShells vorhandener erlaubter `shell7.js`-Port läuft für gekoppelte Icongeometrie und den ereignisgesteuerten Spring. Keine neuen GNOME-/Qt-Runtimes. Idle-Schedulerstop und echte Nachbarbreiten im Browser geprüft.
+- `adapt.js:OSNotification`-Lifecycle adaptiert in `infinity-notification.js`, verwendet von `app.js:presentNotice` und den vorhandenen Desktop-Noticeereignissen. Kein zweiter Verlauf, keine global ersetzte Notification-API, kein localhost-Permissionsbypass und kein automatischer Ton.
+- Workspaces, Gruppen, sichere Kontextanker und Navigations-Epochen sind **eigene Air-OS-Integration**, kein behaupteter WinBox-Originalport. Ursprung und Grenzen bleiben getrennt.
+- Renderer bleibt CSS-Compositor. Kein neuer Shaderport oder Hardware-Snell-Erfolg behauptet; MacShell-/Hyprland-Desktopengine unverändert.
+
+35 Node-/100 lokale Chromium-/9 Upgradeprüfungen bestanden. Der erste CI-Chromiumlauf bestand 85/85 plus Unterpfad und 9 Updates; WebKit stoppte bei der fehlenden Browserquota-Anzeige. Dieser konkrete Fallback ist korrigiert; neuer vollständiger CI-Nachweis folgt. Keine noch offene Prüfung als grün ausgegeben.

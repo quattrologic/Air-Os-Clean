@@ -17,8 +17,12 @@
  if(kind==='playlist'&&(!Array.isArray(data.tracks)||data.tracks.length>10000||data.tracks.some(id=>!/^[-a-zA-Z0-9_]{1,100}$/.test(id))))throw Error('Playlist ungültig.');
  if(kind==='file'){name(data.name);if(!['folder','file'].includes(data.type)||typeof data.parent!=='string'||data.parent&&!/^[-a-zA-Z0-9_]{1,100}$/.test(data.parent)||typeof data.trashed!=='boolean'||data.type==='file'&&!(data.blob instanceof Blob))throw Error('Dateibaum ungültig.');}
  if(kind==='setting'){
+ if(data.id==='workspace'&&(!Number.isInteger(data.value)||data.value<0||data.value>3))throw Error('Arbeitsbereich ungültig.');
+ if(data.id==='window-groups')airDesktopSessions.groups(data.value,window.airApps?airApps.all().map(a=>a.id):[...new Set(data.value.flatMap(g=>g.apps||[]))]);
+ if(data.id==='finder-view'&&!['list','grid'].includes(data.value))throw Error('Dateiansicht ungültig.');
+ if(data.id==='shelf-files'&&(!Array.isArray(data.value)||data.value.length>40||data.value.some(id=>typeof id!=='string'||!/^[-a-z0-9]{1,100}$/i.test(id))))throw Error('Dateiablage ungültig.');
  if(data.id==='quality'&&!['Standard','Hochwertig','Reduzierte Transparenz'].includes(data.value))throw Error('Qualitätsmodus ungültig.');
- if(['reduced-motion','legacy-calendar-migrated'].includes(data.id)&&typeof data.value!=='boolean')throw Error('Einstellung ungültig.');
+ if(['reduced-motion','legacy-calendar-migrated','dock-auto-hide','focus-mode'].includes(data.id)&&typeof data.value!=='boolean')throw Error('Einstellung ungültig.');
  if(data.id==='dock-pins'&&(!Array.isArray(data.value)||data.value.length>50||data.value.some(id=>typeof id!=='string'||!/^[-a-z0-9]+$/.test(id))))throw Error('Dockeinstellung ungültig.');
  if(data.id==='windows'&&(!data.value||typeof data.value!=='object'||Array.isArray(data.value)||Object.keys(data.value).length>50||Object.values(data.value).some(v=>!v||typeof v!=='object'||!['normal','maximized','left','right'].includes(v.mode)||['x','y','width','height'].some(k=>typeof v[k]!=='number'||!Number.isFinite(v[k])||Math.abs(v[k])>100000))))throw Error('Fenstergeometrie ungültig.');
  }

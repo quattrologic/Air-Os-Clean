@@ -89,7 +89,8 @@
       "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
       "excerptSHA256": "5f59bea7c9d6ef15f09ffb9b2f69848b36a179a342524ce3f0b1d01b5ec4ada4",
       "target": "ipad/core/infinity-dock.js",
-      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands"
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "desktop.js touch hold movement cancellation"
     },
     {
       "project": "InfinityOS-linux/infinityos",
@@ -104,7 +105,8 @@
       "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
       "excerptSHA256": "2bd019b8f7b41957a18d400315a98e6b309fbab9fea984efbadb3e7577a890c1",
       "target": "ipad/core/infinity-dock.js",
-      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands"
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "model tested only, not claimed as extra live feature"
     },
     {
       "project": "InfinityOS-linux/infinityos",
@@ -119,7 +121,8 @@
       "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
       "excerptSHA256": "2f4b4107dab91fd31d753bf0ba8c96d108d4be64dda78674fd410555daba3072",
       "target": "ipad/core/infinity-dock.js",
-      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands"
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "dock-material.js optional intellihide on actual own window DOMRects"
     },
     {
       "project": "InfinityOS-linux/infinityos",
@@ -134,7 +137,34 @@
       "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
       "excerptSHA256": "98d9e622ba9efc8e76d86c93e03a0f95797b52a3d6e3e579397ca5dc0c87bf59",
       "target": "ipad/core/infinity-dock.js",
-      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands"
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "model tested only, not claimed as extra live feature"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "adapt.js",
+      "lines": [
+        1785,
+        1934
+      ],
+      "function": "OSNotification lifecycle",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "75e5e2c06f193524f577b857c5e82e1bb937cae63aa668e7b26d369c1a42919e",
+      "target": "ipad/core/infinity-notification.js",
+      "adaptation": "one existing host; original idempotent close/timeout/click lifecycle; no native global class, no permissions bypass/sounds/parent document injection",
+      "runtime": "app.js presentNotice and desktop.js history/banner events"
+    },
+    {
+      "project": "MacShell via existing Air-OS R7 port",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacDock.qml / Spring.qml",
+      "license": "MIT",
+      "airOsSourceCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "airOsSourcePath": "src/core/macshell-shell7.js",
+      "target": "ipad/vendor/macshell/shell7.js",
+      "sourceFileSHA256": "493275153232357fdf9400d1bbeb34a49b1d92e47c69d4e8e00ee4b3e3e0c644",
+      "runtime": "dock-material.js uses dock coupled geometry and step integrator; no idle loop; scroll adapts capacity"
     }
   ],
   "excluded": [
