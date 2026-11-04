@@ -1,0 +1,1735 @@
+{
+  "sourceCommit": "530419d321591b3f1787f6986cbe89075a4534fc",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/41887163061",
+  "physicalIPad": false,
+  "reports": {
+    "chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "additive v1 music upgrade preserves track Blob bytes and last title",
+        "calendar migration retains ID and untouched legacy backup key",
+        "existing running timer is retained",
+        "one original audio engine",
+        "Notes real save transaction",
+        "Reminders shares Today data",
+        "AirWrite original handwriting module and document library mounted",
+        "Finder browser File import, text preview and confirmed write",
+        "Calendar existing and newly created events coexist",
+        "existing imported music really starts after user action",
+        "Calculator actual parsed result",
+        "Finder rename, copy, move, cycle rejection, trash batch isolation and restore",
+        "Photos actual selected PNG import and browser decode",
+        "AirCard tested local card library, no Wallet claim",
+        "Reminders edit list, due date, priority and Today filter",
+        "Reminders real completion and completed filter",
+        "Calendar day search, existing event edit and confirmed save",
+        "Calendar confirmed delete retains original migrated event",
+        "Original Arcade 2048 real board and keyboard moves",
+        "Arcade active animation interval",
+        "Arcade interval cleanup on minimize",
+        "Arcade resumes only visible",
+        "Arcade final listener/timer disposal",
+        "Notes genuine typed Undo",
+        "Notes genuine typed Redo",
+        "Notes optimistic conflict retains draft and persisted winner",
+        "dirty Notes close rejected by user retains window",
+        "atomic backup collision abort preserves notes and tracks",
+        "backup validated merge, explicit overwrite and legacy timer restore",
+        "unsafe backup settings reject without modifying existing content",
+        "window pointer drag actual active capture",
+        "pointercancel releases capture and pending frame",
+        "Chromium actual touch drag uses window owner",
+        "actual touchcancel ends gesture",
+        "InfinityOS original CSV pipeline renders quoted comma and multiline",
+        "CSV HTML remains inert text",
+        "original size comparator is bound to Finder selector",
+        "InfinityOS binary-safe size calculation executes in storage settings",
+        "workspace switch hides own old windows without closing or discarding drafts",
+        "workspace move and focus share existing window registry",
+        "group minimize retains both actual windows",
+        "group restore moves existing members together without duplicate windows",
+        "workspace/group state persists in existing version 2 records",
+        "backup preflight inspects the real existing store without changing it",
+        "PWA app fullscreen fills the real allocated viewport",
+        "fullscreen does not overwrite the normal restart geometry",
+        "Escape exits PWA fullscreen and restores exact prior geometry",
+        "fullscreen has a working visible touch exit",
+        "app switching leaves immersive state without hiding the focused app",
+        "immersive app pauses the hidden Arcade interval",
+        "Arcade resumes when immersive app returns",
+        "immersive Arcade observer is disposed on close",
+        "Finder actual grid/list view preference",
+        "Dock file shelf references real existing files without copying their blobs",
+        "synthetic pointercancel cancels the context hold timer",
+        "fresh mouse action after pen hold is not swallowed",
+        "Finder breadcrumbs follow the actual virtual directory tree",
+        "GPL dock overlap algorithm drives opt-in intellihide on own window rectangles",
+        "hidden Dock has an explicit working touch return path",
+        "original MacShell coupled magnification changes multiple icon widths",
+        "spring renderer stops requesting frames at idle",
+        "focus suppresses noncritical banners while preserving real history",
+        "ported notification click lifecycle opens or focuses its registered app",
+        "notification read action commits to the existing store",
+        "internal side by side geometry",
+        "responsive bounds 1024",
+        "responsive bounds 1180",
+        "responsive bounds 1366",
+        "responsive bounds 834",
+        "responsive bounds 820",
+        "responsive bounds 390",
+        "Launchpad real category grouping",
+        "Control Center controls same single audio state",
+        "export includes original music and new workspace data",
+        "invalid legacy calendar aborts migration without resetting source or timer",
+        "quota error surfaces without claiming save success",
+        "quota fixture did not commit user content",
+        "offline reload preserves notes",
+        "cold offline browser process restart preserves docs and real audio bytes",
+        "DPR2 cold restart preserves CSS window bounds",
+        "cold offline local app mounts home",
+        "cold offline local app mounts finder",
+        "cold offline local app mounts notes",
+        "cold offline local app mounts airwrite",
+        "cold offline local app mounts reminders",
+        "cold offline local app mounts calendar",
+        "cold offline local app mounts music",
+        "cold offline local app mounts photos",
+        "cold offline local app mounts calculator",
+        "cold offline local app mounts arcade",
+        "cold offline local app mounts aircard",
+        "cold offline local app mounts timer",
+        "cold offline local app mounts settings",
+        "cold offline local app mounts downloads",
+        "cold offline local app mounts trash",
+        "cold offline local app mounts about",
+        "cold offline Photos retains decoded imported image",
+        "real offline file export bytes",
+        "real reduced transparency setting disables compositor blur",
+        "reduced motion setting persisted",
+        "labelled external alternative browser",
+        "labelled external alternative mail",
+        "labelled external alternative translator",
+        "labelled external alternative ai",
+        "labelled external alternative tagesschau",
+        "labelled external alternative weather",
+        "labelled external alternative football",
+        "labelled external alternative stocks",
+        "labelled external alternative spotify",
+        "visible AGPL offer really downloads current readable source and licenses",
+        "no uncaught browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "desktop-clean",
+        "notes",
+        "reminders",
+        "airwrite",
+        "finder",
+        "calendar",
+        "music",
+        "calculator",
+        "photos",
+        "settings",
+        "trash",
+        "photos",
+        "aircard",
+        "arcade",
+        "touch-pointercancel",
+        "infinity-csv",
+        "workspace-overview",
+        "workspace-immersive",
+        "dock-file-shelf",
+        "infinity-finder",
+        "dock-auto-hide",
+        "dock-macshell-hover",
+        "system-notifications",
+        "two-windows",
+        "desktop-1024x768",
+        "desktop-1180x820",
+        "desktop-1366x1024",
+        "desktop-834x1194",
+        "desktop-820x1180",
+        "desktop-390x600",
+        "launchpad",
+        "spotlight",
+        "control-center",
+        "offline",
+        "offline-cold-restart"
+      ],
+      "errors": [],
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1024,
+            "bottom": 768,
+            "width": 1024,
+            "height": 724
+          },
+          "dock": {
+            "left": 200.5,
+            "top": 692.484375,
+            "right": 823.5,
+            "bottom": 768,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 433.1015625,
+            "top": 0,
+            "right": 590.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 512,
+              "bottom": 768,
+              "width": 512,
+              "height": 724
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 512,
+              "top": 44,
+              "right": 1024,
+              "bottom": 768,
+              "width": 512,
+              "height": 724
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1180,
+            "bottom": 820,
+            "width": 1180,
+            "height": 776
+          },
+          "dock": {
+            "left": 278.5,
+            "top": 744.484375,
+            "right": 901.5,
+            "bottom": 820,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 511.1015625,
+            "top": 0,
+            "right": 668.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 590,
+              "bottom": 820,
+              "width": 590,
+              "height": 776
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 590,
+              "top": 44,
+              "right": 1180,
+              "bottom": 820,
+              "width": 590,
+              "height": 776
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1366,
+            "bottom": 1024,
+            "width": 1366,
+            "height": 980
+          },
+          "dock": {
+            "left": 371.5,
+            "top": 948.484375,
+            "right": 994.5,
+            "bottom": 1024,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 604.1015625,
+            "top": 0,
+            "right": 761.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 683,
+              "bottom": 1024,
+              "width": 683,
+              "height": 980
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 683,
+              "top": 44,
+              "right": 1366,
+              "bottom": 1024,
+              "width": 683,
+              "height": 980
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 834,
+            "bottom": 1194,
+            "width": 834,
+            "height": 1150
+          },
+          "dock": {
+            "left": 105.5,
+            "top": 1118.484375,
+            "right": 728.5,
+            "bottom": 1194,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 338.1015625,
+            "top": 0,
+            "right": 495.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 417,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1150
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 74,
+              "top": 122,
+              "right": 834,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 74,
+              "top": 140,
+              "right": 834,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 417,
+              "top": 44,
+              "right": 834,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1150
+            },
+            {
+              "id": "music",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 820,
+            "bottom": 1180,
+            "width": 820,
+            "height": 1136
+          },
+          "dock": {
+            "left": 98.5,
+            "top": 1104.484375,
+            "right": 721.5,
+            "bottom": 1180,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 331.1015625,
+            "top": 0,
+            "right": 488.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 410,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1136
+            },
+            {
+              "id": "reminders",
+              "left": 60,
+              "top": 104,
+              "right": 820,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 60,
+              "top": 122,
+              "right": 820,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 60,
+              "top": 140,
+              "right": 820,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 410,
+              "top": 44,
+              "right": 820,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1136
+            },
+            {
+              "id": "music",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 390,
+            "bottom": 600,
+            "width": 390,
+            "height": 556
+          },
+          "dock": {
+            "left": 9,
+            "top": 530,
+            "right": 381,
+            "bottom": 600,
+            "width": 372,
+            "height": 70
+          },
+          "notch": {
+            "left": 116.1015625,
+            "top": 0,
+            "right": 273.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "reminders",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "airwrite",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "finder",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "calendar",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "music",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "calculator",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "settings",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            }
+          ],
+          "overflow": false
+        }
+      ],
+      "diagnostics": {
+        "dpr": 2,
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "windows": 15,
+        "canvases": 2,
+        "audioElements": 1,
+        "material": "CSS compositor; no GL program or external texture capture",
+        "heapBytes": 10000000,
+        "serviceWorker": true
+      },
+      "status": "passed"
+    },
+    "subpath-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "additive v1 music upgrade preserves track Blob bytes and last title",
+        "calendar migration retains ID and untouched legacy backup key",
+        "existing running timer is retained",
+        "one original audio engine",
+        "Notes real save transaction",
+        "Reminders shares Today data",
+        "AirWrite original handwriting module and document library mounted",
+        "Finder browser File import, text preview and confirmed write",
+        "Calendar existing and newly created events coexist",
+        "existing imported music really starts after user action",
+        "Calculator actual parsed result",
+        "Finder rename, copy, move, cycle rejection, trash batch isolation and restore",
+        "Photos actual selected PNG import and browser decode",
+        "AirCard tested local card library, no Wallet claim",
+        "Reminders edit list, due date, priority and Today filter",
+        "Reminders real completion and completed filter",
+        "Calendar day search, existing event edit and confirmed save",
+        "Calendar confirmed delete retains original migrated event",
+        "Original Arcade 2048 real board and keyboard moves",
+        "Arcade active animation interval",
+        "Arcade interval cleanup on minimize",
+        "Arcade resumes only visible",
+        "Arcade final listener/timer disposal",
+        "Notes genuine typed Undo",
+        "Notes genuine typed Redo",
+        "Notes optimistic conflict retains draft and persisted winner",
+        "dirty Notes close rejected by user retains window",
+        "atomic backup collision abort preserves notes and tracks",
+        "backup validated merge, explicit overwrite and legacy timer restore",
+        "unsafe backup settings reject without modifying existing content",
+        "window pointer drag actual active capture",
+        "pointercancel releases capture and pending frame",
+        "Chromium actual touch drag uses window owner",
+        "actual touchcancel ends gesture",
+        "InfinityOS original CSV pipeline renders quoted comma and multiline",
+        "CSV HTML remains inert text",
+        "original size comparator is bound to Finder selector",
+        "InfinityOS binary-safe size calculation executes in storage settings",
+        "workspace switch hides own old windows without closing or discarding drafts",
+        "workspace move and focus share existing window registry",
+        "group minimize retains both actual windows",
+        "group restore moves existing members together without duplicate windows",
+        "workspace/group state persists in existing version 2 records",
+        "backup preflight inspects the real existing store without changing it",
+        "PWA app fullscreen fills the real allocated viewport",
+        "fullscreen does not overwrite the normal restart geometry",
+        "Escape exits PWA fullscreen and restores exact prior geometry",
+        "fullscreen has a working visible touch exit",
+        "app switching leaves immersive state without hiding the focused app",
+        "immersive app pauses the hidden Arcade interval",
+        "Arcade resumes when immersive app returns",
+        "immersive Arcade observer is disposed on close",
+        "Finder actual grid/list view preference",
+        "Dock file shelf references real existing files without copying their blobs",
+        "synthetic pointercancel cancels the context hold timer",
+        "fresh mouse action after pen hold is not swallowed",
+        "Finder breadcrumbs follow the actual virtual directory tree",
+        "GPL dock overlap algorithm drives opt-in intellihide on own window rectangles",
+        "hidden Dock has an explicit working touch return path",
+        "original MacShell coupled magnification changes multiple icon widths",
+        "spring renderer stops requesting frames at idle",
+        "focus suppresses noncritical banners while preserving real history",
+        "ported notification click lifecycle opens or focuses its registered app",
+        "notification read action commits to the existing store",
+        "internal side by side geometry",
+        "responsive bounds 1024",
+        "responsive bounds 1180",
+        "responsive bounds 1366",
+        "responsive bounds 834",
+        "responsive bounds 820",
+        "responsive bounds 390",
+        "Launchpad real category grouping",
+        "Control Center controls same single audio state",
+        "export includes original music and new workspace data",
+        "invalid legacy calendar aborts migration without resetting source or timer",
+        "quota error surfaces without claiming save success",
+        "quota fixture did not commit user content",
+        "offline reload preserves notes",
+        "cold offline browser process restart preserves docs and real audio bytes",
+        "DPR2 cold restart preserves CSS window bounds",
+        "cold offline local app mounts home",
+        "cold offline local app mounts finder",
+        "cold offline local app mounts notes",
+        "cold offline local app mounts airwrite",
+        "cold offline local app mounts reminders",
+        "cold offline local app mounts calendar",
+        "cold offline local app mounts music",
+        "cold offline local app mounts photos",
+        "cold offline local app mounts calculator",
+        "cold offline local app mounts arcade",
+        "cold offline local app mounts aircard",
+        "cold offline local app mounts timer",
+        "cold offline local app mounts settings",
+        "cold offline local app mounts downloads",
+        "cold offline local app mounts trash",
+        "cold offline local app mounts about",
+        "cold offline Photos retains decoded imported image",
+        "real offline file export bytes",
+        "real reduced transparency setting disables compositor blur",
+        "reduced motion setting persisted",
+        "labelled external alternative browser",
+        "labelled external alternative mail",
+        "labelled external alternative translator",
+        "labelled external alternative ai",
+        "labelled external alternative tagesschau",
+        "labelled external alternative weather",
+        "labelled external alternative football",
+        "labelled external alternative stocks",
+        "labelled external alternative spotify",
+        "visible AGPL offer really downloads current readable source and licenses",
+        "no uncaught browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "desktop-clean",
+        "notes",
+        "reminders",
+        "airwrite",
+        "finder",
+        "calendar",
+        "music",
+        "calculator",
+        "photos",
+        "settings",
+        "trash",
+        "photos",
+        "aircard",
+        "arcade",
+        "touch-pointercancel",
+        "infinity-csv",
+        "workspace-overview",
+        "workspace-immersive",
+        "dock-file-shelf",
+        "infinity-finder",
+        "dock-auto-hide",
+        "dock-macshell-hover",
+        "system-notifications",
+        "two-windows",
+        "desktop-1024x768",
+        "desktop-1180x820",
+        "desktop-1366x1024",
+        "desktop-834x1194",
+        "desktop-820x1180",
+        "desktop-390x600",
+        "launchpad",
+        "spotlight",
+        "control-center",
+        "offline",
+        "offline-cold-restart"
+      ],
+      "errors": [],
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1024,
+            "bottom": 768,
+            "width": 1024,
+            "height": 724
+          },
+          "dock": {
+            "left": 200.5,
+            "top": 692.484375,
+            "right": 823.5,
+            "bottom": 768,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 433.1015625,
+            "top": 0,
+            "right": 590.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 512,
+              "bottom": 768,
+              "width": 512,
+              "height": 724
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 512,
+              "top": 44,
+              "right": 1024,
+              "bottom": 768,
+              "width": 512,
+              "height": 724
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1180,
+            "bottom": 820,
+            "width": 1180,
+            "height": 776
+          },
+          "dock": {
+            "left": 278.5,
+            "top": 744.484375,
+            "right": 901.5,
+            "bottom": 820,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 511.1015625,
+            "top": 0,
+            "right": 668.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 590,
+              "bottom": 820,
+              "width": 590,
+              "height": 776
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 590,
+              "top": 44,
+              "right": 1180,
+              "bottom": 820,
+              "width": 590,
+              "height": 776
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 1366,
+            "bottom": 1024,
+            "width": 1366,
+            "height": 980
+          },
+          "dock": {
+            "left": 371.5,
+            "top": 948.484375,
+            "right": 994.5,
+            "bottom": 1024,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 604.1015625,
+            "top": 0,
+            "right": 761.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 683,
+              "bottom": 1024,
+              "width": 683,
+              "height": 980
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 122,
+              "right": 856,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 140,
+              "right": 878,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 683,
+              "top": 44,
+              "right": 1366,
+              "bottom": 1024,
+              "width": 683,
+              "height": 980
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 834,
+            "bottom": 1194,
+            "width": 834,
+            "height": 1150
+          },
+          "dock": {
+            "left": 105.5,
+            "top": 1118.484375,
+            "right": 728.5,
+            "bottom": 1194,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 338.1015625,
+            "top": 0,
+            "right": 495.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 417,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1150
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 104,
+              "right": 834,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 74,
+              "top": 122,
+              "right": 834,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 74,
+              "top": 140,
+              "right": 834,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 417,
+              "top": 44,
+              "right": 834,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1150
+            },
+            {
+              "id": "music",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 820,
+            "bottom": 1180,
+            "width": 820,
+            "height": 1136
+          },
+          "dock": {
+            "left": 98.5,
+            "top": 1104.484375,
+            "right": 721.5,
+            "bottom": 1180,
+            "width": 623,
+            "height": 75.515625
+          },
+          "notch": {
+            "left": 331.1015625,
+            "top": 0,
+            "right": 488.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 410,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1136
+            },
+            {
+              "id": "reminders",
+              "left": 60,
+              "top": 104,
+              "right": 820,
+              "bottom": 714,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 60,
+              "top": 122,
+              "right": 820,
+              "bottom": 732,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 60,
+              "top": 140,
+              "right": 820,
+              "bottom": 750,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 410,
+              "top": 44,
+              "right": 820,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1136
+            },
+            {
+              "id": "music",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 44,
+            "right": 390,
+            "bottom": 600,
+            "width": 390,
+            "height": 556
+          },
+          "dock": {
+            "left": 9,
+            "top": 530,
+            "right": 381,
+            "bottom": 600,
+            "width": 372,
+            "height": 70
+          },
+          "notch": {
+            "left": 116.1015625,
+            "top": 0,
+            "right": 273.8984375,
+            "bottom": 44,
+            "width": 157.796875,
+            "height": 44
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "reminders",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "airwrite",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "finder",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "calendar",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "music",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "calculator",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            },
+            {
+              "id": "settings",
+              "left": 0,
+              "top": 44,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 556
+            }
+          ],
+          "overflow": false
+        }
+      ],
+      "diagnostics": {
+        "dpr": 2,
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "windows": 15,
+        "canvases": 2,
+        "audioElements": 1,
+        "material": "CSS compositor; no GL program or external texture capture",
+        "heapBytes": 10000000,
+        "serviceWorker": true
+      },
+      "status": "passed"
+    },
+    "update-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "preflight exports original music before any schema upgrade",
+        "old v4 download does not replace playing client or interrupt original audio",
+        "old v4 to new v5 retains exact original audio SHA256",
+        "old calendar and timer preserved after real SW update",
+        "multi-client update blocked by unsaved Notes and second-client audio",
+        "safe update waits for explicit export handoff release",
+        "safe worker activation preserves saved draft",
+        "compatible classic recovery opens v2 music and retains workspace",
+        "classic recovery can export all retained workspace and music",
+        "no uncaught update browser errors"
+      ],
+      "screens": [
+        "before-lockscreen",
+        "before-desktop",
+        "before-music",
+        "before-backup-preflight",
+        "update-desktop",
+        "update-music",
+        "update-safe",
+        "update-classic-recovery"
+      ],
+      "errors": [],
+      "status": "passed"
+    },
+    "webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "checks": [
+        "additive v1 music upgrade preserves track Blob bytes and last title",
+        "calendar migration retains ID and untouched legacy backup key",
+        "existing running timer is retained",
+        "one original audio engine",
+        "Notes real save transaction",
+        "Reminders shares Today data",
+        "AirWrite original handwriting module and document library mounted",
+        "Finder browser File import, text preview and confirmed write",
+        "Calendar existing and newly created events coexist",
+        "existing imported music really starts after user action",
+        "Calculator actual parsed result",
+        "Finder rename, copy, move, cycle rejection, trash batch isolation and restore",
+        "Photos actual selected PNG import and browser decode",
+        "AirCard tested local card library, no Wallet claim",
+        "Reminders edit list, due date, priority and Today filter",
+        "Reminders real completion and completed filter",
+        "Calendar day search, existing event edit and confirmed save",
+        "Calendar confirmed delete retains original migrated event",
+        "Original Arcade 2048 real board and keyboard moves",
+        "Arcade active animation interval",
+        "Arcade interval cleanup on minimize",
+        "Arcade resumes only visible",
+        "Arcade final listener/timer disposal",
+        "Notes genuine typed Undo",
+        "Notes genuine typed Redo",
+        "Notes optimistic conflict retains draft and persisted winner",
+        "dirty Notes close rejected by user retains window",
+        "atomic backup collision abort preserves notes and tracks",
+        "backup validated merge, explicit overwrite and legacy timer restore",
+        "unsafe backup settings reject without modifying existing content",
+        "window pointer drag actual active capture",
+        "pointercancel releases capture and pending frame",
+        "WebKit actual touch tap supported",
+        "InfinityOS original CSV pipeline renders quoted comma and multiline",
+        "CSV HTML remains inert text",
+        "original size comparator is bound to Finder selector",
+        "InfinityOS binary-safe size calculation executes in storage settings",
+        "workspace switch hides own old windows without closing or discarding drafts",
+        "workspace move and focus share existing window registry",
+        "group minimize retains both actual windows",
+        "group restore moves existing members together without duplicate windows",
+        "workspace/group state persists in existing version 2 records",
+        "backup preflight inspects the real existing store without changing it",
+        "PWA app fullscreen fills the real allocated viewport",
+        "fullscreen does not overwrite the normal restart geometry",
+        "Escape exits PWA fullscreen and restores exact prior geometry",
+        "fullscreen has a working visible touch exit",
+        "app switching leaves immersive state without hiding the focused app",
+        "immersive app pauses the hidden Arcade interval",
+        "Arcade resumes when immersive app returns",
+        "immersive Arcade observer is disposed on close"
+      ],
+      "screens": [
+        "lockscreen",
+        "desktop-clean",
+        "notes",
+        "reminders",
+        "airwrite",
+        "finder",
+        "calendar",
+        "music",
+        "calculator",
+        "photos",
+        "settings",
+        "trash",
+        "photos",
+        "aircard",
+        "arcade",
+        "touch-pointercancel",
+        "infinity-csv",
+        "workspace-overview",
+        "workspace-immersive"
+      ],
+      "errors": [],
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Finder actual grid/list view preference\n    at check (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad-parity.cjs:9:36)\n    at module.exports (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad2-system.cjs:9:301)\n    at async module.exports (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad2-workflows.cjs:7:2)\n    at async run (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad-parity.cjs:22:40)"
+    }
+  }
+}
