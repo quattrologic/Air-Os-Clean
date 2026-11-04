@@ -259,7 +259,7 @@
       name.textContent=event.title; when.textContent=event.date+' · '+event.time; text.append(name,when);
       const remove = document.createElement('button'); remove.type='button'; remove.textContent='×'; remove.setAttribute('aria-label','Termin entfernen');
       remove.addEventListener('click',async()=>{if(!confirm('Termin löschen?'))return;try{await saveEvents(getEvents().filter(e=>e.id!==event.id));renderEvents();}catch(e){toast(e.message);}});
-      const edit=document.createElement('button');edit.type='button';edit.textContent='Bearbeiten';edit.onclick=()=>{const form=$('#event-form');form.elements.title.value=event.title;form.elements.date.value=event.date;form.elements.time.value=event.time;form.dataset.editingId=event.id;};row.append(edit);
+      const edit=document.createElement('button');edit.type='button';edit.textContent='Bearbeiten';edit.onclick=()=>{const form=$('#event-form');form.elements.title.value=event.title;form.elements.date.value=event.date;form.elements.time.value=event.time;form.dataset.editingId=event.id;form.querySelector('button[type=submit]').textContent='Speichern';};row.append(edit);
       row.append(text,remove);list.append(row);
     }
   }
@@ -292,7 +292,7 @@
     saveTimer();tickTimer();
   }
 
-  async function safeReload(){if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;return;}location.reload();}
+  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;return;}location.reload();}
   async function setupUpdates() {
     if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
     try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
@@ -368,16 +368,16 @@
       if(!title||!/^\d{4}-\d{2}-\d{2}$/.test(date)||!/^\d{2}:\d{2}$/.test(hour))return;
       const events=getEvents();
       const id=form.dataset.editingId||crypto.randomUUID(),i=events.findIndex(e=>e.id===id),item={id,title,date,time:hour};if(i>=0)events[i]=item;else events.push(item);
-      try{await saveEvents(events);delete form.dataset.editingId;form.reset();renderEvents();toast('Termin lokal gespeichert.');}catch(e){toast(e.message);}
+      try{await saveEvents(events);delete form.dataset.editingId;form.reset();form.querySelector('button[type=submit]').textContent='Hinzufügen';renderEvents();toast('Termin lokal gespeichert.');}catch(e){toast(e.message);}
     });
     window.addEventListener('offline',networkStatus);
-    window.addEventListener('beforeunload',()=>{if(state.objectUrl)URL.revokeObjectURL(state.objectUrl);});
+    window.addEventListener('pagehide',event=>{rememberPosition();audio.pause();if(!event.persisted&&state.objectUrl)URL.revokeObjectURL(state.objectUrl);});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'){$('#notch-panel').hidden=true;$('#notch-toggle').setAttribute('aria-expanded','false');}});
   }
 
   async function start() {
     wire();networkStatus();dateTime();try{await airStore.completeLegacyRestore();}catch(e){toast(e.message);}renderEvents();loadTimer();document.addEventListener('air-storage-blocked',()=>toast('Datenbankupgrade wartet. Bitte alte Air-OS-Tabs schließen; keine Daten werden zurückgesetzt.'));
-    let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
+    let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pageshow',e=>{if(e.persisted)clock();});window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
     await refreshCalendar();
     try { state.db=await openDB(); await refreshLibrary(); }
     catch(error) {

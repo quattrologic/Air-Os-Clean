@@ -42,5 +42,5 @@
  throw Error('Unbekannte Dateiaktion.');},true);announce('file');return result;}
  async function completeLegacyRestore(){const journal=await get('setting','restore-legacy');if(!journal)return;const prior={};try{for(const[k,v]of Object.entries(journal.value)){prior[k]=localStorage.getItem(k);if(!k.startsWith('air-ipad:')&&k!=='air-os-airwrite-profile-v2')throw Error('Unzulässiger Wiederherstellungsschlüssel.');if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}}catch(e){for(const[k,v]of Object.entries(prior))try{if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch{}throw Error('Backupdaten sicher importiert; Wiedergabestatus/Timer konnte noch nicht wiederhergestellt werden. Bitte Speicher freigeben und neu öffnen.');}await remove('setting','restore-legacy',journal.revision);}
  window.airStore=Object.freeze({open,transaction,list,get,save,remove,setting,setSetting,migrate,fileAction,validate,completeLegacyRestore,MAX_FILE});
- window.addEventListener('pagehide',()=>channel?.close(),{once:true});
+ window.addEventListener('pagehide',e=>{if(!e.persisted)channel?.close();});
 })();

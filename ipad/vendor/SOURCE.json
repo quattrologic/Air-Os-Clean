@@ -22,5 +22,12 @@
       "target": "ipad/vendor/air-arcade-games.css"
     }
   ],
-  "musicMetadataSource": "Air-OS R7/Nexus src/core/music-metadata.js; bounded browser-only parser"
+  "musicMetadataSource": {
+    "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+    "path": "src/core/music-metadata.js",
+    "target": "ipad/core/music-metadata.js",
+    "sha256": "b4e8d5e588a5c766fc1d22eabf1621b809a895a41b5897ed2e1b52505e53164b",
+    "adaptation": "unchanged browser-only parser"
+  },
+  "adaptations": "Source hashes describe original desktop files; vendor JS targets adapt pointer cancellation, bounded canvases and visibility-dependent timer cleanup."
 }

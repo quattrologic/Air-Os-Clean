@@ -70,6 +70,8 @@ jobs:
             dist/Air-OS-Ultimate-iPad-Parity-*.sha256
             dist/Air-OS-iPad-Compatible-Recovery-*.zip
             dist/Air-OS-iPad-Compatible-Recovery-*.sha256
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.zip
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.sha256
           retention-days: 30
   save-synthetic-evidence:
     needs: browser

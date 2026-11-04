@@ -98,3 +98,9 @@ Musikmetadaten werden im Records-Bereich getrennt von den vorhandenen Audiodatei
 44 echte lokale Chromium-Prüfungen / 28 Screenshots, 29 Node-Tests bestanden; Audit der eingefrorenen Browser-Testwerkzeuge ohne Vulnerabilities. Unter 640px werden interne Snapfenster vollbreit statt unbrauchbar schmal nebeneinander dargestellt. Untere Editoraktionen bleiben oberhalb des Overlay-Docks scrollbar. Beschädigter alter Kalender stoppt seine Migration ohne Löschen, synthetischer Quota-Fehler bestätigt kein Speichern.
 
 WebKit-CI nach unveränderlichen Musik-Blobs erreicht die gesamten Backup-, Restore- und Touchprüfungen ohne den früheren Blob-Lesefehler. Ein versehentlicher Close-Tap im Test wurde auf die freie Titelleistenfläche korrigiert; der vollständige WebKit-Endlauf ist noch abzuwarten.
+
+## Checkpoint H — vollständiger privater Kandidat
+
+**29/29 Node-Tests**, **50 Chromium-App-/Datenchecks unter Root und separat unter `/Air-OS/`**, jeweils 28 Aufnahmen, sowie **9 echte Update-/Rückfallchecks mit 8 Aufnahmen** lokal bestanden. Alle 21 ursprünglichen Regressionen erhalten. Quota-/Migrationsfehler, echte Dateiaktionen, Reminder-Bearbeitung/Heute/Erledigen, Kalender-Suche/Bearbeiten/Löschen und gemeinsamer Kontrollzentrum-Audiotransport geprüft. Launchpad besitzt echte Appgruppenfilter. Standardglas nutzt begrenzten CSS-Blur; hochwertig/reduziert bleiben auswählbar. BFCache-Rückkehr verwirft keine Draft-DOMs oder Pointerlistener.
+
+[Privater Umstellungsplan](AIR_OS_IPAD_PRIVATE_ROLLOUT.md) mit lesendem Vorabbackup, additivem Upgrade und kompatiblem Rückfallpaket. Die Vorabversion wurde zusätzlich im Browser wirklich vor dem Schemawechsel geprüft; sie hält die Datenbank auf Version 1. Es wurde nichts auf dem Windows-PC installiert, auf Tailscale umgestellt oder öffentlich deployed. Endgültiger Chromium-/WebKit-CI-Kandidat folgt diesem Commit; Ergebnis wird danach ergänzt.

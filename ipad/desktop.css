@@ -10,3 +10,9 @@ html,body{height:100%;overflow:hidden}body{font-size:14px}button,input,select,te
 /* Keep the final editor/action row scrollable above the overlay Dock. */
 .pad-window-content{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 @media(max-width:639px){.pad-window{border-radius:0}.pad-titlebar{gap:5px}}
+
+/* Standard quality uses a bounded compositor blur; High remains explicitly opt-in. */
+html:not([data-quality="Hochwertig"]) .glass{backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15)}
+@media(prefers-reduced-transparency:reduce){html .glass{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+.pad-window-content a{color:#165e9c}.pad-file-row>img{flex:0 0 24px}.pad-popover>select{width:100%;margin-block:6px}
