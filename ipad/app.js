@@ -291,13 +291,13 @@
     saveTimer();tickTimer();
   }
 
-  async function safeReload(){if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();location.reload();}
+  async function safeReload(){if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;return;}location.reload();}
   async function setupUpdates() {
     if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
     try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
       navigator.serviceWorker.ready.then(()=>$('#settings-offline').textContent='Service Worker aktiv; Offlinecache installiert');
       let controlled=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled)void safeReload();controlled=true;});
-      navigator.serviceWorker.addEventListener('message',async event=>{const m=event.data||{};if(m.type==='CHECK_UPDATE_SAFETY'){const ready=audio.paused&&!window.airDesktop?.dirty();if(ready){rememberPosition();await window.airDesktop?.flush();}event.source?.postMessage({type:'UPDATE_SAFETY',token:m.token,ready});}if(m.type==='UPDATE_BLOCKED')toast('Ein anderer Air-OS-Tab spielt Musik oder enthält ungespeicherte Entwürfe.');});
+      navigator.serviceWorker.addEventListener('message',async event=>{const m=event.data||{};if(m.type==='CHECK_UPDATE_SAFETY'){const ready=audio.paused&&!window.airDesktop?.dirty();if(ready){rememberPosition();await window.airDesktop?.flush();}event.source?.postMessage({type:'UPDATE_SAFETY',token:m.token,ready:ready&&audio.paused&&!window.airDesktop?.dirty()});}if(m.type==='UPDATE_BLOCKED')toast('Ein anderer Air-OS-Tab spielt Musik oder enthält ungespeicherte Entwürfe.');});
       const installButton=document.createElement('button');installButton.type='button';installButton.textContent='Geladenes Update sicher aktivieren';installButton.hidden=true;installButton.className='primary';$('#check-update').after(installButton);
       const showWaiting=()=>{installButton.hidden=!registration.waiting;if(registration.waiting)$('#update-state').textContent='Update vollständig geladen. Vor Aktivierung Backup erstellen und Entwürfe speichern.';};
       installButton.onclick=async()=>{if(!registration.waiting)return;if(!audio.paused||window.airDesktop?.dirty()){toast('Bitte Musik pausieren und Entwürfe speichern.');return;}await window.airDesktop?.flush();registration.waiting.postMessage({type:'REQUEST_SAFE_UPDATE',token:crypto.randomUUID()});};

@@ -70,3 +70,9 @@ Gezielte vollständige CRUD-/Konflikt-/Backup-/Update-/Touchtests, echter kalter
 28/28 Node-Tests (21 vorhandene + 7 neue) bestanden. Der erste neue statische Löschschutztest traf fälschlich `Set.clear()`; auf tatsächliche Datenbank-Löschoperationen präzisiert. Zweiter realer Chromiumlauf wieder 21/21 mit CSP, angepasster Pointer-/Ink-Behandlung und spielabhängigen Pausentimern bestanden. Private Stablebranch weiterhin unverändert.
 
 Neue CI baut eine versionierte ZIP, prüft alle Bytes/CSP/Lizenzen und testet Chromium sowie WebKit unter Root und `/Air-OS/`. Kein Deployment. Workflowerfolg wird erst nach tatsächlichem Lauf dokumentiert.
+
+## Checkpoint D — echte Safari-Fehlersuche
+
+CI [41836745449](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41836745449): Chromium unter Root und Unterpfad bestanden; WebKit scheiterte beim Backup mit `NotFoundError`. Keine Safari-Freigabe. Zusätzliche Blob-Readback-/Audiodecoder-Prüfungen grenzen dies jetzt ein. Lokales Chromium besteht auch bei tatsächlichem Abspielfortschritt statt bloßem `paused=false`.
+
+Pointercapture wird bei Abbruch/Fokusverlust beendet, Fenster bleiben vollständig im verfügbaren Viewport; Long-Press unterdrückt den folgenden Ghost-Klick. Die Cache-Namen enthalten den Service-Worker-Scope und löschen keine fremden Unterpfad-Caches. Arcade-Timer pausieren auch hinter dem Lockscreen. Backup-Merge behält bestehende Einstellungen statt wegen automatisch angelegter Setting-IDs abzubrechen.
