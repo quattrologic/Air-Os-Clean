@@ -76,3 +76,11 @@ Neue CI baut eine versionierte ZIP, prüft alle Bytes/CSP/Lizenzen und testet Ch
 CI [41836745449](https://github.com/quattrologic/Air-Os-Clean/actions/runs/41836745449): Chromium unter Root und Unterpfad bestanden; WebKit scheiterte beim Backup mit `NotFoundError`. Keine Safari-Freigabe. Zusätzliche Blob-Readback-/Audiodecoder-Prüfungen grenzen dies jetzt ein. Lokales Chromium besteht auch bei tatsächlichem Abspielfortschritt statt bloßem `paused=false`.
 
 Pointercapture wird bei Abbruch/Fokusverlust beendet, Fenster bleiben vollständig im verfügbaren Viewport; Long-Press unterdrückt den folgenden Ghost-Klick. Die Cache-Namen enthalten den Service-Worker-Scope und löschen keine fremden Unterpfad-Caches. Arcade-Timer pausieren auch hinter dem Lockscreen. Backup-Merge behält bestehende Einstellungen statt wegen automatisch angelegter Setting-IDs abzubrechen.
+
+## Checkpoint E — Datenworkflows und kalter Neustart
+
+28 Node-Regressionen und **41 echte Chromiumprüfungen / 27 Aufnahmen** bestanden. Der Testserver wird tatsächlich beendet; anschließend wird der ganze Browserprozess geschlossen und mit demselben isolierten Profil ohne verfügbaren Server gestartet. Notes, Dokumente und exportierbare Musikbytes bleiben erhalten. Echte Dateiaktionen (Copy/Move/Rename/Trash/Restore/Zyklen), PNG-Import/Decode, AirCard, Arcade/Intervallcleanup, Undo/Redo und Speicherkonflikte sind geprüft.
+
+Backup-Restore validiert Modelle und Ordnerbeziehungen. Ein einzelner IDB-Commit stellt Nutzerdaten samt Journal für alte Timer-/Player-/Handschrift-Schlüssel wieder her; bei einem LocalStorage-Fehler bleibt das Journal für einen sicheren Retry erhalten. Keine Datenbanklöschung. Bewusstes Überschreiben verlangt die bestehende zweite Bestätigung. Ein fehlgeschlagener Konfliktimport verändert keine Nutzerdaten.
+
+WebKit-Zwischenlauf: Medien-/Backup-Prüfungen bestanden, Offline-Emulation verursachte internen WebKit-Navigationsfehler. Der nächste Test nutzt statt Browseremulation einen tatsächlich abgeschalteten HTTP-Server. Physische iPad-Abnahme bleibt unabhängig davon offen.
