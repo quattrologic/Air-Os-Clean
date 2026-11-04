@@ -28,6 +28,7 @@ async function authorize(token,c){
 const headers={'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','X-Robots-Tag':'noindex, nofollow, noarchive'};
 function deny(status){return new Response('Private Air-OS access required.',{status,headers:{...headers,'Content-Type':'text/plain; charset=utf-8'}});}
 export default {async fetch(request,env){
+ if(new URL(request.url).protocol!=='https:')return deny(403);
  if(!['GET','HEAD'].includes(request.method))return deny(405);
  let c;try{c=config(env);}catch{return deny(503);}
  // Do not trust a user-supplied assertion without its pinned issuer/audience/signature.
