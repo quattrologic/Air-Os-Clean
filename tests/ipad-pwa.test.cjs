@@ -82,7 +82,7 @@ test('Safari navigation receives a non-redirected offline response', async () =>
   handlers.install({ waitUntil: promise => { install = promise; } });
   await install;
   assert.deepEqual(fetched, ['./']);
-  assert.deepEqual(installedAssets, ['./styles.css', './app.js', './manifest.webmanifest', './air-os-official.png']);
+  for(const file of ['./styles.css','./app.js','./manifest.webmanifest','./air-os-official.png','./storage.js','./desktop.js','./apps.js','./backup.js'])assert.ok(installedAssets.includes(file),'Offline asset missing: '+file);assert.equal(new Set(installedAssets).size,installedAssets.length);
   assert.equal(stored.get('./').redirected, false);
 
   let navigation;

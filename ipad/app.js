@@ -10,9 +10,15 @@
   const state = { records: [], currentId: '', lastId: '', objectUrl: null, unlocked: false, db: null,
     registration: null, pendingReload: false, timer: { duration: 300, remaining: 300, endAt: null, done: false } };
   let lastPositionSave = 0;
+  let calendarCache=null,musicFilter={query:'',sort:'Importreihenfolge',ids:null},shuffle=false,repeat=false;
+  function visibleRecords(){let rows=state.records.filter(r=>(!musicFilter.ids||musicFilter.ids.includes(r.id))&&(r.title+' '+r.artist).toLowerCase().includes(musicFilter.query.toLowerCase()));if(musicFilter.sort==='Titel')rows.sort((a,b)=>a.title.localeCompare(b.title));if(musicFilter.sort==='Favoriten')rows=rows.filter(r=>r.favorite);if(musicFilter.sort==='Zuletzt gespielt')rows.sort((a,b)=>(b.lastPlayedAt||0)-(a.lastPlayedAt||0));return rows;}
+  async function refreshCalendar(){await airStore.open();try{await airStore.migrate();calendarCache=await airStore.list('event');}catch(e){window.airMigrationError=e.message;toast(e.message);}renderEvents();}
+  async function saveEvents(events){if(window.airMigrationError)throw Error(window.airMigrationError);const before=calendarCache||[];await airStore.transaction((rows,store)=>{for(const old of before)if(!events.some(e=>e.id===old.id)){const actual=rows.find(r=>r.key==='event:'+old.id);if(actual?.revision!==old.revision)throw Error('Termin inzwischen geändert. Bitte neu laden.');store.delete('event:'+old.id);}for(const e of events){const previous=before.find(r=>r.id===e.id);if(previous&&['title','date','time'].every(k=>previous[k]===e[k]))continue;const actual=rows.find(r=>r.key==='event:'+e.id);if(previous&&actual?.revision!==previous.revision)throw Error('Termin inzwischen geändert. Entwurf bleibt erhalten.');store.put({...e,key:'event:'+e.id,kind:'event',revision:(actual?.revision||0)+1,updatedAt:Date.now()});}},true);calendarCache=await airStore.list('event');document.dispatchEvent(new CustomEvent('air-data-changed',{detail:'event'}));}
+
   let toastTimeout;
 
   function toast(message) {
+    document.dispatchEvent(new CustomEvent('air-ipad-notice',{detail:String(message)}));
     const el = $('#toast');
     el.textContent = String(message);
     el.hidden = false;
@@ -49,15 +55,7 @@
     fill.style.width = duration > 0 ? Math.min(100, Math.max(0, position / duration * 100)) + '%' : '0%';
   }
 
-  function openDB() {
-    return new Promise((resolve, reject) => {
-      if (!('indexedDB' in window)) return reject(new Error('Lokaler Datenspeicher nicht verfügbar.'));
-      const req = indexedDB.open(STORE, 1);
-      req.onupgradeneeded = () => { req.result.createObjectStore('tracks', { keyPath: 'id' }); };
-      req.onerror = () => reject(req.error || new Error('Datenbank konnte nicht geöffnet werden.'));
-      req.onsuccess = () => resolve(req.result);
-    });
-  }
+  function openDB() { return window.airStore.open(); }
   function database(mode, fn) {
     return new Promise((resolve, reject) => {
       const tx = state.db.transaction('tracks', mode);
@@ -93,7 +91,7 @@
       list.append(note);
       return;
     }
-    for (const record of state.records) {
+    for (const record of visibleRecords()) {
       const row = document.createElement('div');
       row.className = 'song-row' + (record.id === state.currentId ? ' active' : '');
       const choose = document.createElement('button');
@@ -149,6 +147,7 @@
       $('#lock-fill').style.width = lastProgress.duration > 0
         ? Math.min(100, Math.max(0, lastProgress.position / lastProgress.duration * 100)) + '%' : '0%';
     }
+    document.dispatchEvent(new Event('air-ipad-media'));
     $$('[data-control]').forEach(button => {
       button.disabled = !state.unlocked || !track;
       if (button.dataset.control === 'toggle') {
@@ -177,6 +176,7 @@
       state.objectUrl = URL.createObjectURL(record.blob);
       state.currentId = id;
       audio.src = state.objectUrl;
+      const progress=safeJSON(KEYS.progress,{});if(progress.id===id)audio.addEventListener('loadedmetadata',()=>{if(state.currentId===id&&Number.isFinite(audio.duration))audio.currentTime=Math.min(Math.max(0,Number(progress.position)||0),Math.max(0,audio.duration-.1));},{once:true});
       renderLibrary();
     }
     try { await audio.play(); }
@@ -185,8 +185,8 @@
   }
   function next(delta) {
     if (!state.records.length) return;
-    const index = Math.max(0, state.records.findIndex(item => item.id === state.currentId));
-    const nextId = state.records[(index + delta + state.records.length) % state.records.length].id;
+    const records=visibleRecords();if(!records.length)return;const index=records.findIndex(item=>item.id===state.currentId);
+    const nextId=records[shuffle?Math.floor(Math.random()*records.length):(index+delta+records.length)%records.length].id;
     void playTrack(nextId);
   }
   async function importTracks(files) {
@@ -194,9 +194,10 @@
     for (const file of files) {
       if (!file || !file.size || !/^(audio\/|application\/ogg)/.test(file.type) && !/\.(mp3|m4a|wav|ogg|aac)$/i.test(file.name)) continue;
       try {
+        if(file.size>64*1024*1024)throw Error('Musikimport maximal 64 MB pro Datei.');const meta=await window.airMusicMetadata?.read(file)||{};let artwork='';if(meta.picture&&meta.picture.bytes.length<128000){let raw='';for(let i=0;i<meta.picture.bytes.length;i+=8192)raw+=String.fromCharCode(...meta.picture.bytes.subarray(i,i+8192));artwork='data:'+meta.picture.mime+';base64,'+btoa(raw);}
         await database('readwrite', db => db.put({
-          id: crypto.randomUUID(), title: file.name.replace(/\.[^.]+$/, '').slice(0, 150),
-          artist: 'Lokale Datei', artwork: '', blob: file, addedAt: Date.now() + success
+          id: crypto.randomUUID(), title: meta.title||file.name.replace(/\.[^.]+$/, '').slice(0, 150),
+          artist: meta.artist||'Lokale Datei', artwork, fileName:file.name,blob: file, addedAt: Date.now() + success
         }));
         success++;
       } catch (error) {
@@ -236,11 +237,12 @@
     img.src = url;
   }
   function openPanel(name) {
+    if(window.airDesktop){if(name)void airDesktop.open(name);else{const active=[...airDesktop.windows].find(([,w])=>w.classList.contains('focused'));if(active)void airDesktop.close(active[0]);}return;}
     $$('.app-panel').forEach(panel => { panel.hidden = panel.id !== name + '-panel'; });
   }
 
   function getEvents() {
-    const stored = safeJSON(KEYS.events, []);
+    const stored = calendarCache??safeJSON(KEYS.events, []);
     return Array.isArray(stored) ? stored.filter(e => e && typeof e.title === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(e.date || '') && /^\d{2}:\d{2}$/.test(e.time || '')) : [];
   }
   function renderEvents() {
@@ -255,7 +257,8 @@
       const text = document.createElement('span'); const name = document.createElement('strong'), when = document.createElement('small');
       name.textContent=event.title; when.textContent=event.date+' · '+event.time; text.append(name,when);
       const remove = document.createElement('button'); remove.type='button'; remove.textContent='×'; remove.setAttribute('aria-label','Termin entfernen');
-      remove.addEventListener('click',()=>{localStorage.setItem(KEYS.events,JSON.stringify(getEvents().filter(e=>e.id!==event.id))); renderEvents();});
+      remove.addEventListener('click',async()=>{if(!confirm('Termin löschen?'))return;try{await saveEvents(getEvents().filter(e=>e.id!==event.id));renderEvents();}catch(e){toast(e.message);}});
+      const edit=document.createElement('button');edit.type='button';edit.textContent='Bearbeiten';edit.onclick=()=>{const form=$('#event-form');form.elements.title.value=event.title;form.elements.date.value=event.date;form.elements.time.value=event.time;form.dataset.editingId=event.id;};row.append(edit);
       row.append(text,remove);list.append(row);
     }
   }
@@ -288,36 +291,20 @@
     saveTimer();tickTimer();
   }
 
+  async function safeReload(){if(!audio.paused||window.airDesktop?.dirty()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();location.reload();}
   async function setupUpdates() {
-    if (!('serviceWorker' in navigator) || !isSecureContext) {
-      $('#settings-offline').textContent='Nicht unterstützt: HTTPS erforderlich';
-      return;
-    }
-    try {
-      const registration = await navigator.serviceWorker.register('./sw.js', { scope: './' });
-      state.registration=registration;
-      $('#settings-offline').textContent='Service Worker aktiv';
-      navigator.serviceWorker.addEventListener('controllerchange',()=>{
-        if (!audio.paused) {
-          state.pendingReload=true;toast('Update geladen. Es wird nach der Wiedergabe aktiviert.');
-        } else location.reload();
-      });
-      const check=async()=>{
-        if (!navigator.onLine) return;
-        try { await registration.update(); } catch { /* Private server may be asleep. */ }
-      };
-      $('#check-update').addEventListener('click',async()=>{
-        $('#update-state').textContent='Prüfe den privaten Server …';
-        await check();
-        $('#update-state').textContent='Prüfung abgeschlossen. Ohne Verbindung zum PC bleiben wir offline.';
-      });
-      window.addEventListener('online',()=>{networkStatus();void check();});
-      document.addEventListener('visibilitychange',()=>{if(!document.hidden){tickTimer();void check();}});
-      setInterval(check,15*60*1000);
-    } catch(error) {
-      $('#settings-offline').textContent='Offline-Installation nicht möglich';
-      $('#update-state').textContent='Service Worker konnte nicht eingerichtet werden. Bitte HTTPS und Speicher prüfen.';
-    }
+    if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
+    try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
+      navigator.serviceWorker.ready.then(()=>$('#settings-offline').textContent='Service Worker aktiv; Offlinecache installiert');
+      let controlled=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(controlled)void safeReload();controlled=true;});
+      navigator.serviceWorker.addEventListener('message',async event=>{const m=event.data||{};if(m.type==='CHECK_UPDATE_SAFETY'){const ready=audio.paused&&!window.airDesktop?.dirty();if(ready){rememberPosition();await window.airDesktop?.flush();}event.source?.postMessage({type:'UPDATE_SAFETY',token:m.token,ready});}if(m.type==='UPDATE_BLOCKED')toast('Ein anderer Air-OS-Tab spielt Musik oder enthält ungespeicherte Entwürfe.');});
+      const installButton=document.createElement('button');installButton.type='button';installButton.textContent='Geladenes Update sicher aktivieren';installButton.hidden=true;installButton.className='primary';$('#check-update').after(installButton);
+      const showWaiting=()=>{installButton.hidden=!registration.waiting;if(registration.waiting)$('#update-state').textContent='Update vollständig geladen. Vor Aktivierung Backup erstellen und Entwürfe speichern.';};
+      installButton.onclick=async()=>{if(!registration.waiting)return;if(!audio.paused||window.airDesktop?.dirty()){toast('Bitte Musik pausieren und Entwürfe speichern.');return;}await window.airDesktop?.flush();registration.waiting.postMessage({type:'REQUEST_SAFE_UPDATE',token:crypto.randomUUID()});};
+      registration.addEventListener('updatefound',()=>{registration.installing?.addEventListener('statechange',showWaiting);});showWaiting();
+      const check=async()=>{if(!navigator.onLine)return;try{await registration.update();showWaiting();}catch{$('#update-state').textContent='Privater Server nicht erreichbar. Vorhandener Offlinecache bleibt erhalten.';}};
+      $('#check-update').addEventListener('click',()=>void check());window.addEventListener('online',()=>void check());document.addEventListener('visibilitychange',()=>{if(!document.hidden){tickTimer();void check();}});
+    }catch(error){$('#settings-offline').textContent='Offlineeinrichtung fehlgeschlagen';$('#update-state').textContent='HTTPS, freien Speicher und private Serververbindung prüfen. Bestehende Daten bleiben erhalten.';}
   }
   function networkStatus() {
     $('#network-state').textContent=navigator.onLine?'Netz bereit':'Offline';
@@ -325,11 +312,11 @@
   }
   function wire() {
     $('#unlock').addEventListener('click',()=>{
-      state.unlocked=true;$('#lockscreen').hidden=true;$('#desktop').hidden=false;
+      state.unlocked=true;$('#lockscreen').hidden=true;$('#desktop').hidden=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:true}));
       renderMedia();
     });
     $('#lock-again').addEventListener('click',()=>{
-      audio.pause();state.unlocked=false;$('#desktop').hidden=true;$('#lockscreen').hidden=false;
+      audio.pause();$('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').hidden=false;
       $('#notch-panel').hidden=true;renderMedia();
     });
     $$('.app-tile').forEach(button=>button.addEventListener('click',()=>openPanel(button.dataset.panel)));
@@ -355,14 +342,14 @@
       const file=event.target.files?.[0];event.target.value='';processCover(file);
     });
     audio.addEventListener('play',()=>{
-      state.lastId=state.currentId;localStorage.setItem(KEYS.last,state.lastId);
+      state.lastId=state.currentId;localStorage.setItem(KEYS.last,state.lastId);const record=current();if(record){record.lastPlayedAt=Date.now();void database('readwrite',db=>db.put(record)).catch(e=>toast(e.message));}
       rememberPosition();renderMedia();
     });
     audio.addEventListener('pause',()=>{
       rememberPosition();renderMedia();
-      if(state.pendingReload)location.reload();
+      if(state.pendingReload)void safeReload();
     });
-    audio.addEventListener('ended',()=>{rememberPosition();next(1);});
+    audio.addEventListener('ended',()=>{rememberPosition();if(repeat)void playTrack(state.currentId);else next(1);});
     audio.addEventListener('timeupdate',()=>{rememberPosition();renderMedia();});
     audio.addEventListener('loadedmetadata',()=>{rememberPosition();renderMedia();});
     audio.addEventListener('error',()=>toast('Audio kann nicht abgespielt werden.'));
@@ -372,15 +359,15 @@
       state.timer={duration:Number(button.dataset.minutes)*60,remaining:Number(button.dataset.minutes)*60,endAt:null,done:false};
       saveTimer();tickTimer();
     }));
-    $('#event-form').addEventListener('submit',event=>{
+    $('#event-form').addEventListener('submit',async event=>{
       event.preventDefault();const form=event.currentTarget;
       const data=new FormData(form);
       const title=String(data.get('title')||'').trim().slice(0,100);
       const date=String(data.get('date')||''),hour=String(data.get('time')||'');
       if(!title||!/^\d{4}-\d{2}-\d{2}$/.test(date)||!/^\d{2}:\d{2}$/.test(hour))return;
       const events=getEvents();
-      events.push({id:crypto.randomUUID(),title,date,time:hour});
-      localStorage.setItem(KEYS.events,JSON.stringify(events));form.reset();renderEvents();toast('Termin lokal gespeichert.');
+      const id=form.dataset.editingId||crypto.randomUUID(),i=events.findIndex(e=>e.id===id),item={id,title,date,time:hour};if(i>=0)events[i]=item;else events.push(item);
+      try{await saveEvents(events);delete form.dataset.editingId;form.reset();renderEvents();toast('Termin lokal gespeichert.');}catch(e){toast(e.message);}
     });
     window.addEventListener('offline',networkStatus);
     window.addEventListener('beforeunload',()=>{if(state.objectUrl)URL.revokeObjectURL(state.objectUrl);});
@@ -389,7 +376,8 @@
 
   async function start() {
     wire();networkStatus();dateTime();renderEvents();loadTimer();
-    setInterval(()=>{dateTime();tickTimer();},1000);
+    let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
+    await refreshCalendar();
     try { state.db=await openDB(); await refreshLibrary(); }
     catch(error) {
       toast('Lokaler Musikspeicher nicht verfügbar. Prüfe Safari-Einstellungen und freien Speicherplatz.');
@@ -397,5 +385,6 @@
     }
     void setupUpdates();
   }
-  start();
+  window.airIPad=Object.freeze({toast,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await database('readwrite',db=>db.put({...t,favorite:!t.favorite}));await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
+  window.airIPadReady=start();
 })();
