@@ -40,58 +40,15 @@ test('every queried element exists in iPad HTML', () => {
 });
 
 test('Safari navigation receives a non-redirected offline response', async () => {
-  const sw = read('sw.js');
-  const handlers = {};
-  const stored = new Map();
-  const installedAssets = [];
-  class FakeResponse {
-    constructor(body, init = {}) {
-      this.body = body;
-      this.status = init.status ?? 200;
-      this.statusText = init.statusText || 'OK';
-      this.headers = init.headers || { get: name => name === 'content-type' ? 'text/html' : null };
-      this.ok = this.status >= 200 && this.status < 300;
-      this.redirected = false;
-    }
-    clone() { return new FakeResponse(this.body, { status: this.status, statusText: this.statusText, headers: this.headers }); }
-  }
-  const live = new FakeResponse('Air-OS HTML');
-  live.redirected = true; // Tailscale can redirect /index.html to /
-  const cache = {
-    addAll: async urls => { installedAssets.push(...urls); },
-    put: async (url, response) => { stored.set(url, response); },
-    match: async url => stored.get(url)
-  };
-  const mockCaches = {
-    open: async () => cache,
-    match: async () => undefined,
-    keys: async () => ['air-os-ipad-v1'],
-    delete: async () => true
-  };
-  const self = {
-    location: { origin: 'https://air-os.example.ts.net' },
-    registration: { scope: 'https://air-os.example.ts.net/' },
-    addEventListener: (name, fn) => { handlers[name] = fn; },
-    skipWaiting: async () => {},
-    clients: { claim: async () => {} }
-  };
-  const fetched = [];
-  const fetch = async url => { fetched.push(url); return live; };
-  vm.runInNewContext(sw, { self, caches: mockCaches, URL, Promise, Response: FakeResponse, fetch });
-  let install;
-  handlers.install({ waitUntil: promise => { install = promise; } });
-  await install;
-  assert.deepEqual(fetched, ['./']);
-  for(const file of ['./styles.css','./app.js','./manifest.webmanifest','./air-os-official.png','./storage.js','./desktop.js','./apps.js','./backup.js'])assert.ok(installedAssets.includes(file),'Offline asset missing: '+file);assert.equal(new Set(installedAssets).size,installedAssets.length);
-  assert.equal(stored.get('./').redirected, false);
-
-  let navigation;
-  handlers.fetch({
-    request: { method: 'GET', url: 'https://air-os.example.ts.net/', mode: 'navigate' },
-    respondWith: promise => { navigation = promise; }
-  });
-  const offline = await navigation;
-  assert.equal(offline.body, 'Air-OS HTML');
-  assert.equal(offline.redirected, false);
-  assert.equal(offline.status, 200);
+  const handlers={},stored=new Map(),fetched=[];
+  const cache={put:async (url,r)=>stored.set(url,r),match:async url=>stored.get(url)};
+  const scope='https://air-os.example.ts.net/';
+  const fetch=async url=>{fetched.push(url);const file=url==='./'?'index.html':url.slice(2);const r=new Response(fs.readFileSync(path.join(dir,file)),{headers:{'content-type':file.endsWith('.html')?'text/html':'application/octet-stream'}});Object.defineProperty(r,'url',{value:scope+file});Object.defineProperty(r,'redirected',{value:url==='./'});return r;};
+  const self={registration:{scope},addEventListener:(n,fn)=>handlers[n]=fn,clients:{claim:async()=>{}}};
+  vm.runInNewContext(read('sw.js'),{self,caches:{open:async()=>cache,delete:async()=>true,keys:async()=>[]},URL,Response,fetch,crypto:require('node:crypto').webcrypto,Uint8Array});
+  let install;handlers.install({waitUntil:p=>install=p});await install;
+  assert.equal(fetched[0],'./');for(const file of ['./styles.css','./app.js','./manifest.webmanifest','./air-os-official.png','./storage.js','./desktop.js','./apps.js','./backup.js'])assert.ok(fetched.includes(file),'Offline asset missing: '+file);
+  assert.equal(stored.get('./').redirected,false);
+  let nav;handlers.fetch({request:{method:'GET',url:scope,mode:'navigate'},respondWith:p=>nav=p});const offline=await nav;
+  assert.equal(await offline.text(),read('index.html'));assert.equal(offline.redirected,false);assert.equal(offline.status,200);
 });

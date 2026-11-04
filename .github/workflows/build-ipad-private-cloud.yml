@@ -1,0 +1,65 @@
+name: Private iPad Cloud · verified artifacts only · NO deployment
+on:
+  push:
+    branches: [release/ipad-private-cloud]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ipad-private-cloud-build-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/release/ipad-private-cloud' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feat/ipad-private-cloud-updates')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    env:
+      AIR_PAD_EDITION2: '1'
+      AIR_PAD_ENGINE: ${{ matrix.engine }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Authorized source lineage and frozen audit
+        run: |
+          git merge-base --is-ancestor e4b1c4203c2430da04bccc5dd33953fb44cc0781 HEAD
+          npm ci --prefix build/ipad-parity-tests --ignore-scripts --no-audit --no-fund
+          npm audit --prefix build/ipad-parity-tests --audit-level=high
+      - name: All baseline and private cloud security regressions
+        run: node --test tests/*.test.cjs
+      - name: Build and validate exact runtime, licenses and fail-closed worker
+        run: |
+          node scripts/package-ipad-ultimate2.cjs
+          node scripts/check-ipad-parity-package.cjs
+          node scripts/build-ipad-private-cloud.cjs
+          node scripts/build-ipad-private-cloud.cjs --check
+      - name: Actual engine
+        run: node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps ${{ matrix.engine }}
+      - name: Real offline apps and protected update regression
+        run: |
+          AIR_PAD_OUTPUT=dist/cloud-evidence/${{ matrix.engine }}/apps node scripts/test-ipad-parity.cjs
+          AIR_PAD_OUTPUT=dist/cloud-evidence/${{ matrix.engine }}/updates node scripts/test-ipad-updates.cjs
+          AIR_PAD_OUTPUT=dist/cloud-evidence/${{ matrix.engine }}/access node scripts/test-ipad-cloud.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iPad-Private-Cloud-Evidence-${{ matrix.engine }}-${{ github.sha }}
+          path: dist/cloud-evidence/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: success() && matrix.engine == 'chromium'
+        with:
+          name: iPad-Private-Cloud-Candidate-${{ github.sha }}
+          path: |
+            dist/Air-OS-iPad-Private-Cloud-*.zip
+            dist/Air-OS-iPad-Private-Cloud-*.sha256
+          retention-days: 30
+  # Deliberately no deploy job, Cloudflare login/token, Pages action or public URL.
+  # A candidate artifact alone never authorizes publication. BOTH engine jobs must pass.

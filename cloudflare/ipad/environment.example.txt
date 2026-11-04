@@ -1,0 +1,8 @@
+# Configure on Cloudflare only AFTER explicit owner approval, both Production + Preview.
+# Not a dotenv file. No real emails, tokens or account IDs belong in Git/artifacts.
+AIR_ACCESS_TEAM = https://YOUR-TEAM.cloudflareaccess.com
+AIR_ACCESS_AUDIENCES = ["PRODUCTION_APPLICATION_AUD_TAG","PREVIEW_APPLICATION_AUD_TAG"]
+AIR_ACCESS_EMAILS = ["EXPLICITLY-APPROVED-USER@example.invalid"]
+# ALSO required: Pages Settings > Runtime > Fail open / closed = FAIL CLOSED.
+# Access policies on PROJECT.pages.dev AND *.PROJECT.pages.dev (+ each custom domain).
+# Missing/invalid values => worker denies ALL assets. No bypass policy or service token.

@@ -1,0 +1,10 @@
+{
+  "deploymentEnabled": false,
+  "releaseBranch": "release/ipad-private-cloud",
+  "requiresOwnerApprovalForEveryDeployment": true,
+  "requiresAccessOnApexAndAllPreviews": true,
+  "requiresFunctionsFailClosedInProductionAndPreview": true,
+  "cloudflareAccountConnected": false,
+  "publicDeploymentAllowed": false,
+  "sourceBase": "e4b1c4203c2430da04bccc5dd33953fb44cc0781"
+}
