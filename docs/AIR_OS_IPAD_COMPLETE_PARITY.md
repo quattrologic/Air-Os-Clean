@@ -92,3 +92,9 @@ Lokales Chromium: **8 zusätzliche Updateprüfungen / 7 Aufnahmen** bestanden. O
 Ein **getrenntes kompatibles Classic-Recovery-ZIP** enthält die ursprüngliche Vier-App-Oberfläche mit aktuellem v2-fähigem Datenadapter. Der echte Rückfalltest öffnet damit die unveränderten Musikbytes und kann auch die weiterhin gespeicherten Workspace-Daten exportieren. Kein Datenbank-Downgrade und kein Deployment. Unveränderter alter v1-Code wäre nach einem v2-Upgrade kein sicherer Rückweg; deshalb diese ausdrücklich getestete kompatible Variante verwenden.
 
 Musikmetadaten werden im Records-Bereich getrennt von den vorhandenen Audiodateien aktualisiert. Der wiederholte WebKit-Blobfehler nach erneutem Schreiben gelesener Audio-Blobs wird damit gezielt vermieden; Bestätigung durch nächsten WebKit-CI-Lauf steht noch aus. Fensterrestore und gleichzeitige Appstarts sind serialisiert. Kalender besitzt zusätzlich Such-/Tages-/Wochenfilter; Reminder-Bearbeitung umfasst Liste, Datum und Priorität.
+
+## Checkpoint G — kleine Viewports und Safari-Regressionen
+
+44 echte lokale Chromium-Prüfungen / 28 Screenshots, 29 Node-Tests bestanden; Audit der eingefrorenen Browser-Testwerkzeuge ohne Vulnerabilities. Unter 640px werden interne Snapfenster vollbreit statt unbrauchbar schmal nebeneinander dargestellt. Untere Editoraktionen bleiben oberhalb des Overlay-Docks scrollbar. Beschädigter alter Kalender stoppt seine Migration ohne Löschen, synthetischer Quota-Fehler bestätigt kein Speichern.
+
+WebKit-CI nach unveränderlichen Musik-Blobs erreicht die gesamten Backup-, Restore- und Touchprüfungen ohne den früheren Blob-Lesefehler. Ein versehentlicher Close-Tap im Test wurde auf die freie Titelleistenfläche korrigiert; der vollständige WebKit-Endlauf ist noch abzuwarten.

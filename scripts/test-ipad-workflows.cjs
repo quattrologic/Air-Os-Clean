@@ -23,6 +23,6 @@ module.exports=async function({page,context,check,shot,open}){
  await page.evaluate(()=>airDesktop.setMode('notes','normal'));
  if(context.browser()?.browserType().name()==='chromium'){
   const h=await header.boundingBox(),session=await context.newCDPSession(page);await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:h.x+h.width-50,y:h.y+20}]});await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:h.x+h.width-90,y:h.y+50}]});await page.waitForTimeout(50);check('Chromium actual touch drag uses window owner',await page.evaluate(()=>airDesktop.snapshot().gesture));await session.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});await session.detach();check('actual touchcancel ends gesture',await page.evaluate(()=>!airDesktop.snapshot().gesture));
- }else{await page.touchscreen.tap(rect.x+30,rect.y+20);check('WebKit actual touch tap supported',true);}
+ }else{const h=await header.boundingBox();await page.touchscreen.tap(h.x+h.width-35,h.y+20);check('WebKit actual touch tap supported',true);}
  await page.evaluate(()=>airDesktop.flush());
 };

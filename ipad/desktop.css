@@ -6,3 +6,7 @@ html,body{height:100%;overflow:hidden}body{font-size:14px}button,input,select,te
 @media(pointer:coarse){button{min-height:44px}.pad-traffic button{height:44px;min-height:44px}.pad-resize{width:44px;height:44px}.pad-titlebar{padding-left:2px}.pad-dock-app{touch-action:manipulation}}
 @media(prefers-reduced-transparency:reduce){.glass{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#28364c!important}}
 @media(forced-colors:active){.glass,.pad-titlebar,.pad-window,.pad-popover,.pad-dock{background:Canvas!important;color:CanvasText!important;border:1px solid CanvasText}.pad-window-content button{background:ButtonFace;color:ButtonText}}
+
+/* Keep the final editor/action row scrollable above the overlay Dock. */
+.pad-window-content{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+@media(max-width:639px){.pad-window{border-radius:0}.pad-titlebar{gap:5px}}
