@@ -375,7 +375,7 @@
   }
 
   async function start() {
-    wire();networkStatus();dateTime();renderEvents();loadTimer();
+    wire();networkStatus();dateTime();renderEvents();loadTimer();document.addEventListener('air-storage-blocked',()=>toast('Datenbankupgrade wartet. Bitte alte Air-OS-Tabs schließen; keine Daten werden zurückgesetzt.'));
     let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
     await refreshCalendar();
     try { state.db=await openDB(); await refreshLibrary(); }

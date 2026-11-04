@@ -64,3 +64,9 @@ Die bestehenden Windows-Skripte sind bislang **nicht umgestellt**. Späterer Rol
 ## Noch offen vor Freigabe
 
 Gezielte vollständige CRUD-/Konflikt-/Backup-/Update-/Touchtests, echter kalter Offline-Browserneustart, WebKit, visuelle Korrekturen, versioniertes Build-ZIP und sicherer Rolloutplan. Physische iPadOS-/Pencil-/Safari-Dateipicker-/Audio-/Suspend-Abnahme bleibt mangels Hardware offen. Externe Dienste bleiben ehrlich begrenzte Browserlinks. Keine vollständige Desktopparität oder Installationsfreigabe behauptet.
+
+## Checkpoint C — Browserhärtung und Buildpfad
+
+28/28 Node-Tests (21 vorhandene + 7 neue) bestanden. Der erste neue statische Löschschutztest traf fälschlich `Set.clear()`; auf tatsächliche Datenbank-Löschoperationen präzisiert. Zweiter realer Chromiumlauf wieder 21/21 mit CSP, angepasster Pointer-/Ink-Behandlung und spielabhängigen Pausentimern bestanden. Private Stablebranch weiterhin unverändert.
+
+Neue CI baut eine versionierte ZIP, prüft alle Bytes/CSP/Lizenzen und testet Chromium sowie WebKit unter Root und `/Air-OS/`. Kein Deployment. Workflowerfolg wird erst nach tatsächlichem Lauf dokumentiert.

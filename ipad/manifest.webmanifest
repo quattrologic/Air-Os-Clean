@@ -1,5 +1,5 @@
 {
-  "name": "Air-OS iPad – Privat",
+  "name": "Air-OS Ultimate",
   "short_name": "Air-OS",
   "description": "Offlinefähige private Air-OS-Oberfläche für iPad",
   "lang": "de",
@@ -16,5 +16,6 @@
       "type": "image/png",
       "purpose": "any"
     }
-  ]
+  ],
+  "id": "./"
 }
