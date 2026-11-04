@@ -26,3 +26,7 @@ id_ed25519
 coverage/
 .nyc_output/
 npm-debug.log*
+
+# Generated corresponding-source offer, shipped in tested PWA archives
+ipad/source/
+__pycache__/

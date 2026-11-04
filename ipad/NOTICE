@@ -1,0 +1,24 @@
+Air-OS iPad Ultimate 2.0 — combined browser edition
+
+Direct adapted InfinityOS web components: AGPL-3.0, upstream
+https://github.com/Infinity-Systems-UA/InfinityOS
+commit a6584135cbcad837d57484211119451bbb2d8fb2.
+Copyright remains with the upstream contributors; modifications (c) 2026 quattrologic.
+Exact paths, excerpt hashes and adaptation details: vendor/infinityos/provenance.json.
+
+InfinityOS-linux dock geometry excerpts: GPL-3.0, upstream
+https://github.com/InfinityOS-linux/infinityos
+commit fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3.
+The GNOME dock metadata credits original author icedman (Dash2Dock Animated v92); Infinity OS carries a distinct fork UUID.
+No claim that either public repository is the source of the inaccessible user ISO.
+
+The combined iPad edition is conveyed under AGPL-3.0. Existing first-party MIT
+notices remain in licenses/Air-OS-MIT.txt. GPLv3 components retain GPLv3 terms;
+combination follows GPLv3/AGPLv3 section 13. Root desktop MIT license is unchanged.
+MacTahoe icon notices and GPL-3.0 source assets remain under icons/.
+MacShell algorithms, when included, retain their separate MIT notices.
+
+Corresponding Source, including modified browser source, build/test scripts and
+notices, is offered locally at ./source/source.zip in every built package.
+Open Settings > Licenses and Source or the persistent Source link.
+No third-party binaries, proprietary logos or InfinityOS ISO are bundled.

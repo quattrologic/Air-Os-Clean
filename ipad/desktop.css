@@ -16,3 +16,5 @@ html:not([data-quality="Hochwertig"]) .glass{backdrop-filter:blur(12px) saturate
 @media(prefers-reduced-transparency:reduce){html .glass{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 
 .pad-window-content a{color:#165e9c}.pad-file-row>img{flex:0 0 24px}.pad-popover>select{width:100%;margin-block:6px}
+.pad-csv-preview{overflow:auto;max-width:100%;margin-top:12px}.pad-csv-preview table{border-collapse:collapse;width:max-content;min-width:100%}.pad-csv-preview td,.pad-csv-preview th{border:1px solid #c5cdd5;padding:6px;white-space:pre-wrap;max-width:300px;overflow-wrap:anywhere}.pad-csv-preview th{background:#e4e9ef;position:sticky;top:0}
+.pad-source-link{position:fixed;right:max(8px,env(safe-area-inset-right));bottom:calc(78px + env(safe-area-inset-bottom));z-index:15;font-size:11px;color:#e4ecf4;text-decoration:none;padding:4px 7px;border-radius:5px;background:#15203080}
