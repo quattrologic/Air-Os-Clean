@@ -10,7 +10,7 @@
   const state = { records: [], currentId: '', lastId: '', objectUrl: null, unlocked: false, db: null,
     registration: null, pendingReload: false, timer: { duration: 300, remaining: 300, endAt: null, done: false } };
   let lastPositionSave = 0;
-  let calendarCache=null,musicFilter={query:'',sort:'Importreihenfolge',ids:null},shuffle=false,repeat=false;
+  let calendarFilter={mode:'Alle',date:'',query:''};let calendarCache=null,musicFilter={query:'',sort:'Importreihenfolge',ids:null},shuffle=false,repeat=false;
   function visibleRecords(){let rows=state.records.filter(r=>(!musicFilter.ids||musicFilter.ids.includes(r.id))&&(r.title+' '+r.artist).toLowerCase().includes(musicFilter.query.toLowerCase()));if(musicFilter.sort==='Titel')rows.sort((a,b)=>a.title.localeCompare(b.title));if(musicFilter.sort==='Favoriten')rows=rows.filter(r=>r.favorite);if(musicFilter.sort==='Zuletzt gespielt')rows.sort((a,b)=>(b.lastPlayedAt||0)-(a.lastPlayedAt||0));return rows;}
   async function refreshCalendar(){await airStore.open();try{await airStore.migrate();calendarCache=await airStore.list('event');}catch(e){window.airMigrationError=e.message;toast(e.message);}renderEvents();}
   async function saveEvents(events){if(window.airMigrationError)throw Error(window.airMigrationError);const before=calendarCache||[];await airStore.transaction((rows,store)=>{for(const old of before)if(!events.some(e=>e.id===old.id)){const actual=rows.find(r=>r.key==='event:'+old.id);if(actual?.revision!==old.revision)throw Error('Termin inzwischen geändert. Bitte neu laden.');store.delete('event:'+old.id);}for(const e of events){const previous=before.find(r=>r.id===e.id);if(previous&&['title','date','time'].every(k=>previous[k]===e[k]))continue;const actual=rows.find(r=>r.key==='event:'+e.id);if(previous&&actual?.revision!==previous.revision)throw Error('Termin inzwischen geändert. Entwurf bleibt erhalten.');store.put({...e,key:'event:'+e.id,kind:'event',revision:(actual?.revision||0)+1,updatedAt:Date.now()});}},true);calendarCache=await airStore.list('event');document.dispatchEvent(new CustomEvent('air-data-changed',{detail:'event'}));}
@@ -65,11 +65,12 @@
       tx.onabort = () => reject(tx.error || new Error('Speichertransaktion abgebrochen.'));
     });
   }
+  async function patchTrack(id,patch){const old=await airStore.get('trackmeta',id);await airStore.save('trackmeta',{...old,...patch,id},old?.revision||0);const t=song(id);if(t)Object.assign(t,patch);}
   const song = id => state.records.find(record => record.id === id);
   const current = () => song(state.currentId);
   const last = () => song(state.lastId);
   async function refreshLibrary() {
-    state.records = await database('readonly', db => db.getAll());
+    const tracks=await database('readonly',db=>db.getAll()),metadata=await airStore.list('trackmeta');state.records=tracks.map(t=>{const m=metadata.find(m=>m.id===t.id);return m?{...t,...Object.fromEntries(['title','artist','artwork','favorite','lastPlayedAt'].filter(k=>m[k]!==undefined).map(k=>[k,m[k]]))}:t;});
     state.records.sort((a, b) => a.addedAt - b.addedAt);
     state.lastId = localStorage.getItem(KEYS.last) || '';
     if (!song(state.lastId)) {
@@ -228,7 +229,7 @@
         const artwork = canvas.toDataURL('image/jpeg', 0.75);
         if (artwork.length >= 180000) throw new Error('Bild ist zu groß.');
         record.artwork = artwork;
-        await database('readwrite', db => db.put(record));
+        await patchTrack(record.id,{artwork:record.artwork});
         renderMedia(); toast('Cover lokal gespeichert.');
       } catch (error) { toast('Cover konnte nicht gespeichert werden.'); }
       finally { URL.revokeObjectURL(url); }
@@ -248,7 +249,7 @@
   function renderEvents() {
     const list = $('#event-list');
     list.replaceChildren();
-    const events = getEvents().sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
+    const events = getEvents().filter(e=>{if(!e.title.toLowerCase().includes(calendarFilter.query.toLowerCase()))return false;if(calendarFilter.mode==='Tag')return e.date===calendarFilter.date;if(calendarFilter.mode==='Woche'){const start=Date.parse(calendarFilter.date+'T00:00'),d=Date.parse(e.date+'T00:00');return d>=start&&d<start+7*86400000;}return true;}).sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
     if (!events.length) {
       const p = document.createElement('p'); p.className='hint'; p.textContent='Noch keine Termine gespeichert.'; list.append(p); return;
     }
@@ -264,8 +265,8 @@
   }
   function loadTimer() {
     const saved = safeJSON(KEYS.timer, {});
-    if (saved.duration && [300,600,1500].includes(saved.duration)) state.timer.duration=saved.duration;
-    if (Number.isFinite(saved.remaining) && saved.remaining>=0 && saved.remaining<=1500) state.timer.remaining=saved.remaining;
+    if(Number.isFinite(saved.duration)&&saved.duration>=1&&saved.duration<=86400) state.timer.duration=saved.duration;
+    if (Number.isFinite(saved.remaining) && saved.remaining>=0 && saved.remaining<=state.timer.duration) state.timer.remaining=saved.remaining;
     if (Number.isFinite(saved.endAt) && saved.endAt > 0) state.timer.endAt=saved.endAt;
     state.timer.done=!!saved.done;
     tickTimer();
@@ -342,7 +343,7 @@
       const file=event.target.files?.[0];event.target.value='';processCover(file);
     });
     audio.addEventListener('play',()=>{
-      state.lastId=state.currentId;localStorage.setItem(KEYS.last,state.lastId);const record=current();if(record){record.lastPlayedAt=Date.now();void database('readwrite',db=>db.put(record)).catch(e=>toast(e.message));}
+      state.lastId=state.currentId;localStorage.setItem(KEYS.last,state.lastId);const record=current();if(record){record.lastPlayedAt=Date.now();void patchTrack(record.id,{lastPlayedAt:record.lastPlayedAt}).catch(e=>toast(e.message));}
       rememberPosition();renderMedia();
     });
     audio.addEventListener('pause',()=>{
@@ -385,6 +386,6 @@
     }
     void setupUpdates();
   }
-  window.airIPad=Object.freeze({toast,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await database('readwrite',db=>db.put({...t,favorite:!t.favorite}));await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
+  window.airIPad=Object.freeze({toast,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
   window.airIPadReady=start();
 })();

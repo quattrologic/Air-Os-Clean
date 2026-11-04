@@ -84,3 +84,11 @@ Pointercapture wird bei Abbruch/Fokusverlust beendet, Fenster bleiben vollständ
 Backup-Restore validiert Modelle und Ordnerbeziehungen. Ein einzelner IDB-Commit stellt Nutzerdaten samt Journal für alte Timer-/Player-/Handschrift-Schlüssel wieder her; bei einem LocalStorage-Fehler bleibt das Journal für einen sicheren Retry erhalten. Keine Datenbanklöschung. Bewusstes Überschreiben verlangt die bestehende zweite Bestätigung. Ein fehlgeschlagener Konfliktimport verändert keine Nutzerdaten.
 
 WebKit-Zwischenlauf: Medien-/Backup-Prüfungen bestanden, Offline-Emulation verursachte internen WebKit-Navigationsfehler. Der nächste Test nutzt statt Browseremulation einen tatsächlich abgeschalteten HTTP-Server. Physische iPad-Abnahme bleibt unabhängig davon offen.
+
+## Checkpoint F — realer Update- und Rückfalltest
+
+Lokales Chromium: **8 zusätzliche Updateprüfungen / 7 Aufnahmen** bestanden. Original-v4-Oberfläche aus dem verbindlichen Commit wird tatsächlich geladen, spielt synthetische Musik, lädt den neuen Worker wartend und läuft ohne erzwungenen Musikabbruch weiter. Nach Schließen aller alten Clients aktiviert v5. SHA-256 der alten Audiodatei stimmt exakt überein; alter Kalender/Timer bleiben erhalten. Zweiter Tab mit Audio und ungespeicherte Notes blockieren den neuen Worker; nach Speichern/Pause gelingt Aktivierung.
+
+Ein **getrenntes kompatibles Classic-Recovery-ZIP** enthält die ursprüngliche Vier-App-Oberfläche mit aktuellem v2-fähigem Datenadapter. Der echte Rückfalltest öffnet damit die unveränderten Musikbytes und kann auch die weiterhin gespeicherten Workspace-Daten exportieren. Kein Datenbank-Downgrade und kein Deployment. Unveränderter alter v1-Code wäre nach einem v2-Upgrade kein sicherer Rückweg; deshalb diese ausdrücklich getestete kompatible Variante verwenden.
+
+Musikmetadaten werden im Records-Bereich getrennt von den vorhandenen Audiodateien aktualisiert. Der wiederholte WebKit-Blobfehler nach erneutem Schreiben gelesener Audio-Blobs wird damit gezielt vermieden; Bestätigung durch nächsten WebKit-CI-Lauf steht noch aus. Fensterrestore und gleichzeitige Appstarts sind serialisiert. Kalender besitzt zusätzlich Such-/Tages-/Wochenfilter; Reminder-Bearbeitung umfasst Liste, Datum und Priorität.
