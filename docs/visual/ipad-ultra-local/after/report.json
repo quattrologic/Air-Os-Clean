@@ -4,6 +4,7 @@
   "synthetic": true,
   "fixedTime": "2026-11-05T18:40:00Z",
   "checks": [
+    "lock hides calendar and reminder supplement",
     "no horizontal document overflow 1024",
     "no horizontal document overflow 1180",
     "no horizontal document overflow 1366",
