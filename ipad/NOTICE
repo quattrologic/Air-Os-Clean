@@ -22,3 +22,11 @@ Corresponding Source, including modified browser source, build/test scripts and
 notices, is offered locally at ./source/source.zip in every built package.
 Open Settings > Licenses and Source or the persistent Source link.
 No third-party binaries, proprietary logos or InfinityOS ISO are bundled.
+
+Visual edition: the adapted winOpen easing/trajectory from InfinityOS styles.css
+(commit a6584135cbcad837d57484211119451bbb2d8fb2, AGPL-3.0) executes in
+core/visual-motion.js. Source hash/excerpt/adaptations are in the corresponding
+source archive at docs/source-ports/ipad-visual.json.
+Alpine Dusk vector landscape and system glyphs: original Air-OS work,
+(c) 2026 quattrologic, MIT; artwork/LICENSE is bundled. No Apple wallpaper
+or third-party reference photograph is distributed.

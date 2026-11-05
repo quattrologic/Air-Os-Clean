@@ -32,3 +32,5 @@ html[data-quality="Reduzierte Transparenz"] .glass,html[data-quality="Reduzierte
 @media(max-width:520px){.pad-window[data-app=notes] .pad-split,.pad-window[data-app=airwrite] .pad-split{grid-template-rows:auto minmax(0,1fr)}.pad-window[data-app=notes] .pad-split>aside,.pad-window[data-app=airwrite] .pad-split>aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:10px 12px;gap:7px}.pad-window[data-app=notes] .pad-list,.pad-window[data-app=airwrite] .pad-list{grid-column:1/-1;max-height:68px}.pad-window[data-app=notes] .pad-editor,.pad-window[data-app=airwrite] .pad-editor{padding:12px 12px 76px}}
 
 @media(pointer:coarse){.pad-system-actions button{width:44px;min-width:44px}}
+
+@media(pointer:coarse){.pad-control-volume input{min-height:44px}}
