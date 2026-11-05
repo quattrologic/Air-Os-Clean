@@ -14,14 +14,14 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css">
   <title>Air-OS iPad</title>
-  <link rel="stylesheet" href="./vendor/airwrite.css"><link rel="stylesheet" href="./vendor/air-arcade-games.css"><link rel="stylesheet" href="./desktop.css">
-  <script defer src="./registry.js"></script><script defer src="./core/infinity-web.js"></script><script defer src="./core/infinity-notification.js"></script><script defer src="./core/infinity-dock.js"></script><script defer src="./core/desktop-sessions.js"></script><script defer src="./core/window-model.js"></script><script defer src="./core/music-metadata.js"></script><script defer src="./storage.js"></script><script defer src="./vendor/airwrite.js"></script><script defer src="./vendor/air-arcade-games.js"></script><script defer src="./core/transfers.js"></script><script defer src="./app.js"></script><script defer src="./apps.js"></script><script defer src="./backup.js"></script><script defer src="./vendor/macshell/shell7.js"></script><script defer src="./dock-material.js"></script><script defer src="./desktop.js"></script><script defer src="./widgets.js"></script>
+  <link rel="stylesheet" href="./vendor/airwrite.css"><link rel="stylesheet" href="./vendor/air-arcade-games.css"><link rel="stylesheet" href="./desktop.css"><link rel="stylesheet" href="./visual.css">
+  <script defer src="./core/visual-icons.js"></script><script defer src="./registry.js"></script><script defer src="./core/infinity-web.js"></script><script defer src="./core/infinity-notification.js"></script><script defer src="./core/infinity-dock.js"></script><script defer src="./core/desktop-sessions.js"></script><script defer src="./core/window-model.js"></script><script defer src="./core/music-metadata.js"></script><script defer src="./storage.js"></script><script defer src="./vendor/airwrite.js"></script><script defer src="./vendor/air-arcade-games.js"></script><script defer src="./core/transfers.js"></script><script defer src="./app.js"></script><script defer src="./apps.js"></script><script defer src="./backup.js"></script><script defer src="./vendor/macshell/shell7.js"></script><script defer src="./dock-material.js"></script><script defer src="./core/visual-motion.js"></script><script defer src="./desktop.js"></script><script defer src="./widgets.js"></script>
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
   <div class="shell">
     <header class="topbar">
-      <span class="brand">Air-OS <small>iPad</small></span>
+      <span class="brand"><img src="./air-os-official.png" alt="">Air-OS <small>iPad</small></span>
       <button id="notch-toggle" class="notch-pill" type="button" aria-expanded="false" aria-controls="notch-panel">
         <span class="pulse" aria-hidden="true"></span><span id="notch-label">Air-OS</span>
       </button>
@@ -31,7 +31,7 @@
     <section id="notch-panel" class="notch-panel glass" hidden aria-label="Notch">
       <div class="panel-heading"><strong>Jetzt / zuletzt gespielt</strong><button type="button" id="notch-close" aria-label="Schließen">×</button></div>
       <div class="song-inline"><span id="notch-cover" class="tiny-art">♫</span><span><strong id="notch-title">Keine Musik</strong><small id="notch-artist">Öffne Air Music</small></span></div>
-      <div class="transport"><button type="button" data-control="prev" aria-label="Vorheriger Titel">⏮</button><button type="button" data-control="toggle" aria-label="Wiedergabe umschalten">▶</button><button type="button" data-control="next" aria-label="Nächster Titel">⏭</button></div>
+      <div class="transport"><button type="button" data-control="prev" aria-label="Vorheriger Titel">⏮︎</button><button type="button" data-control="toggle" aria-label="Wiedergabe umschalten">▶︎</button><button type="button" data-control="next" aria-label="Nächster Titel">⏭︎</button></div>
       <div class="notch-timer"><strong>Timer</strong><span id="notch-timer">05:00</span></div>
     </section>
 
@@ -45,9 +45,9 @@
           <span id="lock-artist">Air Music</span>
           <div class="progress"><span id="lock-elapsed">0:00</span><div class="track"><i id="lock-fill"></i></div><span id="lock-total">0:00</span></div>
           <div class="transport lock-transport" aria-label="Bedienelemente nach dem Entsperren">
-            <button type="button" disabled aria-label="Vorheriger Titel nach Entsperren">⏮</button>
-            <button type="button" disabled aria-label="Abspielen nach Entsperren">▶</button>
-            <button type="button" disabled aria-label="Nächster Titel nach Entsperren">⏭</button>
+            <button type="button" disabled aria-label="Vorheriger Titel nach Entsperren">⏮︎</button>
+            <button type="button" disabled aria-label="Abspielen nach Entsperren">▶︎</button>
+            <button type="button" disabled aria-label="Nächster Titel nach Entsperren">⏭︎</button>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
           <div><strong id="player-title">Noch keine Musik</strong><small id="player-artist">Füge lokale Musikdateien hinzu</small></div>
         </div>
         <div class="progress"><span id="player-elapsed">0:00</span><div class="track"><i id="player-fill"></i></div><span id="player-total">0:00</span></div>
-        <div class="transport"><button type="button" data-control="prev" aria-label="Vorheriger Titel">⏮</button><button type="button" data-control="toggle" aria-label="Wiedergabe umschalten">▶</button><button type="button" data-control="next" aria-label="Nächster Titel">⏭</button></div>
+        <div class="transport"><button type="button" data-control="prev" aria-label="Vorheriger Titel">⏮︎</button><button type="button" data-control="toggle" aria-label="Wiedergabe umschalten">▶︎</button><button type="button" data-control="next" aria-label="Nächster Titel">⏭︎</button></div>
         <div class="file-actions">
           <label class="outline">Musik importieren<input id="import-audio" type="file" multiple accept="audio/*,.mp3,.m4a,.wav,.ogg" hidden></label>
           <label class="outline">Cover auswählen<input id="import-cover" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>

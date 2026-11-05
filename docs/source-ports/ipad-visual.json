@@ -1,0 +1,49 @@
+{
+  "base": "e4b1c4203c2430da04bccc5dd33953fb44cc0781",
+  "designDirection": "MacShell and InfinityOS equally weighted as a design brief, not a pixel-fidelity metric",
+  "ports": [
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "styles.css",
+      "sourceFileSHA256": "2f375c1241ab1ab499cd2e67da667add7cce993d40680683fcc87a44c55b43e3",
+      "license": "AGPL-3.0",
+      "excerpt": "@keyframes winOpen {    0% {        opacity: 0;        transform: scale(0.88) translateY(30px);    }    100% {        opacity: 1;        transform: scale(1) translateY(0);    }}",
+      "originalOpenTiming": "350ms cubic-bezier(.34,1.56,.64,1)",
+      "target": "ipad/core/visual-motion.js",
+      "adaptation": "Original easing/opacity-scale trajectory; 250ms and .985/8px instead of .88/30px to limit touch travel. Existing window lifecycle retains ownership. No WinBox runtime."
+    },
+    {
+      "project": "MacShell via existing Air-OS R7 port",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "paths": [
+        "MacShell/MacDock.qml",
+        "MacShell/Spring.qml",
+        "MacShell/WidgetVisual.qml"
+      ],
+      "license": "MIT",
+      "target": "ipad/vendor/macshell/shell7.js + existing dock-material.js",
+      "adaptation": "Existing coupled geometry/spring reused; icon-stage height now follows original model output. Widget/material composition is CSS adaptation, not execution of QML or original refraction shaders."
+    }
+  ],
+  "ownWork": [
+    "shared visual tokens/CSS compositor material",
+    "system glyphs",
+    "editor/control-center composition",
+    "minimal widget data views",
+    "bounded motion owner",
+    "original Alpine Dusk SVG"
+  ],
+  "wallpaper": {
+    "path": "ipad/artwork/alpine-dusk.svg",
+    "sha256": "9a06274d6c92b5a9e492f07a176565f3ecb67210ed26a614ab6c2eb3c997d0a4",
+    "license": "MIT",
+    "author": "quattrologic, 2026",
+    "type": "original vector landscape; not the proprietary reference photograph"
+  },
+  "limits": [
+    "No new shaderengine or private screen capture",
+    "No claimed pixel identity or native iPadOS lock",
+    "Earlier reference images available only as chat images; filesystem comparison uses captured Air-OS baseline and verified upstream code"
+  ]
+}
