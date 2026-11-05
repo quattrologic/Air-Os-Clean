@@ -4,7 +4,7 @@ Development branch: `feat/air-os-ipad-system-experience-3`. Exact Ultra base: `1
 
 ## Checkpoint A – launcher and lifecycle
 
-Full-scene App Library with All Apps / Categories, eight groups derived from the existing 25 registry entries; persistent view preference; search, group expansion, keyboard navigation and touch dismissal. The original Dock stays visible; pins and lifecycle remain owned by the existing controllers.
+Full-scene App Library with All Apps / Categories, eight groups derived from the existing 25 registry entries; category view for new sessions, persistent user view preference; search, group expansion, keyboard navigation and touch dismissal. The original Dock stays visible; pins and lifecycle remain owned by the existing controllers.
 
 The existing animation scheduler now owns cancellable opening/closing and focus effects. Opening uses the actual Dock/launcher button rectangle, closing targets the real Dock icon. Reopening cancels pending close cleanup. Geometry/mode changes cancel presentation effects. Reduced motion and document visibility release ownership.
 
@@ -46,3 +46,7 @@ Latest local evidence before the final browser gate: 42/42 Node; full Chromium r
 Chromium DPR2: standard path has 0 GL programs, 0 textures and 0 shader draws. Opt-in High correctly rejects the detected software GPU and retains CSS. Only an injected isolated diagnostic test enables software shaders: 4 programs (3 material), 5 textures, 21,356,816 estimated texture bytes, scene 1697×1179. Refraction uniform on/off changed real rendered pixels: mean absolute channel difference 3.095 on the test widget crops (not a reference similarity score). Idle draw count remains stable; context loss/restore and navigation disposal pass. Diagnostic wall time is environment-dependent and costly (1236ms measured paint incl.1012ms transfer on this software renderer), so this is not a hardware-performance or iPad-battery claim.
 
 Final local visual gate at this checkpoint: 28 checks /31 screenshots; 42 Node tests. The independent material test passes 11 checks. The last complete root browser run passes 112 checks; CI will repeat on the exact committed build for Chromium and WebKit, root and `/Air-OS/`, including protected updates and offline cold restart.
+
+Final usability correction: fresh sessions open Categories, while a saved All Apps preference is respected. Keyboard tabs use roving focus. Regression tests explicitly choose All Apps before testing the legacy category filter; tests do not force the product default. The imported screenshot fixture is removed from the isolated test store before comparative Finder captures so before/after app contents match.
+
+The final local visual suite now checks 31 conditions, including the new-session category default, five-app expansion of Produktivität and the actual persisted Focus preference. Viewport fitting cancels in-flight presentation effects before using the existing central bounds model.
