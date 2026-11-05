@@ -45,3 +45,13 @@ Ultra design additions:
 MacTahoe GTK palette/chrome adaptation: Copyright (c) 2021 WhiteSur Developers.
 The unmodified MIT copyright/permission/disclaimer text is bundled in
 licenses/MacTahoe-GTK-MIT.txt. No GTK processes or installer scripts are included.
+
+System Experience 3 additions:
+- InfinityOS script.js::openMenu registry partition model, AGPL-3.0,
+  commit a6584135cbcad837d57484211119451bbb2d8fb2, adapted in
+  vendor/infinityos/launcher-model.js. Tablet category cards are Air-OS UI
+  composed against the supplied user reference, not an upstream component.
+- Photograph EveningGlow, Ian Hex, LGPLv3, KDE plasma-workspace-wallpapers
+  commit 0643e9404da07d204014549d9f734424fdf961ed,
+  EveningGlow/contents/images/2560x1600.jpg. Unmodified in assets/lake-evening.jpg
+  with original metadata. Existing LGPLv3 and GPLv3 texts accompany the image.

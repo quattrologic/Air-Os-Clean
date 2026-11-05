@@ -1,8 +1,8 @@
 'use strict';
 // Shared MacShell WebGL2 materials; only wallpaper pixels enter GPU memory.
 (() => {
- const selectors='.pad-dock,#notch-toggle,#notch-panel,.pad-widget,.pad-popover,.pad-titlebar,.lock-player';
- const readAirSettings=()=>({reduceGlass:document.documentElement.dataset.quality==='Reduzierte Transparenz',reduceMotion:document.documentElement.classList.contains('pad-reduced-motion'),glassFamily:'macshell',pwaQuality:document.documentElement.dataset.quality==='Hochwertig'?'high':'standard'});
+ const selectors='.pad-dock,#notch-toggle,#notch-panel,.pad-widget,.pad-popover:not(.s3-launcher),.pad-titlebar,.lock-player';
+ const readAirSettings=()=>({reduceGlass:document.documentElement.dataset.quality==='Reduzierte Transparenz',reduceMotion:document.documentElement.classList.contains('pad-reduced-motion'),glassFamily:'macshell',pwaQuality:document.documentElement.dataset.quality==='Hochwertig'&&!document.documentElement.classList.contains('s3-launcher-open')?'high':'standard'});
  // CSS fallback follows MacShell's wallpaper-backed material, without capture or another GL owner.
  const cssHosts=new Set();
  function cssFallback(active){

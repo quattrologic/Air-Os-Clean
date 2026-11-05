@@ -165,6 +165,17 @@
       "target": "ipad/vendor/macshell/shell7.js",
       "sourceFileSHA256": "493275153232357fdf9400d1bbeb34a49b1d92e47c69d4e8e00ee4b3e3e0c644",
       "runtime": "dock-material.js uses dock coupled geometry and step integrator; no idle loop; scroll adapts capacity"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "function": "openMenu registry partition",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "target": "ipad/vendor/infinityos/launcher-model.js",
+      "adaptation": "Registry iteration/grouping adapted to existing Air-OS presentation metadata. Tablet category cards are new reference-driven browser UI. No upstream tablet launcher claimed.",
+      "runtime": "desktop.js launchpad, both All Apps and Categories modes"
     }
   ],
   "excluded": [
