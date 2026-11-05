@@ -48,3 +48,11 @@ Messwerte und DOM-Rechtecke stehen in den jeweiligen `report.json`. Der letzte N
 - WebKit wird zusätzlich über den neuen reinen Test-/Artefaktworkflow `.github/workflows/test-ipad-ultra.yml` geprüft. Ergebnis bei diesem Checkpoint noch ausstehend.
 
 Checkpoint 1: `1fca54b`. Nächster Produkt-/Testcheckpoint enthält die drei Korrekturrunden, Font-/Renderer-Lifecycle-Härtung und den Browserworkflow. Diese Dokumentation behauptet noch keinen erfolgreichen CI-/Hardwareabschluss.
+
+## CI-Zwischenprüfung und präzisierter Idle-Test
+
+[Erster CI-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42067511908), Produkt `e843949643b75196b32844559bb7e9cc2e632fb7`: Chromium vollständig bestanden. WebKit bestand beide visuellen Szenenläufe, scheiterte danach am neuen Idle-Test; die übrigen WebKit-Regressionsschritte wurden dadurch nicht ausgeführt. Das ist ausdrücklich noch keine vollständige WebKit-Abnahme. Belege einschließlich Fehler stehen unter `docs/visual/ipad-ultra/e843949643b75196b32844559bb7e9cc2e632fb7/evidence.json`.
+
+Der Idle-Test hatte nur auf die GL-Queue gewartet. Der isolierte Materialvergleich wartet jetzt zusätzlich auf Fonts und Dock-Spring-Endzustand und verwendet ausdrücklich Reduced Motion, damit sich Geometrie/Animationslicht während des Pixelvergleichs nicht weiter verändern. Die normalen Touch-/UI-/Motion-Regressionsläufe bleiben unverändert. Softwarediagnose bleibt von der normalen Produktpolitik getrennt.
+
+Zusätzlicher Lock-Regressionsschutz: Kalender-/Reminder-Ergänzung der Island bleibt vor dem Öffnen der lokalen Sitzung verborgen; beim Sperren wird der Appname in der Menüzeile zurückgesetzt. Das bestehende visuelle Lock-Sicherheitsmodell wird dadurch nicht als Authentifizierung ausgegeben. Lokaler visueller Lauf nun 20 Prüfungen/22 Aufnahmen.
