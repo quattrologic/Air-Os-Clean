@@ -19,7 +19,7 @@
   else frames=[{opacity:0,translate:'0 8px',scale:'.97'},{opacity:1,translate:'0 0',scale:'1'}];
   return run(node,frames,kind==='window'?280:220,kind==='window'?curves.open:curves.panel,kind,origin);
  }
- function depart(node,target=null){const r=box(node);if(!r)return Promise.resolve(true);const dx=target?target.x+target.width/2-r.x-r.width/2:0,dy=target?target.y+target.height/2-r.y-r.height/2:10;
+ function depart(node,target=null){const r=box(node);if(!r)return Promise.resolve(true);if(!target)return run(node,[{opacity:1,translate:'0 0',scale:'1'},{opacity:0,translate:'0 10px',scale:'.97'}],170,curves.exit,'close');const dx=target?target.x+target.width/2-r.x-r.width/2:0,dy=target?target.y+target.height/2-r.y-r.height/2:10;
   return run(node,[{opacity:1,transform:'translate(0,0) scale(1)'},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(${target?Math.max(.06,target.width/r.width):.97},${target?Math.max(.06,target.height/r.height):.97})`}],170,curves.exit,'close',target);
  }
  function clear(){for(const node of [...active.keys()])cancel(node);}

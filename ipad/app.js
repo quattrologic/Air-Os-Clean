@@ -92,7 +92,9 @@
       row.className = 'song-row' + (record.id === state.currentId ? ' active' : '');
       const choose = document.createElement('button');
       choose.type = 'button';
-      choose.textContent = record.title;
+      choose.setAttribute('aria-label',record.title);
+      const art=document.createElement('span');art.className='s3-song-art';art.style.backgroundImage=record.artwork?'url('+JSON.stringify(record.artwork)+')':'';art.textContent=record.artwork?'':'♫';
+      const labels=document.createElement('span');labels.className='s3-song-label';const title=document.createElement('strong'),artist=document.createElement('small');title.textContent=record.title;artist.textContent=record.artist||'Air Music';labels.append(title,artist);choose.append(art,labels);
       choose.title = record.title;
       choose.addEventListener('click', () => { void playTrack(record.id); });
       const remove = document.createElement('button');

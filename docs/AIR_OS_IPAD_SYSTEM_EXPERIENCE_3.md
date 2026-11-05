@@ -21,3 +21,28 @@ Validation so far: 42/42 Node regressions; Chromium baseline 7 checks/21 screens
 ## Remaining work at Checkpoint A
 
 Recompose Control Center/Island/MacLock and a real file-import acknowledgement; rebuild Finder/music/Notes/calendar interior hierarchy; perform rounds two and three; test both browsers, offline/update/resource paths; package a versioned PWA ZIP and publish synthetic evidence on this development branch only. Physical iPad, Safari install, Pencil, hardware GPU/thermal/battery and native system gestures remain unverified.
+
+## Checkpoints B/C – system surfaces and app interiors
+
+Control Center now composes connectivity/focus, a real shared-media slab, native app-volume slider and shortcuts. All former actions remain available; calendar is an actual existing app action. Unsupported native OS controls are not invented. Island retains the original pill contour and binds its expanded view to existing music/timer nodes. MacLock increases clock/art/transport hierarchy without changing its local visual-unlock boundary.
+
+The reusable import acknowledgement is in the existing popup owner (`desktop.js::received`), called only after the Finder writes explicitly selected files successfully. It reads actual file IDs from the existing store, permits only bounded PNG/JPEG/WebP/GIF previews and revokes its Blob URL on dismissal. No network transfer service, device capture or alternate file database exists. A synthetic stored PNG exercises exactly this contract in visual tests.
+
+Finder, Notes/AirWrite, Air Music, Calendar and Settings now have composed interiors, not just replacement titlebars. Shared `system3.css` app tokens and the adapted MacTahoe 6px sidebar shadow unify sidebars/toolbars/selection/paper/inputs. Existing DOM nodes and handlers for the original audio and calendar panels are moved, not duplicated. Finder retains all file operations through the existing context-menu owner; Notes list previews and compact toolbars retain dirty/save/import/export handlers; Music retains its single library and audio engine while grouping secondary actions; Calendar keeps the original event form/list next to the month; Settings groups appearance/data/update/privacy with the existing controls. Other apps inherit shared chrome and retain their established limitations.
+
+Round 2: enlarged widget text, recomposed slabs, lock typography and Island; removed duplicate transport mask exposed in rendered pixels. Round 3: first interior captures revealed oversized file action rows, a bright sidebar search field and Music tools pushing the library below the fold. Product code now uses real context menus, a corrected sidebar selector and a compact player/secondary-action group. These are actual rerendered corrections.
+
+Latest local evidence before the final browser gate: 42/42 Node; full Chromium root suite 112/112; visual round 2 27 checks/27 images; round 3 28 checks/31 images including live paused WAAPI open/close frames, actual stored-file acknowledgement and released preview URL. Reopening during close preserves the original window. The three visual rounds and their intermediate outputs are retained locally; final CI will save selected before/after screenshots and complete reports.
+
+### Source transfer distinctions
+
+- Directly adapted algorithm: InfinityOS registry iteration/partition (`script.js::openMenu`) into `vendor/infinityos/launcher-model.js`, called by the existing launchpad. Tablet cards, touch/keyboard behavior and strict filtering are Air-OS integration, not a claimed upstream tablet implementation.
+- Adapted motion: original InfinityOS `styles.css::winOpen` curve; MacShell `MacShell/SPopUp.qml` popup timings/curves. FLIP rectangles, cancellation leases and browser lifecycle are Air-OS implementation in `core/visual-motion.js` / `desktop.js`.
+- Adapted app construction: MacTahoe `src/sass/gtk/_common-4.0.scss` source retained as `third_party/tahoe/gtk/source/gtk/_common-4.0.scss` in the desktop history, `%side_style_left`, `%side_headerbar_left/right`; neutral palette, 6px complementary sidebar shadow and flat toolbar hierarchy adapted to shared browser CSS. No GTK runtime. Copyright (c) 2021 WhiteSur Developers; existing MIT text retained.
+- Reused, not new ports: MacShell dial, coupled Dock magnification/Spring, curated MacTahoe icons/fonts and shared GLASS-3 shaders/guards from Ultra/R7. The full-screen launcher deliberately avoids an extra GL material tile. Wallpaper pixels are the only permitted source; no live foreign-window refraction is claimed.
+
+## Measured local material/lifecycle gate
+
+Chromium DPR2: standard path has 0 GL programs, 0 textures and 0 shader draws. Opt-in High correctly rejects the detected software GPU and retains CSS. Only an injected isolated diagnostic test enables software shaders: 4 programs (3 material), 5 textures, 21,356,816 estimated texture bytes, scene 1697×1179. Refraction uniform on/off changed real rendered pixels: mean absolute channel difference 3.095 on the test widget crops (not a reference similarity score). Idle draw count remains stable; context loss/restore and navigation disposal pass. Diagnostic wall time is environment-dependent and costly (1236ms measured paint incl.1012ms transfer on this software renderer), so this is not a hardware-performance or iPad-battery claim.
+
+Final local visual gate at this checkpoint: 28 checks /31 screenshots; 42 Node tests. The independent material test passes 11 checks. The last complete root browser run passes 112 checks; CI will repeat on the exact committed build for Chromium and WebKit, root and `/Air-OS/`, including protected updates and offline cold restart.

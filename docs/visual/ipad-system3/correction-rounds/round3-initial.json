@@ -1,0 +1,300 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "fixedTime": "2026-11-05T18:40:00Z",
+  "checks": [
+    "lock hides calendar and reminder supplement",
+    "eight categories derive from all 25 real registry entries",
+    "all apps remains the same 25-entry registry",
+    "Dock stays above the launcher scene",
+    "launcher app opening retains the real icon rectangle",
+    "reopening cancels stale close without removing the live window",
+    "system event displays an actual stored user-file contract",
+    "closing event releases its preview Blob URL",
+    "no horizontal document overflow 1024",
+    "no horizontal document overflow 1180",
+    "no horizontal document overflow 1366",
+    "no horizontal document overflow 834",
+    "no horizontal document overflow 820",
+    "no horizontal document overflow 390",
+    "control center groups use existing controller actions",
+    "visual media tile controls original single audio",
+    "app volume slider reflects actual audio within half its native step",
+    "reduced transparency removes all surface blur",
+    "reduced motion does not start visual animations",
+    "motion finishes with no active animation ownership",
+    "floating Dock overlap uses its actual bottom offset",
+    "system glyphs retain real finger targets",
+    "working surfaces are opaque to prevent overlapping text bleed",
+    "notes title remains reachable in its editor viewport",
+    "default wallpaper is local licensed mountain artwork",
+    "window title controls keep touch targets",
+    "no uncaught visual browser errors"
+  ],
+  "screens": [
+    "lockscreen",
+    "lockscreen-portrait",
+    "desktop",
+    "desktop-portrait",
+    "widgets",
+    "menubar",
+    "dock",
+    "launchpad",
+    "launcher-categories",
+    "launcher-all-apps",
+    "spotlight",
+    "control-center",
+    "island",
+    "motion-app-open",
+    "motion-app-close",
+    "system-file-received",
+    "notes",
+    "finder",
+    "music",
+    "two-windows",
+    "workspace-1024x768",
+    "workspace-1180x820",
+    "workspace-1366x1024",
+    "workspace-834x1194",
+    "workspace-820x1180",
+    "workspace-390x600",
+    "reduced-transparency"
+  ],
+  "geometry": [
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1024,
+        "height": 740,
+        "right": 1024,
+        "bottom": 768
+      },
+      "dock": {
+        "x": 146.5,
+        "y": 701.484375,
+        "width": 731,
+        "height": 66.515625,
+        "right": 877.5,
+        "bottom": 768
+      },
+      "notch": {
+        "x": 446,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 578,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 1180,
+        "height": 820
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1180,
+        "height": 792,
+        "right": 1180,
+        "bottom": 820
+      },
+      "dock": {
+        "x": 224.5,
+        "y": 753.484375,
+        "width": 731,
+        "height": 66.515625,
+        "right": 955.5,
+        "bottom": 820
+      },
+      "notch": {
+        "x": 524,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 656,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 1024
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1366,
+        "height": 996,
+        "right": 1366,
+        "bottom": 1024
+      },
+      "dock": {
+        "x": 317.5,
+        "y": 957.484375,
+        "width": 731,
+        "height": 66.515625,
+        "right": 1048.5,
+        "bottom": 1024
+      },
+      "notch": {
+        "x": 617,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 749,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 834,
+        "height": 1194
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 834,
+        "height": 1166,
+        "right": 834,
+        "bottom": 1194
+      },
+      "dock": {
+        "x": 51.5,
+        "y": 1127.484375,
+        "width": 731,
+        "height": 66.515625,
+        "right": 782.5,
+        "bottom": 1194
+      },
+      "notch": {
+        "x": 351,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 483,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 820,
+        "height": 1152,
+        "right": 820,
+        "bottom": 1180
+      },
+      "dock": {
+        "x": 44.5,
+        "y": 1113.484375,
+        "width": 731,
+        "height": 66.515625,
+        "right": 775.5,
+        "bottom": 1180
+      },
+      "notch": {
+        "x": 344,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 476,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 390,
+        "height": 572,
+        "right": 390,
+        "bottom": 600
+      },
+      "dock": {
+        "x": 9,
+        "y": 534,
+        "width": 372,
+        "height": 66,
+        "right": 381,
+        "bottom": 600
+      },
+      "notch": {
+        "x": 139.3828125,
+        "y": 0,
+        "width": 111.234375,
+        "height": 39,
+        "right": 250.6171875,
+        "bottom": 39
+      },
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "openMotion": {
+    "kind": "window",
+    "origin": {
+      "x": 140,
+      "y": 161,
+      "width": 135,
+      "height": 123
+    },
+    "duration": 280,
+    "target": {
+      "x": 140,
+      "y": 161,
+      "width": 135,
+      "height": 123
+    }
+  },
+  "notes": {
+    "scrollTop": 0,
+    "title": {
+      "x": 287,
+      "y": 200,
+      "width": 500,
+      "height": 42,
+      "top": 200,
+      "right": 787,
+      "bottom": 242,
+      "left": 287
+    },
+    "content": {
+      "x": 53,
+      "y": 115,
+      "width": 758,
+      "height": 564,
+      "top": 115,
+      "right": 811,
+      "bottom": 679,
+      "left": 53
+    }
+  },
+  "nativeVolume": {
+    "input": 0.99,
+    "audio": 0.99,
+    "step": 0.01
+  },
+  "status": "passed",
+  "sourceIdentity": "Local uncommitted development iteration after checkpoint e42a667; final exact-source rerun is in Actions",
+  "round": "round3-initial"
+}
