@@ -1,3 +1,11 @@
+# iPad Visual Overhaul — geprüfter Abschluss
+
+Eigener Branch `feat/ipad-ultimate2-visual-overhaul`, Basis `e4b1c4203c2430da04bccc5dd33953fb44cc0781`, Produkt `146769b64efd308aa497991563feecacb97fbd83`. Gemeinsames dunkles Glas-/Fenster-/Iconsystem, flaches Floating-Dock, minimalistischer Widgetbereich, komponiertes Kontrollzentrum, neue Island-/Lockhierarchie und begrenzte Motion. Eigene MIT-Alpinillustration statt ungeklärter Fotoübernahme. Keine neue App-/Daten-/Window-Engine.
+
+40 Regressionstests und 518 Chromium-/WebKit-Browserchecks bestanden. [Grüner CI-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42045946450), 74 permanente Vorher-/Nachher-PNGs, sechs Viewports, Offline/Update/Recovery. [Bericht mit Quellen, Bildern und offenen Hardwaregrenzen](AIR_OS_IPAD_VISUAL_OVERHAUL.md). Kein Deployment/Merge/private Rolloutänderung; Cloudvorbereitung bleibt auf ihrem getrennten Branch.
+
+---
+
 # Air-OS iPad Ultimate 2.0 — Fortsetzung gesichert
 
 Arbeitsbranch `feat/air-os-ipad-ultimate-2`, Basis `a228d895939861bf5379917d6d69849aaadc2f84`, Produkt `7fb71d3a4ffb2659d87bcc6c24fedfc3ba1e898a`. Vorherige Parity-Checkpoints/Beweise bleiben erhalten; keine fertigen Arbeiten neu begonnen oder Nutzerdaten zurückgesetzt.

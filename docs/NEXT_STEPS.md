@@ -1,3 +1,11 @@
+# Nach dem Visual Overhaul — keine automatische Installation
+
+[Geprüfter Visualstand, Pakete und Vergleichsbilder](AIR_OS_IPAD_VISUAL_OVERHAUL.md) liegen auf `feat/ipad-ultimate2-visual-overhaul`. Physisches iPad/Safari mit Tastatur/Pencil/Trackpad, realem Safe-Area-Inset, Audio und Suspend/Resume bleibt gesonderte Geräteabnahme. Ein fotografisches Bergwallpaper erst bei nachgewiesenen Rechten hinzufügen; die aktuelle eigene MIT-Vektorlandschaft ist bewusst als Illustration ausgewiesen.
+
+Keine neue Appphase/Cloudverbindung oder Veröffentlichung aus diesem Fortschritt ableiten. Vor jeder späteren privaten Umstellung: geprüften SHA wählen, Backup und Freigabe; gegebenenfalls separat kontrolliert mit der Cloudvorbereitung zusammenführen. Kein automatischer Merge, kein Task-/Tailscale-Wechsel. Weitere Restaufgaben der Basis bleiben nachstehend erhalten.
+
+---
+
 # iPad Ultimate 2.0 — konkrete Restarbeiten
 
 [Gesicherter Produktstand, Ergebnisse und Pakete](AIR_OS_IPAD_ULTIMATE_2.md). `feature/private-ipad-pwa` bleibt unverändert; kein automatischer Rollout.
