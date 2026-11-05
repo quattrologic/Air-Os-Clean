@@ -42,3 +42,6 @@ Ultra design additions:
 - Open Runde Regular/Semibold: existing MacShell/Air-OS original font assets,
   copyright The Inter Project Authors, SIL OFL-1.1. Full license bundled in
   licenses/OpenRunde-OFL-1.1.txt; fonts unmodified, no CDN.
+MacTahoe GTK palette/chrome adaptation: Copyright (c) 2021 WhiteSur Developers.
+The unmodified MIT copyright/permission/disclaimer text is bundled in
+licenses/MacTahoe-GTK-MIT.txt. No GTK processes or installer scripts are included.
