@@ -2,6 +2,54 @@
 
 Development branch: `feat/air-os-ipad-system-experience-3`. Exact Ultra base: `12f8e401c21eb35debf2ed2180a283dc10de8476`. No deployment, merge, installed-PWA update, Tailscale change or data migration.
 
+## Geprüfter Abschluss
+
+Produkt-/Buildcommit: `9825478143f4fdc853ce5f3b558a85bb9b94d8be`. [Vollständig erfolgreicher Chromium-/WebKit-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42108237539). Evidenzcommit: `d637e120fd50e6c16e91a66ef719875cbde39411`. Die folgenden Checkpoint-Abschnitte dokumentieren auch zwischenzeitliche, später behobene Fehler; verbindlich ist dieser Abschlussstand.
+
+Implementiert: vollflächige App-Mediathek mit acht echten Kategorien/All Apps und sichtbarem Dock; gespeicherte Moduswahl, Touch-/Tastaturbedienung; abbrechbare, an echten Icon-Rechtecken ausgerichtete Appübergänge; konsistente Rückkehr zum Desktop; neu komponiertes Kontrollzentrum, Island-/Lock-/Widget-Hierarchie; gemeinsames Tahoe-App-Chrome und neu angeordnete Innenflächen für Finder, Notes/AirWrite, Musik, Kalender und Einstellungen; wiederverwendbare Bestätigung tatsächlich importierter Dateien. Alle 25 Einträge, Datenmodelle und bestehenden Controller bleiben erhalten.
+
+### Verifizierte Tests
+
+42/42 Node-Regressionsfälle (alle 40 Basisfälle plus zwei neue reine Launcher-Modellfälle), Pflichtaudit ohne bekannte Vulnerabilitäten, Paket-/CSP-/Lizenz-/Runtimeprüfung erfolgreich. **570 echte Browserchecks**, einschließlich der Vergleichsbasis:
+
+| Gate | Chromium | WebKit |
+| --- | ---: | ---: |
+| Exakte Ultra-Basis / kontrollierte Vorher-Szenen |7|7|
+| Neues Produkt / visuell / Bedienung / Lifecycle |34|34|
+| Materialpfad / DPR2 / GPU-Guard / Cleanup |11|11|
+| Apps / Daten / Touch / Offline-Neustart am Root |112|111|
+| Derselbe Ablauf unter `/Air-OS/` |112|111|
+| Geschützte Updates und kompatible Wiederherstellung |10|10|
+| Gesamt |286|284|
+
+Der Zählunterschied stammt aus der Touch-Treiberabdeckung: Chromium führt zwei native CDP-Prüfungen für Touch-Drag und Touchcancel aus; WebKit unterstützt im verwendeten Treiber einen echten Touch-Tap. Die Apps werden in beiden Engines geprüft. Gleiche native Gesture-Abdeckung oder eine physische iPad-Abnahme wird damit nicht behauptet. Die vollständigen Einzelprüfungen stehen im [Evidenzbericht](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/evidence.json). Beide Engines führen die reale PWA aus; ein iPad-User-Agent ersetzt keine Hardwareabnahme. Sechs Viewports: 1024×768, 1180×820, 1366×1024, 834×1194, 820×1180, 390×600; Touch-Emulation, zusätzlich DPR2-Materialprüfung, reduzierte Bewegung/Transparenz und Context Loss/Restore.
+
+### Echte Screenshots
+
+Je Engine 21 Vorher- und 32 Nachher-Szenen; ausgewählte PNGs im Repository, vollständige Aufnahmen einschließlich Viewports, Motion und Materialdiagnose im Actions-Artefakt. Alle Daten sind synthetisch, die Bilder unveränderte Browseraufnahmen.
+
+| Szene | Ultra vorher (Chromium) | System Experience 3 nachher (Chromium) |
+| --- | --- | --- |
+| Desktop quer |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/desktop.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/desktop.png)|
+| Desktop hoch |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/desktop-portrait.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/desktop-portrait.png)|
+| Launcher |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/launchpad.png)|[Categories](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/launcher-categories.png) · [All Apps](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/launcher-all-apps.png)|
+| Kontrollzentrum |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/control-center.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/control-center.png)|
+| Island |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/island.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/island.png)|
+| MacLock |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/lockscreen.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/lockscreen.png)|
+| Finder |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/finder.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/finder.png)|
+| Musik |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/music.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/music.png)|
+| Notes |[Vorher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/before-chromium/notes.png)|[Nachher](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/notes.png)|
+
+Zusätzlich: [Öffnen](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/motion-app-open.png), [Schließen](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/motion-app-close.png), [Appwechsel](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/motion-app-switch.png), [echter Importvertrag mit gespeicherter PNG-Testdatei](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/system-file-received.png), [Kalender](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/calendar.png), [Einstellungen](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-chromium/settings.png), [WebKit-Kategorien](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-webkit/launcher-categories.png), [WebKit-Musik](visual/ipad-system3/9825478143f4fdc853ce5f3b558a85bb9b94d8be/after-webkit/music.png). Motionbilder halten tatsächlich laufende Browseranimationen an; sie werden nicht nachgezeichnet.
+
+### Build und Integrationsgrenzen
+
+[Geprüftes PWA-Buildartefakt und Browserartefakte](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42108237539#artifacts): `Air-OS-iPad-System3-Build-9825478143f4fdc853ce5f3b558a85bb9b94d8be`. Darin `Air-OS-iPad-System-Experience-3-9825478143f4fdc853ce5f3b558a85bb9b94d8be.zip` und zugehörige SHA-256-Datei, außerdem kompatible Recovery/Preflight-Pakete. 125 exakte lokale Runtimeassets, keine native Laufzeit. Workflow: `.github/workflows/test-ipad-system3.yml`. Entsprechender Quellcode einschließlich neuer Portdateien, Bilder/Metadaten und Lizenztexte ist auch offline unter `source/source.zip` enthalten.
+
+Zusätzliche lokale ZIP-Prüfsumme: `33938551b56bdac5847fd30c47b5da7ea5b34bad2140b38fadc3c7988d5c37ad`. Diese gehört zum lokal erzeugten ZIP desselben Produktcommits; ZIP-Zeitstempel können von CI abweichen. Für das Actions-ZIP dessen beigelegte Prüfsumme verwenden.
+
+Keine Veröffentlichung, kein Merge, keine Installation, keine Tailscale-Änderung. Geschützte Remote-Stände bleiben Ultra `12f8e401c21eb35debf2ed2180a283dc10de8476` und private Installation `7de1635c0207b8604c5409ef62c466585b4d5f04`.
+
 ## Checkpoint A – launcher and lifecycle
 
 Full-scene App Library with All Apps / Categories, eight groups derived from the existing 25 registry entries; category view for new sessions, persistent user view preference; search, group expansion, keyboard navigation and touch dismissal. The original Dock stays visible; pins and lifecycle remain owned by the existing controllers.
@@ -64,3 +112,46 @@ CI `42105917530`, product `ef057f7af9cbc7eb38ff021bbeee28f9b1ed6460`: WebKit now
 Cause: the delayed viewport-fit callback cancels the close animation. The close method also treated this animation cancellation as cancellation of the already approved close request. It must instead use its existing close-request lease: a user reopen/focus/minimize invalidates that lease; resize, reduced motion or visibility only interrupt presentation. A new deterministic GUI test explicitly dispatches resize during close and fails against the previous product. The product correction preserves the close request while retaining the existing reopen protection. No test is relaxed; all previous fullscreen/Arcade cleanup checks remain.
 
 The same lifecycle pass restores the desktop menu label after closing/minimizing the final app or selecting an empty workspace. The visual gate closes every test window at the end and checks the empty registry, desktop menu label and zero active motion ownership.
+
+## Reference comparison and measurable geometry
+
+| Area | Actual reference / source | Implemented difference and remaining limit |
+| --- | --- | --- |
+| Categories | User-supplied OS crop, not outer video UI; InfinityOS registry menu | Four category cards per row, 2×2 real icons, labels outside, search above and retained Dock. Eight groups reflect the actual 25 entries; no invented apps/hidden group. Source InfinityOS has no tablet Categories UI; this layout is a browser adaptation. |
+| Desktop/widgets | Supplied MacShell desktop; MacWidgets/WidgetVisual and ClockWidget at pinned source | Clock/calendar pair above wide task/player cards, fine translucent edges, brighter licensed nature photo. Typography increased for touch. No invented weather data. Photo and native compositor differ from reference. |
+| Dock | Original MacDock/Spring via retained port | Same existing coupling and outer contour, actual pins/running apps; visible over launcher and auto-hide preference restored on exit. Own geometric Air-OS logo preserved. |
+| Control Center | MacShell GlassSlab/SPopUp composition | Hierarchy of paired status/focus, music slab, native volume and actual shortcuts. Unsupported OS controls omitted. Ordinary interface has no renderer/debug prose. |
+| Island/lock | Supplied MacShell lock; original media/clock composition | Large art/time, smaller transport slab, compact pill with expanded media/timer. Real local media only; no native system lock/auth claim. |
+| Apps | MacTahoe GTK palette/sidebar/toolbar construction | Composed interior sidebars, toolbars, writing paper, cover hierarchy, calendar inspector and settings groups. Browser controls and iPad touch geometry deliberately differ from native GTK. |
+
+Measured in final local synthetic GUI (CSS pixels):
+
+| Viewport | Window host | Dock | Island | Document overflow |
+| --- | --- | --- | --- | --- |
+|1180×820|x0, y28, 1180×792, bottom820|x224.5, bottom820, 731×66.52|x524, y0, 132×39|none|
+|834×1194|x0, y28, 834×1166, bottom1194|x51.5, bottom1194, 731×66.52|x351, y0, 132×39|none|
+|390×600|x0, y28, 390×572, bottom600|x9, bottom600, 372×66|x139.38, y0, 111.23×39|none|
+
+The iPad Ultra base already uses a 28px touch menu bar; the desktop 24px bar is outside this branch and unchanged. Host side/bottom gaps are zero. Dock overlays the work area. Motion records contain actual icon-origin/target rectangles and real paused browser animation frames, not reconstructed images. Reference images are visible in conversation but not local pixel files: this is a direct visual/source comparison plus DOM measurements, not a claimed pixel-distance comparison against supplied references.
+
+## Data, updates and private rollout boundary
+
+IndexedDB remains `air-os-ipad-tracks-v1`, schema 2; no schema/data migration, library rewrite or automatic reset. New launcher preference uses the existing generic settings contract. All 25 registry IDs/modes remain intact (16 local apps, 9 clearly marked external alternatives). Original audio/metadata/calendar/timer/backups and dirty editor protections remain authoritative.
+
+Service-worker protocol remains v5 with content-hashed cache version. Navigation redirect correction, complete-cache validation, multitab dirty/audio protection and consented activation are unchanged. Local safe-update suite: 10/10 passed on the committed product. Package gate: 125 exact local runtime assets, no native runtime; mandatory audit finds 0 vulnerabilities. No install/update/deployment command has targeted the private host. Tailscale remains the existing fallback. An eventual rollout needs a separate backup and explicit approval; no such action is performed here.
+
+## Native limitations
+
+Physical iPad/Safari Home-Screen installation, actual virtual keyboard, Pencil hardware, physical GPU, battery/thermal behavior, audio output/background playback, suspend/resume and iPadOS windowing remain open. Automated WebKit is a browser-engine test, not hardware acceptance. Some generic Air-OS glyphs and the inner layouts of smaller legacy apps remain distinct from native MacTahoe. Standard CSS is not Snell refraction; isolated software diagnostic results are not hardware acceleration. No native iPadOS gesture, window, lock, clipboard or global media control is claimed. No new transfer protocol, backend or private cloud deployment.
+
+## Gesicherte Checkpoints
+
+- `e42a667714824e68e3e5321a2d41d73735f7c548`: Launcher, Icon-Ursprünge und Präsentationsscheduler.
+- `7f864c2e31d7c9ad6b95d5dd638175f86afd5123`: Systemflächen, Importansicht, App-Innenflächen und Browsergate.
+- `82241727c77e28035563a4f21e01f786ef900315`: Kategorien als Vorgabe, Vergleichsfixtures, Tastaturfokus.
+- `ef057f7af9cbc7eb38ff021bbeee28f9b1ed6460`: begrenzte WebKit-Komposition; vollständig erfolgreicher WebKit-Lauf.
+- `800f2d109c15c7d15e9d63587fadf6ea14097bc7`: reproduzierter und reparierter Close-/Resize-Lifecyclefehler.
+- `9825478143f4fdc853ce5f3b558a85bb9b94d8be`: endgültiger geprüfter Produkt-/Buildstand, Rückkehr zur Desktop-Menüzeile.
+- `d637e120fd50e6c16e91a66ef719875cbde39411`: vollständige synthetische Evidenz des erfolgreichen Abschlusslaufs.
+
+Alle Produktänderungen liegen ausschließlich auf `feat/air-os-ipad-system-experience-3`. Der nachfolgende Dokumentationscommit sichert diesen Bericht; er verändert keine Runtimeassets. Keine offenen fehlgeschlagenen automatisierten Gates. Verbleibende Grenzen betreffen die oben ausdrücklich aufgeführten Designunterschiede und reale Geräteabnahme.

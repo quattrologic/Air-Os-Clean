@@ -272,6 +272,6 @@
     "step": 0.01
   },
   "status": "passed",
-  "sourceIdentity": "Local uncommitted development iteration after checkpoint e42a667; final exact-source rerun is in Actions",
+  "sourceIdentity": "Local development iteration preparing checkpoint e42a667; final exact-source rerun is in Actions",
   "round": "round1"
 }
