@@ -1,0 +1,55 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "fixedTime": "2026-11-05T18:40:00Z",
+  "checks": [
+    "lock hides calendar and reminder supplement",
+    "new local sessions enter the category system mode",
+    "eight categories derive from all 25 real registry entries",
+    "expanded category exposes its five real apps",
+    "all apps remains the same 25-entry registry",
+    "large wallpaper blur changes do not interpolate",
+    "Dock stays above the launcher scene",
+    "launcher app opening retains the real icon rectangle",
+    "reopening cancels stale close without removing the live window"
+  ],
+  "screens": [
+    "lockscreen",
+    "lockscreen-portrait",
+    "desktop",
+    "desktop-portrait",
+    "widgets",
+    "menubar",
+    "dock",
+    "launchpad",
+    "launcher-categories",
+    "launcher-all-apps",
+    "spotlight",
+    "control-center",
+    "island",
+    "motion-app-open",
+    "motion-app-close"
+  ],
+  "geometry": [],
+  "errors": [],
+  "openMotion": {
+    "kind": "window",
+    "origin": {
+      "x": 140,
+      "y": 161,
+      "width": 135,
+      "height": 123
+    },
+    "duration": 280,
+    "target": {
+      "x": 140,
+      "y": 161,
+      "width": 135,
+      "height": 123
+    }
+  },
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: viewport interruption preserves the explicitly requested close\n    at check (/workspace/Air-Os-iPad-System3/scripts/test-ipad-system3.cjs:6:811)\n    at run (/workspace/Air-Os-iPad-System3/scripts/test-ipad-system3.cjs:9:1410)",
+  "sourceIdentity": "New forced-resize regression applied to ef057f7 product (plus documentation/evidence commits); failed before lifecycle correction"
+}
