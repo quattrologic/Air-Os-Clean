@@ -22,3 +22,20 @@ Corresponding Source, including modified browser source, build/test scripts and
 notices, is offered locally at ./source/source.zip in every built package.
 Open Settings > Licenses and Source or the persistent Source link.
 No third-party binaries, proprietary logos or InfinityOS ISO are bundled.
+
+Ultra design additions:
+- MacShell ClockWidget.qml tickGeo (MIT, Rickky2026 / 0-ss) at fixed commit
+  1bdb51870b621100fd2709f66c8f8e00ab17b9c4: vendor/macshell/clock-dial.js.
+- Existing Air-OS R7 GLASS-3 renderer, geometry and MacShell GLSL adaptations
+  from 02ccaf88724731cf685d2221f88e959020aff3f0, adapted to browser selectors
+  and quality/lifecycle settings in vendor/glass/. MacShell MIT retained in licenses/.
+- MacTahoe GTK neutral palette (#242424/#282828/#f5f5f5/#363636), MIT,
+  commit 1e45e19f510edb8cde18fa84d6cd5319f60b086b; CSS adaptation, no GTK runtime.
+- InfinityOS web winOpen curve adapted for bounded browser presentation; AGPL-3.0,
+  commit a6584135cbcad837d57484211119451bbb2d8fb2. Existing source offer applies.
+- Photograph "Path", Risto Saukonpää, LGPLv3, unmodified original from KDE
+  plasma-workspace-wallpapers commit 0643e9404da07d204014549d9f734424fdf961ed,
+  Path/contents/images/2560x1600.jpg. Original metadata and license are bundled
+  in assets/forest-path.metadata.json and licenses/KDE-wallpaper-LGPL-3.0.txt.
+  The image itself is also included unmodified in the corresponding source archive.
+  LGPL supplement requires the accompanying GPLv3 text: licenses/InfinityOS-Linux-GPL-3.0.txt.

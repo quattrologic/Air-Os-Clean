@@ -118,6 +118,7 @@
     }
   }
   function renderMedia() {
+    document.documentElement.dataset.mediaPaused=String(audio.paused);
     const track = current();
     const recent = last();
     $('#player-title').textContent = track?.title || 'Noch keine Musik';

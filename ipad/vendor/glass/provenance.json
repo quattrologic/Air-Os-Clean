@@ -1,0 +1,55 @@
+{
+  "desktopSourceCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+  "adaptations": [
+    "Existing GLASS-3 engine adapted to iPad selectors and quality settings",
+    "MacShell family only, existing GPU guards retained",
+    "BFCache lifecycle and browser quality events",
+    "No capture; same-origin licensed wallpaper only"
+  ],
+  "sources": [
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/ClockWidget.qml",
+      "license": "MIT",
+      "sha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/CalendarWidget.qml",
+      "license": "MIT",
+      "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/PlayerWidget.qml",
+      "license": "MIT",
+      "sha256": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/WidgetVisual.qml",
+      "license": "MIT",
+      "sha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/GlassSlab.qml",
+      "license": "MIT",
+      "sha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca"
+    },
+    {
+      "project": "KDE plasma-workspace-wallpapers",
+      "commit": "0643e9404da07d204014549d9f734424fdf961ed",
+      "path": "Path/contents/images/2560x1600.jpg",
+      "license": "LGPL-3.0",
+      "author": "Risto Saukonp\u00e4\u00e4",
+      "sha256": "7477457d7f17b736259f1b021864778ad4ba802cf3214e6728181ff29126bba8",
+      "modified": false
+    }
+  ]
+}
