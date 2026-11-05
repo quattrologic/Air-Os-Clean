@@ -16,3 +16,35 @@ MacShell MIT, MacTahoe GTK MIT, Icons GPL-3.0, InfinityOS-Web AGPL-3.0. Kombinie
 Eigenständige Integration: Control-Center-Komposition, Browser-Layout/CSS-Fallback, Touchhitboxen, monochrome Glyphen und Adapter für bestehende Datencontroller. Keine Qt-/GNOME-Runtime, keine neue Datenhaltung oder Appregistry.
 
 Vorläufig geprüft: alle bestehenden 37 Node-Tests; Chromium-Vergleichsrunde 1 und 2, zweite Runde 19 Prüfungen/19 Aufnahmen. Die erste Runde zeigte beschnittene Hovericons und Emoji-Medienbuttons; Produktcode korrigiert. Weitere Vergleichs-/Browser-/Update-/Offlineprüfungen folgen. Physische iPad-Abnahme offen.
+
+## Visuelle Prüfung und Korrekturen
+
+Die im Gespräch sichtbaren MacShell-Desktop-/MacLock-Bilder sind Kompositionsreferenzen: zwei kleine obere Widgets, breite Module darunter, zurückhaltende Menüzeile, niedriger Dock und zentraler Lock-Medienbereich. Sie liegen hier nicht als lokale Originalbilddateien vor; kein behaupteter Pixelidentitätsvergleich. Die Produktaufnahmen vor/nach stammen dagegen aus identischen automatisierten Browserszenen mit synthetischem Cover/WAV, Notiz, Aufgabe, Termin und fixierter Testzeit. Keine Retusche.
+
+1. [Runde 1](visual/ipad-ultra-local/round1/desktop.png): neue Fotografie, Widget-/Panelkomposition und neutrales Chrome. Erkannte Probleme: abgeschnittene Hovericons, Emoji-Transport, Notes-Titel angeschnitten.
+2. [Runde 2](visual/ipad-ultra-local/round2/desktop.png): dynamische Dockhöhe, monochrome MacTahoe-Medienmasken, mehr echte Standardapps, aktualisierter Überlappungsbereich. Notes-Scrollrand blieb problematisch.
+3. [Runde 3](visual/ipad-ultra-local/round3/notes.png): negative Sidebarmargins entfernt, Scrollanchoring begrenzt, Toolbar nach oben, echte Titel-/Papierhierarchie. Anschließend letzter Proportionspass: quadratische Widgets, dichterer Monatsraster, ruhiger Panel-Fokus, originale Open-Runde-Schriften lokal gebündelt.
+
+| Bereich | Vorher / Nachher | Bewusste Grenze |
+|---|---|---|
+| Desktop | [vorher](visual/ipad-ultra-local/before/desktop.png) / [nachher](visual/ipad-ultra-local/after/desktop.png) | Lizenzierte Wald-/Naturfotografie statt ungeklärtem Yosemite-/Apple-Bild |
+| Hochformat | [vorher](visual/ipad-ultra-local/before/desktop-portrait.png) / [nachher](visual/ipad-ultra-local/after/desktop-portrait.png) | Touchgerechte Mindestgrößen; keine identische Qt-Skalierung |
+| Dock | [vorher](visual/ipad-ultra-local/before/dock.png) / [nachher](visual/ipad-ultra-local/after/dock.png) | Bestehende Pins unverändert; lange Reihen horizontal scrollbar |
+| Kontrollzentrum | [vorher](visual/ipad-ultra-local/before/control-center.png) / [nachher](visual/ipad-ultra-local/after/control-center.png) | Browseraktionen; keine vorgetäuschten OS-Schalter |
+| MacLock | [vorher](visual/ipad-ultra-local/before/lockscreen.png) / [nachher](visual/ipad-ultra-local/after/lockscreen.png) | Lokale visuelle Sperransicht; keine neue Authentifizierung |
+| Notes | [vorher](visual/ipad-ultra-local/before/notes.png) / [nachher](visual/ipad-ultra-local/after/notes.png) | Vorhandene Textlogik/Dirty-Schutz erhalten |
+| Finder | [vorher](visual/ipad-ultra-local/before/finder.png) / [nachher](visual/ipad-ultra-local/after/finder.png) | Ausschließlich interner, autorisierter Browserspeicher |
+| Musik | [vorher](visual/ipad-ultra-local/before/music.png) / [nachher](visual/ipad-ultra-local/after/music.png) | Ein vorhandenes Audioelement, keine zweite Engine |
+
+Messwerte und DOM-Rechtecke stehen in den jeweiligen `report.json`. Der letzte Normalfenster-Notes-Titel liegt vollständig innerhalb des Inhaltsbereichs. Die Menüzeile beträgt 28 CSS-Pixel, Island bleibt eigenständig 39 Pixel. Sichtbare schmale Statusbuttons besitzen auf Touch durch Pseudoelemente erweiterte 44px-Zielflächen. Trafficlights haben kleine sichtbare Punkte in separaten größeren Buttons.
+
+## Zwischenstand der Tests
+
+- 40/40 Node-Tests einschließlich aller 37 Ausgangstests bestanden.
+- Chromium: Root 112/112 und `/Air-OS/` 112/112 echte Browserprüfungen bestanden, inklusive lokalen Appabläufen, Datei-/Audioimport, Datenpersistenz, Touch/Pointercancel, Viewportwechsel und kaltem Offline-Neustart/DPR2.
+- Kontrollierte visuelle Szenen: letzter Lauf 19 Prüfungen, 22 Aufnahmen; gepinnte Basis 7 Prüfungen, 21 Aufnahmen.
+- Materialprüfung: 10 Prüfungen bestanden. Standard ohne GL-Allokation; Hochwertig mit GPU-Klassifikation; isolierte Originalshader, echte Pixeldifferenz, Idle-Draw-Stabilität, Context Loss/Restore und Cleanup.
+- Fester Playwright-Testtoolchain-Audit: keine bekannten Schwachstellen.
+- WebKit wird zusätzlich über den neuen reinen Test-/Artefaktworkflow `.github/workflows/test-ipad-ultra.yml` geprüft. Ergebnis bei diesem Checkpoint noch ausstehend.
+
+Checkpoint 1: `1fca54b`. Nächster Produkt-/Testcheckpoint enthält die drei Korrekturrunden, Font-/Renderer-Lifecycle-Härtung und den Browserworkflow. Diese Dokumentation behauptet noch keinen erfolgreichen CI-/Hardwareabschluss.

@@ -1,0 +1,225 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "fixedTime": "2026-11-05T18:40:00Z",
+  "checks": [
+    "no horizontal document overflow 1024",
+    "no horizontal document overflow 1180",
+    "no horizontal document overflow 1366",
+    "no horizontal document overflow 834",
+    "no horizontal document overflow 820",
+    "no horizontal document overflow 390",
+    "no uncaught visual browser errors"
+  ],
+  "screens": [
+    "lockscreen",
+    "desktop",
+    "widgets",
+    "dock",
+    "launchpad",
+    "spotlight",
+    "control-center",
+    "island",
+    "notes",
+    "finder",
+    "music",
+    "two-windows",
+    "workspace-1024x768",
+    "workspace-1180x820",
+    "workspace-1366x1024",
+    "workspace-834x1194",
+    "workspace-820x1180",
+    "workspace-390x600"
+  ],
+  "geometry": [
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1024,
+        "height": 740,
+        "right": 1024,
+        "bottom": 768
+      },
+      "dock": {
+        "x": 227.5,
+        "y": 702,
+        "width": 569,
+        "height": 66,
+        "right": 796.5,
+        "bottom": 768
+      },
+      "notch": {
+        "x": 446,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 578,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 1180,
+        "height": 820
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1180,
+        "height": 792,
+        "right": 1180,
+        "bottom": 820
+      },
+      "dock": {
+        "x": 305.5,
+        "y": 754,
+        "width": 569,
+        "height": 66,
+        "right": 874.5,
+        "bottom": 820
+      },
+      "notch": {
+        "x": 524,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 656,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 1024
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 1366,
+        "height": 996,
+        "right": 1366,
+        "bottom": 1024
+      },
+      "dock": {
+        "x": 398.5,
+        "y": 958,
+        "width": 569,
+        "height": 66,
+        "right": 967.5,
+        "bottom": 1024
+      },
+      "notch": {
+        "x": 617,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 749,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 834,
+        "height": 1194
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 834,
+        "height": 1166,
+        "right": 834,
+        "bottom": 1194
+      },
+      "dock": {
+        "x": 132.5,
+        "y": 1128,
+        "width": 569,
+        "height": 66,
+        "right": 701.5,
+        "bottom": 1194
+      },
+      "notch": {
+        "x": 351,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 483,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 820,
+        "height": 1152,
+        "right": 820,
+        "bottom": 1180
+      },
+      "dock": {
+        "x": 125.5,
+        "y": 1114,
+        "width": 569,
+        "height": 66,
+        "right": 694.5,
+        "bottom": 1180
+      },
+      "notch": {
+        "x": 344,
+        "y": 0,
+        "width": 132,
+        "height": 39,
+        "right": 476,
+        "bottom": 39
+      },
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "host": {
+        "x": 0,
+        "y": 28,
+        "width": 390,
+        "height": 572,
+        "right": 390,
+        "bottom": 600
+      },
+      "dock": {
+        "x": 9,
+        "y": 534,
+        "width": 372,
+        "height": 66,
+        "right": 381,
+        "bottom": 600
+      },
+      "notch": {
+        "x": 140.8359375,
+        "y": 0,
+        "width": 108.328125,
+        "height": 39,
+        "right": 249.1640625,
+        "bottom": 39
+      },
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

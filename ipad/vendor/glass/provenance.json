@@ -4,7 +4,11 @@
     "Existing GLASS-3 engine adapted to iPad selectors and quality settings",
     "MacShell family only, existing GPU guards retained",
     "BFCache lifecycle and browser quality events",
-    "No capture; same-origin licensed wallpaper only"
+    "No capture; same-origin licensed wallpaper only",
+    "Standard quality does not initialize WebGL",
+    "Opt-in high: source <=2 million pixels, texture dimensions <=2048, max width1920",
+    "MacShell GLSL families retained; no Hyprland family UI or runtime",
+    "CSS fallback is Chromium/WebKit compositor blur, not Snell refraction"
   ],
   "sources": [
     {
@@ -50,6 +54,60 @@
       "author": "Risto Saukonp\u00e4\u00e4",
       "sha256": "7477457d7f17b736259f1b021864778ad4ba802cf3214e6728181ff29126bba8",
       "modified": false
+    },
+    {
+      "project": "Open Runde bundled by Air-OS/MacShell",
+      "repositoryCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "third_party/maclock/fonts/OpenRunde-Regular.otf",
+      "license": "OFL-1.1",
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc"
+    },
+    {
+      "project": "Open Runde bundled by Air-OS/MacShell",
+      "repositoryCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "third_party/maclock/fonts/OpenRunde-Semibold.otf",
+      "license": "OFL-1.1",
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "air-desktop-glass.js",
+      "sha256": "7ee8c661b5ba5ef5a6ada474e17123f790985d32037de1020f48757229be7a6d",
+      "target": "ipad/vendor/glass/renderer.js",
+      "license": "MIT"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "macshell-glass2-shaders.js",
+      "sha256": "b00430feca27cfc686c564102451cc03a4c9b7d351f5555eb07b40ba9a7699b6",
+      "target": "ipad/vendor/glass/shaders.js",
+      "license": "MIT"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "src/core/glass-geometry.js",
+      "sha256": "3660b884e70570b9951655302fe94220184059b6d8a190b1c950ef3f30c4e355",
+      "target": "ipad/vendor/glass/geometry.js",
+      "license": "MIT"
+    },
+    {
+      "project": "MacTahoe GTK",
+      "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+      "path": "src/sass/_colors.scss",
+      "sha256": "b1de81a22c64d71c6b195b528a72f9fb37eab6a89c1fe70e437b55b023d4d83d",
+      "license": "MIT",
+      "target": "ipad/desktop.css (neutral palette adaptation)"
+    },
+    {
+      "project": "InfinityOS web",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "styles.css",
+      "sha256": "2f375c1241ab1ab499cd2e67da667add7cce993d40680683fcc87a44c55b43e3",
+      "license": "AGPL-3.0",
+      "target": "ipad/core/visual-motion.js (winOpen curve adaptation)"
     }
   ]
 }
