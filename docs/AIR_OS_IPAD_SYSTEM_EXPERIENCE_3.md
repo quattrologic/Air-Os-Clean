@@ -50,3 +50,9 @@ Final local visual gate at this checkpoint: 28 checks /31 screenshots; 42 Node t
 Final usability correction: fresh sessions open Categories, while a saved All Apps preference is respected. Keyboard tabs use roving focus. Regression tests explicitly choose All Apps before testing the legacy category filter; tests do not force the product default. The imported screenshot fixture is removed from the isolated test store before comparative Finder captures so before/after app contents match.
 
 The final local visual suite now checks 31 conditions, including the new-session category default, five-app expansion of Produktivität and the actual persisted Focus preference. Viewport fitting cancels in-flight presentation effects before using the existing central bounds model.
+
+## Browser-gate correction
+
+CI `42104409361`, source `82241727c77e28035563a4f21e01f786ef900315`: Chromium passes all 283 GUI checks across before/after/material/root/subpath/update reports. WebKit passes the baseline and renders all requested new scenes, then its page closes after the 24th visual check during repeated launcher/material changes. This is a failed WebKit acceptance, not a completed Safari result. Evidence is retained under `docs/visual/ipad-system3/82241727c77e28035563a4f21e01f786ef900315/`.
+
+A product correction removes full-viewport blur interpolation, caps launcher blur at 16px, releases hidden widget scene layers and restricts detailed title materials to the focused internal window. The same material owner observes window-focus changes and reconciles dormant layers. Reduced Transparency avoids launcher blur. The visual sequence is retained and gains an explicit no-blur-interpolation check and renderer-crash reporting. No test step or data gate is skipped. The full two-engine gate is rerun before acceptance.
