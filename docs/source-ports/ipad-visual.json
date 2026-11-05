@@ -44,6 +44,6 @@
   "limits": [
     "No new shaderengine or private screen capture",
     "No claimed pixel identity or native iPadOS lock",
-    "Earlier reference images available only as chat images; filesystem comparison uses captured Air-OS baseline and verified upstream code"
+    "MacShell reference visible in chat; no local original reference-image files and no separately verifiable InfinityOS image file. Comparison uses pinned Air-OS baseline and verified upstream code"
   ]
 }
