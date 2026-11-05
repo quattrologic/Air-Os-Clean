@@ -147,7 +147,7 @@
     $$('[data-control]').forEach(button => {
       button.disabled = !state.unlocked || !track;
       if (button.dataset.control === 'toggle') {
-        button.textContent = audio.paused ? '▶' : '❚❚';
+        button.textContent = audio.paused ? '▶︎' : '❚❚';
         button.setAttribute('aria-label', audio.paused ? 'Abspielen' : 'Pausieren');
       }
     });
