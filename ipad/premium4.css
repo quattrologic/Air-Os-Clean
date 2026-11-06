@@ -160,3 +160,72 @@ html[data-quality="Reduzierte Transparenz"] .s3-control-center :is(.s3-connectiv
 .pad-window[data-mode=maximized]>.s3-app,.pad-window[data-mode=left]>.s3-app,.pad-window[data-mode=right]>.s3-app{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
 @media(max-width:520px){.pad-window>.s3-app{padding-bottom:calc(80px + env(safe-area-inset-bottom))}}
 @media(prefers-reduced-transparency:reduce){.s3-control-center :is(.s3-connectivity,.s3-control-connect>button,.pad-control-player,.pad-control-volume,.pad-control-tile){background:#303540;backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+
+/* PREMIUM 5: reference-led readability and visual hierarchy pass.
+   Keeps MacTahoe app interiors, MacShell control slabs, InfinityOS launcher,
+   and all existing controller/storage/animation owners unchanged. */
+:root{--p5-ink:#34363e;--p5-muted:#757985;--p5-line:rgba(44,48,61,.105);--p5-accent:#4b7bb9}
+.pad-window:not([data-mode=maximized]):not([data-mode=left]):not([data-mode=right]){border-radius:17px}
+.pad-window.focused{box-shadow:0 24px 76px #0814286b,0 2px 9px #08142829}
+.pad-titlebar{background:linear-gradient(180deg,#f9f9fa,#f1f1f4);border-bottom:1px solid var(--p5-line)}
+.pad-titlebar strong{font-size:13px;letter-spacing:-.012em;color:var(--p5-ink)}
+.s3-app .s3-app-sidebar,.s3-app .pad-split>aside,.p4-notes-rail{color:var(--p5-ink)}
+.s3-app .s3-app-sidebar button{font-size:13px;font-weight:500}
+.s3-app .s3-app-sidebar button.selected{background:#dce6f5;color:#244e7c;box-shadow:inset 0 0 0 1px #3c6fb31f}
+.s3-app .pad-toolbar{border-bottom:1px solid var(--p5-line)}
+.s3-app .pad-toolbar button{font-size:13px}
+.s3-app .pad-toolbar button:hover,.s3-app .pad-toolbar button:focus-visible{background:#e8edf5;color:#2e577d}
+.s3-app :is(button,input,select,textarea):focus-visible,.s3-launcher :is(button,input,select):focus-visible{outline:2px solid var(--p5-accent);outline-offset:2px}
+.s3-file-main .pad-breadcrumb button{font-size:15px;font-weight:600}
+.p4-file-columns{font-size:11px;font-weight:600;letter-spacing:.02em;padding-block:10px}
+.s3-file-main .pad-file-list{padding:10px 14px}
+.s3-file-main .pad-file-row{min-height:54px;border-radius:9px}
+.s3-file-main .pad-file-row:hover{background:#f3f5f9}
+.s3-file-main .pad-file-row>button:first-of-type{font-size:14px}
+.s3-file-main .pad-file-row>small{font-size:12px;color:var(--p5-muted)}
+.s3-app .pad-editor{background:#fffefd}
+.s3-app .pad-editor>.pad-toolbar{background:#fbfaf9}
+.s3-app .pad-editor>input[aria-label=Titel]{font-size:27px;line-height:1.25;margin-top:18px}
+.s3-app .pad-text-editor{font-size:15px;line-height:1.8;color:#41434a}
+.s3-app .pad-list strong{font-size:13px}
+.s3-app .pad-list small{font-size:11px;line-height:1.5}
+.p4-notes-heading{font-size:17px;font-weight:600}
+.p4-library-heading h1{font-size:29px}
+.s3-music-now{border-color:var(--p5-line);background:linear-gradient(130deg,#f5f6fa,#f2f2f5)}
+.s3-music-now .music-now strong{font-size:24px}
+.s3-music-now .music-now small{font-size:12px}
+.s3-music-main>h3{font-size:18px}
+.s3-music-main .s3-song-label strong{font-size:14px}
+.s3-music-main .s3-song-label small{font-size:12px}
+.s3-music-main .song-row{min-height:50px}
+.s3-calendar-main .pad-month h3{font-size:27px}
+.s3-calendar-main .pad-month>strong{font-size:11px}
+.p4-day-number{font-size:14px}
+.p4-day-event{font-size:10px;padding:4px 5px}
+.s3-calendar-agenda>h3{font-size:15px}
+.s3-calendar-agenda .event-form label{font-size:12px}
+.s3-settings-main{background:#f4f4f6}
+.p4-settings-heading h1{font-size:28px}
+.s3-settings-main h2{font-size:15px}
+.s3-settings-main label{font-size:13px;min-height:52px;color:#464955}
+.s3-settings-main>section>button{font-size:13px;min-height:48px}
+.s3-settings-main .settings-row{font-size:12px}
+.pad-popover.s3-control-center,.pad-retiring-popover.s3-control-center{width:min(374px,calc(100vw - 24px));gap:10px}
+.s3-control-center>header h2{font-size:14px;font-weight:600}
+.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile{background:linear-gradient(145deg,#ffffff2b,#1219258c),#19212f99;border-color:#ffffff59;box-shadow:inset 0 1px #ffffff40,0 9px 25px #040c182b}
+.s3-connectivity,.s3-control-connect>button{min-height:74px}
+.s3-connectivity strong{font-size:12px}
+.s3-connectivity>span:last-child{font-size:11px}
+.s3-control-center .pad-control-player strong{font-size:12px}
+.s3-control-center .pad-control-player small{font-size:10px}
+.s3-control-center .pad-control-tile{font-size:12px;min-height:62px}
+.s3-control-center .pad-control-tools button{font-size:11px}
+.s3-category>button{font-size:13px;font-weight:500;text-shadow:0 2px 6px #0006}
+.s3-category-tile{border-color:#ffffff57;box-shadow:inset 0 1px #ffffff3d,0 12px 32px #0003}
+.s3-category-tile>button:focus-visible{border-radius:13px}
+.s3-launcher .pad-launch-grid strong{font-size:12px}
+.s3-launcher .pad-launch-grid small{font-size:10px}
+@media(max-width:600px){.s3-app .pad-editor>input[aria-label=Titel]{font-size:23px}.p4-library-heading h1,.p4-settings-heading h1{font-size:24px}.pad-popover.s3-control-center,.pad-retiring-popover.s3-control-center{width:min(344px,calc(100vw - 20px))}}
+@media(prefers-reduced-transparency:reduce){.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile{background:#303743;backdrop-filter:none;-webkit-backdrop-filter:none}}
+html[data-quality="Reduzierte Transparenz"] .s3-control-center :is(.s3-connectivity,.s3-control-connect>button,.pad-control-player,.pad-control-volume,.pad-control-tile){background:#303743}
