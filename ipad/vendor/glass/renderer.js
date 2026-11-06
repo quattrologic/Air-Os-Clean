@@ -7,7 +7,7 @@
  const cssHosts=new Set();
  function cssFallback(active){
   const enabled=active&&!disposed&&!reduced(),keep=new Set();
-  if(enabled){const cw=Math.max(innerWidth,innerHeight*1.6),ch=cw/1.6; // bundled unmodified photograph: 2560 x 1600
+  if(enabled){const ratio=Number(getComputedStyle(document.documentElement).getPropertyValue('--wallpaper-ratio'))||1.6,cw=Math.max(innerWidth,innerHeight*ratio),ch=cw/ratio; // actual bundled image ratio, shared with CSS cover
    for(const el of document.querySelectorAll(selectors)){const r=el.getBoundingClientRect();if(!r.width||!r.height||el.closest('[hidden],[inert]'))continue;keep.add(el);cssHosts.add(el);el.classList.add('ultra-css-material');
     for(const [name,value]of Object.entries({'--ultra-wall-size':cw+'px '+ch+'px','--ultra-wall-position':((innerWidth-cw)/2-r.x)+'px '+((innerHeight-ch)/2-r.y)+'px'}))if(el.style.getPropertyValue(name)!==value)el.style.setProperty(name,value);
    }

@@ -8,7 +8,7 @@ module.exports=async function({page,check,shot,open}){
 };
 
 module.exports.sourceOffer=async({page,check})=>{
- await page.evaluate(()=>airDesktop.open('settings'));if(await page.locator('[data-app=settings] .s3-settings-main>details').count())await page.locator('[data-app=settings] .s3-settings-main>details>summary').click();const download=page.waitForEvent('download');await page.locator('[data-app=settings]').getByRole('link',{name:'Lizenzen und Quellcode (AGPL-3.0)',exact:true}).click();const source=await download;const file=await source.path();cp.execFileSync('python3',['-c',`import zipfile,sys
+ await page.evaluate(()=>airDesktop.open('settings'));if(await page.locator('[data-app=settings] .s3-settings-main>details').count())await page.locator('[data-app=settings] .s3-settings-main>details>summary').click();const download=page.waitForEvent('download');await page.locator('[data-app=settings]').getByRole('link',{name:'Lizenzen und Quellcode (AGPL-3.0)',exact:true}).click();const source=await download;const file=await source.path();cp.execFileSync(process.env.AIR_PAD_PYTHON||'python3',['-c',`import zipfile,sys
 with zipfile.ZipFile(sys.argv[1]) as z:
  for p in ['ipad/core/infinity-web.js','ipad/core/infinity-dock.js','ipad/NOTICE','ipad/licenses/InfinityOS-AGPL-3.0.txt','scripts/write-ipad-source.cjs']:assert p in z.namelist(),p
  assert not any('/.git/' in n or n.endswith(('.sqlite','.db','.env')) for n in z.namelist())
