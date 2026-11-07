@@ -104,3 +104,11 @@ Originalkoordinaten sind aus dem sichtbaren Inlinebild abgelesene Näherungen, k
 Die Sichtprüfung fand zusätzlich einen doppelten Musikglyphen bei fehlendem Cover (ursprünglicher Textknoten plus neuer Fallback). Korrigiert und im selben Lauf geprüft. Das vorhandene Cover-/Musikmodell wurde dabei nicht verändert.
 
 Spotify-API-Pfade und PKCE-Empfehlung zusätzlich anhand des offiziellen `spotify/spotify-web-api-ts-sdk` geprüft, HEAD `c6f34491eaa17ab73698d5464ee10332d0c551cc`, `README.md` und `src/endpoints/PlayerEndpoints.ts`. Kein SDK-Code übernommen. Aktuelle individuelle Kontofreigaben bleiben offen.
+
+## Backup-Kompatibilität und Laufzeiteinstellungen
+
+Die letzte Querschnittsprüfung fand eine Integrationslücke: Der bewährte v1-Backupimport besitzt eine strikte Settings-Allowlist. Die beiden neuen Laufzeitschlüssel dürfen daher nicht ungeprüft in portable Backups gelangen. `backup.js` filtert ausschließlich `last-played-metadata-v1` und `spotify-public-config` bereits im Backup-Snapshot; Größenprüfung, Export und Restore-Vertrag bleiben dadurch konsistent. Keine neuen erlaubten Importrechte, keine Schemaänderung, keine Datenbanklöschung.
+
+Bestehende Musikblobs, lokale Cover/Trackmetadaten, letzter lokaler Titel/Abspielposition über den bisherigen Legacy-Vertrag, Kalender, Dateien, Notizen, Timer und Einstellungen bleiben im bisherigen Backupformat. Die zusätzliche zweiquellige Lock-Metadatenprojektion und öffentliche Spotify-Client-Konfiguration sind bewusst originbezogen und nicht im portablen Backup. Nach Restore in einem frischen Origin kann die lokale letzte Wiedergabe aus dem bisherigen Vertrag rekonstruiert werden; Spotify-Verlauf erst nach erneuter Einrichtung/Anmeldung. Im selben Origin bleiben bestehende Projektionen beim Import unangetastet. Keine automatische Herkunfts- oder Kontenübernahme behauptet.
+
+Der neue GUI-Fall exportiert nach tatsächlicher Wiedergabe, prüft den Ausschluss dieser zwei Laufzeitschlüssel und stellt das Backup ausdrücklich mit synthetischen Daten wieder her; beide Musikblobs und der vorhandene letzte lokale Metadatensatz bleiben erhalten. Die normale private Installation wurde dabei nicht geöffnet.
