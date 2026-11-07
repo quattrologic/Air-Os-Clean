@@ -1,0 +1,6759 @@
+{
+  "sourceCommit": "11c5b34e7d6304a76fc5a37a8de8184dfeea00b2",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/42374274723",
+  "physicalIPad": false,
+  "reports": {
+    "after-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 394,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 630,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 472,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 708,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 565,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 801,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 1166,
+            "right": 834,
+            "bottom": 1194
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 299,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 535,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 292,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 528,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 77,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 313,
+            "bottom": 32
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.99,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "after-dpr2-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 394,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 630,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 472,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 708,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 565,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 801,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 1166,
+            "right": 834,
+            "bottom": 1194
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 299,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 535,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 292,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 528,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 77,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 313,
+            "bottom": 32
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.99,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "before-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 446,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 578,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 524,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 656,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 617,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 749,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 1166,
+            "right": 834,
+            "bottom": 1194
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 351,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 483,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 344,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 476,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 139,
+            "y": 0,
+            "width": 112,
+            "height": 39,
+            "right": 251,
+            "bottom": 39
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.99,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "additive v1 music upgrade preserves track Blob bytes and last title",
+        "calendar migration retains ID and untouched legacy backup key",
+        "existing running timer is retained",
+        "one original audio engine",
+        "Notes real save transaction",
+        "Reminders shares Today data",
+        "AirWrite original handwriting module and document library mounted",
+        "Finder browser File import, text preview and confirmed write",
+        "Calendar existing and newly created events coexist",
+        "existing imported music really starts after user action",
+        "Calculator actual parsed result",
+        "Finder rename, copy, move, cycle rejection, trash batch isolation and restore",
+        "Photos actual selected PNG import and browser decode",
+        "AirCard tested local card library, no Wallet claim",
+        "Reminders edit list, due date, priority and Today filter",
+        "Reminders real completion and completed filter",
+        "Calendar day search, existing event edit and confirmed save",
+        "Calendar confirmed delete retains original migrated event",
+        "Original Arcade 2048 real board and keyboard moves",
+        "Arcade active animation interval",
+        "Arcade interval cleanup on minimize",
+        "Arcade resumes only visible",
+        "Arcade final listener/timer disposal",
+        "Notes genuine typed Undo",
+        "Notes genuine typed Redo",
+        "Notes optimistic conflict retains draft and persisted winner",
+        "dirty Notes close rejected by user retains window",
+        "atomic backup collision abort preserves notes and tracks",
+        "backup validated merge, explicit overwrite and legacy timer restore",
+        "unsafe backup settings reject without modifying existing content",
+        "window pointer drag actual active capture",
+        "pointercancel releases capture and pending frame",
+        "Chromium actual touch drag uses window owner",
+        "actual touchcancel ends gesture",
+        "InfinityOS original CSV pipeline renders quoted comma and multiline",
+        "CSV HTML remains inert text",
+        "original size comparator is bound to Finder selector",
+        "InfinityOS binary-safe size calculation executes in storage settings",
+        "workspace switch hides own old windows without closing or discarding drafts",
+        "workspace move and focus share existing window registry",
+        "group minimize retains both actual windows",
+        "group restore moves existing members together without duplicate windows",
+        "workspace/group state persists in existing version 2 records",
+        "backup preflight inspects the real existing store without changing it",
+        "PWA app fullscreen fills the real allocated viewport",
+        "fullscreen does not overwrite the normal restart geometry",
+        "Escape exits PWA fullscreen and restores exact prior geometry",
+        "fullscreen has a working visible touch exit",
+        "app switching leaves immersive state without hiding the focused app",
+        "immersive app pauses the hidden Arcade interval",
+        "Arcade resumes when immersive app returns",
+        "immersive Arcade observer is disposed on close",
+        "Finder actual grid/list view preference confirmed by DOM and IDB",
+        "Finder view write failure rolls back UI without altering saved preference",
+        "Dock file shelf references real existing files without copying their blobs",
+        "synthetic pointercancel cancels the context hold timer",
+        "fresh mouse action after pen hold is not swallowed",
+        "Finder breadcrumbs follow the actual virtual directory tree",
+        "GPL dock overlap algorithm drives opt-in intellihide on own window rectangles",
+        "hidden Dock has an explicit working touch return path",
+        "original MacShell coupled magnification changes multiple icon widths",
+        "spring renderer stops requesting frames at idle",
+        "focus suppresses noncritical banners while preserving real history",
+        "ported notification click lifecycle opens or focuses its registered app",
+        "notification read action commits to the existing store",
+        "internal side by side geometry",
+        "responsive bounds 1024",
+        "responsive bounds 1180",
+        "responsive bounds 1366",
+        "responsive bounds 834",
+        "responsive bounds 820",
+        "responsive bounds 390",
+        "Launchpad real category grouping",
+        "Control Center controls same single audio state",
+        "export includes original music and new workspace data",
+        "invalid legacy calendar aborts migration without resetting source or timer",
+        "quota error surfaces without claiming save success",
+        "quota fixture did not commit user content",
+        "offline reload preserves notes",
+        "cold offline browser process restart preserves docs and real audio bytes",
+        "DPR2 cold restart preserves CSS window bounds",
+        "cold offline local app mounts home",
+        "cold offline local app mounts finder",
+        "cold offline local app mounts notes",
+        "cold offline local app mounts airwrite",
+        "cold offline local app mounts reminders",
+        "cold offline local app mounts calendar",
+        "cold offline local app mounts music",
+        "cold offline local app mounts photos",
+        "cold offline local app mounts calculator",
+        "cold offline local app mounts arcade",
+        "cold offline local app mounts aircard",
+        "cold offline local app mounts timer",
+        "cold offline local app mounts settings",
+        "cold offline local app mounts downloads",
+        "cold offline local app mounts trash",
+        "cold offline local app mounts about",
+        "cold offline Photos retains decoded imported image",
+        "real offline file export bytes",
+        "real reduced transparency setting disables compositor blur",
+        "reduced motion setting persisted",
+        "labelled external alternative browser",
+        "labelled external alternative mail",
+        "labelled external alternative translator",
+        "labelled external alternative ai",
+        "labelled external alternative tagesschau",
+        "labelled external alternative weather",
+        "labelled external alternative football",
+        "labelled external alternative stocks",
+        "labelled external alternative spotify",
+        "visible AGPL offer really downloads current readable source and licenses",
+        "no uncaught browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "desktop-clean",
+        "notes",
+        "reminders",
+        "airwrite",
+        "finder",
+        "calendar",
+        "music",
+        "calculator",
+        "photos",
+        "settings",
+        "trash",
+        "photos",
+        "aircard",
+        "arcade",
+        "touch-pointercancel",
+        "infinity-csv",
+        "workspace-overview",
+        "workspace-immersive",
+        "dock-file-shelf",
+        "infinity-finder",
+        "dock-auto-hide",
+        "dock-macshell-hover",
+        "system-notifications",
+        "two-windows",
+        "desktop-1024x768",
+        "desktop-1180x820",
+        "desktop-1366x1024",
+        "desktop-834x1194",
+        "desktop-820x1180",
+        "desktop-390x600",
+        "launchpad",
+        "spotlight",
+        "control-center",
+        "offline",
+        "offline-cold-restart"
+      ],
+      "errors": [],
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1024,
+            "bottom": 768,
+            "width": 1024,
+            "height": 740
+          },
+          "dock": {
+            "left": 146.5,
+            "top": 701.484375,
+            "right": 877.5,
+            "bottom": 768,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 394,
+            "top": 0,
+            "right": 630,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 512,
+              "bottom": 768,
+              "width": 512,
+              "height": 740
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 512,
+              "top": 28,
+              "right": 1024,
+              "bottom": 768,
+              "width": 512,
+              "height": 740
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1180,
+            "bottom": 820,
+            "width": 1180,
+            "height": 792
+          },
+          "dock": {
+            "left": 224.5,
+            "top": 753.484375,
+            "right": 955.5,
+            "bottom": 820,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 472,
+            "top": 0,
+            "right": 708,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 590,
+              "bottom": 820,
+              "width": 590,
+              "height": 792
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 590,
+              "top": 28,
+              "right": 1180,
+              "bottom": 820,
+              "width": 590,
+              "height": 792
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1366,
+            "bottom": 1024,
+            "width": 1366,
+            "height": 996
+          },
+          "dock": {
+            "left": 317.5,
+            "top": 957.484375,
+            "right": 1048.5,
+            "bottom": 1024,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 565,
+            "top": 0,
+            "right": 801,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 683,
+              "bottom": 1024,
+              "width": 683,
+              "height": 996
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 683,
+              "top": 28,
+              "right": 1366,
+              "bottom": 1024,
+              "width": 683,
+              "height": 996
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 834,
+            "bottom": 1194,
+            "width": 834,
+            "height": 1166
+          },
+          "dock": {
+            "left": 51.5,
+            "top": 1127.484375,
+            "right": 782.5,
+            "bottom": 1194,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 299,
+            "top": 0,
+            "right": 535,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 417,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1166
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 74,
+              "top": 106,
+              "right": 834,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 74,
+              "top": 124,
+              "right": 834,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 417,
+              "top": 28,
+              "right": 834,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1166
+            },
+            {
+              "id": "music",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 820,
+            "bottom": 1180,
+            "width": 820,
+            "height": 1152
+          },
+          "dock": {
+            "left": 44.5,
+            "top": 1113.484375,
+            "right": 775.5,
+            "bottom": 1180,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 292,
+            "top": 0,
+            "right": 528,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 410,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1152
+            },
+            {
+              "id": "reminders",
+              "left": 60,
+              "top": 88,
+              "right": 820,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 60,
+              "top": 106,
+              "right": 820,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 60,
+              "top": 124,
+              "right": 820,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 410,
+              "top": 28,
+              "right": 820,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1152
+            },
+            {
+              "id": "music",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 390,
+            "bottom": 600,
+            "width": 390,
+            "height": 572
+          },
+          "dock": {
+            "left": 9,
+            "top": 534,
+            "right": 381,
+            "bottom": 600,
+            "width": 372,
+            "height": 66
+          },
+          "notch": {
+            "left": 77,
+            "top": 0,
+            "right": 313,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "reminders",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "airwrite",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "finder",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "calendar",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "music",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "calculator",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "settings",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            }
+          ],
+          "overflow": false
+        }
+      ],
+      "diagnostics": {
+        "dpr": 2,
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "windows": 15,
+        "canvases": 2,
+        "audioElements": 1,
+        "material": "CSS compositor; no GL program or external texture capture",
+        "heapBytes": 10000000,
+        "serviceWorker": true
+      },
+      "status": "passed"
+    },
+    "material-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "standard DPR2 product uses CSS without allocating GL",
+        "portable CSS wallpaper layer is aligned without double compositor blur",
+        "unverified GPU stays guarded in normal product",
+        "reduced transparency releases resources",
+        "isolated mode executes original materials and cached preblur",
+        "refractive uniform toggle changes actual rendered pixels",
+        "idle does not redraw unchanged materials",
+        "context loss drops programs textures and tiles",
+        "context restore rebuilds materials",
+        "navigation frees all owned GL resources",
+        "no uncaught browser errors"
+      ],
+      "errors": [],
+      "backdrop": "same-origin bundled wallpaper only",
+      "standard": {
+        "cssWallpaperTiles": 5,
+        "cssFallback": "aligned-own-wallpaper-no-capture",
+        "quality": 1,
+        "lastPaintMs": 0,
+        "qualityChanges": 0,
+        "failed": false,
+        "reason": "browser-standard-css",
+        "diagnostic": false,
+        "software": false,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 25,
+        "programs": 0,
+        "materialPrograms": 0,
+        "prepassDraws": 0,
+        "prepassWallTimeMs": 0,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 4096,
+        "sceneSize": [
+          1,
+          1
+        ],
+        "estimatedTextureBytes": 0,
+        "textures": 0,
+        "localTextureBytes": 0,
+        "gpuType": "unknown",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 2,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 0,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": []
+      },
+      "highProduct": {
+        "cssWallpaperTiles": 5,
+        "cssFallback": "aligned-own-wallpaper-no-capture",
+        "quality": 1,
+        "lastPaintMs": 8,
+        "qualityChanges": 0,
+        "failed": true,
+        "reason": "software-gpu",
+        "diagnostic": false,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 0,
+        "sceneBuilds": 0,
+        "transfers": 0,
+        "tiles": 0,
+        "pending": false,
+        "disposed": false,
+        "paintWallTimeMs": 33,
+        "programs": 0,
+        "materialPrograms": 0,
+        "prepassDraws": 0,
+        "prepassWallTimeMs": 0,
+        "uploadWallTimeMs": 0,
+        "maxTexture": 2048,
+        "sceneSize": [
+          1,
+          1
+        ],
+        "estimatedTextureBytes": 0,
+        "textures": 0,
+        "localTextureBytes": 0,
+        "gpuType": "software",
+        "renderPath": "css-fallback",
+        "contextLosses": 0,
+        "decodeCount": 0,
+        "bufferResizes": 0,
+        "transferWallTimeMs": 0,
+        "dpr": 2,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 0,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": []
+      },
+      "diagnostic": {
+        "cssWallpaperTiles": 0,
+        "cssFallback": "aligned-own-wallpaper-no-capture",
+        "quality": 1,
+        "lastPaintMs": 1,
+        "qualityChanges": 0,
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 5,
+        "sceneBuilds": 1,
+        "transfers": 5,
+        "tiles": 5,
+        "pending": true,
+        "disposed": false,
+        "paintWallTimeMs": 1306,
+        "programs": 4,
+        "materialPrograms": 3,
+        "prepassDraws": 4,
+        "prepassWallTimeMs": 9,
+        "uploadWallTimeMs": 65,
+        "maxTexture": 2048,
+        "sceneSize": [
+          1697,
+          1179
+        ],
+        "estimatedTextureBytes": 18685296,
+        "textures": 4,
+        "localTextureBytes": 0,
+        "gpuType": "software",
+        "renderPath": "isolated-diagnostic",
+        "contextLosses": 0,
+        "decodeCount": 1,
+        "bufferResizes": 3,
+        "transferWallTimeMs": 1153,
+        "dpr": 2,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 0,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.046753246753246755,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.046753246753246755,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.06101694915254237,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "widget",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1,
+              "tintMix": 0.5860000000000001,
+              "rim": 0.45,
+              "grain": 0.0045,
+              "magnify": 0.04864864864864865,
+              "rimTint": 1
+            }
+          },
+          {
+            "kind": "dock",
+            "values": {
+              "saturation": 1.25,
+              "dark": 1,
+              "shadowAmt": 0,
+              "flatInner": 1,
+              "ringW": 0,
+              "thickness": 30,
+              "dispersion": 0.06,
+              "blurPx": 1.5,
+              "tintMix": 0.231,
+              "rim": 0.09000000000000001,
+              "grain": 0.009,
+              "magnify": 0.08,
+              "rimTint": 0,
+              "edgeTint": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ]
+      },
+      "pixelDifference": {
+        "channels": 1042960,
+        "changed": 453126,
+        "max": 255,
+        "meanAbsoluteChannelDifference": 2.323086216154023
+      },
+      "idleConditions": {
+        "reducedMotion": true,
+        "fontsReady": true,
+        "dockSettled": true
+      },
+      "disposed": {
+        "cssWallpaperTiles": 0,
+        "cssFallback": "aligned-own-wallpaper-no-capture",
+        "quality": 1,
+        "lastPaintMs": 1,
+        "qualityChanges": 0,
+        "failed": false,
+        "reason": "",
+        "diagnostic": true,
+        "software": true,
+        "diagnosticRefraction": true,
+        "draws": 20,
+        "sceneBuilds": 2,
+        "transfers": 20,
+        "tiles": 0,
+        "pending": false,
+        "disposed": true,
+        "paintWallTimeMs": 3764,
+        "programs": 0,
+        "materialPrograms": 0,
+        "prepassDraws": 8,
+        "prepassWallTimeMs": 17,
+        "uploadWallTimeMs": 102,
+        "maxTexture": 2048,
+        "sceneSize": [
+          1697,
+          1179
+        ],
+        "estimatedTextureBytes": 0,
+        "textures": 0,
+        "localTextureBytes": 0,
+        "gpuType": "software",
+        "renderPath": "disposed",
+        "contextLosses": 1,
+        "decodeCount": 2,
+        "bufferResizes": 12,
+        "transferWallTimeMs": 3330,
+        "dpr": 2,
+        "backdrop": "wallpaper-only",
+        "family": "macshell",
+        "localLenses": 0,
+        "tintCards": 0,
+        "edgeDetail": true,
+        "materials": [],
+        "bfcache": false
+      },
+      "status": "passed"
+    },
+    "notch-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "checks": [
+        "one solid black surface replaces both glass pieces",
+        "all 25 app IDs and the single audio owner remain",
+        "music reaches measured target geometry",
+        "lyrics reaches measured target geometry",
+        "timer reaches measured target geometry",
+        "calendar reaches measured target geometry",
+        "shelf reaches measured target geometry",
+        "files reaches measured target geometry",
+        "actual rendered background pixels are opaque black",
+        "player reads real imported metadata",
+        "track switch keeps the same audio and updates the open view",
+        "missing lyrics are not fabricated",
+        "real local LRC stays plain text",
+        "timer starts through the existing timer owner",
+        "timer extension preserves existing storage contract",
+        "timer survives app focus changes",
+        "calendar uses actual stored appointments",
+        "calendar week navigation uses the same local dates",
+        "calendar day timeline reflects the stored appointment times",
+        "music/calendar switching retains playback and window ownership",
+        "Shelf import commits to the existing Finder store",
+        "removing a shelf reference preserves its original file",
+        "touch viewport stays within bounds 1024",
+        "touch viewport stays within bounds 1180",
+        "touch viewport stays within bounds 1366",
+        "touch viewport stays within bounds 834",
+        "touch viewport stays within bounds 820",
+        "touch viewport stays within bounds 390",
+        "pausing a compact lyric state morphs back to the real closed size",
+        "open creates one measured outer morph",
+        "expand creates one measured outer morph",
+        "close creates one measured outer morph",
+        "switch creates one measured outer morph",
+        "calendar creates one measured outer morph",
+        "interruption starts at the actual in-flight rectangle",
+        "rapid repeated input leaves one coherent target and no animations",
+        "actual repeated touch taps end closed with no retained effects",
+        "keyboard tab navigation selects the actual timer page",
+        "Pencil-compatible pointercancel clears only the pending gesture",
+        "Reduced Motion commits without animation ownership",
+        "Escape returns to the black capsule without removing it",
+        "closed idle never starts a new animation",
+        "real navigation releases every owned Notch animation",
+        "foreground return retains the original timer state",
+        "offline restart preserves tracks, files and calendar schema",
+        "no uncaught renderer errors"
+      ],
+      "screens": [
+        "notch-closed",
+        "notch-music",
+        "notch-lyrics",
+        "notch-timer",
+        "notch-calendar",
+        "notch-shelf",
+        "notch-files",
+        "notch-local-lyrics",
+        "notch-viewport-1024x768",
+        "notch-viewport-1180x820",
+        "notch-viewport-1366x1024",
+        "notch-viewport-834x1194",
+        "notch-viewport-820x1180",
+        "notch-viewport-390x600",
+        "notch-motion-open-20",
+        "notch-motion-open-40",
+        "notch-motion-open-60",
+        "notch-motion-open-80",
+        "notch-motion-expand-20",
+        "notch-motion-expand-40",
+        "notch-motion-expand-60",
+        "notch-motion-expand-80",
+        "notch-motion-close-20",
+        "notch-motion-close-40",
+        "notch-motion-close-60",
+        "notch-motion-close-80",
+        "notch-motion-switch-20",
+        "notch-motion-switch-40",
+        "notch-motion-switch-60",
+        "notch-motion-switch-80",
+        "notch-motion-calendar-20",
+        "notch-motion-calendar-40",
+        "notch-motion-calendar-60",
+        "notch-motion-calendar-80",
+        "notch-motion-open",
+        "notch-offline"
+      ],
+      "geometry": [
+        {
+          "name": "music",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        },
+        {
+          "name": "lyrics",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260
+        },
+        {
+          "name": "timer",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176
+        },
+        {
+          "name": "calendar",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216
+        },
+        {
+          "name": "shelf",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150
+        },
+        {
+          "name": "files",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        }
+      ],
+      "motion": [
+        {
+          "label": "open",
+          "q": 0.2,
+          "relativeTime": 0.2000012000012001,
+          "sourceFrame": 20,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 324.421875,
+            "height": 85.4375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.4,
+          "relativeTime": 0.3999993999994001,
+          "sourceFrame": 22,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 410.84375,
+            "height": 134.84375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.6,
+          "relativeTime": 0.6000006000006002,
+          "sourceFrame": 24,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 427.9375,
+            "height": 143.921875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.8,
+          "relativeTime": 0.8000018000018,
+          "sourceFrame": 26,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.984375,
+            "height": 150.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.2,
+          "relativeTime": 0.22221999999999903,
+          "sourceFrame": 106,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 199.546875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.4,
+          "relativeTime": 0.44444333333333336,
+          "sourceFrame": 108,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 224.328125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.6,
+          "relativeTime": 0.5555533333333329,
+          "sourceFrame": 109,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 242.15625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.8,
+          "relativeTime": 0.7777766666666671,
+          "sourceFrame": 111,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 258.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.2,
+          "relativeTime": 0.19047571428571478,
+          "sourceFrame": 162,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 342.09375,
+            "height": 118
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.4,
+          "relativeTime": 0.3809514285714283,
+          "sourceFrame": 166,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.6,
+          "relativeTime": 0.619047142857143,
+          "sourceFrame": 171,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 303.90625,
+            "height": 64
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.8,
+          "relativeTime": 0.8095228571428564,
+          "sourceFrame": 175,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.2,
+          "relativeTime": 0.1818189256191582,
+          "sourceFrame": 197,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 344.359375,
+            "height": 91.703125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.4,
+          "relativeTime": 0.36363512396807046,
+          "sourceFrame": 199,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 384.78125,
+            "height": 125.421875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.6,
+          "relativeTime": 0.6363621487616836,
+          "sourceFrame": 202,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 436.046875,
+            "height": 172.03125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.8,
+          "relativeTime": 0.8181810743808418,
+          "sourceFrame": 204,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.015625,
+            "height": 174.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.2,
+          "relativeTime": 0.1666675000000016,
+          "sourceFrame": 237,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 461.3125,
+            "height": 244.40625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.4,
+          "relativeTime": 0.41666750000000047,
+          "sourceFrame": 240,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 494.828125,
+            "height": 227.90625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.6,
+          "relativeTime": 0.583335000000002,
+          "sourceFrame": 242,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 503.96875,
+            "height": 218.75
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.8,
+          "relativeTime": 0.8333350000000009,
+          "sourceFrame": 245,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 506,
+            "height": 216
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 24,
+          "changes": 27,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 420,
+            "height": 138.5625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        }
+      ],
+      "errors": [],
+      "crops": [
+        {
+          "name": "notch-closed",
+          "file": "notch-closed-crop.png",
+          "x": 472,
+          "y": 0,
+          "width": 236,
+          "height": 32,
+          "dpr": 1
+        },
+        {
+          "name": "notch-music",
+          "file": "notch-music-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-lyrics",
+          "file": "notch-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 1
+        },
+        {
+          "name": "notch-timer",
+          "file": "notch-timer-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176,
+          "dpr": 1
+        },
+        {
+          "name": "notch-calendar",
+          "file": "notch-calendar-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 1
+        },
+        {
+          "name": "notch-shelf",
+          "file": "notch-shelf-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150,
+          "dpr": 1
+        },
+        {
+          "name": "notch-files",
+          "file": "notch-files-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-local-lyrics",
+          "file": "notch-local-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1024x768",
+          "file": "notch-viewport-1024x768-crop.png",
+          "x": 292,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1180x820",
+          "file": "notch-viewport-1180x820-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1366x1024",
+          "file": "notch-viewport-1366x1024-crop.png",
+          "x": 463,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-834x1194",
+          "file": "notch-viewport-834x1194-crop.png",
+          "x": 197,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-820x1180",
+          "file": "notch-viewport-820x1180-crop.png",
+          "x": 190,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-390x600",
+          "file": "notch-viewport-390x600-crop.png",
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-20",
+          "file": "notch-motion-open-20-crop.png",
+          "x": 427.7890625,
+          "y": 0,
+          "width": 324.421875,
+          "height": 85.4375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-40",
+          "file": "notch-motion-open-40-crop.png",
+          "x": 384.578125,
+          "y": 0,
+          "width": 410.84375,
+          "height": 134.84375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-60",
+          "file": "notch-motion-open-60-crop.png",
+          "x": 376.03125,
+          "y": 0,
+          "width": 427.9375,
+          "height": 143.921875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-80",
+          "file": "notch-motion-open-80-crop.png",
+          "x": 370.5078125,
+          "y": 0,
+          "width": 438.984375,
+          "height": 150.984375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-20",
+          "file": "notch-motion-expand-20-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 199.546875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-40",
+          "file": "notch-motion-expand-40-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 224.328125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-60",
+          "file": "notch-motion-expand-60-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 242.15625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-80",
+          "file": "notch-motion-expand-80-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 258.015625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-20",
+          "file": "notch-motion-close-20-crop.png",
+          "x": 418.953125,
+          "y": 0,
+          "width": 342.09375,
+          "height": 118,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-40",
+          "file": "notch-motion-close-40-crop.png",
+          "x": 439.515625,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-60",
+          "file": "notch-motion-close-60-crop.png",
+          "x": 438.046875,
+          "y": 0,
+          "width": 303.90625,
+          "height": 64,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-80",
+          "file": "notch-motion-close-80-crop.png",
+          "x": 439.515625,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58.984375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-20",
+          "file": "notch-motion-switch-20-crop.png",
+          "x": 417.8203125,
+          "y": 0,
+          "width": 344.359375,
+          "height": 91.703125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-40",
+          "file": "notch-motion-switch-40-crop.png",
+          "x": 397.609375,
+          "y": 0,
+          "width": 384.78125,
+          "height": 125.421875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-60",
+          "file": "notch-motion-switch-60-crop.png",
+          "x": 371.9765625,
+          "y": 0,
+          "width": 436.046875,
+          "height": 172.03125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-80",
+          "file": "notch-motion-switch-80-crop.png",
+          "x": 370.9921875,
+          "y": 0,
+          "width": 438.015625,
+          "height": 174.015625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-20",
+          "file": "notch-motion-calendar-20-crop.png",
+          "x": 359.34375,
+          "y": 0,
+          "width": 461.3125,
+          "height": 244.40625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-40",
+          "file": "notch-motion-calendar-40-crop.png",
+          "x": 342.5859375,
+          "y": 0,
+          "width": 494.828125,
+          "height": 227.90625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-60",
+          "file": "notch-motion-calendar-60-crop.png",
+          "x": 338.015625,
+          "y": 0,
+          "width": 503.96875,
+          "height": 218.75,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-80",
+          "file": "notch-motion-calendar-80-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 1
+        },
+        {
+          "name": "notch-offline",
+          "file": "notch-offline-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        }
+      ],
+      "pagehide": {
+        "persisted": false,
+        "mode": "closed",
+        "lastView": "lyrics",
+        "active": 0,
+        "draws": 51,
+        "changes": 55,
+        "reduced": false,
+        "disposed": true,
+        "geometry": {
+          "width": 236,
+          "height": 32
+        },
+        "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+        "lyricCues": 4,
+        "gesture": false,
+        "effects": 0
+      },
+      "status": "passed"
+    },
+    "notch-dpr2-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "checks": [
+        "one solid black surface replaces both glass pieces",
+        "all 25 app IDs and the single audio owner remain",
+        "music reaches measured target geometry",
+        "lyrics reaches measured target geometry",
+        "timer reaches measured target geometry",
+        "calendar reaches measured target geometry",
+        "shelf reaches measured target geometry",
+        "files reaches measured target geometry",
+        "actual rendered background pixels are opaque black",
+        "player reads real imported metadata",
+        "track switch keeps the same audio and updates the open view",
+        "missing lyrics are not fabricated",
+        "real local LRC stays plain text",
+        "timer starts through the existing timer owner",
+        "timer extension preserves existing storage contract",
+        "timer survives app focus changes",
+        "calendar uses actual stored appointments",
+        "calendar week navigation uses the same local dates",
+        "calendar day timeline reflects the stored appointment times",
+        "music/calendar switching retains playback and window ownership",
+        "Shelf import commits to the existing Finder store",
+        "removing a shelf reference preserves its original file",
+        "touch viewport stays within bounds 1024",
+        "touch viewport stays within bounds 1180",
+        "touch viewport stays within bounds 1366",
+        "touch viewport stays within bounds 834",
+        "touch viewport stays within bounds 820",
+        "touch viewport stays within bounds 390",
+        "pausing a compact lyric state morphs back to the real closed size",
+        "open creates one measured outer morph",
+        "expand creates one measured outer morph",
+        "close creates one measured outer morph",
+        "switch creates one measured outer morph",
+        "calendar creates one measured outer morph",
+        "interruption starts at the actual in-flight rectangle",
+        "rapid repeated input leaves one coherent target and no animations",
+        "actual repeated touch taps end closed with no retained effects",
+        "keyboard tab navigation selects the actual timer page",
+        "Pencil-compatible pointercancel clears only the pending gesture",
+        "Reduced Motion commits without animation ownership",
+        "Escape returns to the black capsule without removing it",
+        "closed idle never starts a new animation",
+        "real navigation releases every owned Notch animation",
+        "foreground return retains the original timer state",
+        "offline restart preserves tracks, files and calendar schema",
+        "no uncaught renderer errors"
+      ],
+      "screens": [
+        "notch-closed",
+        "notch-music",
+        "notch-lyrics",
+        "notch-timer",
+        "notch-calendar",
+        "notch-shelf",
+        "notch-files",
+        "notch-local-lyrics",
+        "notch-viewport-1024x768",
+        "notch-viewport-1180x820",
+        "notch-viewport-1366x1024",
+        "notch-viewport-834x1194",
+        "notch-viewport-820x1180",
+        "notch-viewport-390x600",
+        "notch-motion-open-20",
+        "notch-motion-open-40",
+        "notch-motion-open-60",
+        "notch-motion-open-80",
+        "notch-motion-expand-20",
+        "notch-motion-expand-40",
+        "notch-motion-expand-60",
+        "notch-motion-expand-80",
+        "notch-motion-close-20",
+        "notch-motion-close-40",
+        "notch-motion-close-60",
+        "notch-motion-close-80",
+        "notch-motion-switch-20",
+        "notch-motion-switch-40",
+        "notch-motion-switch-60",
+        "notch-motion-switch-80",
+        "notch-motion-calendar-20",
+        "notch-motion-calendar-40",
+        "notch-motion-calendar-60",
+        "notch-motion-calendar-80",
+        "notch-motion-open",
+        "notch-offline"
+      ],
+      "geometry": [
+        {
+          "name": "music",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        },
+        {
+          "name": "lyrics",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260
+        },
+        {
+          "name": "timer",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176
+        },
+        {
+          "name": "calendar",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216
+        },
+        {
+          "name": "shelf",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150
+        },
+        {
+          "name": "files",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        }
+      ],
+      "motion": [
+        {
+          "label": "open",
+          "q": 0.2,
+          "relativeTime": 0.2000012000012001,
+          "sourceFrame": 20,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 18,
+          "changes": 19,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 324.421875,
+            "height": 85.4375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.4,
+          "relativeTime": 0.3999993999994001,
+          "sourceFrame": 22,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 18,
+          "changes": 19,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 410.84375,
+            "height": 134.84375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.6,
+          "relativeTime": 0.6000006000006002,
+          "sourceFrame": 24,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 18,
+          "changes": 19,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 427.9375,
+            "height": 143.921875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.8,
+          "relativeTime": 0.8000018000018,
+          "sourceFrame": 26,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 18,
+          "changes": 19,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.984375,
+            "height": 150.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.2,
+          "relativeTime": 0.22221999999999903,
+          "sourceFrame": 106,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 199.546875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.4,
+          "relativeTime": 0.44444333333333336,
+          "sourceFrame": 108,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 224.328125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.6,
+          "relativeTime": 0.5555533333333329,
+          "sourceFrame": 109,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 242.15625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.8,
+          "relativeTime": 0.7777766666666671,
+          "sourceFrame": 111,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 258.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.2,
+          "relativeTime": 0.19047571428571478,
+          "sourceFrame": 162,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 342.09375,
+            "height": 118
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.4,
+          "relativeTime": 0.3809514285714283,
+          "sourceFrame": 166,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.6,
+          "relativeTime": 0.619047142857143,
+          "sourceFrame": 171,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 303.90625,
+            "height": 64
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.8,
+          "relativeTime": 0.8095228571428564,
+          "sourceFrame": 175,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.2,
+          "relativeTime": 0.1818189256191582,
+          "sourceFrame": 197,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 344.359375,
+            "height": 91.703125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.4,
+          "relativeTime": 0.36363512396807046,
+          "sourceFrame": 199,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 384.78125,
+            "height": 125.421875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.6,
+          "relativeTime": 0.6363621487616836,
+          "sourceFrame": 202,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 436.046875,
+            "height": 172.03125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.8,
+          "relativeTime": 0.8181810743808418,
+          "sourceFrame": 204,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.015625,
+            "height": 174.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.2,
+          "relativeTime": 0.1666675000000016,
+          "sourceFrame": 237,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 22,
+          "changes": 24,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 461.3125,
+            "height": 244.40625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.4,
+          "relativeTime": 0.41666750000000047,
+          "sourceFrame": 240,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 22,
+          "changes": 24,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 494.828125,
+            "height": 227.90625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.6,
+          "relativeTime": 0.583335000000002,
+          "sourceFrame": 242,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 22,
+          "changes": 24,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 503.96875,
+            "height": 218.75
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.8,
+          "relativeTime": 0.8333350000000009,
+          "sourceFrame": 245,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 22,
+          "changes": 24,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 506,
+            "height": 216
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 23,
+          "changes": 26,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 420,
+            "height": 138.5625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        }
+      ],
+      "errors": [],
+      "crops": [
+        {
+          "name": "notch-closed",
+          "file": "notch-closed-crop.png",
+          "x": 472,
+          "y": 0,
+          "width": 236,
+          "height": 32,
+          "dpr": 2
+        },
+        {
+          "name": "notch-music",
+          "file": "notch-music-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-lyrics",
+          "file": "notch-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 2
+        },
+        {
+          "name": "notch-timer",
+          "file": "notch-timer-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176,
+          "dpr": 2
+        },
+        {
+          "name": "notch-calendar",
+          "file": "notch-calendar-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 2
+        },
+        {
+          "name": "notch-shelf",
+          "file": "notch-shelf-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150,
+          "dpr": 2
+        },
+        {
+          "name": "notch-files",
+          "file": "notch-files-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-local-lyrics",
+          "file": "notch-local-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-1024x768",
+          "file": "notch-viewport-1024x768-crop.png",
+          "x": 292,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-1180x820",
+          "file": "notch-viewport-1180x820-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-1366x1024",
+          "file": "notch-viewport-1366x1024-crop.png",
+          "x": 463,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-834x1194",
+          "file": "notch-viewport-834x1194-crop.png",
+          "x": 197,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-820x1180",
+          "file": "notch-viewport-820x1180-crop.png",
+          "x": 190,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-viewport-390x600",
+          "file": "notch-viewport-390x600-crop.png",
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 152,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-open-20",
+          "file": "notch-motion-open-20-crop.png",
+          "x": 427.7890625,
+          "y": 0,
+          "width": 324.421875,
+          "height": 85.4375,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-open-40",
+          "file": "notch-motion-open-40-crop.png",
+          "x": 384.578125,
+          "y": 0,
+          "width": 410.84375,
+          "height": 134.84375,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-open-60",
+          "file": "notch-motion-open-60-crop.png",
+          "x": 376.03125,
+          "y": 0,
+          "width": 427.9375,
+          "height": 143.921875,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-open-80",
+          "file": "notch-motion-open-80-crop.png",
+          "x": 370.5078125,
+          "y": 0,
+          "width": 438.984375,
+          "height": 150.984375,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-expand-20",
+          "file": "notch-motion-expand-20-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 199.546875,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-expand-40",
+          "file": "notch-motion-expand-40-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 224.328125,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-expand-60",
+          "file": "notch-motion-expand-60-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 242.15625,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-expand-80",
+          "file": "notch-motion-expand-80-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 258.015625,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-close-20",
+          "file": "notch-motion-close-20-crop.png",
+          "x": 418.953125,
+          "y": 0,
+          "width": 342.09375,
+          "height": 118,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-close-40",
+          "file": "notch-motion-close-40-crop.png",
+          "x": 439.515625,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-close-60",
+          "file": "notch-motion-close-60-crop.png",
+          "x": 438.046875,
+          "y": 0,
+          "width": 303.90625,
+          "height": 64,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-close-80",
+          "file": "notch-motion-close-80-crop.png",
+          "x": 439.515625,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58.984375,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-switch-20",
+          "file": "notch-motion-switch-20-crop.png",
+          "x": 417.8203125,
+          "y": 0,
+          "width": 344.359375,
+          "height": 91.703125,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-switch-40",
+          "file": "notch-motion-switch-40-crop.png",
+          "x": 397.609375,
+          "y": 0,
+          "width": 384.78125,
+          "height": 125.421875,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-switch-60",
+          "file": "notch-motion-switch-60-crop.png",
+          "x": 371.9765625,
+          "y": 0,
+          "width": 436.046875,
+          "height": 172.03125,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-switch-80",
+          "file": "notch-motion-switch-80-crop.png",
+          "x": 370.9921875,
+          "y": 0,
+          "width": 438.015625,
+          "height": 174.015625,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-calendar-20",
+          "file": "notch-motion-calendar-20-crop.png",
+          "x": 359.34375,
+          "y": 0,
+          "width": 461.3125,
+          "height": 244.40625,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-calendar-40",
+          "file": "notch-motion-calendar-40-crop.png",
+          "x": 342.5859375,
+          "y": 0,
+          "width": 494.828125,
+          "height": 227.90625,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-calendar-60",
+          "file": "notch-motion-calendar-60-crop.png",
+          "x": 338.015625,
+          "y": 0,
+          "width": 503.96875,
+          "height": 218.75,
+          "dpr": 2
+        },
+        {
+          "name": "notch-motion-calendar-80",
+          "file": "notch-motion-calendar-80-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 2
+        },
+        {
+          "name": "notch-offline",
+          "file": "notch-offline-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 2
+        }
+      ],
+      "pagehide": {
+        "persisted": false,
+        "mode": "closed",
+        "lastView": "lyrics",
+        "active": 0,
+        "draws": 50,
+        "changes": 54,
+        "reduced": false,
+        "disposed": true,
+        "geometry": {
+          "width": 236,
+          "height": 32
+        },
+        "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+        "lyricCues": 4,
+        "gesture": false,
+        "effects": 0
+      },
+      "status": "passed"
+    },
+    "subpath-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "additive v1 music upgrade preserves track Blob bytes and last title",
+        "calendar migration retains ID and untouched legacy backup key",
+        "existing running timer is retained",
+        "one original audio engine",
+        "Notes real save transaction",
+        "Reminders shares Today data",
+        "AirWrite original handwriting module and document library mounted",
+        "Finder browser File import, text preview and confirmed write",
+        "Calendar existing and newly created events coexist",
+        "existing imported music really starts after user action",
+        "Calculator actual parsed result",
+        "Finder rename, copy, move, cycle rejection, trash batch isolation and restore",
+        "Photos actual selected PNG import and browser decode",
+        "AirCard tested local card library, no Wallet claim",
+        "Reminders edit list, due date, priority and Today filter",
+        "Reminders real completion and completed filter",
+        "Calendar day search, existing event edit and confirmed save",
+        "Calendar confirmed delete retains original migrated event",
+        "Original Arcade 2048 real board and keyboard moves",
+        "Arcade active animation interval",
+        "Arcade interval cleanup on minimize",
+        "Arcade resumes only visible",
+        "Arcade final listener/timer disposal",
+        "Notes genuine typed Undo",
+        "Notes genuine typed Redo",
+        "Notes optimistic conflict retains draft and persisted winner",
+        "dirty Notes close rejected by user retains window",
+        "atomic backup collision abort preserves notes and tracks",
+        "backup validated merge, explicit overwrite and legacy timer restore",
+        "unsafe backup settings reject without modifying existing content",
+        "window pointer drag actual active capture",
+        "pointercancel releases capture and pending frame",
+        "Chromium actual touch drag uses window owner",
+        "actual touchcancel ends gesture",
+        "InfinityOS original CSV pipeline renders quoted comma and multiline",
+        "CSV HTML remains inert text",
+        "original size comparator is bound to Finder selector",
+        "InfinityOS binary-safe size calculation executes in storage settings",
+        "workspace switch hides own old windows without closing or discarding drafts",
+        "workspace move and focus share existing window registry",
+        "group minimize retains both actual windows",
+        "group restore moves existing members together without duplicate windows",
+        "workspace/group state persists in existing version 2 records",
+        "backup preflight inspects the real existing store without changing it",
+        "PWA app fullscreen fills the real allocated viewport",
+        "fullscreen does not overwrite the normal restart geometry",
+        "Escape exits PWA fullscreen and restores exact prior geometry",
+        "fullscreen has a working visible touch exit",
+        "app switching leaves immersive state without hiding the focused app",
+        "immersive app pauses the hidden Arcade interval",
+        "Arcade resumes when immersive app returns",
+        "immersive Arcade observer is disposed on close",
+        "Finder actual grid/list view preference confirmed by DOM and IDB",
+        "Finder view write failure rolls back UI without altering saved preference",
+        "Dock file shelf references real existing files without copying their blobs",
+        "synthetic pointercancel cancels the context hold timer",
+        "fresh mouse action after pen hold is not swallowed",
+        "Finder breadcrumbs follow the actual virtual directory tree",
+        "GPL dock overlap algorithm drives opt-in intellihide on own window rectangles",
+        "hidden Dock has an explicit working touch return path",
+        "original MacShell coupled magnification changes multiple icon widths",
+        "spring renderer stops requesting frames at idle",
+        "focus suppresses noncritical banners while preserving real history",
+        "ported notification click lifecycle opens or focuses its registered app",
+        "notification read action commits to the existing store",
+        "internal side by side geometry",
+        "responsive bounds 1024",
+        "responsive bounds 1180",
+        "responsive bounds 1366",
+        "responsive bounds 834",
+        "responsive bounds 820",
+        "responsive bounds 390",
+        "Launchpad real category grouping",
+        "Control Center controls same single audio state",
+        "export includes original music and new workspace data",
+        "invalid legacy calendar aborts migration without resetting source or timer",
+        "quota error surfaces without claiming save success",
+        "quota fixture did not commit user content",
+        "offline reload preserves notes",
+        "cold offline browser process restart preserves docs and real audio bytes",
+        "DPR2 cold restart preserves CSS window bounds",
+        "cold offline local app mounts home",
+        "cold offline local app mounts finder",
+        "cold offline local app mounts notes",
+        "cold offline local app mounts airwrite",
+        "cold offline local app mounts reminders",
+        "cold offline local app mounts calendar",
+        "cold offline local app mounts music",
+        "cold offline local app mounts photos",
+        "cold offline local app mounts calculator",
+        "cold offline local app mounts arcade",
+        "cold offline local app mounts aircard",
+        "cold offline local app mounts timer",
+        "cold offline local app mounts settings",
+        "cold offline local app mounts downloads",
+        "cold offline local app mounts trash",
+        "cold offline local app mounts about",
+        "cold offline Photos retains decoded imported image",
+        "real offline file export bytes",
+        "real reduced transparency setting disables compositor blur",
+        "reduced motion setting persisted",
+        "labelled external alternative browser",
+        "labelled external alternative mail",
+        "labelled external alternative translator",
+        "labelled external alternative ai",
+        "labelled external alternative tagesschau",
+        "labelled external alternative weather",
+        "labelled external alternative football",
+        "labelled external alternative stocks",
+        "labelled external alternative spotify",
+        "visible AGPL offer really downloads current readable source and licenses",
+        "no uncaught browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "desktop-clean",
+        "notes",
+        "reminders",
+        "airwrite",
+        "finder",
+        "calendar",
+        "music",
+        "calculator",
+        "photos",
+        "settings",
+        "trash",
+        "photos",
+        "aircard",
+        "arcade",
+        "touch-pointercancel",
+        "infinity-csv",
+        "workspace-overview",
+        "workspace-immersive",
+        "dock-file-shelf",
+        "infinity-finder",
+        "dock-auto-hide",
+        "dock-macshell-hover",
+        "system-notifications",
+        "two-windows",
+        "desktop-1024x768",
+        "desktop-1180x820",
+        "desktop-1366x1024",
+        "desktop-834x1194",
+        "desktop-820x1180",
+        "desktop-390x600",
+        "launchpad",
+        "spotlight",
+        "control-center",
+        "offline",
+        "offline-cold-restart"
+      ],
+      "errors": [],
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1024,
+            "bottom": 768,
+            "width": 1024,
+            "height": 740
+          },
+          "dock": {
+            "left": 146.5,
+            "top": 701.484375,
+            "right": 877.5,
+            "bottom": 768,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 394,
+            "top": 0,
+            "right": 630,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 512,
+              "bottom": 768,
+              "width": 512,
+              "height": 740
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 512,
+              "top": 28,
+              "right": 1024,
+              "bottom": 768,
+              "width": 512,
+              "height": 740
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1180,
+            "bottom": 820,
+            "width": 1180,
+            "height": 792
+          },
+          "dock": {
+            "left": 224.5,
+            "top": 753.484375,
+            "right": 955.5,
+            "bottom": 820,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 472,
+            "top": 0,
+            "right": 708,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 590,
+              "bottom": 820,
+              "width": 590,
+              "height": 792
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 590,
+              "top": 28,
+              "right": 1180,
+              "bottom": 820,
+              "width": 590,
+              "height": 792
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 1366,
+            "bottom": 1024,
+            "width": 1366,
+            "height": 996
+          },
+          "dock": {
+            "left": 317.5,
+            "top": 957.484375,
+            "right": 1048.5,
+            "bottom": 1024,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 565,
+            "top": 0,
+            "right": 801,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 683,
+              "bottom": 1024,
+              "width": 683,
+              "height": 996
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 96,
+              "top": 106,
+              "right": 856,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 118,
+              "top": 124,
+              "right": 878,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 683,
+              "top": 28,
+              "right": 1366,
+              "bottom": 1024,
+              "width": 683,
+              "height": 996
+            },
+            {
+              "id": "music",
+              "left": 162,
+              "top": 158,
+              "right": 922,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 184,
+              "top": 158,
+              "right": 944,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 228,
+              "top": 158,
+              "right": 988,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 834,
+            "bottom": 1194,
+            "width": 834,
+            "height": 1166
+          },
+          "dock": {
+            "left": 51.5,
+            "top": 1127.484375,
+            "right": 782.5,
+            "bottom": 1194,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 299,
+            "top": 0,
+            "right": 535,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 417,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1166
+            },
+            {
+              "id": "reminders",
+              "left": 74,
+              "top": 88,
+              "right": 834,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 74,
+              "top": 106,
+              "right": 834,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 74,
+              "top": 124,
+              "right": 834,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 417,
+              "top": 28,
+              "right": 834,
+              "bottom": 1194,
+              "width": 417,
+              "height": 1166
+            },
+            {
+              "id": "music",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 74,
+              "top": 158,
+              "right": 834,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 820,
+            "bottom": 1180,
+            "width": 820,
+            "height": 1152
+          },
+          "dock": {
+            "left": 44.5,
+            "top": 1113.484375,
+            "right": 775.5,
+            "bottom": 1180,
+            "width": 731,
+            "height": 66.515625
+          },
+          "notch": {
+            "left": 292,
+            "top": 0,
+            "right": 528,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 410,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1152
+            },
+            {
+              "id": "reminders",
+              "left": 60,
+              "top": 88,
+              "right": 820,
+              "bottom": 698,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "airwrite",
+              "left": 60,
+              "top": 106,
+              "right": 820,
+              "bottom": 716,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "finder",
+              "left": 60,
+              "top": 124,
+              "right": 820,
+              "bottom": 734,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calendar",
+              "left": 410,
+              "top": 28,
+              "right": 820,
+              "bottom": 1180,
+              "width": 410,
+              "height": 1152
+            },
+            {
+              "id": "music",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "calculator",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            },
+            {
+              "id": "settings",
+              "left": 60,
+              "top": 158,
+              "right": 820,
+              "bottom": 768,
+              "width": 760,
+              "height": 610
+            }
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600,
+            "dpr": 1
+          },
+          "host": {
+            "left": 0,
+            "top": 28,
+            "right": 390,
+            "bottom": 600,
+            "width": 390,
+            "height": 572
+          },
+          "dock": {
+            "left": 9,
+            "top": 534,
+            "right": 381,
+            "bottom": 600,
+            "width": 372,
+            "height": 66
+          },
+          "notch": {
+            "left": 77,
+            "top": 0,
+            "right": 313,
+            "bottom": 32,
+            "width": 236,
+            "height": 32
+          },
+          "windows": [
+            {
+              "id": "notes",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "reminders",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "airwrite",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "finder",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "calendar",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "music",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "calculator",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            },
+            {
+              "id": "settings",
+              "left": 0,
+              "top": 28,
+              "right": 390,
+              "bottom": 600,
+              "width": 390,
+              "height": 572
+            }
+          ],
+          "overflow": false
+        }
+      ],
+      "diagnostics": {
+        "dpr": 2,
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "windows": 15,
+        "canvases": 2,
+        "audioElements": 1,
+        "material": "CSS compositor; no GL program or external texture capture",
+        "heapBytes": 10000000,
+        "serviceWorker": true
+      },
+      "status": "passed"
+    },
+    "update-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "checks": [
+        "preflight exports original music before any schema upgrade",
+        "old v4 download does not replace playing client or interrupt original audio",
+        "old v4 to new v5 retains exact original audio SHA256",
+        "old calendar and timer preserved after real SW update",
+        "multi-client update blocked by unsaved Notes and second-client audio",
+        "safe update waits for explicit export handoff release",
+        "safe worker activation preserves saved draft",
+        "compatible classic recovery opens v2 music and retains workspace",
+        "classic recovery can export all retained workspace and music",
+        "no uncaught update browser errors"
+      ],
+      "screens": [
+        "before-lockscreen",
+        "before-desktop",
+        "before-music",
+        "before-backup-preflight",
+        "update-desktop",
+        "update-music",
+        "update-safe",
+        "update-classic-recovery"
+      ],
+      "errors": [],
+      "status": "passed"
+    },
+    "after-dpr2-webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 394,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 630,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 472,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 708,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 565,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 801,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 996,
+            "right": 834,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 299,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 535,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 292,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 528,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 77,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 313,
+            "bottom": 32
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.9900000095367432,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "after-webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 394,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 630,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 472,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 708,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 565,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 801,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 1166,
+            "right": 834,
+            "bottom": 1194
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 299,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 535,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 292,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 528,
+            "bottom": 32
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 77,
+            "y": 0,
+            "width": 236,
+            "height": 32,
+            "right": 313,
+            "bottom": 32
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.9900000095367432,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "before-webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "synthetic": true,
+      "fixedTime": "2026-11-05T18:40:00Z",
+      "checks": [
+        "lock hides calendar and reminder supplement",
+        "new local sessions enter the category system mode",
+        "eight categories derive from all 25 real registry entries",
+        "expanded category exposes its five real apps",
+        "all apps remains the same 25-entry registry",
+        "large wallpaper blur changes do not interpolate",
+        "Dock stays above the launcher scene",
+        "launcher app opening retains the real icon rectangle",
+        "reopening cancels stale close without removing the live window",
+        "viewport interruption preserves the explicitly requested close",
+        "system event displays an actual stored user-file contract",
+        "closing event releases its preview Blob URL",
+        "Finder keeps view controls inside its primary toolbar",
+        "calendar month refreshes real events without reopening",
+        "material selector is inside its labelled settings row",
+        "app focus switches without changing window geometry",
+        "no horizontal document overflow 1024",
+        "no horizontal document overflow 1180",
+        "no horizontal document overflow 1366",
+        "no horizontal document overflow 834",
+        "no horizontal document overflow 820",
+        "no horizontal document overflow 390",
+        "Focus tile persists the actual Air-OS notification preference",
+        "control center groups use existing controller actions",
+        "visual media tile controls original single audio",
+        "app volume slider reflects actual audio within half its native step",
+        "reduced transparency removes all surface blur",
+        "reduced motion does not start visual animations",
+        "motion finishes with no active animation ownership",
+        "floating Dock overlap uses its actual bottom offset",
+        "system glyphs retain real finger targets",
+        "working surfaces are opaque to prevent overlapping text bleed",
+        "notes title remains reachable in its editor viewport",
+        "default wallpaper is local licensed mountain artwork",
+        "window title controls keep touch targets",
+        "closing the final app restores the desktop menu and clears motion",
+        "no uncaught visual browser errors"
+      ],
+      "screens": [
+        "lockscreen",
+        "lockscreen-portrait",
+        "desktop",
+        "desktop-portrait",
+        "widgets",
+        "menubar",
+        "dock",
+        "launchpad",
+        "launcher-categories",
+        "launcher-all-apps",
+        "spotlight",
+        "control-center",
+        "island",
+        "motion-app-open",
+        "motion-app-close",
+        "system-file-received",
+        "notes",
+        "finder",
+        "music",
+        "calendar",
+        "airwrite",
+        "settings",
+        "motion-app-switch",
+        "two-windows",
+        "workspace-1024x768",
+        "workspace-1180x820",
+        "workspace-1366x1024",
+        "workspace-834x1194",
+        "workspace-820x1180",
+        "workspace-390x600",
+        "reduced-transparency",
+        "desktop-after-close"
+      ],
+      "geometry": [
+        {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1024,
+            "height": 740,
+            "right": 1024,
+            "bottom": 768
+          },
+          "dock": {
+            "x": 146.5,
+            "y": 701.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 877.5,
+            "bottom": 768
+          },
+          "notch": {
+            "x": 446,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 578,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1180,
+            "height": 820
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1180,
+            "height": 792,
+            "right": 1180,
+            "bottom": 820
+          },
+          "dock": {
+            "x": 224.5,
+            "y": 753.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 955.5,
+            "bottom": 820
+          },
+          "notch": {
+            "x": 524,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 656,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 1366,
+            "height": 1024
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 1366,
+            "height": 996,
+            "right": 1366,
+            "bottom": 1024
+          },
+          "dock": {
+            "x": 317.5,
+            "y": 957.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 1048.5,
+            "bottom": 1024
+          },
+          "notch": {
+            "x": 617,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 749,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 834,
+            "height": 1194
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 834,
+            "height": 1166,
+            "right": 834,
+            "bottom": 1194
+          },
+          "dock": {
+            "x": 51.5,
+            "y": 1127.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 782.5,
+            "bottom": 1194
+          },
+          "notch": {
+            "x": 351,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 483,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 820,
+            "height": 1180
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 820,
+            "height": 1152,
+            "right": 820,
+            "bottom": 1180
+          },
+          "dock": {
+            "x": 44.5,
+            "y": 1113.484375,
+            "width": 731,
+            "height": 66.515625,
+            "right": 775.5,
+            "bottom": 1180
+          },
+          "notch": {
+            "x": 344,
+            "y": 0,
+            "width": 132,
+            "height": 39,
+            "right": 476,
+            "bottom": 39
+          },
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 600
+          },
+          "host": {
+            "x": 0,
+            "y": 28,
+            "width": 390,
+            "height": 572,
+            "right": 390,
+            "bottom": 600
+          },
+          "dock": {
+            "x": 9,
+            "y": 534,
+            "width": 372,
+            "height": 66,
+            "right": 381,
+            "bottom": 600
+          },
+          "notch": {
+            "x": 139.5,
+            "y": 0,
+            "width": 111.234375,
+            "height": 39,
+            "right": 250.734375,
+            "bottom": 39
+          },
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "openMotion": {
+        "kind": "window",
+        "origin": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        },
+        "duration": 280,
+        "target": {
+          "x": 943.421875,
+          "y": 180,
+          "width": 124.5625,
+          "height": 104
+        }
+      },
+      "notes": {
+        "scrollTop": 0,
+        "title": {
+          "x": 430,
+          "y": 200,
+          "width": 354,
+          "height": 42,
+          "top": 200,
+          "right": 784,
+          "bottom": 242,
+          "left": 430
+        },
+        "content": {
+          "x": 53,
+          "y": 119,
+          "width": 758,
+          "height": 560,
+          "top": 119,
+          "right": 811,
+          "bottom": 679,
+          "left": 53
+        }
+      },
+      "focusMotion": {
+        "before": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "after": {
+          "x": 96,
+          "y": 106,
+          "width": 760,
+          "height": 610,
+          "top": 106,
+          "right": 856,
+          "bottom": 716,
+          "left": 96
+        },
+        "motion": {
+          "kind": "activate",
+          "origin": null,
+          "duration": 220,
+          "target": {
+            "x": 96,
+            "y": 106,
+            "width": 760,
+            "height": 610
+          }
+        }
+      },
+      "nativeVolume": {
+        "input": 0.99,
+        "audio": 0.9900000095367432,
+        "step": 0.01
+      },
+      "status": "passed"
+    },
+    "notch-webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "synthetic": true,
+      "checks": [
+        "one solid black surface replaces both glass pieces",
+        "all 25 app IDs and the single audio owner remain",
+        "music reaches measured target geometry",
+        "lyrics reaches measured target geometry",
+        "timer reaches measured target geometry",
+        "calendar reaches measured target geometry",
+        "shelf reaches measured target geometry",
+        "files reaches measured target geometry",
+        "actual rendered background pixels are opaque black",
+        "player reads real imported metadata",
+        "track switch keeps the same audio and updates the open view",
+        "missing lyrics are not fabricated",
+        "real local LRC stays plain text",
+        "timer starts through the existing timer owner",
+        "timer extension preserves existing storage contract",
+        "timer survives app focus changes",
+        "calendar uses actual stored appointments",
+        "calendar week navigation uses the same local dates",
+        "calendar day timeline reflects the stored appointment times",
+        "music/calendar switching retains playback and window ownership",
+        "Shelf import commits to the existing Finder store",
+        "removing a shelf reference preserves its original file",
+        "touch viewport stays within bounds 1024",
+        "touch viewport stays within bounds 1180",
+        "touch viewport stays within bounds 1366",
+        "touch viewport stays within bounds 834",
+        "touch viewport stays within bounds 820",
+        "touch viewport stays within bounds 390",
+        "pausing a compact lyric state morphs back to the real closed size",
+        "open creates one measured outer morph",
+        "expand creates one measured outer morph",
+        "close creates one measured outer morph",
+        "switch creates one measured outer morph",
+        "calendar creates one measured outer morph",
+        "interruption starts at the actual in-flight rectangle",
+        "rapid repeated input leaves one coherent target and no animations",
+        "actual repeated touch taps end closed with no retained effects",
+        "keyboard tab navigation selects the actual timer page",
+        "Pencil-compatible pointercancel clears only the pending gesture",
+        "Reduced Motion commits without animation ownership",
+        "Escape returns to the black capsule without removing it",
+        "closed idle never starts a new animation",
+        "real navigation releases every owned Notch animation",
+        "foreground return retains the original timer state"
+      ],
+      "screens": [
+        "notch-closed",
+        "notch-music",
+        "notch-lyrics",
+        "notch-timer",
+        "notch-calendar",
+        "notch-shelf",
+        "notch-files",
+        "notch-local-lyrics",
+        "notch-viewport-1024x768",
+        "notch-viewport-1180x820",
+        "notch-viewport-1366x1024",
+        "notch-viewport-834x1194",
+        "notch-viewport-820x1180",
+        "notch-viewport-390x600",
+        "notch-motion-open-20",
+        "notch-motion-open-40",
+        "notch-motion-open-60",
+        "notch-motion-open-80",
+        "notch-motion-expand-20",
+        "notch-motion-expand-40",
+        "notch-motion-expand-60",
+        "notch-motion-expand-80",
+        "notch-motion-close-20",
+        "notch-motion-close-40",
+        "notch-motion-close-60",
+        "notch-motion-close-80",
+        "notch-motion-switch-20",
+        "notch-motion-switch-40",
+        "notch-motion-switch-60",
+        "notch-motion-switch-80",
+        "notch-motion-calendar-20",
+        "notch-motion-calendar-40",
+        "notch-motion-calendar-60",
+        "notch-motion-calendar-80",
+        "notch-motion-open"
+      ],
+      "geometry": [
+        {
+          "name": "music",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        },
+        {
+          "name": "lyrics",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260
+        },
+        {
+          "name": "timer",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176
+        },
+        {
+          "name": "calendar",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216
+        },
+        {
+          "name": "shelf",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150
+        },
+        {
+          "name": "files",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152
+        }
+      ],
+      "motion": [
+        {
+          "label": "open",
+          "q": 0.2,
+          "relativeTime": 0.2000012000012001,
+          "sourceFrame": 20,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 324.421875,
+            "height": 85.4375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.4,
+          "relativeTime": 0.3999993999994001,
+          "sourceFrame": 22,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 410.84375,
+            "height": 134.84375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.6,
+          "relativeTime": 0.6000006000006002,
+          "sourceFrame": 24,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 427.9375,
+            "height": 143.921875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "open",
+          "q": 0.8,
+          "relativeTime": 0.8000018000018,
+          "sourceFrame": 26,
+          "duration": 333,
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 19,
+          "changes": 20,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.984375,
+            "height": 150.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.2,
+          "relativeTime": 0.22221999999999903,
+          "sourceFrame": 106,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 199.546875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.4,
+          "relativeTime": 0.44444333333333336,
+          "sourceFrame": 108,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 224.328125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.6,
+          "relativeTime": 0.5555533333333329,
+          "sourceFrame": 109,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 242.15625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "expand",
+          "q": 0.8,
+          "relativeTime": 0.7777766666666671,
+          "sourceFrame": 111,
+          "duration": 300,
+          "mode": "lyrics",
+          "lastView": "lyrics",
+          "active": 2,
+          "draws": 20,
+          "changes": 21,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 440,
+            "height": 258.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.2,
+          "relativeTime": 0.19047571428571478,
+          "sourceFrame": 162,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 342.09375,
+            "height": 118
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.4,
+          "relativeTime": 0.3809514285714283,
+          "sourceFrame": 166,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.6,
+          "relativeTime": 0.619047142857143,
+          "sourceFrame": 171,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 303.90625,
+            "height": 64
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "close",
+          "q": 0.8,
+          "relativeTime": 0.8095228571428564,
+          "sourceFrame": 175,
+          "duration": 700,
+          "mode": "closed",
+          "lastView": "lyrics",
+          "active": 4,
+          "draws": 21,
+          "changes": 22,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 300.96875,
+            "height": 58.984375
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.2,
+          "relativeTime": 0.1818189256191582,
+          "sourceFrame": 197,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 344.359375,
+            "height": 91.703125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.4,
+          "relativeTime": 0.36363512396807046,
+          "sourceFrame": 199,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 384.78125,
+            "height": 125.421875
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.6,
+          "relativeTime": 0.6363621487616836,
+          "sourceFrame": 202,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 436.046875,
+            "height": 172.03125
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "switch",
+          "q": 0.8,
+          "relativeTime": 0.8181810743808418,
+          "sourceFrame": 204,
+          "duration": 367,
+          "mode": "timer",
+          "lastView": "timer",
+          "active": 3,
+          "draws": 22,
+          "changes": 23,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 438.015625,
+            "height": 174.015625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.2,
+          "relativeTime": 0.1666675000000016,
+          "sourceFrame": 237,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 461.3125,
+            "height": 244.40625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.4,
+          "relativeTime": 0.41666750000000047,
+          "sourceFrame": 240,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 494.828125,
+            "height": 227.90625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.6,
+          "relativeTime": 0.583335000000002,
+          "sourceFrame": 242,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 503.96875,
+            "height": 218.75
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "label": "calendar",
+          "q": 0.8,
+          "relativeTime": 0.8333350000000009,
+          "sourceFrame": 245,
+          "duration": 400,
+          "mode": "calendar",
+          "lastView": "calendar",
+          "active": 3,
+          "draws": 23,
+          "changes": 25,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 506,
+            "height": 216
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        },
+        {
+          "mode": "music",
+          "lastView": "music",
+          "active": 3,
+          "draws": 24,
+          "changes": 27,
+          "reduced": false,
+          "disposed": false,
+          "geometry": {
+            "width": 420,
+            "height": 138.5625
+          },
+          "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+          "lyricCues": 4,
+          "gesture": false
+        }
+      ],
+      "errors": [],
+      "crops": [
+        {
+          "name": "notch-closed",
+          "file": "notch-closed-crop.png",
+          "x": 472,
+          "y": 0,
+          "width": 236,
+          "height": 32,
+          "dpr": 1
+        },
+        {
+          "name": "notch-music",
+          "file": "notch-music-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-lyrics",
+          "file": "notch-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 1
+        },
+        {
+          "name": "notch-timer",
+          "file": "notch-timer-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 176,
+          "dpr": 1
+        },
+        {
+          "name": "notch-calendar",
+          "file": "notch-calendar-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 1
+        },
+        {
+          "name": "notch-shelf",
+          "file": "notch-shelf-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 150,
+          "dpr": 1
+        },
+        {
+          "name": "notch-files",
+          "file": "notch-files-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-local-lyrics",
+          "file": "notch-local-lyrics-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 260,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1024x768",
+          "file": "notch-viewport-1024x768-crop.png",
+          "x": 292,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1180x820",
+          "file": "notch-viewport-1180x820-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-1366x1024",
+          "file": "notch-viewport-1366x1024-crop.png",
+          "x": 463,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-834x1194",
+          "file": "notch-viewport-834x1194-crop.png",
+          "x": 197,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-820x1180",
+          "file": "notch-viewport-820x1180-crop.png",
+          "x": 190,
+          "y": 0,
+          "width": 440,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-viewport-390x600",
+          "file": "notch-viewport-390x600-crop.png",
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 152,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-20",
+          "file": "notch-motion-open-20-crop.png",
+          "x": 428,
+          "y": 0,
+          "width": 324.421875,
+          "height": 85.4375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-40",
+          "file": "notch-motion-open-40-crop.png",
+          "x": 384.5,
+          "y": 0,
+          "width": 410.84375,
+          "height": 134.84375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-60",
+          "file": "notch-motion-open-60-crop.png",
+          "x": 376,
+          "y": 0,
+          "width": 427.9375,
+          "height": 143.921875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-open-80",
+          "file": "notch-motion-open-80-crop.png",
+          "x": 370.5,
+          "y": 0,
+          "width": 438.984375,
+          "height": 150.984375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-20",
+          "file": "notch-motion-expand-20-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 199.546875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-40",
+          "file": "notch-motion-expand-40-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 224.328125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-60",
+          "file": "notch-motion-expand-60-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 242.15625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-expand-80",
+          "file": "notch-motion-expand-80-crop.png",
+          "x": 370,
+          "y": 0,
+          "width": 440,
+          "height": 258.015625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-20",
+          "file": "notch-motion-close-20-crop.png",
+          "x": 419,
+          "y": 0,
+          "width": 342.09375,
+          "height": 118,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-40",
+          "file": "notch-motion-close-40-crop.png",
+          "x": 439.5,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-60",
+          "file": "notch-motion-close-60-crop.png",
+          "x": 438,
+          "y": 0,
+          "width": 303.90625,
+          "height": 64,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-close-80",
+          "file": "notch-motion-close-80-crop.png",
+          "x": 439.5,
+          "y": 0,
+          "width": 300.96875,
+          "height": 58.984375,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-20",
+          "file": "notch-motion-switch-20-crop.png",
+          "x": 418,
+          "y": 0,
+          "width": 344.359375,
+          "height": 91.703125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-40",
+          "file": "notch-motion-switch-40-crop.png",
+          "x": 397.5,
+          "y": 0,
+          "width": 384.78125,
+          "height": 125.421875,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-60",
+          "file": "notch-motion-switch-60-crop.png",
+          "x": 372,
+          "y": 0,
+          "width": 436.046875,
+          "height": 172.03125,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-switch-80",
+          "file": "notch-motion-switch-80-crop.png",
+          "x": 371,
+          "y": 0,
+          "width": 438.015625,
+          "height": 174.015625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-20",
+          "file": "notch-motion-calendar-20-crop.png",
+          "x": 359.5,
+          "y": 0,
+          "width": 461.3125,
+          "height": 244.40625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-40",
+          "file": "notch-motion-calendar-40-crop.png",
+          "x": 342.5,
+          "y": 0,
+          "width": 494.828125,
+          "height": 227.90625,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-60",
+          "file": "notch-motion-calendar-60-crop.png",
+          "x": 338,
+          "y": 0,
+          "width": 503.96875,
+          "height": 218.75,
+          "dpr": 1
+        },
+        {
+          "name": "notch-motion-calendar-80",
+          "file": "notch-motion-calendar-80-crop.png",
+          "x": 337,
+          "y": 0,
+          "width": 506,
+          "height": 216,
+          "dpr": 1
+        }
+      ],
+      "pagehide": {
+        "persisted": false,
+        "mode": "closed",
+        "lastView": "lyrics",
+        "active": 0,
+        "draws": 51,
+        "changes": 55,
+        "reduced": false,
+        "disposed": true,
+        "geometry": {
+          "width": 236,
+          "height": 32
+        },
+        "source": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+        "lyricCues": 4,
+        "gesture": false,
+        "effects": 0
+      },
+      "status": "failed",
+      "error": "page.reload: WebKit encountered an internal error\nCall log:\n  - waiting for navigation until \"load\"\n\n    at run (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad-pro-notch.cjs:24:1099)"
+    }
+  }
+}
