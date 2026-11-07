@@ -2,6 +2,8 @@
 
 Arbeitsbranch `feat/air-os-ipad-liquid-glass-maclock`; Ausgangsstand `732bb798bfe2bc9ed614610eaeee5d60296ad3e6` enthält Produkt `5b09e4d93e08bb60304f32cad40676c477cb7a9e`. Keine Installation, Veröffentlichung oder Zusammenführung. Private Tailscale-Version bleibt unverändert.
 
+Die nachfolgende gezielte Korrektur der sechs rot markierten Stellen ist im [Bericht zur visuellen Schlusskorrektur](AIR_OS_IPAD_FINAL_VISUAL_POLISH.md) separat nachgewiesen.
+
 ## Implementierung und Herkunft
 
 MacShell MIT, Referenzcommit `1bdb51870b621100fd2709f66c8f8e00ab17b9c4`. [Maschinenlesbare Pfade und SHA-256](source-ports/liquid-maclock.json), vollständiger Copyright-/Lizenztext unter `ipad/licenses/MacShell-MacLock-MIT.txt`, Attribution in `ipad/NOTICE` und mitgeliefertem Corresponding Source. Bestehende MacTahoe-/AGPL-/Shaderlizenzen bleiben erhalten.

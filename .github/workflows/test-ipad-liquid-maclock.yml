@@ -11,6 +11,7 @@ concurrency:
   cancel-in-progress: true
 env:
   AIR_PAD_EDITION2: '1'
+  AIR_LG_POLISH: '1'
   AIR_PAD_EVIDENCE_BRANCH: feat/air-os-ipad-liquid-glass-maclock
 jobs:
   browser:
