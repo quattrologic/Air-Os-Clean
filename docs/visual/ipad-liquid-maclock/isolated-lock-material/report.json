@@ -1,0 +1,117 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "isolatedDiagnostic": true,
+  "checks": [
+    "missing artwork has exactly one fallback glyph",
+    "actual isolated GL executes MacLock material",
+    "Glass.qml thickness dispersion tint and magnify reach runtime uniforms",
+    "MacLock refraction changes actual card pixels",
+    "stationary lock performs no further shader draws",
+    "reduced transparency frees lock GL resources"
+  ],
+  "material": {
+    "cssWallpaperTiles": 0,
+    "cssFallback": "aligned-own-wallpaper-no-capture",
+    "quality": 1,
+    "lastPaintMs": 64,
+    "qualityChanges": 0,
+    "failed": false,
+    "reason": "",
+    "diagnostic": true,
+    "software": true,
+    "diagnosticRefraction": true,
+    "draws": 2,
+    "sceneBuilds": 1,
+    "transfers": 2,
+    "tiles": 2,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 464,
+    "programs": 4,
+    "materialPrograms": 3,
+    "prepassDraws": 2,
+    "prepassWallTimeMs": 13,
+    "uploadWallTimeMs": 42,
+    "maxTexture": 2048,
+    "sceneSize": [
+      1898,
+      1055
+    ],
+    "estimatedTextureBytes": 16024182,
+    "textures": 3,
+    "localTextureBytes": 0,
+    "gpuType": "software",
+    "renderPath": "isolated-diagnostic",
+    "contextLosses": 0,
+    "decodeCount": 1,
+    "bufferResizes": 2,
+    "transferWallTimeMs": 338,
+    "dpr": 2,
+    "backdrop": "wallpaper-only",
+    "family": "macshell",
+    "localLenses": 0,
+    "tintCards": 0,
+    "edgeDetail": true,
+    "materials": [
+      {
+        "kind": "maclock",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 38.400000000000006,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.17600000000000002,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 1
+        }
+      },
+      {
+        "kind": "maclock",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 38.400000000000006,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.17600000000000002,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 1
+        }
+      }
+    ]
+  },
+  "originalUniforms": {
+    "saturation": 1.25,
+    "dark": 1,
+    "shadowAmt": 0,
+    "flatInner": 1,
+    "ringW": 0,
+    "thickness": 38.400000000000006,
+    "dispersion": 0.078,
+    "blurPx": 1.5,
+    "tintMix": 0.17600000000000002,
+    "rim": 0.5,
+    "grain": 0.006,
+    "magnify": 0.08000000000000002,
+    "rimTint": 1
+  },
+  "pixelDifference": {
+    "channels": 261020,
+    "changed": 163653,
+    "meanAbsoluteChannelDifference": 7.225411845835568
+  },
+  "status": "passed"
+}

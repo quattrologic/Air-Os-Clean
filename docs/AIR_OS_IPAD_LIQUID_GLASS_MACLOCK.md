@@ -70,3 +70,37 @@ Der ältere37-Fälle-Systemlauf fand eine reale Regression: Überlappungsprüfun
 Zusätzlicher DPR2-Lauf mit `hasTouch:false` prüft den echten CSS-Fine-Pointer-Modus. Ein früherer separater3px-Hoverlift ist entfernt: ausschließlich der gekoppelte Cosinus verändert Größe/Abstände, alle Iconunterkanten liegen innerhalb1px auf derselben Linie. Dieser Lauf besteht24/24. Standardlauf bleibt touchfähig; synthetische Pointerereignisse prüfen Hold/Release/Cancel zusätzlich. Keine Behauptung eines Hardware-Trackpad-Tests.
 
 [Unveränderte Vollaufnahmen und Reports der drei Korrekturrunden](visual/ipad-liquid-maclock/correction-rounds/) sind gesichert; [tatsächlich berechnete Pixeländerungen](visual/ipad-liquid-maclock/correction-rounds/pixel-differences.json) beziehen sich auf identische1688×938-Ansichten. Diese Zahlen messen Veränderungen zwischen Browserständen, keine Qualität oder Übereinstimmung mit einem nativen Video.
+
+
+## Optionale Spotify-Einrichtung nach eigener Freigabe
+
+1. Im offiziellen Spotify Developer Dashboard eine eigene zulässige Web-API-App einrichten; aktuelle Kontobedingungen, Development-Mode-Allowlist und gegebenenfalls erforderliche Tarifvoraussetzungen dort prüfen. Keine API-Freigabe wird durch Air-OS erteilt.
+2. Die in Air-OS-Einstellungen angezeigte Redirect-URI exakt beim Spotify-Projekt registrieren (produktive private HTTPS-Adresse einschließlich Pfad/Slash). Öffentliche Client-ID in Air-OS eintragen; kein Secret eingeben oder veröffentlichen.
+3. Lesezustimmung aktivieren und „Spotify verbinden“ drücken. Erst dann führt Air-OS zum echten Spotify-OAuth-Dialog. Keine Anmeldung wurde durch diese Entwicklung vorgenommen.
+4. Nach Rückkehr erscheinen ausschließlich tatsächlich gelieferte Metadaten.403 bedeutet fehlende Freigabe statt vorgetäuschter Verbindung. Steuerung in Spotify; Air-OS ist nur lesend. Nach App-Neustart neu verbinden.
+5. „Spotify trennen“ beendet Abfragen und verwirft In-Memory-Tokens; „Gespeicherte Musik-Metadaten löschen“ löscht zusätzlich lokale letzte Titelinformationen und deaktiviert weiteres Merken. Originalmusik bleibt erhalten.
+
+## Abnahmegeometrie
+
+Chromium DPR2,1688×938, isolierte synthetische Bibliothek:
+
+| Element | Tatsächliches DOMRect (CSS-px) | Bezug |
+|---|---|---|
+| Schwarze Pro Notch | x761,5/y0/165×24 | unverändert, Safe-Area im Test0 |
+| Datum/Uhr-Gruppe | y67,53/h105,77 | Vorlage Datum ungefähr y69 |
+| Albumcover | x695,80/y305,78/296,41×296,41 | Vorlage ungefähr296×296 ab306 |
+| Medienpanel | x695,80/y621,88/296,41×108,80 | Vorlage ungefähr296×109 ab622 |
+| Profilgruppe | y747,92/h146 |44px lokaler Öffnen-Button statt Passwortfeld |
+| Hinweise | x1410,55/y31,89/w265,45 | Vorlage ungefährx1410/y32/w266 |
+
+Originalkoordinaten sind aus dem sichtbaren Inlinebild abgelesene Näherungen, keine automatisierte JPEG-Pixelmessung. Andere Testviewports prüfen Kollisionen und Erreichbarkeit. Video-PTS haben tatsächlich0,005/0,01667/0,03333/0,05s-Schritte; die nominale60fps-Angabe ist daher keine konstante Aufnahmekadenz. Kein Timingfit aus wechselnder Kameraperspektive behauptet.
+
+## Gezielte MacLock-Shaderdiagnose
+
+[Reproduzierbarer zusätzlicher Browserlauf](validation/test-maclock-material.cjs), nur isolierter localhost mit ausdrücklich gesetzter vorhandener Diagnosepolicy, ohne GPU-Sicherheitsflags.6/6 bestanden. Kein echter Spotifyaccount und keine Audioengine: gekennzeichnete synthetische Metadaten aktivieren ausschließlich die bestehende Lockkarte.
+
+[Report und unveränderte vollständige Diagnoseaufnahmen](visual/ipad-liquid-maclock/isolated-lock-material/): Originale MacLock-Uniforms erreichen das tatsächlich ausgeführte Material. Umschalten der Refraktion verändert163653 von261020 Farb-/Alphakanälen, mittlere absolute Kanaldifferenz7,2254. Stationäre Karte erzeugt über650ms keine weiteren Draws; Reduced Transparency gibt Texturen, Programme und Tiles frei. Software-GPU, Szene1898×1055, ca.16,0MB geschätzte Texturen; kumulative Shaderzeit ist keine Hardware-FPS-Messung. Diagnosebilder sind bewusst getrennt von der normalen CSS-Produktgalerie.
+
+Die Sichtprüfung fand zusätzlich einen doppelten Musikglyphen bei fehlendem Cover (ursprünglicher Textknoten plus neuer Fallback). Korrigiert und im selben Lauf geprüft. Das vorhandene Cover-/Musikmodell wurde dabei nicht verändert.
+
+Spotify-API-Pfade und PKCE-Empfehlung zusätzlich anhand des offiziellen `spotify/spotify-web-api-ts-sdk` geprüft, HEAD `c6f34491eaa17ab73698d5464ee10332d0c551cc`, `README.md` und `src/endpoints/PlayerEndpoints.ts`. Kein SDK-Code übernommen. Aktuelle individuelle Kontofreigaben bleiben offen.
