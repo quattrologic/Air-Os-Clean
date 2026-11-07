@@ -26,7 +26,7 @@
  const observer=new MutationObserver(()=>{if(reduced())clear();});observer.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();},{signal});
  document.addEventListener('air-ipad-session',e=>{clear();void show(document.querySelector(e.detail?'#desktop':'#lockscreen'),'session');},{signal});
- const notch=document.querySelector('#notch-panel'),watch=new MutationObserver(()=>{if(notch.hidden)cancel(notch);else void show(notch,'island');});watch.observe(notch,{attributes:true,attributeFilter:['hidden']});
- window.addEventListener('pagehide',e=>{clear();if(!e.persisted){observer.disconnect();watch.disconnect();events.abort();}});
+ // Pro Notch owns its one surface timeline; desktop motion never animates that surface.
+ window.addEventListener('pagehide',e=>{clear();if(!e.persisted){observer.disconnect();events.abort();}});
  window.airVisualMotion=Object.freeze({show,depart,cancel,box,snapshot:()=>({active:active.size,reduced:reduced(),last})});
 })();

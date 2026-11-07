@@ -63,3 +63,11 @@ No third-party authorship or public license is asserted for this supplied asset.
 Provenance and SHA-256: assets/yosemite-morning.metadata.json.
 CSS cover framing only. No image generation or local pixel modification.
 The image is separate from the AGPL combined-code license and existing notices.
+
+Pro Notch presentation: independently implemented Air-OS browser UI and motion
+math, based on the user's visible MOV reference (SHA-256
+9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74).
+No native macOS executable, decompiled implementation, proprietary app resource,
+reference cover image or song lyric is included in the PWA. The reference is not
+an open-source license grant. Existing Air-OS combined-PWA/source license applies
+to the new implementation. Own line glyphs are independently drawn.

@@ -269,6 +269,7 @@
     state.timer.done=!!saved.done;
     tickTimer();
   }
+  function timerSnapshot(){const t=state.timer;return{...t,remaining:t.endAt?Math.max(0,Math.ceil((t.endAt-Date.now())/1000)):t.remaining};}
   function saveTimer() { localStorage.setItem(KEYS.timer,JSON.stringify(state.timer)); }
   function tickTimer() {
     const t=state.timer;
@@ -280,14 +281,14 @@
     $('#notch-timer').textContent=time(t.remaining);
     $('#timer-status').textContent=t.done?'Zeit abgelaufen':t.endAt?'Läuft':t.remaining<t.duration?'Pausiert':'Bereit';
     $('#timer-toggle').textContent=t.done?'Fertig':t.endAt?'Pause':t.remaining<t.duration?'Fortsetzen':'Starten';
-    $$('[data-minutes]').forEach(el=>el.classList.toggle('selected',Number(el.dataset.minutes)*60===t.duration));
+    $$('[data-minutes]').forEach(el=>el.classList.toggle('selected',Number(el.dataset.minutes)*60===t.duration));document.dispatchEvent(new CustomEvent('air-ipad-timer',{detail:timerSnapshot()}));
   }
   function timerAction(reset) {
     const t=state.timer;
     if(reset||t.done){t.endAt=null;t.remaining=t.duration;t.done=false;}
     else if(t.endAt){t.remaining=Math.max(0,Math.ceil((t.endAt-Date.now())/1000));t.endAt=null;}
     else t.endAt=Date.now()+t.remaining*1000;
-    saveTimer();tickTimer();
+    saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));
   }
 
   async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}location.reload();}
@@ -316,15 +317,15 @@
     });
     $('#lock-again').addEventListener('click',()=>{
       audio.pause();$('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').hidden=false;
-      $('#notch-panel').hidden=true;renderMedia();
+      window.airProNotch?.close(true);renderMedia();
     });
     $$('.app-tile').forEach(button=>button.addEventListener('click',()=>openPanel(button.dataset.panel)));
     $$('[data-close]').forEach(button=>button.addEventListener('click',()=>openPanel('')));
     $('#notch-toggle').addEventListener('click',()=>{
-      const panel=$('#notch-panel');panel.hidden=!panel.hidden;$('#notch-toggle').setAttribute('aria-expanded',String(!panel.hidden));
+      window.airProNotch?.toggle();
     });
     $('#notch-close').addEventListener('click',()=>{
-      $('#notch-panel').hidden=true;$('#notch-toggle').setAttribute('aria-expanded','false');
+      window.airProNotch?.close();
     });
     $$('[data-control]').forEach(button=>button.addEventListener('click',()=>{
       if (!state.unlocked)return;
@@ -370,12 +371,12 @@
     });
     window.addEventListener('offline',networkStatus);
     window.addEventListener('pagehide',event=>{rememberPosition();audio.pause();if(!event.persisted&&state.objectUrl)URL.revokeObjectURL(state.objectUrl);});
-    document.addEventListener('keydown',event=>{if(event.key==='Escape'){$('#notch-panel').hidden=true;$('#notch-toggle').setAttribute('aria-expanded','false');}});
+
   }
 
   async function start() {
     wire();networkStatus();dateTime();try{await airStore.completeLegacyRestore();}catch(e){toast(e.message);}renderEvents();loadTimer();document.addEventListener('air-storage-blocked',()=>toast('Datenbankupgrade wartet. Bitte alte Air-OS-Tabs schließen; keine Daten werden zurückgesetzt.'));
-    let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);window.addEventListener('pageshow',e=>{if(e.persisted)clock();});window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
+    let clockJob;const clock=()=>{clearTimeout(clockJob);if(document.hidden)return;dateTime();tickTimer();clockJob=setTimeout(clock,state.timer.endAt?1000:15000);};document.addEventListener('visibilitychange',clock);document.addEventListener('air-timer-schedule',clock);window.addEventListener('pageshow',e=>{if(e.persisted)clock();});window.addEventListener('pagehide',()=>clearTimeout(clockJob),{once:true});clock();
     document.addEventListener('air-transfer-changed',()=>{if(state.pendingReload&&!window.airTransfers?.busy())void safeReload();});await refreshCalendar();
     try { state.db=await openDB(); await refreshLibrary(); }
     catch(error) {
@@ -384,6 +385,6 @@
     }
     void setupUpdates();
   }
-  window.airIPad=Object.freeze({toast,presentNotice,calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
+  window.airIPad=Object.freeze({toast,presentNotice,sessionOpen:()=>state.unlocked,timer:Object.freeze({snapshot:timerSnapshot,toggle:()=>timerAction(false),reset:()=>timerAction(true),setDuration:value=>{if(!Number.isInteger(value)||value<1||value>86400)return;state.timer={duration:value,remaining:value,endAt:null,done:false};saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));},addMinute:()=>{const t=state.timer;if(t.duration>86340||timerSnapshot().remaining>86340)return;t.duration+=60;if(t.endAt)t.endAt+=60000;else t.remaining+=60;t.done=false;saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));}}),calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
   window.airIPadReady=start();
 })();
