@@ -64,3 +64,9 @@ Physisches iPad/Safari, Trackpad-/Pencil-Hardware, Akku, Hardware-GPU und reale 
 ### Checkpoint2 — Regression der Dockgrenzen
 
 Der ältere37-Fälle-Systemlauf fand eine reale Regression: Überlappungsprüfung war auf den neuen flachen Glaskörper begrenzt, obwohl Icons darüber hinausreichen. Korrigiert auf die vollständige bestehende Dock-DOM-Geometrie; derselbe unveränderte Test besteht anschließend37/37. Pointerup/-cancel werden zusätzlich am Fenster abgefangen, damit ein außerhalb der Dockfläche endender früher Touch keine gehaltene Geste zurücklässt. Bestehende71/71 Notch- und11/11 Material-/Lifecycle-Prüfungen bestehen lokal. CI wird für diesen korrigierten Stand erneut ausgeführt.
+
+### Maus-/Trackpad-Abnahme und unveränderte Unterkante
+
+Zusätzlicher DPR2-Lauf mit `hasTouch:false` prüft den echten CSS-Fine-Pointer-Modus. Ein früherer separater3px-Hoverlift ist entfernt: ausschließlich der gekoppelte Cosinus verändert Größe/Abstände, alle Iconunterkanten liegen innerhalb1px auf derselben Linie. Dieser Lauf besteht24/24. Standardlauf bleibt touchfähig; synthetische Pointerereignisse prüfen Hold/Release/Cancel zusätzlich. Keine Behauptung eines Hardware-Trackpad-Tests.
+
+[Unveränderte Vollaufnahmen und Reports der drei Korrekturrunden](visual/ipad-liquid-maclock/correction-rounds/) sind gesichert; [tatsächlich berechnete Pixeländerungen](visual/ipad-liquid-maclock/correction-rounds/pixel-differences.json) beziehen sich auf identische1688×938-Ansichten. Diese Zahlen messen Veränderungen zwischen Browserständen, keine Qualität oder Übereinstimmung mit einem nativen Video.

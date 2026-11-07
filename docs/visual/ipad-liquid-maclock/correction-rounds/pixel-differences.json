@@ -1,0 +1,46 @@
+[
+  {
+    "scene": "desktop",
+    "viewport": [
+      1688,
+      938
+    ],
+    "meanAbsoluteRGB": 4.4423488094396,
+    "pixelsAnyChannelDifferenceAtLeast8": 177568,
+    "totalPixels": 1583344,
+    "interpretation": "Changed pixels only; not a visual fidelity or quality score. No image resized or retouched."
+  },
+  {
+    "scene": "dock-maximum",
+    "viewport": [
+      1688,
+      938
+    ],
+    "meanAbsoluteRGB": 3.275863615234592,
+    "pixelsAnyChannelDifferenceAtLeast8": 166119,
+    "totalPixels": 1583344,
+    "interpretation": "Changed pixels only; not a visual fidelity or quality score. No image resized or retouched."
+  },
+  {
+    "scene": "lockscreen-music",
+    "viewport": [
+      1688,
+      938
+    ],
+    "meanAbsoluteRGB": 8.23640640736736,
+    "pixelsAnyChannelDifferenceAtLeast8": 400019,
+    "totalPixels": 1583344,
+    "interpretation": "Changed pixels only; not a visual fidelity or quality score. No image resized or retouched."
+  },
+  {
+    "scene": "control-center",
+    "viewport": [
+      1688,
+      938
+    ],
+    "meanAbsoluteRGB": 4.706017769985549,
+    "pixelsAnyChannelDifferenceAtLeast8": 264558,
+    "totalPixels": 1583344,
+    "interpretation": "Changed pixels only; not a visual fidelity or quality score. No image resized or retouched."
+  }
+]

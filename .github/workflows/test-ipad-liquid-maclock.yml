@@ -55,6 +55,7 @@ jobs:
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
           AIR_LG_DPR: '2'
+          AIR_LG_TOUCH: '0'
           AIR_LG_OUTPUT: dist/parity-evidence/liquid-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-liquid-maclock.cjs
       - name: Mocked Spotify PKCE, permissions and source lifecycle (no account)

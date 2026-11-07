@@ -29,3 +29,5 @@ html[data-quality="Reduzierte Transparenz"] .topbar{background:#17212b!important
 /* Round3: remove the obsolete parent card and keep labels inside their slabs. */
 .pad-popover.s3-control-center.ultra-css-material{border:0!important;box-shadow:none!important}.s3-control-center .pad-control-tile{min-width:0;overflow:hidden;white-space:nowrap;font-size:11px}.s3-control-center .pad-control-tile .pad-glyph{flex-shrink:0}.s3-control-center>header button{min-height:44px;color:#fff}
 .lg-media-settings input[type=text],.lg-spotify-settings input[readonly]{width:100%;min-height:44px;font-size:16px;box-sizing:border-box}.lg-spotify-settings input[readonly]{font-size:13px}.lg-spotify-settings input[type=checkbox]{flex-shrink:0}
+/* The cosine owner provides all upward growth; suppress the older independent mouse lift. */
+.pad-dock-app:hover{transform:none!important}

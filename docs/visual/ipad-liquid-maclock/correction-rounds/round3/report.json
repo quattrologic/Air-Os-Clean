@@ -1,0 +1,256 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "unlocked Yosemite is sharp and header confined to24px",
+    "frozen black Notch retains165 by24 geometry",
+    "strong source cosine peak reaches1.8",
+    "direct neighbor and second neighbor follow the coupled source wave",
+    "rendered Dock cells do not overlap",
+    "Dock stops drawing after spring settles",
+    "hold activates one touch magnification gesture",
+    "pointercancel releases gesture and all springs",
+    "one hold-release opens only the chosen existing app",
+    "lock preserves one real audio transport and current playback",
+    "lock foreground remains sharp and only its own wallpaper is blurred",
+    "only actual stored notices are rendered",
+    "lockscreen pause uses original engine and retains last metadata",
+    "lock next selects actual library track",
+    "lock portrait/landscape media and login stay separated 1180",
+    "lock portrait/landscape media and login stay separated 1024",
+    "lock portrait/landscape media and login stay separated 1366",
+    "lock portrait/landscape media and login stay separated 820",
+    "lock portrait/landscape media and login stay separated 390",
+    "all25 apps and schema2 retained",
+    "offline restart retains last track, cover and reliable state",
+    "metadata clear preserves every original music blob",
+    "no uncaught browser errors"
+  ],
+  "screens": [
+    "lockscreen-empty",
+    "desktop",
+    "dock-maximum",
+    "dock-touch",
+    "control-center",
+    "launcher",
+    "finder-notes",
+    "settings-spotify",
+    "lockscreen-music",
+    "lockscreen-portrait",
+    "desktop-portrait",
+    "lockscreen-offline"
+  ],
+  "errors": [],
+  "baseline": false,
+  "dock": {
+    "state": {
+      "autoHide": false,
+      "suspended": false,
+      "pending": false,
+      "hover": true,
+      "gesture": false,
+      "holding": false,
+      "selected": 5,
+      "hidden": false,
+      "paints": 22,
+      "cells": [
+        {
+          "id": "launchpad",
+          "x": 0,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 24
+        },
+        {
+          "id": "finder",
+          "x": 69,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 93
+        },
+        {
+          "id": "notes",
+          "x": 123,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 147
+        },
+        {
+          "id": "airwrite",
+          "x": 177,
+          "width": 52.82859363511486,
+          "icon": 52.30030769876372,
+          "scale": 1.1005957007315597,
+          "c0": 201
+        },
+        {
+          "id": "reminders",
+          "x": 235.82859363511486,
+          "width": 74.00841383121669,
+          "icon": 73.26832969290452,
+          "scale": 1.5418419548170144,
+          "c0": 255
+        },
+        {
+          "id": "calendar",
+          "x": 315.83700746633156,
+          "width": 86.4,
+          "icon": 85.536,
+          "scale": 1.8,
+          "c0": 309
+        },
+        {
+          "id": "music",
+          "x": 408.23700746633153,
+          "width": 74.00841383121669,
+          "icon": 73.26832969290452,
+          "scale": 1.5418419548170144,
+          "c0": 363
+        },
+        {
+          "id": "photos",
+          "x": 488.2454212975482,
+          "width": 52.82859363511486,
+          "icon": 52.30030769876372,
+          "scale": 1.1005957007315597,
+          "c0": 417
+        },
+        {
+          "id": "calculator",
+          "x": 547.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 471
+        },
+        {
+          "id": "settings",
+          "x": 601.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 525
+        },
+        {
+          "id": "downloads",
+          "x": 655.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 579
+        },
+        {
+          "id": "trash",
+          "x": 709.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 633
+        },
+        {
+          "id": "shelf",
+          "x": 763.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 687
+        }
+      ],
+      "baseSize": 48
+    },
+    "rects": [
+      {
+        "id": "launchpad",
+        "x": 438.46875,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "finder",
+        "x": 507.46875,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "notes",
+        "x": 561.46875,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "airwrite",
+        "x": 615.46875,
+        "width": 52.828125,
+        "icon": 52.296875
+      },
+      {
+        "id": "reminders",
+        "x": 674.296875,
+        "width": 74,
+        "icon": 73.265625
+      },
+      {
+        "id": "calendar",
+        "x": 754.296875,
+        "width": 86.390625,
+        "icon": 85.53125
+      },
+      {
+        "id": "music",
+        "x": 846.6875,
+        "width": 74,
+        "icon": 73.265625
+      },
+      {
+        "id": "photos",
+        "x": 926.6875,
+        "width": 52.828125,
+        "icon": 52.296875
+      },
+      {
+        "id": "calculator",
+        "x": 985.515625,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "settings",
+        "x": 1039.515625,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "downloads",
+        "x": 1093.515625,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "id": "trash",
+        "x": 1147.515625,
+        "width": 48,
+        "icon": 47.515625
+      },
+      {
+        "x": 1201.515625,
+        "width": 48,
+        "icon": 47.515625
+      }
+    ],
+    "surface": {
+      "x": 428.46875,
+      "y": 880,
+      "width": 831.0625,
+      "height": 58,
+      "top": 880,
+      "right": 1259.53125,
+      "bottom": 938,
+      "left": 428.46875
+    }
+  },
+  "status": "passed"
+}
