@@ -60,3 +60,7 @@ Neue GUI-Prüfungen: Header24px, Notch165×24, echter Cosinuspeak und Nichtüber
 ## Offene Grenzen
 
 Physisches iPad/Safari, Trackpad-/Pencil-Hardware, Akku, Hardware-GPU und reale Tailscale-Adresse nicht getestet. Automatisiertes WebKit ersetzt kein iPad. GPU-Softwareguard bleibt aktiv; isolierte Shaderdiagnose ist keine Hardwarefreigabe. Kein Zugriff auf fremde Fenster, keine privaten Daten, keine Installation und kein Deployment. Safari-/Spotify-Autoplay und Hintergrundbeschränkungen gelten weiterhin. Kein exakt identisches Verhalten zur nativen MacShell-/macOS-Oberfläche versprochen.
+
+### Checkpoint2 — Regression der Dockgrenzen
+
+Der ältere37-Fälle-Systemlauf fand eine reale Regression: Überlappungsprüfung war auf den neuen flachen Glaskörper begrenzt, obwohl Icons darüber hinausreichen. Korrigiert auf die vollständige bestehende Dock-DOM-Geometrie; derselbe unveränderte Test besteht anschließend37/37. Pointerup/-cancel werden zusätzlich am Fenster abgefangen, damit ein außerhalb der Dockfläche endender früher Touch keine gehaltene Geste zurücklässt. Bestehende71/71 Notch- und11/11 Material-/Lifecycle-Prüfungen bestehen lokal. CI wird für diesen korrigierten Stand erneut ausgeführt.
