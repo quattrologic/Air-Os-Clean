@@ -321,8 +321,8 @@
     });
     $$('.app-tile').forEach(button=>button.addEventListener('click',()=>openPanel(button.dataset.panel)));
     $$('[data-close]').forEach(button=>button.addEventListener('click',()=>openPanel('')));
-    $('#notch-toggle').addEventListener('click',()=>{
-      window.airProNotch?.toggle();
+    $('#notch-toggle').addEventListener('click',event=>{
+      if(event.target.closest('.pn-mini-timer')&&!event.target.closest('[hidden]'))void window.airProNotch?.show('timer');else if(event.target.closest('.pn-mini-art')&&!event.target.closest('[hidden]'))void window.airProNotch?.show('music');else window.airProNotch?.toggle();
     });
     $('#notch-close').addEventListener('click',()=>{
       window.airProNotch?.close();
