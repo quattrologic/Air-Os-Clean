@@ -1,0 +1,50 @@
+[
+  {
+    "round": 1,
+    "origin": "actual isolated local Chromium iteration; uncommitted development capture",
+    "suiteStatus": "failed",
+    "checksAtCapture": 9,
+    "screensAtCapture": 7,
+    "musicRect": {
+      "name": "music",
+      "x": 370,
+      "y": 0,
+      "width": 440,
+      "height": 154
+    },
+    "error": "AssertionError [ERR_ASSERTION]: track switch keeps the same audio and updates the open view\n    at check (/workspace/Air-Os-iPad-ProNotch/scripts/test-ipad-pro-notch.cjs:3:350)\n    at run (/workspace/Air-Os-iPad-ProNotch/scripts/test-ipad-pro-notch.cjs:9:262)",
+    "notes": "Initial black implementation: source comparison showed low player rows and overly tall timer/calendar; test stopped on async title update."
+  },
+  {
+    "round": 2,
+    "origin": "actual isolated local Chromium iteration; uncommitted development capture",
+    "suiteStatus": "failed",
+    "checksAtCapture": 17,
+    "screensAtCapture": 8,
+    "musicRect": {
+      "name": "music",
+      "x": 370,
+      "y": 0,
+      "width": 440,
+      "height": 154
+    },
+    "error": "AssertionError [ERR_ASSERTION]: Shelf import commits to the existing Finder store\n    at check (/workspace/Air-Os-iPad-ProNotch/scripts/test-ipad-pro-notch.cjs:3:350)\n    at run (/workspace/Air-Os-iPad-ProNotch/scripts/test-ipad-pro-notch.cjs:11:412)",
+    "notes": "Header hit targets and metadata/file completion waits corrected; test stopped waiting for the shelf UI commit."
+  },
+  {
+    "round": 3,
+    "origin": "actual isolated local Chromium iteration; uncommitted development capture",
+    "suiteStatus": "passed",
+    "checksAtCapture": 33,
+    "screensAtCapture": 16,
+    "musicRect": {
+      "name": "music",
+      "x": 370,
+      "y": 0,
+      "width": 440,
+      "height": 152
+    },
+    "error": null,
+    "notes": "Measured coordinates/shorter bodies corrected. Later expanded captures revealed and fixed the genuine WAAPI fill-effect cleanup issue."
+  }
+]

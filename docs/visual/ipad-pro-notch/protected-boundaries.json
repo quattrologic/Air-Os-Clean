@@ -1,0 +1,46 @@
+{
+  "base": "35bb3375aa57cfb68b1c29d9e784fe60e48b976e",
+  "product": "2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0",
+  "files": [
+    {
+      "path": "ipad/storage.js",
+      "sha256": "d02732c789b0f6bf16d814a5e3d7a61072ea28e5bf74d7d9ffef3530191b8800",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "ipad/backup.js",
+      "sha256": "b4252806254c64081083c5ec1fbfcd1ca978ac4df5c3adf68f271897531ef48e",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "scripts/templates/ipad-service-worker.js",
+      "sha256": "04cbacee0d4ca990a870893b1ab7caffc37f8e647630f4703cc50507bcf59b88",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "ipad/setup-windows.ps1",
+      "sha256": "7d23fc734ec12a5069a39517761bd604c6ae43ed95c19cbbdaa24cdecd7ab1db",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "ipad/update-windows.ps1",
+      "sha256": "1ccab667f57c59b867cd1d0d85e63841fc5ef5b95a43dad37d8c4a4eac3e6e4b",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "ipad/enable-updates-windows.ps1",
+      "sha256": "4cce33bc6184b98b23c7097c49442f9751757d6750de45d18d7e1ca91b0375ad",
+      "equalsVerifiedBase": true
+    },
+    {
+      "path": "ipad/assets/yosemite-morning.png",
+      "sha256": "d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06",
+      "equalsVerifiedBase": true
+    }
+  ],
+  "databaseName": "air-os-ipad-tracks-v1",
+  "schema": 2,
+  "physicalIPad": false,
+  "privateInstallationAccessed": false,
+  "deployed": false
+}

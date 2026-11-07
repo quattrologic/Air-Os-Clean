@@ -1,79 +1,158 @@
 # Air-OS iPad — Pro Notch
 
-Branch: `feat/air-os-ipad-pro-notch`. Pinned base: Premium 4 `35bb3375aa57cfb68b1c29d9e784fe60e48b976e`, tested product `07666db83bc821441c57a03b01a10715de8d88f2`, successful CI `42254786645` (704 browser checks). Premium 5 `ae0037de7efb064ff49619ed403b98f4371edf51` is newer but its CI `42261344976` failed; none of its CSS changes are included. System Experience 3 is an older ancestor.
+Entwicklungsbranch: `feat/air-os-ipad-pro-notch`. Produkt-/Buildstand: **`2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`**. Kein Deployment, kein Merge und kein Zugriff auf die installierte private PWA.
 
-## Actual reference and legal scope
+## Geprüfte Ausgangsbasis
 
-The attached `Pro-Notch-Codex-Referenz.mov` is available: 612×512, 388 frames, 12.934 seconds, nominal 30fps, actual variable timestamps. SHA-256: `9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74`. It was decoded and inspected, including intermediate frames. The separately named `Pro-Notch.zip`, `ScreenRecording_11-07-2026 11-50-36_1.mp4` and pre-extracted keyframes are absent. The provided Drive URL returns tunnel HTTP403. No association with inaccessible files or native source is claimed.
+Premium4-Abschluss `35bb3375aa57cfb68b1c29d9e784fe60e48b976e`, geprüftes Produkt `07666db83bc821441c57a03b01a10715de8d88f2`, erfolgreicher [CI-Lauf42254786645](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42254786645) mit704 Browserprüfungen. Premium5 `ae0037de7efb064ff49619ed403b98f4371edf51` ist neuer, sein Lauf42261344976 ist jedoch fehlgeschlagen. Dessen69 zusätzliche CSS-Zeilen wurden nicht übernommen. System Experience3 liegt davor in der Historie. Bestehende Worktrees und verwendete Installationsbranches wurden nicht verändert.
 
-The recording is a filmed display with camera shifts, hard cuts, exposure/motion blur and an unknown mapping from recorded pixels to native macOS points. The measured stable body sizes are approximately closed 235×31, music 440×151, extended music 443×260, timer 442×176, calendar 507×212–215 and Shelf 440×149. Runtime targets use CSS pixels and adapt to the actual PWA viewport. Native/camera pixels are not assumed to equal iPad hardware pixels. The reference includes an active compact-lyrics variant; it is only used when genuine local LRC content exists and the existing audio engine is playing.
+## Tatsächlich untersuchte Referenz
 
-This is an independent reimplementation of visible UI/motion, not a port of proprietary native program code. No macOS binary, resource extraction, decompilation, reference album artwork or reference lyric text enters the PWA. New glyph paths are independently drawn. Native AirDrop is replaced with an explicitly named browser import action. The black surface is always #000000, with no glass shader, backdrop filter, gradient, colored outline or idle animation.
+Verfügbar war **Pro-Notch-Codex-Referenz.mov**:612×512,388 Frames,12,934s, nominell30fps mit tatsächlichen variablen Zeitstempeln. SHA-256:
 
-## Architecture and running paths
+`9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74`
 
-- `ipad/notch/motion-data.js`: actual sampled timing/height progress, reference frame ranges, geometry and uncertainty.
-- `ipad/notch/model.js`: bounded geometry, sampled WAAPI keyframes and plain-text local LRC parsing; no system/data ownership.
-- `ipad/notch/pro-notch.js`: one continuous outer surface and one cancellable request lease. Width/height/bottom radius morph; content tracks share that request. Music/lyrics retain the same inner player nodes. No generic popup/zoom, no second visual-motion owner.
-- `ipad/notch/pro-notch.css`: isolated solid black UI, stable final-size content clipped by the evolving outside contour.
-- `ipad/app.js`: the existing audio/timer owner remains authoritative. Timer methods expose the existing state/actions; its existing deadline clock is rearmed after actions. Music, IDB, backup and calendar models are unchanged.
-- Existing `shelf-files` references and `fileAction` power the shelf. Import requires explicit file selection/drop; removal only removes references. Export uses existing Air Transfers. No native AirDrop, native window control or new file database.
-- Existing `core/visual-motion.js` and GLASS-3 no longer animate/materialize the Notch. Dock/windows/widgets keep their original engine.
+Alle Frames wurden dekodiert; Hauptansichten und Zwischenframes wurden direkt visuell geprüft. `Pro-Notch.zip`, die separat genannte MP4 und bereits extrahierte Keyframes waren nicht verfügbar. Die Drive-Adresse lieferte Tunnel-HTTP403. Es wurde keine native App ausgeführt, dekompiliert oder als Quellcode übernommen.
 
-The original #notch-toggle/#notch-panel metadata bindings are preserved, but their old glass presentation is replaced. Access to calendar, shelf and player controls requires the existing local session to be open; this remains a visual PWA session, not secure native authentication.
+Die MOV zeigt einen gefilmten Bildschirm: Perspektive, Kamerabewegung, Belichtung, Bewegungsunschärfe und harte Schnitte beeinflussen die Messung. Native macOS-Punkte/DPR sind unbekannt. Deshalb wird keine pixelidentische native Implementierung behauptet. Frameangaben sind nullbasiert. Schnitte1→2 und113→114 wurden nicht als Appanimation ausgewertet.
 
-## Motion derivation
+## Implementierte Integration
 
-Opening samples: frames18–28, 333ms. Expanded lyrics:104–113, 300ms. Closing/settling:158–179, 700ms (most contraction occurs in the first ~270ms, followed by a small recorded rebound). Switching profile:195–206, 367ms. Native implementation/easing names are unknown: no guessed Bezier is called original. Between measured keyframes WAAPI interpolates linearly. Frame duplication/quantization in the MOV is retained. A frame19 point is not interpreted as a perfect continuous native velocity measurement. Camera-cut intervals1→2 and113→114 are excluded. Bottom radii are visual estimates (closed ~10–12, open ~20–24), not recovered native alpha masks; top shape is attached to the viewport edge.
+| Pfad | Tatsächliche Aufgabe |
+|---|---|
+| `ipad/notch/motion-data.js` | Gemessene Geometrien und getrennte Breiten-/Höhenverläufe; dokumentierte Unsicherheit und geschätzte Inhalts-/Radiusverläufe |
+| `ipad/notch/model.js` | Reine Viewportbegrenzung, WAAPI-Keyframes und begrenzter Plain-Text-LRC-Parser; keine Daten-/Systemengine |
+| `ipad/notch/pro-notch.js` | Ein kontinuierlicher schwarzer Außenkörper, ein abbrechbarer Animationsauftrag mit gemeinsam verwalteten Inhaltseffekten |
+| `ipad/notch/pro-notch.css` | `#000000`, keine Glastextur, kein Backdropfilter, keine farbige Außenkontur; beschnittene Inhalte mit stabiler Zielbreite |
+| `ipad/index.html` | Alte Glas-Kapsel/Popup-Präsentation ersetzt; vorhandene Metadatenbindungen bleiben erreichbar |
+| `ipad/app.js` | Bestehenden Timer über seine ursprünglichen Zustände/Aktionen zugänglich gemacht; vorhandene Deadline-Uhr nach Aktionen neu eingeplant |
+| `ipad/core/visual-motion.js` | Alten Island-Animationsbeobachter entfernt; Fenster-/Dock-Motion bleibt bestehen |
+| `ipad/vendor/glass/renderer.js` | Notch aus gemeinsamen Glas-Selektoren entfernt; Dock/Widgets/Fenster bleiben im vorhandenen Materialpfad |
 
-## Visual correction rounds
+Musik nutzt ausschließlich `airIPad.music` und dasselbe Audioelement: Cover, Titel/Künstler, Fortschritt, Vor/Zurück und Play/Pause. Die erweiterte Ansicht behält die Playerknoten. Songtext stammt ausschließlich aus einer eindeutigen lokalen, zum Titel passenden `.lrc`-Datei im bestehenden Finder-Store; Größen-/Zeilenlimits, Textdarstellung und fehlender Inhalt sind geprüft. Kein externer Liedtextdienst und keine gebündelten Referenztexte.
 
-1. Initial single black surface and all real data paths; comparison showed media rows too low and view bodies too tall.
-2. Actual nav-button tests exposed a stacking conflict with the capsule hit target. Header is now outside the animated content track; real tabs remain interactive. Timer scale now reflects actual remaining time. Async metadata/import tests wait for committed UI state.
-3. Relative reference coordinates corrected: cover y32, title y28, progress center~72, transport center~115; music152px, timer176px, calendar216px, Shelf150px. Extra visible close glyph is replaced by a small independent monochrome header mark.
+Timer nutzt den vorhandenen `air-ipad:timer-v1`-Zustand: Dauer, Start/Pause/Fortsetzen, +1Minute und Reset. Die orange Skala folgt der tatsächlichen Restzeit. Kalender verwendet vorhandene lokale Termine, Datumsauswahl über die Kalenderwoche und eine Tageszeitleiste aus den gespeicherten Uhrzeiten; keine native Apple-/macOS-Kalenderanbindung.
 
-## Verified checkpoint / pending gate
+Shelf nutzt vorhandene `shelf-files`-Referenzen, Finder-Aktionen und Air Transfers. Import erfordert Dateiauswahl/Drop. Entfernen einer Referenz löscht die Originaldatei nicht. Finderöffnung und Export verwenden vorhandene Besitzer. Die zweite Zone heißt **Importieren**: kein vorgetäuschtes AirDrop. Lokale Sitzung muss geöffnet sein; die Sperransicht bleibt eine visuelle PWA-Sitzung, keine sichere native Authentifizierung.
 
-45/45 Node regressions (42 retained +3 pure Notch cases). First complete Chromium Notch GUI pass:37 checks/32 scenes, including actual metadata switching, LRC, timer/store contract, calendar, shelf import/removal, all six viewports, interruption, repeated inputs, pointercancel, Reduced Motion, idle and offline restart. This includes 16 actual paused intermediate frames for opening, closing, expansion and mode switching. The complete existing Chromium app/data gate also passes112 checks. WebKit, final reference-comparison packaging and the full CI/update gate remain pending until results are recorded below.
+Neue UI, Glyphen und Animationsintegration sind eigenständige Implementierungen sichtbarer Referenzen. Kein proprietärer nativer Programmcode oder internes Asset wurde kopiert. Vorhandene AGPL-/MIT-/GPL-/OFL-Nachweise und vollständiges Corresponding Source bleiben im Paket; `ipad/NOTICE` beschreibt die Abgrenzung.
 
-## Protected boundaries
+## Reproduzierbares Bewegungsmodell
 
-No IndexedDB migration: `air-os-ipad-tracks-v1`, schema2. All25 apps remain. `storage.js`, `backup.js`, Tailscale/Windows setup/update scripts, private installation and Serve address are untouched. Yosemite SHA-256 remains `d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06`. No deployment and no merge. Physical iPad/Safari/Pencil, battery, GPU and actual macOS/native-app equivalence remain open.
+| Familie | Referenzframes | Dauer |
+|---|---|---:|
+| Kleine Kapsel→Musik |18–28|333ms|
+| Musik→erweiterter Songtext |104–113|300ms|
+| Schließen einschließlich Nachschwingen |158–179|700ms|
+| Kompakter Songtext→Timer |195–206|367ms|
+| Songtext→Kalender |235–247|400ms|
 
-### Resource correction exposed by real viewports
+Die Hauptkontraktion beim Schließen erfolgt in etwa270ms, danach folgt das im Video sichtbare kleine Nachschwingen. Gemessene Duplikate/Quantisierung bleiben erhalten; zwischen Samples interpoliert WAAPI linear. Keine erfundene originale Bezierkurve. Geschätzte untere Radien10–24px folgen der Höhenentwicklung; oben liegt die Form am Safe-Area-Rand an. Native Alpha-/Radiusverläufe lassen sich aus dem gefilmten Video nicht zuverlässig zurückgewinnen.
 
-The first small-viewport capture exposed a real WAAPI lifecycle error: removing a finished effect from the ownership set before cancellation left its `fill:both` geometry attached to the DOM. It overrode later resize dimensions despite an internal zero count. The coordinated request now retains all effects until final cancellation. Every settle check also requires the real subtree `getAnimations()` list to be empty. The corrected 390px capture stays inside the viewport. Closing keeps the actual old page/content width until its scheduled fade, then reveals the real compact state; no abrupt removal at close start.
+Cover/Text sind um Frame20 bereits teilweise und um Frame24 weitgehend sichtbar. Die gemeinsame Inhalts-Einblendung wurde deshalb nach dem Vollfarbvergleich von24–78% auf8–55% vorgezogen. Das ist eine sichtbasierte Schätzung der Opazität, keine native Alphaextraktion. Beim Schließen bleiben alte Inhalte bis zu ihrer geplanten Ausblendung vorhanden. Laufende Geometrie wird vor Abbruch aus dem echten DOMRect gelesen; schnelle Eingaben retargeten denselben Außenkörper.
 
-## Checkpoint B — measured frames and final local gate
+Eine reale kleine-Viewport-Prüfung deckte einen WAAPI-Ressourcenfehler auf: ein bereits beendeter `fill:both`-Effekt blieb trotz internem Nullzähler im DOM und überlagerte spätere Größen. Alle Effekte bleiben jetzt bis zum gemeinsamen Cancel im Besitz des Auftrags. Tests verlangen zusätzlich die tatsächlich leere `getAnimations({subtree:true})`-Liste. Resize, reduzierte Bewegung, Visibility, pagehide und BFCache-Rückkehr räumen konsistent auf. Keine eigene RAF-/Intervall-Schleife.
 
-The final model samples **width and height separately**, rather than applying a height-only curve to both axes. A fifth measured family covers lyrics→calendar (frames235–247,400ms). The four diagnostic captures per family use the exact retained source-frame timestamps (approximately20/40/60/80%); the opening fixture uses the same small closed state as the recording. The compact lyric capsule is a different real state and is not silently compared with the smaller paused capsule.
+## Bild- und Framevergleich
 
-`analyze-pro-notch-reference.py` reproduces measurements from the attached video with ffmpeg/ffprobe, Pillow, NumPy and SciPy (analysis tools only). `docs/reference/pro-notch/keyframes.json` and content-free contour masks preserve27 measured states. `build-pro-notch-comparisons.cjs` compares actual unretouched PWA crops with those masks at one filmed pixel per comparison CSS pixel; actual DPR2 captures are downsampled to CSS size. It does not independently fit each silhouette or claim a whole-image similarity score. Full reference UI crops remain in the local analysis package; copyrighted album art/lyrics are not shipped in the application or repository.
+[Keyframes](reference/pro-notch/keyframes.json), [Messreihen](reference/pro-notch/measurements.json), [drei lokale Korrekturrunden](visual/ipad-pro-notch/review-rounds.json), [unretuschierte Iterationsausschnitte](visual/ipad-pro-notch/correction-rounds/).
 
-The final local Chromium run passes **44 targeted checks/36 actual screenshots**, including20 paused intermediate frames across five motion families, plus a separate interrupted opening. Calendar now reproduces the compact header, Day/Week control and day-time rail: week navigation selects real dates, the day rail derives marks from existing appointments. Both actions are tested. The timer ruler is aligned7px higher after direct reference comparison. Local regressions pass **46/46** (42 retained +4 Notch cases), the existing app/data gate112, existing visual gate37 and material gate11. These are separate suites, not additional app counts. The remaining complete two-engine CI gate is recorded in the final acceptance section when available.
+1. Erste schwarze Oberfläche: Vergleich zeigte zu tiefe Medienzeilen und zu hohe Timer-/Kalenderkörper.
+2. Header-Hitboxen/Stacking korrigiert; echte Navigationsbuttons geprüft, Skala an Restzeit gebunden. Frühe Testläufe stoppten an noch nicht abgeschlossenen Metadaten-/Import-UI-Aktualisierungen; diese werden nun explizit abgewartet.
+3. Videokoordinaten korrigiert: Covery32, Titely28, Fortschrittsmitte etwa72, Transportmitte etwa115; kürzere Körper, kleinere Kopfmarke. Danach Kalenderkopf/Tageszeitleiste und Einblendreihenfolge anhand echter Vollfarbpaare nachkorrigiert.
 
-After correcting the comparison start state and exact frame time, sampled width/height differences from the measured contours are about0–3px; this demonstrates reproduction of the fitted measurements, not independent proof of native motion equivalence. Corner/opacity interpolation remains estimated. Native macOS screen position, camera perspective, font rasterization, provider-specific badges and native file transfer remain different.
+| Zustand | Gemessener Referenz-Crop | PWA-CSS-Ziel |
+|---|---:|---:|
+| Geschlossen |235×33|236×32|
+| Musik |439×153|440×152|
+| Songtext |440×262|440×260|
+| Timer |439×178|440×176|
+| Kalender |505×214|506×216|
+| Shelf |438×151|440×150|
+| Dateiliste |439×154|440×152|
 
-The new workflow `.github/workflows/test-ipad-pro-notch.yml` runs Chromium and actual WebKit, the pinned verified Premium4 baseline, normal/DPR2 visual and Notch suites, existing material/app/root/subpath/update tests, mandatory test-tool dependency audit, exact runtime/CSP/license checks and versioned ZIP packaging. It uploads diagnostic/evidence artifacts and may commit only synthetic screenshots/reports to this development branch; it has no deployment job. The existing update, private Serve and storage owners remain authoritative.
+Referenz-Crops enthalten2px unteren Messrand; reine Körpermessungen sind entsprechend kleiner. Unsicherheit etwa±3px stabil,±6px bewegt und±1Videoframe. Die PWA passt ihre Breite an den tatsächlichen Viewport an, z.B.366px bei390px Breite.
 
-Checkpoint A: `9196f94bc0c7ca9e4a75bf0af020594308caea70` (pushed). Checkpoint B and final CI/artifact SHAs follow below.
+Pro Bewegungsfamilie wurden vier echte WAAPI-Zwischenzustände bei den passenden aufgenommenen Framezeitstempeln pausiert und gerendert: insgesamt20 Zwischenframes, zusätzlich ein tatsächlich unterbrochener Öffnungsvorgang. Frühe Vergleichsfehler durch abweichenden Kompakt-/Pausezustand und gerundete Zeiten wurden korrigiert. Breiten-/Höhendifferenzen der angepassten Zwischenframes liegen ungefähr innerhalb3px. Dies bestätigt die Reproduktion der gefitteten Messreihen, keine unabhängige native Bewegungsidentität.
 
-A final full-color comparison exposed a content-timing difference despite matching contours: source cover/text are already partly visible around frame20 and substantially visible by frame24. The coordinated enter track now uses measured-sequence estimates8%→55% of the opening instead of24%→78%, with no extra blur/zoom. These values live in the motion data and are used by all incoming content tracks; they remain estimated opacity, not extracted native alpha. The follow-up local44-check run passes. The corresponding-source ZIP includes the content-free contour/measurement inputs and the current feature branch in its source instructions.
+`scripts/analyze-pro-notch-reference.py` reproduziert die Videoanalyse mit ffmpeg/ffprobe, Pillow, NumPy und SciPy, ausschließlich als Analysewerkzeuge. `scripts/build-pro-notch-comparisons.cjs` erzeugt beschriftete Vergleiche aus tatsächlichen PWA-Crops und gemessenen, inhaltsfreien Referenzkonturen. Normalisierung: ein gefilmter Pixel entspricht einem Vergleichs-CSS-Pixel; DPR2 wird auf CSS-Größe reduziert. Keine unabhängige Einpassung beider Silhouetten; kein erfundener globaler Ähnlichkeitsscore. Rote/blaue Konturdifferenzen sind ausdrücklich Diagnosebilder.
 
-The last interaction gate replaces navigation mouse clicks with actual Playwright touchscreen taps and additionally tests six real rapid capsule taps plus keyboard ArrowRight tab selection. The local targeted suite now passes **46 checks/36 screenshots**. Synthetic Pencil `PointerEvent` cancellation is covered separately; this is not physical Pencil hardware validation.
+Vollständige Originalausschnitte, Originalframes, echte PWA-Crops und beschriftete Vollfarbpaare liegen im separaten lokalen **Air-OS-Pro-Notch-Reference-Comparisons.zip**. Originales Artwork/Liedtext daraus wird weder öffentlich ins Repository committed noch als PWA-Asset ausgeliefert. Produktionsscreenshots sind unretuschiert; Vergleichsbilder ergänzen nur Ausschnitt, Anordnung und Beschriftung.
 
-## CI correction — real server outage instead of emulated network loss
+## Browser- und Regressionsergebnis
 
-Run42374274723 / source`11c5b34e7d6304a76fc5a37a8de8184dfeea00b2`: the complete Chromium job passed, including audit, both DPRs, root/subpath, material and10 update checks. WebKit passed all three37-check visual suites and44 Notch checks, then `page.reload` raised a browser-internal error with Playwright network-offline emulation. That run is **not** accepted as a complete release; its report/screens remain preserved.
+**Erfolgreich:** [GitHub Actions42376851353](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42376851353), exakter Sourcecommit`2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`. Frozen-Toolchain-Audit, Runtime-/CSP-/Lizenzprüfung und beide vollständigen Browserjobs bestehen. **46/46 Node-Regressionen** (42 erhalten +4 neue); **898 Browserassertionen** über die folgenden Suiten,450 Chromium/448 WebKit. Das sind wiederholte Prüfungen über Engines/DPRs, keine898 unterschiedlichen Produktfunktionen.
 
-The Notch test now uses the existing regression suite's real outage method: wait for the controlling active Service Worker, shut down the local HTTP server, reload, then close and restart the persistent browser process while the server remains down. No retry, exception swallowing, product SW change or weakened data assertion is used. Local Chromium passes **47 checks/37 screenshots** with both offline stages. The complete two-engine gate is rerun before final acceptance.
+| Browsergate | Chromium | WebKit |
+|---|---:|---:|
+| Gepinnte Premium4-Vorheraufnahme |37|37|
+| Bestehende visuelle Produktsuite |37|37|
+| Dieselbe Produktsuite bei DPR2 |37|37|
+| Neue Notch: Zustände/Motion/Medien/Dateien/Offline |47|47|
+| Neue Notch bei DPR2 |47|47|
+| Material-/GPU-Fallback-/Context-Cleanup |11|11|
+| Bestehende App-/Daten-/Cold-Restart-Suite, Root |112|111|
+| Dieselbe Suite unter `/Air-OS/` |112|111|
+| Sichere Updates/Mehrtab-/Musik-/Export-/Recovery-Schutz |10|10|
 
-## Retina WebKit synchronization correction
+[Maschinenlesbarer vollständiger Bericht](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/evidence.json).
 
-Run42375098262 passed47 normal WebKit Notch checks, including real offline reload/cold restart, and the complete Chromium job. Retina WebKit stopped at the pause→small-capsule assertion: `audio.pause()` returns before WebKit dispatches its asynchronous media event, allowing a generic zero-animation wait to return before the morph begins. The test now explicitly waits for paused audio and the real32px target (0.5CSSpx rounding tolerance), then still requires zero actual DOM effects. No retry, feature removal or application/SW/template change. The local47-check follow-up passes; final acceptance requires both complete browser jobs.
+**Echte Vorher-/Nachher-Szenen mit identischem synthetischem Zustand:** [vorher Island](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/before-chromium/island.png), [nachher Island](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/after-chromium/island.png), [vorher Desktop](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/before-chromium/desktop.png), [nachher Desktop](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/after-chromium/desktop.png).
 
-## Final measured detail and legacy synchronization
+**Aktuelle Hauptansichten:** [Musik](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-music-crop.png), [Songtext](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-local-lyrics-crop.png), [Timer](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-timer-crop.png), [Kalender](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-calendar-crop.png), [Shelf](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-shelf-crop.png), [Dateien](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-files-crop.png).
 
-Run42375975859 stopped in the existing Retina WebKit visual suite at its400ms animation assumption, before the new Notch tests. The visual settle helper now waits for natural completion of the existing desktop owner plus the optional Notch owner and loaded fonts, with the normal test timeout. No animation is forcibly finished/cancelled for that assertion. The pinned baseline uses the same synchronization-only harness adjustment in its separate temporary archive; original product presentation/assets remain unchanged. Local Retina Chromium still passes all37 visual checks.
+**Tatsächlich gerenderte Zwischenzustände:** [Öffnen40%](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-motion-open-40-crop.png), [Erweitern40%](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-motion-expand-40-crop.png), [Schließen40%](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-motion-close-40-crop.png), [Wechsel40%](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-motion-switch-40-crop.png), [Kalender40%](visual/ipad-pro-notch/2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0/notch-chromium/notch-motion-calendar-40-crop.png). Zusätzlich stehen alle20 Zwischenframes pro Engine/DPR in den entsprechenden Notch-Verzeichnissen. Rohszenen und27 beschriftete Konturvergleiche je Variante liegen in den Actions-Evidenzartefakten.
 
-A direct orange-pixel comparison also found the timer digits too small: reference glyph bounds `[330,122,412,150]` (82×28), first PWA `[354,125,415,147]` (61×22). Font40px yields actual `[332,122,413,151]` (81×29); the smaller viewport uses34px. Timer controls now follow the measured36px body height and corrected horizontal spacing. See `docs/reference/pro-notch/timer-detail-measurements.json`. All47 targeted Chromium checks still pass. No geometry/model/data-owner change is involved.
+
+Getestete Viewports:1024×768,1180×820,1366×1024,834×1194,820×1180,390×600; Touch-Kontexte, DPR1/DPR2. Enthalten sind Musikwechsel während offener Ansicht, echte lokale LRC-Daten, Timer bei Appwechsel, Kalenderwechsel, Import/Referenzentfernung, echte wiederholte Touch-Taps, Tastaturtabs/Escape, unterbrochene Morphs, Pointercancel, reduzierte Bewegung, Navigation/pagehide, Idle und Offline-Datenerhalt.
+
+Der erste vollständige Lauf42374274723 ist ausdrücklich **fehlgeschlagen**: Chromium war vollständig grün, WebKit bestand44 Notch-Prüfungen und stoppte danach mit einem internen Browserfehler beim emulierten Offline-Neuladen. Der Test verwendet nun wie die vorhandene Suite den realen Serverausfall: aktiven kontrollierenden Worker abwarten, HTTP-Server abschalten, neu laden, danach den persistenten Browserprozess bei weiterhin abgeschaltetem Server neu starten. Kein Retry oder geschluckter Fehler. Die Safari-Service-Worker-Vorlage wurde nicht geändert. Im Folgelauf42375098262 bestanden47 normale WebKit-Notchprüfungen einschließlich beider realen Offline-Stufen. Der DPR2-Lauf prüfte den Pause-Endzustand vor Verarbeitung des asynchronen Audio-Pause-Ereignisses. Der Test wartet nun zusätzlich auf pausiertes Audio und das tatsächliche32px-Endmaß; Prüfung und Aufräumkriterien bleiben bestehen. Auch dieser Zwischenlauf wird nicht als vollständige Freigabe ausgegeben.
+
+Ein weiterer Vollfarbvergleich korrigierte die Timerdetails quantitativ: Ziffernbereich der Referenz82×28px, erste PWA61×22px, korrigierte PWA81×29px. Die Kontrollen sind36px hoch; Positionen/Abstände folgen dem gemessenen farbigen Buttonkörper. [Detailmessung](reference/pro-notch/timer-detail-measurements.json).
+
+Im Zwischenlauf42375975859 stoppte die bestehende Retina-WebKit-Visualsuite an ihrer pauschalen400ms-Warteannahme. `settle` wartet jetzt auf den natürlichen Abschluss des vorhandenen Desktop- und optionalen Notch-Besitzers sowie auf geladene Fonts, ohne Animationen für den Test fertigzustellen oder abzubrechen. Die gepinnte Vorheraufnahme verwendet dieselbe reine Test-Synchronisation in ihrem separaten temporären Archiv; Produktpräsentation und Originalassets bleiben unverändert.
+
+## Ressourcen und geschützte Grenzen
+
+Die geschlossene Notch erzeugt im gemessenen Idle-Intervall keine neuen Morphs; im echten DOM bleiben nach Abschluss/Abbruch keine Effekte. Kein Notch-Canvas, keine eigenen GL-Programme/Texturen, keine zweite Audio-, Fenster-, Timer- oder Datenengine. Gemeinsame Materialtests prüfen weiterhin Context Loss/Restore und Cleanup der übrigen Systemflächen. Normale Software-GPU-Produktpfade verwenden weiterhin den bestehenden sicheren CSS-Fallback; isolierte Shaderdiagnose ist kein Hardware-GPU-Nachweis. Keine gemessene Hardware-FPS-/Akkuaussage.
+
+[Bytevergleiche](visual/ipad-pro-notch/protected-boundaries.json) bestätigen unveränderte Storage-/Backup-Dateien, Safari-SW-Vorlage, Windows-Setup-/Update-Skripte und Yosemite. Wallpaper-SHA256:
+
+`d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06`
+
+Alle25 Registry-Einträge bleiben; `air-os-ipad-tracks-v1`, Schema2, bestehende Musik-/Kalender-/Timer-Schlüssel und Backupformate bleiben erhalten. Keine Migration, kein Reset. Generierter Worker/Versionshash und Corresponding-Source-Archiv wurden aktualisiert; sichere Aktivierung mit Musik-/Entwurfs-/Mehrtab-Schutz bleibt im bestehenden Besitzer. Keine private Tailscale-Adresse oder Windows-Serve-Konfiguration wurde angesprochen oder geändert. `feature/private-ipad-pwa` bleibt auf`7de1635c0207b8604c5409ef62c466585b4d5f04`.
+
+## Build und Quellenstand
+
+[Erfolgreicher Build und Downloadartefakte](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42376851353):
+
+- `Air-OS-iPad-ProNotch-Build-2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`: versionierte PWA, kompatible Recovery/Preflight und SHA256-Dateien. Retention30Tage; kein veröffentlichtes Release.
+- `Private-iPad-ProNotch-chromium-2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0` / `Private-iPad-ProNotch-webkit-2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`: vollständige synthetische Screenshots, Berichte, DPR-Varianten und beschriftete Kontur-/Framevergleiche.
+- Lokales PWA-ZIP: `dist/Air-OS-iPad-Pro-Notch-2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0.zip`,10.219.725Bytes,134 geprüfte Runtimeassets. SHA256: `e016306bfb40c1091fb383f75e5184ea718bca4635465cb8a93b6f785a538376`.
+- Separates lokales Referenzpaket: `dist/Air-OS-Pro-Notch-Reference-Comparisons.zip`,16.360.475Bytes. SHA256: `1cb6fe86b194b8f3c4a47fc9e0cb26cfab09e3f450c10b0cf59b1cd2fcf270b8`. Dieses enthält die vollständigen Originalausschnitte nur zur Nutzeranalyse, keine freigegebenen Produktassets.
+
+
+Der Workflow `.github/workflows/test-ipad-pro-notch.yml` ist auf diesen Entwicklungsbranch begrenzt: Tests, Testtool-Audit, genaue Runtime-/CSP-/Lizenzprüfung, ZIP und synthetische Evidenz. Kein Deployment. Native macOS-Dateien und das Referenzvideo sind nicht im Runtimepaket. Source-ZIP enthält lesbaren Quellcode, Buildwerkzeuge, Herkunftsnachweise und die inhaltsfreien Analyseinputs.
+
+Checkpoints:
+
+- `9196f94bc0c7ca9e4a75bf0af020594308caea70`: schwarze Einzeloberfläche und Datenintegration.
+- `0434c252ca91146724491e0fd5f479838a06c23d`: getrennte Messkanäle, echte Zwischenframes, Ressourcen-/Datei-/Medientests und CI.
+- `88b47aa36d8af50ba518f0c1400037ec9095cd2a`: korrigierte Inhalts-Einblendung und Source-Angebot.
+- `11c5b34e7d6304a76fc5a37a8de8184dfeea00b2`: echte Touch-/Tastaturtests; fehlgeschlagener WebKit-Offline-Emulationslauf transparent erhalten.
+- `fe664ee5dc234778939078c3226d8cb2b31197df`: dessen unveränderte Browser-Evidenz.
+- `4aad40ee2fc7e84dc08a3b8092cea38d2fb80025`: realer Offline-/Prozessneustarttest; WebKit normal47 grün, DPR2-Lauf am asynchronen Pause-Endzustand gestoppt.
+- `91524dcdd51eaed3b861746bf93f8a1fa4dbfca4`: der Pause-Test wartet zusätzlich auf die tatsächliche geschlossene Geometrie.
+
+- `2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`: gemessene Timerdetails und synchronisierte visuelle Abnahme.
+
+Erfolgreiche finale Browser-Evidenz: `7be6da69bbae7660b3688a25fea1eda4b49c9f90` (separater Commit auf demselben Entwicklungsbranch). Der nachfolgende Berichtscommit verändert ausschließlich Dokumentation/Evidenzindizes; der geprüfte PWA-Build bleibt`2dab906d7b85b6a8a3d8e4e9e65157fd631a49e0`.
+
+## Verbleibende Abweichungen / offene Abnahmen
+
+- Native Implementierung, Quellkurven, macOS-Punktmaßstab, genaue Radius-/Alpha-Kurven und Hardware-Framerate sind nicht bekannt; das Video erlaubt keine garantierte1:1-Identität auf jedem iPad.
+- Schwarzwert ist ausdrücklich#000 statt des kamerabedingt aufgehellten Videobildes. Native Schrift-/Rasterung, Kameraunschärfe und perspektivische Neigung werden nicht künstlich in die PWA eingebaut.
+- Spotify-/Providerzeichen fehlen bewusst. AirDrop wird durch tatsächlichen Browserimport ersetzt. Originale Musik/Liedtexte/Kalendereinträge werden nicht gebündelt; Produktansichten zeigen tatsächliche lokale Daten, Tests klar synthetische Daten.
+- Die externe Timerblase der Referenz bleibt innerhalb der einzigen Kapsel. Die kleinen Pegelbalken sind ein statischer Wiedergabestatus, keine Audioanalyse. Die Tageszeitleiste zeigt Startmarkierungen vorhandener Termine, keine native Dauerplanung. Zusätzliche native Systemaktionen und systemweite macOS-/iPadOS-Notchkontrolle werden nicht behauptet.
+- Kleine Viewports passen die Silhouette an. Kompakte Headerziele folgen den Referenzproportionen; ihre physische Bedienbarkeit ist auf einem echten iPad noch abzunehmen.
+- **Offen:** echte iPadOS-Home-Screen-Installation, physisches Safari/Touch/Pencil/Trackpad, Safe-Area-Hardware, Suspend-/Hintergrundaudio, Akku, thermische Last und Hardware-GPU. Linux-WebKit-Automatisierung ersetzt diese Tests nicht.
