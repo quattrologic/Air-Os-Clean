@@ -17,11 +17,13 @@
  // MacShell1bdb518: actual MacDock/ClockWidget/GlassSlab callsites, not GLSL defaults.
  function material(kind,height){
   const common={saturation:1.25,dark:1,shadowAmt:0,flatInner:1,ringW:0};
+  if(kind==='maclock')return {...common,thickness:24*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:.32*.55,rim:.5,grain:.006,magnify:.05*1.6,rimTint:1};
+  if(kind==='menubar')return {...common,thickness:12*1.6,dispersion:.06,blurPx:1,tintMix:.18*.55,rim:.25,grain:.003,magnify:.03,rimTint:1};
   if(kind==='dock')return {...common,thickness:30,dispersion:.06,blurPx:1.5,tintMix:.42*.55,rim:.45*.20,grain:.03*.3,magnify:.08,rimTint:0,edgeTint:[0,0,0,0]};
-  if(kind==='widget')return {...common,thickness:30,dispersion:.06,blurPx:1,tintMix:.25+.42*.8,rim:.45,grain:.03*.15,magnify:.08*Math.min(1,90/Math.max(1,height)),rimTint:1};
+  if(kind==='widget')return {...common,thickness:30,dispersion:.06,blurPx:1,tintMix:.32,rim:.45,grain:.03*.15,magnify:.08*Math.min(1,90/Math.max(1,height)),rimTint:1};
   if(kind==='island')return {...common,thickness:16*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
   // GlassSlab is also the original control/menu material; do not replace 8A profiles.
-  if(['popover','control','toolbar','switcher','launchpad'].includes(kind))return {...common,thickness:16*1.6,dispersion:.06*1.3,blurPx:kind==='control'?0:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
+  if(['popover','control','toolbar','switcher','launchpad'].includes(kind))return {...common,dark:kind==='toolbar'?0:1,thickness:16*1.6,dispersion:.06*1.3,blurPx:kind==='control'?0:1.5,tintMix:.42*.55,rim:.1125,grain:.03*.2,magnify:.05*1.6,rimTint:1};
   return null;
  }
  // MacDock: glassBlur + 8; MacWidgets: glassBlur + 11; FeatherBlur: radius9.

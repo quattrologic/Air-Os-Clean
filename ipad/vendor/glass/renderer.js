@@ -1,7 +1,7 @@
 'use strict';
 // Shared MacShell WebGL2 materials; only wallpaper pixels enter GPU memory.
 (() => {
- const selectors='.pad-dock,.pad-widget,.pad-popover:not(.s3-launcher),.pad-window.focused .pad-titlebar,.lock-player';
+ const selectors='.topbar,.lg-dock-surface,.lg-lock-notice,.pad-widget,.pad-popover:not(.s3-launcher),.pad-window.focused .pad-titlebar,.lock-player,.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile';
  const readAirSettings=()=>({reduceGlass:document.documentElement.dataset.quality==='Reduzierte Transparenz',reduceMotion:document.documentElement.classList.contains('pad-reduced-motion'),glassFamily:'macshell',pwaQuality:document.documentElement.dataset.quality==='Hochwertig'&&!document.documentElement.classList.contains('s3-launcher-open')?'high':'standard'});
  // CSS fallback follows MacShell's wallpaper-backed material, without capture or another GL owner.
  const cssHosts=new Set();
@@ -71,7 +71,7 @@
   }
   gl.bindFramebuffer(gl.FRAMEBUFFER,null);prepassMs+=performance.now()-started;return result;
  }
- function kindFor(el,edge){return edge===1?'dock':el.matches('.pad-widget')?'widget':el.matches('#notch-toggle,#notch-panel')?'island':el.matches('.pad-titlebar')?'toolbar':el.matches('.dp2-tile,.dp2-detail,.dp2-editor,.t7-segmented button')?'control':el.matches('.system-switcher')?'switcher':el.matches('.air-start-menu,.alp-panel')?'launchpad':'popover';}
+ function kindFor(el,edge){return el.matches('.lock-player,.lg-lock-notice')?'maclock':el.matches('.topbar')?'menubar':edge===1?'dock':el.matches('.pad-widget')?'widget':el.matches('#notch-toggle,#notch-panel')?'island':el.matches('.pad-titlebar')?'toolbar':el.matches('.dp2-tile,.dp2-detail,.dp2-editor,.t7-segmented button')?'control':el.matches('.system-switcher')?'switcher':el.matches('.air-start-menu,.alp-panel')?'launchpad':'popover';}
  function tileFor(el){let t=tiles.get(el);if(!t){const c=document.createElement('canvas');c.className='deep-glass-tile';c.setAttribute('aria-hidden','true');t={canvas:c,contents:new Set(),textWrappers:new Set(),amount:0,from:0,target:0,start:0,mouse:[0,0]};tiles.set(el,t);}
   for(const text of [...el.childNodes])if(text.nodeType===3&&text.textContent.trim()){const span=document.createElement('span');span.className='glass2-text';text.replaceWith(span);span.append(text);t.textWrappers.add(span);}
   for(const span of t.textWrappers)if(span.parentNode!==el)t.textWrappers.delete(span);
@@ -82,7 +82,7 @@
  }
  function draw(el,t,now){
   const r=el.getBoundingClientRect(),style=getComputedStyle(el),scrolling=/auto|scroll/.test(style.overflowX+' '+style.overflowY),outerW=el.offsetWidth,outerH=el.offsetHeight,w=scrolling?el.clientWidth:outerW,h=scrolling?el.clientHeight:outerH;if(!w||!h||!r.width||!r.height)return;
-  const edge=el.matches('.pad-dock')?1:el.id==='notch-toggle'?2:0,e=edge?12:0,width=w+2*e,diag=diagnostic;
+  const edge=el.matches('.pad-dock,.lg-dock-surface')?1:el.id==='notch-toggle'?2:0,e=edge?12:0,width=w+2*e,diag=diagnostic;
   const size=airGlassGeometry.resolution(width,h,devicePixelRatio,(diag?16384:500000*quality)*(diag?4:1),maxTexture),pw=size.width,ph=size.height;
   const borderX=parseFloat(style.borderLeftWidth)||0,borderY=parseFloat(style.borderTopWidth)||0,scaleX=r.width/outerW,scaleY=r.height/outerH;
   Object.assign(t.canvas.style,{left:(scrolling?0:-e-borderX)+'px',top:(scrolling?0:-borderY)+'px',width:width+'px',height:h+'px',transform:'translateY('+el.scrollTop+'px)'});

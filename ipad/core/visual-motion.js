@@ -12,12 +12,13 @@
   return new Promise(resolve=>{const item={animation,resolve,kind};active.set(node,item);animation.finished.then(()=>{if(active.get(node)!==item)return;active.delete(node);animation.cancel();resolve(true);window.airDesktopGlass?.refresh();},()=>{if(active.get(node)===item){active.delete(node);resolve(false);}});});
  }
  function show(node,kind='panel',origin=null){const rect=box(node);if(!rect)return Promise.resolve(true);let frames;
-  if(kind==='activate')frames=[{opacity:.86},{opacity:1}];
+  if(kind==='session')frames=[{opacity:0,translate:'0 10px'},{opacity:1,translate:'0 0'}];
+  else if(kind==='activate')frames=[{opacity:.86},{opacity:1}];
   else if(kind==='window'&&origin?.width>0){const dx=origin.x+origin.width/2-rect.x-rect.width/2,dy=origin.y+origin.height/2-rect.y-rect.height/2,sx=Math.max(.08,Math.min(1,origin.width/rect.width)),sy=Math.max(.08,Math.min(1,origin.height/rect.height));frames=[{opacity:.1,transform:`translate(${dx}px,${dy}px) scale(${sx},${sy})`,borderRadius:'20px'},{opacity:1,transform:'translate(0,0) scale(1)',borderRadius:getComputedStyle(node).borderRadius}];}
   else if(node.id==='notch-panel'){frames=[{opacity:0,transform:'translateX(-50%) translateY(-6px) scale(.90,.80)'},{opacity:1,transform:'translateX(-50%) translateY(0) scale(1)'}];}
   else if(kind==='window')frames=[{opacity:0,transform:'translateY(18px) scale(.96)'},{opacity:1,transform:'translateY(0) scale(1)'}];
   else frames=[{opacity:0,translate:'0 8px',scale:'.97'},{opacity:1,translate:'0 0',scale:'1'}];
-  return run(node,frames,kind==='window'?280:220,kind==='window'?curves.open:curves.panel,kind,origin);
+  return run(node,frames,kind==='session'?650:kind==='window'?280:220,kind==='session'?'cubic-bezier(.23,1,.32,1)':kind==='window'?curves.open:curves.panel,kind,origin);
  }
  function depart(node,target=null){const r=box(node);if(!r)return Promise.resolve(true);if(!target)return run(node,[{opacity:1,translate:'0 0',scale:'1'},{opacity:0,translate:'0 10px',scale:'.97'}],170,curves.exit,'close');const dx=target?target.x+target.width/2-r.x-r.width/2:0,dy=target?target.y+target.height/2-r.y-r.height/2:10;
   return run(node,[{opacity:1,transform:'translate(0,0) scale(1)'},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(${target?Math.max(.06,target.width/r.width):.97},${target?Math.max(.06,target.height/r.height):.97})`}],170,curves.exit,'close',target);

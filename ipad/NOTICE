@@ -71,3 +71,12 @@ No native macOS executable, decompiled implementation, proprietary app resource,
 reference cover image or song lyric is included in the PWA. The reference is not
 an open-source license grant. Existing Air-OS combined-PWA/source license applies
 to the new implementation. Own line glyphs are independently drawn.
+
+MacShell MacLock/Dock port additions (MIT): 0-ss/MacShell commit
+1bdb51870b621100fd2709f66c8f8e00ab17b9c4, MacShell/MacDock.qml, MacBar.qml,
+GlassSlab.qml, MacLock/Glass.qml, MacLock/LockScreen.qml. Original cosine kernel,
+coupled cell geometry and glass uniform mapping adapted in vendor/macshell/shell7.js,
+vendor/glass/geometry.js, dock-material.js. Responsive lock composition is a browser
+adaptation in maclock.js and liquid-maclock.css; no PAM/MPRIS/native scene capture.
+Full copyright/license: licenses/MacShell-MacLock-MIT.txt. Provenance hashes and
+source paths: docs/source-ports/liquid-maclock.json in the source offer.

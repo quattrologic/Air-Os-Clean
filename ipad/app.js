@@ -135,17 +135,7 @@
     const position = track?.id === savedProgress.id && !audio.src ? seconds(savedProgress.position) : seconds(audio.currentTime);
     const duration = seconds(audio.duration) || seconds(savedProgress.id === track?.id ? savedProgress.duration : 0);
     setProgress('player', position, duration);
-    $('#lock-music').hidden = !recent;
-    if (recent) {
-      $('#lock-title').textContent = recent.title;
-      $('#lock-artist').textContent = 'Zuletzt gespielt · ' + (recent.artist || 'Lokale Musik');
-      setArt($('#lock-cover'), recent.artwork);
-      const lastProgress = savedProgress.id === recent.id ? savedProgress : {};
-      $('#lock-elapsed').textContent = time(lastProgress.position);
-      $('#lock-total').textContent = time(lastProgress.duration);
-      $('#lock-fill').style.width = lastProgress.duration > 0
-        ? Math.min(100, Math.max(0, lastProgress.position / lastProgress.duration * 100)) + '%' : '0%';
-    }
+    if(!window.airPlaybackMetadata){$('#lock-music').hidden=!recent;if(recent){$('#lock-title').textContent=recent.title;$('#lock-artist').textContent=recent.artist||'Air Music';setArt($('#lock-cover'),recent.artwork);}}
     document.dispatchEvent(new Event('air-ipad-media'));
     $$('[data-control]').forEach(button => {
       button.disabled = !state.unlocked || !track;
@@ -291,7 +281,7 @@
     saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));
   }
 
-  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}location.reload();}
+  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}await window.airPlaybackMetadata?.flush();location.reload();}
   async function setupUpdates() {
     if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
     try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
@@ -316,7 +306,7 @@
       renderMedia();
     });
     $('#lock-again').addEventListener('click',()=>{
-      audio.pause();$('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').hidden=false;
+      $('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').hidden=false;
       window.airProNotch?.close(true);renderMedia();
     });
     $$('.app-tile').forEach(button=>button.addEventListener('click',()=>openPanel(button.dataset.panel)));
@@ -385,6 +375,6 @@
     }
     void setupUpdates();
   }
-  window.airIPad=Object.freeze({toast,presentNotice,sessionOpen:()=>state.unlocked,timer:Object.freeze({snapshot:timerSnapshot,toggle:()=>timerAction(false),reset:()=>timerAction(true),setDuration:value=>{if(!Number.isInteger(value)||value<1||value>86400)return;state.timer={duration:value,remaining:value,endAt:null,done:false};saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));},addMinute:()=>{const t=state.timer;if(t.duration>86340||timerSnapshot().remaining>86340)return;t.duration+=60;if(t.endAt)t.endAt+=60000;else t.remaining+=60;t.done=false;saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));}}),calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
+  window.airIPad=Object.freeze({toast,presentNotice,sessionOpen:()=>state.unlocked,timer:Object.freeze({snapshot:timerSnapshot,toggle:()=>timerAction(false),reset:()=>timerAction(true),setDuration:value=>{if(!Number.isInteger(value)||value<1||value>86400)return;state.timer={duration:value,remaining:value,endAt:null,done:false};saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));},addMinute:()=>{const t=state.timer;if(t.duration>86340||timerSnapshot().remaining>86340)return;t.duration+=60;if(t.endAt)t.endAt+=60000;else t.remaining+=60;t.done=false;saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));}}),calendar:Object.freeze({list:getEvents,refresh:refreshCalendar,filter:options=>{calendarFilter={...calendarFilter,...options};renderEvents();}}),music:Object.freeze({refresh:refreshLibrary,current,record:id=>song(id),visibleIds:()=>visibleRecords().map(r=>r.id),filter:options=>{musicFilter={...musicFilter,...options};renderLibrary();},favorite:async()=>{const t=current();if(t){await patchTrack(t.id,{favorite:!t.favorite});await refreshLibrary();}},shuffle:()=>{shuffle=!shuffle;toast(shuffle?'Shuffle ein':'Shuffle aus');},repeat:()=>{repeat=!repeat;toast(repeat?'Repeat ein':'Repeat aus');},seek:value=>{if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(1,value))*audio.duration;},volume:value=>audio.volume=Math.max(0,Math.min(1,value)),play:playTrack,toggle:()=>audio.paused?playTrack(state.currentId||state.lastId):audio.pause(),next,snapshot:()=>({id:state.currentId,title:current()?.title||'',artist:current()?.artist||'',artwork:current()?.artwork||'',paused:audio.paused,position:audio.currentTime||0,duration:Number.isFinite(audio.duration)?audio.duration:0,tracks:state.records.length,shuffle,repeat})})});
   window.airIPadReady=start();
 })();

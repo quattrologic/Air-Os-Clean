@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self' https://accounts.spotify.com https://api.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self'">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0e1725">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="./styles.css">
   <title>Air-OS iPad</title>
   <link rel="stylesheet" href="./vendor/airwrite.css"><link rel="stylesheet" href="./vendor/air-arcade-games.css"><link rel="stylesheet" href="./desktop.css">
-  <script defer src="./core/visual-icons.js"></script><script defer src="./registry.js"></script><script defer src="./core/infinity-web.js"></script><script defer src="./core/infinity-notification.js"></script><script defer src="./core/infinity-dock.js"></script><script defer src="./core/desktop-sessions.js"></script><script defer src="./core/window-model.js"></script><script defer src="./core/music-metadata.js"></script><script defer src="./storage.js"></script><script defer src="./vendor/airwrite.js"></script><script defer src="./vendor/air-arcade-games.js"></script><script defer src="./core/transfers.js"></script><script defer src="./app.js"></script><script defer src="./apps.js"></script><script defer src="./backup.js"></script><script defer src="./vendor/macshell/shell7.js"></script><script defer src="./dock-material.js"></script><script defer src="./vendor/infinityos/launcher-model.js"></script><script defer src="./core/visual-motion.js"></script><script defer src="./desktop.js"></script><script defer src="./vendor/macshell/clock-dial.js"></script><script defer src="./widgets.js"></script><script defer src="./notch/motion-data.js"></script><script defer src="./notch/model.js"></script><script defer src="./notch/pro-notch.js"></script><script defer src="./vendor/glass/geometry.js"></script><script defer src="./vendor/glass/shaders.js"></script><script defer src="./vendor/glass/renderer.js"></script>
-<link rel="stylesheet" href="./system3.css"><link rel="stylesheet" href="./premium4.css"><link rel="stylesheet" href="./notch/pro-notch.css"></head>
+  <script defer src="./core/visual-icons.js"></script><script defer src="./registry.js"></script><script defer src="./core/infinity-web.js"></script><script defer src="./core/infinity-notification.js"></script><script defer src="./core/infinity-dock.js"></script><script defer src="./core/desktop-sessions.js"></script><script defer src="./core/window-model.js"></script><script defer src="./core/music-metadata.js"></script><script defer src="./storage.js"></script><script defer src="./vendor/airwrite.js"></script><script defer src="./vendor/air-arcade-games.js"></script><script defer src="./core/transfers.js"></script><script defer src="./app.js"></script><script defer src="./apps.js"></script><script defer src="./backup.js"></script><script defer src="./vendor/macshell/shell7.js"></script><script defer src="./dock-material.js"></script><script defer src="./vendor/infinityos/launcher-model.js"></script><script defer src="./core/visual-motion.js"></script><script defer src="./desktop.js"></script><script defer src="./vendor/macshell/clock-dial.js"></script><script defer src="./widgets.js"></script><script defer src="./core/playback-history.js"></script><script defer src="./playback-history.js"></script><script defer src="./spotify.js"></script><script defer src="./maclock.js"></script><script defer src="./notch/motion-data.js"></script><script defer src="./notch/model.js"></script><script defer src="./notch/pro-notch.js"></script><script defer src="./vendor/glass/geometry.js"></script><script defer src="./vendor/glass/shaders.js"></script><script defer src="./vendor/glass/renderer.js"></script>
+<link rel="stylesheet" href="./system3.css"><link rel="stylesheet" href="./premium4.css"><link rel="stylesheet" href="./liquid-maclock.css"><link rel="stylesheet" href="./notch/pro-notch.css"></head>
 <body>
   <div class="wallpaper" aria-hidden="true"></div>
   <div class="shell">
@@ -25,7 +25,7 @@
       <span id="network-state" class="network-state">Lokal</span>
     </header>
 
-    <section id="lockscreen" class="lockscreen">
+    <section id="lockscreen" class="lockscreen"><div class="lg-lock-wallpaper" aria-hidden="true"></div><div class="lg-lock-notices" aria-label="Air-OS-Mitteilungen"></div>
       <div class="lock-clock"><div id="lock-date">Dienstag, 3. November</div><time id="lock-time">--:--</time></div>
       <div id="lock-music" class="lock-music" hidden>
         <div id="lock-cover" class="big-art">♫</div>
@@ -34,10 +34,10 @@
           <strong id="lock-title">Keine Musik</strong>
           <span id="lock-artist">Air Music</span>
           <div class="progress"><span id="lock-elapsed">0:00</span><div class="track"><i id="lock-fill"></i></div><span id="lock-total">0:00</span></div>
-          <div class="transport lock-transport" aria-label="Bedienelemente nach dem Entsperren">
-            <button type="button" disabled aria-label="Vorheriger Titel nach Entsperren">⏮</button>
-            <button type="button" disabled aria-label="Abspielen nach Entsperren">▶</button>
-            <button type="button" disabled aria-label="Nächster Titel nach Entsperren">⏭</button>
+          <div class="transport lock-transport" aria-label="Air-OS-Musiksteuerung">
+            <button type="button" disabled data-lock-control="prev" aria-label="Vorheriger Titel">⏮</button>
+            <button type="button" disabled data-lock-control="toggle" aria-label="Wiedergabe / Pause">▶</button>
+            <button type="button" disabled data-lock-control="next" aria-label="Nächster Titel">⏭</button>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <div class="avatar" aria-hidden="true">A</div>
         <strong>Air-OS</strong>
         <button id="unlock" class="primary" type="button">Air-OS öffnen</button>
-        <small>Private App auf deinem iPad · Das ist kein iPadOS-Sperrbildschirm</small>
+        <small>Tippe oder drücke Enter zum Öffnen</small>
       </div>
     </section>
 
