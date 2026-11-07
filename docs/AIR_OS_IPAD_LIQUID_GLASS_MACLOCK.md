@@ -116,3 +116,9 @@ Der neue GUI-Fall exportiert nach tatsächlicher Wiedergabe, prüft den Ausschlu
 ### Abschließende Touch-Konfliktprüfung
 
 Halten/Scrubben und das alte Dock-Kontextmenü dürfen sich nicht gleichzeitig öffnen. Der vorhandene Dockcontroller unterdrückt Kontextmenü-Ereignisse ausschließlich während seiner Touchgeste; native Bild-Callouts sind nur an Dockbuttons deaktiviert. Rechter Mausklick und Tastatur-Kontextmenü behalten den vorhandenen Besitzer. Der zusätzliche DPR2-Fine-Pointer-Lauf prüft auch dieses Ereignis, den erhaltenen rechten Mausklick und den vollständigen Backup-Rundlauf:27/27 bestanden. Physische iPad-Longpress-Gesten bleiben Hardwareabnahme.
+
+### WebKit-DPR2-Befund und realer Medienstart
+
+Lauf42408294692: Chromium vollständig grün, WebKit-Coarse-GUI27/27 grün; WebKit-DPR2-Fine scheiterte beim Warten auf Live-Metadaten direkt nach einem API-seitig im Test gestarteten Transport. `paused === false` allein belegt noch keine tatsächlich laufende Wiedergabe. Der reproduzierbare Szenenlauf startet jetzt per echtem Klick auf den vorhandenen Bibliothekstitel, wartet auf Decoderbereitschaft, fortschreitende Audioposition und tatsächliche Live-Metadaten und sperrt über den vorhandenen Control-Center-Button. Keine Autoplay-Policy und keine Produkt-Musikengine geändert. Fehlerreports enthalten nun zusätzlich den tatsächlichen Medienzustand.
+
+Die Gegenprüfung fand außerdem eine fehlende CSP-Freigabe für Spotify-Cover. Ausschließlich die bereits im Metadatenmodell zugelassenen Hosts `i.scdn.co` und `mosaic.scdn.co` sind ergänzt. Ein zusätzlicher API-Mock mit tatsächlich geladenem PNG prüft nun das Cover einschließlich CSP. Keine realen Kontozugriffe;17/17 Spotify-Mockprüfungen und27/27 Chromium-DPR2-Prüfungen lokal bestanden. Die komplette Matrix wird für diesen korrigierten Stand erneut ausgeführt.
