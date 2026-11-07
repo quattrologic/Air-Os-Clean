@@ -71,3 +71,9 @@ The Notch test now uses the existing regression suite's real outage method: wait
 ## Retina WebKit synchronization correction
 
 Run42375098262 passed47 normal WebKit Notch checks, including real offline reload/cold restart, and the complete Chromium job. Retina WebKit stopped at the pause→small-capsule assertion: `audio.pause()` returns before WebKit dispatches its asynchronous media event, allowing a generic zero-animation wait to return before the morph begins. The test now explicitly waits for paused audio and the real32px target (0.5CSSpx rounding tolerance), then still requires zero actual DOM effects. No retry, feature removal or application/SW/template change. The local47-check follow-up passes; final acceptance requires both complete browser jobs.
+
+## Final measured detail and legacy synchronization
+
+Run42375975859 stopped in the existing Retina WebKit visual suite at its400ms animation assumption, before the new Notch tests. The visual settle helper now waits for natural completion of the existing desktop owner plus the optional Notch owner and loaded fonts, with the normal test timeout. No animation is forcibly finished/cancelled for that assertion. The pinned baseline uses the same synchronization-only harness adjustment in its separate temporary archive; original product presentation/assets remain unchanged. Local Retina Chromium still passes all37 visual checks.
+
+A direct orange-pixel comparison also found the timer digits too small: reference glyph bounds `[330,122,412,150]` (82×28), first PWA `[354,125,415,147]` (61×22). Font40px yields actual `[332,122,413,151]` (81×29); the smaller viewport uses34px. Timer controls now follow the measured36px body height and corrected horizontal spacing. See `docs/reference/pro-notch/timer-detail-measurements.json`. All47 targeted Chromium checks still pass. No geometry/model/data-owner change is involved.
