@@ -1,0 +1,53 @@
+{
+  "base": "ac64d9a26544b1401227046d066a6bbd00f5d1e5",
+  "product": "5b09e4d93e08bb60304f32cad40676c477cb7a9e",
+  "physicalIPad": false,
+  "deployment": false,
+  "files": [
+    {
+      "path": "ipad/app.js",
+      "sha256": "01964f6cd53148ccefc16d31319cf43eeef4edfd46adce2a876c92ddedb9d739",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/desktop.js",
+      "sha256": "f8b3d66e3bf4019dffaaadc507bc5d992a48cf068988e9690d34369dd031260b",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/storage.js",
+      "sha256": "d02732c789b0f6bf16d814a5e3d7a61072ea28e5bf74d7d9ffef3530191b8800",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/backup.js",
+      "sha256": "b4252806254c64081083c5ec1fbfcd1ca978ac4df5c3adf68f271897531ef48e",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/templates/ipad-service-worker.js",
+      "sha256": "04cbacee0d4ca990a870893b1ab7caffc37f8e647630f4703cc50507bcf59b88",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/setup-windows.ps1",
+      "sha256": "7d23fc734ec12a5069a39517761bd604c6ae43ed95c19cbbdaa24cdecd7ab1db",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/update-windows.ps1",
+      "sha256": "1ccab667f57c59b867cd1d0d85e63841fc5ef5b95a43dad37d8c4a4eac3e6e4b",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/enable-updates-windows.ps1",
+      "sha256": "4cce33bc6184b98b23c7097c49442f9751757d6750de45d18d7e1ca91b0375ad",
+      "unchanged": true
+    },
+    {
+      "path": "ipad/assets/yosemite-morning.png",
+      "sha256": "d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06",
+      "unchanged": true
+    }
+  ]
+}
