@@ -1,0 +1,337 @@
+{
+  "sourceCommit": "15de7a7d3b8c43fd2e5615afc2ef609084365297",
+  "run": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/42410349600",
+  "physicalIPad": false,
+  "reports": {
+    "before-liquid-chromium": {
+      "engine": "chromium",
+      "physicalIPad": false,
+      "synthetic": true,
+      "checks": [],
+      "screens": [
+        "lockscreen-empty",
+        "desktop",
+        "dock-maximum",
+        "control-center",
+        "launcher",
+        "finder-notes",
+        "settings-spotify"
+      ],
+      "errors": [],
+      "baseline": true,
+      "fixture": {
+        "audio": "8s PCM WAV, verified after IDB write; existing Repeat action",
+        "realAudioEngine": true
+      },
+      "desktopGeometry": {
+        "viewport": [
+          1688,
+          938
+        ],
+        "header": {
+          "x": 10,
+          "y": 0,
+          "width": 1668,
+          "height": 28,
+          "top": 0,
+          "right": 1678,
+          "bottom": 28,
+          "left": 10
+        },
+        "dock": {
+          "x": 478.5,
+          "y": 871.484375,
+          "width": 731,
+          "height": 66.515625,
+          "top": 871.484375,
+          "right": 1209.5,
+          "bottom": 938,
+          "left": 478.5
+        },
+        "wallpaperFilter": "none"
+      },
+      "dock": {
+        "state": {
+          "autoHide": false,
+          "suspended": false,
+          "pending": false,
+          "hover": true,
+          "hidden": false
+        },
+        "rects": [
+          {
+            "id": "launchpad",
+            "x": 447.8515625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "finder",
+            "x": 516.8515625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "notes",
+            "x": 570.8515625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "airwrite",
+            "x": 624.8515625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "reminders",
+            "x": 678.8515625,
+            "width": 57.25,
+            "icon": 56.6875,
+            "bottom": 925
+          },
+          {
+            "id": "calendar",
+            "x": 742.1015625,
+            "width": 76.15625,
+            "icon": 75.390625,
+            "bottom": 925
+          },
+          {
+            "id": "music",
+            "x": 824.2578125,
+            "width": 80.390625,
+            "icon": 79.59375,
+            "bottom": 925
+          },
+          {
+            "id": "photos",
+            "x": 910.6484375,
+            "width": 64.484375,
+            "icon": 63.84375,
+            "bottom": 925
+          },
+          {
+            "id": "calculator",
+            "x": 981.1328125,
+            "width": 48.984375,
+            "icon": 48.484375,
+            "bottom": 925
+          },
+          {
+            "id": "settings",
+            "x": 1036.1171875,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "downloads",
+            "x": 1090.1171875,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "trash",
+            "x": 1144.1171875,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "x": 1198.1171875,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          }
+        ]
+      },
+      "status": "failed",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-app=music]').getByRole('button', { name: 'Repeat', exact: true })\n\n    at run (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad-liquid-maclock.cjs:12:138)",
+      "mediaOnFailure": {
+        "audio": {
+          "id": "lg-track-0",
+          "title": "Morning Light",
+          "artist": "Eigene Testaufnahme",
+          "paused": true,
+          "position": 0,
+          "duration": 0,
+          "tracks": 2,
+          "shuffle": false,
+          "repeat": false
+        },
+        "metadata": null
+      }
+    },
+    "before-liquid-webkit": {
+      "engine": "webkit",
+      "physicalIPad": false,
+      "synthetic": true,
+      "checks": [],
+      "screens": [
+        "lockscreen-empty",
+        "desktop",
+        "dock-maximum",
+        "control-center",
+        "launcher",
+        "finder-notes",
+        "settings-spotify"
+      ],
+      "errors": [],
+      "baseline": true,
+      "fixture": {
+        "audio": "8s PCM WAV, verified after IDB write; existing Repeat action",
+        "realAudioEngine": true
+      },
+      "desktopGeometry": {
+        "viewport": [
+          1688,
+          938
+        ],
+        "header": {
+          "x": 10,
+          "y": 0,
+          "width": 1668,
+          "height": 28,
+          "top": 0,
+          "right": 1678,
+          "bottom": 28,
+          "left": 10
+        },
+        "dock": {
+          "x": 478.5,
+          "y": 871.484375,
+          "width": 731,
+          "height": 66.515625,
+          "top": 871.484375,
+          "right": 1209.5,
+          "bottom": 938,
+          "left": 478.5
+        },
+        "wallpaperFilter": "none"
+      },
+      "dock": {
+        "state": {
+          "autoHide": false,
+          "suspended": false,
+          "pending": false,
+          "hover": true,
+          "hidden": false
+        },
+        "rects": [
+          {
+            "id": "launchpad",
+            "x": 448,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "finder",
+            "x": 517,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "notes",
+            "x": 571,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "airwrite",
+            "x": 625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "reminders",
+            "x": 679,
+            "width": 57.421875,
+            "icon": 56.84375,
+            "bottom": 925
+          },
+          {
+            "id": "calendar",
+            "x": 742.421875,
+            "width": 76.296875,
+            "icon": 75.53125,
+            "bottom": 925
+          },
+          {
+            "id": "music",
+            "x": 824.71875,
+            "width": 80.328125,
+            "icon": 79.515625,
+            "bottom": 925
+          },
+          {
+            "id": "photos",
+            "x": 911.046875,
+            "width": 64.296875,
+            "icon": 63.65625,
+            "bottom": 925
+          },
+          {
+            "id": "calculator",
+            "x": 981.34375,
+            "width": 48.921875,
+            "icon": 48.421875,
+            "bottom": 925
+          },
+          {
+            "id": "settings",
+            "x": 1036.265625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "downloads",
+            "x": 1090.265625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "id": "trash",
+            "x": 1144.265625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          },
+          {
+            "x": 1198.265625,
+            "width": 48,
+            "icon": 47.515625,
+            "bottom": 925
+          }
+        ]
+      },
+      "status": "failed",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-app=music]').getByRole('button', { name: 'Repeat', exact: true })\n\n    at run (/home/runner/work/Air-Os-Clean/Air-Os-Clean/scripts/test-ipad-liquid-maclock.cjs:12:138)",
+      "mediaOnFailure": {
+        "audio": {
+          "id": "lg-track-0",
+          "title": "Morning Light",
+          "artist": "Eigene Testaufnahme",
+          "paused": true,
+          "position": 0,
+          "duration": 0,
+          "tracks": 2,
+          "shuffle": false,
+          "repeat": false
+        },
+        "metadata": null
+      }
+    }
+  }
+}
