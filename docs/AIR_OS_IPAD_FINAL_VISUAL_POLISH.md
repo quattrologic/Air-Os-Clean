@@ -7,7 +7,7 @@ Die beiden rot markierten Nutzeraufnahmen und die inline bereitgestellte MacShel
 | Markierte Stelle | Tatsächlicher Befund / Korrektur |
 |---|---|
 | Oberer schwarzer Bereich | In der laufenden Oberfläche ist dies der vorhandene schwarze 165×24-px-Körper einschließlich seiner bestehenden Inhalte. Die Notch liegt außerhalb der Menüleiste, direkt am Safe-Area-Rand; Stichproben unmittelbar links/rechts treffen ausschließlich die transparente Menüleiste. Keine zusätzliche schwarze Ebene gefunden. Deshalb keine Notch-, Menüleisten-, Safe-Area- oder Z-Index-Korrektur vorgenommen. |
-| Musikwidget | Gefüllte weiße Transportglyphen, Play/Pause 30px, Zurück/Weiter 24px; drei symmetrische 48×44-px-Touchziele. Widget etwa 146px hoch, bei schmalem Viewport etwa 132px. Bestehende drei Transporthandler bleiben maßgeblich. |
+| Musikwidget | Gefüllte weiße Transportglyphen, Play/Pause 30px, Zurück/Weiter 24px; drei symmetrische 48×44-px-Touchziele. Die bisherige Gesamtgröße bleibt annähernd erhalten. Bestehende drei Transporthandler bleiben maßgeblich. |
 | Erstes Dockicon | Nur die bestehende Launchpad-Markenfläche: 23% Rundung, 80% Helligkeit des bisherigen Weißfelds, dezente Rahmenreflexion. Originalbitmap, Markenform, Icongeometrie und Magnifikationskern unverändert; andere Icons bleiben unangetastet. |
 | MacLock-Uhr | Weiß, zentriert, 11,3dvh mit responsiver Begrenzung: rund 106px statt 75px bei 1688×938. Vier Pixel Abstand zwischen Datum und Uhr; kompaktere Varianten für kurze Fenster verhindern Überschneidungen. |
 | MacLock-Musik | Play/Pause 28px, Zurück/Weiter 22px, 48×48-px-Touchziele, heller 4px-Fortschritt, präzisere Glaskontur. Cover-, Titel- und letzte Wiedergabedaten kommen unverändert aus dem bestehenden Besitzer. |
@@ -27,7 +27,33 @@ Bei 1688×938: Notch x761,5/y0/165×24, Cover x695,80/y305,78/296,41×296,41 und
 
 Lokal: 52/52 bestehende Node-Tests; 35/35 gezielte Chromium-Prüfungen mit Touch und weitere 35/35 mit DPR2/Fine Pointer. Die funktionalen Prüfungen verwenden tatsächliches Play/Pause, Weiter und Zurück, vorhandene lokale Daten, Backup/Restore, Neustart ohne Server und den bestehenden sicheren Service-Worker-Updatepfad. Die Galerie wartet das reale Schließen des Repeat-Hinweises ab, statt UI-Elemente für die Aufnahme zu verstecken.
 
-Der vorhandene vollständige Chromium-/WebKit-CI-Gate wird für den Produktcommit erneut ausgeführt; Abschlussnachweis und Artefakt folgen erst nach tatsächlichem Ergebnis. Im gezielten Lauf: 1688×938, 834×1194, 1180×820, 1024×768, 1366×1024, 820×1180 und 390×600; zusätzlich bestehender Sechs-Viewport-, Notch-, Material-, Unterpfad-, Offline- und Updategate.
+Der vollständige Chromium-/WebKit-CI-Gate ist für Produktcommit `a28798f8429aeb0ecb7828965ddda3975399030e` erfolgreich abgeschlossen: [Lauf 42419286054](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42419286054). Audit, 52/52 Node-Tests (in beiden Jobs), Paketprüfung und **1.096/1.096 Browserassertionen** bestanden. [Alle 24 echten Browserreports](visual/ipad-liquid-maclock/a28798f8429aeb0ecb7828965ddda3975399030e/evidence.json) sind zusammen mit 76 zugelassenen, synthetischen Vollbildaufnahmen in Evidenzcommit `5342b73c14a64a31a3622243073cfbc1604fa4bf` gesichert.
+
+| Browsergate, über beide Engines summiert | Bestandene Assertions |
+|---|---:|
+| Neue Media-/Dock-/MacLock-Prüfungen, Touch und DPR2/Fine Pointer | 140 |
+| Bestehende Systemansichten, normal und DPR2 | 148 |
+| Bytegeschützte Pro-Notch-Zustände und unterbrochene Motion | 284 |
+| Apps, lokale Daten und Legacy-Musik, Root und privater Unterpfad | 446 |
+| Materialdiagnose, GPU-Guards und Cleanup | 22 |
+| Bereits vorhandener Spotify-Mock, ohne Nutzerkonto | 34 |
+| Sichere Updates, Multitab und Recovery | 20 |
+| Angeheftete Vorher-Referenzaufnahme | 2 |
+
+Im gezielten Lauf: 1688×938, 834×1194, 1180×820, 1024×768, 1366×1024, 820×1180 und 390×600; zusätzlich bestehender Sechs-Viewport-Gate. Beide normalen Materialpfade verwenden den vorgesehenen CSS-Fallback; die isolierte Shaderdiagnose ist keine Hardware-GPU-Freigabe.
+
+## Abschlussgalerie und Build
+
+Vier tatsächlich gerenderte, unveränderte **1688×938-Vollaufnahmen aus WebKit**, nach Sichtprüfung als zusammengehörige Abschlussgalerie ausgewählt:
+
+1. [Desktop mit stark magnifiziertem Dock](visual/ipad-liquid-maclock/a28798f8429aeb0ecb7828965ddda3975399030e/liquid-webkit/dock-maximum.png).
+2. [Desktop mit Musikwidget und großem Play-Symbol](visual/ipad-liquid-maclock/a28798f8429aeb0ecb7828965ddda3975399030e/liquid-webkit/polish-desktop-music.png).
+3. [MacLock mit pausierter Musik und letzter Wiedergabe](visual/ipad-liquid-maclock/a28798f8429aeb0ecb7828965ddda3975399030e/liquid-webkit/polish-lockscreen-music.png).
+4. [MacLock ohne Musik](visual/ipad-liquid-maclock/a28798f8429aeb0ecb7828965ddda3975399030e/liquid-webkit/lockscreen-empty.png).
+
+Die Chromium-Erstaufnahme erwischte den Beginn der Lock-Einblendung; die Abschlussgalerie verwendet deshalb konsistent die fertig sichtbaren WebKit-Zustände. Keine Aufnahme wurde nachbearbeitet oder beschnitten. Die vorhandene vollständige Chromium-Evidenz bleibt ebenfalls erhalten. Eine zusätzliche Sichtbarkeitsbarriere für die initiale Galerieaufnahme bleibt eine Verbesserung des Aufnahme-Helfers.
+
+Der erfolgreiche [CI-Lauf stellt das versionierte PWA-Artefakt bereit](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42419286054#artifacts): `Air-OS-iPad-Liquid-MacLock-Build-a28798f8429aeb0ecb7828965ddda3975399030e`, darin `Air-OS-iPad-Liquid-Glass-MacLock-a28798f8429aeb0ecb7828965ddda3975399030e.zip` einschließlich SHA-256-Datei sowie bestehender separater Recovery-/Preflight-Pakete. `BUILD-INFO.json` nennt den exakten Produktcommit und die Hashinventur der 140 Runtime-Dateien. Lizenz- und Corresponding-Source-Paket bleiben enthalten. Kein Installer oder Deployment ausgeführt.
 
 Physisches iPad/Safari, reale Safe-Area-Werte, Akku und Hardware-GPU bleiben offen. Browser-Touch/DPR2 und Linux-WebKit ersetzen keine Geräteabnahme.
 
