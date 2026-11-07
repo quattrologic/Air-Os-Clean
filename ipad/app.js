@@ -281,7 +281,7 @@
     saveTimer();tickTimer();document.dispatchEvent(new Event('air-timer-schedule'));
   }
 
-  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}await window.airPlaybackMetadata?.flush();location.reload();}
+  async function safeReload(){if(document.hidden){state.pendingReload=true;return;}if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;toast('Update wartet: Musik pausieren und alle Entwürfe speichern.');return;}rememberPosition();await window.airDesktop?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}await window.airPlaybackMetadata?.flush();if(!audio.paused||window.airDesktop?.dirty()||window.airTransfers?.busy()){state.pendingReload=true;return;}location.reload();}
   async function setupUpdates() {
     if(!('serviceWorker' in navigator)||!isSecureContext){$('#settings-offline').textContent='HTTPS erforderlich';return;}
     try{const registration=await navigator.serviceWorker.register('./sw.js',{scope:'./'});state.registration=registration;$('#settings-offline').textContent='Offlinecache wird vorbereitet';
