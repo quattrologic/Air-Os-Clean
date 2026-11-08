@@ -1,5 +1,7 @@
 # Air-OS iPad — gezielte visuelle Schlusskorrektur
 
+Die Uhr und der Entsperrbereich dieses Checkpoints wurden im folgenden Nutzerauftrag durch die [kleinere MacShell-Uhr und freie Textaktion](AIR_OS_IPAD_MACLOCK_CLOCK_UNLOCK.md) ersetzt; die übrigen Korrekturen bleiben erhalten.
+
 Branch `feat/air-os-ipad-liquid-glass-maclock`. Ausgangsprodukt `de4813a0762627edbb1c73337823eed8afcf100d`, einschließlich ausschließlich synthetischer CI-Nachweise in `0778d0e8a5d4af3616702fb5431ebfcabce6e8d1`.
 
 Die beiden rot markierten Nutzeraufnahmen und die inline bereitgestellte MacShell-Lockscreen-/Desktopvorlage bestimmen diese sechs Korrekturen. Keine erneute Entwicklung von Musik, Notch, Datenmodellen oder Systemcontrollern. Herkunft und Lizenzen der bestehenden MacShell-Ports bleiben im [Hauptbericht](AIR_OS_IPAD_LIQUID_GLASS_MACLOCK.md) dokumentiert. Die aktuellen Transportglyphen und CSS-Anpassungen sind eigenständige Browsergestaltung, keine behaupteten neuen Originalcodeübernahmen.
