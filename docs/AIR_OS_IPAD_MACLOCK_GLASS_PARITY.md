@@ -78,3 +78,18 @@ Messungen erfolgen auf den unveränderten Vollbildern innerhalb der gemeinsamen 
 [Lauf 42486774481](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42486774481) auf `4f7c004d13d4113a559eb7162d3f4e4bb6f30620`: Chromium vollständig erfolgreich. WebKit bestand den bisherigen adaptiven Material-/Offlinegate und die Spotify-Mocks, scheiterte aber im neuen Vergleichsskript beim Import der beiden synthetischen Audiodateien, bevor eine neue Materialansicht aufgenommen wurde. Der ursprüngliche Fehler ist unverändert in [evidence.json](visual/ipad-maclock-glass-parity/4f7c004d13d4113a559eb7162d3f4e4bb6f30620/evidence.json) gesichert; die native CI-Referenzmatrix war dadurch noch nicht ausgeführt und wird nicht als bestanden ausgegeben.
 
 Das neue Vergleichsskript nutzte gegenüber den bewährten Audio-/Blob-Persistenztests einen flüchtigen Browserkontext. Es verwendet jetzt ebenfalls ein frisches, ausschließlich synthetisches persistentes Testprofil und wartet vor dem Import auf die abgeschlossene Shell-Wiederherstellung. Die Import-, Daten- und Materialassertions bleiben vollständig erhalten. Zusätzliche Fehlerzustände protokollieren ausschließlich die synthetische Testsession; Produktcode, Nutzerdatenbanken und Pro Notch werden für diese Testkorrektur nicht verändert.
+
+## Erfolgreiche vollständige Referenzmatrix vor der letzten Hoverkorrektur
+
+[Lauf 42487877363](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42487877363) auf `36cba7bee6ae537f862207f83e1e9c41213b7681` besteht vollständig: beide Browserjobs, vier native QtQuick-Referenzen, 34 Rohreports und insgesamt 1.266 Assertions. [Unveränderte Evidenz](visual/ipad-maclock-glass-parity/36cba7bee6ae537f862207f83e1e9c41213b7681/evidence.json). Damit ist auch die Testprofilkorrektur unter WebKit tatsächlich verifiziert.
+
+| Browser / DPR | Originalshader MAE /255 | Fallback MAE /255 |
+|---|---:|---:|
+| Chromium / 1 | 0,45009 | 0,61543 |
+| Chromium / 2 | 1,36322 | 1,34958 |
+| WebKit / 1 | 0,09543 | 0,36087 |
+| WebKit / 2 | 1,00444 | 0,71562 |
+
+Die vier nativen ShaderEffects sind tatsächlich kompiliert und in QtQuick/OpenGL gerendert. Diese Zahlen beziehen sich ausschließlich auf die identische kontrollierte Materialregion, nicht auf die unterschiedlichen Nutzerbilder oder eine Hardware-GPU-Abnahme.
+
+Die abschließende Quellenkontrolle nimmt Lockkarten außerdem vom generischen ContourGlow-Hover des gemeinsamen Renderers aus: Das originale MacLock-Glass verwendet dort sein gerichtetes Materiallicht. Ein zusätzlicher echter Zeigertest prüft, dass Hover auf dem Musikpanel keinen generischen Glow und keine weiteren Shaderdraws auslöst. Die lokale Chromium-Abnahme besteht mit 15/15 neuen Fällen; die unveränderte vollständige Matrix wird mit diesem letzten kleinen Verhaltenseingriff noch einmal für den finalen Produkt-/Buildcommit ausgeführt.
