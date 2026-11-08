@@ -24,7 +24,7 @@ Der gemeinsame MacLock-Preblur verwendet den Originalparameter `32×0,35`; die A
 
 Die Musiksteuerung und das große Vordergrundcover bleiben geometrisch unverändert. Ein fehlendes, fehlerhaftes oder nicht zulässig ladbares Cover führt zum bisherigen Yosemite-Hintergrund. Keine Produktion künstlicher Ersatzcover. Pausieren oder Beenden behält die bestehende letzte Wiedergabe. Die neue Einstellung „Albumcover als Lockscreen-Hintergrund“ ist standardmäßig an; Abschalten betrifft nur diese Szene.
 
-Der vorhandene Materialrenderer liest beim Sperren dieselbe erlaubte Szene, die sichtbar hinter den Karten liegt. Im Desktopmodus verwendet er weiter das vorhandene Wallpaper. Der CSS-Fallback nutzt einen gemeinsamen, begrenzten Vorweichzeichner pro Bild/Viewport statt erneut große Blurflächen je Karte. Lokale Vergrößerung und ein aus der tatsächlichen Szenenhelligkeit modulierter gerichteter Rim sind eine Browserannäherung, **keine behauptete Snell-Brechung im CSS-Pfad**. Musik- und Mitteilungskarten berücksichtigen ihre jeweilige Position.
+Der vorhandene Materialrenderer liest beim Sperren dieselbe erlaubte Szene, die sichtbar hinter den Karten liegt. Im Desktopmodus verwendet er weiter das vorhandene Wallpaper. Der CSS-Fallback nutzt einen gemeinsamen, begrenzten Vorweichzeichner pro Bild/Viewport statt erneut große Blurflächen je Karte. Lokale Vergrößerung und ein aus der tatsächlichen Szenenhelligkeit modulierter gerichteter Rim sind eine Browserannäherung, **keine behauptete Snell-Brechung im CSS-Pfad**. Musik- und Mitteilungskarten berücksichtigen ihre jeweilige Position und erhalten auch im CSS-Pfad die unterschiedlichen Original-Tintwerte0,264 beziehungsweise0,22.
 
 ## Daten, Spotify und Sicherheit
 

@@ -7,7 +7,7 @@
  const cssHosts=new Set(),lockRims=new Map();let lightKey='',lightCanvas=null;
  function lockScene(){return !document.querySelector('#lockscreen')?.hidden?window.airMacLockBackdrop?.scene():null;}
  function lockFallback(el,r,scene){
-  if(!scene)return;const pad=80;
+  if(!scene)return;const pad=80;el.style.setProperty('--lock-tint',String(airGlassGeometry.material(el.matches('.lock-player')?'maclock':'maclock-notice',r.height).tintMix));
   for(const [name,layer]of [['old',scene.previous],['next',scene.next]]){const v={x:0,y:0,width:innerWidth,height:innerHeight},zoom=1.035,cx=r.x+r.width/2,cy=r.y+r.height/2;el.style.setProperty('--lock-'+name+'-size',v.width*zoom+'px '+v.height*zoom+'px');el.style.setProperty('--lock-'+name+'-position',(v.x*zoom+(1-zoom)*cx-r.x+pad)+'px '+(v.y*zoom+(1-zoom)*cy-r.y+pad)+'px');el.style.setProperty('--lock-'+name+'-filter','none');}
   const key=scene.key+':'+innerWidth+':'+innerHeight;if(lightKey!==key){lightKey=key;lightCanvas??=document.createElement('canvas');lightCanvas.width=48;lightCanvas.height=Math.max(1,Math.round(48*innerHeight/innerWidth));scene.draw(lightCanvas.getContext('2d'),lightCanvas.width,lightCanvas.height);}
   const sample=(x,y)=>{const c=lightCanvas.getContext('2d').getImageData(Math.max(0,Math.min(lightCanvas.width-1,Math.round(x/innerWidth*lightCanvas.width))),Math.max(0,Math.min(lightCanvas.height-1,Math.round(y/innerHeight*lightCanvas.height))),1,1).data;return(.2126*c[0]+.7152*c[1]+.0722*c[2])/255;};
