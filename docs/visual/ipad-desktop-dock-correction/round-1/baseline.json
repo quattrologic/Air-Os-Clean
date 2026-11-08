@@ -1,5 +1,4 @@
 {
-  "source": "f469a6441c8532eeed63126487978a8dc1553061",
   "physicalIPad": false,
   "viewport": [
     1180,
@@ -55,5 +54,7 @@
     "right": 672.5,
     "bottom": 24,
     "left": 507.5
-  }
+  },
+  "baseCommit": "f469a6441c8532eeed63126487978a8dc1553061",
+  "worktree": "First local uncommitted correction before removing the remaining wallpaper titlebar"
 }
