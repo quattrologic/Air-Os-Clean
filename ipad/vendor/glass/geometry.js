@@ -36,5 +36,19 @@
   for(const [p,m]of [[0,0],[.12,.25],[.32,1],[.68,1],[.88,.25],[1,0]])g.addColorStop(p,'rgba('+c.join(',')+','+a*m+')');
   ctx.beginPath();ctx.roundRect(lw/2,lw/2,w-lw,h-lw,Math.max(0,Math.min(r-lw/2,(w-lw)/2,(h-lw)/2)));ctx.strokeStyle=g;ctx.lineWidth=lw;ctx.stroke();
  }
- return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material,preblur,border};
+ // Bounded, cached backdrop preparation for WebKit, where Canvas2D.filter may be absent.
+ // Three separable box passes approximate a Gaussian in O(pixels), never per animation frame.
+ function prepareLockPixels(data,w,h,sigma=0,saturation=1,brightness=1){
+  if(!(data instanceof Uint8ClampedArray)||!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w*h>600000||data.length!==w*h*4||![sigma,saturation,brightness].every(Number.isFinite)||sigma<0||sigma>128||saturation<0||saturation>2||brightness<0||brightness>2)throw Error('invalid-lock-backdrop');
+  const radius=Math.round((Math.sqrt(1+4*sigma*sigma)-1)/2);
+  if(radius){const tmp=new Uint8ClampedArray(data.length),div=2*radius+1;
+   for(let pass=0;pass<3;pass++){
+    for(let y=0;y<h;y++)for(let c=0;c<4;c++){const row=y*w*4;let sum=data[row+c]*(radius+1);for(let k=1;k<=radius;k++)sum+=data[row+Math.min(w-1,k)*4+c];for(let x=0;x<w;x++){tmp[row+x*4+c]=Math.round(sum/div);sum+=data[row+Math.min(w-1,x+radius+1)*4+c]-data[row+Math.max(0,x-radius)*4+c];}}
+    for(let x=0;x<w;x++)for(let c=0;c<4;c++){let sum=tmp[x*4+c]*(radius+1);for(let k=1;k<=radius;k++)sum+=tmp[(Math.min(h-1,k)*w+x)*4+c];for(let y=0;y<h;y++){data[(y*w+x)*4+c]=Math.round(sum/div);sum+=tmp[(Math.min(h-1,y+radius+1)*w+x)*4+c]-tmp[(Math.max(0,y-radius)*w+x)*4+c];}}
+   }
+  }
+  if(saturation!==1||brightness!==1)for(let i=0;i<data.length;i+=4){const l=.2126*data[i]+.7152*data[i+1]+.0722*data[i+2];for(let c=0;c<3;c++)data[i+c]=brightness*(l+(data[i+c]-l)*saturation);}
+  return data;
+ }
+ return {distance,rectDistance,cover,layers,gradient,gpu,resolution,material,preblur,border,prepareLockPixels};
 });
