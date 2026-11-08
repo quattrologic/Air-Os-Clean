@@ -1,6 +1,6 @@
 {
   "baselineCommit": "47c15663f01b4c457190cec9d32da2c1751f9163",
-  "productCommit": "4f7c004d13d4113a559eb7162d3f4e4bb6f30620",
+  "productCommit": "e621317e3ac8f6b323b329a29808d18c5709fe2d",
   "scope": "Versioned source and assets only; no personal databases or private installation were accessed",
   "unchanged": {
     "ipad/notch/model.js": "82e7b1f42d4925837d340f668bed81377ed2cf0b72b76ff2151c48dbc3a62581",

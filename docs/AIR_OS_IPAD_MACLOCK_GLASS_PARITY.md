@@ -2,7 +2,9 @@
 
 Branch: `feat/air-os-ipad-maclock-glass-parity`, Ausgangsstand `47c15663f01b4c457190cec9d32da2c1751f9163`. Kein Deployment, keine Zusammenführung und kein Zugriff auf die installierte private PWA.
 
-## Gesicherter Zwischenstand
+Abgeschlossen auf Produkt-/Buildcommit `e621317e3ac8f6b323b329a29808d18c5709fe2d`: vollständiger Chromium-/WebKit-/QtQuick-Gate erfolgreich; finale Bilder, Messungen und PWA-Artefakt sind im Abschnitt „Finaler verifizierter Abschluss“ verlinkt. Die nachfolgenden Korrekturrunden dokumentieren auch die Zwischenstände.
+
+## Architektur und Originalportierung
 
 Die Originale `Glass.qml`, `liquidglass.frag` und `LockScreen.qml` wurden erneut aus MacShell `1bdb51870b621100fd2709f66c8f8e00ab17b9c4` geladen und stimmen bytegenau mit den bereits lizenzierten MIT-Referenzen überein. Quellen und Lizenz: [vorhandene Provenienz](source-ports/maclock-adaptive/provenance.json).
 
@@ -18,14 +20,14 @@ Die zweite Korrekturrunde adaptiert `gl_FragCoord` auf vollständige physische F
 
 Die erste kontrollierte Runde verwendet dieselbe eigene tatsächliche Hintergrundtextur, 1280×710, DPR 1, denselben 224×100 großen Glasgegenstand und Radius 22. Gemessene mittlere absolute RGB-Kanaldifferenz innerhalb der gemeinsamen Materialregion einschließlich 10px Schattenraum: WebGL-Port rund 1,56/255; Fallback rund 2,23/255. Die Bilder stammen aus wirklichen Renderern; es ist kein Vergleich verschiedener Covers und keine erfundene Originalaufnahme. [Unveränderte Vollbilder und Reports](visual/maclock-glass-parity-checkpoints/round-1/).
 
-## Visuelle Runden und offener Abschluss
+## Visuelle Korrekturrunden
 
 - Runde 0: gesicherter Ausgangsstand mit Wald-/Seecover, 32 bestehende Szenenprüfungen bestanden.
 - Runde 1: tatsächliche Brechung im vorberechneten Fallback, kontrollierte native Referenz, 12 neue Chromium-Prüfungen bestanden.
 - Runde 2: korrekte Fensterkoordinaten für Grain/Taprotation, neue Vollbilder, 12 Chromium-Prüfungen bestanden.
 - Runde 2, Nachmessung: physische Pixelraster-Ausrichtung von SDF/Texture/Grain und komplementäre premultiplizierte CSS-Überblendung beseitigen den Kantenversatz und doppelte transparente Schatten.
 - Runde 3: Gaussian-äquivalenter Coverblur 24 statt 64 CSS-Pixel; originale lokale artBg-Vignette mit .22 oben und .30 unten. Die Vignette wird einmal in die vorbereitete Szene eingebracht, damit Renderer und sichtbarer Hintergrund dieselben Pixel verwenden.
-- Noch offen: abschließende vollständige Chromium-/WebKit-/DPR-2-CI-Matrix mit nativer Referenz und finalem Buildnachweis.
+- Vollständige Matrix, native Referenzen und Buildnachweis sind im abschließenden verifizierten Abschnitt dokumentiert.
 
 [Gesicherte Vollaufnahmen und Rohreports](visual/maclock-glass-parity-checkpoints/). Alle Bilder sind unbearbeitet; die unterschiedliche Größe von Ausgangs- und Kontrollviewport wird ausdrücklich getrennt behandelt. Der kontrollierte Komponentenvergleich verwendet jeweils identische Maße.
 
@@ -45,10 +47,10 @@ Die verfeinerte CSS-Überblendung nutzt auf unterstützten Browsern `mix-blend-m
 
 Zusätzliche echte Abläufe: tatsächliches Wiedergabeende nach Seek im vorhandenen Audioplayer bei leerem Suchergebnis/ohne folgenden sichtbaren Titel, Erhalt des letzten Covers, echter Browserneustart, wirklich nicht verfügbares WebGL, Context Loss/Restore und vollständige Entfernung der gecachten Materialreferenzen. Keine erfundenen Medienereignisse und keine zweite Musikengine.
 
-Workflow `.github/workflows/test-ipad-maclock-glass-parity.yml`: bestehender vollständiger Browsergate plus kontrollierte Materialansichten bei DPR 1/2 in Chromium/WebKit, danach vier native QtQuick-Komponentenvergleiche auf denselben Eingabetexturen. Qt/PySide6/Xvfb sind ausschließlich Testwerkzeuge. Paketidentität: `Air-OS-iPad-MacLock-Glass-Parity`; der finale CI-Commit/Artefaktlink wird nach dem vollständigen Lauf eingetragen.
+Workflow `.github/workflows/test-ipad-maclock-glass-parity.yml`: bestehender vollständiger Browsergate plus kontrollierte Materialansichten bei DPR 1/2 in Chromium/WebKit, danach vier native QtQuick-Komponentenvergleiche auf denselben Eingabetexturen. Qt/PySide6/Xvfb sind ausschließlich Testwerkzeuge. Paketidentität: `Air-OS-iPad-MacLock-Glass-Parity`; der finale CI-Commit und Artefaktlink stehen im Abschlussabschnitt.
 
 
-Der finale lokale Gate besteht mit 60/60 Node-Modelltests, 14/14 zusätzlichen Chromium-DPR-2-Material-/Lifecyclefällen und sieben nativen DPR-2-Referenzprüfungen. Die originale Qt-ShaderEffect meldet tatsächlich `Compiled`; die Referenz wurde als OpenGL-RHI-Bild erzeugt. Gemessene lokale DPR-2-MAE innerhalb der Materialregion: WebGL rund 1,36/255, Fallback rund 1,35/255. Für den automatischen nativen Gate gelten maximal 2/255 bei DPR 1 und 3/255 bei DPR 2; Rand, Inneres und Schatten werden zusätzlich getrennt protokolliert. Der neue Workflow ist vorbereitet; die komplette Chromium-/WebKit-Matrix wird jetzt auf dem gesicherten Quellcommit ausgeführt.
+Der lokale Gate dieses Zwischenstands bestand mit 60/60 Node-Modelltests, 14/14 zusätzlichen Chromium-DPR-2-Material-/Lifecyclefällen und sieben nativen DPR-2-Referenzprüfungen. Die originale Qt-ShaderEffect meldet tatsächlich `Compiled`; die Referenz wurde als OpenGL-RHI-Bild erzeugt. Gemessene lokale DPR-2-MAE innerhalb der Materialregion: WebGL rund 1,36/255, Fallback rund 1,35/255. Für den automatischen nativen Gate gelten maximal 2/255 bei DPR 1 und 3/255 bei DPR 2; Rand, Inneres und Schatten werden zusätzlich getrennt protokolliert. Die anschließend ausgeführten vollständigen CI-Läufe sind unten dokumentiert.
 
 ## Vergleich A — tatsächliche Nutzerbilder
 
@@ -92,4 +94,43 @@ Das neue Vergleichsskript nutzte gegenüber den bewährten Audio-/Blob-Persisten
 
 Die vier nativen ShaderEffects sind tatsächlich kompiliert und in QtQuick/OpenGL gerendert. Diese Zahlen beziehen sich ausschließlich auf die identische kontrollierte Materialregion, nicht auf die unterschiedlichen Nutzerbilder oder eine Hardware-GPU-Abnahme.
 
-Die abschließende Quellenkontrolle nimmt Lockkarten außerdem vom generischen ContourGlow-Hover des gemeinsamen Renderers aus: Das originale MacLock-Glass verwendet dort sein gerichtetes Materiallicht. Ein zusätzlicher echter Zeigertest prüft, dass Hover auf dem Musikpanel keinen generischen Glow und keine weiteren Shaderdraws auslöst. Die lokale Chromium-Abnahme besteht mit 15/15 neuen Fällen; die unveränderte vollständige Matrix wird mit diesem letzten kleinen Verhaltenseingriff noch einmal für den finalen Produkt-/Buildcommit ausgeführt.
+Die abschließende Quellenkontrolle nimmt Lockkarten außerdem vom generischen ContourGlow-Hover des gemeinsamen Renderers aus: Das originale MacLock-Glass verwendet dort sein gerichtetes Materiallicht. Ein zusätzlicher echter Zeigertest prüft, dass Hover auf dem Musikpanel keinen generischen Glow und keine weiteren Shaderdraws auslöst. Die lokale Chromium-Abnahme bestand mit 15/15 neuen Fällen; auch die anschließend erneut ausgeführte vollständige Matrix des finalen Produkt-/Buildcommits besteht, wie im nächsten Abschnitt dokumentiert.
+
+## Finaler verifizierter Abschluss
+
+Produkt-/Buildcommit: `e621317e3ac8f6b323b329a29808d18c5709fe2d`; Entwicklungsbranch `feat/air-os-ipad-maclock-glass-parity`. [Vollständiger finaler Lauf 42489457217](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42489457217) ist erfolgreich: beide Browserjobs und die gesamte native QtQuick-Referenzmatrix. Evidenzcommit `dce627506d541e012dd89e5ca569f64a55371685` bewahrt die unveränderten Bilder und Rohreports: [evidence.json](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/evidence.json).
+
+60/60 Node-Modelltests bestehen in jedem Browserjob; 34 GUI-/Referenzreports bestehen mit insgesamt **1.270 Assertions**. Die neuen Materialansichten umfassen je 15 reale Browserfälle in Chromium/WebKit bei DPR 1 und 2. Alle bisherigen App-, Dock-, Notch-, Responsive-, Offline-, Legacy-Daten-, Unterpfad- und sicheren Updateprüfungen sind erhalten. Spotify ist mit den bestehenden Mocks geprüft; kein echtes Konto wurde ohne Autorisierung verwendet.
+
+| Renderer / DPR | Originalshader MAE /255 | Fallback MAE /255 |
+|---|---:|---:|
+| chromium / 1 | 0,45009 | 0,61543 |
+| chromium / 2 | 1,36322 | 1,34958 |
+| webkit / 1 | 0,09543 | 0,36087 |
+| webkit / 2 | 1,00444 | 0,71562 |
+
+Alle vier originalen Qt-ShaderEffects sind tatsächlich kompiliert und im OpenGL-RHI gerendert; die Quellhashes entsprechen dem gepinnten Original. Die Messung betrifft ausschließlich die gemeinsame kontrollierte Materialregion einschließlich Schattenraum. Rand, Inneres und Schatten sowie P95/Maximalabweichungen stehen getrennt in den Rohreports. Es ist keine Aussage über die unterschiedlichen Nutzerbilder, eine komplette native MacShell-Installation, HDR-/ICC-Hardwarekalibrierung oder physische iPad-GPU-Freigabe.
+
+Die vier Browser-Shadernachweise verwenden die ausdrücklich isolierte Diagnose und führen den originalen Shader wirklich aus. Der normale Standardmodus behält den gecachten Fallback; Software-/Unknown-GPU-Prüfung bleibt erhalten. Die neue Zeigerprüfung bestätigt, dass auf Lockkarten kein generischer ContourGlow und keine zusätzlichen Shaderdraws gestartet werden. Idle, Kontextverlust/-wiederherstellung, Materialfreigabe, tatsächliches Wiedergabeende, letzte Musik nach Neustart, Coverwechsel und fehlendes WebGL sind erfolgreich geprüft. Physische iPad-FPS und Akkulaufzeit wurden nicht gemessen.
+
+### Tatsächliche Vollbildaufnahmen
+
+Die fünf finalen Produktbilder stammen aus WebKit bei 1280×710 und DPR 1, jeweils ohne Zuschnitt oder nachträgliche Bildbearbeitung. Die normalen Ansichten verwenden den vorberechneten Fallback des bestehenden Renderers; der explizite Ausfalltest verweigert wirklich die WebGL-Kontexterzeugung. Die fünfte Ansicht verwendet tatsächlich ausgeführten Originalshadercode in der isolierten Diagnose.
+
+1. [Waldcover und korrigiertes Glas](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/parity-webkit-dpr1/parity-forest.png).
+2. [Andere Coverpalette](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/parity-webkit-dpr1/parity-other-cover.png).
+3. [Yosemite-Hintergrund](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/parity-webkit-dpr1/parity-yosemite.png).
+4. [CSS-Fallback bei wirklich nicht verfügbarem WebGL](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/parity-webkit-dpr1/parity-css-fallback.png).
+5. [Originalshader, isolierte Diagnose](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/parity-webkit-dpr1/parity-shader.png).
+
+Separater kontrollierter Komponentenvergleich, ebenfalls unbeschnittene Vollbilder: [Original Glass.qml in QtQuick](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/native-webkit-dpr1/controlled-native.png), [WebGL-Port](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/native-webkit-dpr1/controlled-shader.png), [Fallback](visual/ipad-maclock-glass-parity/e621317e3ac8f6b323b329a29808d18c5709fe2d/native-webkit-dpr1/controlled-css.png). `controlled-source.png` ist ausdrücklich die gemeinsame Eingabetextur, kein angeblicher Vollbild-Screenshot; `control.json` beschreibt das reproduzierbare Fixture. Die Produktaufnahmen enthalten die wirkliche Air-OS-UI; das Komponentenfixture enthält nur Hintergrund und Glasgegenstand.
+
+### Build, Sicherung und Grenzen
+
+[Versioniertes CI-PWA-Paket](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42489457217#artifacts): `Air-OS-iPad-MacLock-Parity-Build-e621317e3ac8f6b323b329a29808d18c5709fe2d`, darin `Air-OS-iPad-MacLock-Glass-Parity-e621317e3ac8f6b323b329a29808d18c5709fe2d.zip` mit zugehöriger `.sha256`-Datei. 141 exakte Runtimeassets, CSP, Scope, Source-/Lizenzpaket und Ausschluss nativer Runtime sind verifiziert. Das Audit der fixierten Browsertestwerkzeuge ist erfolgreich. Artefaktaufbewahrung: 30 Tage; dies ist kein Deployment. Native Qt/PySide6/Xvfb-Abhängigkeiten befinden sich ausschließlich in der Testumgebung und nicht im PWA-Runtimepaket.
+
+Gesicherte Implementierungscheckpoints: `921f2d17697c68ecf373953251311d89d6633ba6` (SDF/Snell-Fallback und erste echte Referenz), `4f7c004d13d4113a559eb7162d3f4e4bb6f30620` (Pixelphase, einfache Schattenkomposition und Cover-Lichttiefe), `36cba7bee6ae537f862207f83e1e9c41213b7681` (bewährtes persistentes WebKit-Testprofil), `e621317e3ac8f6b323b329a29808d18c5709fe2d` (ausschließlich originales Materiallicht bei Pointerinteraktion). Die nachfolgende Dokumentationssicherung ändert keine Runtimebytes.
+
+Verbleibende Grenzen: bilineare Fallbackabtastung statt des originalen 24-Tap-Disks, Qt-/Browser-Mipmap- und Antialiasingunterschiede, bewusst erhaltene hellere .84-Background-Farbabbildung statt Qt-additiv -0,16, ältere Browser ohne `plus-lighter`, physische Safari/iPad-/Akku-/Hardware-GPU-Abnahme und freiwillige echte Spotify-Kontoabnahme. Keine dieser offenen Hardware-/Kontoprüfungen wird als bestanden dargestellt.
+
+Kein Deployment, kein PR-/Branchmerge, keine Datenmigration und keine Änderung der privaten iPad-Installation oder Tailscale-Adresse. [Geschützte Dateiidentitäten](visual/maclock-glass-parity-checkpoints/protected-files.json) wurden für den finalen Stand erneut geprüft.
