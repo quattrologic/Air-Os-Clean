@@ -68,4 +68,40 @@ Die zusätzliche Sichtprüfung der echten WebKit-Vollaufnahmen zeigte trotz grü
 
 Vierte Korrekturrunde: Der vorhandene Geometrie-/Vorbereitungsbesitzer berechnet jetzt einmal pro Bild, Viewport und Transparenzpräferenz einen begrenzten, separablen Drei-Box-Gaussian-Näherungsfilter in O(Bildpixel). Er braucht weder Canvas2D.filter noch eine weitere GPU-Engine. Cover erhalten weiterhin die ursprünglichen 64 CSS-Pixel als Blur-Ausgangspunkt, Sättigung 1,25 und Helligkeit 0,84; Yosemite verwendet 18. Der Cover-Zwischenpuffer ist höchstens 256px breit, der Wallpaper-Puffer höchstens 512px und insgesamt höchstens 0,3 MP groß. Danach verwenden Hintergrund, CSS-Karten, Lichtmessung und vorhandener WebGL-Renderer dieselben bereits vorbereiteten Bildpixel. Vorbereitete Pixel werden bei Wechsel/Resize ersetzt und beim Dispose freigegeben; es gibt keine erneute Blur-Arbeit pro Übergangsframe oder im Idle.
 
-Ein neuer mathematischer Test prüft konstante Randfarben ohne schwarze Nähte, Alphaerhalt, Detaildämpfung und das Pixelbudget. Der tatsächliche Browser-Bildtest misst nun zusätzlich die Nachbarpixelenergie des echten importierten Covers gegen die tatsächlich gezeichnete Hintergrundszene: weniger als 30 Prozent der ungefilterten Detailenergie müssen verbleiben. So kann eine bloß ignorierte Canvasfilter-Zuweisung den Gate nicht erneut bestehen. Lokal bestanden 57/57 Modelltests, 32/32 neue Chromium-Szenenfälle und das Paketgate für alle 141 exakten Runtimeassets. Eine neue vollständige Chromium-/WebKit-Matrix wird für diese Korrektur ausgeführt.
+Ein neuer mathematischer Test prüft konstante Randfarben ohne schwarze Nähte, Alphaerhalt, Detaildämpfung und das Pixelbudget. Der tatsächliche Browser-Bildtest misst nun zusätzlich die Nachbarpixelenergie des echten importierten Covers gegen die tatsächlich gezeichnete Hintergrundszene: weniger als 30 Prozent der ungefilterten Detailenergie müssen verbleiben. So kann eine bloß ignorierte Canvasfilter-Zuweisung den Gate nicht erneut bestehen. Lokal bestanden 57/57 Modelltests, 32/32 neue Chromium-Szenenfälle und das Paketgate für alle 141 exakten Runtimeassets. Die vollständige Matrix für diese Korrektur ist im folgenden Abschlussnachweis erfolgreich abgeschlossen.
+
+
+Die Drei-Box-Vorbereitung und deren Cache sind eigenständige Browseranpassungen; sie sind kein übernommener MacShell-Algorithmus. Das originale, lizenzierte MacLock-Fragment bleibt davon getrennt und mathematisch unverändert portiert. Die tatsächliche Kurve des Hintergrundwechsels bleibt 650 ms OutCubic. Die bei der Sichtprüfung bemängelten unweichgezeichneten WebKit-Bilder bleiben als Vorher-Nachweis im älteren Evidenzverzeichnis erhalten.
+
+## Verifizierter Abschluss
+
+Produkt-/Buildcommit: `de69c5b4a012b31e526af163532c64d2c5fa0015`. [Vollständiger CI-Lauf 42467318877](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42467318877), beide Browserjobs erfolgreich. Die unveränderten Reports und Vollaufnahmen sind durch Evidenzcommit `9db63e7e57a15818b3bbe0346891df13100cb18e` gesichert: [evidence.json](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/evidence.json).
+
+57/57 Node-Modelltests bestanden in jedem Browserjob. 26 echte GUI-Reports bestehen mit insgesamt **1182 Assertions**. Je Engine: 32 adaptive MacLock-Szenenfälle und 20 Spotify-Mockfälle; sämtliche bisherigen Dock-, Notch-, App-, DPR2-, Unterpfad-, Legacy-Daten- und Updateprüfungen bleiben grün. Beide Offline-Neustarts erfolgten nach echtem Origin-Ausfall (`ECONNREFUSED`), ohne gemockte App-Shell; beide Appfehlerlisten sind leer.
+
+| Browser | Neue GUI-Fälle | Verbleibende feine Bilddetailenergie | Geänderte Shader-Farbkanäle | Mittlere absolute Kanaldifferenz |
+|---|---:|---:|---:|---:|
+| chromium | 32 | 6,92 % | 55213 / 163056 | 0,751239 |
+| webkit | 32 | 1,81 % | 54868 / 163056 | 0,758371 |
+
+Die Bilddetailenergie vergleicht das echte importierte Fotocover mit der gezeichneten, weichgezeichneten Hintergrundszene bei 256px Vergleichsbreite. Sie ist kein FPS- oder Akkuwert. Die Shaderdifferenz vergleicht im selben Material die aktivierte gegen deaktivierte Brechung auf der eigenen erlaubten Covertextur. Beide Shaderläufe melden `isolated-diagnostic`; sie bestätigen ausgeführten Originalshadercode, keine Hardware-GPU-Freigabe. Der normale Produktpfad behält Software-/Unknown-GPU-Schutz und den hochwertigen CSS-Fallback. Idle-Draws stoppen; Context Loss/Restore, Navigation und Ressourcenfreigabe bestehen.
+
+### Unveränderte Vollaufnahmen
+
+Alle fünf folgenden Abschlussaufnahmen wurden in WebKit mit 1688×938 CSS-Pixeln ohne Zuschneiden oder Bildnachbearbeitung aufgenommen. Die fünfte Aufnahme ist ausdrücklich die isolierte Originalshader-Diagnose, die ersten vier zeigen den normalen Standard-/CSS-Pfad.
+
+1. [Yosemite und echtes Vordergrundcover](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-yosemite.png).
+2. [Waldaufnahme mit tatsächlichem Cover-Hintergrund](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-cover-a.png).
+3. [Seeaufnahme mit anderem Cover und anderer Hintergrundfarbe](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-cover-b.png).
+4. [Zuletzt gehörte Seeaufnahme](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-last-played.png).
+5. [Vollbildmaterialvergleich: ausgeführter Originalshader](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-material.png).
+
+[Weitere Hochformataufnahme](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/liquid-webkit/lockscreen-portrait.png). Direkter Vollbildvergleich der zusätzlichen Korrekturrunde: [vorher, ignorierter WebKit-Canvasfilter](visual/ipad-liquid-maclock/3241225cb0278a28e76baeef557d61e5cb2b2ceb/art-webkit/art-cover-b.png), [nachher, tatsächlich weichgezeichnete gemeinsame Szene](visual/ipad-liquid-maclock/de69c5b4a012b31e526af163532c64d2c5fa0015/art-webkit/art-cover-b.png). Das ist keine behauptete Pixelidentität mit der Nutzerreferenz: Qt-Blur, MultiEffect-Farbabbildung, Bildschirmgröße und Browserantialiasing bleiben unterschiedliche Implementierungen. Kleine Uhr, Coverposition, Avatar und freie Entsperrschrift bleiben unverändert; der neue Bildtest ergänzt die bestehenden unveränderten Geometrieprüfungen.
+
+### Paket und Commitnachweise
+
+[Versioniertes PWA-Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42467318877#artifacts): `Air-OS-iPad-Liquid-MacLock-Build-de69c5b4a012b31e526af163532c64d2c5fa0015`, darin `Air-OS-iPad-Liquid-Glass-MacLock-de69c5b4a012b31e526af163532c64d2c5fa0015.zip` und die zugehörige `.sha256`-Datei. Der Gate bestätigt 141 exakte lokale Runtimeassets, CSP, Lizenz-/Sourcepaket und Ausschluss nativer Runtime. Das Audit der fixierten Browsertestwerkzeuge und der vollständige definierte Testgate sind erfolgreich; die Workflow-Aufbewahrung beträgt 30 Tage. Das Artefakt ist ein Buildpaket und kein Deployment.
+
+Wesentliche gesicherte Produktstände: `2a4dcd6f12ad7434a6c641678c278b1f87d9d07a` (Originalmaterial/Coverpfad), `b29ae28f177c9ccf5063b15087038c64067e55fd` (gemeinsame Original-Tints im CSS-Pfad), `de69c5b4a012b31e526af163532c64d2c5fa0015` (WebKit-unabhängige tatsächliche Hintergrundweichzeichnung samt Bildregression). Die Dokumentation folgt separat auf demselben Featurebranch; [Branchhistorie](https://github.com/quattrologic/Air-Os-Clean/commits/feat/air-os-ipad-liquid-glass-maclock) enthält auch den Abschlussbericht.
+
+Offen bleiben physische iPad-/Safari-/Flugmodus-, Akku- und Hardware-GPU-Messungen sowie eine freiwillige echte Spotify-Kontoabnahme. Keine systemweite Erkennung anderer iPad-Player wird behauptet. Kein Deployment, keine Änderung der installierten privaten PWA oder Tailscale-Adresse, keine Zusammenführung mit main/privatem Installationsbranch und keine Datenmigration.
