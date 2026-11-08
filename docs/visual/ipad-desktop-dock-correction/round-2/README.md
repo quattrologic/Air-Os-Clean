@@ -1,0 +1,1 @@
+Local pre-commit worktree evidence, Chromium DPR2; synthetic data only. The report sourceCommit names the then-current base HEAD, not a clean final product commit. Final CI evidence is recorded separately against the committed source. All PNGs are complete, unedited viewport captures.

@@ -1,0 +1,508 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "text unlock retains visible keyboard focus without a permanent outline",
+    "Space opens the existing local session",
+    "Enter opens the existing local session",
+    "the invisible target opens the same session by pointer or touch",
+    "unlocked Yosemite is sharp and header confined to24px",
+    "frozen black Notch retains165 by24 geometry",
+    "Notch keeps its own body above the menu with no external black overlay",
+    "read-only Spotify widget has a reachable connection action without false player controls",
+    "official Dock bitmap has a rounded softer presentation without resizing the mark",
+    "strong source cosine peak reaches1.8",
+    "direct neighbor and second neighbor follow the coupled source wave",
+    "icons grow upward from one baseline with no separate hover lift",
+    "rendered Dock cells do not overlap",
+    "Dock stops drawing after spring settles",
+    "hold activates one touch magnification gesture",
+    "held touch never opens a competing Dock context menu",
+    "pointercancel releases gesture and all springs",
+    "mouse context menu remains available after canceled touch",
+    "one hold-release opens only the chosen existing app",
+    "local music transport remains functional in the existing music app",
+    "lock preserves one real audio transport and current playback",
+    "lock foreground remains sharp and only its own wallpaper is blurred",
+    "only actual stored notices are rendered",
+    "lockscreen pause uses original engine and retains last metadata",
+    "MacLock clock returns to smaller plain white type centered below the date",
+    "MacLock play glyph and progress are clearly larger inside existing touch controls",
+    "text unlock has an invisible44px target without any glass, border or pill",
+    "lock next selects actual library track",
+    "lock portrait/landscape media and login stay separated 1180",
+    "lock portrait/landscape media and login stay separated 1024",
+    "lock portrait/landscape media and login stay separated 1366",
+    "lock portrait/landscape media and login stay separated 820",
+    "lock portrait/landscape media and login stay separated 390",
+    "update rechecks resumed music after asynchronous metadata flush",
+    "all25 apps and schema2 retained",
+    "new playback runtime settings preserve the existing backup and restore contract",
+    "offline restart retains last track, cover and reliable state",
+    "metadata clear preserves every original music blob",
+    "no uncaught browser errors"
+  ],
+  "screens": [
+    "lockscreen-empty",
+    "desktop",
+    "dock-maximum",
+    "dock-touch",
+    "control-center",
+    "launcher",
+    "finder-notes",
+    "settings-spotify",
+    "polish-desktop-music",
+    "lockscreen-music",
+    "polish-lockscreen-music",
+    "lockscreen-portrait",
+    "desktop-portrait",
+    "lockscreen-offline"
+  ],
+  "errors": [],
+  "baseline": false,
+  "polish": true,
+  "fixture": {
+    "audio": "8s PCM WAV, verified after IDB write; existing Repeat action",
+    "realAudioEngine": true
+  },
+  "desktopGeometry": {
+    "viewport": [
+      1688,
+      938
+    ],
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1688,
+      "height": 24,
+      "top": 0,
+      "right": 1688,
+      "bottom": 24,
+      "left": 0
+    },
+    "dock": {
+      "x": 478.5,
+      "y": 856,
+      "width": 731,
+      "height": 72,
+      "top": 856,
+      "right": 1209.5,
+      "bottom": 928,
+      "left": 478.5
+    },
+    "surface": {
+      "x": 478.5,
+      "y": 856,
+      "width": 731,
+      "height": 72,
+      "top": 856,
+      "right": 1209.5,
+      "bottom": 928,
+      "left": 478.5
+    },
+    "wallpaperFilter": "none"
+  },
+  "polishGeometry": {
+    "notch": {
+      "x": 761.5,
+      "y": 0,
+      "width": 165,
+      "height": 24,
+      "top": 0,
+      "right": 926.5,
+      "bottom": 24,
+      "left": 761.5
+    },
+    "parent": "BODY",
+    "menuContainsNotch": false,
+    "outside": [
+      {
+        "tag": "HEADER",
+        "inNotch": false,
+        "background": "rgba(19, 32, 49, 0.07)"
+      },
+      {
+        "tag": "HEADER",
+        "inNotch": false,
+        "background": "rgba(19, 32, 49, 0.07)"
+      }
+    ]
+  },
+  "dock": {
+    "state": {
+      "autoHide": false,
+      "suspended": false,
+      "pending": false,
+      "hover": true,
+      "gesture": false,
+      "holding": false,
+      "selected": 5,
+      "hidden": false,
+      "paints": 24,
+      "cells": [
+        {
+          "id": "launchpad",
+          "x": 0,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 24
+        },
+        {
+          "id": "finder",
+          "x": 69,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 93
+        },
+        {
+          "id": "notes",
+          "x": 123,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 147
+        },
+        {
+          "id": "airwrite",
+          "x": 177,
+          "width": 52.82859363511486,
+          "icon": 52.30030769876372,
+          "scale": 1.1005957007315597,
+          "c0": 201
+        },
+        {
+          "id": "reminders",
+          "x": 235.82859363511486,
+          "width": 74.00841383121669,
+          "icon": 73.26832969290452,
+          "scale": 1.5418419548170144,
+          "c0": 255
+        },
+        {
+          "id": "calendar",
+          "x": 315.83700746633156,
+          "width": 86.4,
+          "icon": 85.536,
+          "scale": 1.8,
+          "c0": 309
+        },
+        {
+          "id": "music",
+          "x": 408.23700746633153,
+          "width": 74.00841383121669,
+          "icon": 73.26832969290452,
+          "scale": 1.5418419548170144,
+          "c0": 363
+        },
+        {
+          "id": "photos",
+          "x": 488.2454212975482,
+          "width": 52.82859363511486,
+          "icon": 52.30030769876372,
+          "scale": 1.1005957007315597,
+          "c0": 417
+        },
+        {
+          "id": "calculator",
+          "x": 547.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 471
+        },
+        {
+          "id": "settings",
+          "x": 601.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 525
+        },
+        {
+          "id": "downloads",
+          "x": 655.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 579
+        },
+        {
+          "id": "trash",
+          "x": 709.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 633
+        },
+        {
+          "id": "shelf",
+          "x": 763.0740149326631,
+          "width": 48,
+          "icon": 47.519999999999996,
+          "scale": 1,
+          "c0": 687
+        }
+      ],
+      "baseSize": 48
+    },
+    "rects": [
+      {
+        "id": "launchpad",
+        "x": 438.46875,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "finder",
+        "x": 507.46875,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "notes",
+        "x": 561.46875,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "airwrite",
+        "x": 615.46875,
+        "width": 52.828125,
+        "icon": 52.296875,
+        "bottom": 912
+      },
+      {
+        "id": "reminders",
+        "x": 674.296875,
+        "width": 74,
+        "icon": 73.265625,
+        "bottom": 912
+      },
+      {
+        "id": "calendar",
+        "x": 754.296875,
+        "width": 86.390625,
+        "icon": 85.53125,
+        "bottom": 912
+      },
+      {
+        "id": "music",
+        "x": 846.6875,
+        "width": 74,
+        "icon": 73.265625,
+        "bottom": 912
+      },
+      {
+        "id": "photos",
+        "x": 926.6875,
+        "width": 52.828125,
+        "icon": 52.296875,
+        "bottom": 912
+      },
+      {
+        "id": "calculator",
+        "x": 985.515625,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "settings",
+        "x": 1039.515625,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "downloads",
+        "x": 1093.515625,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "id": "trash",
+        "x": 1147.515625,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      },
+      {
+        "x": 1201.515625,
+        "width": 48,
+        "icon": 47.515625,
+        "bottom": 912
+      }
+    ],
+    "surface": {
+      "x": 428.46875,
+      "y": 818.46875,
+      "width": 831.0625,
+      "height": 109.53125,
+      "top": 818.46875,
+      "right": 1259.53125,
+      "bottom": 928,
+      "left": 428.46875
+    }
+  },
+  "mediaBeforeLock": {
+    "audio": {
+      "id": "lg-track-0",
+      "title": "Morning Light",
+      "artist": "Eigene Testaufnahme",
+      "paused": false,
+      "position": 0.026762,
+      "duration": 8,
+      "tracks": 2,
+      "shuffle": false,
+      "repeat": true
+    },
+    "metadata": {
+      "artworkData": "",
+      "source": "air-os",
+      "id": "lg-track-0",
+      "title": "Morning Light",
+      "artist": "Eigene Testaufnahme",
+      "eventAt": 1794052800000,
+      "position": 0.026762,
+      "duration": 8,
+      "paused": false,
+      "artworkOrigin": "data:image/png;base64,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",
+      "playing": true,
+      "canToggle": true,
+      "canSkip": true,
+      "sourceLabel": "Air-OS",
+      "status": "Läuft gerade"
+    }
+  },
+  "lockGeometry": {
+    ".topbar": {
+      "x": 0,
+      "y": 0,
+      "width": 1688,
+      "height": 24,
+      "top": 0,
+      "right": 1688,
+      "bottom": 24,
+      "left": 0
+    },
+    "#pro-notch": {
+      "x": 761.5,
+      "y": 0,
+      "width": 165,
+      "height": 24,
+      "top": 0,
+      "right": 926.5,
+      "bottom": 24,
+      "left": 761.5
+    },
+    ".lock-clock": {
+      "x": 0,
+      "y": 67.53125,
+      "width": 1688,
+      "height": 105.765625,
+      "top": 67.53125,
+      "right": 1688,
+      "bottom": 173.296875,
+      "left": 0
+    },
+    ".big-art": {
+      "x": 695.796875,
+      "y": 305.78125,
+      "width": 296.40625,
+      "height": 296.40625,
+      "top": 305.78125,
+      "right": 992.203125,
+      "bottom": 602.1875,
+      "left": 695.796875
+    },
+    ".lock-player": {
+      "x": 695.796875,
+      "y": 621.875,
+      "width": 296.40625,
+      "height": 108.796875,
+      "top": 621.875,
+      "right": 992.203125,
+      "bottom": 730.671875,
+      "left": 695.796875
+    },
+    ".lock-bottom": {
+      "x": 724,
+      "y": 767.921875,
+      "width": 240,
+      "height": 126,
+      "top": 767.921875,
+      "right": 964,
+      "bottom": 893.921875,
+      "left": 724
+    },
+    ".lg-lock-notices": {
+      "x": 1410.546875,
+      "y": 31.890625,
+      "width": 265.453125,
+      "height": 158.296875,
+      "top": 31.890625,
+      "right": 1676,
+      "bottom": 190.1875,
+      "left": 1410.546875
+    }
+  },
+  "material": {
+    "cssWallpaperTiles": 4,
+    "lockFallbackSlabs": 4,
+    "lockFallbackMapPixels": 101270,
+    "fallbackBakes": 36,
+    "fallbackSourceBuilds": 1,
+    "fallbackMapBuilds": 36,
+    "fallbackBakeWallTimeMs": 193,
+    "cssFallback": "aligned-own-wallpaper-no-capture",
+    "quality": 1,
+    "lastPaintMs": 1,
+    "qualityChanges": 0,
+    "failed": false,
+    "reason": "browser-standard-css",
+    "diagnostic": false,
+    "software": false,
+    "diagnosticRefraction": true,
+    "draws": 0,
+    "sceneBuilds": 0,
+    "transfers": 0,
+    "tiles": 0,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 677,
+    "programs": 0,
+    "materialPrograms": 0,
+    "prepassDraws": 0,
+    "prepassWallTimeMs": 0,
+    "uploadWallTimeMs": 0,
+    "maxTexture": 4096,
+    "sceneSize": [
+      1,
+      1
+    ],
+    "estimatedTextureBytes": 0,
+    "textures": 0,
+    "localTextureBytes": 0,
+    "gpuType": "unknown",
+    "renderPath": "css-fallback",
+    "contextLosses": 0,
+    "decodeCount": 0,
+    "bufferResizes": 0,
+    "transferWallTimeMs": 0,
+    "dpr": 1,
+    "backdrop": "owned-lock-scene",
+    "family": "macshell",
+    "localLenses": 0,
+    "tintCards": 0,
+    "edgeDetail": true,
+    "materials": []
+  },
+  "status": "passed"
+}

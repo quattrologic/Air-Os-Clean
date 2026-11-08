@@ -1,0 +1,59 @@
+{
+  "source": "f469a6441c8532eeed63126487978a8dc1553061",
+  "physicalIPad": false,
+  "viewport": [
+    1180,
+    820
+  ],
+  "dpr": 2,
+  "windows": {
+    "x": 0,
+    "y": 24,
+    "width": 1180,
+    "height": 796,
+    "top": 24,
+    "right": 1180,
+    "bottom": 820,
+    "left": 0
+  },
+  "bar": {
+    "x": 0,
+    "y": 0,
+    "width": 1180,
+    "height": 24,
+    "top": 0,
+    "right": 1180,
+    "bottom": 24,
+    "left": 0
+  },
+  "dock": {
+    "x": 174.609375,
+    "y": 701.78125,
+    "width": 830.78125,
+    "height": 108.21875,
+    "top": 701.78125,
+    "right": 1005.390625,
+    "bottom": 810,
+    "left": 174.609375
+  },
+  "surface": {
+    "x": 174.609375,
+    "y": 701.78125,
+    "width": 830.78125,
+    "height": 108.21875,
+    "top": 701.78125,
+    "right": 1005.390625,
+    "bottom": 810,
+    "left": 174.609375
+  },
+  "notch": {
+    "x": 507.5,
+    "y": 0,
+    "width": 165,
+    "height": 24,
+    "top": 0,
+    "right": 672.5,
+    "bottom": 24,
+    "left": 507.5
+  }
+}
