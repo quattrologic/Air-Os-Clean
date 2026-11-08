@@ -49,3 +49,32 @@ Workflow `.github/workflows/test-ipad-maclock-glass-parity.yml`: bestehender vol
 
 
 Der finale lokale Gate besteht mit 60/60 Node-Modelltests, 14/14 zusätzlichen Chromium-DPR-2-Material-/Lifecyclefällen und sieben nativen DPR-2-Referenzprüfungen. Die originale Qt-ShaderEffect meldet tatsächlich `Compiled`; die Referenz wurde als OpenGL-RHI-Bild erzeugt. Gemessene lokale DPR-2-MAE innerhalb der Materialregion: WebGL rund 1,36/255, Fallback rund 1,35/255. Für den automatischen nativen Gate gelten maximal 2/255 bei DPR 1 und 3/255 bei DPR 2; Rand, Inneres und Schatten werden zusätzlich getrennt protokolliert. Der neue Workflow ist vorbereitet; die komplette Chromium-/WebKit-Matrix wird jetzt auf dem gesicherten Quellcommit ausgeführt.
+
+## Vergleich A — tatsächliche Nutzerbilder
+
+Die beiden in der Konversation bereitgestellten Bilder zeigen unterschiedliche Cover und Belichtungsverteilungen. Das Waldcover enthält viele sehr dunkle Grün-/Schwarzflächen; das Erika-Cover enthält große helle Haut-/Textilflächen und warme Brauntöne. Diese Farb- und Helligkeitsunterschiede werden ausdrücklich nicht als Beweis eines anderen Glasmaterials gezählt. Aus diesen unterschiedlichen Screenshots wird keine pixelgenaue MAE oder angebliche 1:1-Übereinstimmung abgeleitet.
+
+| Merkmal | Vorheriger Air-OS-Pfad | Korrigierter Pfad / verbleibende Grenze |
+|---|---|---|
+| Brechung | Normaler Fallback mit lokal vergrößerter Bildkopie | Original-SDF/Normalen/Snell-Verschiebung; erlaubte tatsächliche Szene, separate Farbkanäle |
+| Kante | Vereinfachter konischer CSS-Rim | Original gerichteter specular rim, Meniskus, innere Absorption; keine CSS-Border und kein inset-Rahmen |
+| Schatten | CSS-Schatten und doppelte Alphaüberlagerung | Original-SDF-Schattenparameter, einmalige premultiplizierte Komposition |
+| Materialfarbe | Gleichmäßige dunkle Fallback-Tönung | Lokale Szene, originale Tint-/Sättigungsparameter und Tiefen-/Lichtverlauf |
+| Hintergrund | Sigma64 vereinheitlicht räumliche Lichtzonen zu stark | Sigma24 als gemessene MultiEffect-Näherung; Coverfarben bleiben echt, .84-Helligkeitsabbildung bleibt dokumentierte Browserabweichung |
+| Texte/Bedienung | Bestehende Playergröße und Bedienelemente | Geometrie und Logik unverändert; der Materialkontrast wird am tatsächlichen Hintergrund geprüft |
+
+## Vergleich B — kontrolliertes Originalmaterial
+
+Der Vergleich lädt die tatsächlich im Browser benutzte eigene Hintergrundtextur als identische Eingabe für beide Materialrenderer. Kein anderer Cover-/Wallpapersatz wird unterschoben. Die Referenz rendert die **unveränderte originale Glass.qml** und das Originalfragment als tatsächliche QtQuick/OpenGL-Komponente; Qt meldet den kompilierten Shader ausdrücklich. Das ist ein echter nativer Komponentenvergleich unter kontrollierten Bedingungen, aber kein vollständiger Quickshell-/MacShell-Login und keine native iPadOS-Oberfläche.
+
+Identisch festgelegt: Hintergrund-/Cover-Bildquelle, 1280×710 logischer Viewport, DPR 1 beziehungsweise 2, Objektposition, 224×100 Objektmaß, Radius 22 und originale Medienparameter. Der kontrollierte Fixture enthält nur Hintergrund und Materialgegenstand; der große Vordergrundplayer/Albumcover sowie Authentifizierung werden darin nicht zusätzlich nachgebaut. Beide Renderer erhalten dieselben bereits vorbereiteten Bildpixel. Unterschiedliche Mipmap-/Resampling- und Antialiasingpfade sowie nicht durchgeführte ICC-/HDR-Hardwarekalibrierung bleiben als Grenzen benannt.
+
+Messungen erfolgen auf den unveränderten Vollbildern innerhalb der gemeinsamen Materialregion einschließlich Schattenraum, zusätzlich getrennt nach Rand, Innerem und Schatten. Es werden dafür keine zugeschnittenen oder bearbeiteten Ergebnisbilder erzeugt. Die fünf abschließenden Produktbilder sind wirkliche vollständige PWA-Browseraufnahmen; die kontrollierten Referenzbilder werden im Bericht separat gekennzeichnet.
+
+[Nachweis unveränderter geschützter Dateien](visual/maclock-glass-parity-checkpoints/protected-files.json): Pro Notch, Audio-/Spotify-Controller, Daten-/Backupcode, Registry, Dock-/Fenstercontroller, Yosemite-Datei, Marke, Service-Worker-Template und private Windows-/Tailscale-Skripte stimmen bytegenau mit dem Ausgangsstand überein. Lediglich die generierte Assetversion/Source-Offerte und die hier beschriebenen Materialdateien ändern sich.
+
+## Erster vollständiger CI-Lauf und Testprofilkorrektur
+
+[Lauf 42486774481](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42486774481) auf `4f7c004d13d4113a559eb7162d3f4e4bb6f30620`: Chromium vollständig erfolgreich. WebKit bestand den bisherigen adaptiven Material-/Offlinegate und die Spotify-Mocks, scheiterte aber im neuen Vergleichsskript beim Import der beiden synthetischen Audiodateien, bevor eine neue Materialansicht aufgenommen wurde. Der ursprüngliche Fehler ist unverändert in [evidence.json](visual/ipad-maclock-glass-parity/4f7c004d13d4113a559eb7162d3f4e4bb6f30620/evidence.json) gesichert; die native CI-Referenzmatrix war dadurch noch nicht ausgeführt und wird nicht als bestanden ausgegeben.
+
+Das neue Vergleichsskript nutzte gegenüber den bewährten Audio-/Blob-Persistenztests einen flüchtigen Browserkontext. Es verwendet jetzt ebenfalls ein frisches, ausschließlich synthetisches persistentes Testprofil und wartet vor dem Import auf die abgeschlossene Shell-Wiederherstellung. Die Import-, Daten- und Materialassertions bleiben vollständig erhalten. Zusätzliche Fehlerzustände protokollieren ausschließlich die synthetische Testsession; Produktcode, Nutzerdatenbanken und Pro Notch werden für diese Testkorrektur nicht verändert.
