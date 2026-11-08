@@ -1,0 +1,19 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 710
+  },
+  "dpr": 2,
+  "source": "controlled-source.png",
+  "sourceWidth": 950,
+  "sourceHeight": 527,
+  "glass": {
+    "x": 527.8203125,
+    "y": 434.515625,
+    "width": 224,
+    "height": 100,
+    "radius": 22
+  },
+  "colourSpace": "canvas sRGB requested/default; no hardware ICC or HDR equivalence claimed",
+  "sourceOwner": "existing Air-OS permitted cover scene; actual shader input texture"
+}
