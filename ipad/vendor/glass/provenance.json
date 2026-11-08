@@ -4,12 +4,13 @@
     "Existing GLASS-3 engine adapted to iPad selectors and quality settings",
     "MacShell family only, existing GPU guards retained",
     "BFCache lifecycle and browser quality events",
-    "No capture; same-origin licensed wallpaper only",
+    "No capture; licensed wallpaper or owned authorized artwork scene",
     "Standard quality does not initialize WebGL",
     "Opt-in high: source <=2 million pixels, texture dimensions <=2048, max width1920",
     "MacShell GLSL families retained; no Hyprland family UI or runtime",
     "CSS fallback is Chromium/WebKit compositor blur, not Snell refraction",
-    "Portable CSS fallback: one existing renderer aligns bounded pseudo surfaces to the known 2560x1600 licensed photo; one CSS blur, no capture or second GL engine"
+    "Portable CSS fallback: one existing renderer aligns bounded pseudo surfaces to the known 2560x1600 licensed photo; one CSS blur, no capture or second GL engine",
+    "MacLock source shader ES300 translation in the same renderer; bounded shared CSS preblur and luminance-modulated rim, no native capture"
   ],
   "sources": [
     {
@@ -109,6 +110,14 @@
       "sha256": "2f375c1241ab1ab499cd2e67da667add7cce993d40680683fcc87a44c55b43e3",
       "license": "AGPL-3.0",
       "target": "ipad/core/visual-motion.js (winOpen curve adaptation)"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacLock/liquidglass.frag",
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+      "license": "MIT",
+      "target": "ipad/vendor/glass/shaders.js \u00b7 scripts/build-maclock-shader.cjs"
     }
   ]
 }

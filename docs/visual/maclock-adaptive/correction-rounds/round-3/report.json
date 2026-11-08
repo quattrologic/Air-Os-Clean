@@ -1,0 +1,298 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "fixture": "8s WAV; actual licensed bundled forest/lake photographs selected as covers; no generated art",
+  "checks": [
+    "artwork background defaults on without changing schema2 or25 apps",
+    "no track or artwork means the original Yosemite scene",
+    "real setting disables only the backdrop and preserves the actual cover",
+    "first imported photograph becomes the actual background",
+    "actual locked next-track transition has intermediate geometry and no black scene",
+    "second real playback changes cover scene without moving protected foreground",
+    "CSS slab has no painted white border and derives its rim from the owned scene",
+    "each slab samples its own background position for directional reflection",
+    "adaptive scene and controls remain reachable 1180x820",
+    "adaptive scene and controls remain reachable 1024x768",
+    "adaptive scene and controls remain reachable 1366x1024",
+    "adaptive scene and controls remain reachable 834x1194",
+    "adaptive scene and controls remain reachable 820x1180",
+    "adaptive scene and controls remain reachable 390x600",
+    "rapid actual song switches keep only the newest decoded artwork",
+    "pause retains reliable last title and actual artwork",
+    "finished transitions have no idle animation or repeated preblur",
+    "reduced motion reaches final geometry without a transition loop",
+    "reduced transparency releases GL and CSS lens surfaces",
+    "missing artwork returns to Yosemite without generating any cover",
+    "offline restart restores last track cover and adaptive background",
+    "backdrop preference survives offline restart without removing music",
+    "original MacLock shader receives actual media and notice callsite parameters",
+    "actual shader refraction changes rendered pixels of the owned cover scene",
+    "original shader path stops drawing at idle",
+    "context loss keeps CSS cover scene and releases GL textures",
+    "context restore rebuilds the original MacLock shader",
+    "navigation releases backdrop images frames and owned material resources",
+    "no uncaught browser errors"
+  ],
+  "screens": [
+    "art-yosemite",
+    "art-cover-a",
+    "art-cover-b",
+    "art-last-played",
+    "art-material"
+  ],
+  "errors": [],
+  "geometryBefore": {
+    "#pro-notch": {
+      "x": 761.5,
+      "y": 0,
+      "width": 165,
+      "height": 24,
+      "top": 0,
+      "right": 926.5,
+      "bottom": 24,
+      "left": 761.5
+    },
+    ".lock-clock": {
+      "x": 0,
+      "y": 67.53125,
+      "width": 1688,
+      "height": 105.765625,
+      "top": 67.53125,
+      "right": 1688,
+      "bottom": 173.296875,
+      "left": 0
+    },
+    ".big-art": {
+      "x": 695.796875,
+      "y": 305.78125,
+      "width": 296.40625,
+      "height": 296.40625,
+      "top": 305.78125,
+      "right": 992.203125,
+      "bottom": 602.1875,
+      "left": 695.796875
+    },
+    ".lock-player": {
+      "x": 695.796875,
+      "y": 621.875,
+      "width": 296.40625,
+      "height": 108.796875,
+      "top": 621.875,
+      "right": 992.203125,
+      "bottom": 730.671875,
+      "left": 695.796875
+    },
+    ".lock-bottom": {
+      "x": 724,
+      "y": 767.921875,
+      "width": 240,
+      "height": 126,
+      "top": 767.921875,
+      "right": 964,
+      "bottom": 893.921875,
+      "left": 724
+    }
+  },
+  "transition": [
+    {
+      "progress": 0.014239564045638753,
+      "mean": 27.0109126984127,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.28879778017282287,
+      "mean": 41.526785714285715,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.5532475731713047,
+      "mean": 55.392857142857146,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.7725033946740797,
+      "mean": 66.97222222222223,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.9047005217582064,
+      "mean": 74.02182539682539,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.978692902652121,
+      "mean": 77.92757936507937,
+      "sessionOpen": false
+    },
+    {
+      "progress": 0.9981216218180063,
+      "mean": 79.33829365079364,
+      "sessionOpen": false
+    },
+    {
+      "progress": 1,
+      "mean": 79.33829365079364,
+      "sessionOpen": false
+    },
+    {
+      "progress": 1,
+      "mean": 79.33829365079364,
+      "sessionOpen": false
+    }
+  ],
+  "material": {
+    "border": "0px",
+    "rim": "0.1136980705882353",
+    "fill": "rgba(21, 23, 27, 0.03)"
+  },
+  "cardRims": [
+    0.18227030588235293,
+    0.16910023529411766,
+    0.14212649411764705,
+    0.1463966117647059,
+    0.1136980705882353
+  ],
+  "shader": {
+    "cssWallpaperTiles": 0,
+    "cssFallback": "aligned-own-wallpaper-no-capture",
+    "quality": 1,
+    "lastPaintMs": 1,
+    "qualityChanges": 0,
+    "failed": false,
+    "reason": "",
+    "diagnostic": true,
+    "software": true,
+    "diagnosticRefraction": true,
+    "draws": 5,
+    "sceneBuilds": 1,
+    "transfers": 5,
+    "tiles": 5,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 426,
+    "programs": 5,
+    "materialPrograms": 4,
+    "prepassDraws": 2,
+    "prepassWallTimeMs": 10,
+    "uploadWallTimeMs": 97,
+    "maxTexture": 2048,
+    "sceneSize": [
+      1688,
+      938
+    ],
+    "estimatedTextureBytes": 12666753,
+    "textures": 3,
+    "localTextureBytes": 0,
+    "gpuType": "software",
+    "renderPath": "isolated-diagnostic",
+    "contextLosses": 0,
+    "decodeCount": 0,
+    "bufferResizes": 1,
+    "transferWallTimeMs": 241,
+    "dpr": 1,
+    "backdrop": "owned-lock-scene",
+    "family": "macshell",
+    "localLenses": 0,
+    "tintCards": 0,
+    "edgeDetail": true,
+    "materials": [
+      {
+        "kind": "maclock",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.55,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 41.6,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.264,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      }
+    ]
+  },
+  "pixelDifference": {
+    "changed": 56401,
+    "channels": 163056,
+    "mean": 0.7828598763614955
+  },
+  "status": "passed"
+}

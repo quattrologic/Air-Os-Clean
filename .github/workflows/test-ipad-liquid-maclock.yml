@@ -64,6 +64,11 @@ jobs:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
           AIR_SPOTIFY_OUTPUT: dist/parity-evidence/spotify-${{ matrix.engine }}
         run: node scripts/test-ipad-spotify.cjs
+      - name: Original MacLock material, adaptive covers and offline lifecycle
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_ART_OUTPUT: dist/parity-evidence/art-${{ matrix.engine }}
+        run: node scripts/test-ipad-maclock-art.cjs
       - name: Actual visual product, controls, accessibility and six viewports
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}

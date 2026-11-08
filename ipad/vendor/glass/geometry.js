@@ -17,7 +17,8 @@
  // MacShell1bdb518: actual MacDock/ClockWidget/GlassSlab callsites, not GLSL defaults.
  function material(kind,height){
   const common={saturation:1.25,dark:1,shadowAmt:0,flatInner:1,ringW:0};
-  if(kind==='maclock')return {...common,thickness:24*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:.32*.55,rim:.5,grain:.006,magnify:.05*1.6,rimTint:1};
+  // Actual LockScreen.qml media / notification callsites, not Glass.qml defaults.
+  if(kind==='maclock'||kind==='maclock-notice')return {...common,thickness:(kind==='maclock'?26:20)*1.6,dispersion:.06*1.3,blurPx:1.5,tintMix:(kind==='maclock'?.48:.40)*.55,rim:.5,grain:.006,magnify:.05*1.6,shadowAmt:kind==='maclock'?.55:.30,rimTint:0};
   if(kind==='menubar')return {...common,thickness:12*1.6,dispersion:.06,blurPx:1,tintMix:.18*.55,rim:.25,grain:.003,magnify:.03,rimTint:1};
   if(kind==='dock')return {...common,thickness:30,dispersion:.06,blurPx:1.5,tintMix:.42*.55,rim:.45*.20,grain:.03*.3,magnify:.08,rimTint:0,edgeTint:[0,0,0,0]};
   if(kind==='widget')return {...common,thickness:30,dispersion:.06,blurPx:1,tintMix:.32,rim:.45,grain:.03*.15,magnify:.08*Math.min(1,90/Math.max(1,height)),rimTint:1};
@@ -27,7 +28,7 @@
   return null;
  }
  // MacDock: glassBlur + 8; MacWidgets: glassBlur + 11; FeatherBlur: radius9.
- function preblur(kind){return kind==='dock'?13:kind==='widget'?16:kind==='toolbar'?9:kind==='control'?0:5;}
+ function preblur(kind){if(kind==='maclock'||kind==='maclock-notice')return 32*.35;return kind==='dock'?13:kind==='widget'?16:kind==='toolbar'?9:kind==='control'?0:5;}
  // CornerBorder.qml onPaint: exact stop positions, colour mixing and 0.8px line.
  function border(ctx,w,h,r,tint=[138/255,154/255,181/255],amount=1){
   const lw=.8;if(w<2*lw||h<2*lw||amount<=0)return;

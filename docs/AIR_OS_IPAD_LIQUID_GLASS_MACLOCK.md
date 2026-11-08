@@ -6,6 +6,8 @@ Die nachfolgende gezielte Korrektur der sechs rot markierten Stellen ist im [Ber
 
 Aktueller Folgeauftrag: [kleinere MacShell-Uhr und freie Entsperraktion](AIR_OS_IPAD_MACLOCK_CLOCK_UNLOCK.md), als Ersatz für die zwischenzeitlich größere Uhr und die Öffnen-Glaspille.
 
+Darauf aufbauend: [Originales MacLock-Glas und adaptive Cover-Szene](AIR_OS_IPAD_MACLOCK_ADAPTIVE_GLASS.md), mit erhaltener kleiner Uhr und Textentsperrung.
+
 ## Implementierung und Herkunft
 
 MacShell MIT, Referenzcommit `1bdb51870b621100fd2709f66c8f8e00ab17b9c4`. [Maschinenlesbare Pfade und SHA-256](source-ports/liquid-maclock.json), vollständiger Copyright-/Lizenztext unter `ipad/licenses/MacShell-MacLock-MIT.txt`, Attribution in `ipad/NOTICE` und mitgeliefertem Corresponding Source. Bestehende MacTahoe-/AGPL-/Shaderlizenzen bleiben erhalten.

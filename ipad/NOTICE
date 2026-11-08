@@ -80,3 +80,12 @@ vendor/glass/geometry.js, dock-material.js. Responsive lock composition is a bro
 adaptation in maclock.js and liquid-maclock.css; no PAM/MPRIS/native scene capture.
 Full copyright/license: licenses/MacShell-MacLock-MIT.txt. Provenance hashes and
 source paths: docs/source-ports/liquid-maclock.json in the source offer.
+
+MacLock adaptive artwork / original material addition (MIT Rickky):
+MacLock/liquidglass.frag at the same pinned MacShell commit is mechanically
+translated to GLSL ES300 by scripts/build-maclock-shader.cjs, using the existing
+WebGL2 renderer. Original fragment: vendor/glass/maclock-original.frag.
+Actual media/notice material callsites and artBg handover are ported in
+vendor/glass/geometry.js and maclock.js. Bounded shared preblur and CSS directional
+rim are browser approximations; no screen/window capture. Additional source hashes:
+docs/source-ports/maclock-adaptive/provenance.json (included in source offer).
