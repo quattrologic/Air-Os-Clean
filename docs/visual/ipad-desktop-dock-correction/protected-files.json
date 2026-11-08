@@ -1,0 +1,25 @@
+{
+  "baselineCommit": "f469a6441c8532eeed63126487978a8dc1553061",
+  "productCommit": "8842fc337ec10e373df94e2bde6c8f39099bc8c0",
+  "scope": "Versioned source and assets only, no private installation accessed",
+  "unchanged": {
+    "ipad/notch/model.js": "82e7b1f42d4925837d340f668bed81377ed2cf0b72b76ff2151c48dbc3a62581",
+    "ipad/notch/motion-data.js": "f29d87fcf2ec8f443c8c92923214daf28036a182e407da86efae9c645dbd57f4",
+    "ipad/notch/pro-notch.js": "fc524c0c3345f52bc46e4d6149d05896529363dbecc9e1a29f3bd04b2ad7ab25",
+    "ipad/notch/pro-notch.css": "6a2b72ebd6ec11a39bdd1cb7638fb0a91d47c8deef80ab2d44d6c7932ba08ef3",
+    "ipad/maclock.js": "41e6052f4527eb9a9a2820fdf7a75d1137ab4d1c4898d9a9e55607caf1cc74f2",
+    "ipad/spotify.js": "8c519841b46e2863c230ac23b33bbae65d310e109e1573c43f9a32ba8d849366",
+    "ipad/storage.js": "d02732c789b0f6bf16d814a5e3d7a61072ea28e5bf74d7d9ffef3530191b8800",
+    "ipad/backup.js": "c12b1f82a86c87f355aaf08c1542eb4c7a048387be5566ace493ca30248d2620",
+    "ipad/registry.js": "5fe67ba73c2b1a8e48fdc4adad7feaef7b38cb8e4bcb85fc483a90e938148fcc",
+    "ipad/app.js": "06d92b2d4d47e5c850fc7b23d62ee569d1b9bedf34bf52f31741433de1aa166e",
+    "ipad/core/playback-history.js": "1676999537e9d66517fe3e224c90f652f3193f47016f314269268ab077f78640",
+    "ipad/vendor/glass/geometry.js": "435105d2978be17459e9d822991663a9ffa5f0e8b842f72a86de18e8563bdc0c",
+    "ipad/vendor/glass/maclock-original.frag": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+    "ipad/assets/yosemite-morning.png": "d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06",
+    "scripts/templates/ipad-service-worker.js": "04cbacee0d4ca990a870893b1ab7caffc37f8e647630f4703cc50507bcf59b88",
+    "ipad/setup-windows.ps1": "7d23fc734ec12a5069a39517761bd604c6ae43ed95c19cbbdaa24cdecd7ab1db",
+    "ipad/update-windows.ps1": "1ccab667f57c59b867cd1d0d85e63841fc5ef5b95a43dad37d8c4a4eac3e6e4b",
+    "ipad/enable-updates-windows.ps1": "4cce33bc6184b98b23c7097c49442f9751757d6750de45d18d7e1ca91b0375ad"
+  }
+}

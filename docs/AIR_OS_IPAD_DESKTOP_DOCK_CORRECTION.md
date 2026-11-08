@@ -2,6 +2,8 @@
 
 Entwicklungsbranch: `feat/air-os-ipad-desktop-dock-correction`. Geprüfte Basis: `f469a6441c8532eeed63126487978a8dc1553061` auf `feat/air-os-ipad-maclock-glass-parity`. Die beiden rot markierten echten iPad-Aufnahmen aus dem Auftrag wurden als Fehlerreferenzen verwendet. Browseraufnahmen sind keine physische iPad-Abnahme.
 
+Abgeschlossen auf Produkt-/Buildcommit `8842fc337ec10e373df94e2bde6c8f39099bc8c0`: [finaler CI-Gate erfolgreich](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42518248706), einschließlich Chromium, WebKit und vier nativen Referenzen; Bilder und PWA-Paket sind im Abschlussabschnitt verlinkt.
+
 ## Ursachen und gezielte Korrekturen
 
 | Stelle | Tatsächliche Ursache | Korrektur |
@@ -26,7 +28,11 @@ Die Browserprüfungen verwenden explizit synthetische PKCE-Anmeldungen und gemoc
 
 ## Material und Schutzgrenzen
 
-Das Dock erhält einen ehrlichen nativen Live-Backdrop, keine Behauptung von Shader-Refraktion der vollständigen Fensterszene. Es erfasst weder native iPad-Fenster noch Bildschirm-/private Systeminhalte. Der vorhandene Glass-Renderer bleibt Eigentümer aller übrigen geeigneten Materialflächen; MacLock-SDF, Snell-Modell, nativer QtQuick-Vergleich und dynamischer Coverhintergrund bleiben erhalten. Reduzierte Transparenz schaltet den Live-Backdrop wie bisher auf ein solides Material; reduzierte Bewegung schaltet die Dockvergrößerung ab.
+Vorhandene Quellen-/Lizenznachweise bleiben erhalten: [MacDock/MacLock-Port](AIR_OS_IPAD_LIQUID_GLASS_MACLOCK.md) und [Material-Parity](AIR_OS_IPAD_MACLOCK_GLASS_PARITY.md). Es wurden für diese Korrektur keine neuen fremden Originaldateien übernommen.
+
+Das Dock erhält einen ehrlichen nativen Live-Backdrop, keine Behauptung von Shader-Refraktion der vollständigen Fensterszene. Es erfasst weder native iPad-Fenster noch Bildschirm-/private Systeminhalte. Die Farbprüfung belegt den tatsächlichen Untergrundbezug, keine pixelidentische Blur-/Refraktionswirkung aller Browserkompositoren oder eine physische Safari-GPU-Abnahme.
+
+Der vorhandene Glass-Renderer bleibt Eigentümer aller übrigen geeigneten Materialflächen; MacLock-SDF, Snell-Modell, nativer QtQuick-Vergleich und dynamischer Coverhintergrund bleiben erhalten. Reduzierte Transparenz schaltet den Live-Backdrop wie bisher auf ein solides Material; reduzierte Bewegung schaltet die Dockvergrößerung ab.
 
 Die lokale Vorher-Messung ohne Safe Area zeigt bereits 24px als wirksame Menüleistenhöhe und Arbeitsflächenbeginn; eine aktive zusätzliche 4px-Lücke wird deshalb ausdrücklich nicht behauptet. Die alte 28px-Angabe wurde konsolidiert. Der breite Streifen ist in diesen Aufnahmen die fehlerhafte Wallpaper-Titelleiste.
 
@@ -55,7 +61,7 @@ Neue tatsächliche Browserprüfungen umfassen Spotify-Verbindung/Wechsel/Pause/N
 
 Workflow: [test-ipad-desktop-dock.yml](../.github/workflows/test-ipad-desktop-dock.yml), ausschließlich der separate Korrekturbranch. Chromium und WebKit, jeweils DPR 1 und 2, inklusive kontrollierter nativer MacLock-Komponentenreferenz und Lizenz-/CSP-/Paketgate. Der Workflow enthält **keinen Deploymentjob**. Er bewahrt ausschließlich synthetische Evidenz auf diesem Entwicklungsbranch.
 
-Lokaler Zwischenstand: 60/60 Modelltests und 39/39 neue Chromium-DPR-2-Browserfälle erfolgreich. Vollständiger CI-/Buildcommit und endgültige Bildverweise werden nach Abschluss des Gates unten eingetragen. Physische iPad-/Standalone-/Touchhardware-, Akku- und reale Spotify-Prüfung bleiben offen.
+Lokaler Zwischenstand: 60/60 Modelltests und 39/39 neue Chromium-DPR-2-Browserfälle erfolgreich. Vollständiger CI-/Buildcommit und endgültige Bildverweise stehen im finalen Abschlussabschnitt. Physische iPad-/Standalone-/Touchhardware-, Akku- und reale Spotify-Prüfung bleiben offen.
 
 ## Erster CI-Lauf und WebKit-Mockkorrektur
 
@@ -72,3 +78,50 @@ Der neue Test übernimmt dafür den bewährten tatsächlichen Hostausfall aus `t
 ## Untere Safe Area: Hintergrund und Touchbereich getrennt
 
 Die abschließende Safe-Area-Kontrolle trennt die zeichnungsfähige Fensterfläche von sicheren Bedienabständen: Maximierte Fenster reichen bis zum unteren zugewiesenen PWA-Viewport, statt einen zusätzlichen Yosemite-Streifen in Höhe des unteren Insets zu erzeugen. Der Dockabstand bleibt 10px **über** dem unteren Safe-Area-Inset; der scrollbare Endabstand enthält dieses Inset für Bedienelemente. Die synthetische 820px-Ansicht mit 20px unterem Inset erwartet deshalb einen Fensterhintergrund bis 820px, nicht nur bis 800px. Die Keyboard-Fixture prüft entsprechend das Ende bei 518px und den Dockabschluss bei 488px. Keine native iPadOS-Leiste wird übermalt oder versteckt.
+
+## Finaler verifizierter Abschluss
+
+Produkt-/Buildcommit: `8842fc337ec10e373df94e2bde6c8f39099bc8c0`. [Vollständiger erfolgreicher CI-Lauf](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42518248706). Evidenzcommit: `dae6ca63b14077bde29f434a665f72cd43199ed6`; [unveränderte Rohreports](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/evidence.json).
+
+60/60 Node-Modelltests pro Browserjob, **38 erfolgreiche Browser-/Referenzreports und 1.430 Assertions**. Die neue Korrekturmatrix besteht mit je 40/40 Fällen in Chromium und WebKit bei DPR 1 und 2. Die bestehende gesamte App-, Legacy-Daten-, Backup-, Notch-, Offline- und Updateprüfung bleibt erfolgreich. Der Testprofilwechsel in der OAuth-/Offline-Fixture ist damit auch in WebKit tatsächlich verifiziert.
+
+### Gemessene Darstellung
+
+Bei 1180×820 CSS-Pixeln hat das ruhende Dock 731×72px und endet 10px vor der unteren nutzbaren Grenze. Bei maximalem Cosinuspeak wächst derselbe Körper auf rund 831×110px; alle Icons bleiben mit ihrer gemeinsamen Baseline innerhalb der Materialfläche. Der aktive Peak bleibt 1,8. Die tatsächlich gemessenen Fraktionen und Viewportgeometrien stehen pro Engine/DPR in den Rohreports.
+
+Die Vorher-Aufnahme enthält eine aktive Zeigervergrößerung: 103px hoher Dockcontainer, aber nur 58px hohe Materialfläche bis zum unteren Rand. Die erste Korrekturrunde zeigt bereits identische Höhe von Körper und Oberfläche; die nächste Runde entfernt die verbliebene unscharfe Wallpaper-Titelleiste. Die Messungen werden nicht mit einem angeblich identischen ruhenden Vorherzustand verwechselt.
+
+Die folgenden Mittelwerte sind RGB-Kanalmittel aus begrenzten Messbereichen der unveränderten Vollbilder, keine zugeschnittenen Ergebnisbilder, keine FPS und keine Hardwaremessungen. Die dunkle Grundfarbe ist die ausdrücklich gekennzeichnete Test-Fixture innerhalb eines vorhandenen Appfensters.
+
+| Engine / DPR | Yosemite | Helle Einstellungen | Kontrollierte dunkle Fläche |
+|---|---:|---:|---:|
+| chromium / 1 | 45.49 | 254.59 | 50.00 |
+| chromium / 2 | 46.24 | 254.77 | 50.33 |
+| webkit / 1 | 46.89 | 255.00 | 49.33 |
+| webkit / 2 | 46.85 | 255.00 | 49.33 |
+
+Die nativen QtQuick/OpenGL-Komponentenvergleiche bestehen in allen vier Browser-/DPR-Eingabetexturen weiterhin. Originales `Glass.qml` und Fragment bleiben unverändert; Materialregion, Rand/Inneres/Schatten und tatsächliche Shaderkompilierung sind in den vier `native-*`-Reports belegt. Dies ist keine vollständige native MacShell-Installation und keine iPad-Hardware-GPU-Abnahme.
+
+### Tatsächliche Vollbildaufnahmen
+
+Die sieben finalen Bilder stammen aus **WebKit, 1180×820, DPR 2**, jeweils vollständig mit 2360×1640 Bildpixeln. Keine Nachbearbeitung, kein Zuschnitt. Spotify ist durch die ausdrücklich benannten autorisierten API-Testdaten dargestellt; ein echtes Nutzerkonto wurde nicht verwendet.
+
+1. [Desktop mit Spotify-Testdaten](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/desktop-spotify.png).
+2. [Desktop mit schwebendem Dock](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/desktop-floating-dock.png).
+3. [Dock über maximierten hellen Einstellungen](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/dock-settings.png).
+4. [Dock über Yosemite](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/dock-yosemite.png).
+5. [Dock mit maximaler Magnifikation](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/dock-maximum.png).
+6. [Einstellungen mit korrigierter Oberkante](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/settings-full-workarea.png).
+7. [Desktop mit bündiger Pro Notch](visual/ipad-desktop-dock-correction/8842fc337ec10e373df94e2bde6c8f39099bc8c0/desktop-dock-webkit-dpr2/desktop-flush-notch.png).
+
+Zusätzliche Vollbilder und Reports enthalten unverbundene/pausierte/neu gestartete Offline-Spotifyzustände, Hochformat und die gekennzeichnete dunkle Material-Fixture. Die finale Matrix prüft sechs Viewports, Touch-Hold/Scrub/Abbruch, normale Touchstarts, horizontales Scrollen, Tastaturnavigation, reduzierte Bewegung/Transparenz und die synthetische Safe-Area-/Bildschirmtastatur-Fixture.
+
+### Build und Integrität
+
+[PWA-Artefakt](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42518248706#artifacts): `Air-OS-iPad-Desktop-Dock-Build-8842fc337ec10e373df94e2bde6c8f39099bc8c0`, darin `Air-OS-iPad-Desktop-Dock-Correction-8842fc337ec10e373df94e2bde6c8f39099bc8c0.zip` mit zugehöriger SHA-256-Datei sowie kompatibler Recovery und Read-only-Preflight. 141 exakt geprüfte Runtimeassets, CSP, Scope, Safari-Redirect-Fix, vollständiges Source-/Lizenzpaket, Ausschluss nativer Runtime und Testtool-Audit sind erfolgreich geprüft. Aufbewahrung der Actions-Artefakte: 30 Tage.
+
+[18 geschützte Dateiidentitäten](visual/ipad-desktop-dock-correction/protected-files.json) wurden gegen Basis und finalen Produktcommit geprüft. Insbesondere bleiben alle vier Pro-Notch-Dateien bytegleich; nur die getrennte äußere CSS-Anschlussregel verändert ihre Position. Lockscreencontroller, originale Materialmodelle/Shader, OAuth, Apps/Daten/Backups, Yosemite und private Serve-Skripte bleiben erhalten.
+
+Physische iPad-/Standalone-/Safari-/Pencil-/Trackpadhardware-, Akku- und echte Spotify-Kontoabnahme bleiben offen. Browserautomation und synthetische Safe-Area-Werte ersetzen diese Abnahme nicht. Es wurden keine fremden nativen Fenster erfasst, keine persönlichen Daten berührt und keine Daten migriert.
+
+Der Korrekturbranch und die überprüften Nachweise sind gesichert. Kein Merge in einen anderen Branch, kein Deployment, keine Änderung der privaten Tailscale-URL oder Installation.
