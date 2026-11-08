@@ -1,0 +1,43 @@
+{
+  "engine": "qt6",
+  "physicalIPad": false,
+  "synthetic": true,
+  "mode": "glass",
+  "bindingVersion": "6.8.2.1",
+  "qtVersion": "6.8.2",
+  "sourceCommit": null,
+  "originalQmlSha256": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a",
+  "originalFragmentSha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+  "fixture": {
+    "viewport": {
+      "width": 1280,
+      "height": 710
+    },
+    "dpr": 1,
+    "source": "controlled-source.png",
+    "sourceWidth": 640,
+    "sourceHeight": 355,
+    "glass": {
+      "x": 527.8203125,
+      "y": 434.515625,
+      "width": 224,
+      "height": 100,
+      "radius": 22
+    },
+    "colourSpace": "canvas sRGB requested/default; no hardware ICC or HDR equivalence claimed",
+    "sourceOwner": "existing Air-OS permitted cover scene; actual shader input texture"
+  },
+  "checks": [
+    "actual original QtQuick OpenGL RHI rendering",
+    "unmodified MacShell component and original fragment",
+    "identical source/viewport/object geometry/DPR"
+  ],
+  "errors": [],
+  "graphicsApi": "GraphicsApi.OpenGL",
+  "originalShaderCompiled": true,
+  "status": "passed",
+  "size": [
+    1280,
+    710
+  ]
+}

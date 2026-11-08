@@ -65,6 +65,11 @@ html[data-quality="Reduzierte Transparenz"] #lockscreen :is(.lock-player,.lg-loc
 /* Same MacLock SDF/normal/Snell material in the existing cached fallback. CSS only
    composites the two prepared slabs; no flat tint overlay or painted outline. */
 #lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material{background:transparent;overflow:visible;box-shadow:none}
-#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:before,#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:after{inset:-10px;background-image:var(--lock-slab-old);background-position:0 0;background-size:100% 100%;filter:none;border:0;border-radius:0}
+#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:before,#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:after{inset:auto;left:var(--lock-raster-left,-10px);top:var(--lock-raster-top,-10px);width:var(--lock-raster-width,calc(100% + 20px));height:var(--lock-raster-height,calc(100% + 20px));background-image:var(--lock-slab-old);background-position:0 0;background-size:100% 100%;filter:none;border:0;border-radius:0}
 #lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:after{background-image:var(--lock-slab-next);opacity:var(--lock-scene-mix,1)}
 .lock-physical-material>.lg-lock-rim{display:none}
+
+/* Premultiplied crossfade: the two slabs have the same alpha geometry. Adding
+   complementary layers avoids painting the same translucent shadow twice. */
+#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:before{opacity:calc(1 - var(--lock-scene-mix,1))}
+@supports(mix-blend-mode:plus-lighter){#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:before,#lockscreen :is(.lock-player,.lg-lock-notice).lock-physical-material.ultra-css-material:after{mix-blend-mode:plus-lighter}}

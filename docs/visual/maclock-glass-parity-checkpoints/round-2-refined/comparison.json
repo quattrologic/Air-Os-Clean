@@ -1,0 +1,91 @@
+{
+  "engine": "qt6",
+  "physicalIPad": false,
+  "synthetic": true,
+  "status": "passed",
+  "checks": [
+    "controlled-shader.png against actual original QtQuick within 5/255 MAE",
+    "controlled-css.png against actual original QtQuick within 6/255 MAE",
+    "same source, geometry, viewport and DPR",
+    "all delivered comparison screenshots are untouched full frames"
+  ],
+  "errors": [],
+  "viewport": {
+    "width": 1280,
+    "height": 710
+  },
+  "dpr": 1,
+  "glass": {
+    "x": 527.8203125,
+    "y": 434.515625,
+    "width": 224,
+    "height": 100,
+    "radius": 22
+  },
+  "source": "controlled-source.png",
+  "nativeComponent": "unmodified MacShell Glass.qml and original liquidglass.frag, QtQuick 6.8.2 OpenGL RHI",
+  "fullNativeMacShell": false,
+  "hardwareApproval": false,
+  "metrics": {
+    "controlled-shader.png": {
+      "material": {
+        "channels": 88935,
+        "meanAbsolute": 0.45009276437847867,
+        "rootMeanSquare": 0.7221760187500569,
+        "p95": 1,
+        "max": 3
+      },
+      "rim": {
+        "channels": 12477,
+        "meanAbsolute": 0.4368037188426705,
+        "rootMeanSquare": 0.7112600362343051,
+        "p95": 1,
+        "max": 3
+      },
+      "interior": {
+        "channels": 55305,
+        "meanAbsolute": 0.31568574269957506,
+        "rootMeanSquare": 0.5623095464576685,
+        "p95": 1,
+        "max": 2
+      },
+      "shadow": {
+        "channels": 21153,
+        "meanAbsolute": 0.8093414645676736,
+        "rootMeanSquare": 1.0332714932322589,
+        "p95": 2,
+        "max": 2
+      }
+    },
+    "controlled-css.png": {
+      "material": {
+        "channels": 88935,
+        "meanAbsolute": 0.615426997245179,
+        "rootMeanSquare": 0.8445420362028101,
+        "p95": 1,
+        "max": 3
+      },
+      "rim": {
+        "channels": 12477,
+        "meanAbsolute": 0.6141700729341989,
+        "rootMeanSquare": 0.8451000634100101,
+        "p95": 1,
+        "max": 3
+      },
+      "interior": {
+        "channels": 55305,
+        "meanAbsolute": 0.5415604375734563,
+        "rootMeanSquare": 0.7599385202508624,
+        "p95": 1,
+        "max": 3
+      },
+      "shadow": {
+        "channels": 21153,
+        "meanAbsolute": 0.8092941899494162,
+        "rootMeanSquare": 1.0332486167947017,
+        "p95": 2,
+        "max": 2
+      }
+    }
+  }
+}

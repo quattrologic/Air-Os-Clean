@@ -1,0 +1,288 @@
+{
+  "engine": "chromium",
+  "dpr": 2,
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "standard uses cached SDF/Snell material without allocating GPU resources",
+    "WebKit-compatible complementary slab blending avoids duplicate translucent shadows",
+    "no flat frame, inset shadow, or decorative conic border remains on the player",
+    "resting CSS material does not rebuild maps or resample sources",
+    "actual track end retains the last cover and metadata without a fabricated event",
+    "all protected foreground geometries remain fixed across materials",
+    "Yosemite fallback preserves actual cover and media state",
+    "new cached fallback and artwork survive actual browser reload",
+    "original shader rendered successfully with software clearly isolated",
+    "context loss restores the actual SDF fallback",
+    "context restore rebuilds the original fragment",
+    "genuinely unavailable WebGL keeps the same owned-scene fallback",
+    "page disposal removes maps and cached CSS material references",
+    "no uncaught browser errors"
+  ],
+  "errors": [],
+  "screens": [
+    "parity-forest",
+    "parity-other-cover",
+    "parity-yosemite",
+    "parity-shader",
+    "parity-css-fallback"
+  ],
+  "nativeMacShell": false,
+  "comparison": "Same captured owned scene texture and geometry; original native Glass.qml is rendered separately by reference/render-maclock-qt.py",
+  "fallback": {
+    "cssWallpaperTiles": 5,
+    "lockFallbackSlabs": 4,
+    "lockFallbackMapPixels": 164516,
+    "fallbackBakes": 40,
+    "fallbackSourceBuilds": 1,
+    "fallbackMapBuilds": 40,
+    "fallbackBakeWallTimeMs": 270,
+    "cssFallback": "aligned-own-wallpaper-no-capture",
+    "quality": 1,
+    "lastPaintMs": 2,
+    "qualityChanges": 0,
+    "failed": false,
+    "reason": "browser-standard-css",
+    "diagnostic": true,
+    "software": false,
+    "diagnosticRefraction": true,
+    "draws": 0,
+    "sceneBuilds": 0,
+    "transfers": 0,
+    "tiles": 0,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 977,
+    "programs": 0,
+    "materialPrograms": 0,
+    "prepassDraws": 0,
+    "prepassWallTimeMs": 0,
+    "uploadWallTimeMs": 0,
+    "maxTexture": 4096,
+    "sceneSize": [
+      1,
+      1
+    ],
+    "estimatedTextureBytes": 0,
+    "textures": 0,
+    "localTextureBytes": 0,
+    "gpuType": "unknown",
+    "renderPath": "css-fallback",
+    "contextLosses": 0,
+    "decodeCount": 0,
+    "bufferResizes": 0,
+    "transferWallTimeMs": 0,
+    "dpr": 2,
+    "backdrop": "owned-lock-scene",
+    "family": "macshell",
+    "localLenses": 0,
+    "tintCards": 0,
+    "edgeDetail": true,
+    "materials": []
+  },
+  "geometryBefore": {
+    "#pro-notch": [
+      557.5,
+      0,
+      165,
+      24
+    ],
+    ".lock-clock": [
+      0,
+      51.109375,
+      1280,
+      81.296875
+    ],
+    ".big-art": [
+      527.8203125,
+      195.25,
+      224.359375,
+      224.359375
+    ],
+    ".lock-player": [
+      527.8203125,
+      434.515625,
+      224.359375,
+      100
+    ],
+    ".lock-bottom": [
+      520,
+      564.640625,
+      240,
+      112
+    ]
+  },
+  "geometryAfter": {
+    "#pro-notch": [
+      557.5,
+      0,
+      165,
+      24
+    ],
+    ".lock-clock": [
+      0,
+      51.109375,
+      1280,
+      81.296875
+    ],
+    ".big-art": [
+      527.8203125,
+      195.25,
+      224.359375,
+      224.359375
+    ],
+    ".lock-player": [
+      527.8203125,
+      434.515625,
+      224.359375,
+      100
+    ],
+    ".lock-bottom": [
+      520,
+      564.640625,
+      240,
+      112
+    ]
+  },
+  "shader": {
+    "cssWallpaperTiles": 0,
+    "lockFallbackSlabs": 0,
+    "lockFallbackMapPixels": 0,
+    "fallbackBakes": 8,
+    "fallbackSourceBuilds": 2,
+    "fallbackMapBuilds": 4,
+    "fallbackBakeWallTimeMs": 191,
+    "cssFallback": "aligned-own-wallpaper-no-capture",
+    "quality": 1,
+    "lastPaintMs": 2,
+    "qualityChanges": 0,
+    "failed": false,
+    "reason": "",
+    "diagnostic": true,
+    "software": true,
+    "diagnosticRefraction": true,
+    "draws": 4,
+    "sceneBuilds": 1,
+    "transfers": 4,
+    "tiles": 4,
+    "pending": false,
+    "disposed": false,
+    "paintWallTimeMs": 751,
+    "programs": 5,
+    "materialPrograms": 4,
+    "prepassDraws": 2,
+    "prepassWallTimeMs": 13,
+    "uploadWallTimeMs": 20,
+    "maxTexture": 2048,
+    "sceneSize": [
+      1899,
+      1054
+    ],
+    "estimatedTextureBytes": 16015179,
+    "textures": 3,
+    "localTextureBytes": 0,
+    "gpuType": "software",
+    "renderPath": "isolated-diagnostic",
+    "contextLosses": 0,
+    "decodeCount": 0,
+    "bufferResizes": 2,
+    "transferWallTimeMs": 288,
+    "dpr": 2,
+    "backdrop": "owned-lock-scene",
+    "family": "macshell",
+    "localLenses": 0,
+    "tintCards": 0,
+    "edgeDetail": true,
+    "materials": [
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock-notice",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.3,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 32,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.22000000000000003,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      },
+      {
+        "kind": "maclock",
+        "values": {
+          "saturation": 1.25,
+          "dark": 1,
+          "shadowAmt": 0.55,
+          "flatInner": 1,
+          "ringW": 0,
+          "thickness": 41.6,
+          "dispersion": 0.078,
+          "blurPx": 1.5,
+          "tintMix": 0.264,
+          "rim": 0.5,
+          "grain": 0.006,
+          "magnify": 0.08000000000000002,
+          "rimTint": 0
+        }
+      }
+    ]
+  },
+  "controlled": {
+    "viewport": {
+      "width": 1280,
+      "height": 710
+    },
+    "dpr": 2,
+    "glass": {
+      "x": 527.8203125,
+      "y": 434.515625,
+      "width": 224,
+      "height": 100,
+      "radius": 22
+    },
+    "sourceWidth": 950,
+    "sourceHeight": 527
+  },
+  "status": "passed"
+}

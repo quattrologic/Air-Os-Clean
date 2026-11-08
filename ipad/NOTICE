@@ -89,3 +89,5 @@ Actual media/notice material callsites and artBg handover are ported in
 vendor/glass/geometry.js and maclock.js. Bounded shared preblur and CSS directional
 rim are browser approximations; no screen/window capture. Additional source hashes:
 docs/source-ports/maclock-adaptive/provenance.json (included in source offer).
+
+MacLock Glass Parity: the existing fallback maps in vendor/glass/geometry.js adapt the same MIT MacShell SDF, convex normal, Snell refraction, inner absorption, directional rim, meniscus and grain. The fallback uses cached bilinear channel samples; the WebGL path retains the original24-tap fragment. Full-frame noise coordinate adaptation is in the ES generator. Qt/PySide6 and Xvfb are test tools only and are not bundled in this PWA.

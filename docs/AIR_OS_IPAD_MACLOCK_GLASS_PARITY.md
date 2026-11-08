@@ -23,10 +23,29 @@ Die erste kontrollierte Runde verwendet dieselbe eigene tatsächliche Hintergrun
 - Runde 0: gesicherter Ausgangsstand mit Wald-/Seecover, 32 bestehende Szenenprüfungen bestanden.
 - Runde 1: tatsächliche Brechung im vorberechneten Fallback, kontrollierte native Referenz, 12 neue Chromium-Prüfungen bestanden.
 - Runde 2: korrekte Fensterkoordinaten für Grain/Taprotation, neue Vollbilder, 12 Chromium-Prüfungen bestanden.
-- Noch offen: dritte Korrekturrunde für Blur/Farbwirkung, abschließender nativer Vergleich nach dieser Runde, WebKit/DPR-2-Matrix, vollständiger CI-Gate und finaler Buildnachweis.
+- Runde 2, Nachmessung: physische Pixelraster-Ausrichtung von SDF/Texture/Grain und komplementäre premultiplizierte CSS-Überblendung beseitigen den Kantenversatz und doppelte transparente Schatten.
+- Runde 3: Gaussian-äquivalenter Coverblur 24 statt 64 CSS-Pixel; originale lokale artBg-Vignette mit .22 oben und .30 unten. Die Vignette wird einmal in die vorbereitete Szene eingebracht, damit Renderer und sichtbarer Hintergrund dieselben Pixel verwenden.
+- Noch offen: abschließende vollständige Chromium-/WebKit-/DPR-2-CI-Matrix mit nativer Referenz und finalem Buildnachweis.
 
 [Gesicherte Vollaufnahmen und Rohreports](visual/maclock-glass-parity-checkpoints/). Alle Bilder sind unbearbeitet; die unterschiedliche Größe von Ausgangs- und Kontrollviewport wird ausdrücklich getrennt behandelt. Der kontrollierte Komponentenvergleich verwendet jeweils identische Maße.
 
 Aktuell: 60/60 vorhandene und neue Node-Modelltests sowie Paketprüfung für 141 exakte Browserassets bestanden. Die Pro-Notch-Dateien bleiben bytegleich; sämtliche 25 Apps, Audio-/Spotify-Eigentümer, IndexedDB-Schema, Backup, Service-Worker-Logik, kleine Uhr, Avatar, freie Entsperrschrift und vorhandene Geometrien bleiben erhalten.
 
 Physisches iPad/Safari, Akku, Hardware-GPU und echte Spotify-Kontoabnahme sind weiterhin offen. Tests verwenden ausschließlich eigene synthetische Audiodaten und bereits lizenzierte Fotocover.
+
+## Nachmessung der Kanten und Hintergründe
+
+Die verfeinerte Rasterabbildung senkt die tatsächliche mittlere absolute RGB-Kanaldifferenz im Materialbereich bei DPR 1 auf rund 0,45/255 im WebGL-Port und 0,62/255 im Fallback. Die Schattenabweichung des Fallbacks sinkt nach Beseitigung der doppelten Alphaüberlagerung ebenfalls deutlich. [Unveränderte Vollbilder und Messdaten](visual/maclock-glass-parity-checkpoints/round-2-refined/). Das ist eine kontrollierte Komponentenreferenz, keine Behauptung identischer nativer OS-/Hardwaredarstellung.
+
+Das zusätzliche QtQuick-Rendering der originalen artBg-MultiEffect-Parameter zeigt, dass `blurMax:64` keine Gaussian-Standardabweichung von 64px beschreibt. Ein Abgleich desselben Waldcovers ergibt ungefähr 24px als passende Browser-Näherung; die alte 64px-Abbildung verwischte die räumliche Lichtverteilung zu stark. Dies wurde an echten, separat gerenderten Szenen geprüft.
+
+Wichtige bewusste Grenze: Qt MultiEffect verwendet eine additive Helligkeitsänderung von -0,16 und eine andere Graugewichtung. Das unveränderte Waldcover wird damit in der tatsächlichen nativen Referenz erheblich dunkler als das helle Erika-Cover des Nutzers. Air-OS behält seine bisherige multiplikative Helligkeitsabbildung 0,84, damit dunkle Cover nicht zusätzlich schwarz clippen; die Hintergrundfarbabbildung ist daher ausdrücklich keine pixelidentische Qt-MultiEffect-Portierung. Der kontrollierte **Glas**vergleich verwendet dagegen exakt dieselbe bereits vorbereitete Hintergrundtextur für beide Renderer und vermischt diese Belichtungsfrage nicht mit dem Materialvergleich.
+
+Die verfeinerte CSS-Überblendung nutzt auf unterstützten Browsern `mix-blend-mode:plus-lighter` in einer isolierten Materialfläche mit komplementären Opazitäten. Auf älteren Browsern ohne diesen Modus bleibt eine normale CSS-Überblendung funktionsfähig, kann in der Mitte des Übergangs aber leicht in der Deckkraft abweichen. Unbewegte Flächen erzeugen keine neuen Maps, keine erneuten Szenenabtastungen und keine laufenden Shader-Repaints.
+
+Zusätzliche echte Abläufe: tatsächliches Wiedergabeende nach Seek im vorhandenen Audioplayer bei leerem Suchergebnis/ohne folgenden sichtbaren Titel, Erhalt des letzten Covers, echter Browserneustart, wirklich nicht verfügbares WebGL, Context Loss/Restore und vollständige Entfernung der gecachten Materialreferenzen. Keine erfundenen Medienereignisse und keine zweite Musikengine.
+
+Workflow `.github/workflows/test-ipad-maclock-glass-parity.yml`: bestehender vollständiger Browsergate plus kontrollierte Materialansichten bei DPR 1/2 in Chromium/WebKit, danach vier native QtQuick-Komponentenvergleiche auf denselben Eingabetexturen. Qt/PySide6/Xvfb sind ausschließlich Testwerkzeuge. Paketidentität: `Air-OS-iPad-MacLock-Glass-Parity`; der finale CI-Commit/Artefaktlink wird nach dem vollständigen Lauf eingetragen.
+
+
+Der finale lokale Gate besteht mit 60/60 Node-Modelltests, 14/14 zusätzlichen Chromium-DPR-2-Material-/Lifecyclefällen und sieben nativen DPR-2-Referenzprüfungen. Die originale Qt-ShaderEffect meldet tatsächlich `Compiled`; die Referenz wurde als OpenGL-RHI-Bild erzeugt. Gemessene lokale DPR-2-MAE innerhalb der Materialregion: WebGL rund 1,36/255, Fallback rund 1,35/255. Für den automatischen nativen Gate gelten maximal 2/255 bei DPR 1 und 3/255 bei DPR 2; Rand, Inneres und Schatten werden zusätzlich getrennt protokolliert. Der neue Workflow ist vorbereitet; die komplette Chromium-/WebKit-Matrix wird jetzt auf dem gesicherten Quellcommit ausgeführt.

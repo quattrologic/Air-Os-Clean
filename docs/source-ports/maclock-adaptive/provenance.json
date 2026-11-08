@@ -31,7 +31,10 @@
   ],
   "browserAdaptations": [
     "Existing WebGL2 engine samples the owned artwork scene; no capture.",
-    "Bounded shared preblur JPEG for normal WebKit CSS fallback; local magnification and luminance-modulated directional rim are approximations, not Snell.",
-    "Only authenticated allowlisted Spotify artwork gets a bounded thumbnail in the existing history record."
+    "Pre-parity fallback used bounded CSS preblur and a luminance-modulated rim only; it is superseded on this branch by the documented cached SDF/Snell fallback.",
+    "Only authenticated allowlisted Spotify artwork gets a bounded thumbnail in the existing history record.",
+    "Parity branch extends the existing fallback owner with the original SDF, convex normal, Snell shift, absorption, directional rim, meniscus and grain; its bilinear sampling is a bounded approximation to the original24-tap disk.",
+    "Actual original Glass.qml is rendered in a test-only QtQuick/OpenGL harness against the same permitted source texture and geometry; this does not start the full native MacShell lockscreen.",
+    "Native MultiEffect blurMax64 is calibrated to approximately sigma24 CSS pixels for this reference; the existing multiplicative browser brightness .84 deliberately preserves dark cover colour instead of claiming Qt additive-.16 equivalence."
   ]
 }

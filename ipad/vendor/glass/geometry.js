@@ -56,13 +56,13 @@
  // retains the original 24-tap dispersed disk. These cached maps never animate at idle.
  function lockMap(w,h,radius,pixelWidth,pixelHeight,kind='maclock',refraction=true,frame={x:0,y:0,height:h+20,dpr:1}){
   if(![w,h,radius,pixelWidth,pixelHeight].every(Number.isFinite)||w<1||h<1||pixelWidth<1||pixelHeight<1||pixelWidth*pixelHeight>66000)throw Error('invalid-lock-map');
-  const mat=material(kind,h),pad=10,iw=w+2*pad,ih=h+2*pad,r=Math.min(radius,w/2,h/2),bz=Math.max(Math.min(h*.36,26),1)*1.45,map=new Float32Array(pixelWidth*pixelHeight*10);
+  const mat=material(kind,h),pad=10,iw=frame.rasterWidth||w+2*pad,ih=frame.rasterHeight||h+2*pad,r=Math.min(radius,w/2,h/2),bz=Math.max(Math.min(h*.36,26),1)*1.45,map=new Float32Array(pixelWidth*pixelHeight*10);
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),smooth=(a,b,v)=>{const u=clamp((v-a)/(b-a));return u*u*(3-2*u);},fract=v=>v-Math.floor(v);
   const sdf=(x,y)=>{const dx=Math.abs(x)-(w/2-r),dy=Math.abs(y)-(h/2-r);return Math.hypot(Math.max(dx,0),Math.max(dy,0))+Math.min(Math.max(dx,dy),0)-r;};
   const hash=(x,y)=>{let a=fract(x*.1031),b=fract(y*.1031),c=a;const d=a*(b+33.33)+b*(c+33.33)+c*(a+33.33);a+=d;b+=d;c+=d;return fract((a+b)*c);};
   const length=Math.hypot(.55,.83),eta=1/1.5;
   for(let y=0;y<pixelHeight;y++)for(let x=0;x<pixelWidth;x++){
-   const i=(y*pixelWidth+x)*10,px=(x+.5)*iw/pixelWidth,py=(y+.5)*ih/pixelHeight,qx=px-pad-w/2,qy=py-pad-h/2,sd=sdf(qx,qy),t=Math.max(-sd,0),cov=clamp(.5-sd),shadow=.30*mat.shadowAmt*(1-smooth(-2,9,sdf(qx,qy-3)));
+   const i=(y*pixelWidth+x)*10,px=(x+.5)*iw/pixelWidth-(frame.phaseX||0),py=(y+.5)*ih/pixelHeight-(frame.phaseY||0),qx=px-pad-w/2,qy=py-pad-h/2,sd=sdf(qx,qy),t=Math.max(-sd,0),cov=clamp(.5-sd),shadow=.30*mat.shadowAmt*(1-smooth(-2,9,sdf(qx,qy-3)));
    const ax=Math.abs(qx)-(w/2-r),ay=Math.abs(qy)-(h/2-r),mx=Math.max(ax,0),my=Math.max(ay,0),m=Math.hypot(mx,my),sx=qx>=0?1:-1,sy=qy>=0?1:-1,gx=m>1e-4?mx/m*sx:ax>ay?sx:0,gy=m>1e-4?my/m*sy:ax>ay?0:sy;
    const om=1-clamp(t/bz),slope=Math.min(7,om**3/Math.max(1-om**4,1e-3)**.75),nl=Math.sqrt(1+slope*slope),nx=gx*slope/nl,ny=gy*slope/nl,nz=1/nl,k=eta*nz-Math.sqrt(1-eta*eta*(1-nz*nz)),rz=-eta+k*nz,shift=refraction?mat.thickness*1.35/Math.max(-rz,.2):0;
    const facing=-(gx*.55+gy*.83)/length,spec=Math.max(facing,0)**1.6+.55*Math.max(-facing,0)**2.2,edge=(Math.exp(-t/1.1)*(.18+.78*spec)+Math.exp(-t/5)*.1*(.30+spec))*mat.rim;
@@ -73,8 +73,8 @@
  }
  function lockPixels(mesh,source,offsetX,offsetY,viewportWidth,viewportHeight){
   const {map,width,height,material:m,pad}=mesh,out=new Uint8ClampedArray(width*height*4),{data, width:sw,height:sh}=source;
-  if(!(data instanceof Uint8ClampedArray)||data.length!==sw*sh*4||sw*sh>600000||viewportWidth<=0||viewportHeight<=0)throw Error('invalid-lock-source');
-  const sample=(x,y,c)=>{x=Math.max(0,Math.min(sw-1,x/viewportWidth*sw-.5));y=Math.max(0,Math.min(sh-1,y/viewportHeight*sh-.5));const x0=Math.floor(x),y0=Math.floor(y),x1=Math.min(sw-1,x0+1),y1=Math.min(sh-1,y0+1),fx=x-x0,fy=y-y0;return ((data[(y0*sw+x0)*4+c]*(1-fx)+data[(y0*sw+x1)*4+c]*fx)*(1-fy)+(data[(y1*sw+x0)*4+c]*(1-fx)+data[(y1*sw+x1)*4+c]*fx)*fy)/255;};
+  if(!(data instanceof Uint8ClampedArray)||data.length!==sw*sh*4||!Number.isInteger(sw)||!Number.isInteger(sh)||sw<1||sh<1||sw*sh>600000||viewportWidth<=0||viewportHeight<=0)throw Error('invalid-lock-source');
+  const sample=(x,y,c)=>{x=Math.max(0,Math.min(sw-1,Math.max(.001,Math.min(.999,x/viewportWidth))*sw-.5));y=Math.max(0,Math.min(sh-1,Math.max(.001,Math.min(.999,y/viewportHeight))*sh-.5));const x0=Math.floor(x),y0=Math.floor(y),x1=Math.min(sw-1,x0+1),y1=Math.min(sh-1,y0+1),fx=x-x0,fy=y-y0;return ((data[(y0*sw+x0)*4+c]*(1-fx)+data[(y0*sw+x1)*4+c]*fx)*(1-fy)+(data[(y1*sw+x0)*4+c]*(1-fx)+data[(y1*sw+x1)*4+c]*fx)*fy)/255;};
   for(let p=0;p<width*height;p++){
    const i=p*10,o=p*4,cov=map[i+4],a=map[i+5];out[o+3]=a*255;if(!cov)continue;
    const x=offsetX-pad+map[i],y=offsetY-pad+map[i+1],dx=map[i+2],dy=map[i+3],d=mesh.refraction?m.dispersion*.6:0;
