@@ -42,6 +42,29 @@ jobs:
           node scripts/build-ipad-recovery.cjs
       - name: Install actual test engine and dependencies
         run: node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps ${{ matrix.engine }}
+      - name: Spotify widget, live Dock compositing, workarea and input regression
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_DOCK_DPR: '1'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr1
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Retina, portrait, Safe Area and same live material pixel checks
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_DOCK_DPR: '2'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr2
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Actual browser GUI, legacy library, touch and offline data
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Same browser under private Serve-like subpath
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
       - name: Pinned compact baseline, full viewport only
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
@@ -80,18 +103,6 @@ jobs:
           AIR_PARITY_DPR: '2'
           AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr2
         run: node scripts/test-ipad-maclock-parity.cjs
-      - name: Spotify widget, live Dock compositing, workarea and input regression
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_DOCK_DPR: '1'
-          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr1
-        run: node scripts/test-ipad-desktop-dock.cjs
-      - name: Retina, portrait, Safe Area and same live material pixel checks
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_DOCK_DPR: '2'
-          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr2
-        run: node scripts/test-ipad-desktop-dock.cjs
       - name: Actual visual product, controls, accessibility and six viewports
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
@@ -121,17 +132,6 @@ jobs:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
           AIR_MATERIAL_OUTPUT: dist/parity-evidence/material-${{ matrix.engine }}
         run: node scripts/test-ipad-system3-material.cjs
-      - name: Actual browser GUI, legacy library, touch and offline data
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
-        run: node scripts/test-ipad-parity.cjs
-      - name: Same browser under private Serve-like subpath
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_PAD_PREFIX: /Air-OS/
-          AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
-        run: node scripts/test-ipad-parity.cjs
       - name: Original v4 to v5, protected multitab activation and compatible recovery
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}

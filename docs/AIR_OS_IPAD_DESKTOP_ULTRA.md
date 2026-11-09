@@ -60,3 +60,11 @@ Der ältere Test wartete pauschal 250ms und erwartete mindestens zwei Icons brei
 Die vorherige pauschale 900ms-Maussperre wurde außerdem auf tatsächliche kompatible Ereignisse eingegrenzt: Ein stationäres Mausereignis am letzten Touchpunkt lässt keine Hoverwelle zurück; eine echte Zeigerbewegung von diesem Punkt weg oder ein echter Maustastendruck wird sofort wieder akzeptiert. Ein vorhandener Clickblock wird bei eindeutig neuer Mausbewegung aufgehoben. Keine neuen Eingabecontroller. Drei zusätzliche Browserfälle prüfen genau den stationären Kompatibilitätsfall, sofortige starke echte Mausmagnifikation und einen einzelnen echten Appstart nach Touchabbruch.
 
 Lokale erneute Prüfung: 54/54 neue Desktop-/Dockfälle und 112/112 vollständige Legacy-/App-/Musik-/Offlinefälle in Chromium erfolgreich. Der vollständige Chromium-/WebKit-/Qt-Gate wird auf dem gesicherten Korrekturcommit erneut ausgeführt; alle Einschränkungen zur realen Hardware bleiben bestehen.
+
+## Ereignisgenaue Kompatibilitätsprüfung
+
+[CI 42631324361](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42631324361) auf `875545c70b7c622ef61188c23d9059de93d76332`: Chromium besteht vollständig einschließlich des angepassten Gesamt-App-Tests. WebKit besteht die neuen DPR1-Eingabefälle, scheitert aber im DPR2-Test an `stationary compatibility mouse after touch cancellation cannot leave a sticky wave`. Dieser Lauf ist nicht vollständig bestanden; die nachgelagerte native Abnahme wurde nicht ausgeführt.
+
+Der Prüf-Mauszeiger wurde bisher erst nach dem Warten auf sämtliche Animationen erzeugt, obwohl der Anschlussereignisschutz zeitlich begrenzt ist. Die korrigierte Prüfung erzeugt Pointercancel und den stationären Mauszeiger deshalb synchron im selben JavaScript-Task, prüft anschließend auch eine neue Mausbewegung und protokolliert die tatsächliche Zeitspanne unter `compatibilityMouse`. Kein Runtime-Fix wird für diese reine Testkorrektur behauptet. Lokal bestehen erneut alle 54 Desktop-/Dockprüfungen.
+
+Die vollständige bestehende CI-Matrix bleibt erhalten; lediglich die beiden Desktop-/Dockfälle und die beiden Gesamt-App-Pfade laufen nun vor den aufwendigen Material-/Notch-Aufnahmen, um Fehler in den geänderten Eingabepfaden früher zu erkennen. Keine Tests deaktiviert, keine Assertion entfernt, keine Produkt- oder Sicherheitseinstellung gelockert.
