@@ -53,6 +53,11 @@ jobs:
           AIR_SECURITY_PREFIX: /Air-OS/
           AIR_SECURITY_OUTPUT: dist/parity-evidence/security-subpath-${{ matrix.engine }}
         run: node scripts/test-ipad-security.cjs
+      - name: Original v4 to v5, protected multitab activation and compatible recovery
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
       - name: Spotify widget, live Dock compositing, workarea and input regression
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
@@ -143,11 +148,6 @@ jobs:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
           AIR_MATERIAL_OUTPUT: dist/parity-evidence/material-${{ matrix.engine }}
         run: node scripts/test-ipad-system3-material.cjs
-      - name: Original v4 to v5, protected multitab activation and compatible recovery
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
-        run: node scripts/test-ipad-updates.cjs
       - name: Preserve synthetic browser evidence
         if: always()
         uses: actions/upload-artifact@v4
