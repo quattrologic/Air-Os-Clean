@@ -1,0 +1,1 @@
+Unmodified actual Chromium screenshot, 1180×820 CSS px, DPR2. Local uncommitted round 2 based on 23472c950d59693fc55f7b91d712fe9fda002e3d. Synthetic Spotify API data are explicitly labelled in the running product. The clipped final calendar row found in this capture was corrected in round 3. This is not a clean source-commit build.

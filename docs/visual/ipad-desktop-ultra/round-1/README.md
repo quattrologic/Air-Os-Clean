@@ -1,0 +1,1 @@
+Actual local worktree captures before the final visual correction; Chromium 1180x820 DPR2. The base HEAD in baseline.json identifies the starting commit, not a clean product build. Original earlier correction evidence was preserved byte-for-byte.
