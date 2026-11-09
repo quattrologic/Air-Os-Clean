@@ -8,6 +8,7 @@ test('build refuses unreviewed personal files, traversal and symlinks before wri
 });
 test('protected UI, data owners and deployment scripts remain byte-identical to the verified product',()=>{
  const root=path.resolve(__dirname,'..'),manifest=require('../docs/security/protected-surfaces.json'),cp=require('node:child_process');for(const[f,hash]of Object.entries(manifest.unchangedFiles))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,f))).digest('hex'),hash,f);
+ const html=fs.readFileSync(path.join(root,'ipad/index.html'),'utf8'),bootstrap=html.indexOf('src="./core/security.js"');assert.ok(html.indexOf('name="viewport"')<bootstrap&&bootstrap<html.indexOf('<link'),'viewport metadata precedes synchronous URL scrubbing, which precedes all asset links');
  for(const[f,marker]of [['ipad/app.js','  async function safeReload'],['ipad/index.html','<body']]){const old=cp.execFileSync('git',['show',manifest.baseline+':'+f],{cwd:root,encoding:'utf8'}),now=fs.readFileSync(path.join(root,f),'utf8');assert.equal(f.endsWith('.js')?now.split(marker)[0]:now.slice(now.indexOf(marker)),f.endsWith('.js')?old.split(marker)[0]:old.slice(old.indexOf(marker)),f);}
 });
 test('OAuth return removes credentials from query AND fragment, including duplicates and wrong-case input',()=>{
