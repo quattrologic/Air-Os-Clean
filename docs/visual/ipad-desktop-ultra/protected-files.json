@@ -22,5 +22,6 @@
     "ipad/enable-updates-windows.ps1": "4cce33bc6184b98b23c7097c49442f9751757d6750de45d18d7e1ca91b0375ad",
     "ipad/vendor/macshell/shell7.js": "a0af3611bacd9e0573d885b85fa5ff386c32bf5bce0514bfc358ad5bd6b4d54b",
     "ipad/playback-history.js": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363"
-  }
+  },
+  "productCommit": "4fa5ea951f43a7c643d7011e351c3e60595b50fd"
 }

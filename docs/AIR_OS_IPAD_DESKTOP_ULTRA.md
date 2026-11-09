@@ -1,5 +1,7 @@
 # Air-OS iPad — Desktop, Dock und obere Systemzone
 
+Verifizierter Abschluss: Produkt-/Buildcommit `4fa5ea951f43a7c643d7011e351c3e60595b50fd`, 1490 bestandene Browser-/native Assertions und 60 bestandene Modelltests; [erfolgreiche CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42634335969). Vollbilder und Buildartefakt stehen im Abschlussabschnitt.
+
 ## Ausgangsstand und Umfang
 
 Fortsetzung auf dem tatsächlich neuesten, sauberen Entwicklungsbranch `feat/air-os-ipad-desktop-dock-correction`, Ausgangscommit `23472c950d59693fc55f7b91d712fe9fda002e3d`. Die vorhandene funktionsfähige Implementierung und ihre vollständigen CI-Ergebnisse wurden erhalten. Kein Merge, kein Deployment, kein Zugriff auf die private Installation, keine Änderung an Windows oder Tailscale.
@@ -61,6 +63,8 @@ Die vorherige pauschale 900ms-Maussperre wurde außerdem auf tatsächliche kompa
 
 Lokale erneute Prüfung: 54/54 neue Desktop-/Dockfälle und 112/112 vollständige Legacy-/App-/Musik-/Offlinefälle in Chromium erfolgreich. Der vollständige Chromium-/WebKit-/Qt-Gate wird auf dem gesicherten Korrekturcommit erneut ausgeführt; alle Einschränkungen zur realen Hardware bleiben bestehen.
 
+Unveränderte Evidenz des dritten Laufs: [26 Rohreports, davon der DPR2-Desktopfall fehlgeschlagen](visual/ipad-desktop-dock-correction/875545c70b7c622ef61188c23d9059de93d76332/evidence.json), Evidenzcommit `f53ecf228efc9480357d178a601db9b939e802ea`.
+
 ## Ereignisgenaue Kompatibilitätsprüfung
 
 [CI 42631324361](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42631324361) auf `875545c70b7c622ef61188c23d9059de93d76332`: Chromium besteht vollständig einschließlich des angepassten Gesamt-App-Tests. WebKit besteht die neuen DPR1-Eingabefälle, scheitert aber im DPR2-Test an `stationary compatibility mouse after touch cancellation cannot leave a sticky wave`. Dieser Lauf ist nicht vollständig bestanden; die nachgelagerte native Abnahme wurde nicht ausgeführt.
@@ -74,3 +78,48 @@ Die vollständige bestehende CI-Matrix bleibt erhalten; lediglich die beiden Des
 Im vorgezogenen [WebKit-Gate des Laufs 42633367305](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42633367305/job/129215060232) auf `e26757a5be65d8abd83765d41a1ff61cad32fe52` besteht der synchrone stationäre Kompatibilitätsfall. Die anschließende Assertion zur sofortigen starken Mauswelle schlägt fehl. Der Test hatte dafür nach der bereits simulierten Mausbewegung erneut `locator.hover()` verwendet, also ein bewegtes Iconzentrum statt des zuvor vermessenen Ruhepunkts.
 
 Die Korrektur verwendet exakt denselben gemessenen Ruhepunkt wie die zuvor erfolgreiche 1,8-Prüfung; die Schwelle bleibt ausdrücklich größer als 1,79. `pointerResume` protokolliert Hover, Zielindex, Peak und laufende Frames zusätzlich zu `compatibilityMouse`, auch in der Fehlerannotation. Keine Änderung der Produktruntime und keine Verringerung der starken Magnifikation. Der vorherige Gesamtlauf wird zugunsten des korrigierten Testcommits abgelöst und nicht als vollständiger Erfolg bezeichnet.
+
+## Verifizierter Abschluss
+
+Produkt-/Buildcommit: `4fa5ea951f43a7c643d7011e351c3e60595b50fd`. Vorheriger Korrekturcheckpoint: `48202db40fab38890b8f051c81248fc1898ab3fd`. Ausschließlich Entwicklungsbranch `feat/air-os-ipad-desktop-dock-correction`. Der Push ist auf GitHub bestätigt; keine Branchzusammenführung oder Veröffentlichung.
+
+[Vollständige erfolgreiche CI](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42634335969): **38/38 Browser-/native Komponentenreports, 1490/1490 Assertions bestanden**, zusätzlich 60/60 Node-Modelltests in beiden Browserjobs und erfolgreicher Audit-/Paket-/Lizenz-/CSP-Gate. Darunter 4×54 Desktop-/Dockprüfungen in Chromium/WebKit bei DPR1/2. Die Rohdaten einschließlich 20 gemessener Rückkehrframes je Engine/DPR stehen im [unveränderten Evidenzreport](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/evidence.json).
+
+Die vier vorhandenen QtQuick/OpenGL-Referenzläufe bestehen weiterhin; dies ist eine isolierte native MacLock-Komponentenreferenz und kein physischer iPad- oder vollständiger MacShell-Docktest. Bestehende App-, Audio-, Legacy-Musik-/IndexedDB-, Backup-/Restore-, Context-Loss-/Fallback-, Offline-/Kaltstart-, Unterpfad- und sichere Service-Worker-Updateprüfungen sind im selben Gate enthalten.
+
+Evidenzcommit auf demselben Entwicklungsbranch: `49811926ec4c68f9a48a0c1e5c59bfc53c1067d4`. [Hashmanifest der 19 unveränderten geschützten Dateien](visual/ipad-desktop-ultra/protected-files.json). Kein Nutzerprofil wurde geöffnet oder migriert.
+
+PWA-Artefakt: **Air-OS-iPad-Desktop-Dock-Build-4fa5ea951f43a7c643d7011e351c3e60595b50fd**, erreichbar unter [Actions-Artefakte](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42634335969#artifacts), enthält `Air-OS-iPad-Desktop-Dock-Correction-4fa5ea951f43a7c643d7011e351c3e60595b50fd.zip` und SHA-256-Sidecar, kompatible Recovery- und Read-only-Preflight-Pakete; 30 Tage Aufbewahrung. Der Build erzeugt die Versions-/Service-Worker-Dateien für exakt diesen Quellcommit neu. Keine Deployment-Stufe.
+
+### Gemessene Darstellung
+
+| Engine/DPR | Dock in Ruhe | Abstand unten | maximale Höhe | Dock-Helligkeit Yosemite / helle Einstellungen / dunkle Fixture |
+| --- | --- | --- | --- | --- |
+| chromium / 1 | 679.00 × 60.00 CSS px | 14.00 CSS px | 94.41 CSS px | 39.63 / 218.28 / 41.27 |
+| chromium / 2 | 679.00 × 60.00 CSS px | 14.00 CSS px | 94.41 CSS px | 40.63 / 218.70 / 41.53 |
+| webkit / 1 | 679.00 × 60.00 CSS px | 14.00 CSS px | 94.41 CSS px | 41.34 / 218.85 / 40.87 |
+| webkit / 2 | 679.00 × 60.00 CSS px | 14.00 CSS px | 94.41 CSS px | 41.19 / 218.93 / 40.36 |
+
+Die Helligkeit ist der gemittelte RGB-Kanalwert eines festgelegten Messstreifens aus dem unveränderten Vollbild, keine kalibrierte physikalische Luminanz. Die dunkle App ist eine ausdrücklich beschriebene kontrollierte Test-Fixture, kein ausgelieferter globaler Dunkelmodus.
+
+Im tatsächlichen WebKitGTK-CI-Rendering wirkt die Live-Backdrop-Weichzeichnung schwächer als in Chromium. Die Pixeltests belegen den Bezug zur aktuellen Fensterszene und deren Überlagerung; sie belegen keine identische optische Filterstärke oder native Safari-Hardwaredarstellung. Diese reale Geräteabnahme bleibt offen.
+
+### Unbeschnittene reale Abschlussaufnahmen
+
+Alle folgenden Bilder stammen aus dem erfolgreichen WebKit-DPR2-Lauf, 1180×820 beziehungsweise 834×1194 CSS px; die Dateien wurden nicht verändert. Spotify-Bilddaten und Titel sind explizite API-Testdaten und keine behauptete persönliche Spotify-Verbindung.
+
+![Desktop vollständig, unverbunden](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/desktop-disconnected.png)
+
+![Schwebendes Dock und letzter Spotify-Titel](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/desktop-floating-dock.png)
+
+![Per Touch geöffnete Notch](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/ultra-notch-open.png)
+
+![Klare obere Systemzone über maximierten Einstellungen](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/settings-full-workarea.png)
+
+![Desktop mit Spotify-Metadaten](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/desktop-spotify.png)
+
+![Hochformat: bündige Notch und Desktop](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/ultra-portrait-desktop.png)
+
+![Maximale gekoppelte Dockvergrößerung](visual/ipad-desktop-dock-correction/4fa5ea951f43a7c643d7011e351c3e60595b50fd/desktop-dock-webkit-dpr2/dock-maximum.png)
+
+Die im Abschnitt zu realen Geräten genannten offenen Abnahmen bleiben unverändert offen; automatisiertes WebKit ist keine physische iPadOS-Abnahme.
