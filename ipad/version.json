@@ -1,5 +1,8 @@
 {
-  "version": "air-os-ipad-v5-2b97cce60790fbe6c1c4",
-  "assets": 139,
-  "privateDeployment": true
+  "version": "air-os-ipad-v5-08e08e85e07011df5fb5",
+  "assets": 140,
+  "privateDeployment": true,
+  "integrity": "sha256",
+  "subresourceIntegrity": true,
+  "atomicInstall": true
 }

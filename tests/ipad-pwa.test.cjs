@@ -40,58 +40,19 @@ test('every queried element exists in iPad HTML', () => {
 });
 
 test('Safari navigation receives a non-redirected offline response', async () => {
-  const sw = read('sw.js');
-  const handlers = {};
-  const stored = new Map();
-  const installedAssets = [];
-  class FakeResponse {
-    constructor(body, init = {}) {
-      this.body = body;
-      this.status = init.status ?? 200;
-      this.statusText = init.statusText || 'OK';
-      this.headers = init.headers || { get: name => name === 'content-type' ? 'text/html' : null };
-      this.ok = this.status >= 200 && this.status < 300;
-      this.redirected = false;
-    }
-    clone() { return new FakeResponse(this.body, { status: this.status, statusText: this.statusText, headers: this.headers }); }
-  }
-  const live = new FakeResponse('Air-OS HTML');
-  live.redirected = true; // Tailscale can redirect /index.html to /
-  const cache = {
-    addAll: async urls => { installedAssets.push(...urls); },
-    put: async (url, response) => { stored.set(url, response); },
-    match: async url => stored.get(url)
-  };
-  const mockCaches = {
-    open: async () => cache,
-    match: async () => undefined,
-    keys: async () => ['air-os-ipad-v1'],
-    delete: async () => true
-  };
-  const self = {
-    location: { origin: 'https://air-os.example.ts.net' },
-    registration: { scope: 'https://air-os.example.ts.net/' },
-    addEventListener: (name, fn) => { handlers[name] = fn; },
-    skipWaiting: async () => {},
-    clients: { claim: async () => {} }
-  };
-  const fetched = [];
-  const fetch = async url => { fetched.push(url); return live; };
-  vm.runInNewContext(sw, { self, caches: mockCaches, URL, Promise, Response: FakeResponse, fetch });
-  let install;
-  handlers.install({ waitUntil: promise => { install = promise; } });
-  await install;
-  assert.deepEqual(fetched, ['./']);
-  for(const file of ['./styles.css','./app.js','./manifest.webmanifest','./air-os-official.png','./storage.js','./desktop.js','./apps.js','./backup.js'])assert.ok(installedAssets.includes(file),'Offline asset missing: '+file);assert.equal(new Set(installedAssets).size,installedAssets.length);
-  assert.equal(stored.get('./').redirected, false);
-
-  let navigation;
-  handlers.fetch({
-    request: { method: 'GET', url: 'https://air-os.example.ts.net/', mode: 'navigate' },
-    respondWith: promise => { navigation = promise; }
-  });
-  const offline = await navigation;
-  assert.equal(offline.body, 'Air-OS HTML');
-  assert.equal(offline.redirected, false);
-  assert.equal(offline.status, 200);
+  const handlers = {}, stores = new Map(), fetched = [], origin = 'https://air-os.example.ts.net/';
+  const caches = {async open(name){if(!stores.has(name))stores.set(name,new Map());const m=stores.get(name);return{put:async(u,r)=>m.set(String(u),r.clone()),match:async u=>m.get(String(u))?.clone(),delete:async u=>m.delete(String(u))};},keys:async()=>[...stores.keys()],delete:async n=>stores.delete(n)};
+  const self = {registration:{scope:origin},addEventListener:(n,f)=>handlers[n]=f,clients:{claim:async()=>{}},skipWaiting:async()=>{}};
+  const files=['index.html','styles.css','app.js','manifest.webmanifest','air-os-official.png','storage.js','desktop.js','apps.js','backup.js','core/security.js'],snapshot=new Map(files.map(f=>[f,fs.readFileSync(path.join(dir,f))])),integrity=Object.fromEntries([...snapshot].map(([f,b])=>[f==='index.html'?'./':'./'+f,{sha256:require('node:crypto').createHash('sha256').update(b).digest('hex'),bytes:b.length}]));
+  const context={self,caches,URL,Promise,Response,AbortController,setTimeout,clearTimeout,crypto:require('node:crypto').webcrypto,fetch:async(u,options)=>{assert.equal(options.redirect,'error');fetched.push(String(u));const name=new URL(u).pathname.slice(1)||'index.html';return new Response(snapshot.get(name),{headers:{'Content-Type':name.endsWith('.html')?'text/html':name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':'application/octet-stream'}});}};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../scripts/templates/ipad-service-worker.js'),'utf8').replace('__VERSION__','air-os-ipad-v5-'+ '0'.repeat(20)).replace('__SHELL__',JSON.stringify(Object.keys(integrity))).replace('__INTEGRITY__',JSON.stringify(integrity)),context);
+  let install;handlers.install({waitUntil:p=>install=p});await install;
+  const names=await caches.keys();assert.equal(names.length,1,'staging cache is removed only after complete generation publication');
+  const cache=await caches.open(names[0]),stored=await cache.match(origin);
+  for(const f of ['./styles.css','./app.js','./manifest.webmanifest','./air-os-official.png','./storage.js','./desktop.js','./apps.js','./backup.js'])assert.ok(await cache.match(new URL(f,origin).href),'Offline asset missing: '+f);
+  assert.equal(new Set(fetched).size,fetched.length);
+  assert.equal(stored.redirected,false);
+  context.fetch=async()=>{throw Error('Synthetic offline host');};
+  let navigation;handlers.fetch({request:{method:'GET',url:origin,mode:'navigate'},respondWith:p=>navigation=p});
+  const offline=await navigation;assert.equal(await offline.text(),snapshot.get('index.html').toString());assert.equal(offline.redirected,false);assert.equal(offline.status,200);
 });
