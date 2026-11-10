@@ -1,4 +1,5 @@
 'use strict';
+const {waitForAsync}=require('./lib/wait-for-async.cjs');
 // Actual browser + actual worker; only isolated synthetic profiles and mocked Spotify accounts.
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),http=require('node:http'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/node_modules/playwright'),{create}=require('./serve-ipad-secure.cjs'),{baseline,BASE}=require('./lib/security-baseline.cjs'),png=require('./lib/notch-png.cjs'),{build}=require('./build-ipad-parity.cjs');
@@ -44,7 +45,7 @@ let fatalEvidence=null;process.on('uncaughtExceptionMonitor',e=>{annotate(e);fat
    api.push({url:request.url(),headers:request.headers()});return route.fulfill({headers,body:JSON.stringify({timestamp:Date.now(),is_playing:true,progress_ms:5000,item})});
   });
   function airScopes(){return'user-read-playback-state user-read-currently-playing user-read-recently-played';}
-  await page.goto(base);await ready(page);check('no Spotify traffic before explicit consent',providerVisits===0&&api.length===0&&grants.length===0);
+  await page.goto(base);await ready(page);await page.evaluate(()=>window.__asyncProbeSamples=0);await waitForAsync(page,async()=>{await Promise.resolve();return ++window.__asyncProbeSamples===3;});check('asynchronous browser predicates must resolve true after actual repeated samples',await page.evaluate(()=>window.__asyncProbeSamples===3));check('no Spotify traffic before explicit consent',providerVisits===0&&api.length===0&&grants.length===0);
   await page.evaluate(()=>airSpotify.configure('a'.repeat(32)));const authorization=new URL(await page.evaluate(()=>airSpotify.begin(true)));
   check('S256 public client and exact read-only scopes',authorization.searchParams.get('code_challenge_method')==='S256'&&authorization.searchParams.get('scope')===airScopes()&&authorization.searchParams.get('redirect_uri')===base);
   check('pending verifier is temporary and excluded from backups',await page.evaluate(async()=>{const a=JSON.parse(sessionStorage.getItem(airSecurity.key)),b=await(await airBackup.export()).text();return /^[A-Za-z0-9_-]{64}$/.test(a.verifier)&&!b.includes(a.verifier)&&!b.includes(a.state);}));
