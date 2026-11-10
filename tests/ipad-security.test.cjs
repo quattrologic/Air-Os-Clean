@@ -54,4 +54,5 @@ test('browser async polling rejects resolved false, repeats to actual truth, tim
  await waitForAsync(page,async()=>calls===3,undefined,{timeout:1000,interval:1});assert.equal(calls,3);
  await assert.rejects(waitForAsync(page,async()=>false,undefined,{timeout:15,interval:1}),/remained false/);
  await assert.rejects(waitForAsync(page,async()=>{throw Error('actual browser error');}),/actual browser error/);
+ await assert.rejects(waitForAsync({...page,evaluate:()=>new Promise(()=>{})},async()=>true,undefined,{timeout:15}),/did not resolve/);
 });

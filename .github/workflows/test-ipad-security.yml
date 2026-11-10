@@ -47,6 +47,12 @@ jobs:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
           AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
         run: node scripts/test-ipad-updates.cjs
+      - name: Same original Legacy handoff, data, backup and recovery at private subpath
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
       - name: Security attacks, actual OAuth navigation, exact UI, upgrade, rollback and cold offline restart
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
