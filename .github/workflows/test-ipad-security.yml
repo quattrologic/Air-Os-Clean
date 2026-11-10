@@ -42,6 +42,11 @@ jobs:
           node scripts/build-ipad-recovery.cjs
       - name: Install actual test engine and dependencies
         run: node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps ${{ matrix.engine }}
+      - name: Original v4 to v5, protected multitab activation and compatible recovery
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
       - name: Security attacks, actual OAuth navigation, exact UI, upgrade, rollback and cold offline restart
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
@@ -53,11 +58,6 @@ jobs:
           AIR_SECURITY_PREFIX: /Air-OS/
           AIR_SECURITY_OUTPUT: dist/parity-evidence/security-subpath-${{ matrix.engine }}
         run: node scripts/test-ipad-security.cjs
-      - name: Original v4 to v5, protected multitab activation and compatible recovery
-        env:
-          AIR_PAD_ENGINE: ${{ matrix.engine }}
-          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
-        run: node scripts/test-ipad-updates.cjs
       - name: Spotify widget, live Dock compositing, workarea and input regression
         env:
           AIR_PAD_ENGINE: ${{ matrix.engine }}
