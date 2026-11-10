@@ -1,5 +1,18 @@
 # Air-OS iPad — Ultra Security Hardening
 
+## Bestätigter Abschluss · 10. November 2026
+
+**CI-Endstatus Success**, [vollständiger Lauf 42772216350](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350), Quell-/Buildcommit `ccba678b53fd2936f621fc4c1422d29c01b2c3ec`, Nachweiscommit `8246145f4926deec3fda9a0943d6501482bbfc70`. Der vorhandene Auftrag wurde fortgesetzt; die letzte Ursache der sporadischen Legacy-Übergabe lag in nicht tatsächlich gepollten asynchronen Playwright-Prädikaten. Nur die Testwerkzeuge wurden in dieser Schlussphase korrigiert, keine geschützte Oberfläche oder Datenbank.
+
+- **71/71 Node-Modellgruppen**, **44/44 bestandene Berichte** mit **1.714 ausgeführten Browser-/nativen Prüfassertionen**: 40 Browserberichte und vier kontrollierte native Qt/OpenGL-Berichte. Vollständige Einzelzahlen: [FINAL_GATE_VERIFICATION.json](security/FINAL_GATE_VERIFICATION.json).
+- Chromium **und** WebKit: je Root und `/Air-OS/`, je 50 Security-Prüfungen und 10 vollständige Legacy-/Backup-/Recovery-Prüfungen. OAuth/PKCE, State/Redirect/Token, CSP/XSS, echte negative HTTP-Umleitung, Cache-Poisoning, SHA-256, sichere Aktivierung, Rollback und kalter Offline-Neustart bestanden. Alle bisherigen relevanten Dock-/Spotify-/MacLock-/Notch-/Touch-/DPR-/Viewportprüfungen bestanden ebenfalls.
+- Alle 20 gespeicherten Vollbilddateien haben 1180×820 Pixel und geprüfte SHA-256. Die vier Root-Vorher-/Nachherpaare wurden zusätzlich nach dem CI erneut dekodiert und verglichen: **je null abweichende Pixel**. Auch beide Zustände in allen vier Security-Berichten sowie deren aufeinanderfolgende kontrollierte Sperrframes bestehen die unveränderte Null-Pixelgrenze. Die Aussage gilt für das dokumentierte gemeinsame Aufnahmeprotokoll, nicht pauschal für jeden passiven WebKit-Erstframe oder echte iPad-Hardware.
+- Nachweise einschließlich unveränderter passiver/neutraler Erstframes: [evidence/ccba678b53fd2936f621fc4c1422d29c01b2c3ec/evidence.json](security/evidence/ccba678b53fd2936f621fc4c1422d29c01b2c3ec/evidence.json). Frühere fehlgeschlagene Läufe unten bleiben ausdrücklich als historische Diagnose erhalten und sind keine Abschlussabnahmen.
+- Geprüftes GitHub-Actions-Artefakt **`Air-OS-iPad-Security-Build-ccba678b53fd2936f621fc4c1422d29c01b2c3ec`**: versionierter PWA-ZIP, eigener SHA-256-Sidecar, kompatible Recovery-/Read-only-Preflight-ZIPs; Aufbewahrung 30 Tage. Kein Deployment. Lokaler unabhängiger ZIP-Inventarnachweis: [RELEASE_LOCAL_VERIFICATION.json](security/RELEASE_LOCAL_VERIFICATION.json).
+- Separates iPad-Repository: **145/145 verglichene Dateien bereits identisch**, keine zweite Laufzeit-Sicherheitsimplementierung. Sicherer Review-Branch [review/security-final-verification](https://github.com/quattrologic/Air-Os-Ipad/tree/review/security-final-verification), Abschluss `5e38500812f38fa4f04a70906059f5030286fb8e`. Der konkrete fehlende QA-Patch ist geprüft und nur im isolierten temporären Worktree angewandt: **53/53 dortige Modellgruppen, 142/142 Paketdateien**. Neuere README/Setup-Dateien und lokale Baseline-Anpassungen bleiben erhalten; eigenständiges Browsergate benötigt weiterhin die dokumentierten historischen Fixtures. [Übernahmebericht](https://github.com/quattrologic/Air-Os-Ipad/blob/review/security-final-verification/docs/security/FINAL_SECURITY_UPTAKE.md).
+
+Die private Installation, beide `main`-Branches, Spotify-Konten, Windows-Serve-Ordner und Tailscale bleiben unverändert. Kein Merge, keine Veröffentlichung, keine Datenlöschung. Die übrigen Abschnitte dokumentieren Sicherheitsgrenzen und den nachvollziehbaren Arbeitsverlauf.
+
 ## Stand und unveränderte Installation
 
 Fortsetzung des bereits begonnenen Auftrags auf `feat/air-os-ipad-ultra-security-hardening`, Ausgangscommit `0cc6f31d5f810d72cf695c5579b40eca7ec5e717`. Der zuletzt zuvor vollständig geprüfte Produktcode war `4fa5ea951f43a7c643d7011e351c3e60595b50fd` (CI 42634335969); dazwischen liegen ausschließlich dessen Nachweise und Dokumentation.
@@ -90,11 +103,11 @@ Der Adapter dient ausschließlich dem verifizierten statischen Buildinventar. Ke
 
 Lokaler Abschluss und CI werden unten mit den tatsächlich erreichten Ergebnissen ergänzt. Wiederaufgenommene Änderungen wurden zuerst unverändert inventarisiert; keine fertige Funktion neu gebaut oder verworfen.
 
-- 70 Node-Testgruppen einschließlich bestehender Regressionen und neuer negativer OAuth-/Worker-/Header-/Allowlisttests.
+- 71 Node-Testgruppen einschließlich bestehender Regressionen und neuer negativer OAuth-/Worker-/Header-/Allowlisttests.
 - Neue Browser-Sicherheitsprüfung: echtes Provider-Dokument mit Mockzustimmung, manipulierte Rückleitungen/Tokenantworten, Disconnect-Rennen, mehrere Tabs, RAM-Refresh, gespeichertes HTML, tatsächliche CSP/Header, Versionswechsel/Rückfall, Cache-Poisoning, unveränderte Blob-SHA-256 und kalter Offline-Neustart.
 - Exakt gleiche Browser-/Viewport-/Zeit-/Datenbedingungen: Lockscreen und Desktop vor/nach der Härtung, 1180×820 CSS-Pixel. Bei erfolgreicher Prüfung null unterschiedliche Pixel; keine Collagen oder manipulierten Produktbilder.
 - `docs/security/protected-surfaces.json`: 138 byte-identische geschützte Dateien plus unveränderter HTML-Body und Musik-/Timercode vor `safeReload`. Darunter Notch, Dock, MacLock, Materialien, Widgets, Yosemite, 25-App-Registry, Daten-/Backupbesitzer und Windows-Skripte.
-- Vollständige bestehende Gate-Suite für beide Browser bleibt vorgesehen, einschließlich Touch/DPR1/2, sechs Viewports, Pro-Notch, MacLock-Material, nativer kontrollierter Qt-Referenz und früherer Update-/Recovery-Regression.
+- Vollständige bestehende Gate-Suite für beide Browser ist im oben verlinkten Abschlusslauf bestanden, einschließlich Touch/DPR1/2, sechs Viewports, Pro-Notch, MacLock-Material, nativer kontrollierter Qt-Referenz und früherer Update-/Recovery-Regression.
 - Keine echte Spotify-Kontoautorisierung, physische iPad-Abnahme, native Safari-/Akkumessung oder private Tailscale-HTTP-Prüfung. WebKit-Automation ist keine Hardwareabnahme.
 
 Reproduktion mit Node 24, Python 3 und den gesperrten Tools aus `build/ipad-parity-tests`: `node --test tests/*.test.cjs`, `node scripts/package-ipad-security.cjs`, `node scripts/check-ipad-parity-package.cjs`, dann `AIR_PAD_ENGINE=chromium node scripts/test-ipad-security.cjs` beziehungsweise `webkit`; Unterpfad zusätzlich `AIR_SECURITY_PREFIX=/Air-OS/`. Paket unter `dist/Air-OS-iPad-Ultra-Security-<Quellcommit>.zip` mit `.zip.sha256`, `BUILD-INFO.json`, 142 geprüften Runtime-Dateien, Lizenzen und Sourcepaket. Vor Verwendung SHA-256-Sidecar und enthaltenes Inventar prüfen; keine automatische Installation.
@@ -206,3 +219,28 @@ Die konkrete Ursache wurde anschließend im tatsächlich installierten Playwrigh
 Die zwischenzeitlich lokal untersuchten Cold-Restart-/Alternativ-Aktivierungsexperimente wurden nicht in den Produktcode übernommen; die vorhandene neutrale Origin-/Client-Übergabe bleibt bestehen. Mit korrigierter tatsächlicher Installationsbereitschaft besteht sie lokal mit allen 10 ursprünglichen Update-/Recovery-Prüfungen. Keine erzwungene Aktivierung, keine Cache-/Datenbanklöschung und keine Änderung an der bestehenden Installation.
 
 Die neue Wartefunktion begrenzt auch ein überhaupt nicht aufgelöstes Browser-Promise mit einem echten Node-Timer; dessen Timer wird bei Erfolg/Fehler freigegeben. Die Modellprüfung enthält zusätzlich diesen Hängerfall. Der vollständige Legacy-v4-/Preflight-/v5-/Recovery-Ablauf läuft nun pro Engine sowohl unter `/` als auch `/Air-OS/`. Diese zwei zusätzlichen Berichte ergänzen das Gate auf 44 Berichte einschließlich der vier unveränderten nativen Vergleichsberichte; keine bisherige Prüfung wird dadurch ersetzt.
+
+## Endgültige Abnahme und Buildzuordnung
+
+| Bereich | Tatsächlich gemessen |
+| --- | --- |
+| Node | 71/71 Gruppen, lokal und in beiden Browserjobs |
+| Browser | 40/40 Berichte, 1.686 ausgeführte Assertions |
+| Davon Security | 4 × 50 = 200, beide Engines × Root/Unterpfad |
+| Davon ursprüngliche Legacy-Kette | 4 × 10 = 40, beide Engines × Root/Unterpfad |
+| Native Referenz | 4/4 Qt6/OpenGL-Berichte, 28 Assertions; kontrollierter Shader, kein vollständiges natives MacShell und kein iPad |
+| Visuelle Identität | 8 kontrollierte Original-/Security-Zustandsvergleiche in CI exakt null Pixel; vier Root-Paare anschließend unabhängig erneut verglichen |
+| Daten | Originalmusik-SHA-256, Notizen, altes Kalender-/Timerformat, öffentliche Spotify-Konfiguration und erlaubte Metadaten/Cover durch Update, Backup/Restore, Rückfall und Offline-Neustart erhalten |
+| Paket | 142 Inventarhashes und lokaler ZIP-Sidecar unabhängig geprüft; Lizenzen/Sourceangebot einschließlich Testhelfer enthalten |
+
+[Chromium-Job](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350/job/129682533167), [WebKit-Job](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350/job/129682533713), [native Referenz](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350/job/129687677283), [erfolgreiche Nachweissicherung](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350/job/129688486143).
+
+Buildcode bleibt exakt `ccba678b53fd2936f621fc4c1422d29c01b2c3ec`. Der abschließende Berichtcommit verändert nur Dokumentation; das geprüfte Artefakt wird nicht fälschlich diesem späteren Dokumentations-HEAD zugeordnet. ZIP: `Air-OS-iPad-Ultra-Security-ccba678b53fd2936f621fc4c1422d29c01b2c3ec.zip`, lokal 10.411.036 Bytes, SHA-256 `fcab70ee9627f4e94905fd7bc01842596a977945d095f56d91841d8b14037687`. GitHub zeigt für den **äußeren Actions-Artefaktcontainer** SHA-256 `0beda24c1dc88c27e7b6e5b3b165700e216b6109d8587293977800846881a065`; das ist nicht der Hash des inneren PWA-ZIP. Vor Verwendung den mitgelieferten CI-ZIP-Sidecar prüfen. Der lokale ZIP wurde unabhängig geöffnet und gegen alle 142 enthaltenen Inventarhashes geprüft; der CI-Container wurde hier nicht unabhängig heruntergeladen. SHA-256 bleibt Integrität unter vertrauenswürdigem Ursprung, keine unabhängige Herausgebersignatur.
+
+### Verbleibende reale Grenzen
+
+Keine echte Spotify-Kontoautorisierung oder systemweite iPad-Musikerkennung geprüft. Keine physische iPad-/Safari-/Akku-/GPU-Abnahme. Die Browsertests verwenden isoliertes `127.0.0.1`-HTTP als vom Browser akzeptierten sicheren Kontext; Root-/Unterpfad-/Redirectverhalten ist geprüft, tatsächliches privates HTTPS, TLS-/Access-Konfiguration und Tailscale-Serverheader wurden weder verändert noch als geprüft ausgegeben. Der Header-Adapter bleibt ausschließlich Loopback und ist nicht angeschlossen. Native Qt/OpenGL-Prüfung ersetzt keinen Gerätetest.
+
+Der kontrollierte Sperrzyklus löst die Erstkomposition für den Screenshotvergleich aus, ohne die geschützte Präsentation zu verändern; passive WebKit-Filterrandartefakte bleiben als Browsergrenze transparent dokumentiert. Nach Neustart erfordern absichtlich nur im RAM gehaltene Spotify-Tokens eine neue freiwillige Anmeldung; zulässige letzte Metadaten bleiben separat erhalten. Lokale Trennung ersetzt nicht den Widerruf im Spotify-Konto. Ein absichtlich freigegebener Rückfall auf ältere Produktquellen stellt deren ältere Sicherheitsmerkmale wieder her; zuerst Backup und gesonderte Freigabe, niemals einzelne alte Dateien in die neue Generation mischen.
+
+Der eigenständige iPad-Review enthält ausschließlich Bericht, Hashvergleich und anwendbaren QA-Patch (13 Dateien); weder `main` noch dessen Laufzeit wurden überschrieben. Historische Browserfixtures aus dem alten Repository fehlen dort weiterhin und müssen für eine separate vollständige Browser-CI kontrolliert bereitgestellt werden. Dessen 53 lokale Modellgruppen sind nicht mit den 71 Monorepo-Gruppen gleichzusetzen. Keine automatische Übernahme oder Installation.

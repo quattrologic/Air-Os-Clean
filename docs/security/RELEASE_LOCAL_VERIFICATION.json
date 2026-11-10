@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "ccba678b53fd2936f621fc4c1422d29c01b2c3ec",
+  "localZip": "Air-OS-iPad-Ultra-Security-ccba678b53fd2936f621fc4c1422d29c01b2c3ec.zip",
+  "localZipSha256": "fcab70ee9627f4e94905fd7bc01842596a977945d095f56d91841d8b14037687",
+  "sidecarMatches": true,
+  "inventoryVerified": 142,
+  "zipBytes": 10411036,
+  "note": "Local archive; CI artifact uses its own bundled checksum, archive container metadata may differ.",
+  "ciRun": "https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350",
+  "ciStatus": "success",
+  "ciArtifact": "Air-OS-iPad-Security-Build-ccba678b53fd2936f621fc4c1422d29c01b2c3ec",
+  "ciOuterArtifactSha256": "0beda24c1dc88c27e7b6e5b3b165700e216b6109d8587293977800846881a065",
+  "ciContainerIndependentlyDownloaded": false
+}
